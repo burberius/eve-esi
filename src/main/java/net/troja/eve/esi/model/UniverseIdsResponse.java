@@ -49,12 +49,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -68,57 +66,67 @@ public class UniverseIdsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_AGENTS = "agents";
     @SerializedName(SERIALIZED_NAME_AGENTS)
+    @javax.annotation.Nullable
     private List<UniverseIdsAgent> agents = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_ALLIANCES = "alliances";
     @SerializedName(SERIALIZED_NAME_ALLIANCES)
+    @javax.annotation.Nullable
     private List<UniverseIdsAlliance> alliances = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_CHARACTERS = "characters";
     @SerializedName(SERIALIZED_NAME_CHARACTERS)
+    @javax.annotation.Nullable
     private List<UniverseIdsCharacter> characters = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_CONSTELLATIONS = "constellations";
     @SerializedName(SERIALIZED_NAME_CONSTELLATIONS)
+    @javax.annotation.Nullable
     private List<UniverseIdsConstellation> constellations = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_CORPORATIONS = "corporations";
     @SerializedName(SERIALIZED_NAME_CORPORATIONS)
+    @javax.annotation.Nullable
     private List<UniverseIdsCorporation> corporations = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_FACTIONS = "factions";
     @SerializedName(SERIALIZED_NAME_FACTIONS)
+    @javax.annotation.Nullable
     private List<UniverseIdsFaction> factions = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_INVENTORY_TYPES = "inventory_types";
     @SerializedName(SERIALIZED_NAME_INVENTORY_TYPES)
+    @javax.annotation.Nullable
     private List<UniverseIdsInventoryType> inventoryTypes = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_REGIONS = "regions";
     @SerializedName(SERIALIZED_NAME_REGIONS)
+    @javax.annotation.Nullable
     private List<UniverseIdsRegion> regions = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_STATIONS = "stations";
     @SerializedName(SERIALIZED_NAME_STATIONS)
+    @javax.annotation.Nullable
     private List<UniverseIdsStation> stations = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_SYSTEMS = "systems";
     @SerializedName(SERIALIZED_NAME_SYSTEMS)
+    @javax.annotation.Nullable
     private List<UniverseIdsSystem> systems = new ArrayList<>();
 
     public UniverseIdsResponse() {
     }
 
-    public UniverseIdsResponse agents(List<UniverseIdsAgent> agents) {
-
+    public UniverseIdsResponse agents(@javax.annotation.Nullable List<UniverseIdsAgent> agents) {
         this.agents = agents;
         return this;
     }
 
-    public UniverseIdsResponse addagentsItem(UniverseIdsAgent agentsItem) {
+    public UniverseIdsResponse addAgentsItem(UniverseIdsAgent agentsItem) {
         if (this.agents == null) {
             this.agents = new ArrayList<>();
         }
+
         this.agents.add(agentsItem);
         return this;
     }
@@ -127,26 +135,26 @@ public class UniverseIdsResponse implements Serializable {
      * agents array
      * 
      * @return agents
-     **/
+     */
     @javax.annotation.Nullable
     public List<UniverseIdsAgent> getAgents() {
         return agents;
     }
 
-    public void setAgents(List<UniverseIdsAgent> agents) {
+    public void setAgents(@javax.annotation.Nullable List<UniverseIdsAgent> agents) {
         this.agents = agents;
     }
 
-    public UniverseIdsResponse alliances(List<UniverseIdsAlliance> alliances) {
-
+    public UniverseIdsResponse alliances(@javax.annotation.Nullable List<UniverseIdsAlliance> alliances) {
         this.alliances = alliances;
         return this;
     }
 
-    public UniverseIdsResponse addalliancesItem(UniverseIdsAlliance alliancesItem) {
+    public UniverseIdsResponse addAlliancesItem(UniverseIdsAlliance alliancesItem) {
         if (this.alliances == null) {
             this.alliances = new ArrayList<>();
         }
+
         this.alliances.add(alliancesItem);
         return this;
     }
@@ -155,26 +163,26 @@ public class UniverseIdsResponse implements Serializable {
      * alliances array
      * 
      * @return alliances
-     **/
+     */
     @javax.annotation.Nullable
     public List<UniverseIdsAlliance> getAlliances() {
         return alliances;
     }
 
-    public void setAlliances(List<UniverseIdsAlliance> alliances) {
+    public void setAlliances(@javax.annotation.Nullable List<UniverseIdsAlliance> alliances) {
         this.alliances = alliances;
     }
 
-    public UniverseIdsResponse characters(List<UniverseIdsCharacter> characters) {
-
+    public UniverseIdsResponse characters(@javax.annotation.Nullable List<UniverseIdsCharacter> characters) {
         this.characters = characters;
         return this;
     }
 
-    public UniverseIdsResponse addcharactersItem(UniverseIdsCharacter charactersItem) {
+    public UniverseIdsResponse addCharactersItem(UniverseIdsCharacter charactersItem) {
         if (this.characters == null) {
             this.characters = new ArrayList<>();
         }
+
         this.characters.add(charactersItem);
         return this;
     }
@@ -183,26 +191,26 @@ public class UniverseIdsResponse implements Serializable {
      * characters array
      * 
      * @return characters
-     **/
+     */
     @javax.annotation.Nullable
     public List<UniverseIdsCharacter> getCharacters() {
         return characters;
     }
 
-    public void setCharacters(List<UniverseIdsCharacter> characters) {
+    public void setCharacters(@javax.annotation.Nullable List<UniverseIdsCharacter> characters) {
         this.characters = characters;
     }
 
-    public UniverseIdsResponse constellations(List<UniverseIdsConstellation> constellations) {
-
+    public UniverseIdsResponse constellations(@javax.annotation.Nullable List<UniverseIdsConstellation> constellations) {
         this.constellations = constellations;
         return this;
     }
 
-    public UniverseIdsResponse addconstellationsItem(UniverseIdsConstellation constellationsItem) {
+    public UniverseIdsResponse addConstellationsItem(UniverseIdsConstellation constellationsItem) {
         if (this.constellations == null) {
             this.constellations = new ArrayList<>();
         }
+
         this.constellations.add(constellationsItem);
         return this;
     }
@@ -211,26 +219,26 @@ public class UniverseIdsResponse implements Serializable {
      * constellations array
      * 
      * @return constellations
-     **/
+     */
     @javax.annotation.Nullable
     public List<UniverseIdsConstellation> getConstellations() {
         return constellations;
     }
 
-    public void setConstellations(List<UniverseIdsConstellation> constellations) {
+    public void setConstellations(@javax.annotation.Nullable List<UniverseIdsConstellation> constellations) {
         this.constellations = constellations;
     }
 
-    public UniverseIdsResponse corporations(List<UniverseIdsCorporation> corporations) {
-
+    public UniverseIdsResponse corporations(@javax.annotation.Nullable List<UniverseIdsCorporation> corporations) {
         this.corporations = corporations;
         return this;
     }
 
-    public UniverseIdsResponse addcorporationsItem(UniverseIdsCorporation corporationsItem) {
+    public UniverseIdsResponse addCorporationsItem(UniverseIdsCorporation corporationsItem) {
         if (this.corporations == null) {
             this.corporations = new ArrayList<>();
         }
+
         this.corporations.add(corporationsItem);
         return this;
     }
@@ -239,26 +247,26 @@ public class UniverseIdsResponse implements Serializable {
      * corporations array
      * 
      * @return corporations
-     **/
+     */
     @javax.annotation.Nullable
     public List<UniverseIdsCorporation> getCorporations() {
         return corporations;
     }
 
-    public void setCorporations(List<UniverseIdsCorporation> corporations) {
+    public void setCorporations(@javax.annotation.Nullable List<UniverseIdsCorporation> corporations) {
         this.corporations = corporations;
     }
 
-    public UniverseIdsResponse factions(List<UniverseIdsFaction> factions) {
-
+    public UniverseIdsResponse factions(@javax.annotation.Nullable List<UniverseIdsFaction> factions) {
         this.factions = factions;
         return this;
     }
 
-    public UniverseIdsResponse addfactionsItem(UniverseIdsFaction factionsItem) {
+    public UniverseIdsResponse addFactionsItem(UniverseIdsFaction factionsItem) {
         if (this.factions == null) {
             this.factions = new ArrayList<>();
         }
+
         this.factions.add(factionsItem);
         return this;
     }
@@ -267,26 +275,26 @@ public class UniverseIdsResponse implements Serializable {
      * factions array
      * 
      * @return factions
-     **/
+     */
     @javax.annotation.Nullable
     public List<UniverseIdsFaction> getFactions() {
         return factions;
     }
 
-    public void setFactions(List<UniverseIdsFaction> factions) {
+    public void setFactions(@javax.annotation.Nullable List<UniverseIdsFaction> factions) {
         this.factions = factions;
     }
 
-    public UniverseIdsResponse inventoryTypes(List<UniverseIdsInventoryType> inventoryTypes) {
-
+    public UniverseIdsResponse inventoryTypes(@javax.annotation.Nullable List<UniverseIdsInventoryType> inventoryTypes) {
         this.inventoryTypes = inventoryTypes;
         return this;
     }
 
-    public UniverseIdsResponse addinventoryTypesItem(UniverseIdsInventoryType inventoryTypesItem) {
+    public UniverseIdsResponse addInventoryTypesItem(UniverseIdsInventoryType inventoryTypesItem) {
         if (this.inventoryTypes == null) {
             this.inventoryTypes = new ArrayList<>();
         }
+
         this.inventoryTypes.add(inventoryTypesItem);
         return this;
     }
@@ -295,26 +303,26 @@ public class UniverseIdsResponse implements Serializable {
      * inventory_types array
      * 
      * @return inventoryTypes
-     **/
+     */
     @javax.annotation.Nullable
     public List<UniverseIdsInventoryType> getInventoryTypes() {
         return inventoryTypes;
     }
 
-    public void setInventoryTypes(List<UniverseIdsInventoryType> inventoryTypes) {
+    public void setInventoryTypes(@javax.annotation.Nullable List<UniverseIdsInventoryType> inventoryTypes) {
         this.inventoryTypes = inventoryTypes;
     }
 
-    public UniverseIdsResponse regions(List<UniverseIdsRegion> regions) {
-
+    public UniverseIdsResponse regions(@javax.annotation.Nullable List<UniverseIdsRegion> regions) {
         this.regions = regions;
         return this;
     }
 
-    public UniverseIdsResponse addregionsItem(UniverseIdsRegion regionsItem) {
+    public UniverseIdsResponse addRegionsItem(UniverseIdsRegion regionsItem) {
         if (this.regions == null) {
             this.regions = new ArrayList<>();
         }
+
         this.regions.add(regionsItem);
         return this;
     }
@@ -323,26 +331,26 @@ public class UniverseIdsResponse implements Serializable {
      * regions array
      * 
      * @return regions
-     **/
+     */
     @javax.annotation.Nullable
     public List<UniverseIdsRegion> getRegions() {
         return regions;
     }
 
-    public void setRegions(List<UniverseIdsRegion> regions) {
+    public void setRegions(@javax.annotation.Nullable List<UniverseIdsRegion> regions) {
         this.regions = regions;
     }
 
-    public UniverseIdsResponse stations(List<UniverseIdsStation> stations) {
-
+    public UniverseIdsResponse stations(@javax.annotation.Nullable List<UniverseIdsStation> stations) {
         this.stations = stations;
         return this;
     }
 
-    public UniverseIdsResponse addstationsItem(UniverseIdsStation stationsItem) {
+    public UniverseIdsResponse addStationsItem(UniverseIdsStation stationsItem) {
         if (this.stations == null) {
             this.stations = new ArrayList<>();
         }
+
         this.stations.add(stationsItem);
         return this;
     }
@@ -351,26 +359,26 @@ public class UniverseIdsResponse implements Serializable {
      * stations array
      * 
      * @return stations
-     **/
+     */
     @javax.annotation.Nullable
     public List<UniverseIdsStation> getStations() {
         return stations;
     }
 
-    public void setStations(List<UniverseIdsStation> stations) {
+    public void setStations(@javax.annotation.Nullable List<UniverseIdsStation> stations) {
         this.stations = stations;
     }
 
-    public UniverseIdsResponse systems(List<UniverseIdsSystem> systems) {
-
+    public UniverseIdsResponse systems(@javax.annotation.Nullable List<UniverseIdsSystem> systems) {
         this.systems = systems;
         return this;
     }
 
-    public UniverseIdsResponse addsystemsItem(UniverseIdsSystem systemsItem) {
+    public UniverseIdsResponse addSystemsItem(UniverseIdsSystem systemsItem) {
         if (this.systems == null) {
             this.systems = new ArrayList<>();
         }
+
         this.systems.add(systemsItem);
         return this;
     }
@@ -379,13 +387,13 @@ public class UniverseIdsResponse implements Serializable {
      * systems array
      * 
      * @return systems
-     **/
+     */
     @javax.annotation.Nullable
     public List<UniverseIdsSystem> getSystems() {
         return systems;
     }
 
-    public void setSystems(List<UniverseIdsSystem> systems) {
+    public void setSystems(@javax.annotation.Nullable List<UniverseIdsSystem> systems) {
         this.systems = systems;
     }
 
@@ -467,22 +475,22 @@ public class UniverseIdsResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             UniverseIdsResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!UniverseIdsResponse.openapiRequiredFields.isEmpty()) { // has
                                                                         // required
                                                                         // fields
                                                                         // but
                                                                         // JSON
-                                                                        // object
+                                                                        // element
                                                                         // is
                                                                         // null
                 throw new IllegalArgumentException(String.format(
@@ -491,16 +499,17 @@ public class UniverseIdsResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!UniverseIdsResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `UniverseIdsResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (jsonObj.get("agents") != null && !jsonObj.get("agents").isJsonNull()) {
             JsonArray jsonArrayagents = jsonObj.getAsJsonArray("agents");
             if (jsonArrayagents != null) {
@@ -513,7 +522,7 @@ public class UniverseIdsResponse implements Serializable {
 
                 // validate the optional field `agents` (array)
                 for (int i = 0; i < jsonArrayagents.size(); i++) {
-                    UniverseIdsAgent.validateJsonObject(jsonArrayagents.get(i).getAsJsonObject());
+                    UniverseIdsAgent.validateJsonElement(jsonArrayagents.get(i));
                 };
             }
         }
@@ -529,7 +538,7 @@ public class UniverseIdsResponse implements Serializable {
 
                 // validate the optional field `alliances` (array)
                 for (int i = 0; i < jsonArrayalliances.size(); i++) {
-                    UniverseIdsAlliance.validateJsonObject(jsonArrayalliances.get(i).getAsJsonObject());
+                    UniverseIdsAlliance.validateJsonElement(jsonArrayalliances.get(i));
                 };
             }
         }
@@ -545,7 +554,7 @@ public class UniverseIdsResponse implements Serializable {
 
                 // validate the optional field `characters` (array)
                 for (int i = 0; i < jsonArraycharacters.size(); i++) {
-                    UniverseIdsCharacter.validateJsonObject(jsonArraycharacters.get(i).getAsJsonObject());
+                    UniverseIdsCharacter.validateJsonElement(jsonArraycharacters.get(i));
                 };
             }
         }
@@ -561,7 +570,7 @@ public class UniverseIdsResponse implements Serializable {
 
                 // validate the optional field `constellations` (array)
                 for (int i = 0; i < jsonArrayconstellations.size(); i++) {
-                    UniverseIdsConstellation.validateJsonObject(jsonArrayconstellations.get(i).getAsJsonObject());
+                    UniverseIdsConstellation.validateJsonElement(jsonArrayconstellations.get(i));
                 };
             }
         }
@@ -577,7 +586,7 @@ public class UniverseIdsResponse implements Serializable {
 
                 // validate the optional field `corporations` (array)
                 for (int i = 0; i < jsonArraycorporations.size(); i++) {
-                    UniverseIdsCorporation.validateJsonObject(jsonArraycorporations.get(i).getAsJsonObject());
+                    UniverseIdsCorporation.validateJsonElement(jsonArraycorporations.get(i));
                 };
             }
         }
@@ -593,7 +602,7 @@ public class UniverseIdsResponse implements Serializable {
 
                 // validate the optional field `factions` (array)
                 for (int i = 0; i < jsonArrayfactions.size(); i++) {
-                    UniverseIdsFaction.validateJsonObject(jsonArrayfactions.get(i).getAsJsonObject());
+                    UniverseIdsFaction.validateJsonElement(jsonArrayfactions.get(i));
                 };
             }
         }
@@ -609,7 +618,7 @@ public class UniverseIdsResponse implements Serializable {
 
                 // validate the optional field `inventory_types` (array)
                 for (int i = 0; i < jsonArrayinventoryTypes.size(); i++) {
-                    UniverseIdsInventoryType.validateJsonObject(jsonArrayinventoryTypes.get(i).getAsJsonObject());
+                    UniverseIdsInventoryType.validateJsonElement(jsonArrayinventoryTypes.get(i));
                 };
             }
         }
@@ -625,7 +634,7 @@ public class UniverseIdsResponse implements Serializable {
 
                 // validate the optional field `regions` (array)
                 for (int i = 0; i < jsonArrayregions.size(); i++) {
-                    UniverseIdsRegion.validateJsonObject(jsonArrayregions.get(i).getAsJsonObject());
+                    UniverseIdsRegion.validateJsonElement(jsonArrayregions.get(i));
                 };
             }
         }
@@ -641,7 +650,7 @@ public class UniverseIdsResponse implements Serializable {
 
                 // validate the optional field `stations` (array)
                 for (int i = 0; i < jsonArraystations.size(); i++) {
-                    UniverseIdsStation.validateJsonObject(jsonArraystations.get(i).getAsJsonObject());
+                    UniverseIdsStation.validateJsonElement(jsonArraystations.get(i));
                 };
             }
         }
@@ -657,7 +666,7 @@ public class UniverseIdsResponse implements Serializable {
 
                 // validate the optional field `systems` (array)
                 for (int i = 0; i < jsonArraysystems.size(); i++) {
-                    UniverseIdsSystem.validateJsonObject(jsonArraysystems.get(i).getAsJsonObject());
+                    UniverseIdsSystem.validateJsonElement(jsonArraysystems.get(i));
                 };
             }
         }
@@ -684,9 +693,9 @@ public class UniverseIdsResponse implements Serializable {
 
                 @Override
                 public UniverseIdsResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -56,21 +54,23 @@ public class PlanetLink implements Serializable {
 
     public static final String SERIALIZED_NAME_DESTINATION_PIN_ID = "destination_pin_id";
     @SerializedName(SERIALIZED_NAME_DESTINATION_PIN_ID)
+    @javax.annotation.Nonnull
     private Long destinationPinId;
 
     public static final String SERIALIZED_NAME_LINK_LEVEL = "link_level";
     @SerializedName(SERIALIZED_NAME_LINK_LEVEL)
+    @javax.annotation.Nonnull
     private Integer linkLevel;
 
     public static final String SERIALIZED_NAME_SOURCE_PIN_ID = "source_pin_id";
     @SerializedName(SERIALIZED_NAME_SOURCE_PIN_ID)
+    @javax.annotation.Nonnull
     private Long sourcePinId;
 
     public PlanetLink() {
     }
 
-    public PlanetLink destinationPinId(Long destinationPinId) {
-
+    public PlanetLink destinationPinId(@javax.annotation.Nonnull Long destinationPinId) {
         this.destinationPinId = destinationPinId;
         return this;
     }
@@ -79,18 +79,17 @@ public class PlanetLink implements Serializable {
      * destination_pin_id integer
      * 
      * @return destinationPinId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getDestinationPinId() {
         return destinationPinId;
     }
 
-    public void setDestinationPinId(Long destinationPinId) {
+    public void setDestinationPinId(@javax.annotation.Nonnull Long destinationPinId) {
         this.destinationPinId = destinationPinId;
     }
 
-    public PlanetLink linkLevel(Integer linkLevel) {
-
+    public PlanetLink linkLevel(@javax.annotation.Nonnull Integer linkLevel) {
         this.linkLevel = linkLevel;
         return this;
     }
@@ -99,18 +98,17 @@ public class PlanetLink implements Serializable {
      * link_level integer minimum: 0 maximum: 10
      * 
      * @return linkLevel
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getLinkLevel() {
         return linkLevel;
     }
 
-    public void setLinkLevel(Integer linkLevel) {
+    public void setLinkLevel(@javax.annotation.Nonnull Integer linkLevel) {
         this.linkLevel = linkLevel;
     }
 
-    public PlanetLink sourcePinId(Long sourcePinId) {
-
+    public PlanetLink sourcePinId(@javax.annotation.Nonnull Long sourcePinId) {
         this.sourcePinId = sourcePinId;
         return this;
     }
@@ -119,13 +117,13 @@ public class PlanetLink implements Serializable {
      * source_pin_id integer
      * 
      * @return sourcePinId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getSourcePinId() {
         return sourcePinId;
     }
 
-    public void setSourcePinId(Long sourcePinId) {
+    public void setSourcePinId(@javax.annotation.Nonnull Long sourcePinId) {
         this.sourcePinId = sourcePinId;
     }
 
@@ -188,44 +186,45 @@ public class PlanetLink implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to PlanetLink
+     *             if the JSON Element is invalid with respect to PlanetLink
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!PlanetLink.openapiRequiredFields.isEmpty()) { // has required
                                                                // fields but
-                                                               // JSON object is
-                                                               // null
+                                                               // JSON element
+                                                               // is null
                 throw new IllegalArgumentException(String.format(
                         "The required field(s) %s in PlanetLink is not found in the empty JSON string",
                         PlanetLink.openapiRequiredFields.toString()));
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!PlanetLink.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(String.format(
                         "The field `%s` in the JSON string is not defined in the `PlanetLink` properties. JSON: %s",
-                        entry.getKey(), jsonObj.toString()));
+                        entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : PlanetLink.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -248,9 +247,9 @@ public class PlanetLink implements Serializable {
 
                 @Override
                 public PlanetLink read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

@@ -38,12 +38,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -116,23 +114,32 @@ public class CorporationContainersLogsResponse implements Serializable {
                 return ActionEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ActionEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_ACTION = "action";
     @SerializedName(SERIALIZED_NAME_ACTION)
+    @javax.annotation.Nonnull
     private String action;
     private ActionEnum actionEnum;
 
     public static final String SERIALIZED_NAME_CHARACTER_ID = "character_id";
     @SerializedName(SERIALIZED_NAME_CHARACTER_ID)
+    @javax.annotation.Nonnull
     private Integer characterId;
 
     public static final String SERIALIZED_NAME_CONTAINER_ID = "container_id";
     @SerializedName(SERIALIZED_NAME_CONTAINER_ID)
+    @javax.annotation.Nonnull
     private Long containerId;
 
     public static final String SERIALIZED_NAME_CONTAINER_TYPE_ID = "container_type_id";
     @SerializedName(SERIALIZED_NAME_CONTAINER_TYPE_ID)
+    @javax.annotation.Nonnull
     private Integer containerTypeId;
 
     /**
@@ -410,27 +417,37 @@ public class CorporationContainersLogsResponse implements Serializable {
                 return LocationFlagEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            LocationFlagEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_LOCATION_FLAG = "location_flag";
     @SerializedName(SERIALIZED_NAME_LOCATION_FLAG)
+    @javax.annotation.Nonnull
     private String locationFlag;
     private LocationFlagEnum locationFlagEnum;
 
     public static final String SERIALIZED_NAME_LOCATION_ID = "location_id";
     @SerializedName(SERIALIZED_NAME_LOCATION_ID)
+    @javax.annotation.Nonnull
     private Long locationId;
 
     public static final String SERIALIZED_NAME_LOGGED_AT = "logged_at";
     @SerializedName(SERIALIZED_NAME_LOGGED_AT)
+    @javax.annotation.Nonnull
     private OffsetDateTime loggedAt;
 
     public static final String SERIALIZED_NAME_NEW_CONFIG_BITMASK = "new_config_bitmask";
     @SerializedName(SERIALIZED_NAME_NEW_CONFIG_BITMASK)
+    @javax.annotation.Nullable
     private Integer newConfigBitmask;
 
     public static final String SERIALIZED_NAME_OLD_CONFIG_BITMASK = "old_config_bitmask";
     @SerializedName(SERIALIZED_NAME_OLD_CONFIG_BITMASK)
+    @javax.annotation.Nullable
     private Integer oldConfigBitmask;
 
     /**
@@ -478,33 +495,39 @@ public class CorporationContainersLogsResponse implements Serializable {
                 return PasswordTypeEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            PasswordTypeEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_PASSWORD_TYPE = "password_type";
     @SerializedName(SERIALIZED_NAME_PASSWORD_TYPE)
+    @javax.annotation.Nullable
     private String passwordType;
     private PasswordTypeEnum passwordTypeEnum;
 
     public static final String SERIALIZED_NAME_QUANTITY = "quantity";
     @SerializedName(SERIALIZED_NAME_QUANTITY)
+    @javax.annotation.Nullable
     private Integer quantity;
 
     public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
+    @javax.annotation.Nullable
     private Integer typeId;
 
     public CorporationContainersLogsResponse() {
     }
 
-    public CorporationContainersLogsResponse actionString(String action) {
-
-        this.action = action;
+    public CorporationContainersLogsResponse action(@javax.annotation.Nonnull ActionEnum action) {
+        this.actionEnum = action;
         return this;
     }
 
-    public CorporationContainersLogsResponse action(ActionEnum actionEnum) {
-
-        this.actionEnum = actionEnum;
+    public CorporationContainersLogsResponse actionString(@javax.annotation.Nonnull String action) {
+        this.action = action;
         return this;
     }
 
@@ -512,8 +535,8 @@ public class CorporationContainersLogsResponse implements Serializable {
      * action string
      * 
      * @return action
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public ActionEnum getAction() {
         if (actionEnum == null) {
             actionEnum = ActionEnum.fromValue(action);
@@ -525,16 +548,15 @@ public class CorporationContainersLogsResponse implements Serializable {
         return action;
     }
 
-    public void setAction(ActionEnum actionEnum) {
-        this.actionEnum = actionEnum;
+    public void setAction(@javax.annotation.Nonnull ActionEnum action) {
+        this.actionEnum = action;
     }
 
-    public void setActionString(String action) {
+    public void setActionString(@javax.annotation.Nonnull String action) {
         this.action = action;
     }
 
-    public CorporationContainersLogsResponse characterId(Integer characterId) {
-
+    public CorporationContainersLogsResponse characterId(@javax.annotation.Nonnull Integer characterId) {
         this.characterId = characterId;
         return this;
     }
@@ -543,18 +565,17 @@ public class CorporationContainersLogsResponse implements Serializable {
      * ID of the character who performed the action.
      * 
      * @return characterId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getCharacterId() {
         return characterId;
     }
 
-    public void setCharacterId(Integer characterId) {
+    public void setCharacterId(@javax.annotation.Nonnull Integer characterId) {
         this.characterId = characterId;
     }
 
-    public CorporationContainersLogsResponse containerId(Long containerId) {
-
+    public CorporationContainersLogsResponse containerId(@javax.annotation.Nonnull Long containerId) {
         this.containerId = containerId;
         return this;
     }
@@ -563,18 +584,17 @@ public class CorporationContainersLogsResponse implements Serializable {
      * ID of the container
      * 
      * @return containerId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getContainerId() {
         return containerId;
     }
 
-    public void setContainerId(Long containerId) {
+    public void setContainerId(@javax.annotation.Nonnull Long containerId) {
         this.containerId = containerId;
     }
 
-    public CorporationContainersLogsResponse containerTypeId(Integer containerTypeId) {
-
+    public CorporationContainersLogsResponse containerTypeId(@javax.annotation.Nonnull Integer containerTypeId) {
         this.containerTypeId = containerTypeId;
         return this;
     }
@@ -583,25 +603,23 @@ public class CorporationContainersLogsResponse implements Serializable {
      * Type ID of the container
      * 
      * @return containerTypeId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getContainerTypeId() {
         return containerTypeId;
     }
 
-    public void setContainerTypeId(Integer containerTypeId) {
+    public void setContainerTypeId(@javax.annotation.Nonnull Integer containerTypeId) {
         this.containerTypeId = containerTypeId;
     }
 
-    public CorporationContainersLogsResponse locationFlagString(String locationFlag) {
-
-        this.locationFlag = locationFlag;
+    public CorporationContainersLogsResponse locationFlag(@javax.annotation.Nonnull LocationFlagEnum locationFlag) {
+        this.locationFlagEnum = locationFlag;
         return this;
     }
 
-    public CorporationContainersLogsResponse locationFlag(LocationFlagEnum locationFlagEnum) {
-
-        this.locationFlagEnum = locationFlagEnum;
+    public CorporationContainersLogsResponse locationFlagString(@javax.annotation.Nonnull String locationFlag) {
+        this.locationFlag = locationFlag;
         return this;
     }
 
@@ -609,8 +627,8 @@ public class CorporationContainersLogsResponse implements Serializable {
      * location_flag string
      * 
      * @return locationFlag
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public LocationFlagEnum getLocationFlag() {
         if (locationFlagEnum == null) {
             locationFlagEnum = LocationFlagEnum.fromValue(locationFlag);
@@ -622,16 +640,15 @@ public class CorporationContainersLogsResponse implements Serializable {
         return locationFlag;
     }
 
-    public void setLocationFlag(LocationFlagEnum locationFlagEnum) {
-        this.locationFlagEnum = locationFlagEnum;
+    public void setLocationFlag(@javax.annotation.Nonnull LocationFlagEnum locationFlag) {
+        this.locationFlagEnum = locationFlag;
     }
 
-    public void setLocationFlagString(String locationFlag) {
+    public void setLocationFlagString(@javax.annotation.Nonnull String locationFlag) {
         this.locationFlag = locationFlag;
     }
 
-    public CorporationContainersLogsResponse locationId(Long locationId) {
-
+    public CorporationContainersLogsResponse locationId(@javax.annotation.Nonnull Long locationId) {
         this.locationId = locationId;
         return this;
     }
@@ -640,18 +657,17 @@ public class CorporationContainersLogsResponse implements Serializable {
      * location_id integer
      * 
      * @return locationId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getLocationId() {
         return locationId;
     }
 
-    public void setLocationId(Long locationId) {
+    public void setLocationId(@javax.annotation.Nonnull Long locationId) {
         this.locationId = locationId;
     }
 
-    public CorporationContainersLogsResponse loggedAt(OffsetDateTime loggedAt) {
-
+    public CorporationContainersLogsResponse loggedAt(@javax.annotation.Nonnull OffsetDateTime loggedAt) {
         this.loggedAt = loggedAt;
         return this;
     }
@@ -660,18 +676,17 @@ public class CorporationContainersLogsResponse implements Serializable {
      * Timestamp when this log was created
      * 
      * @return loggedAt
-     **/
+     */
     @javax.annotation.Nonnull
     public OffsetDateTime getLoggedAt() {
         return loggedAt;
     }
 
-    public void setLoggedAt(OffsetDateTime loggedAt) {
+    public void setLoggedAt(@javax.annotation.Nonnull OffsetDateTime loggedAt) {
         this.loggedAt = loggedAt;
     }
 
-    public CorporationContainersLogsResponse newConfigBitmask(Integer newConfigBitmask) {
-
+    public CorporationContainersLogsResponse newConfigBitmask(@javax.annotation.Nullable Integer newConfigBitmask) {
         this.newConfigBitmask = newConfigBitmask;
         return this;
     }
@@ -680,18 +695,17 @@ public class CorporationContainersLogsResponse implements Serializable {
      * new_config_bitmask integer
      * 
      * @return newConfigBitmask
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getNewConfigBitmask() {
         return newConfigBitmask;
     }
 
-    public void setNewConfigBitmask(Integer newConfigBitmask) {
+    public void setNewConfigBitmask(@javax.annotation.Nullable Integer newConfigBitmask) {
         this.newConfigBitmask = newConfigBitmask;
     }
 
-    public CorporationContainersLogsResponse oldConfigBitmask(Integer oldConfigBitmask) {
-
+    public CorporationContainersLogsResponse oldConfigBitmask(@javax.annotation.Nullable Integer oldConfigBitmask) {
         this.oldConfigBitmask = oldConfigBitmask;
         return this;
     }
@@ -700,25 +714,23 @@ public class CorporationContainersLogsResponse implements Serializable {
      * old_config_bitmask integer
      * 
      * @return oldConfigBitmask
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getOldConfigBitmask() {
         return oldConfigBitmask;
     }
 
-    public void setOldConfigBitmask(Integer oldConfigBitmask) {
+    public void setOldConfigBitmask(@javax.annotation.Nullable Integer oldConfigBitmask) {
         this.oldConfigBitmask = oldConfigBitmask;
     }
 
-    public CorporationContainersLogsResponse passwordTypeString(String passwordType) {
-
-        this.passwordType = passwordType;
+    public CorporationContainersLogsResponse passwordType(@javax.annotation.Nullable PasswordTypeEnum passwordType) {
+        this.passwordTypeEnum = passwordType;
         return this;
     }
 
-    public CorporationContainersLogsResponse passwordType(PasswordTypeEnum passwordTypeEnum) {
-
-        this.passwordTypeEnum = passwordTypeEnum;
+    public CorporationContainersLogsResponse passwordTypeString(@javax.annotation.Nullable String passwordType) {
+        this.passwordType = passwordType;
         return this;
     }
 
@@ -726,8 +738,8 @@ public class CorporationContainersLogsResponse implements Serializable {
      * Type of password set if action is of type SetPassword or EnterPassword
      * 
      * @return passwordType
-     **/
-    @javax.annotation.Nullable
+     */
+
     public PasswordTypeEnum getPasswordType() {
         if (passwordTypeEnum == null) {
             passwordTypeEnum = PasswordTypeEnum.fromValue(passwordType);
@@ -739,16 +751,15 @@ public class CorporationContainersLogsResponse implements Serializable {
         return passwordType;
     }
 
-    public void setPasswordType(PasswordTypeEnum passwordTypeEnum) {
-        this.passwordTypeEnum = passwordTypeEnum;
+    public void setPasswordType(@javax.annotation.Nullable PasswordTypeEnum passwordType) {
+        this.passwordTypeEnum = passwordType;
     }
 
-    public void setPasswordTypeString(String passwordType) {
+    public void setPasswordTypeString(@javax.annotation.Nullable String passwordType) {
         this.passwordType = passwordType;
     }
 
-    public CorporationContainersLogsResponse quantity(Integer quantity) {
-
+    public CorporationContainersLogsResponse quantity(@javax.annotation.Nullable Integer quantity) {
         this.quantity = quantity;
         return this;
     }
@@ -757,18 +768,17 @@ public class CorporationContainersLogsResponse implements Serializable {
      * Quantity of the item being acted upon
      * 
      * @return quantity
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(@javax.annotation.Nullable Integer quantity) {
         this.quantity = quantity;
     }
 
-    public CorporationContainersLogsResponse typeId(Integer typeId) {
-
+    public CorporationContainersLogsResponse typeId(@javax.annotation.Nullable Integer typeId) {
         this.typeId = typeId;
         return this;
     }
@@ -777,13 +787,13 @@ public class CorporationContainersLogsResponse implements Serializable {
      * Type ID of the item being acted upon
      * 
      * @return typeId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(Integer typeId) {
+    public void setTypeId(@javax.annotation.Nullable Integer typeId) {
         this.typeId = typeId;
     }
 
@@ -878,22 +888,22 @@ public class CorporationContainersLogsResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CorporationContainersLogsResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CorporationContainersLogsResponse.openapiRequiredFields.isEmpty()) { // has
                                                                                       // required
                                                                                       // fields
                                                                                       // but
                                                                                       // JSON
-                                                                                      // object
+                                                                                      // element
                                                                                       // is
                                                                                       // null
                 throw new IllegalArgumentException(
@@ -903,41 +913,50 @@ public class CorporationContainersLogsResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CorporationContainersLogsResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CorporationContainersLogsResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CorporationContainersLogsResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("action").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `action` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("action").toString()));
         }
+        // validate the required field `action`
+        ActionEnum.validateJsonElement(jsonObj.get("action"));
         if (!jsonObj.get("location_flag").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `location_flag` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("location_flag").toString()));
         }
+        // validate the required field `location_flag`
+        LocationFlagEnum.validateJsonElement(jsonObj.get("location_flag"));
         if ((jsonObj.get("password_type") != null && !jsonObj.get("password_type").isJsonNull())
                 && !jsonObj.get("password_type").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `password_type` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("password_type").toString()));
+        }
+        // validate the optional field `password_type`
+        if (jsonObj.get("password_type") != null && !jsonObj.get("password_type").isJsonNull()) {
+            PasswordTypeEnum.validateJsonElement(jsonObj.get("password_type"));
         }
     }
 
@@ -963,9 +982,9 @@ public class CorporationContainersLogsResponse implements Serializable {
 
                 @Override
                 public CorporationContainersLogsResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

@@ -38,12 +38,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -57,82 +55,102 @@ public class CorporationIndustryJobsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ACTIVITY_ID = "activity_id";
     @SerializedName(SERIALIZED_NAME_ACTIVITY_ID)
+    @javax.annotation.Nonnull
     private Integer activityId;
 
     public static final String SERIALIZED_NAME_BLUEPRINT_ID = "blueprint_id";
     @SerializedName(SERIALIZED_NAME_BLUEPRINT_ID)
+    @javax.annotation.Nonnull
     private Long blueprintId;
 
     public static final String SERIALIZED_NAME_BLUEPRINT_LOCATION_ID = "blueprint_location_id";
     @SerializedName(SERIALIZED_NAME_BLUEPRINT_LOCATION_ID)
+    @javax.annotation.Nonnull
     private Long blueprintLocationId;
 
     public static final String SERIALIZED_NAME_BLUEPRINT_TYPE_ID = "blueprint_type_id";
     @SerializedName(SERIALIZED_NAME_BLUEPRINT_TYPE_ID)
+    @javax.annotation.Nonnull
     private Integer blueprintTypeId;
 
     public static final String SERIALIZED_NAME_COMPLETED_CHARACTER_ID = "completed_character_id";
     @SerializedName(SERIALIZED_NAME_COMPLETED_CHARACTER_ID)
+    @javax.annotation.Nullable
     private Integer completedCharacterId;
 
     public static final String SERIALIZED_NAME_COMPLETED_DATE = "completed_date";
     @SerializedName(SERIALIZED_NAME_COMPLETED_DATE)
+    @javax.annotation.Nullable
     private OffsetDateTime completedDate;
 
     public static final String SERIALIZED_NAME_COST = "cost";
     @SerializedName(SERIALIZED_NAME_COST)
+    @javax.annotation.Nullable
     private Double cost;
 
     public static final String SERIALIZED_NAME_DURATION = "duration";
     @SerializedName(SERIALIZED_NAME_DURATION)
+    @javax.annotation.Nonnull
     private Integer duration;
 
     public static final String SERIALIZED_NAME_END_DATE = "end_date";
     @SerializedName(SERIALIZED_NAME_END_DATE)
+    @javax.annotation.Nonnull
     private OffsetDateTime endDate;
 
     public static final String SERIALIZED_NAME_FACILITY_ID = "facility_id";
     @SerializedName(SERIALIZED_NAME_FACILITY_ID)
+    @javax.annotation.Nonnull
     private Long facilityId;
 
     public static final String SERIALIZED_NAME_INSTALLER_ID = "installer_id";
     @SerializedName(SERIALIZED_NAME_INSTALLER_ID)
+    @javax.annotation.Nonnull
     private Integer installerId;
 
     public static final String SERIALIZED_NAME_JOB_ID = "job_id";
     @SerializedName(SERIALIZED_NAME_JOB_ID)
+    @javax.annotation.Nonnull
     private Integer jobId;
 
     public static final String SERIALIZED_NAME_LICENSED_RUNS = "licensed_runs";
     @SerializedName(SERIALIZED_NAME_LICENSED_RUNS)
+    @javax.annotation.Nullable
     private Integer licensedRuns;
 
     public static final String SERIALIZED_NAME_LOCATION_ID = "location_id";
     @SerializedName(SERIALIZED_NAME_LOCATION_ID)
+    @javax.annotation.Nonnull
     private Long locationId;
 
     public static final String SERIALIZED_NAME_OUTPUT_LOCATION_ID = "output_location_id";
     @SerializedName(SERIALIZED_NAME_OUTPUT_LOCATION_ID)
+    @javax.annotation.Nonnull
     private Long outputLocationId;
 
     public static final String SERIALIZED_NAME_PAUSE_DATE = "pause_date";
     @SerializedName(SERIALIZED_NAME_PAUSE_DATE)
+    @javax.annotation.Nullable
     private OffsetDateTime pauseDate;
 
     public static final String SERIALIZED_NAME_PROBABILITY = "probability";
     @SerializedName(SERIALIZED_NAME_PROBABILITY)
+    @javax.annotation.Nullable
     private Float probability;
 
     public static final String SERIALIZED_NAME_PRODUCT_TYPE_ID = "product_type_id";
     @SerializedName(SERIALIZED_NAME_PRODUCT_TYPE_ID)
+    @javax.annotation.Nullable
     private Integer productTypeId;
 
     public static final String SERIALIZED_NAME_RUNS = "runs";
     @SerializedName(SERIALIZED_NAME_RUNS)
+    @javax.annotation.Nonnull
     private Integer runs;
 
     public static final String SERIALIZED_NAME_START_DATE = "start_date";
     @SerializedName(SERIALIZED_NAME_START_DATE)
+    @javax.annotation.Nonnull
     private OffsetDateTime startDate;
 
     /**
@@ -188,22 +206,28 @@ public class CorporationIndustryJobsResponse implements Serializable {
                 return StatusEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            StatusEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_STATUS = "status";
     @SerializedName(SERIALIZED_NAME_STATUS)
+    @javax.annotation.Nonnull
     private String status;
     private StatusEnum statusEnum;
 
     public static final String SERIALIZED_NAME_SUCCESSFUL_RUNS = "successful_runs";
     @SerializedName(SERIALIZED_NAME_SUCCESSFUL_RUNS)
+    @javax.annotation.Nullable
     private Integer successfulRuns;
 
     public CorporationIndustryJobsResponse() {
     }
 
-    public CorporationIndustryJobsResponse activityId(Integer activityId) {
-
+    public CorporationIndustryJobsResponse activityId(@javax.annotation.Nonnull Integer activityId) {
         this.activityId = activityId;
         return this;
     }
@@ -212,18 +236,17 @@ public class CorporationIndustryJobsResponse implements Serializable {
      * Job activity ID
      * 
      * @return activityId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getActivityId() {
         return activityId;
     }
 
-    public void setActivityId(Integer activityId) {
+    public void setActivityId(@javax.annotation.Nonnull Integer activityId) {
         this.activityId = activityId;
     }
 
-    public CorporationIndustryJobsResponse blueprintId(Long blueprintId) {
-
+    public CorporationIndustryJobsResponse blueprintId(@javax.annotation.Nonnull Long blueprintId) {
         this.blueprintId = blueprintId;
         return this;
     }
@@ -232,18 +255,17 @@ public class CorporationIndustryJobsResponse implements Serializable {
      * blueprint_id integer
      * 
      * @return blueprintId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getBlueprintId() {
         return blueprintId;
     }
 
-    public void setBlueprintId(Long blueprintId) {
+    public void setBlueprintId(@javax.annotation.Nonnull Long blueprintId) {
         this.blueprintId = blueprintId;
     }
 
-    public CorporationIndustryJobsResponse blueprintLocationId(Long blueprintLocationId) {
-
+    public CorporationIndustryJobsResponse blueprintLocationId(@javax.annotation.Nonnull Long blueprintLocationId) {
         this.blueprintLocationId = blueprintLocationId;
         return this;
     }
@@ -254,18 +276,17 @@ public class CorporationIndustryJobsResponse implements Serializable {
      * corporation facility
      * 
      * @return blueprintLocationId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getBlueprintLocationId() {
         return blueprintLocationId;
     }
 
-    public void setBlueprintLocationId(Long blueprintLocationId) {
+    public void setBlueprintLocationId(@javax.annotation.Nonnull Long blueprintLocationId) {
         this.blueprintLocationId = blueprintLocationId;
     }
 
-    public CorporationIndustryJobsResponse blueprintTypeId(Integer blueprintTypeId) {
-
+    public CorporationIndustryJobsResponse blueprintTypeId(@javax.annotation.Nonnull Integer blueprintTypeId) {
         this.blueprintTypeId = blueprintTypeId;
         return this;
     }
@@ -274,18 +295,17 @@ public class CorporationIndustryJobsResponse implements Serializable {
      * blueprint_type_id integer
      * 
      * @return blueprintTypeId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getBlueprintTypeId() {
         return blueprintTypeId;
     }
 
-    public void setBlueprintTypeId(Integer blueprintTypeId) {
+    public void setBlueprintTypeId(@javax.annotation.Nonnull Integer blueprintTypeId) {
         this.blueprintTypeId = blueprintTypeId;
     }
 
-    public CorporationIndustryJobsResponse completedCharacterId(Integer completedCharacterId) {
-
+    public CorporationIndustryJobsResponse completedCharacterId(@javax.annotation.Nullable Integer completedCharacterId) {
         this.completedCharacterId = completedCharacterId;
         return this;
     }
@@ -294,18 +314,17 @@ public class CorporationIndustryJobsResponse implements Serializable {
      * ID of the character which completed this job
      * 
      * @return completedCharacterId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getCompletedCharacterId() {
         return completedCharacterId;
     }
 
-    public void setCompletedCharacterId(Integer completedCharacterId) {
+    public void setCompletedCharacterId(@javax.annotation.Nullable Integer completedCharacterId) {
         this.completedCharacterId = completedCharacterId;
     }
 
-    public CorporationIndustryJobsResponse completedDate(OffsetDateTime completedDate) {
-
+    public CorporationIndustryJobsResponse completedDate(@javax.annotation.Nullable OffsetDateTime completedDate) {
         this.completedDate = completedDate;
         return this;
     }
@@ -314,18 +333,17 @@ public class CorporationIndustryJobsResponse implements Serializable {
      * Date and time when this job was completed
      * 
      * @return completedDate
-     **/
+     */
     @javax.annotation.Nullable
     public OffsetDateTime getCompletedDate() {
         return completedDate;
     }
 
-    public void setCompletedDate(OffsetDateTime completedDate) {
+    public void setCompletedDate(@javax.annotation.Nullable OffsetDateTime completedDate) {
         this.completedDate = completedDate;
     }
 
-    public CorporationIndustryJobsResponse cost(Double cost) {
-
+    public CorporationIndustryJobsResponse cost(@javax.annotation.Nullable Double cost) {
         this.cost = cost;
         return this;
     }
@@ -334,18 +352,17 @@ public class CorporationIndustryJobsResponse implements Serializable {
      * The sume of job installation fee and industry facility tax
      * 
      * @return cost
-     **/
+     */
     @javax.annotation.Nullable
     public Double getCost() {
         return cost;
     }
 
-    public void setCost(Double cost) {
+    public void setCost(@javax.annotation.Nullable Double cost) {
         this.cost = cost;
     }
 
-    public CorporationIndustryJobsResponse duration(Integer duration) {
-
+    public CorporationIndustryJobsResponse duration(@javax.annotation.Nonnull Integer duration) {
         this.duration = duration;
         return this;
     }
@@ -354,18 +371,17 @@ public class CorporationIndustryJobsResponse implements Serializable {
      * Job duration in seconds
      * 
      * @return duration
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getDuration() {
         return duration;
     }
 
-    public void setDuration(Integer duration) {
+    public void setDuration(@javax.annotation.Nonnull Integer duration) {
         this.duration = duration;
     }
 
-    public CorporationIndustryJobsResponse endDate(OffsetDateTime endDate) {
-
+    public CorporationIndustryJobsResponse endDate(@javax.annotation.Nonnull OffsetDateTime endDate) {
         this.endDate = endDate;
         return this;
     }
@@ -374,18 +390,17 @@ public class CorporationIndustryJobsResponse implements Serializable {
      * Date and time when this job finished
      * 
      * @return endDate
-     **/
+     */
     @javax.annotation.Nonnull
     public OffsetDateTime getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(OffsetDateTime endDate) {
+    public void setEndDate(@javax.annotation.Nonnull OffsetDateTime endDate) {
         this.endDate = endDate;
     }
 
-    public CorporationIndustryJobsResponse facilityId(Long facilityId) {
-
+    public CorporationIndustryJobsResponse facilityId(@javax.annotation.Nonnull Long facilityId) {
         this.facilityId = facilityId;
         return this;
     }
@@ -394,18 +409,17 @@ public class CorporationIndustryJobsResponse implements Serializable {
      * ID of the facility where this job is running
      * 
      * @return facilityId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getFacilityId() {
         return facilityId;
     }
 
-    public void setFacilityId(Long facilityId) {
+    public void setFacilityId(@javax.annotation.Nonnull Long facilityId) {
         this.facilityId = facilityId;
     }
 
-    public CorporationIndustryJobsResponse installerId(Integer installerId) {
-
+    public CorporationIndustryJobsResponse installerId(@javax.annotation.Nonnull Integer installerId) {
         this.installerId = installerId;
         return this;
     }
@@ -414,18 +428,17 @@ public class CorporationIndustryJobsResponse implements Serializable {
      * ID of the character which installed this job
      * 
      * @return installerId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getInstallerId() {
         return installerId;
     }
 
-    public void setInstallerId(Integer installerId) {
+    public void setInstallerId(@javax.annotation.Nonnull Integer installerId) {
         this.installerId = installerId;
     }
 
-    public CorporationIndustryJobsResponse jobId(Integer jobId) {
-
+    public CorporationIndustryJobsResponse jobId(@javax.annotation.Nonnull Integer jobId) {
         this.jobId = jobId;
         return this;
     }
@@ -434,18 +447,17 @@ public class CorporationIndustryJobsResponse implements Serializable {
      * Unique job ID
      * 
      * @return jobId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getJobId() {
         return jobId;
     }
 
-    public void setJobId(Integer jobId) {
+    public void setJobId(@javax.annotation.Nonnull Integer jobId) {
         this.jobId = jobId;
     }
 
-    public CorporationIndustryJobsResponse licensedRuns(Integer licensedRuns) {
-
+    public CorporationIndustryJobsResponse licensedRuns(@javax.annotation.Nullable Integer licensedRuns) {
         this.licensedRuns = licensedRuns;
         return this;
     }
@@ -454,18 +466,17 @@ public class CorporationIndustryJobsResponse implements Serializable {
      * Number of runs blueprint is licensed for
      * 
      * @return licensedRuns
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getLicensedRuns() {
         return licensedRuns;
     }
 
-    public void setLicensedRuns(Integer licensedRuns) {
+    public void setLicensedRuns(@javax.annotation.Nullable Integer licensedRuns) {
         this.licensedRuns = licensedRuns;
     }
 
-    public CorporationIndustryJobsResponse locationId(Long locationId) {
-
+    public CorporationIndustryJobsResponse locationId(@javax.annotation.Nonnull Long locationId) {
         this.locationId = locationId;
         return this;
     }
@@ -474,18 +485,17 @@ public class CorporationIndustryJobsResponse implements Serializable {
      * ID of the location for the industry facility
      * 
      * @return locationId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getLocationId() {
         return locationId;
     }
 
-    public void setLocationId(Long locationId) {
+    public void setLocationId(@javax.annotation.Nonnull Long locationId) {
         this.locationId = locationId;
     }
 
-    public CorporationIndustryJobsResponse outputLocationId(Long outputLocationId) {
-
+    public CorporationIndustryJobsResponse outputLocationId(@javax.annotation.Nonnull Long outputLocationId) {
         this.outputLocationId = outputLocationId;
         return this;
     }
@@ -495,18 +505,17 @@ public class CorporationIndustryJobsResponse implements Serializable {
      * delivered. Normally a station ID, but can also be a corporation facility
      * 
      * @return outputLocationId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getOutputLocationId() {
         return outputLocationId;
     }
 
-    public void setOutputLocationId(Long outputLocationId) {
+    public void setOutputLocationId(@javax.annotation.Nonnull Long outputLocationId) {
         this.outputLocationId = outputLocationId;
     }
 
-    public CorporationIndustryJobsResponse pauseDate(OffsetDateTime pauseDate) {
-
+    public CorporationIndustryJobsResponse pauseDate(@javax.annotation.Nullable OffsetDateTime pauseDate) {
         this.pauseDate = pauseDate;
         return this;
     }
@@ -516,18 +525,17 @@ public class CorporationIndustryJobsResponse implements Serializable {
      * this job was installed went offline)
      * 
      * @return pauseDate
-     **/
+     */
     @javax.annotation.Nullable
     public OffsetDateTime getPauseDate() {
         return pauseDate;
     }
 
-    public void setPauseDate(OffsetDateTime pauseDate) {
+    public void setPauseDate(@javax.annotation.Nullable OffsetDateTime pauseDate) {
         this.pauseDate = pauseDate;
     }
 
-    public CorporationIndustryJobsResponse probability(Float probability) {
-
+    public CorporationIndustryJobsResponse probability(@javax.annotation.Nullable Float probability) {
         this.probability = probability;
         return this;
     }
@@ -536,18 +544,17 @@ public class CorporationIndustryJobsResponse implements Serializable {
      * Chance of success for invention
      * 
      * @return probability
-     **/
+     */
     @javax.annotation.Nullable
     public Float getProbability() {
         return probability;
     }
 
-    public void setProbability(Float probability) {
+    public void setProbability(@javax.annotation.Nullable Float probability) {
         this.probability = probability;
     }
 
-    public CorporationIndustryJobsResponse productTypeId(Integer productTypeId) {
-
+    public CorporationIndustryJobsResponse productTypeId(@javax.annotation.Nullable Integer productTypeId) {
         this.productTypeId = productTypeId;
         return this;
     }
@@ -556,18 +563,17 @@ public class CorporationIndustryJobsResponse implements Serializable {
      * Type ID of product (manufactured, copied or invented)
      * 
      * @return productTypeId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getProductTypeId() {
         return productTypeId;
     }
 
-    public void setProductTypeId(Integer productTypeId) {
+    public void setProductTypeId(@javax.annotation.Nullable Integer productTypeId) {
         this.productTypeId = productTypeId;
     }
 
-    public CorporationIndustryJobsResponse runs(Integer runs) {
-
+    public CorporationIndustryJobsResponse runs(@javax.annotation.Nonnull Integer runs) {
         this.runs = runs;
         return this;
     }
@@ -577,18 +583,17 @@ public class CorporationIndustryJobsResponse implements Serializable {
      * blueprint copy
      * 
      * @return runs
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getRuns() {
         return runs;
     }
 
-    public void setRuns(Integer runs) {
+    public void setRuns(@javax.annotation.Nonnull Integer runs) {
         this.runs = runs;
     }
 
-    public CorporationIndustryJobsResponse startDate(OffsetDateTime startDate) {
-
+    public CorporationIndustryJobsResponse startDate(@javax.annotation.Nonnull OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
     }
@@ -597,25 +602,23 @@ public class CorporationIndustryJobsResponse implements Serializable {
      * Date and time when this job started
      * 
      * @return startDate
-     **/
+     */
     @javax.annotation.Nonnull
     public OffsetDateTime getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(OffsetDateTime startDate) {
+    public void setStartDate(@javax.annotation.Nonnull OffsetDateTime startDate) {
         this.startDate = startDate;
     }
 
-    public CorporationIndustryJobsResponse statusString(String status) {
-
-        this.status = status;
+    public CorporationIndustryJobsResponse status(@javax.annotation.Nonnull StatusEnum status) {
+        this.statusEnum = status;
         return this;
     }
 
-    public CorporationIndustryJobsResponse status(StatusEnum statusEnum) {
-
-        this.statusEnum = statusEnum;
+    public CorporationIndustryJobsResponse statusString(@javax.annotation.Nonnull String status) {
+        this.status = status;
         return this;
     }
 
@@ -623,8 +626,8 @@ public class CorporationIndustryJobsResponse implements Serializable {
      * status string
      * 
      * @return status
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public StatusEnum getStatus() {
         if (statusEnum == null) {
             statusEnum = StatusEnum.fromValue(status);
@@ -636,16 +639,15 @@ public class CorporationIndustryJobsResponse implements Serializable {
         return status;
     }
 
-    public void setStatus(StatusEnum statusEnum) {
-        this.statusEnum = statusEnum;
+    public void setStatus(@javax.annotation.Nonnull StatusEnum status) {
+        this.statusEnum = status;
     }
 
-    public void setStatusString(String status) {
+    public void setStatusString(@javax.annotation.Nonnull String status) {
         this.status = status;
     }
 
-    public CorporationIndustryJobsResponse successfulRuns(Integer successfulRuns) {
-
+    public CorporationIndustryJobsResponse successfulRuns(@javax.annotation.Nullable Integer successfulRuns) {
         this.successfulRuns = successfulRuns;
         return this;
     }
@@ -655,13 +657,13 @@ public class CorporationIndustryJobsResponse implements Serializable {
      * invention job
      * 
      * @return successfulRuns
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getSuccessfulRuns() {
         return successfulRuns;
     }
 
-    public void setSuccessfulRuns(Integer successfulRuns) {
+    public void setSuccessfulRuns(@javax.annotation.Nullable Integer successfulRuns) {
         this.successfulRuns = successfulRuns;
     }
 
@@ -794,22 +796,22 @@ public class CorporationIndustryJobsResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CorporationIndustryJobsResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CorporationIndustryJobsResponse.openapiRequiredFields.isEmpty()) { // has
                                                                                     // required
                                                                                     // fields
                                                                                     // but
                                                                                     // JSON
-                                                                                    // object
+                                                                                    // element
                                                                                     // is
                                                                                     // null
                 throw new IllegalArgumentException(
@@ -819,31 +821,34 @@ public class CorporationIndustryJobsResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CorporationIndustryJobsResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CorporationIndustryJobsResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CorporationIndustryJobsResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("status").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `status` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("status").toString()));
         }
+        // validate the required field `status`
+        StatusEnum.validateJsonElement(jsonObj.get("status"));
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -868,9 +873,9 @@ public class CorporationIndustryJobsResponse implements Serializable {
 
                 @Override
                 public CorporationIndustryJobsResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

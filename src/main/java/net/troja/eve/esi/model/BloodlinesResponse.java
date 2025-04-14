@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -56,53 +54,63 @@ public class BloodlinesResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_BLOODLINE_ID = "bloodline_id";
     @SerializedName(SERIALIZED_NAME_BLOODLINE_ID)
+    @javax.annotation.Nonnull
     private Integer bloodlineId;
 
     public static final String SERIALIZED_NAME_CHARISMA = "charisma";
     @SerializedName(SERIALIZED_NAME_CHARISMA)
+    @javax.annotation.Nonnull
     private Integer charisma;
 
     public static final String SERIALIZED_NAME_CORPORATION_ID = "corporation_id";
     @SerializedName(SERIALIZED_NAME_CORPORATION_ID)
+    @javax.annotation.Nonnull
     private Integer corporationId;
 
     public static final String SERIALIZED_NAME_DESCRIPTION = "description";
     @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+    @javax.annotation.Nonnull
     private String description;
 
     public static final String SERIALIZED_NAME_INTELLIGENCE = "intelligence";
     @SerializedName(SERIALIZED_NAME_INTELLIGENCE)
+    @javax.annotation.Nonnull
     private Integer intelligence;
 
     public static final String SERIALIZED_NAME_MEMORY = "memory";
     @SerializedName(SERIALIZED_NAME_MEMORY)
+    @javax.annotation.Nonnull
     private Integer memory;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
+    @javax.annotation.Nonnull
     private String name;
 
     public static final String SERIALIZED_NAME_PERCEPTION = "perception";
     @SerializedName(SERIALIZED_NAME_PERCEPTION)
+    @javax.annotation.Nonnull
     private Integer perception;
 
     public static final String SERIALIZED_NAME_RACE_ID = "race_id";
     @SerializedName(SERIALIZED_NAME_RACE_ID)
+    @javax.annotation.Nonnull
     private Integer raceId;
 
     public static final String SERIALIZED_NAME_SHIP_TYPE_ID = "ship_type_id";
     @SerializedName(SERIALIZED_NAME_SHIP_TYPE_ID)
+    @javax.annotation.Nullable
     private Integer shipTypeId;
 
     public static final String SERIALIZED_NAME_WILLPOWER = "willpower";
     @SerializedName(SERIALIZED_NAME_WILLPOWER)
+    @javax.annotation.Nonnull
     private Integer willpower;
 
     public BloodlinesResponse() {
     }
 
-    public BloodlinesResponse bloodlineId(Integer bloodlineId) {
-
+    public BloodlinesResponse bloodlineId(@javax.annotation.Nonnull Integer bloodlineId) {
         this.bloodlineId = bloodlineId;
         return this;
     }
@@ -111,18 +119,17 @@ public class BloodlinesResponse implements Serializable {
      * bloodline_id integer
      * 
      * @return bloodlineId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getBloodlineId() {
         return bloodlineId;
     }
 
-    public void setBloodlineId(Integer bloodlineId) {
+    public void setBloodlineId(@javax.annotation.Nonnull Integer bloodlineId) {
         this.bloodlineId = bloodlineId;
     }
 
-    public BloodlinesResponse charisma(Integer charisma) {
-
+    public BloodlinesResponse charisma(@javax.annotation.Nonnull Integer charisma) {
         this.charisma = charisma;
         return this;
     }
@@ -131,18 +138,17 @@ public class BloodlinesResponse implements Serializable {
      * charisma integer
      * 
      * @return charisma
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getCharisma() {
         return charisma;
     }
 
-    public void setCharisma(Integer charisma) {
+    public void setCharisma(@javax.annotation.Nonnull Integer charisma) {
         this.charisma = charisma;
     }
 
-    public BloodlinesResponse corporationId(Integer corporationId) {
-
+    public BloodlinesResponse corporationId(@javax.annotation.Nonnull Integer corporationId) {
         this.corporationId = corporationId;
         return this;
     }
@@ -151,18 +157,17 @@ public class BloodlinesResponse implements Serializable {
      * corporation_id integer
      * 
      * @return corporationId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getCorporationId() {
         return corporationId;
     }
 
-    public void setCorporationId(Integer corporationId) {
+    public void setCorporationId(@javax.annotation.Nonnull Integer corporationId) {
         this.corporationId = corporationId;
     }
 
-    public BloodlinesResponse description(String description) {
-
+    public BloodlinesResponse description(@javax.annotation.Nonnull String description) {
         this.description = description;
         return this;
     }
@@ -171,18 +176,17 @@ public class BloodlinesResponse implements Serializable {
      * description string
      * 
      * @return description
-     **/
+     */
     @javax.annotation.Nonnull
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(@javax.annotation.Nonnull String description) {
         this.description = description;
     }
 
-    public BloodlinesResponse intelligence(Integer intelligence) {
-
+    public BloodlinesResponse intelligence(@javax.annotation.Nonnull Integer intelligence) {
         this.intelligence = intelligence;
         return this;
     }
@@ -191,18 +195,17 @@ public class BloodlinesResponse implements Serializable {
      * intelligence integer
      * 
      * @return intelligence
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getIntelligence() {
         return intelligence;
     }
 
-    public void setIntelligence(Integer intelligence) {
+    public void setIntelligence(@javax.annotation.Nonnull Integer intelligence) {
         this.intelligence = intelligence;
     }
 
-    public BloodlinesResponse memory(Integer memory) {
-
+    public BloodlinesResponse memory(@javax.annotation.Nonnull Integer memory) {
         this.memory = memory;
         return this;
     }
@@ -211,18 +214,17 @@ public class BloodlinesResponse implements Serializable {
      * memory integer
      * 
      * @return memory
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getMemory() {
         return memory;
     }
 
-    public void setMemory(Integer memory) {
+    public void setMemory(@javax.annotation.Nonnull Integer memory) {
         this.memory = memory;
     }
 
-    public BloodlinesResponse name(String name) {
-
+    public BloodlinesResponse name(@javax.annotation.Nonnull String name) {
         this.name = name;
         return this;
     }
@@ -231,18 +233,17 @@ public class BloodlinesResponse implements Serializable {
      * name string
      * 
      * @return name
-     **/
+     */
     @javax.annotation.Nonnull
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@javax.annotation.Nonnull String name) {
         this.name = name;
     }
 
-    public BloodlinesResponse perception(Integer perception) {
-
+    public BloodlinesResponse perception(@javax.annotation.Nonnull Integer perception) {
         this.perception = perception;
         return this;
     }
@@ -251,18 +252,17 @@ public class BloodlinesResponse implements Serializable {
      * perception integer
      * 
      * @return perception
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getPerception() {
         return perception;
     }
 
-    public void setPerception(Integer perception) {
+    public void setPerception(@javax.annotation.Nonnull Integer perception) {
         this.perception = perception;
     }
 
-    public BloodlinesResponse raceId(Integer raceId) {
-
+    public BloodlinesResponse raceId(@javax.annotation.Nonnull Integer raceId) {
         this.raceId = raceId;
         return this;
     }
@@ -271,18 +271,17 @@ public class BloodlinesResponse implements Serializable {
      * race_id integer
      * 
      * @return raceId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getRaceId() {
         return raceId;
     }
 
-    public void setRaceId(Integer raceId) {
+    public void setRaceId(@javax.annotation.Nonnull Integer raceId) {
         this.raceId = raceId;
     }
 
-    public BloodlinesResponse shipTypeId(Integer shipTypeId) {
-
+    public BloodlinesResponse shipTypeId(@javax.annotation.Nullable Integer shipTypeId) {
         this.shipTypeId = shipTypeId;
         return this;
     }
@@ -291,18 +290,17 @@ public class BloodlinesResponse implements Serializable {
      * ship_type_id integer
      * 
      * @return shipTypeId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getShipTypeId() {
         return shipTypeId;
     }
 
-    public void setShipTypeId(Integer shipTypeId) {
+    public void setShipTypeId(@javax.annotation.Nullable Integer shipTypeId) {
         this.shipTypeId = shipTypeId;
     }
 
-    public BloodlinesResponse willpower(Integer willpower) {
-
+    public BloodlinesResponse willpower(@javax.annotation.Nonnull Integer willpower) {
         this.willpower = willpower;
         return this;
     }
@@ -311,13 +309,13 @@ public class BloodlinesResponse implements Serializable {
      * willpower integer
      * 
      * @return willpower
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getWillpower() {
         return willpower;
     }
 
-    public void setWillpower(Integer willpower) {
+    public void setWillpower(@javax.annotation.Nonnull Integer willpower) {
         this.willpower = willpower;
     }
 
@@ -413,22 +411,22 @@ public class BloodlinesResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             BloodlinesResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!BloodlinesResponse.openapiRequiredFields.isEmpty()) { // has
                                                                        // required
                                                                        // fields
                                                                        // but
                                                                        // JSON
-                                                                       // object
+                                                                       // element
                                                                        // is
                                                                        // null
                 throw new IllegalArgumentException(String.format(
@@ -437,26 +435,27 @@ public class BloodlinesResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!BloodlinesResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `BloodlinesResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : BloodlinesResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("description").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj
@@ -490,9 +489,9 @@ public class BloodlinesResponse implements Serializable {
 
                 @Override
                 public BloodlinesResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

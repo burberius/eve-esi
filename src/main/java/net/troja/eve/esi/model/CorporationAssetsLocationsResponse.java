@@ -38,12 +38,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -57,17 +55,18 @@ public class CorporationAssetsLocationsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ITEM_ID = "item_id";
     @SerializedName(SERIALIZED_NAME_ITEM_ID)
+    @javax.annotation.Nonnull
     private Long itemId;
 
     public static final String SERIALIZED_NAME_POSITION = "position";
     @SerializedName(SERIALIZED_NAME_POSITION)
+    @javax.annotation.Nonnull
     private CorporationAssetsLocationsPosition position;
 
     public CorporationAssetsLocationsResponse() {
     }
 
-    public CorporationAssetsLocationsResponse itemId(Long itemId) {
-
+    public CorporationAssetsLocationsResponse itemId(@javax.annotation.Nonnull Long itemId) {
         this.itemId = itemId;
         return this;
     }
@@ -76,18 +75,18 @@ public class CorporationAssetsLocationsResponse implements Serializable {
      * item_id integer
      * 
      * @return itemId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getItemId() {
         return itemId;
     }
 
-    public void setItemId(Long itemId) {
+    public void setItemId(@javax.annotation.Nonnull Long itemId) {
         this.itemId = itemId;
     }
 
-    public CorporationAssetsLocationsResponse position(CorporationAssetsLocationsPosition position) {
-
+    public CorporationAssetsLocationsResponse position(
+            @javax.annotation.Nonnull CorporationAssetsLocationsPosition position) {
         this.position = position;
         return this;
     }
@@ -96,13 +95,13 @@ public class CorporationAssetsLocationsResponse implements Serializable {
      * Get position
      * 
      * @return position
-     **/
+     */
     @javax.annotation.Nonnull
     public CorporationAssetsLocationsPosition getPosition() {
         return position;
     }
 
-    public void setPosition(CorporationAssetsLocationsPosition position) {
+    public void setPosition(@javax.annotation.Nonnull CorporationAssetsLocationsPosition position) {
         this.position = position;
     }
 
@@ -161,22 +160,22 @@ public class CorporationAssetsLocationsResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CorporationAssetsLocationsResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CorporationAssetsLocationsResponse.openapiRequiredFields.isEmpty()) { // has
                                                                                        // required
                                                                                        // fields
                                                                                        // but
                                                                                        // JSON
-                                                                                       // object
+                                                                                       // element
                                                                                        // is
                                                                                        // null
                 throw new IllegalArgumentException(
@@ -186,28 +185,29 @@ public class CorporationAssetsLocationsResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CorporationAssetsLocationsResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CorporationAssetsLocationsResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CorporationAssetsLocationsResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         // validate the required field `position`
-        CorporationAssetsLocationsPosition.validateJsonObject(jsonObj.getAsJsonObject("position"));
+        CorporationAssetsLocationsPosition.validateJsonElement(jsonObj.get("position"));
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -232,9 +232,9 @@ public class CorporationAssetsLocationsResponse implements Serializable {
 
                 @Override
                 public CorporationAssetsLocationsResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

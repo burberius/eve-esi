@@ -41,12 +41,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -60,49 +58,58 @@ public class SystemResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_CONSTELLATION_ID = "constellation_id";
     @SerializedName(SERIALIZED_NAME_CONSTELLATION_ID)
+    @javax.annotation.Nonnull
     private Integer constellationId;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
+    @javax.annotation.Nonnull
     private String name;
 
     public static final String SERIALIZED_NAME_PLANETS = "planets";
     @SerializedName(SERIALIZED_NAME_PLANETS)
+    @javax.annotation.Nullable
     private List<SystemPlanet> planets = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_POSITION = "position";
     @SerializedName(SERIALIZED_NAME_POSITION)
+    @javax.annotation.Nonnull
     private Position position;
 
     public static final String SERIALIZED_NAME_SECURITY_CLASS = "security_class";
     @SerializedName(SERIALIZED_NAME_SECURITY_CLASS)
+    @javax.annotation.Nullable
     private String securityClass;
 
     public static final String SERIALIZED_NAME_SECURITY_STATUS = "security_status";
     @SerializedName(SERIALIZED_NAME_SECURITY_STATUS)
+    @javax.annotation.Nonnull
     private Float securityStatus;
 
     public static final String SERIALIZED_NAME_STAR_ID = "star_id";
     @SerializedName(SERIALIZED_NAME_STAR_ID)
+    @javax.annotation.Nullable
     private Integer starId;
 
     public static final String SERIALIZED_NAME_STARGATES = "stargates";
     @SerializedName(SERIALIZED_NAME_STARGATES)
+    @javax.annotation.Nullable
     private List<Integer> stargates = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_STATIONS = "stations";
     @SerializedName(SERIALIZED_NAME_STATIONS)
+    @javax.annotation.Nullable
     private List<Integer> stations = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_SYSTEM_ID = "system_id";
     @SerializedName(SERIALIZED_NAME_SYSTEM_ID)
+    @javax.annotation.Nonnull
     private Integer systemId;
 
     public SystemResponse() {
     }
 
-    public SystemResponse constellationId(Integer constellationId) {
-
+    public SystemResponse constellationId(@javax.annotation.Nonnull Integer constellationId) {
         this.constellationId = constellationId;
         return this;
     }
@@ -111,18 +118,17 @@ public class SystemResponse implements Serializable {
      * The constellation this solar system is in
      * 
      * @return constellationId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getConstellationId() {
         return constellationId;
     }
 
-    public void setConstellationId(Integer constellationId) {
+    public void setConstellationId(@javax.annotation.Nonnull Integer constellationId) {
         this.constellationId = constellationId;
     }
 
-    public SystemResponse name(String name) {
-
+    public SystemResponse name(@javax.annotation.Nonnull String name) {
         this.name = name;
         return this;
     }
@@ -131,26 +137,26 @@ public class SystemResponse implements Serializable {
      * name string
      * 
      * @return name
-     **/
+     */
     @javax.annotation.Nonnull
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@javax.annotation.Nonnull String name) {
         this.name = name;
     }
 
-    public SystemResponse planets(List<SystemPlanet> planets) {
-
+    public SystemResponse planets(@javax.annotation.Nullable List<SystemPlanet> planets) {
         this.planets = planets;
         return this;
     }
 
-    public SystemResponse addplanetsItem(SystemPlanet planetsItem) {
+    public SystemResponse addPlanetsItem(SystemPlanet planetsItem) {
         if (this.planets == null) {
             this.planets = new ArrayList<>();
         }
+
         this.planets.add(planetsItem);
         return this;
     }
@@ -159,18 +165,17 @@ public class SystemResponse implements Serializable {
      * planets array
      * 
      * @return planets
-     **/
+     */
     @javax.annotation.Nullable
     public List<SystemPlanet> getPlanets() {
         return planets;
     }
 
-    public void setPlanets(List<SystemPlanet> planets) {
+    public void setPlanets(@javax.annotation.Nullable List<SystemPlanet> planets) {
         this.planets = planets;
     }
 
-    public SystemResponse position(Position position) {
-
+    public SystemResponse position(@javax.annotation.Nonnull Position position) {
         this.position = position;
         return this;
     }
@@ -179,18 +184,17 @@ public class SystemResponse implements Serializable {
      * Get position
      * 
      * @return position
-     **/
+     */
     @javax.annotation.Nonnull
     public Position getPosition() {
         return position;
     }
 
-    public void setPosition(Position position) {
+    public void setPosition(@javax.annotation.Nonnull Position position) {
         this.position = position;
     }
 
-    public SystemResponse securityClass(String securityClass) {
-
+    public SystemResponse securityClass(@javax.annotation.Nullable String securityClass) {
         this.securityClass = securityClass;
         return this;
     }
@@ -199,18 +203,17 @@ public class SystemResponse implements Serializable {
      * security_class string
      * 
      * @return securityClass
-     **/
+     */
     @javax.annotation.Nullable
     public String getSecurityClass() {
         return securityClass;
     }
 
-    public void setSecurityClass(String securityClass) {
+    public void setSecurityClass(@javax.annotation.Nullable String securityClass) {
         this.securityClass = securityClass;
     }
 
-    public SystemResponse securityStatus(Float securityStatus) {
-
+    public SystemResponse securityStatus(@javax.annotation.Nonnull Float securityStatus) {
         this.securityStatus = securityStatus;
         return this;
     }
@@ -219,18 +222,17 @@ public class SystemResponse implements Serializable {
      * security_status number
      * 
      * @return securityStatus
-     **/
+     */
     @javax.annotation.Nonnull
     public Float getSecurityStatus() {
         return securityStatus;
     }
 
-    public void setSecurityStatus(Float securityStatus) {
+    public void setSecurityStatus(@javax.annotation.Nonnull Float securityStatus) {
         this.securityStatus = securityStatus;
     }
 
-    public SystemResponse starId(Integer starId) {
-
+    public SystemResponse starId(@javax.annotation.Nullable Integer starId) {
         this.starId = starId;
         return this;
     }
@@ -239,26 +241,26 @@ public class SystemResponse implements Serializable {
      * star_id integer
      * 
      * @return starId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getStarId() {
         return starId;
     }
 
-    public void setStarId(Integer starId) {
+    public void setStarId(@javax.annotation.Nullable Integer starId) {
         this.starId = starId;
     }
 
-    public SystemResponse stargates(List<Integer> stargates) {
-
+    public SystemResponse stargates(@javax.annotation.Nullable List<Integer> stargates) {
         this.stargates = stargates;
         return this;
     }
 
-    public SystemResponse addstargatesItem(Integer stargatesItem) {
+    public SystemResponse addStargatesItem(Integer stargatesItem) {
         if (this.stargates == null) {
             this.stargates = new ArrayList<>();
         }
+
         this.stargates.add(stargatesItem);
         return this;
     }
@@ -267,26 +269,26 @@ public class SystemResponse implements Serializable {
      * stargates array
      * 
      * @return stargates
-     **/
+     */
     @javax.annotation.Nullable
     public List<Integer> getStargates() {
         return stargates;
     }
 
-    public void setStargates(List<Integer> stargates) {
+    public void setStargates(@javax.annotation.Nullable List<Integer> stargates) {
         this.stargates = stargates;
     }
 
-    public SystemResponse stations(List<Integer> stations) {
-
+    public SystemResponse stations(@javax.annotation.Nullable List<Integer> stations) {
         this.stations = stations;
         return this;
     }
 
-    public SystemResponse addstationsItem(Integer stationsItem) {
+    public SystemResponse addStationsItem(Integer stationsItem) {
         if (this.stations == null) {
             this.stations = new ArrayList<>();
         }
+
         this.stations.add(stationsItem);
         return this;
     }
@@ -295,18 +297,17 @@ public class SystemResponse implements Serializable {
      * stations array
      * 
      * @return stations
-     **/
+     */
     @javax.annotation.Nullable
     public List<Integer> getStations() {
         return stations;
     }
 
-    public void setStations(List<Integer> stations) {
+    public void setStations(@javax.annotation.Nullable List<Integer> stations) {
         this.stations = stations;
     }
 
-    public SystemResponse systemId(Integer systemId) {
-
+    public SystemResponse systemId(@javax.annotation.Nonnull Integer systemId) {
         this.systemId = systemId;
         return this;
     }
@@ -315,13 +316,13 @@ public class SystemResponse implements Serializable {
      * system_id integer
      * 
      * @return systemId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getSystemId() {
         return systemId;
     }
 
-    public void setSystemId(Integer systemId) {
+    public void setSystemId(@javax.annotation.Nonnull Integer systemId) {
         this.systemId = systemId;
     }
 
@@ -408,20 +409,20 @@ public class SystemResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to SystemResponse
+     *             if the JSON Element is invalid with respect to SystemResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!SystemResponse.openapiRequiredFields.isEmpty()) { // has
                                                                    // required
                                                                    // fields but
                                                                    // JSON
-                                                                   // object is
+                                                                   // element is
                                                                    // null
                 throw new IllegalArgumentException(String.format(
                         "The required field(s) %s in SystemResponse is not found in the empty JSON string",
@@ -429,26 +430,27 @@ public class SystemResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!SystemResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `SystemResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : SystemResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("name").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `name` to be a primitive type in the JSON string but got `%s`",
@@ -466,12 +468,12 @@ public class SystemResponse implements Serializable {
 
                 // validate the optional field `planets` (array)
                 for (int i = 0; i < jsonArrayplanets.size(); i++) {
-                    SystemPlanet.validateJsonObject(jsonArrayplanets.get(i).getAsJsonObject());
+                    SystemPlanet.validateJsonElement(jsonArrayplanets.get(i));
                 };
             }
         }
         // validate the required field `position`
-        Position.validateJsonObject(jsonObj.getAsJsonObject("position"));
+        Position.validateJsonElement(jsonObj.get("position"));
         if ((jsonObj.get("security_class") != null && !jsonObj.get("security_class").isJsonNull())
                 && !jsonObj.get("security_class").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
@@ -479,13 +481,15 @@ public class SystemResponse implements Serializable {
                     jsonObj.get("security_class").toString()));
         }
         // ensure the optional json data is an array if present
-        if (jsonObj.get("stargates") != null && !jsonObj.get("stargates").isJsonArray()) {
+        if (jsonObj.get("stargates") != null && !jsonObj.get("stargates").isJsonNull()
+                && !jsonObj.get("stargates").isJsonArray()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `stargates` to be an array in the JSON string but got `%s`",
                     jsonObj.get("stargates").toString()));
         }
         // ensure the optional json data is an array if present
-        if (jsonObj.get("stations") != null && !jsonObj.get("stations").isJsonArray()) {
+        if (jsonObj.get("stations") != null && !jsonObj.get("stations").isJsonNull()
+                && !jsonObj.get("stations").isJsonArray()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `stations` to be an array in the JSON string but got `%s`",
                     jsonObj.get("stations").toString()));
@@ -513,9 +517,9 @@ public class SystemResponse implements Serializable {
 
                 @Override
                 public SystemResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

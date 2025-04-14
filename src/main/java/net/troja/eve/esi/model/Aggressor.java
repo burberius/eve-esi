@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -57,25 +55,28 @@ public class Aggressor implements Serializable {
 
     public static final String SERIALIZED_NAME_ALLIANCE_ID = "alliance_id";
     @SerializedName(SERIALIZED_NAME_ALLIANCE_ID)
+    @javax.annotation.Nullable
     private Integer allianceId;
 
     public static final String SERIALIZED_NAME_CORPORATION_ID = "corporation_id";
     @SerializedName(SERIALIZED_NAME_CORPORATION_ID)
+    @javax.annotation.Nullable
     private Integer corporationId;
 
     public static final String SERIALIZED_NAME_ISK_DESTROYED = "isk_destroyed";
     @SerializedName(SERIALIZED_NAME_ISK_DESTROYED)
+    @javax.annotation.Nonnull
     private Float iskDestroyed;
 
     public static final String SERIALIZED_NAME_SHIPS_KILLED = "ships_killed";
     @SerializedName(SERIALIZED_NAME_SHIPS_KILLED)
+    @javax.annotation.Nonnull
     private Integer shipsKilled;
 
     public Aggressor() {
     }
 
-    public Aggressor allianceId(Integer allianceId) {
-
+    public Aggressor allianceId(@javax.annotation.Nullable Integer allianceId) {
         this.allianceId = allianceId;
         return this;
     }
@@ -84,18 +85,17 @@ public class Aggressor implements Serializable {
      * Alliance ID if and only if the aggressor is an alliance
      * 
      * @return allianceId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getAllianceId() {
         return allianceId;
     }
 
-    public void setAllianceId(Integer allianceId) {
+    public void setAllianceId(@javax.annotation.Nullable Integer allianceId) {
         this.allianceId = allianceId;
     }
 
-    public Aggressor corporationId(Integer corporationId) {
-
+    public Aggressor corporationId(@javax.annotation.Nullable Integer corporationId) {
         this.corporationId = corporationId;
         return this;
     }
@@ -104,18 +104,17 @@ public class Aggressor implements Serializable {
      * Corporation ID if and only if the aggressor is a corporation
      * 
      * @return corporationId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getCorporationId() {
         return corporationId;
     }
 
-    public void setCorporationId(Integer corporationId) {
+    public void setCorporationId(@javax.annotation.Nullable Integer corporationId) {
         this.corporationId = corporationId;
     }
 
-    public Aggressor iskDestroyed(Float iskDestroyed) {
-
+    public Aggressor iskDestroyed(@javax.annotation.Nonnull Float iskDestroyed) {
         this.iskDestroyed = iskDestroyed;
         return this;
     }
@@ -124,18 +123,17 @@ public class Aggressor implements Serializable {
      * ISK value of ships the aggressor has destroyed
      * 
      * @return iskDestroyed
-     **/
+     */
     @javax.annotation.Nonnull
     public Float getIskDestroyed() {
         return iskDestroyed;
     }
 
-    public void setIskDestroyed(Float iskDestroyed) {
+    public void setIskDestroyed(@javax.annotation.Nonnull Float iskDestroyed) {
         this.iskDestroyed = iskDestroyed;
     }
 
-    public Aggressor shipsKilled(Integer shipsKilled) {
-
+    public Aggressor shipsKilled(@javax.annotation.Nonnull Integer shipsKilled) {
         this.shipsKilled = shipsKilled;
         return this;
     }
@@ -144,13 +142,13 @@ public class Aggressor implements Serializable {
      * The number of ships the aggressor has killed
      * 
      * @return shipsKilled
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getShipsKilled() {
         return shipsKilled;
     }
 
-    public void setShipsKilled(Integer shipsKilled) {
+    public void setShipsKilled(@javax.annotation.Nonnull Integer shipsKilled) {
         this.shipsKilled = shipsKilled;
     }
 
@@ -215,43 +213,44 @@ public class Aggressor implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to Aggressor
+     *             if the JSON Element is invalid with respect to Aggressor
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!Aggressor.openapiRequiredFields.isEmpty()) { // has required
                                                               // fields but JSON
-                                                              // object is null
+                                                              // element is null
                 throw new IllegalArgumentException(String.format(
                         "The required field(s) %s in Aggressor is not found in the empty JSON string",
                         Aggressor.openapiRequiredFields.toString()));
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!Aggressor.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(String.format(
                         "The field `%s` in the JSON string is not defined in the `Aggressor` properties. JSON: %s",
-                        entry.getKey(), jsonObj.toString()));
+                        entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : Aggressor.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -274,9 +273,9 @@ public class Aggressor implements Serializable {
 
                 @Override
                 public Aggressor read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

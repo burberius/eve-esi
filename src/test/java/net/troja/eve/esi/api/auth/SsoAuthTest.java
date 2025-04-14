@@ -108,7 +108,7 @@ public class SsoAuthTest extends GeneralApiTest {
         assertThat(payload.getScopes()).hasSize(1);
         assertThat(payload.getScopes().iterator().next()).isEqualTo("publicData");
         assertThat(payload.getCharacterID()).isNotNull();
-        assertThat(payload.getCharacterID()).isEqualTo(987623974);
+        assertThat(payload.getCharacterID()).isEqualTo(characterId);
     }
 
     @Test

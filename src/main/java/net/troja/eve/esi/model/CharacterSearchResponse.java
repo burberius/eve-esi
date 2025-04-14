@@ -39,12 +39,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -58,61 +56,72 @@ public class CharacterSearchResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_AGENT = "agent";
     @SerializedName(SERIALIZED_NAME_AGENT)
+    @javax.annotation.Nullable
     private List<Integer> agent = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_ALLIANCE = "alliance";
     @SerializedName(SERIALIZED_NAME_ALLIANCE)
+    @javax.annotation.Nullable
     private List<Integer> alliance = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_CHARACTER = "character";
     @SerializedName(SERIALIZED_NAME_CHARACTER)
+    @javax.annotation.Nullable
     private List<Integer> character = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_CONSTELLATION = "constellation";
     @SerializedName(SERIALIZED_NAME_CONSTELLATION)
+    @javax.annotation.Nullable
     private List<Integer> constellation = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_CORPORATION = "corporation";
     @SerializedName(SERIALIZED_NAME_CORPORATION)
+    @javax.annotation.Nullable
     private List<Integer> corporation = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_FACTION = "faction";
     @SerializedName(SERIALIZED_NAME_FACTION)
+    @javax.annotation.Nullable
     private List<Integer> faction = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_INVENTORY_TYPE = "inventory_type";
     @SerializedName(SERIALIZED_NAME_INVENTORY_TYPE)
+    @javax.annotation.Nullable
     private List<Integer> inventoryType = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_REGION = "region";
     @SerializedName(SERIALIZED_NAME_REGION)
+    @javax.annotation.Nullable
     private List<Integer> region = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_SOLAR_SYSTEM = "solar_system";
     @SerializedName(SERIALIZED_NAME_SOLAR_SYSTEM)
+    @javax.annotation.Nullable
     private List<Integer> solarSystem = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_STATION = "station";
     @SerializedName(SERIALIZED_NAME_STATION)
+    @javax.annotation.Nullable
     private List<Integer> station = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_STRUCTURE = "structure";
     @SerializedName(SERIALIZED_NAME_STRUCTURE)
+    @javax.annotation.Nullable
     private List<Long> structure = new ArrayList<>();
 
     public CharacterSearchResponse() {
     }
 
-    public CharacterSearchResponse agent(List<Integer> agent) {
-
+    public CharacterSearchResponse agent(@javax.annotation.Nullable List<Integer> agent) {
         this.agent = agent;
         return this;
     }
 
-    public CharacterSearchResponse addagentItem(Integer agentItem) {
+    public CharacterSearchResponse addAgentItem(Integer agentItem) {
         if (this.agent == null) {
             this.agent = new ArrayList<>();
         }
+
         this.agent.add(agentItem);
         return this;
     }
@@ -121,26 +130,26 @@ public class CharacterSearchResponse implements Serializable {
      * agent array
      * 
      * @return agent
-     **/
+     */
     @javax.annotation.Nullable
     public List<Integer> getAgent() {
         return agent;
     }
 
-    public void setAgent(List<Integer> agent) {
+    public void setAgent(@javax.annotation.Nullable List<Integer> agent) {
         this.agent = agent;
     }
 
-    public CharacterSearchResponse alliance(List<Integer> alliance) {
-
+    public CharacterSearchResponse alliance(@javax.annotation.Nullable List<Integer> alliance) {
         this.alliance = alliance;
         return this;
     }
 
-    public CharacterSearchResponse addallianceItem(Integer allianceItem) {
+    public CharacterSearchResponse addAllianceItem(Integer allianceItem) {
         if (this.alliance == null) {
             this.alliance = new ArrayList<>();
         }
+
         this.alliance.add(allianceItem);
         return this;
     }
@@ -149,26 +158,26 @@ public class CharacterSearchResponse implements Serializable {
      * alliance array
      * 
      * @return alliance
-     **/
+     */
     @javax.annotation.Nullable
     public List<Integer> getAlliance() {
         return alliance;
     }
 
-    public void setAlliance(List<Integer> alliance) {
+    public void setAlliance(@javax.annotation.Nullable List<Integer> alliance) {
         this.alliance = alliance;
     }
 
-    public CharacterSearchResponse character(List<Integer> character) {
-
+    public CharacterSearchResponse character(@javax.annotation.Nullable List<Integer> character) {
         this.character = character;
         return this;
     }
 
-    public CharacterSearchResponse addcharacterItem(Integer characterItem) {
+    public CharacterSearchResponse addCharacterItem(Integer characterItem) {
         if (this.character == null) {
             this.character = new ArrayList<>();
         }
+
         this.character.add(characterItem);
         return this;
     }
@@ -177,26 +186,26 @@ public class CharacterSearchResponse implements Serializable {
      * character array
      * 
      * @return character
-     **/
+     */
     @javax.annotation.Nullable
     public List<Integer> getCharacter() {
         return character;
     }
 
-    public void setCharacter(List<Integer> character) {
+    public void setCharacter(@javax.annotation.Nullable List<Integer> character) {
         this.character = character;
     }
 
-    public CharacterSearchResponse constellation(List<Integer> constellation) {
-
+    public CharacterSearchResponse constellation(@javax.annotation.Nullable List<Integer> constellation) {
         this.constellation = constellation;
         return this;
     }
 
-    public CharacterSearchResponse addconstellationItem(Integer constellationItem) {
+    public CharacterSearchResponse addConstellationItem(Integer constellationItem) {
         if (this.constellation == null) {
             this.constellation = new ArrayList<>();
         }
+
         this.constellation.add(constellationItem);
         return this;
     }
@@ -205,26 +214,26 @@ public class CharacterSearchResponse implements Serializable {
      * constellation array
      * 
      * @return constellation
-     **/
+     */
     @javax.annotation.Nullable
     public List<Integer> getConstellation() {
         return constellation;
     }
 
-    public void setConstellation(List<Integer> constellation) {
+    public void setConstellation(@javax.annotation.Nullable List<Integer> constellation) {
         this.constellation = constellation;
     }
 
-    public CharacterSearchResponse corporation(List<Integer> corporation) {
-
+    public CharacterSearchResponse corporation(@javax.annotation.Nullable List<Integer> corporation) {
         this.corporation = corporation;
         return this;
     }
 
-    public CharacterSearchResponse addcorporationItem(Integer corporationItem) {
+    public CharacterSearchResponse addCorporationItem(Integer corporationItem) {
         if (this.corporation == null) {
             this.corporation = new ArrayList<>();
         }
+
         this.corporation.add(corporationItem);
         return this;
     }
@@ -233,26 +242,26 @@ public class CharacterSearchResponse implements Serializable {
      * corporation array
      * 
      * @return corporation
-     **/
+     */
     @javax.annotation.Nullable
     public List<Integer> getCorporation() {
         return corporation;
     }
 
-    public void setCorporation(List<Integer> corporation) {
+    public void setCorporation(@javax.annotation.Nullable List<Integer> corporation) {
         this.corporation = corporation;
     }
 
-    public CharacterSearchResponse faction(List<Integer> faction) {
-
+    public CharacterSearchResponse faction(@javax.annotation.Nullable List<Integer> faction) {
         this.faction = faction;
         return this;
     }
 
-    public CharacterSearchResponse addfactionItem(Integer factionItem) {
+    public CharacterSearchResponse addFactionItem(Integer factionItem) {
         if (this.faction == null) {
             this.faction = new ArrayList<>();
         }
+
         this.faction.add(factionItem);
         return this;
     }
@@ -261,26 +270,26 @@ public class CharacterSearchResponse implements Serializable {
      * faction array
      * 
      * @return faction
-     **/
+     */
     @javax.annotation.Nullable
     public List<Integer> getFaction() {
         return faction;
     }
 
-    public void setFaction(List<Integer> faction) {
+    public void setFaction(@javax.annotation.Nullable List<Integer> faction) {
         this.faction = faction;
     }
 
-    public CharacterSearchResponse inventoryType(List<Integer> inventoryType) {
-
+    public CharacterSearchResponse inventoryType(@javax.annotation.Nullable List<Integer> inventoryType) {
         this.inventoryType = inventoryType;
         return this;
     }
 
-    public CharacterSearchResponse addinventoryTypeItem(Integer inventoryTypeItem) {
+    public CharacterSearchResponse addInventoryTypeItem(Integer inventoryTypeItem) {
         if (this.inventoryType == null) {
             this.inventoryType = new ArrayList<>();
         }
+
         this.inventoryType.add(inventoryTypeItem);
         return this;
     }
@@ -289,26 +298,26 @@ public class CharacterSearchResponse implements Serializable {
      * inventory_type array
      * 
      * @return inventoryType
-     **/
+     */
     @javax.annotation.Nullable
     public List<Integer> getInventoryType() {
         return inventoryType;
     }
 
-    public void setInventoryType(List<Integer> inventoryType) {
+    public void setInventoryType(@javax.annotation.Nullable List<Integer> inventoryType) {
         this.inventoryType = inventoryType;
     }
 
-    public CharacterSearchResponse region(List<Integer> region) {
-
+    public CharacterSearchResponse region(@javax.annotation.Nullable List<Integer> region) {
         this.region = region;
         return this;
     }
 
-    public CharacterSearchResponse addregionItem(Integer regionItem) {
+    public CharacterSearchResponse addRegionItem(Integer regionItem) {
         if (this.region == null) {
             this.region = new ArrayList<>();
         }
+
         this.region.add(regionItem);
         return this;
     }
@@ -317,26 +326,26 @@ public class CharacterSearchResponse implements Serializable {
      * region array
      * 
      * @return region
-     **/
+     */
     @javax.annotation.Nullable
     public List<Integer> getRegion() {
         return region;
     }
 
-    public void setRegion(List<Integer> region) {
+    public void setRegion(@javax.annotation.Nullable List<Integer> region) {
         this.region = region;
     }
 
-    public CharacterSearchResponse solarSystem(List<Integer> solarSystem) {
-
+    public CharacterSearchResponse solarSystem(@javax.annotation.Nullable List<Integer> solarSystem) {
         this.solarSystem = solarSystem;
         return this;
     }
 
-    public CharacterSearchResponse addsolarSystemItem(Integer solarSystemItem) {
+    public CharacterSearchResponse addSolarSystemItem(Integer solarSystemItem) {
         if (this.solarSystem == null) {
             this.solarSystem = new ArrayList<>();
         }
+
         this.solarSystem.add(solarSystemItem);
         return this;
     }
@@ -345,26 +354,26 @@ public class CharacterSearchResponse implements Serializable {
      * solar_system array
      * 
      * @return solarSystem
-     **/
+     */
     @javax.annotation.Nullable
     public List<Integer> getSolarSystem() {
         return solarSystem;
     }
 
-    public void setSolarSystem(List<Integer> solarSystem) {
+    public void setSolarSystem(@javax.annotation.Nullable List<Integer> solarSystem) {
         this.solarSystem = solarSystem;
     }
 
-    public CharacterSearchResponse station(List<Integer> station) {
-
+    public CharacterSearchResponse station(@javax.annotation.Nullable List<Integer> station) {
         this.station = station;
         return this;
     }
 
-    public CharacterSearchResponse addstationItem(Integer stationItem) {
+    public CharacterSearchResponse addStationItem(Integer stationItem) {
         if (this.station == null) {
             this.station = new ArrayList<>();
         }
+
         this.station.add(stationItem);
         return this;
     }
@@ -373,26 +382,26 @@ public class CharacterSearchResponse implements Serializable {
      * station array
      * 
      * @return station
-     **/
+     */
     @javax.annotation.Nullable
     public List<Integer> getStation() {
         return station;
     }
 
-    public void setStation(List<Integer> station) {
+    public void setStation(@javax.annotation.Nullable List<Integer> station) {
         this.station = station;
     }
 
-    public CharacterSearchResponse structure(List<Long> structure) {
-
+    public CharacterSearchResponse structure(@javax.annotation.Nullable List<Long> structure) {
         this.structure = structure;
         return this;
     }
 
-    public CharacterSearchResponse addstructureItem(Long structureItem) {
+    public CharacterSearchResponse addStructureItem(Long structureItem) {
         if (this.structure == null) {
             this.structure = new ArrayList<>();
         }
+
         this.structure.add(structureItem);
         return this;
     }
@@ -401,13 +410,13 @@ public class CharacterSearchResponse implements Serializable {
      * structure array
      * 
      * @return structure
-     **/
+     */
     @javax.annotation.Nullable
     public List<Long> getStructure() {
         return structure;
     }
 
-    public void setStructure(List<Long> structure) {
+    public void setStructure(@javax.annotation.Nullable List<Long> structure) {
         this.structure = structure;
     }
 
@@ -492,22 +501,22 @@ public class CharacterSearchResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CharacterSearchResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CharacterSearchResponse.openapiRequiredFields.isEmpty()) { // has
                                                                             // required
                                                                             // fields
                                                                             // but
                                                                             // JSON
-                                                                            // object
+                                                                            // element
                                                                             // is
                                                                             // null
                 throw new IllegalArgumentException(String.format(
@@ -516,78 +525,89 @@ public class CharacterSearchResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CharacterSearchResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CharacterSearchResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         // ensure the optional json data is an array if present
-        if (jsonObj.get("agent") != null && !jsonObj.get("agent").isJsonArray()) {
+        if (jsonObj.get("agent") != null && !jsonObj.get("agent").isJsonNull() && !jsonObj.get("agent").isJsonArray()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `agent` to be an array in the JSON string but got `%s`", jsonObj.get("agent")
                             .toString()));
         }
         // ensure the optional json data is an array if present
-        if (jsonObj.get("alliance") != null && !jsonObj.get("alliance").isJsonArray()) {
+        if (jsonObj.get("alliance") != null && !jsonObj.get("alliance").isJsonNull()
+                && !jsonObj.get("alliance").isJsonArray()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `alliance` to be an array in the JSON string but got `%s`",
                     jsonObj.get("alliance").toString()));
         }
         // ensure the optional json data is an array if present
-        if (jsonObj.get("character") != null && !jsonObj.get("character").isJsonArray()) {
+        if (jsonObj.get("character") != null && !jsonObj.get("character").isJsonNull()
+                && !jsonObj.get("character").isJsonArray()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `character` to be an array in the JSON string but got `%s`",
                     jsonObj.get("character").toString()));
         }
         // ensure the optional json data is an array if present
-        if (jsonObj.get("constellation") != null && !jsonObj.get("constellation").isJsonArray()) {
+        if (jsonObj.get("constellation") != null && !jsonObj.get("constellation").isJsonNull()
+                && !jsonObj.get("constellation").isJsonArray()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `constellation` to be an array in the JSON string but got `%s`",
                     jsonObj.get("constellation").toString()));
         }
         // ensure the optional json data is an array if present
-        if (jsonObj.get("corporation") != null && !jsonObj.get("corporation").isJsonArray()) {
+        if (jsonObj.get("corporation") != null && !jsonObj.get("corporation").isJsonNull()
+                && !jsonObj.get("corporation").isJsonArray()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `corporation` to be an array in the JSON string but got `%s`",
                     jsonObj.get("corporation").toString()));
         }
         // ensure the optional json data is an array if present
-        if (jsonObj.get("faction") != null && !jsonObj.get("faction").isJsonArray()) {
+        if (jsonObj.get("faction") != null && !jsonObj.get("faction").isJsonNull()
+                && !jsonObj.get("faction").isJsonArray()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `faction` to be an array in the JSON string but got `%s`",
                     jsonObj.get("faction").toString()));
         }
         // ensure the optional json data is an array if present
-        if (jsonObj.get("inventory_type") != null && !jsonObj.get("inventory_type").isJsonArray()) {
+        if (jsonObj.get("inventory_type") != null && !jsonObj.get("inventory_type").isJsonNull()
+                && !jsonObj.get("inventory_type").isJsonArray()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `inventory_type` to be an array in the JSON string but got `%s`",
                     jsonObj.get("inventory_type").toString()));
         }
         // ensure the optional json data is an array if present
-        if (jsonObj.get("region") != null && !jsonObj.get("region").isJsonArray()) {
+        if (jsonObj.get("region") != null && !jsonObj.get("region").isJsonNull()
+                && !jsonObj.get("region").isJsonArray()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `region` to be an array in the JSON string but got `%s`", jsonObj.get("region")
                             .toString()));
         }
         // ensure the optional json data is an array if present
-        if (jsonObj.get("solar_system") != null && !jsonObj.get("solar_system").isJsonArray()) {
+        if (jsonObj.get("solar_system") != null && !jsonObj.get("solar_system").isJsonNull()
+                && !jsonObj.get("solar_system").isJsonArray()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `solar_system` to be an array in the JSON string but got `%s`",
                     jsonObj.get("solar_system").toString()));
         }
         // ensure the optional json data is an array if present
-        if (jsonObj.get("station") != null && !jsonObj.get("station").isJsonArray()) {
+        if (jsonObj.get("station") != null && !jsonObj.get("station").isJsonNull()
+                && !jsonObj.get("station").isJsonArray()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `station` to be an array in the JSON string but got `%s`",
                     jsonObj.get("station").toString()));
         }
         // ensure the optional json data is an array if present
-        if (jsonObj.get("structure") != null && !jsonObj.get("structure").isJsonArray()) {
+        if (jsonObj.get("structure") != null && !jsonObj.get("structure").isJsonNull()
+                && !jsonObj.get("structure").isJsonArray()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `structure` to be an array in the JSON string but got `%s`",
                     jsonObj.get("structure").toString()));
@@ -615,9 +635,9 @@ public class CharacterSearchResponse implements Serializable {
 
                 @Override
                 public CharacterSearchResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

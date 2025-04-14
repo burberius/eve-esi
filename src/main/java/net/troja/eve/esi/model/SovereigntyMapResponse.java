@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -56,25 +54,28 @@ public class SovereigntyMapResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ALLIANCE_ID = "alliance_id";
     @SerializedName(SERIALIZED_NAME_ALLIANCE_ID)
+    @javax.annotation.Nullable
     private Integer allianceId;
 
     public static final String SERIALIZED_NAME_CORPORATION_ID = "corporation_id";
     @SerializedName(SERIALIZED_NAME_CORPORATION_ID)
+    @javax.annotation.Nullable
     private Integer corporationId;
 
     public static final String SERIALIZED_NAME_FACTION_ID = "faction_id";
     @SerializedName(SERIALIZED_NAME_FACTION_ID)
+    @javax.annotation.Nullable
     private Integer factionId;
 
     public static final String SERIALIZED_NAME_SYSTEM_ID = "system_id";
     @SerializedName(SERIALIZED_NAME_SYSTEM_ID)
+    @javax.annotation.Nonnull
     private Integer systemId;
 
     public SovereigntyMapResponse() {
     }
 
-    public SovereigntyMapResponse allianceId(Integer allianceId) {
-
+    public SovereigntyMapResponse allianceId(@javax.annotation.Nullable Integer allianceId) {
         this.allianceId = allianceId;
         return this;
     }
@@ -83,18 +84,17 @@ public class SovereigntyMapResponse implements Serializable {
      * alliance_id integer
      * 
      * @return allianceId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getAllianceId() {
         return allianceId;
     }
 
-    public void setAllianceId(Integer allianceId) {
+    public void setAllianceId(@javax.annotation.Nullable Integer allianceId) {
         this.allianceId = allianceId;
     }
 
-    public SovereigntyMapResponse corporationId(Integer corporationId) {
-
+    public SovereigntyMapResponse corporationId(@javax.annotation.Nullable Integer corporationId) {
         this.corporationId = corporationId;
         return this;
     }
@@ -103,18 +103,17 @@ public class SovereigntyMapResponse implements Serializable {
      * corporation_id integer
      * 
      * @return corporationId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getCorporationId() {
         return corporationId;
     }
 
-    public void setCorporationId(Integer corporationId) {
+    public void setCorporationId(@javax.annotation.Nullable Integer corporationId) {
         this.corporationId = corporationId;
     }
 
-    public SovereigntyMapResponse factionId(Integer factionId) {
-
+    public SovereigntyMapResponse factionId(@javax.annotation.Nullable Integer factionId) {
         this.factionId = factionId;
         return this;
     }
@@ -123,18 +122,17 @@ public class SovereigntyMapResponse implements Serializable {
      * faction_id integer
      * 
      * @return factionId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getFactionId() {
         return factionId;
     }
 
-    public void setFactionId(Integer factionId) {
+    public void setFactionId(@javax.annotation.Nullable Integer factionId) {
         this.factionId = factionId;
     }
 
-    public SovereigntyMapResponse systemId(Integer systemId) {
-
+    public SovereigntyMapResponse systemId(@javax.annotation.Nonnull Integer systemId) {
         this.systemId = systemId;
         return this;
     }
@@ -143,13 +141,13 @@ public class SovereigntyMapResponse implements Serializable {
      * system_id integer
      * 
      * @return systemId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getSystemId() {
         return systemId;
     }
 
-    public void setSystemId(Integer systemId) {
+    public void setSystemId(@javax.annotation.Nonnull Integer systemId) {
         this.systemId = systemId;
     }
 
@@ -213,22 +211,22 @@ public class SovereigntyMapResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             SovereigntyMapResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!SovereigntyMapResponse.openapiRequiredFields.isEmpty()) { // has
                                                                            // required
                                                                            // fields
                                                                            // but
                                                                            // JSON
-                                                                           // object
+                                                                           // element
                                                                            // is
                                                                            // null
                 throw new IllegalArgumentException(String.format(
@@ -237,26 +235,27 @@ public class SovereigntyMapResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!SovereigntyMapResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `SovereigntyMapResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : SovereigntyMapResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -280,9 +279,9 @@ public class SovereigntyMapResponse implements Serializable {
 
                 @Override
                 public SovereigntyMapResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

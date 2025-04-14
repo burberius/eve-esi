@@ -41,12 +41,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -60,37 +58,43 @@ public class MailHeadersResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_FROM = "from";
     @SerializedName(SERIALIZED_NAME_FROM)
+    @javax.annotation.Nullable
     private Integer from;
 
     public static final String SERIALIZED_NAME_IS_READ = "is_read";
     @SerializedName(SERIALIZED_NAME_IS_READ)
+    @javax.annotation.Nullable
     private Boolean isRead;
 
     public static final String SERIALIZED_NAME_LABELS = "labels";
     @SerializedName(SERIALIZED_NAME_LABELS)
+    @javax.annotation.Nullable
     private Set<Integer> labels = new LinkedHashSet<>();
 
     public static final String SERIALIZED_NAME_MAIL_ID = "mail_id";
     @SerializedName(SERIALIZED_NAME_MAIL_ID)
+    @javax.annotation.Nullable
     private Integer mailId;
 
     public static final String SERIALIZED_NAME_RECIPIENTS = "recipients";
     @SerializedName(SERIALIZED_NAME_RECIPIENTS)
+    @javax.annotation.Nullable
     private Set<Recipient> recipients = new LinkedHashSet<>();
 
     public static final String SERIALIZED_NAME_SUBJECT = "subject";
     @SerializedName(SERIALIZED_NAME_SUBJECT)
+    @javax.annotation.Nullable
     private String subject;
 
     public static final String SERIALIZED_NAME_TIMESTAMP = "timestamp";
     @SerializedName(SERIALIZED_NAME_TIMESTAMP)
+    @javax.annotation.Nullable
     private OffsetDateTime timestamp;
 
     public MailHeadersResponse() {
     }
 
-    public MailHeadersResponse from(Integer from) {
-
+    public MailHeadersResponse from(@javax.annotation.Nullable Integer from) {
         this.from = from;
         return this;
     }
@@ -99,18 +103,17 @@ public class MailHeadersResponse implements Serializable {
      * From whom the mail was sent
      * 
      * @return from
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getFrom() {
         return from;
     }
 
-    public void setFrom(Integer from) {
+    public void setFrom(@javax.annotation.Nullable Integer from) {
         this.from = from;
     }
 
-    public MailHeadersResponse isRead(Boolean isRead) {
-
+    public MailHeadersResponse isRead(@javax.annotation.Nullable Boolean isRead) {
         this.isRead = isRead;
         return this;
     }
@@ -119,26 +122,26 @@ public class MailHeadersResponse implements Serializable {
      * is_read boolean
      * 
      * @return isRead
-     **/
+     */
     @javax.annotation.Nullable
     public Boolean getIsRead() {
         return isRead;
     }
 
-    public void setIsRead(Boolean isRead) {
+    public void setIsRead(@javax.annotation.Nullable Boolean isRead) {
         this.isRead = isRead;
     }
 
-    public MailHeadersResponse labels(Set<Integer> labels) {
-
+    public MailHeadersResponse labels(@javax.annotation.Nullable Set<Integer> labels) {
         this.labels = labels;
         return this;
     }
 
-    public MailHeadersResponse addlabelsItem(Integer labelsItem) {
+    public MailHeadersResponse addLabelsItem(Integer labelsItem) {
         if (this.labels == null) {
             this.labels = new LinkedHashSet<>();
         }
+
         this.labels.add(labelsItem);
         return this;
     }
@@ -147,18 +150,17 @@ public class MailHeadersResponse implements Serializable {
      * labels array
      * 
      * @return labels
-     **/
+     */
     @javax.annotation.Nullable
     public Set<Integer> getLabels() {
         return labels;
     }
 
-    public void setLabels(Set<Integer> labels) {
+    public void setLabels(@javax.annotation.Nullable Set<Integer> labels) {
         this.labels = labels;
     }
 
-    public MailHeadersResponse mailId(Integer mailId) {
-
+    public MailHeadersResponse mailId(@javax.annotation.Nullable Integer mailId) {
         this.mailId = mailId;
         return this;
     }
@@ -167,26 +169,26 @@ public class MailHeadersResponse implements Serializable {
      * mail_id integer
      * 
      * @return mailId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getMailId() {
         return mailId;
     }
 
-    public void setMailId(Integer mailId) {
+    public void setMailId(@javax.annotation.Nullable Integer mailId) {
         this.mailId = mailId;
     }
 
-    public MailHeadersResponse recipients(Set<Recipient> recipients) {
-
+    public MailHeadersResponse recipients(@javax.annotation.Nullable Set<Recipient> recipients) {
         this.recipients = recipients;
         return this;
     }
 
-    public MailHeadersResponse addrecipientsItem(Recipient recipientsItem) {
+    public MailHeadersResponse addRecipientsItem(Recipient recipientsItem) {
         if (this.recipients == null) {
             this.recipients = new LinkedHashSet<>();
         }
+
         this.recipients.add(recipientsItem);
         return this;
     }
@@ -195,18 +197,17 @@ public class MailHeadersResponse implements Serializable {
      * Recipients of the mail
      * 
      * @return recipients
-     **/
+     */
     @javax.annotation.Nullable
     public Set<Recipient> getRecipients() {
         return recipients;
     }
 
-    public void setRecipients(Set<Recipient> recipients) {
+    public void setRecipients(@javax.annotation.Nullable Set<Recipient> recipients) {
         this.recipients = recipients;
     }
 
-    public MailHeadersResponse subject(String subject) {
-
+    public MailHeadersResponse subject(@javax.annotation.Nullable String subject) {
         this.subject = subject;
         return this;
     }
@@ -215,18 +216,17 @@ public class MailHeadersResponse implements Serializable {
      * Mail subject
      * 
      * @return subject
-     **/
+     */
     @javax.annotation.Nullable
     public String getSubject() {
         return subject;
     }
 
-    public void setSubject(String subject) {
+    public void setSubject(@javax.annotation.Nullable String subject) {
         this.subject = subject;
     }
 
-    public MailHeadersResponse timestamp(OffsetDateTime timestamp) {
-
+    public MailHeadersResponse timestamp(@javax.annotation.Nullable OffsetDateTime timestamp) {
         this.timestamp = timestamp;
         return this;
     }
@@ -235,13 +235,13 @@ public class MailHeadersResponse implements Serializable {
      * When the mail was sent
      * 
      * @return timestamp
-     **/
+     */
     @javax.annotation.Nullable
     public OffsetDateTime getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(OffsetDateTime timestamp) {
+    public void setTimestamp(@javax.annotation.Nullable OffsetDateTime timestamp) {
         this.timestamp = timestamp;
     }
 
@@ -313,22 +313,22 @@ public class MailHeadersResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             MailHeadersResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!MailHeadersResponse.openapiRequiredFields.isEmpty()) { // has
                                                                         // required
                                                                         // fields
                                                                         // but
                                                                         // JSON
-                                                                        // object
+                                                                        // element
                                                                         // is
                                                                         // null
                 throw new IllegalArgumentException(String.format(
@@ -337,18 +337,20 @@ public class MailHeadersResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!MailHeadersResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `MailHeadersResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         // ensure the optional json data is an array if present
-        if (jsonObj.get("labels") != null && !jsonObj.get("labels").isJsonArray()) {
+        if (jsonObj.get("labels") != null && !jsonObj.get("labels").isJsonNull()
+                && !jsonObj.get("labels").isJsonArray()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `labels` to be an array in the JSON string but got `%s`", jsonObj.get("labels")
                             .toString()));
@@ -365,7 +367,7 @@ public class MailHeadersResponse implements Serializable {
 
                 // validate the optional field `recipients` (array)
                 for (int i = 0; i < jsonArrayrecipients.size(); i++) {
-                    Recipient.validateJsonObject(jsonArrayrecipients.get(i).getAsJsonObject());
+                    Recipient.validateJsonElement(jsonArrayrecipients.get(i));
                 };
             }
         }
@@ -398,9 +400,9 @@ public class MailHeadersResponse implements Serializable {
 
                 @Override
                 public MailHeadersResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

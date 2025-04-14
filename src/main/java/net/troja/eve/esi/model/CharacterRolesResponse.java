@@ -39,12 +39,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -205,10 +203,16 @@ public class CharacterRolesResponse implements Serializable {
                 return RolesEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            RolesEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_ROLES = "roles";
     @SerializedName(SERIALIZED_NAME_ROLES)
+    @javax.annotation.Nullable
     private List<String> roles = new ArrayList<>();
     private List<RolesEnum> rolesEnum = new ArrayList<>();
 
@@ -361,10 +365,16 @@ public class CharacterRolesResponse implements Serializable {
                 return RolesAtBaseEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            RolesAtBaseEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_ROLES_AT_BASE = "roles_at_base";
     @SerializedName(SERIALIZED_NAME_ROLES_AT_BASE)
+    @javax.annotation.Nullable
     private List<String> rolesAtBase = new ArrayList<>();
     private List<RolesAtBaseEnum> rolesAtBaseEnum = new ArrayList<>();
 
@@ -517,10 +527,16 @@ public class CharacterRolesResponse implements Serializable {
                 return RolesAtHqEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            RolesAtHqEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_ROLES_AT_HQ = "roles_at_hq";
     @SerializedName(SERIALIZED_NAME_ROLES_AT_HQ)
+    @javax.annotation.Nullable
     private List<String> rolesAtHq = new ArrayList<>();
     private List<RolesAtHqEnum> rolesAtHqEnum = new ArrayList<>();
 
@@ -673,33 +689,41 @@ public class CharacterRolesResponse implements Serializable {
                 return RolesAtOtherEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            RolesAtOtherEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_ROLES_AT_OTHER = "roles_at_other";
     @SerializedName(SERIALIZED_NAME_ROLES_AT_OTHER)
+    @javax.annotation.Nullable
     private List<String> rolesAtOther = new ArrayList<>();
     private List<RolesAtOtherEnum> rolesAtOtherEnum = new ArrayList<>();
 
     public CharacterRolesResponse() {
     }
 
-    public CharacterRolesResponse rolesString(List<String> roles) {
+    public CharacterRolesResponse roles(@javax.annotation.Nullable List<RolesEnum> roles) {
+        this.rolesEnum = roles;
+        return this;
+    }
 
+    public CharacterRolesResponse rolesString(@javax.annotation.Nullable List<String> roles) {
         this.roles = roles;
         return this;
     }
 
-    public CharacterRolesResponse roles(List<RolesEnum> rolesEnum) {
-
-        this.rolesEnum = rolesEnum;
-        return this;
-    }
-
-    public CharacterRolesResponse addrolesItem(String rolesItem) {
+    public CharacterRolesResponse addRolesItem(RolesEnum rolesItem) {
         if (this.roles == null) {
             this.roles = new ArrayList<>();
         }
-        this.roles.add(rolesItem);
+        if (this.rolesEnum == null) {
+            this.rolesEnum = new ArrayList<>();
+        }
+        this.roles.add(rolesItem.toString());
+        this.rolesEnum.add(rolesItem);
         return this;
     }
 
@@ -707,16 +731,13 @@ public class CharacterRolesResponse implements Serializable {
      * roles array
      * 
      * @return roles
-     **/
-    @javax.annotation.Nullable
+     */
+
     public List<RolesEnum> getRoles() {
         if (rolesEnum == null) {
             rolesEnum = new ArrayList<>();
             for (String value : roles) {
-                RolesEnum enumValue = RolesEnum.fromValue(value);
-                if (enumValue != null) {
-                    rolesEnum.add(enumValue);
-                }
+                rolesEnum.add(RolesEnum.fromValue(value));
             }
         }
         return rolesEnum;
@@ -726,31 +747,33 @@ public class CharacterRolesResponse implements Serializable {
         return roles;
     }
 
-    public void setRoles(List<RolesEnum> rolesEnum) {
-        this.rolesEnum = rolesEnum;
+    public void setRoles(@javax.annotation.Nullable List<RolesEnum> roles) {
+        this.rolesEnum = roles;
     }
 
-    public void setRolesString(List<String> roles) {
+    public void setRolesString(@javax.annotation.Nullable List<String> roles) {
         this.roles = roles;
     }
 
-    public CharacterRolesResponse rolesAtBaseString(List<String> rolesAtBase) {
+    public CharacterRolesResponse rolesAtBase(@javax.annotation.Nullable List<RolesAtBaseEnum> rolesAtBase) {
+        this.rolesAtBaseEnum = rolesAtBase;
+        return this;
+    }
 
+    public CharacterRolesResponse rolesAtBaseString(@javax.annotation.Nullable List<String> rolesAtBase) {
         this.rolesAtBase = rolesAtBase;
         return this;
     }
 
-    public CharacterRolesResponse rolesAtBase(List<RolesAtBaseEnum> rolesAtBaseEnum) {
-
-        this.rolesAtBaseEnum = rolesAtBaseEnum;
-        return this;
-    }
-
-    public CharacterRolesResponse addrolesAtBaseItem(String rolesAtBaseItem) {
+    public CharacterRolesResponse addRolesAtBaseItem(RolesAtBaseEnum rolesAtBaseItem) {
         if (this.rolesAtBase == null) {
             this.rolesAtBase = new ArrayList<>();
         }
-        this.rolesAtBase.add(rolesAtBaseItem);
+        if (this.rolesAtBaseEnum == null) {
+            this.rolesAtBaseEnum = new ArrayList<>();
+        }
+        this.rolesAtBase.add(rolesAtBaseItem.toString());
+        this.rolesAtBaseEnum.add(rolesAtBaseItem);
         return this;
     }
 
@@ -758,16 +781,13 @@ public class CharacterRolesResponse implements Serializable {
      * roles_at_base array
      * 
      * @return rolesAtBase
-     **/
-    @javax.annotation.Nullable
+     */
+
     public List<RolesAtBaseEnum> getRolesAtBase() {
         if (rolesAtBaseEnum == null) {
             rolesAtBaseEnum = new ArrayList<>();
             for (String value : rolesAtBase) {
-                RolesAtBaseEnum enumValue = RolesAtBaseEnum.fromValue(value);
-                if (enumValue != null) {
-                    rolesAtBaseEnum.add(enumValue);
-                }
+                rolesAtBaseEnum.add(RolesAtBaseEnum.fromValue(value));
             }
         }
         return rolesAtBaseEnum;
@@ -777,31 +797,33 @@ public class CharacterRolesResponse implements Serializable {
         return rolesAtBase;
     }
 
-    public void setRolesAtBase(List<RolesAtBaseEnum> rolesAtBaseEnum) {
-        this.rolesAtBaseEnum = rolesAtBaseEnum;
+    public void setRolesAtBase(@javax.annotation.Nullable List<RolesAtBaseEnum> rolesAtBase) {
+        this.rolesAtBaseEnum = rolesAtBase;
     }
 
-    public void setRolesAtBaseString(List<String> rolesAtBase) {
+    public void setRolesAtBaseString(@javax.annotation.Nullable List<String> rolesAtBase) {
         this.rolesAtBase = rolesAtBase;
     }
 
-    public CharacterRolesResponse rolesAtHqString(List<String> rolesAtHq) {
+    public CharacterRolesResponse rolesAtHq(@javax.annotation.Nullable List<RolesAtHqEnum> rolesAtHq) {
+        this.rolesAtHqEnum = rolesAtHq;
+        return this;
+    }
 
+    public CharacterRolesResponse rolesAtHqString(@javax.annotation.Nullable List<String> rolesAtHq) {
         this.rolesAtHq = rolesAtHq;
         return this;
     }
 
-    public CharacterRolesResponse rolesAtHq(List<RolesAtHqEnum> rolesAtHqEnum) {
-
-        this.rolesAtHqEnum = rolesAtHqEnum;
-        return this;
-    }
-
-    public CharacterRolesResponse addrolesAtHqItem(String rolesAtHqItem) {
+    public CharacterRolesResponse addRolesAtHqItem(RolesAtHqEnum rolesAtHqItem) {
         if (this.rolesAtHq == null) {
             this.rolesAtHq = new ArrayList<>();
         }
-        this.rolesAtHq.add(rolesAtHqItem);
+        if (this.rolesAtHqEnum == null) {
+            this.rolesAtHqEnum = new ArrayList<>();
+        }
+        this.rolesAtHq.add(rolesAtHqItem.toString());
+        this.rolesAtHqEnum.add(rolesAtHqItem);
         return this;
     }
 
@@ -809,16 +831,13 @@ public class CharacterRolesResponse implements Serializable {
      * roles_at_hq array
      * 
      * @return rolesAtHq
-     **/
-    @javax.annotation.Nullable
+     */
+
     public List<RolesAtHqEnum> getRolesAtHq() {
         if (rolesAtHqEnum == null) {
             rolesAtHqEnum = new ArrayList<>();
             for (String value : rolesAtHq) {
-                RolesAtHqEnum enumValue = RolesAtHqEnum.fromValue(value);
-                if (enumValue != null) {
-                    rolesAtHqEnum.add(enumValue);
-                }
+                rolesAtHqEnum.add(RolesAtHqEnum.fromValue(value));
             }
         }
         return rolesAtHqEnum;
@@ -828,31 +847,33 @@ public class CharacterRolesResponse implements Serializable {
         return rolesAtHq;
     }
 
-    public void setRolesAtHq(List<RolesAtHqEnum> rolesAtHqEnum) {
-        this.rolesAtHqEnum = rolesAtHqEnum;
+    public void setRolesAtHq(@javax.annotation.Nullable List<RolesAtHqEnum> rolesAtHq) {
+        this.rolesAtHqEnum = rolesAtHq;
     }
 
-    public void setRolesAtHqString(List<String> rolesAtHq) {
+    public void setRolesAtHqString(@javax.annotation.Nullable List<String> rolesAtHq) {
         this.rolesAtHq = rolesAtHq;
     }
 
-    public CharacterRolesResponse rolesAtOtherString(List<String> rolesAtOther) {
+    public CharacterRolesResponse rolesAtOther(@javax.annotation.Nullable List<RolesAtOtherEnum> rolesAtOther) {
+        this.rolesAtOtherEnum = rolesAtOther;
+        return this;
+    }
 
+    public CharacterRolesResponse rolesAtOtherString(@javax.annotation.Nullable List<String> rolesAtOther) {
         this.rolesAtOther = rolesAtOther;
         return this;
     }
 
-    public CharacterRolesResponse rolesAtOther(List<RolesAtOtherEnum> rolesAtOtherEnum) {
-
-        this.rolesAtOtherEnum = rolesAtOtherEnum;
-        return this;
-    }
-
-    public CharacterRolesResponse addrolesAtOtherItem(String rolesAtOtherItem) {
+    public CharacterRolesResponse addRolesAtOtherItem(RolesAtOtherEnum rolesAtOtherItem) {
         if (this.rolesAtOther == null) {
             this.rolesAtOther = new ArrayList<>();
         }
-        this.rolesAtOther.add(rolesAtOtherItem);
+        if (this.rolesAtOtherEnum == null) {
+            this.rolesAtOtherEnum = new ArrayList<>();
+        }
+        this.rolesAtOther.add(rolesAtOtherItem.toString());
+        this.rolesAtOtherEnum.add(rolesAtOtherItem);
         return this;
     }
 
@@ -860,16 +881,13 @@ public class CharacterRolesResponse implements Serializable {
      * roles_at_other array
      * 
      * @return rolesAtOther
-     **/
-    @javax.annotation.Nullable
+     */
+
     public List<RolesAtOtherEnum> getRolesAtOther() {
         if (rolesAtOtherEnum == null) {
             rolesAtOtherEnum = new ArrayList<>();
             for (String value : rolesAtOther) {
-                RolesAtOtherEnum enumValue = RolesAtOtherEnum.fromValue(value);
-                if (enumValue != null) {
-                    rolesAtOtherEnum.add(enumValue);
-                }
+                rolesAtOtherEnum.add(RolesAtOtherEnum.fromValue(value));
             }
         }
         return rolesAtOtherEnum;
@@ -879,11 +897,11 @@ public class CharacterRolesResponse implements Serializable {
         return rolesAtOther;
     }
 
-    public void setRolesAtOther(List<RolesAtOtherEnum> rolesAtOtherEnum) {
-        this.rolesAtOtherEnum = rolesAtOtherEnum;
+    public void setRolesAtOther(@javax.annotation.Nullable List<RolesAtOtherEnum> rolesAtOther) {
+        this.rolesAtOtherEnum = rolesAtOther;
     }
 
-    public void setRolesAtOtherString(List<String> rolesAtOther) {
+    public void setRolesAtOtherString(@javax.annotation.Nullable List<String> rolesAtOther) {
         this.rolesAtOther = rolesAtOther;
     }
 
@@ -946,22 +964,22 @@ public class CharacterRolesResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CharacterRolesResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CharacterRolesResponse.openapiRequiredFields.isEmpty()) { // has
                                                                            // required
                                                                            // fields
                                                                            // but
                                                                            // JSON
-                                                                           // object
+                                                                           // element
                                                                            // is
                                                                            // null
                 throw new IllegalArgumentException(String.format(
@@ -970,36 +988,40 @@ public class CharacterRolesResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CharacterRolesResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CharacterRolesResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         // ensure the optional json data is an array if present
-        if (jsonObj.get("roles") != null && !jsonObj.get("roles").isJsonArray()) {
+        if (jsonObj.get("roles") != null && !jsonObj.get("roles").isJsonNull() && !jsonObj.get("roles").isJsonArray()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `roles` to be an array in the JSON string but got `%s`", jsonObj.get("roles")
                             .toString()));
         }
         // ensure the optional json data is an array if present
-        if (jsonObj.get("roles_at_base") != null && !jsonObj.get("roles_at_base").isJsonArray()) {
+        if (jsonObj.get("roles_at_base") != null && !jsonObj.get("roles_at_base").isJsonNull()
+                && !jsonObj.get("roles_at_base").isJsonArray()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `roles_at_base` to be an array in the JSON string but got `%s`",
                     jsonObj.get("roles_at_base").toString()));
         }
         // ensure the optional json data is an array if present
-        if (jsonObj.get("roles_at_hq") != null && !jsonObj.get("roles_at_hq").isJsonArray()) {
+        if (jsonObj.get("roles_at_hq") != null && !jsonObj.get("roles_at_hq").isJsonNull()
+                && !jsonObj.get("roles_at_hq").isJsonArray()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `roles_at_hq` to be an array in the JSON string but got `%s`",
                     jsonObj.get("roles_at_hq").toString()));
         }
         // ensure the optional json data is an array if present
-        if (jsonObj.get("roles_at_other") != null && !jsonObj.get("roles_at_other").isJsonArray()) {
+        if (jsonObj.get("roles_at_other") != null && !jsonObj.get("roles_at_other").isJsonNull()
+                && !jsonObj.get("roles_at_other").isJsonArray()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `roles_at_other` to be an array in the JSON string but got `%s`",
                     jsonObj.get("roles_at_other").toString()));
@@ -1027,9 +1049,9 @@ public class CharacterRolesResponse implements Serializable {
 
                 @Override
                 public CharacterRolesResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

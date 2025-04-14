@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -113,33 +111,39 @@ public class UniverseNamesResponse implements Serializable {
                 return CategoryEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            CategoryEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_CATEGORY = "category";
     @SerializedName(SERIALIZED_NAME_CATEGORY)
+    @javax.annotation.Nonnull
     private String category;
     private CategoryEnum categoryEnum;
 
     public static final String SERIALIZED_NAME_ID = "id";
     @SerializedName(SERIALIZED_NAME_ID)
+    @javax.annotation.Nonnull
     private Integer id;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
+    @javax.annotation.Nonnull
     private String name;
 
     public UniverseNamesResponse() {
     }
 
-    public UniverseNamesResponse categoryString(String category) {
-
-        this.category = category;
+    public UniverseNamesResponse category(@javax.annotation.Nonnull CategoryEnum category) {
+        this.categoryEnum = category;
         return this;
     }
 
-    public UniverseNamesResponse category(CategoryEnum categoryEnum) {
-
-        this.categoryEnum = categoryEnum;
+    public UniverseNamesResponse categoryString(@javax.annotation.Nonnull String category) {
+        this.category = category;
         return this;
     }
 
@@ -147,8 +151,8 @@ public class UniverseNamesResponse implements Serializable {
      * category string
      * 
      * @return category
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public CategoryEnum getCategory() {
         if (categoryEnum == null) {
             categoryEnum = CategoryEnum.fromValue(category);
@@ -160,16 +164,15 @@ public class UniverseNamesResponse implements Serializable {
         return category;
     }
 
-    public void setCategory(CategoryEnum categoryEnum) {
-        this.categoryEnum = categoryEnum;
+    public void setCategory(@javax.annotation.Nonnull CategoryEnum category) {
+        this.categoryEnum = category;
     }
 
-    public void setCategoryString(String category) {
+    public void setCategoryString(@javax.annotation.Nonnull String category) {
         this.category = category;
     }
 
-    public UniverseNamesResponse id(Integer id) {
-
+    public UniverseNamesResponse id(@javax.annotation.Nonnull Integer id) {
         this.id = id;
         return this;
     }
@@ -178,18 +181,17 @@ public class UniverseNamesResponse implements Serializable {
      * id integer
      * 
      * @return id
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(@javax.annotation.Nonnull Integer id) {
         this.id = id;
     }
 
-    public UniverseNamesResponse name(String name) {
-
+    public UniverseNamesResponse name(@javax.annotation.Nonnull String name) {
         this.name = name;
         return this;
     }
@@ -198,13 +200,13 @@ public class UniverseNamesResponse implements Serializable {
      * name string
      * 
      * @return name
-     **/
+     */
     @javax.annotation.Nonnull
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@javax.annotation.Nonnull String name) {
         this.name = name;
     }
 
@@ -267,22 +269,22 @@ public class UniverseNamesResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             UniverseNamesResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!UniverseNamesResponse.openapiRequiredFields.isEmpty()) { // has
                                                                           // required
                                                                           // fields
                                                                           // but
                                                                           // JSON
-                                                                          // object
+                                                                          // element
                                                                           // is
                                                                           // null
                 throw new IllegalArgumentException(String.format(
@@ -291,31 +293,34 @@ public class UniverseNamesResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!UniverseNamesResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `UniverseNamesResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : UniverseNamesResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("category").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `category` to be a primitive type in the JSON string but got `%s`", jsonObj
                             .get("category").toString()));
         }
+        // validate the required field `category`
+        CategoryEnum.validateJsonElement(jsonObj.get("category"));
         if (!jsonObj.get("name").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `name` to be a primitive type in the JSON string but got `%s`",
@@ -344,9 +349,9 @@ public class UniverseNamesResponse implements Serializable {
 
                 @Override
                 public UniverseNamesResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

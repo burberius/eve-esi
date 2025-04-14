@@ -41,12 +41,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -60,34 +58,42 @@ public class CorporationStructuresResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_CORPORATION_ID = "corporation_id";
     @SerializedName(SERIALIZED_NAME_CORPORATION_ID)
+    @javax.annotation.Nonnull
     private Integer corporationId;
 
     public static final String SERIALIZED_NAME_FUEL_EXPIRES = "fuel_expires";
     @SerializedName(SERIALIZED_NAME_FUEL_EXPIRES)
+    @javax.annotation.Nullable
     private OffsetDateTime fuelExpires;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
+    @javax.annotation.Nullable
     private String name;
 
     public static final String SERIALIZED_NAME_NEXT_REINFORCE_APPLY = "next_reinforce_apply";
     @SerializedName(SERIALIZED_NAME_NEXT_REINFORCE_APPLY)
+    @javax.annotation.Nullable
     private OffsetDateTime nextReinforceApply;
 
     public static final String SERIALIZED_NAME_NEXT_REINFORCE_HOUR = "next_reinforce_hour";
     @SerializedName(SERIALIZED_NAME_NEXT_REINFORCE_HOUR)
+    @javax.annotation.Nullable
     private Integer nextReinforceHour;
 
     public static final String SERIALIZED_NAME_PROFILE_ID = "profile_id";
     @SerializedName(SERIALIZED_NAME_PROFILE_ID)
+    @javax.annotation.Nonnull
     private Integer profileId;
 
     public static final String SERIALIZED_NAME_REINFORCE_HOUR = "reinforce_hour";
     @SerializedName(SERIALIZED_NAME_REINFORCE_HOUR)
+    @javax.annotation.Nullable
     private Integer reinforceHour;
 
     public static final String SERIALIZED_NAME_SERVICES = "services";
     @SerializedName(SERIALIZED_NAME_SERVICES)
+    @javax.annotation.Nullable
     private List<StructureService> services = new ArrayList<>();
 
     /**
@@ -157,42 +163,53 @@ public class CorporationStructuresResponse implements Serializable {
                 return StateEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            StateEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_STATE = "state";
     @SerializedName(SERIALIZED_NAME_STATE)
+    @javax.annotation.Nonnull
     private String state;
     private StateEnum stateEnum;
 
     public static final String SERIALIZED_NAME_STATE_TIMER_END = "state_timer_end";
     @SerializedName(SERIALIZED_NAME_STATE_TIMER_END)
+    @javax.annotation.Nullable
     private OffsetDateTime stateTimerEnd;
 
     public static final String SERIALIZED_NAME_STATE_TIMER_START = "state_timer_start";
     @SerializedName(SERIALIZED_NAME_STATE_TIMER_START)
+    @javax.annotation.Nullable
     private OffsetDateTime stateTimerStart;
 
     public static final String SERIALIZED_NAME_STRUCTURE_ID = "structure_id";
     @SerializedName(SERIALIZED_NAME_STRUCTURE_ID)
+    @javax.annotation.Nonnull
     private Long structureId;
 
     public static final String SERIALIZED_NAME_SYSTEM_ID = "system_id";
     @SerializedName(SERIALIZED_NAME_SYSTEM_ID)
+    @javax.annotation.Nonnull
     private Integer systemId;
 
     public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
+    @javax.annotation.Nonnull
     private Integer typeId;
 
     public static final String SERIALIZED_NAME_UNANCHORS_AT = "unanchors_at";
     @SerializedName(SERIALIZED_NAME_UNANCHORS_AT)
+    @javax.annotation.Nullable
     private OffsetDateTime unanchorsAt;
 
     public CorporationStructuresResponse() {
     }
 
-    public CorporationStructuresResponse corporationId(Integer corporationId) {
-
+    public CorporationStructuresResponse corporationId(@javax.annotation.Nonnull Integer corporationId) {
         this.corporationId = corporationId;
         return this;
     }
@@ -201,18 +218,17 @@ public class CorporationStructuresResponse implements Serializable {
      * ID of the corporation that owns the structure
      * 
      * @return corporationId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getCorporationId() {
         return corporationId;
     }
 
-    public void setCorporationId(Integer corporationId) {
+    public void setCorporationId(@javax.annotation.Nonnull Integer corporationId) {
         this.corporationId = corporationId;
     }
 
-    public CorporationStructuresResponse fuelExpires(OffsetDateTime fuelExpires) {
-
+    public CorporationStructuresResponse fuelExpires(@javax.annotation.Nullable OffsetDateTime fuelExpires) {
         this.fuelExpires = fuelExpires;
         return this;
     }
@@ -221,18 +237,17 @@ public class CorporationStructuresResponse implements Serializable {
      * Date on which the structure will run out of fuel
      * 
      * @return fuelExpires
-     **/
+     */
     @javax.annotation.Nullable
     public OffsetDateTime getFuelExpires() {
         return fuelExpires;
     }
 
-    public void setFuelExpires(OffsetDateTime fuelExpires) {
+    public void setFuelExpires(@javax.annotation.Nullable OffsetDateTime fuelExpires) {
         this.fuelExpires = fuelExpires;
     }
 
-    public CorporationStructuresResponse name(String name) {
-
+    public CorporationStructuresResponse name(@javax.annotation.Nullable String name) {
         this.name = name;
         return this;
     }
@@ -241,18 +256,17 @@ public class CorporationStructuresResponse implements Serializable {
      * The structure name
      * 
      * @return name
-     **/
+     */
     @javax.annotation.Nullable
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@javax.annotation.Nullable String name) {
         this.name = name;
     }
 
-    public CorporationStructuresResponse nextReinforceApply(OffsetDateTime nextReinforceApply) {
-
+    public CorporationStructuresResponse nextReinforceApply(@javax.annotation.Nullable OffsetDateTime nextReinforceApply) {
         this.nextReinforceApply = nextReinforceApply;
         return this;
     }
@@ -262,18 +276,17 @@ public class CorporationStructuresResponse implements Serializable {
      * times (e.g. next_reinforce_hour and next_reinforce_day) will take effect
      * 
      * @return nextReinforceApply
-     **/
+     */
     @javax.annotation.Nullable
     public OffsetDateTime getNextReinforceApply() {
         return nextReinforceApply;
     }
 
-    public void setNextReinforceApply(OffsetDateTime nextReinforceApply) {
+    public void setNextReinforceApply(@javax.annotation.Nullable OffsetDateTime nextReinforceApply) {
         this.nextReinforceApply = nextReinforceApply;
     }
 
-    public CorporationStructuresResponse nextReinforceHour(Integer nextReinforceHour) {
-
+    public CorporationStructuresResponse nextReinforceHour(@javax.annotation.Nullable Integer nextReinforceHour) {
         this.nextReinforceHour = nextReinforceHour;
         return this;
     }
@@ -283,18 +296,17 @@ public class CorporationStructuresResponse implements Serializable {
      * shown by next_reinforce_apply minimum: 0 maximum: 23
      * 
      * @return nextReinforceHour
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getNextReinforceHour() {
         return nextReinforceHour;
     }
 
-    public void setNextReinforceHour(Integer nextReinforceHour) {
+    public void setNextReinforceHour(@javax.annotation.Nullable Integer nextReinforceHour) {
         this.nextReinforceHour = nextReinforceHour;
     }
 
-    public CorporationStructuresResponse profileId(Integer profileId) {
-
+    public CorporationStructuresResponse profileId(@javax.annotation.Nonnull Integer profileId) {
         this.profileId = profileId;
         return this;
     }
@@ -303,18 +315,17 @@ public class CorporationStructuresResponse implements Serializable {
      * The id of the ACL profile for this citadel
      * 
      * @return profileId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getProfileId() {
         return profileId;
     }
 
-    public void setProfileId(Integer profileId) {
+    public void setProfileId(@javax.annotation.Nonnull Integer profileId) {
         this.profileId = profileId;
     }
 
-    public CorporationStructuresResponse reinforceHour(Integer reinforceHour) {
-
+    public CorporationStructuresResponse reinforceHour(@javax.annotation.Nullable Integer reinforceHour) {
         this.reinforceHour = reinforceHour;
         return this;
     }
@@ -327,26 +338,26 @@ public class CorporationStructuresResponse implements Serializable {
      * this property minimum: 0 maximum: 23
      * 
      * @return reinforceHour
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getReinforceHour() {
         return reinforceHour;
     }
 
-    public void setReinforceHour(Integer reinforceHour) {
+    public void setReinforceHour(@javax.annotation.Nullable Integer reinforceHour) {
         this.reinforceHour = reinforceHour;
     }
 
-    public CorporationStructuresResponse services(List<StructureService> services) {
-
+    public CorporationStructuresResponse services(@javax.annotation.Nullable List<StructureService> services) {
         this.services = services;
         return this;
     }
 
-    public CorporationStructuresResponse addservicesItem(StructureService servicesItem) {
+    public CorporationStructuresResponse addServicesItem(StructureService servicesItem) {
         if (this.services == null) {
             this.services = new ArrayList<>();
         }
+
         this.services.add(servicesItem);
         return this;
     }
@@ -355,25 +366,23 @@ public class CorporationStructuresResponse implements Serializable {
      * Contains a list of service upgrades, and their state
      * 
      * @return services
-     **/
+     */
     @javax.annotation.Nullable
     public List<StructureService> getServices() {
         return services;
     }
 
-    public void setServices(List<StructureService> services) {
+    public void setServices(@javax.annotation.Nullable List<StructureService> services) {
         this.services = services;
     }
 
-    public CorporationStructuresResponse stateString(String state) {
-
-        this.state = state;
+    public CorporationStructuresResponse state(@javax.annotation.Nonnull StateEnum state) {
+        this.stateEnum = state;
         return this;
     }
 
-    public CorporationStructuresResponse state(StateEnum stateEnum) {
-
-        this.stateEnum = stateEnum;
+    public CorporationStructuresResponse stateString(@javax.annotation.Nonnull String state) {
+        this.state = state;
         return this;
     }
 
@@ -381,8 +390,8 @@ public class CorporationStructuresResponse implements Serializable {
      * state string
      * 
      * @return state
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public StateEnum getState() {
         if (stateEnum == null) {
             stateEnum = StateEnum.fromValue(state);
@@ -394,16 +403,15 @@ public class CorporationStructuresResponse implements Serializable {
         return state;
     }
 
-    public void setState(StateEnum stateEnum) {
-        this.stateEnum = stateEnum;
+    public void setState(@javax.annotation.Nonnull StateEnum state) {
+        this.stateEnum = state;
     }
 
-    public void setStateString(String state) {
+    public void setStateString(@javax.annotation.Nonnull String state) {
         this.state = state;
     }
 
-    public CorporationStructuresResponse stateTimerEnd(OffsetDateTime stateTimerEnd) {
-
+    public CorporationStructuresResponse stateTimerEnd(@javax.annotation.Nullable OffsetDateTime stateTimerEnd) {
         this.stateTimerEnd = stateTimerEnd;
         return this;
     }
@@ -412,18 +420,17 @@ public class CorporationStructuresResponse implements Serializable {
      * Date at which the structure will move to it&#39;s next state
      * 
      * @return stateTimerEnd
-     **/
+     */
     @javax.annotation.Nullable
     public OffsetDateTime getStateTimerEnd() {
         return stateTimerEnd;
     }
 
-    public void setStateTimerEnd(OffsetDateTime stateTimerEnd) {
+    public void setStateTimerEnd(@javax.annotation.Nullable OffsetDateTime stateTimerEnd) {
         this.stateTimerEnd = stateTimerEnd;
     }
 
-    public CorporationStructuresResponse stateTimerStart(OffsetDateTime stateTimerStart) {
-
+    public CorporationStructuresResponse stateTimerStart(@javax.annotation.Nullable OffsetDateTime stateTimerStart) {
         this.stateTimerStart = stateTimerStart;
         return this;
     }
@@ -432,18 +439,17 @@ public class CorporationStructuresResponse implements Serializable {
      * Date at which the structure entered it&#39;s current state
      * 
      * @return stateTimerStart
-     **/
+     */
     @javax.annotation.Nullable
     public OffsetDateTime getStateTimerStart() {
         return stateTimerStart;
     }
 
-    public void setStateTimerStart(OffsetDateTime stateTimerStart) {
+    public void setStateTimerStart(@javax.annotation.Nullable OffsetDateTime stateTimerStart) {
         this.stateTimerStart = stateTimerStart;
     }
 
-    public CorporationStructuresResponse structureId(Long structureId) {
-
+    public CorporationStructuresResponse structureId(@javax.annotation.Nonnull Long structureId) {
         this.structureId = structureId;
         return this;
     }
@@ -452,18 +458,17 @@ public class CorporationStructuresResponse implements Serializable {
      * The Item ID of the structure
      * 
      * @return structureId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getStructureId() {
         return structureId;
     }
 
-    public void setStructureId(Long structureId) {
+    public void setStructureId(@javax.annotation.Nonnull Long structureId) {
         this.structureId = structureId;
     }
 
-    public CorporationStructuresResponse systemId(Integer systemId) {
-
+    public CorporationStructuresResponse systemId(@javax.annotation.Nonnull Integer systemId) {
         this.systemId = systemId;
         return this;
     }
@@ -472,18 +477,17 @@ public class CorporationStructuresResponse implements Serializable {
      * The solar system the structure is in
      * 
      * @return systemId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getSystemId() {
         return systemId;
     }
 
-    public void setSystemId(Integer systemId) {
+    public void setSystemId(@javax.annotation.Nonnull Integer systemId) {
         this.systemId = systemId;
     }
 
-    public CorporationStructuresResponse typeId(Integer typeId) {
-
+    public CorporationStructuresResponse typeId(@javax.annotation.Nonnull Integer typeId) {
         this.typeId = typeId;
         return this;
     }
@@ -492,18 +496,17 @@ public class CorporationStructuresResponse implements Serializable {
      * The type id of the structure
      * 
      * @return typeId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(Integer typeId) {
+    public void setTypeId(@javax.annotation.Nonnull Integer typeId) {
         this.typeId = typeId;
     }
 
-    public CorporationStructuresResponse unanchorsAt(OffsetDateTime unanchorsAt) {
-
+    public CorporationStructuresResponse unanchorsAt(@javax.annotation.Nullable OffsetDateTime unanchorsAt) {
         this.unanchorsAt = unanchorsAt;
         return this;
     }
@@ -512,13 +515,13 @@ public class CorporationStructuresResponse implements Serializable {
      * Date at which the structure will unanchor
      * 
      * @return unanchorsAt
-     **/
+     */
     @javax.annotation.Nullable
     public OffsetDateTime getUnanchorsAt() {
         return unanchorsAt;
     }
 
-    public void setUnanchorsAt(OffsetDateTime unanchorsAt) {
+    public void setUnanchorsAt(@javax.annotation.Nullable OffsetDateTime unanchorsAt) {
         this.unanchorsAt = unanchorsAt;
     }
 
@@ -622,22 +625,22 @@ public class CorporationStructuresResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CorporationStructuresResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CorporationStructuresResponse.openapiRequiredFields.isEmpty()) { // has
                                                                                   // required
                                                                                   // fields
                                                                                   // but
                                                                                   // JSON
-                                                                                  // object
+                                                                                  // element
                                                                                   // is
                                                                                   // null
                 throw new IllegalArgumentException(
@@ -647,26 +650,27 @@ public class CorporationStructuresResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CorporationStructuresResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CorporationStructuresResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CorporationStructuresResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull())
                 && !jsonObj.get("name").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
@@ -685,7 +689,7 @@ public class CorporationStructuresResponse implements Serializable {
 
                 // validate the optional field `services` (array)
                 for (int i = 0; i < jsonArrayservices.size(); i++) {
-                    StructureService.validateJsonObject(jsonArrayservices.get(i).getAsJsonObject());
+                    StructureService.validateJsonElement(jsonArrayservices.get(i));
                 };
             }
         }
@@ -694,6 +698,8 @@ public class CorporationStructuresResponse implements Serializable {
                     "Expected the field `state` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("state").toString()));
         }
+        // validate the required field `state`
+        StateEnum.validateJsonElement(jsonObj.get("state"));
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -717,9 +723,9 @@ public class CorporationStructuresResponse implements Serializable {
 
                 @Override
                 public CorporationStructuresResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

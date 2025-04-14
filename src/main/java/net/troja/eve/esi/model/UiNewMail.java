@@ -39,12 +39,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -58,29 +56,33 @@ public class UiNewMail implements Serializable {
 
     public static final String SERIALIZED_NAME_BODY = "body";
     @SerializedName(SERIALIZED_NAME_BODY)
+    @javax.annotation.Nonnull
     private String body;
 
     public static final String SERIALIZED_NAME_RECIPIENTS = "recipients";
     @SerializedName(SERIALIZED_NAME_RECIPIENTS)
+    @javax.annotation.Nonnull
     private List<Integer> recipients = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_SUBJECT = "subject";
     @SerializedName(SERIALIZED_NAME_SUBJECT)
+    @javax.annotation.Nonnull
     private String subject;
 
     public static final String SERIALIZED_NAME_TO_CORP_OR_ALLIANCE_ID = "to_corp_or_alliance_id";
     @SerializedName(SERIALIZED_NAME_TO_CORP_OR_ALLIANCE_ID)
+    @javax.annotation.Nullable
     private Integer toCorpOrAllianceId;
 
     public static final String SERIALIZED_NAME_TO_MAILING_LIST_ID = "to_mailing_list_id";
     @SerializedName(SERIALIZED_NAME_TO_MAILING_LIST_ID)
+    @javax.annotation.Nullable
     private Integer toMailingListId;
 
     public UiNewMail() {
     }
 
-    public UiNewMail body(String body) {
-
+    public UiNewMail body(@javax.annotation.Nonnull String body) {
         this.body = body;
         return this;
     }
@@ -89,26 +91,26 @@ public class UiNewMail implements Serializable {
      * body string
      * 
      * @return body
-     **/
+     */
     @javax.annotation.Nonnull
     public String getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(@javax.annotation.Nonnull String body) {
         this.body = body;
     }
 
-    public UiNewMail recipients(List<Integer> recipients) {
-
+    public UiNewMail recipients(@javax.annotation.Nonnull List<Integer> recipients) {
         this.recipients = recipients;
         return this;
     }
 
-    public UiNewMail addrecipientsItem(Integer recipientsItem) {
+    public UiNewMail addRecipientsItem(Integer recipientsItem) {
         if (this.recipients == null) {
             this.recipients = new ArrayList<>();
         }
+
         this.recipients.add(recipientsItem);
         return this;
     }
@@ -117,18 +119,17 @@ public class UiNewMail implements Serializable {
      * recipients array
      * 
      * @return recipients
-     **/
+     */
     @javax.annotation.Nonnull
     public List<Integer> getRecipients() {
         return recipients;
     }
 
-    public void setRecipients(List<Integer> recipients) {
+    public void setRecipients(@javax.annotation.Nonnull List<Integer> recipients) {
         this.recipients = recipients;
     }
 
-    public UiNewMail subject(String subject) {
-
+    public UiNewMail subject(@javax.annotation.Nonnull String subject) {
         this.subject = subject;
         return this;
     }
@@ -137,18 +138,17 @@ public class UiNewMail implements Serializable {
      * subject string
      * 
      * @return subject
-     **/
+     */
     @javax.annotation.Nonnull
     public String getSubject() {
         return subject;
     }
 
-    public void setSubject(String subject) {
+    public void setSubject(@javax.annotation.Nonnull String subject) {
         this.subject = subject;
     }
 
-    public UiNewMail toCorpOrAllianceId(Integer toCorpOrAllianceId) {
-
+    public UiNewMail toCorpOrAllianceId(@javax.annotation.Nullable Integer toCorpOrAllianceId) {
         this.toCorpOrAllianceId = toCorpOrAllianceId;
         return this;
     }
@@ -157,18 +157,17 @@ public class UiNewMail implements Serializable {
      * to_corp_or_alliance_id integer
      * 
      * @return toCorpOrAllianceId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getToCorpOrAllianceId() {
         return toCorpOrAllianceId;
     }
 
-    public void setToCorpOrAllianceId(Integer toCorpOrAllianceId) {
+    public void setToCorpOrAllianceId(@javax.annotation.Nullable Integer toCorpOrAllianceId) {
         this.toCorpOrAllianceId = toCorpOrAllianceId;
     }
 
-    public UiNewMail toMailingListId(Integer toMailingListId) {
-
+    public UiNewMail toMailingListId(@javax.annotation.Nullable Integer toMailingListId) {
         this.toMailingListId = toMailingListId;
         return this;
     }
@@ -179,13 +178,13 @@ public class UiNewMail implements Serializable {
      * fill out either this field or the to_corp_or_alliance_ids field
      * 
      * @return toMailingListId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getToMailingListId() {
         return toMailingListId;
     }
 
-    public void setToMailingListId(Integer toMailingListId) {
+    public void setToMailingListId(@javax.annotation.Nullable Integer toMailingListId) {
         this.toMailingListId = toMailingListId;
     }
 
@@ -253,43 +252,44 @@ public class UiNewMail implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to UiNewMail
+     *             if the JSON Element is invalid with respect to UiNewMail
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!UiNewMail.openapiRequiredFields.isEmpty()) { // has required
                                                               // fields but JSON
-                                                              // object is null
+                                                              // element is null
                 throw new IllegalArgumentException(String.format(
                         "The required field(s) %s in UiNewMail is not found in the empty JSON string",
                         UiNewMail.openapiRequiredFields.toString()));
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!UiNewMail.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(String.format(
                         "The field `%s` in the JSON string is not defined in the `UiNewMail` properties. JSON: %s",
-                        entry.getKey(), jsonObj.toString()));
+                        entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : UiNewMail.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("body").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `body` to be a primitive type in the JSON string but got `%s`",
@@ -331,9 +331,9 @@ public class UiNewMail implements Serializable {
 
                 @Override
                 public UiNewMail read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

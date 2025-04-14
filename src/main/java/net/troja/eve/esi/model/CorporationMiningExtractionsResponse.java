@@ -38,12 +38,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -57,29 +55,34 @@ public class CorporationMiningExtractionsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_CHUNK_ARRIVAL_TIME = "chunk_arrival_time";
     @SerializedName(SERIALIZED_NAME_CHUNK_ARRIVAL_TIME)
+    @javax.annotation.Nonnull
     private OffsetDateTime chunkArrivalTime;
 
     public static final String SERIALIZED_NAME_EXTRACTION_START_TIME = "extraction_start_time";
     @SerializedName(SERIALIZED_NAME_EXTRACTION_START_TIME)
+    @javax.annotation.Nonnull
     private OffsetDateTime extractionStartTime;
 
     public static final String SERIALIZED_NAME_MOON_ID = "moon_id";
     @SerializedName(SERIALIZED_NAME_MOON_ID)
+    @javax.annotation.Nonnull
     private Integer moonId;
 
     public static final String SERIALIZED_NAME_NATURAL_DECAY_TIME = "natural_decay_time";
     @SerializedName(SERIALIZED_NAME_NATURAL_DECAY_TIME)
+    @javax.annotation.Nonnull
     private OffsetDateTime naturalDecayTime;
 
     public static final String SERIALIZED_NAME_STRUCTURE_ID = "structure_id";
     @SerializedName(SERIALIZED_NAME_STRUCTURE_ID)
+    @javax.annotation.Nonnull
     private Long structureId;
 
     public CorporationMiningExtractionsResponse() {
     }
 
-    public CorporationMiningExtractionsResponse chunkArrivalTime(OffsetDateTime chunkArrivalTime) {
-
+    public CorporationMiningExtractionsResponse chunkArrivalTime(
+            @javax.annotation.Nonnull OffsetDateTime chunkArrivalTime) {
         this.chunkArrivalTime = chunkArrivalTime;
         return this;
     }
@@ -89,18 +92,18 @@ public class CorporationMiningExtractionsResponse implements Serializable {
      * fractured by the moon mining drill.
      * 
      * @return chunkArrivalTime
-     **/
+     */
     @javax.annotation.Nonnull
     public OffsetDateTime getChunkArrivalTime() {
         return chunkArrivalTime;
     }
 
-    public void setChunkArrivalTime(OffsetDateTime chunkArrivalTime) {
+    public void setChunkArrivalTime(@javax.annotation.Nonnull OffsetDateTime chunkArrivalTime) {
         this.chunkArrivalTime = chunkArrivalTime;
     }
 
-    public CorporationMiningExtractionsResponse extractionStartTime(OffsetDateTime extractionStartTime) {
-
+    public CorporationMiningExtractionsResponse extractionStartTime(
+            @javax.annotation.Nonnull OffsetDateTime extractionStartTime) {
         this.extractionStartTime = extractionStartTime;
         return this;
     }
@@ -109,18 +112,17 @@ public class CorporationMiningExtractionsResponse implements Serializable {
      * The time at which the current extraction was initiated.
      * 
      * @return extractionStartTime
-     **/
+     */
     @javax.annotation.Nonnull
     public OffsetDateTime getExtractionStartTime() {
         return extractionStartTime;
     }
 
-    public void setExtractionStartTime(OffsetDateTime extractionStartTime) {
+    public void setExtractionStartTime(@javax.annotation.Nonnull OffsetDateTime extractionStartTime) {
         this.extractionStartTime = extractionStartTime;
     }
 
-    public CorporationMiningExtractionsResponse moonId(Integer moonId) {
-
+    public CorporationMiningExtractionsResponse moonId(@javax.annotation.Nonnull Integer moonId) {
         this.moonId = moonId;
         return this;
     }
@@ -129,18 +131,18 @@ public class CorporationMiningExtractionsResponse implements Serializable {
      * moon_id integer
      * 
      * @return moonId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getMoonId() {
         return moonId;
     }
 
-    public void setMoonId(Integer moonId) {
+    public void setMoonId(@javax.annotation.Nonnull Integer moonId) {
         this.moonId = moonId;
     }
 
-    public CorporationMiningExtractionsResponse naturalDecayTime(OffsetDateTime naturalDecayTime) {
-
+    public CorporationMiningExtractionsResponse naturalDecayTime(
+            @javax.annotation.Nonnull OffsetDateTime naturalDecayTime) {
         this.naturalDecayTime = naturalDecayTime;
         return this;
     }
@@ -150,18 +152,17 @@ public class CorporationMiningExtractionsResponse implements Serializable {
      * is not first fractured by the moon mining drill.
      * 
      * @return naturalDecayTime
-     **/
+     */
     @javax.annotation.Nonnull
     public OffsetDateTime getNaturalDecayTime() {
         return naturalDecayTime;
     }
 
-    public void setNaturalDecayTime(OffsetDateTime naturalDecayTime) {
+    public void setNaturalDecayTime(@javax.annotation.Nonnull OffsetDateTime naturalDecayTime) {
         this.naturalDecayTime = naturalDecayTime;
     }
 
-    public CorporationMiningExtractionsResponse structureId(Long structureId) {
-
+    public CorporationMiningExtractionsResponse structureId(@javax.annotation.Nonnull Long structureId) {
         this.structureId = structureId;
         return this;
     }
@@ -170,13 +171,13 @@ public class CorporationMiningExtractionsResponse implements Serializable {
      * structure_id integer
      * 
      * @return structureId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getStructureId() {
         return structureId;
     }
 
-    public void setStructureId(Long structureId) {
+    public void setStructureId(@javax.annotation.Nonnull Long structureId) {
         this.structureId = structureId;
     }
 
@@ -247,22 +248,22 @@ public class CorporationMiningExtractionsResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CorporationMiningExtractionsResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CorporationMiningExtractionsResponse.openapiRequiredFields.isEmpty()) { // has
                                                                                          // required
                                                                                          // fields
                                                                                          // but
                                                                                          // JSON
-                                                                                         // object
+                                                                                         // element
                                                                                          // is
                                                                                          // null
                 throw new IllegalArgumentException(
@@ -272,26 +273,27 @@ public class CorporationMiningExtractionsResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CorporationMiningExtractionsResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CorporationMiningExtractionsResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CorporationMiningExtractionsResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -316,9 +318,9 @@ public class CorporationMiningExtractionsResponse implements Serializable {
 
                 @Override
                 public CorporationMiningExtractionsResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

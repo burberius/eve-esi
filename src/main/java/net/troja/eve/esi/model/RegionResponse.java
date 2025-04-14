@@ -39,12 +39,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -58,33 +56,37 @@ public class RegionResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_CONSTELLATIONS = "constellations";
     @SerializedName(SERIALIZED_NAME_CONSTELLATIONS)
+    @javax.annotation.Nonnull
     private List<Integer> constellations = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_DESCRIPTION = "description";
     @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+    @javax.annotation.Nullable
     private String description;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
+    @javax.annotation.Nonnull
     private String name;
 
     public static final String SERIALIZED_NAME_REGION_ID = "region_id";
     @SerializedName(SERIALIZED_NAME_REGION_ID)
+    @javax.annotation.Nonnull
     private Integer regionId;
 
     public RegionResponse() {
     }
 
-    public RegionResponse constellations(List<Integer> constellations) {
-
+    public RegionResponse constellations(@javax.annotation.Nonnull List<Integer> constellations) {
         this.constellations = constellations;
         return this;
     }
 
-    public RegionResponse addconstellationsItem(Integer constellationsItem) {
+    public RegionResponse addConstellationsItem(Integer constellationsItem) {
         if (this.constellations == null) {
             this.constellations = new ArrayList<>();
         }
+
         this.constellations.add(constellationsItem);
         return this;
     }
@@ -93,18 +95,17 @@ public class RegionResponse implements Serializable {
      * constellations array
      * 
      * @return constellations
-     **/
+     */
     @javax.annotation.Nonnull
     public List<Integer> getConstellations() {
         return constellations;
     }
 
-    public void setConstellations(List<Integer> constellations) {
+    public void setConstellations(@javax.annotation.Nonnull List<Integer> constellations) {
         this.constellations = constellations;
     }
 
-    public RegionResponse description(String description) {
-
+    public RegionResponse description(@javax.annotation.Nullable String description) {
         this.description = description;
         return this;
     }
@@ -113,18 +114,17 @@ public class RegionResponse implements Serializable {
      * description string
      * 
      * @return description
-     **/
+     */
     @javax.annotation.Nullable
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(@javax.annotation.Nullable String description) {
         this.description = description;
     }
 
-    public RegionResponse name(String name) {
-
+    public RegionResponse name(@javax.annotation.Nonnull String name) {
         this.name = name;
         return this;
     }
@@ -133,18 +133,17 @@ public class RegionResponse implements Serializable {
      * name string
      * 
      * @return name
-     **/
+     */
     @javax.annotation.Nonnull
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@javax.annotation.Nonnull String name) {
         this.name = name;
     }
 
-    public RegionResponse regionId(Integer regionId) {
-
+    public RegionResponse regionId(@javax.annotation.Nonnull Integer regionId) {
         this.regionId = regionId;
         return this;
     }
@@ -153,13 +152,13 @@ public class RegionResponse implements Serializable {
      * region_id integer
      * 
      * @return regionId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getRegionId() {
         return regionId;
     }
 
-    public void setRegionId(Integer regionId) {
+    public void setRegionId(@javax.annotation.Nonnull Integer regionId) {
         this.regionId = regionId;
     }
 
@@ -225,20 +224,20 @@ public class RegionResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to RegionResponse
+     *             if the JSON Element is invalid with respect to RegionResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!RegionResponse.openapiRequiredFields.isEmpty()) { // has
                                                                    // required
                                                                    // fields but
                                                                    // JSON
-                                                                   // object is
+                                                                   // element is
                                                                    // null
                 throw new IllegalArgumentException(String.format(
                         "The required field(s) %s in RegionResponse is not found in the empty JSON string",
@@ -246,26 +245,27 @@ public class RegionResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!RegionResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `RegionResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : RegionResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         // ensure the required json array is present
         if (jsonObj.get("constellations") == null) {
             throw new IllegalArgumentException(
@@ -309,9 +309,9 @@ public class RegionResponse implements Serializable {
 
                 @Override
                 public RegionResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

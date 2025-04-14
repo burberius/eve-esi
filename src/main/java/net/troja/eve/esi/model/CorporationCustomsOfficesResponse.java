@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -56,46 +54,57 @@ public class CorporationCustomsOfficesResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ALLIANCE_TAX_RATE = "alliance_tax_rate";
     @SerializedName(SERIALIZED_NAME_ALLIANCE_TAX_RATE)
+    @javax.annotation.Nullable
     private Float allianceTaxRate;
 
     public static final String SERIALIZED_NAME_ALLOW_ACCESS_WITH_STANDINGS = "allow_access_with_standings";
     @SerializedName(SERIALIZED_NAME_ALLOW_ACCESS_WITH_STANDINGS)
+    @javax.annotation.Nonnull
     private Boolean allowAccessWithStandings;
 
     public static final String SERIALIZED_NAME_ALLOW_ALLIANCE_ACCESS = "allow_alliance_access";
     @SerializedName(SERIALIZED_NAME_ALLOW_ALLIANCE_ACCESS)
+    @javax.annotation.Nonnull
     private Boolean allowAllianceAccess;
 
     public static final String SERIALIZED_NAME_BAD_STANDING_TAX_RATE = "bad_standing_tax_rate";
     @SerializedName(SERIALIZED_NAME_BAD_STANDING_TAX_RATE)
+    @javax.annotation.Nullable
     private Float badStandingTaxRate;
 
     public static final String SERIALIZED_NAME_CORPORATION_TAX_RATE = "corporation_tax_rate";
     @SerializedName(SERIALIZED_NAME_CORPORATION_TAX_RATE)
+    @javax.annotation.Nullable
     private Float corporationTaxRate;
 
     public static final String SERIALIZED_NAME_EXCELLENT_STANDING_TAX_RATE = "excellent_standing_tax_rate";
     @SerializedName(SERIALIZED_NAME_EXCELLENT_STANDING_TAX_RATE)
+    @javax.annotation.Nullable
     private Float excellentStandingTaxRate;
 
     public static final String SERIALIZED_NAME_GOOD_STANDING_TAX_RATE = "good_standing_tax_rate";
     @SerializedName(SERIALIZED_NAME_GOOD_STANDING_TAX_RATE)
+    @javax.annotation.Nullable
     private Float goodStandingTaxRate;
 
     public static final String SERIALIZED_NAME_NEUTRAL_STANDING_TAX_RATE = "neutral_standing_tax_rate";
     @SerializedName(SERIALIZED_NAME_NEUTRAL_STANDING_TAX_RATE)
+    @javax.annotation.Nullable
     private Float neutralStandingTaxRate;
 
     public static final String SERIALIZED_NAME_OFFICE_ID = "office_id";
     @SerializedName(SERIALIZED_NAME_OFFICE_ID)
+    @javax.annotation.Nonnull
     private Long officeId;
 
     public static final String SERIALIZED_NAME_REINFORCE_EXIT_END = "reinforce_exit_end";
     @SerializedName(SERIALIZED_NAME_REINFORCE_EXIT_END)
+    @javax.annotation.Nonnull
     private Integer reinforceExitEnd;
 
     public static final String SERIALIZED_NAME_REINFORCE_EXIT_START = "reinforce_exit_start";
     @SerializedName(SERIALIZED_NAME_REINFORCE_EXIT_START)
+    @javax.annotation.Nonnull
     private Integer reinforceExitStart;
 
     /**
@@ -149,26 +158,33 @@ public class CorporationCustomsOfficesResponse implements Serializable {
                 return StandingLevelEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            StandingLevelEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_STANDING_LEVEL = "standing_level";
     @SerializedName(SERIALIZED_NAME_STANDING_LEVEL)
+    @javax.annotation.Nullable
     private String standingLevel;
     private StandingLevelEnum standingLevelEnum;
 
     public static final String SERIALIZED_NAME_SYSTEM_ID = "system_id";
     @SerializedName(SERIALIZED_NAME_SYSTEM_ID)
+    @javax.annotation.Nonnull
     private Integer systemId;
 
     public static final String SERIALIZED_NAME_TERRIBLE_STANDING_TAX_RATE = "terrible_standing_tax_rate";
     @SerializedName(SERIALIZED_NAME_TERRIBLE_STANDING_TAX_RATE)
+    @javax.annotation.Nullable
     private Float terribleStandingTaxRate;
 
     public CorporationCustomsOfficesResponse() {
     }
 
-    public CorporationCustomsOfficesResponse allianceTaxRate(Float allianceTaxRate) {
-
+    public CorporationCustomsOfficesResponse allianceTaxRate(@javax.annotation.Nullable Float allianceTaxRate) {
         this.allianceTaxRate = allianceTaxRate;
         return this;
     }
@@ -177,18 +193,18 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * Only present if alliance access is allowed
      * 
      * @return allianceTaxRate
-     **/
+     */
     @javax.annotation.Nullable
     public Float getAllianceTaxRate() {
         return allianceTaxRate;
     }
 
-    public void setAllianceTaxRate(Float allianceTaxRate) {
+    public void setAllianceTaxRate(@javax.annotation.Nullable Float allianceTaxRate) {
         this.allianceTaxRate = allianceTaxRate;
     }
 
-    public CorporationCustomsOfficesResponse allowAccessWithStandings(Boolean allowAccessWithStandings) {
-
+    public CorporationCustomsOfficesResponse allowAccessWithStandings(
+            @javax.annotation.Nonnull Boolean allowAccessWithStandings) {
         this.allowAccessWithStandings = allowAccessWithStandings;
         return this;
     }
@@ -198,18 +214,17 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * is true
      * 
      * @return allowAccessWithStandings
-     **/
+     */
     @javax.annotation.Nonnull
     public Boolean getAllowAccessWithStandings() {
         return allowAccessWithStandings;
     }
 
-    public void setAllowAccessWithStandings(Boolean allowAccessWithStandings) {
+    public void setAllowAccessWithStandings(@javax.annotation.Nonnull Boolean allowAccessWithStandings) {
         this.allowAccessWithStandings = allowAccessWithStandings;
     }
 
-    public CorporationCustomsOfficesResponse allowAllianceAccess(Boolean allowAllianceAccess) {
-
+    public CorporationCustomsOfficesResponse allowAllianceAccess(@javax.annotation.Nonnull Boolean allowAllianceAccess) {
         this.allowAllianceAccess = allowAllianceAccess;
         return this;
     }
@@ -218,18 +233,17 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * allow_alliance_access boolean
      * 
      * @return allowAllianceAccess
-     **/
+     */
     @javax.annotation.Nonnull
     public Boolean getAllowAllianceAccess() {
         return allowAllianceAccess;
     }
 
-    public void setAllowAllianceAccess(Boolean allowAllianceAccess) {
+    public void setAllowAllianceAccess(@javax.annotation.Nonnull Boolean allowAllianceAccess) {
         this.allowAllianceAccess = allowAllianceAccess;
     }
 
-    public CorporationCustomsOfficesResponse badStandingTaxRate(Float badStandingTaxRate) {
-
+    public CorporationCustomsOfficesResponse badStandingTaxRate(@javax.annotation.Nullable Float badStandingTaxRate) {
         this.badStandingTaxRate = badStandingTaxRate;
         return this;
     }
@@ -238,18 +252,17 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * bad_standing_tax_rate number
      * 
      * @return badStandingTaxRate
-     **/
+     */
     @javax.annotation.Nullable
     public Float getBadStandingTaxRate() {
         return badStandingTaxRate;
     }
 
-    public void setBadStandingTaxRate(Float badStandingTaxRate) {
+    public void setBadStandingTaxRate(@javax.annotation.Nullable Float badStandingTaxRate) {
         this.badStandingTaxRate = badStandingTaxRate;
     }
 
-    public CorporationCustomsOfficesResponse corporationTaxRate(Float corporationTaxRate) {
-
+    public CorporationCustomsOfficesResponse corporationTaxRate(@javax.annotation.Nullable Float corporationTaxRate) {
         this.corporationTaxRate = corporationTaxRate;
         return this;
     }
@@ -258,18 +271,18 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * corporation_tax_rate number
      * 
      * @return corporationTaxRate
-     **/
+     */
     @javax.annotation.Nullable
     public Float getCorporationTaxRate() {
         return corporationTaxRate;
     }
 
-    public void setCorporationTaxRate(Float corporationTaxRate) {
+    public void setCorporationTaxRate(@javax.annotation.Nullable Float corporationTaxRate) {
         this.corporationTaxRate = corporationTaxRate;
     }
 
-    public CorporationCustomsOfficesResponse excellentStandingTaxRate(Float excellentStandingTaxRate) {
-
+    public CorporationCustomsOfficesResponse excellentStandingTaxRate(
+            @javax.annotation.Nullable Float excellentStandingTaxRate) {
         this.excellentStandingTaxRate = excellentStandingTaxRate;
         return this;
     }
@@ -279,18 +292,17 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * this level is allowed, same for all other standing related tax rates
      * 
      * @return excellentStandingTaxRate
-     **/
+     */
     @javax.annotation.Nullable
     public Float getExcellentStandingTaxRate() {
         return excellentStandingTaxRate;
     }
 
-    public void setExcellentStandingTaxRate(Float excellentStandingTaxRate) {
+    public void setExcellentStandingTaxRate(@javax.annotation.Nullable Float excellentStandingTaxRate) {
         this.excellentStandingTaxRate = excellentStandingTaxRate;
     }
 
-    public CorporationCustomsOfficesResponse goodStandingTaxRate(Float goodStandingTaxRate) {
-
+    public CorporationCustomsOfficesResponse goodStandingTaxRate(@javax.annotation.Nullable Float goodStandingTaxRate) {
         this.goodStandingTaxRate = goodStandingTaxRate;
         return this;
     }
@@ -299,18 +311,18 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * good_standing_tax_rate number
      * 
      * @return goodStandingTaxRate
-     **/
+     */
     @javax.annotation.Nullable
     public Float getGoodStandingTaxRate() {
         return goodStandingTaxRate;
     }
 
-    public void setGoodStandingTaxRate(Float goodStandingTaxRate) {
+    public void setGoodStandingTaxRate(@javax.annotation.Nullable Float goodStandingTaxRate) {
         this.goodStandingTaxRate = goodStandingTaxRate;
     }
 
-    public CorporationCustomsOfficesResponse neutralStandingTaxRate(Float neutralStandingTaxRate) {
-
+    public CorporationCustomsOfficesResponse neutralStandingTaxRate(
+            @javax.annotation.Nullable Float neutralStandingTaxRate) {
         this.neutralStandingTaxRate = neutralStandingTaxRate;
         return this;
     }
@@ -319,18 +331,17 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * neutral_standing_tax_rate number
      * 
      * @return neutralStandingTaxRate
-     **/
+     */
     @javax.annotation.Nullable
     public Float getNeutralStandingTaxRate() {
         return neutralStandingTaxRate;
     }
 
-    public void setNeutralStandingTaxRate(Float neutralStandingTaxRate) {
+    public void setNeutralStandingTaxRate(@javax.annotation.Nullable Float neutralStandingTaxRate) {
         this.neutralStandingTaxRate = neutralStandingTaxRate;
     }
 
-    public CorporationCustomsOfficesResponse officeId(Long officeId) {
-
+    public CorporationCustomsOfficesResponse officeId(@javax.annotation.Nonnull Long officeId) {
         this.officeId = officeId;
         return this;
     }
@@ -339,18 +350,17 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * unique ID of this customs office
      * 
      * @return officeId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getOfficeId() {
         return officeId;
     }
 
-    public void setOfficeId(Long officeId) {
+    public void setOfficeId(@javax.annotation.Nonnull Long officeId) {
         this.officeId = officeId;
     }
 
-    public CorporationCustomsOfficesResponse reinforceExitEnd(Integer reinforceExitEnd) {
-
+    public CorporationCustomsOfficesResponse reinforceExitEnd(@javax.annotation.Nonnull Integer reinforceExitEnd) {
         this.reinforceExitEnd = reinforceExitEnd;
         return this;
     }
@@ -359,18 +369,17 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * reinforce_exit_end integer minimum: 0 maximum: 23
      * 
      * @return reinforceExitEnd
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getReinforceExitEnd() {
         return reinforceExitEnd;
     }
 
-    public void setReinforceExitEnd(Integer reinforceExitEnd) {
+    public void setReinforceExitEnd(@javax.annotation.Nonnull Integer reinforceExitEnd) {
         this.reinforceExitEnd = reinforceExitEnd;
     }
 
-    public CorporationCustomsOfficesResponse reinforceExitStart(Integer reinforceExitStart) {
-
+    public CorporationCustomsOfficesResponse reinforceExitStart(@javax.annotation.Nonnull Integer reinforceExitStart) {
         this.reinforceExitStart = reinforceExitStart;
         return this;
     }
@@ -381,25 +390,23 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * attack minimum: 0 maximum: 23
      * 
      * @return reinforceExitStart
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getReinforceExitStart() {
         return reinforceExitStart;
     }
 
-    public void setReinforceExitStart(Integer reinforceExitStart) {
+    public void setReinforceExitStart(@javax.annotation.Nonnull Integer reinforceExitStart) {
         this.reinforceExitStart = reinforceExitStart;
     }
 
-    public CorporationCustomsOfficesResponse standingLevelString(String standingLevel) {
-
-        this.standingLevel = standingLevel;
+    public CorporationCustomsOfficesResponse standingLevel(@javax.annotation.Nullable StandingLevelEnum standingLevel) {
+        this.standingLevelEnum = standingLevel;
         return this;
     }
 
-    public CorporationCustomsOfficesResponse standingLevel(StandingLevelEnum standingLevelEnum) {
-
-        this.standingLevelEnum = standingLevelEnum;
+    public CorporationCustomsOfficesResponse standingLevelString(@javax.annotation.Nullable String standingLevel) {
+        this.standingLevel = standingLevel;
         return this;
     }
 
@@ -407,8 +414,8 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * Access is allowed only for entities with this level of standing or better
      * 
      * @return standingLevel
-     **/
-    @javax.annotation.Nullable
+     */
+
     public StandingLevelEnum getStandingLevel() {
         if (standingLevelEnum == null) {
             standingLevelEnum = StandingLevelEnum.fromValue(standingLevel);
@@ -420,16 +427,15 @@ public class CorporationCustomsOfficesResponse implements Serializable {
         return standingLevel;
     }
 
-    public void setStandingLevel(StandingLevelEnum standingLevelEnum) {
-        this.standingLevelEnum = standingLevelEnum;
+    public void setStandingLevel(@javax.annotation.Nullable StandingLevelEnum standingLevel) {
+        this.standingLevelEnum = standingLevel;
     }
 
-    public void setStandingLevelString(String standingLevel) {
+    public void setStandingLevelString(@javax.annotation.Nullable String standingLevel) {
         this.standingLevel = standingLevel;
     }
 
-    public CorporationCustomsOfficesResponse systemId(Integer systemId) {
-
+    public CorporationCustomsOfficesResponse systemId(@javax.annotation.Nonnull Integer systemId) {
         this.systemId = systemId;
         return this;
     }
@@ -438,18 +444,18 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * ID of the solar system this customs office is located in
      * 
      * @return systemId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getSystemId() {
         return systemId;
     }
 
-    public void setSystemId(Integer systemId) {
+    public void setSystemId(@javax.annotation.Nonnull Integer systemId) {
         this.systemId = systemId;
     }
 
-    public CorporationCustomsOfficesResponse terribleStandingTaxRate(Float terribleStandingTaxRate) {
-
+    public CorporationCustomsOfficesResponse terribleStandingTaxRate(
+            @javax.annotation.Nullable Float terribleStandingTaxRate) {
         this.terribleStandingTaxRate = terribleStandingTaxRate;
         return this;
     }
@@ -458,13 +464,13 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * terrible_standing_tax_rate number
      * 
      * @return terribleStandingTaxRate
-     **/
+     */
     @javax.annotation.Nullable
     public Float getTerribleStandingTaxRate() {
         return terribleStandingTaxRate;
     }
 
-    public void setTerribleStandingTaxRate(Float terribleStandingTaxRate) {
+    public void setTerribleStandingTaxRate(@javax.annotation.Nullable Float terribleStandingTaxRate) {
         this.terribleStandingTaxRate = terribleStandingTaxRate;
     }
 
@@ -569,22 +575,22 @@ public class CorporationCustomsOfficesResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CorporationCustomsOfficesResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CorporationCustomsOfficesResponse.openapiRequiredFields.isEmpty()) { // has
                                                                                       // required
                                                                                       // fields
                                                                                       // but
                                                                                       // JSON
-                                                                                      // object
+                                                                                      // element
                                                                                       // is
                                                                                       // null
                 throw new IllegalArgumentException(
@@ -594,31 +600,36 @@ public class CorporationCustomsOfficesResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CorporationCustomsOfficesResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CorporationCustomsOfficesResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CorporationCustomsOfficesResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if ((jsonObj.get("standing_level") != null && !jsonObj.get("standing_level").isJsonNull())
                 && !jsonObj.get("standing_level").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `standing_level` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("standing_level").toString()));
+        }
+        // validate the optional field `standing_level`
+        if (jsonObj.get("standing_level") != null && !jsonObj.get("standing_level").isJsonNull()) {
+            StandingLevelEnum.validateJsonElement(jsonObj.get("standing_level"));
         }
     }
 
@@ -644,9 +655,9 @@ public class CorporationCustomsOfficesResponse implements Serializable {
 
                 @Override
                 public CorporationCustomsOfficesResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

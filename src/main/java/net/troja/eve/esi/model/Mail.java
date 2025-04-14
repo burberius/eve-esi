@@ -40,12 +40,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -59,25 +57,28 @@ public class Mail implements Serializable {
 
     public static final String SERIALIZED_NAME_APPROVED_COST = "approved_cost";
     @SerializedName(SERIALIZED_NAME_APPROVED_COST)
+    @javax.annotation.Nullable
     private Long approvedCost = 0l;
 
     public static final String SERIALIZED_NAME_BODY = "body";
     @SerializedName(SERIALIZED_NAME_BODY)
+    @javax.annotation.Nonnull
     private String body;
 
     public static final String SERIALIZED_NAME_RECIPIENTS = "recipients";
     @SerializedName(SERIALIZED_NAME_RECIPIENTS)
+    @javax.annotation.Nonnull
     private List<Recipient> recipients = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_SUBJECT = "subject";
     @SerializedName(SERIALIZED_NAME_SUBJECT)
+    @javax.annotation.Nonnull
     private String subject;
 
     public Mail() {
     }
 
-    public Mail approvedCost(Long approvedCost) {
-
+    public Mail approvedCost(@javax.annotation.Nullable Long approvedCost) {
         this.approvedCost = approvedCost;
         return this;
     }
@@ -86,18 +87,17 @@ public class Mail implements Serializable {
      * approved_cost integer
      * 
      * @return approvedCost
-     **/
+     */
     @javax.annotation.Nullable
     public Long getApprovedCost() {
         return approvedCost;
     }
 
-    public void setApprovedCost(Long approvedCost) {
+    public void setApprovedCost(@javax.annotation.Nullable Long approvedCost) {
         this.approvedCost = approvedCost;
     }
 
-    public Mail body(String body) {
-
+    public Mail body(@javax.annotation.Nonnull String body) {
         this.body = body;
         return this;
     }
@@ -106,26 +106,26 @@ public class Mail implements Serializable {
      * body string
      * 
      * @return body
-     **/
+     */
     @javax.annotation.Nonnull
     public String getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(@javax.annotation.Nonnull String body) {
         this.body = body;
     }
 
-    public Mail recipients(List<Recipient> recipients) {
-
+    public Mail recipients(@javax.annotation.Nonnull List<Recipient> recipients) {
         this.recipients = recipients;
         return this;
     }
 
-    public Mail addrecipientsItem(Recipient recipientsItem) {
+    public Mail addRecipientsItem(Recipient recipientsItem) {
         if (this.recipients == null) {
             this.recipients = new ArrayList<>();
         }
+
         this.recipients.add(recipientsItem);
         return this;
     }
@@ -134,18 +134,17 @@ public class Mail implements Serializable {
      * recipients array
      * 
      * @return recipients
-     **/
+     */
     @javax.annotation.Nonnull
     public List<Recipient> getRecipients() {
         return recipients;
     }
 
-    public void setRecipients(List<Recipient> recipients) {
+    public void setRecipients(@javax.annotation.Nonnull List<Recipient> recipients) {
         this.recipients = recipients;
     }
 
-    public Mail subject(String subject) {
-
+    public Mail subject(@javax.annotation.Nonnull String subject) {
         this.subject = subject;
         return this;
     }
@@ -154,13 +153,13 @@ public class Mail implements Serializable {
      * subject string
      * 
      * @return subject
-     **/
+     */
     @javax.annotation.Nonnull
     public String getSubject() {
         return subject;
     }
 
-    public void setSubject(String subject) {
+    public void setSubject(@javax.annotation.Nonnull String subject) {
         this.subject = subject;
     }
 
@@ -224,17 +223,17 @@ public class Mail implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to Mail
+     *             if the JSON Element is invalid with respect to Mail
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!Mail.openapiRequiredFields.isEmpty()) { // has required fields
-                                                         // but JSON object is
+                                                         // but JSON element is
                                                          // null
                 throw new IllegalArgumentException(String.format(
                         "The required field(s) %s in Mail is not found in the empty JSON string",
@@ -242,25 +241,26 @@ public class Mail implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!Mail.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(String.format(
                         "The field `%s` in the JSON string is not defined in the `Mail` properties. JSON: %s",
-                        entry.getKey(), jsonObj.toString()));
+                        entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : Mail.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("body").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `body` to be a primitive type in the JSON string but got `%s`",
@@ -276,7 +276,7 @@ public class Mail implements Serializable {
         JsonArray jsonArrayrecipients = jsonObj.getAsJsonArray("recipients");
         // validate the required field `recipients` (array)
         for (int i = 0; i < jsonArrayrecipients.size(); i++) {
-            Recipient.validateJsonObject(jsonArrayrecipients.get(i).getAsJsonObject());
+            Recipient.validateJsonElement(jsonArrayrecipients.get(i));
         };
         if (!jsonObj.get("subject").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
@@ -305,9 +305,9 @@ public class Mail implements Serializable {
 
                 @Override
                 public Mail read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

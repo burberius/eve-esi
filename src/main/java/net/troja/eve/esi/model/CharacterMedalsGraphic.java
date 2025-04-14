@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -56,25 +54,28 @@ public class CharacterMedalsGraphic implements Serializable {
 
     public static final String SERIALIZED_NAME_COLOR = "color";
     @SerializedName(SERIALIZED_NAME_COLOR)
+    @javax.annotation.Nullable
     private Integer color;
 
     public static final String SERIALIZED_NAME_GRAPHIC = "graphic";
     @SerializedName(SERIALIZED_NAME_GRAPHIC)
+    @javax.annotation.Nonnull
     private String graphic;
 
     public static final String SERIALIZED_NAME_LAYER = "layer";
     @SerializedName(SERIALIZED_NAME_LAYER)
+    @javax.annotation.Nonnull
     private Integer layer;
 
     public static final String SERIALIZED_NAME_PART = "part";
     @SerializedName(SERIALIZED_NAME_PART)
+    @javax.annotation.Nonnull
     private Integer part;
 
     public CharacterMedalsGraphic() {
     }
 
-    public CharacterMedalsGraphic color(Integer color) {
-
+    public CharacterMedalsGraphic color(@javax.annotation.Nullable Integer color) {
         this.color = color;
         return this;
     }
@@ -83,18 +84,17 @@ public class CharacterMedalsGraphic implements Serializable {
      * color integer
      * 
      * @return color
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getColor() {
         return color;
     }
 
-    public void setColor(Integer color) {
+    public void setColor(@javax.annotation.Nullable Integer color) {
         this.color = color;
     }
 
-    public CharacterMedalsGraphic graphic(String graphic) {
-
+    public CharacterMedalsGraphic graphic(@javax.annotation.Nonnull String graphic) {
         this.graphic = graphic;
         return this;
     }
@@ -103,18 +103,17 @@ public class CharacterMedalsGraphic implements Serializable {
      * graphic string
      * 
      * @return graphic
-     **/
+     */
     @javax.annotation.Nonnull
     public String getGraphic() {
         return graphic;
     }
 
-    public void setGraphic(String graphic) {
+    public void setGraphic(@javax.annotation.Nonnull String graphic) {
         this.graphic = graphic;
     }
 
-    public CharacterMedalsGraphic layer(Integer layer) {
-
+    public CharacterMedalsGraphic layer(@javax.annotation.Nonnull Integer layer) {
         this.layer = layer;
         return this;
     }
@@ -123,18 +122,17 @@ public class CharacterMedalsGraphic implements Serializable {
      * layer integer
      * 
      * @return layer
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getLayer() {
         return layer;
     }
 
-    public void setLayer(Integer layer) {
+    public void setLayer(@javax.annotation.Nonnull Integer layer) {
         this.layer = layer;
     }
 
-    public CharacterMedalsGraphic part(Integer part) {
-
+    public CharacterMedalsGraphic part(@javax.annotation.Nonnull Integer part) {
         this.part = part;
         return this;
     }
@@ -143,13 +141,13 @@ public class CharacterMedalsGraphic implements Serializable {
      * part integer
      * 
      * @return part
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getPart() {
         return part;
     }
 
-    public void setPart(Integer part) {
+    public void setPart(@javax.annotation.Nonnull Integer part) {
         this.part = part;
     }
 
@@ -215,22 +213,22 @@ public class CharacterMedalsGraphic implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CharacterMedalsGraphic
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CharacterMedalsGraphic.openapiRequiredFields.isEmpty()) { // has
                                                                            // required
                                                                            // fields
                                                                            // but
                                                                            // JSON
-                                                                           // object
+                                                                           // element
                                                                            // is
                                                                            // null
                 throw new IllegalArgumentException(String.format(
@@ -239,26 +237,27 @@ public class CharacterMedalsGraphic implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CharacterMedalsGraphic.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CharacterMedalsGraphic` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CharacterMedalsGraphic.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("graphic").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `graphic` to be a primitive type in the JSON string but got `%s`",
@@ -287,9 +286,9 @@ public class CharacterMedalsGraphic implements Serializable {
 
                 @Override
                 public CharacterMedalsGraphic read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

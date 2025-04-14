@@ -38,12 +38,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -57,10 +55,12 @@ public class CorporationMiningObserversResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_LAST_UPDATED = "last_updated";
     @SerializedName(SERIALIZED_NAME_LAST_UPDATED)
+    @javax.annotation.Nonnull
     private LocalDate lastUpdated;
 
     public static final String SERIALIZED_NAME_OBSERVER_ID = "observer_id";
     @SerializedName(SERIALIZED_NAME_OBSERVER_ID)
+    @javax.annotation.Nonnull
     private Long observerId;
 
     /**
@@ -106,18 +106,23 @@ public class CorporationMiningObserversResponse implements Serializable {
                 return ObserverTypeEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ObserverTypeEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_OBSERVER_TYPE = "observer_type";
     @SerializedName(SERIALIZED_NAME_OBSERVER_TYPE)
+    @javax.annotation.Nonnull
     private String observerType;
     private ObserverTypeEnum observerTypeEnum;
 
     public CorporationMiningObserversResponse() {
     }
 
-    public CorporationMiningObserversResponse lastUpdated(LocalDate lastUpdated) {
-
+    public CorporationMiningObserversResponse lastUpdated(@javax.annotation.Nonnull LocalDate lastUpdated) {
         this.lastUpdated = lastUpdated;
         return this;
     }
@@ -126,18 +131,17 @@ public class CorporationMiningObserversResponse implements Serializable {
      * last_updated string
      * 
      * @return lastUpdated
-     **/
+     */
     @javax.annotation.Nonnull
     public LocalDate getLastUpdated() {
         return lastUpdated;
     }
 
-    public void setLastUpdated(LocalDate lastUpdated) {
+    public void setLastUpdated(@javax.annotation.Nonnull LocalDate lastUpdated) {
         this.lastUpdated = lastUpdated;
     }
 
-    public CorporationMiningObserversResponse observerId(Long observerId) {
-
+    public CorporationMiningObserversResponse observerId(@javax.annotation.Nonnull Long observerId) {
         this.observerId = observerId;
         return this;
     }
@@ -146,25 +150,23 @@ public class CorporationMiningObserversResponse implements Serializable {
      * The entity that was observing the asteroid field when it was mined.
      * 
      * @return observerId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getObserverId() {
         return observerId;
     }
 
-    public void setObserverId(Long observerId) {
+    public void setObserverId(@javax.annotation.Nonnull Long observerId) {
         this.observerId = observerId;
     }
 
-    public CorporationMiningObserversResponse observerTypeString(String observerType) {
-
-        this.observerType = observerType;
+    public CorporationMiningObserversResponse observerType(@javax.annotation.Nonnull ObserverTypeEnum observerType) {
+        this.observerTypeEnum = observerType;
         return this;
     }
 
-    public CorporationMiningObserversResponse observerType(ObserverTypeEnum observerTypeEnum) {
-
-        this.observerTypeEnum = observerTypeEnum;
+    public CorporationMiningObserversResponse observerTypeString(@javax.annotation.Nonnull String observerType) {
+        this.observerType = observerType;
         return this;
     }
 
@@ -172,8 +174,8 @@ public class CorporationMiningObserversResponse implements Serializable {
      * The category of the observing entity
      * 
      * @return observerType
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public ObserverTypeEnum getObserverType() {
         if (observerTypeEnum == null) {
             observerTypeEnum = ObserverTypeEnum.fromValue(observerType);
@@ -185,11 +187,11 @@ public class CorporationMiningObserversResponse implements Serializable {
         return observerType;
     }
 
-    public void setObserverType(ObserverTypeEnum observerTypeEnum) {
-        this.observerTypeEnum = observerTypeEnum;
+    public void setObserverType(@javax.annotation.Nonnull ObserverTypeEnum observerType) {
+        this.observerTypeEnum = observerType;
     }
 
-    public void setObserverTypeString(String observerType) {
+    public void setObserverTypeString(@javax.annotation.Nonnull String observerType) {
         this.observerType = observerType;
     }
 
@@ -252,22 +254,22 @@ public class CorporationMiningObserversResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CorporationMiningObserversResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CorporationMiningObserversResponse.openapiRequiredFields.isEmpty()) { // has
                                                                                        // required
                                                                                        // fields
                                                                                        // but
                                                                                        // JSON
-                                                                                       // object
+                                                                                       // element
                                                                                        // is
                                                                                        // null
                 throw new IllegalArgumentException(
@@ -277,31 +279,34 @@ public class CorporationMiningObserversResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CorporationMiningObserversResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CorporationMiningObserversResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CorporationMiningObserversResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("observer_type").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `observer_type` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("observer_type").toString()));
         }
+        // validate the required field `observer_type`
+        ObserverTypeEnum.validateJsonElement(jsonObj.get("observer_type"));
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -326,9 +331,9 @@ public class CorporationMiningObserversResponse implements Serializable {
 
                 @Override
                 public CorporationMiningObserversResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

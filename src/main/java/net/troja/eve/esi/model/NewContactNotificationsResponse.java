@@ -38,12 +38,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -57,29 +55,33 @@ public class NewContactNotificationsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_MESSAGE = "message";
     @SerializedName(SERIALIZED_NAME_MESSAGE)
+    @javax.annotation.Nonnull
     private String message;
 
     public static final String SERIALIZED_NAME_NOTIFICATION_ID = "notification_id";
     @SerializedName(SERIALIZED_NAME_NOTIFICATION_ID)
+    @javax.annotation.Nonnull
     private Long notificationId;
 
     public static final String SERIALIZED_NAME_SEND_DATE = "send_date";
     @SerializedName(SERIALIZED_NAME_SEND_DATE)
+    @javax.annotation.Nonnull
     private OffsetDateTime sendDate;
 
     public static final String SERIALIZED_NAME_SENDER_CHARACTER_ID = "sender_character_id";
     @SerializedName(SERIALIZED_NAME_SENDER_CHARACTER_ID)
+    @javax.annotation.Nonnull
     private Integer senderCharacterId;
 
     public static final String SERIALIZED_NAME_STANDING_LEVEL = "standing_level";
     @SerializedName(SERIALIZED_NAME_STANDING_LEVEL)
+    @javax.annotation.Nonnull
     private Float standingLevel;
 
     public NewContactNotificationsResponse() {
     }
 
-    public NewContactNotificationsResponse message(String message) {
-
+    public NewContactNotificationsResponse message(@javax.annotation.Nonnull String message) {
         this.message = message;
         return this;
     }
@@ -88,18 +90,17 @@ public class NewContactNotificationsResponse implements Serializable {
      * message string
      * 
      * @return message
-     **/
+     */
     @javax.annotation.Nonnull
     public String getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(@javax.annotation.Nonnull String message) {
         this.message = message;
     }
 
-    public NewContactNotificationsResponse notificationId(Long notificationId) {
-
+    public NewContactNotificationsResponse notificationId(@javax.annotation.Nonnull Long notificationId) {
         this.notificationId = notificationId;
         return this;
     }
@@ -108,18 +109,17 @@ public class NewContactNotificationsResponse implements Serializable {
      * notification_id integer
      * 
      * @return notificationId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getNotificationId() {
         return notificationId;
     }
 
-    public void setNotificationId(Long notificationId) {
+    public void setNotificationId(@javax.annotation.Nonnull Long notificationId) {
         this.notificationId = notificationId;
     }
 
-    public NewContactNotificationsResponse sendDate(OffsetDateTime sendDate) {
-
+    public NewContactNotificationsResponse sendDate(@javax.annotation.Nonnull OffsetDateTime sendDate) {
         this.sendDate = sendDate;
         return this;
     }
@@ -128,18 +128,17 @@ public class NewContactNotificationsResponse implements Serializable {
      * send_date string
      * 
      * @return sendDate
-     **/
+     */
     @javax.annotation.Nonnull
     public OffsetDateTime getSendDate() {
         return sendDate;
     }
 
-    public void setSendDate(OffsetDateTime sendDate) {
+    public void setSendDate(@javax.annotation.Nonnull OffsetDateTime sendDate) {
         this.sendDate = sendDate;
     }
 
-    public NewContactNotificationsResponse senderCharacterId(Integer senderCharacterId) {
-
+    public NewContactNotificationsResponse senderCharacterId(@javax.annotation.Nonnull Integer senderCharacterId) {
         this.senderCharacterId = senderCharacterId;
         return this;
     }
@@ -148,18 +147,17 @@ public class NewContactNotificationsResponse implements Serializable {
      * sender_character_id integer
      * 
      * @return senderCharacterId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getSenderCharacterId() {
         return senderCharacterId;
     }
 
-    public void setSenderCharacterId(Integer senderCharacterId) {
+    public void setSenderCharacterId(@javax.annotation.Nonnull Integer senderCharacterId) {
         this.senderCharacterId = senderCharacterId;
     }
 
-    public NewContactNotificationsResponse standingLevel(Float standingLevel) {
-
+    public NewContactNotificationsResponse standingLevel(@javax.annotation.Nonnull Float standingLevel) {
         this.standingLevel = standingLevel;
         return this;
     }
@@ -170,13 +168,13 @@ public class NewContactNotificationsResponse implements Serializable {
      * -5 -&gt; Bad | 0 -&gt; Neutral | 5 -&gt; Good | 10 -&gt; Excellent
      * 
      * @return standingLevel
-     **/
+     */
     @javax.annotation.Nonnull
     public Float getStandingLevel() {
         return standingLevel;
     }
 
-    public void setStandingLevel(Float standingLevel) {
+    public void setStandingLevel(@javax.annotation.Nonnull Float standingLevel) {
         this.standingLevel = standingLevel;
     }
 
@@ -247,22 +245,22 @@ public class NewContactNotificationsResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             NewContactNotificationsResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!NewContactNotificationsResponse.openapiRequiredFields.isEmpty()) { // has
                                                                                     // required
                                                                                     // fields
                                                                                     // but
                                                                                     // JSON
-                                                                                    // object
+                                                                                    // element
                                                                                     // is
                                                                                     // null
                 throw new IllegalArgumentException(
@@ -272,26 +270,27 @@ public class NewContactNotificationsResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!NewContactNotificationsResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `NewContactNotificationsResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : NewContactNotificationsResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("message").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `message` to be a primitive type in the JSON string but got `%s`",
@@ -321,9 +320,9 @@ public class NewContactNotificationsResponse implements Serializable {
 
                 @Override
                 public NewContactNotificationsResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

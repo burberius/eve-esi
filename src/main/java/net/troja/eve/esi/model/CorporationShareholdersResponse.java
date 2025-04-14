@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -56,10 +54,12 @@ public class CorporationShareholdersResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_SHARE_COUNT = "share_count";
     @SerializedName(SERIALIZED_NAME_SHARE_COUNT)
+    @javax.annotation.Nonnull
     private Long shareCount;
 
     public static final String SERIALIZED_NAME_SHAREHOLDER_ID = "shareholder_id";
     @SerializedName(SERIALIZED_NAME_SHAREHOLDER_ID)
+    @javax.annotation.Nonnull
     private Integer shareholderId;
 
     /**
@@ -107,18 +107,23 @@ public class CorporationShareholdersResponse implements Serializable {
                 return ShareholderTypeEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ShareholderTypeEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_SHAREHOLDER_TYPE = "shareholder_type";
     @SerializedName(SERIALIZED_NAME_SHAREHOLDER_TYPE)
+    @javax.annotation.Nonnull
     private String shareholderType;
     private ShareholderTypeEnum shareholderTypeEnum;
 
     public CorporationShareholdersResponse() {
     }
 
-    public CorporationShareholdersResponse shareCount(Long shareCount) {
-
+    public CorporationShareholdersResponse shareCount(@javax.annotation.Nonnull Long shareCount) {
         this.shareCount = shareCount;
         return this;
     }
@@ -127,18 +132,17 @@ public class CorporationShareholdersResponse implements Serializable {
      * share_count integer
      * 
      * @return shareCount
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getShareCount() {
         return shareCount;
     }
 
-    public void setShareCount(Long shareCount) {
+    public void setShareCount(@javax.annotation.Nonnull Long shareCount) {
         this.shareCount = shareCount;
     }
 
-    public CorporationShareholdersResponse shareholderId(Integer shareholderId) {
-
+    public CorporationShareholdersResponse shareholderId(@javax.annotation.Nonnull Integer shareholderId) {
         this.shareholderId = shareholderId;
         return this;
     }
@@ -147,25 +151,23 @@ public class CorporationShareholdersResponse implements Serializable {
      * shareholder_id integer
      * 
      * @return shareholderId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getShareholderId() {
         return shareholderId;
     }
 
-    public void setShareholderId(Integer shareholderId) {
+    public void setShareholderId(@javax.annotation.Nonnull Integer shareholderId) {
         this.shareholderId = shareholderId;
     }
 
-    public CorporationShareholdersResponse shareholderTypeString(String shareholderType) {
-
-        this.shareholderType = shareholderType;
+    public CorporationShareholdersResponse shareholderType(@javax.annotation.Nonnull ShareholderTypeEnum shareholderType) {
+        this.shareholderTypeEnum = shareholderType;
         return this;
     }
 
-    public CorporationShareholdersResponse shareholderType(ShareholderTypeEnum shareholderTypeEnum) {
-
-        this.shareholderTypeEnum = shareholderTypeEnum;
+    public CorporationShareholdersResponse shareholderTypeString(@javax.annotation.Nonnull String shareholderType) {
+        this.shareholderType = shareholderType;
         return this;
     }
 
@@ -173,8 +175,8 @@ public class CorporationShareholdersResponse implements Serializable {
      * shareholder_type string
      * 
      * @return shareholderType
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public ShareholderTypeEnum getShareholderType() {
         if (shareholderTypeEnum == null) {
             shareholderTypeEnum = ShareholderTypeEnum.fromValue(shareholderType);
@@ -186,11 +188,11 @@ public class CorporationShareholdersResponse implements Serializable {
         return shareholderType;
     }
 
-    public void setShareholderType(ShareholderTypeEnum shareholderTypeEnum) {
-        this.shareholderTypeEnum = shareholderTypeEnum;
+    public void setShareholderType(@javax.annotation.Nonnull ShareholderTypeEnum shareholderType) {
+        this.shareholderTypeEnum = shareholderType;
     }
 
-    public void setShareholderTypeString(String shareholderType) {
+    public void setShareholderTypeString(@javax.annotation.Nonnull String shareholderType) {
         this.shareholderType = shareholderType;
     }
 
@@ -253,22 +255,22 @@ public class CorporationShareholdersResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CorporationShareholdersResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CorporationShareholdersResponse.openapiRequiredFields.isEmpty()) { // has
                                                                                     // required
                                                                                     // fields
                                                                                     // but
                                                                                     // JSON
-                                                                                    // object
+                                                                                    // element
                                                                                     // is
                                                                                     // null
                 throw new IllegalArgumentException(
@@ -278,31 +280,34 @@ public class CorporationShareholdersResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CorporationShareholdersResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CorporationShareholdersResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CorporationShareholdersResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("shareholder_type").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `shareholder_type` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("shareholder_type").toString()));
         }
+        // validate the required field `shareholder_type`
+        ShareholderTypeEnum.validateJsonElement(jsonObj.get("shareholder_type"));
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -327,9 +332,9 @@ public class CorporationShareholdersResponse implements Serializable {
 
                 @Override
                 public CorporationShareholdersResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

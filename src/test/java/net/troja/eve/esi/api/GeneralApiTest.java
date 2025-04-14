@@ -7,6 +7,7 @@ import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.ApiResponse;
 import net.troja.eve.esi.auth.JWT;
 import net.troja.eve.esi.auth.OAuth;
+import net.troja.eve.esi.model.CharacterResponse;
 import okhttp3.Call;
 import org.junit.jupiter.api.BeforeAll;
 
@@ -43,6 +44,7 @@ public class GeneralApiTest {
     protected static String refreshTokenPublicData;
     protected static int characterId;
     protected static String characterName;
+    protected static int corporationId;
 
     protected static ApiClient apiClient;
 
@@ -75,6 +77,10 @@ public class GeneralApiTest {
         }
         characterId = payload.getCharacterID();
         characterName = payload.getName();
+
+        CharacterResponse characterResponse =
+                new CharacterApi(apiClient).getCharactersCharacterId(characterId, DATASOURCE, null);
+        corporationId = characterResponse.getCorporationId();
     }
 
     private static class ValidatingApiClient extends ApiClient {

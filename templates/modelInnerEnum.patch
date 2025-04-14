@@ -1,0 +1,11 @@
+--- out/libraries/okhttp-gson/modelInnerEnum.mustache	2025-04-13 22:37:42.342742356 +0200
++++ templates/modelInnerEnum.mustache	2025-04-14 10:40:05.712878456 +0200
+@@ -43,7 +43,7 @@
+           return b;
+         }
+       }
+-      {{#isNullable}}return null;{{/isNullable}}{{^isNullable}}{{#enumUnknownDefaultCase}}{{#allowableValues}}{{#enumVars}}{{#-last}}return {{{name}}};{{/-last}}{{/enumVars}}{{/allowableValues}}{{/enumUnknownDefaultCase}}{{^enumUnknownDefaultCase}}throw new IllegalArgumentException("Unexpected value '" + value + "'");{{/enumUnknownDefaultCase}}{{/isNullable}}
++      return null;
+     }
+ 
+     public static class Adapter extends TypeAdapter<{{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}> {

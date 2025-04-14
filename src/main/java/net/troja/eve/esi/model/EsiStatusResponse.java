@@ -39,12 +39,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -58,14 +56,17 @@ public class EsiStatusResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ENDPOINT = "endpoint";
     @SerializedName(SERIALIZED_NAME_ENDPOINT)
+    @javax.annotation.Nonnull
     private String endpoint;
 
     public static final String SERIALIZED_NAME_METHOD = "method";
     @SerializedName(SERIALIZED_NAME_METHOD)
+    @javax.annotation.Nonnull
     private String method;
 
     public static final String SERIALIZED_NAME_ROUTE = "route";
     @SerializedName(SERIALIZED_NAME_ROUTE)
+    @javax.annotation.Nonnull
     private String route;
 
     /**
@@ -117,22 +118,28 @@ public class EsiStatusResponse implements Serializable {
                 return StatusEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            StatusEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_STATUS = "status";
     @SerializedName(SERIALIZED_NAME_STATUS)
+    @javax.annotation.Nonnull
     private String status;
     private StatusEnum statusEnum;
 
     public static final String SERIALIZED_NAME_TAGS = "tags";
     @SerializedName(SERIALIZED_NAME_TAGS)
+    @javax.annotation.Nonnull
     private List<String> tags = new ArrayList<>();
 
     public EsiStatusResponse() {
     }
 
-    public EsiStatusResponse endpoint(String endpoint) {
-
+    public EsiStatusResponse endpoint(@javax.annotation.Nonnull String endpoint) {
         this.endpoint = endpoint;
         return this;
     }
@@ -141,18 +148,17 @@ public class EsiStatusResponse implements Serializable {
      * ESI Endpoint cluster advertising this route
      * 
      * @return endpoint
-     **/
+     */
     @javax.annotation.Nonnull
     public String getEndpoint() {
         return endpoint;
     }
 
-    public void setEndpoint(String endpoint) {
+    public void setEndpoint(@javax.annotation.Nonnull String endpoint) {
         this.endpoint = endpoint;
     }
 
-    public EsiStatusResponse method(String method) {
-
+    public EsiStatusResponse method(@javax.annotation.Nonnull String method) {
         this.method = method;
         return this;
     }
@@ -161,18 +167,17 @@ public class EsiStatusResponse implements Serializable {
      * Swagger defined method
      * 
      * @return method
-     **/
+     */
     @javax.annotation.Nonnull
     public String getMethod() {
         return method;
     }
 
-    public void setMethod(String method) {
+    public void setMethod(@javax.annotation.Nonnull String method) {
         this.method = method;
     }
 
-    public EsiStatusResponse route(String route) {
-
+    public EsiStatusResponse route(@javax.annotation.Nonnull String route) {
         this.route = route;
         return this;
     }
@@ -181,25 +186,23 @@ public class EsiStatusResponse implements Serializable {
      * Swagger defined route, not including version prefix
      * 
      * @return route
-     **/
+     */
     @javax.annotation.Nonnull
     public String getRoute() {
         return route;
     }
 
-    public void setRoute(String route) {
+    public void setRoute(@javax.annotation.Nonnull String route) {
         this.route = route;
     }
 
-    public EsiStatusResponse statusString(String status) {
-
-        this.status = status;
+    public EsiStatusResponse status(@javax.annotation.Nonnull StatusEnum status) {
+        this.statusEnum = status;
         return this;
     }
 
-    public EsiStatusResponse status(StatusEnum statusEnum) {
-
-        this.statusEnum = statusEnum;
+    public EsiStatusResponse statusString(@javax.annotation.Nonnull String status) {
+        this.status = status;
         return this;
     }
 
@@ -209,8 +212,8 @@ public class EsiStatusResponse implements Serializable {
      * and/or are very slow (5s+) on average.
      * 
      * @return status
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public StatusEnum getStatus() {
         if (statusEnum == null) {
             statusEnum = StatusEnum.fromValue(status);
@@ -222,24 +225,24 @@ public class EsiStatusResponse implements Serializable {
         return status;
     }
 
-    public void setStatus(StatusEnum statusEnum) {
-        this.statusEnum = statusEnum;
+    public void setStatus(@javax.annotation.Nonnull StatusEnum status) {
+        this.statusEnum = status;
     }
 
-    public void setStatusString(String status) {
+    public void setStatusString(@javax.annotation.Nonnull String status) {
         this.status = status;
     }
 
-    public EsiStatusResponse tags(List<String> tags) {
-
+    public EsiStatusResponse tags(@javax.annotation.Nonnull List<String> tags) {
         this.tags = tags;
         return this;
     }
 
-    public EsiStatusResponse addtagsItem(String tagsItem) {
+    public EsiStatusResponse addTagsItem(String tagsItem) {
         if (this.tags == null) {
             this.tags = new ArrayList<>();
         }
+
         this.tags.add(tagsItem);
         return this;
     }
@@ -248,13 +251,13 @@ public class EsiStatusResponse implements Serializable {
      * Swagger tags applicable to this route
      * 
      * @return tags
-     **/
+     */
     @javax.annotation.Nonnull
     public List<String> getTags() {
         return tags;
     }
 
-    public void setTags(List<String> tags) {
+    public void setTags(@javax.annotation.Nonnull List<String> tags) {
         this.tags = tags;
     }
 
@@ -325,22 +328,22 @@ public class EsiStatusResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             EsiStatusResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!EsiStatusResponse.openapiRequiredFields.isEmpty()) { // has
                                                                       // required
                                                                       // fields
                                                                       // but
                                                                       // JSON
-                                                                      // object
+                                                                      // element
                                                                       // is null
                 throw new IllegalArgumentException(String.format(
                         "The required field(s) %s in EsiStatusResponse is not found in the empty JSON string",
@@ -348,26 +351,27 @@ public class EsiStatusResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!EsiStatusResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `EsiStatusResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : EsiStatusResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("endpoint").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `endpoint` to be a primitive type in the JSON string but got `%s`", jsonObj
@@ -388,6 +392,8 @@ public class EsiStatusResponse implements Serializable {
                     "Expected the field `status` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("status").toString()));
         }
+        // validate the required field `status`
+        StatusEnum.validateJsonElement(jsonObj.get("status"));
         // ensure the required json array is present
         if (jsonObj.get("tags") == null) {
             throw new IllegalArgumentException(
@@ -420,9 +426,9 @@ public class EsiStatusResponse implements Serializable {
 
                 @Override
                 public EsiStatusResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

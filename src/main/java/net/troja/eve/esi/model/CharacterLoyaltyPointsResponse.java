@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -56,17 +54,18 @@ public class CharacterLoyaltyPointsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_CORPORATION_ID = "corporation_id";
     @SerializedName(SERIALIZED_NAME_CORPORATION_ID)
+    @javax.annotation.Nonnull
     private Integer corporationId;
 
     public static final String SERIALIZED_NAME_LOYALTY_POINTS = "loyalty_points";
     @SerializedName(SERIALIZED_NAME_LOYALTY_POINTS)
+    @javax.annotation.Nonnull
     private Integer loyaltyPoints;
 
     public CharacterLoyaltyPointsResponse() {
     }
 
-    public CharacterLoyaltyPointsResponse corporationId(Integer corporationId) {
-
+    public CharacterLoyaltyPointsResponse corporationId(@javax.annotation.Nonnull Integer corporationId) {
         this.corporationId = corporationId;
         return this;
     }
@@ -75,18 +74,17 @@ public class CharacterLoyaltyPointsResponse implements Serializable {
      * corporation_id integer
      * 
      * @return corporationId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getCorporationId() {
         return corporationId;
     }
 
-    public void setCorporationId(Integer corporationId) {
+    public void setCorporationId(@javax.annotation.Nonnull Integer corporationId) {
         this.corporationId = corporationId;
     }
 
-    public CharacterLoyaltyPointsResponse loyaltyPoints(Integer loyaltyPoints) {
-
+    public CharacterLoyaltyPointsResponse loyaltyPoints(@javax.annotation.Nonnull Integer loyaltyPoints) {
         this.loyaltyPoints = loyaltyPoints;
         return this;
     }
@@ -95,13 +93,13 @@ public class CharacterLoyaltyPointsResponse implements Serializable {
      * loyalty_points integer
      * 
      * @return loyaltyPoints
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getLoyaltyPoints() {
         return loyaltyPoints;
     }
 
-    public void setLoyaltyPoints(Integer loyaltyPoints) {
+    public void setLoyaltyPoints(@javax.annotation.Nonnull Integer loyaltyPoints) {
         this.loyaltyPoints = loyaltyPoints;
     }
 
@@ -160,22 +158,22 @@ public class CharacterLoyaltyPointsResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CharacterLoyaltyPointsResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CharacterLoyaltyPointsResponse.openapiRequiredFields.isEmpty()) { // has
                                                                                    // required
                                                                                    // fields
                                                                                    // but
                                                                                    // JSON
-                                                                                   // object
+                                                                                   // element
                                                                                    // is
                                                                                    // null
                 throw new IllegalArgumentException(
@@ -185,26 +183,27 @@ public class CharacterLoyaltyPointsResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CharacterLoyaltyPointsResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CharacterLoyaltyPointsResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CharacterLoyaltyPointsResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -229,9 +228,9 @@ public class CharacterLoyaltyPointsResponse implements Serializable {
 
                 @Override
                 public CharacterLoyaltyPointsResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

@@ -39,12 +39,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -58,29 +56,33 @@ public class MarketGroupResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_DESCRIPTION = "description";
     @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+    @javax.annotation.Nonnull
     private String description;
 
     public static final String SERIALIZED_NAME_MARKET_GROUP_ID = "market_group_id";
     @SerializedName(SERIALIZED_NAME_MARKET_GROUP_ID)
+    @javax.annotation.Nonnull
     private Integer marketGroupId;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
+    @javax.annotation.Nonnull
     private String name;
 
     public static final String SERIALIZED_NAME_PARENT_GROUP_ID = "parent_group_id";
     @SerializedName(SERIALIZED_NAME_PARENT_GROUP_ID)
+    @javax.annotation.Nullable
     private Integer parentGroupId;
 
     public static final String SERIALIZED_NAME_TYPES = "types";
     @SerializedName(SERIALIZED_NAME_TYPES)
+    @javax.annotation.Nonnull
     private List<Integer> types = new ArrayList<>();
 
     public MarketGroupResponse() {
     }
 
-    public MarketGroupResponse description(String description) {
-
+    public MarketGroupResponse description(@javax.annotation.Nonnull String description) {
         this.description = description;
         return this;
     }
@@ -89,18 +91,17 @@ public class MarketGroupResponse implements Serializable {
      * description string
      * 
      * @return description
-     **/
+     */
     @javax.annotation.Nonnull
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(@javax.annotation.Nonnull String description) {
         this.description = description;
     }
 
-    public MarketGroupResponse marketGroupId(Integer marketGroupId) {
-
+    public MarketGroupResponse marketGroupId(@javax.annotation.Nonnull Integer marketGroupId) {
         this.marketGroupId = marketGroupId;
         return this;
     }
@@ -109,18 +110,17 @@ public class MarketGroupResponse implements Serializable {
      * market_group_id integer
      * 
      * @return marketGroupId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getMarketGroupId() {
         return marketGroupId;
     }
 
-    public void setMarketGroupId(Integer marketGroupId) {
+    public void setMarketGroupId(@javax.annotation.Nonnull Integer marketGroupId) {
         this.marketGroupId = marketGroupId;
     }
 
-    public MarketGroupResponse name(String name) {
-
+    public MarketGroupResponse name(@javax.annotation.Nonnull String name) {
         this.name = name;
         return this;
     }
@@ -129,18 +129,17 @@ public class MarketGroupResponse implements Serializable {
      * name string
      * 
      * @return name
-     **/
+     */
     @javax.annotation.Nonnull
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@javax.annotation.Nonnull String name) {
         this.name = name;
     }
 
-    public MarketGroupResponse parentGroupId(Integer parentGroupId) {
-
+    public MarketGroupResponse parentGroupId(@javax.annotation.Nullable Integer parentGroupId) {
         this.parentGroupId = parentGroupId;
         return this;
     }
@@ -149,26 +148,26 @@ public class MarketGroupResponse implements Serializable {
      * parent_group_id integer
      * 
      * @return parentGroupId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getParentGroupId() {
         return parentGroupId;
     }
 
-    public void setParentGroupId(Integer parentGroupId) {
+    public void setParentGroupId(@javax.annotation.Nullable Integer parentGroupId) {
         this.parentGroupId = parentGroupId;
     }
 
-    public MarketGroupResponse types(List<Integer> types) {
-
+    public MarketGroupResponse types(@javax.annotation.Nonnull List<Integer> types) {
         this.types = types;
         return this;
     }
 
-    public MarketGroupResponse addtypesItem(Integer typesItem) {
+    public MarketGroupResponse addTypesItem(Integer typesItem) {
         if (this.types == null) {
             this.types = new ArrayList<>();
         }
+
         this.types.add(typesItem);
         return this;
     }
@@ -177,13 +176,13 @@ public class MarketGroupResponse implements Serializable {
      * types array
      * 
      * @return types
-     **/
+     */
     @javax.annotation.Nonnull
     public List<Integer> getTypes() {
         return types;
     }
 
-    public void setTypes(List<Integer> types) {
+    public void setTypes(@javax.annotation.Nonnull List<Integer> types) {
         this.types = types;
     }
 
@@ -253,22 +252,22 @@ public class MarketGroupResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             MarketGroupResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!MarketGroupResponse.openapiRequiredFields.isEmpty()) { // has
                                                                         // required
                                                                         // fields
                                                                         // but
                                                                         // JSON
-                                                                        // object
+                                                                        // element
                                                                         // is
                                                                         // null
                 throw new IllegalArgumentException(String.format(
@@ -277,26 +276,27 @@ public class MarketGroupResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!MarketGroupResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `MarketGroupResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : MarketGroupResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("description").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj
@@ -339,9 +339,9 @@ public class MarketGroupResponse implements Serializable {
 
                 @Override
                 public MarketGroupResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

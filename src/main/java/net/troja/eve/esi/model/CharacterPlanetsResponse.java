@@ -38,12 +38,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -57,18 +55,22 @@ public class CharacterPlanetsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_LAST_UPDATE = "last_update";
     @SerializedName(SERIALIZED_NAME_LAST_UPDATE)
+    @javax.annotation.Nonnull
     private OffsetDateTime lastUpdate;
 
     public static final String SERIALIZED_NAME_NUM_PINS = "num_pins";
     @SerializedName(SERIALIZED_NAME_NUM_PINS)
+    @javax.annotation.Nonnull
     private Integer numPins;
 
     public static final String SERIALIZED_NAME_OWNER_ID = "owner_id";
     @SerializedName(SERIALIZED_NAME_OWNER_ID)
+    @javax.annotation.Nonnull
     private Integer ownerId;
 
     public static final String SERIALIZED_NAME_PLANET_ID = "planet_id";
     @SerializedName(SERIALIZED_NAME_PLANET_ID)
+    @javax.annotation.Nonnull
     private Integer planetId;
 
     /**
@@ -128,26 +130,33 @@ public class CharacterPlanetsResponse implements Serializable {
                 return PlanetTypeEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            PlanetTypeEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_PLANET_TYPE = "planet_type";
     @SerializedName(SERIALIZED_NAME_PLANET_TYPE)
+    @javax.annotation.Nonnull
     private String planetType;
     private PlanetTypeEnum planetTypeEnum;
 
     public static final String SERIALIZED_NAME_SOLAR_SYSTEM_ID = "solar_system_id";
     @SerializedName(SERIALIZED_NAME_SOLAR_SYSTEM_ID)
+    @javax.annotation.Nonnull
     private Integer solarSystemId;
 
     public static final String SERIALIZED_NAME_UPGRADE_LEVEL = "upgrade_level";
     @SerializedName(SERIALIZED_NAME_UPGRADE_LEVEL)
+    @javax.annotation.Nonnull
     private Integer upgradeLevel;
 
     public CharacterPlanetsResponse() {
     }
 
-    public CharacterPlanetsResponse lastUpdate(OffsetDateTime lastUpdate) {
-
+    public CharacterPlanetsResponse lastUpdate(@javax.annotation.Nonnull OffsetDateTime lastUpdate) {
         this.lastUpdate = lastUpdate;
         return this;
     }
@@ -156,18 +165,17 @@ public class CharacterPlanetsResponse implements Serializable {
      * last_update string
      * 
      * @return lastUpdate
-     **/
+     */
     @javax.annotation.Nonnull
     public OffsetDateTime getLastUpdate() {
         return lastUpdate;
     }
 
-    public void setLastUpdate(OffsetDateTime lastUpdate) {
+    public void setLastUpdate(@javax.annotation.Nonnull OffsetDateTime lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
 
-    public CharacterPlanetsResponse numPins(Integer numPins) {
-
+    public CharacterPlanetsResponse numPins(@javax.annotation.Nonnull Integer numPins) {
         this.numPins = numPins;
         return this;
     }
@@ -176,18 +184,17 @@ public class CharacterPlanetsResponse implements Serializable {
      * num_pins integer minimum: 1
      * 
      * @return numPins
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getNumPins() {
         return numPins;
     }
 
-    public void setNumPins(Integer numPins) {
+    public void setNumPins(@javax.annotation.Nonnull Integer numPins) {
         this.numPins = numPins;
     }
 
-    public CharacterPlanetsResponse ownerId(Integer ownerId) {
-
+    public CharacterPlanetsResponse ownerId(@javax.annotation.Nonnull Integer ownerId) {
         this.ownerId = ownerId;
         return this;
     }
@@ -196,18 +203,17 @@ public class CharacterPlanetsResponse implements Serializable {
      * owner_id integer
      * 
      * @return ownerId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getOwnerId() {
         return ownerId;
     }
 
-    public void setOwnerId(Integer ownerId) {
+    public void setOwnerId(@javax.annotation.Nonnull Integer ownerId) {
         this.ownerId = ownerId;
     }
 
-    public CharacterPlanetsResponse planetId(Integer planetId) {
-
+    public CharacterPlanetsResponse planetId(@javax.annotation.Nonnull Integer planetId) {
         this.planetId = planetId;
         return this;
     }
@@ -216,25 +222,23 @@ public class CharacterPlanetsResponse implements Serializable {
      * planet_id integer
      * 
      * @return planetId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getPlanetId() {
         return planetId;
     }
 
-    public void setPlanetId(Integer planetId) {
+    public void setPlanetId(@javax.annotation.Nonnull Integer planetId) {
         this.planetId = planetId;
     }
 
-    public CharacterPlanetsResponse planetTypeString(String planetType) {
-
-        this.planetType = planetType;
+    public CharacterPlanetsResponse planetType(@javax.annotation.Nonnull PlanetTypeEnum planetType) {
+        this.planetTypeEnum = planetType;
         return this;
     }
 
-    public CharacterPlanetsResponse planetType(PlanetTypeEnum planetTypeEnum) {
-
-        this.planetTypeEnum = planetTypeEnum;
+    public CharacterPlanetsResponse planetTypeString(@javax.annotation.Nonnull String planetType) {
+        this.planetType = planetType;
         return this;
     }
 
@@ -242,8 +246,8 @@ public class CharacterPlanetsResponse implements Serializable {
      * planet_type string
      * 
      * @return planetType
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public PlanetTypeEnum getPlanetType() {
         if (planetTypeEnum == null) {
             planetTypeEnum = PlanetTypeEnum.fromValue(planetType);
@@ -255,16 +259,15 @@ public class CharacterPlanetsResponse implements Serializable {
         return planetType;
     }
 
-    public void setPlanetType(PlanetTypeEnum planetTypeEnum) {
-        this.planetTypeEnum = planetTypeEnum;
+    public void setPlanetType(@javax.annotation.Nonnull PlanetTypeEnum planetType) {
+        this.planetTypeEnum = planetType;
     }
 
-    public void setPlanetTypeString(String planetType) {
+    public void setPlanetTypeString(@javax.annotation.Nonnull String planetType) {
         this.planetType = planetType;
     }
 
-    public CharacterPlanetsResponse solarSystemId(Integer solarSystemId) {
-
+    public CharacterPlanetsResponse solarSystemId(@javax.annotation.Nonnull Integer solarSystemId) {
         this.solarSystemId = solarSystemId;
         return this;
     }
@@ -273,18 +276,17 @@ public class CharacterPlanetsResponse implements Serializable {
      * solar_system_id integer
      * 
      * @return solarSystemId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getSolarSystemId() {
         return solarSystemId;
     }
 
-    public void setSolarSystemId(Integer solarSystemId) {
+    public void setSolarSystemId(@javax.annotation.Nonnull Integer solarSystemId) {
         this.solarSystemId = solarSystemId;
     }
 
-    public CharacterPlanetsResponse upgradeLevel(Integer upgradeLevel) {
-
+    public CharacterPlanetsResponse upgradeLevel(@javax.annotation.Nonnull Integer upgradeLevel) {
         this.upgradeLevel = upgradeLevel;
         return this;
     }
@@ -293,13 +295,13 @@ public class CharacterPlanetsResponse implements Serializable {
      * upgrade_level integer minimum: 0 maximum: 5
      * 
      * @return upgradeLevel
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getUpgradeLevel() {
         return upgradeLevel;
     }
 
-    public void setUpgradeLevel(Integer upgradeLevel) {
+    public void setUpgradeLevel(@javax.annotation.Nonnull Integer upgradeLevel) {
         this.upgradeLevel = upgradeLevel;
     }
 
@@ -378,22 +380,22 @@ public class CharacterPlanetsResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CharacterPlanetsResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CharacterPlanetsResponse.openapiRequiredFields.isEmpty()) { // has
                                                                              // required
                                                                              // fields
                                                                              // but
                                                                              // JSON
-                                                                             // object
+                                                                             // element
                                                                              // is
                                                                              // null
                 throw new IllegalArgumentException(String.format(
@@ -402,31 +404,34 @@ public class CharacterPlanetsResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CharacterPlanetsResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CharacterPlanetsResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CharacterPlanetsResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("planet_type").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `planet_type` to be a primitive type in the JSON string but got `%s`", jsonObj
                             .get("planet_type").toString()));
         }
+        // validate the required field `planet_type`
+        PlanetTypeEnum.validateJsonElement(jsonObj.get("planet_type"));
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -450,9 +455,9 @@ public class CharacterPlanetsResponse implements Serializable {
 
                 @Override
                 public CharacterPlanetsResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

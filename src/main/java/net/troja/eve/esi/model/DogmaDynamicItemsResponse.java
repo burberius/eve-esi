@@ -41,12 +41,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -60,29 +58,33 @@ public class DogmaDynamicItemsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_CREATED_BY = "created_by";
     @SerializedName(SERIALIZED_NAME_CREATED_BY)
+    @javax.annotation.Nonnull
     private Integer createdBy;
 
     public static final String SERIALIZED_NAME_DOGMA_ATTRIBUTES = "dogma_attributes";
     @SerializedName(SERIALIZED_NAME_DOGMA_ATTRIBUTES)
+    @javax.annotation.Nonnull
     private List<DogmaDynamicAttribute> dogmaAttributes = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_DOGMA_EFFECTS = "dogma_effects";
     @SerializedName(SERIALIZED_NAME_DOGMA_EFFECTS)
+    @javax.annotation.Nonnull
     private List<DogmaDynamicEffect> dogmaEffects = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_MUTATOR_TYPE_ID = "mutator_type_id";
     @SerializedName(SERIALIZED_NAME_MUTATOR_TYPE_ID)
+    @javax.annotation.Nonnull
     private Integer mutatorTypeId;
 
     public static final String SERIALIZED_NAME_SOURCE_TYPE_ID = "source_type_id";
     @SerializedName(SERIALIZED_NAME_SOURCE_TYPE_ID)
+    @javax.annotation.Nonnull
     private Integer sourceTypeId;
 
     public DogmaDynamicItemsResponse() {
     }
 
-    public DogmaDynamicItemsResponse createdBy(Integer createdBy) {
-
+    public DogmaDynamicItemsResponse createdBy(@javax.annotation.Nonnull Integer createdBy) {
         this.createdBy = createdBy;
         return this;
     }
@@ -91,26 +93,27 @@ public class DogmaDynamicItemsResponse implements Serializable {
      * The ID of the character who created the item
      * 
      * @return createdBy
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(Integer createdBy) {
+    public void setCreatedBy(@javax.annotation.Nonnull Integer createdBy) {
         this.createdBy = createdBy;
     }
 
-    public DogmaDynamicItemsResponse dogmaAttributes(List<DogmaDynamicAttribute> dogmaAttributes) {
-
+    public DogmaDynamicItemsResponse dogmaAttributes(
+            @javax.annotation.Nonnull List<DogmaDynamicAttribute> dogmaAttributes) {
         this.dogmaAttributes = dogmaAttributes;
         return this;
     }
 
-    public DogmaDynamicItemsResponse adddogmaAttributesItem(DogmaDynamicAttribute dogmaAttributesItem) {
+    public DogmaDynamicItemsResponse addDogmaAttributesItem(DogmaDynamicAttribute dogmaAttributesItem) {
         if (this.dogmaAttributes == null) {
             this.dogmaAttributes = new ArrayList<>();
         }
+
         this.dogmaAttributes.add(dogmaAttributesItem);
         return this;
     }
@@ -119,26 +122,26 @@ public class DogmaDynamicItemsResponse implements Serializable {
      * dogma_attributes array
      * 
      * @return dogmaAttributes
-     **/
+     */
     @javax.annotation.Nonnull
     public List<DogmaDynamicAttribute> getDogmaAttributes() {
         return dogmaAttributes;
     }
 
-    public void setDogmaAttributes(List<DogmaDynamicAttribute> dogmaAttributes) {
+    public void setDogmaAttributes(@javax.annotation.Nonnull List<DogmaDynamicAttribute> dogmaAttributes) {
         this.dogmaAttributes = dogmaAttributes;
     }
 
-    public DogmaDynamicItemsResponse dogmaEffects(List<DogmaDynamicEffect> dogmaEffects) {
-
+    public DogmaDynamicItemsResponse dogmaEffects(@javax.annotation.Nonnull List<DogmaDynamicEffect> dogmaEffects) {
         this.dogmaEffects = dogmaEffects;
         return this;
     }
 
-    public DogmaDynamicItemsResponse adddogmaEffectsItem(DogmaDynamicEffect dogmaEffectsItem) {
+    public DogmaDynamicItemsResponse addDogmaEffectsItem(DogmaDynamicEffect dogmaEffectsItem) {
         if (this.dogmaEffects == null) {
             this.dogmaEffects = new ArrayList<>();
         }
+
         this.dogmaEffects.add(dogmaEffectsItem);
         return this;
     }
@@ -147,18 +150,17 @@ public class DogmaDynamicItemsResponse implements Serializable {
      * dogma_effects array
      * 
      * @return dogmaEffects
-     **/
+     */
     @javax.annotation.Nonnull
     public List<DogmaDynamicEffect> getDogmaEffects() {
         return dogmaEffects;
     }
 
-    public void setDogmaEffects(List<DogmaDynamicEffect> dogmaEffects) {
+    public void setDogmaEffects(@javax.annotation.Nonnull List<DogmaDynamicEffect> dogmaEffects) {
         this.dogmaEffects = dogmaEffects;
     }
 
-    public DogmaDynamicItemsResponse mutatorTypeId(Integer mutatorTypeId) {
-
+    public DogmaDynamicItemsResponse mutatorTypeId(@javax.annotation.Nonnull Integer mutatorTypeId) {
         this.mutatorTypeId = mutatorTypeId;
         return this;
     }
@@ -167,18 +169,17 @@ public class DogmaDynamicItemsResponse implements Serializable {
      * The type ID of the mutator used to generate the dynamic item.
      * 
      * @return mutatorTypeId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getMutatorTypeId() {
         return mutatorTypeId;
     }
 
-    public void setMutatorTypeId(Integer mutatorTypeId) {
+    public void setMutatorTypeId(@javax.annotation.Nonnull Integer mutatorTypeId) {
         this.mutatorTypeId = mutatorTypeId;
     }
 
-    public DogmaDynamicItemsResponse sourceTypeId(Integer sourceTypeId) {
-
+    public DogmaDynamicItemsResponse sourceTypeId(@javax.annotation.Nonnull Integer sourceTypeId) {
         this.sourceTypeId = sourceTypeId;
         return this;
     }
@@ -188,13 +189,13 @@ public class DogmaDynamicItemsResponse implements Serializable {
      * dynamic item.
      * 
      * @return sourceTypeId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getSourceTypeId() {
         return sourceTypeId;
     }
 
-    public void setSourceTypeId(Integer sourceTypeId) {
+    public void setSourceTypeId(@javax.annotation.Nonnull Integer sourceTypeId) {
         this.sourceTypeId = sourceTypeId;
     }
 
@@ -265,22 +266,22 @@ public class DogmaDynamicItemsResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             DogmaDynamicItemsResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!DogmaDynamicItemsResponse.openapiRequiredFields.isEmpty()) { // has
                                                                               // required
                                                                               // fields
                                                                               // but
                                                                               // JSON
-                                                                              // object
+                                                                              // element
                                                                               // is
                                                                               // null
                 throw new IllegalArgumentException(String.format(
@@ -289,26 +290,27 @@ public class DogmaDynamicItemsResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!DogmaDynamicItemsResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `DogmaDynamicItemsResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : DogmaDynamicItemsResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         // ensure the json data is an array
         if (!jsonObj.get("dogma_attributes").isJsonArray()) {
             throw new IllegalArgumentException(String.format(
@@ -319,7 +321,7 @@ public class DogmaDynamicItemsResponse implements Serializable {
         JsonArray jsonArraydogmaAttributes = jsonObj.getAsJsonArray("dogma_attributes");
         // validate the required field `dogma_attributes` (array)
         for (int i = 0; i < jsonArraydogmaAttributes.size(); i++) {
-            DogmaDynamicAttribute.validateJsonObject(jsonArraydogmaAttributes.get(i).getAsJsonObject());
+            DogmaDynamicAttribute.validateJsonElement(jsonArraydogmaAttributes.get(i));
         };
         // ensure the json data is an array
         if (!jsonObj.get("dogma_effects").isJsonArray()) {
@@ -331,7 +333,7 @@ public class DogmaDynamicItemsResponse implements Serializable {
         JsonArray jsonArraydogmaEffects = jsonObj.getAsJsonArray("dogma_effects");
         // validate the required field `dogma_effects` (array)
         for (int i = 0; i < jsonArraydogmaEffects.size(); i++) {
-            DogmaDynamicEffect.validateJsonObject(jsonArraydogmaEffects.get(i).getAsJsonObject());
+            DogmaDynamicEffect.validateJsonElement(jsonArraydogmaEffects.get(i));
         };
     }
 
@@ -356,9 +358,9 @@ public class DogmaDynamicItemsResponse implements Serializable {
 
                 @Override
                 public DogmaDynamicItemsResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

@@ -40,12 +40,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -59,10 +57,12 @@ public class CorporationStarbaseResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ALLOW_ALLIANCE_MEMBERS = "allow_alliance_members";
     @SerializedName(SERIALIZED_NAME_ALLOW_ALLIANCE_MEMBERS)
+    @javax.annotation.Nonnull
     private Boolean allowAllianceMembers;
 
     public static final String SERIALIZED_NAME_ALLOW_CORPORATION_MEMBERS = "allow_corporation_members";
     @SerializedName(SERIALIZED_NAME_ALLOW_CORPORATION_MEMBERS)
+    @javax.annotation.Nonnull
     private Boolean allowCorporationMembers;
 
     /**
@@ -114,27 +114,37 @@ public class CorporationStarbaseResponse implements Serializable {
                 return AnchorEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            AnchorEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_ANCHOR = "anchor";
     @SerializedName(SERIALIZED_NAME_ANCHOR)
+    @javax.annotation.Nonnull
     private String anchor;
     private AnchorEnum anchorEnum;
 
     public static final String SERIALIZED_NAME_ATTACK_IF_AT_WAR = "attack_if_at_war";
     @SerializedName(SERIALIZED_NAME_ATTACK_IF_AT_WAR)
+    @javax.annotation.Nonnull
     private Boolean attackIfAtWar;
 
     public static final String SERIALIZED_NAME_ATTACK_IF_OTHER_SECURITY_STATUS_DROPPING = "attack_if_other_security_status_dropping";
     @SerializedName(SERIALIZED_NAME_ATTACK_IF_OTHER_SECURITY_STATUS_DROPPING)
+    @javax.annotation.Nonnull
     private Boolean attackIfOtherSecurityStatusDropping;
 
     public static final String SERIALIZED_NAME_ATTACK_SECURITY_STATUS_THRESHOLD = "attack_security_status_threshold";
     @SerializedName(SERIALIZED_NAME_ATTACK_SECURITY_STATUS_THRESHOLD)
+    @javax.annotation.Nullable
     private Float attackSecurityStatusThreshold;
 
     public static final String SERIALIZED_NAME_ATTACK_STANDING_THRESHOLD = "attack_standing_threshold";
     @SerializedName(SERIALIZED_NAME_ATTACK_STANDING_THRESHOLD)
+    @javax.annotation.Nullable
     private Float attackStandingThreshold;
 
     /**
@@ -186,10 +196,16 @@ public class CorporationStarbaseResponse implements Serializable {
                 return FuelBayTakeEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            FuelBayTakeEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_FUEL_BAY_TAKE = "fuel_bay_take";
     @SerializedName(SERIALIZED_NAME_FUEL_BAY_TAKE)
+    @javax.annotation.Nonnull
     private String fuelBayTake;
     private FuelBayTakeEnum fuelBayTakeEnum;
 
@@ -245,15 +261,22 @@ public class CorporationStarbaseResponse implements Serializable {
                 return FuelBayViewEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            FuelBayViewEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_FUEL_BAY_VIEW = "fuel_bay_view";
     @SerializedName(SERIALIZED_NAME_FUEL_BAY_VIEW)
+    @javax.annotation.Nonnull
     private String fuelBayView;
     private FuelBayViewEnum fuelBayViewEnum;
 
     public static final String SERIALIZED_NAME_FUELS = "fuels";
     @SerializedName(SERIALIZED_NAME_FUELS)
+    @javax.annotation.Nullable
     private List<CorporationStarbaseFuel> fuels = new ArrayList<>();
 
     /**
@@ -305,10 +328,16 @@ public class CorporationStarbaseResponse implements Serializable {
                 return OfflineEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            OfflineEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_OFFLINE = "offline";
     @SerializedName(SERIALIZED_NAME_OFFLINE)
+    @javax.annotation.Nonnull
     private String offline;
     private OfflineEnum offlineEnum;
 
@@ -361,10 +390,16 @@ public class CorporationStarbaseResponse implements Serializable {
                 return OnlineEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            OnlineEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_ONLINE = "online";
     @SerializedName(SERIALIZED_NAME_ONLINE)
+    @javax.annotation.Nonnull
     private String online;
     private OnlineEnum onlineEnum;
 
@@ -417,22 +452,28 @@ public class CorporationStarbaseResponse implements Serializable {
                 return UnanchorEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            UnanchorEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_UNANCHOR = "unanchor";
     @SerializedName(SERIALIZED_NAME_UNANCHOR)
+    @javax.annotation.Nonnull
     private String unanchor;
     private UnanchorEnum unanchorEnum;
 
     public static final String SERIALIZED_NAME_USE_ALLIANCE_STANDINGS = "use_alliance_standings";
     @SerializedName(SERIALIZED_NAME_USE_ALLIANCE_STANDINGS)
+    @javax.annotation.Nonnull
     private Boolean useAllianceStandings;
 
     public CorporationStarbaseResponse() {
     }
 
-    public CorporationStarbaseResponse allowAllianceMembers(Boolean allowAllianceMembers) {
-
+    public CorporationStarbaseResponse allowAllianceMembers(@javax.annotation.Nonnull Boolean allowAllianceMembers) {
         this.allowAllianceMembers = allowAllianceMembers;
         return this;
     }
@@ -441,18 +482,17 @@ public class CorporationStarbaseResponse implements Serializable {
      * allow_alliance_members boolean
      * 
      * @return allowAllianceMembers
-     **/
+     */
     @javax.annotation.Nonnull
     public Boolean getAllowAllianceMembers() {
         return allowAllianceMembers;
     }
 
-    public void setAllowAllianceMembers(Boolean allowAllianceMembers) {
+    public void setAllowAllianceMembers(@javax.annotation.Nonnull Boolean allowAllianceMembers) {
         this.allowAllianceMembers = allowAllianceMembers;
     }
 
-    public CorporationStarbaseResponse allowCorporationMembers(Boolean allowCorporationMembers) {
-
+    public CorporationStarbaseResponse allowCorporationMembers(@javax.annotation.Nonnull Boolean allowCorporationMembers) {
         this.allowCorporationMembers = allowCorporationMembers;
         return this;
     }
@@ -461,25 +501,23 @@ public class CorporationStarbaseResponse implements Serializable {
      * allow_corporation_members boolean
      * 
      * @return allowCorporationMembers
-     **/
+     */
     @javax.annotation.Nonnull
     public Boolean getAllowCorporationMembers() {
         return allowCorporationMembers;
     }
 
-    public void setAllowCorporationMembers(Boolean allowCorporationMembers) {
+    public void setAllowCorporationMembers(@javax.annotation.Nonnull Boolean allowCorporationMembers) {
         this.allowCorporationMembers = allowCorporationMembers;
     }
 
-    public CorporationStarbaseResponse anchorString(String anchor) {
-
-        this.anchor = anchor;
+    public CorporationStarbaseResponse anchor(@javax.annotation.Nonnull AnchorEnum anchor) {
+        this.anchorEnum = anchor;
         return this;
     }
 
-    public CorporationStarbaseResponse anchor(AnchorEnum anchorEnum) {
-
-        this.anchorEnum = anchorEnum;
+    public CorporationStarbaseResponse anchorString(@javax.annotation.Nonnull String anchor) {
+        this.anchor = anchor;
         return this;
     }
 
@@ -487,8 +525,8 @@ public class CorporationStarbaseResponse implements Serializable {
      * Who can anchor starbase (POS) and its structures
      * 
      * @return anchor
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public AnchorEnum getAnchor() {
         if (anchorEnum == null) {
             anchorEnum = AnchorEnum.fromValue(anchor);
@@ -500,16 +538,15 @@ public class CorporationStarbaseResponse implements Serializable {
         return anchor;
     }
 
-    public void setAnchor(AnchorEnum anchorEnum) {
-        this.anchorEnum = anchorEnum;
+    public void setAnchor(@javax.annotation.Nonnull AnchorEnum anchor) {
+        this.anchorEnum = anchor;
     }
 
-    public void setAnchorString(String anchor) {
+    public void setAnchorString(@javax.annotation.Nonnull String anchor) {
         this.anchor = anchor;
     }
 
-    public CorporationStarbaseResponse attackIfAtWar(Boolean attackIfAtWar) {
-
+    public CorporationStarbaseResponse attackIfAtWar(@javax.annotation.Nonnull Boolean attackIfAtWar) {
         this.attackIfAtWar = attackIfAtWar;
         return this;
     }
@@ -518,18 +555,18 @@ public class CorporationStarbaseResponse implements Serializable {
      * attack_if_at_war boolean
      * 
      * @return attackIfAtWar
-     **/
+     */
     @javax.annotation.Nonnull
     public Boolean getAttackIfAtWar() {
         return attackIfAtWar;
     }
 
-    public void setAttackIfAtWar(Boolean attackIfAtWar) {
+    public void setAttackIfAtWar(@javax.annotation.Nonnull Boolean attackIfAtWar) {
         this.attackIfAtWar = attackIfAtWar;
     }
 
-    public CorporationStarbaseResponse attackIfOtherSecurityStatusDropping(Boolean attackIfOtherSecurityStatusDropping) {
-
+    public CorporationStarbaseResponse attackIfOtherSecurityStatusDropping(
+            @javax.annotation.Nonnull Boolean attackIfOtherSecurityStatusDropping) {
         this.attackIfOtherSecurityStatusDropping = attackIfOtherSecurityStatusDropping;
         return this;
     }
@@ -538,18 +575,19 @@ public class CorporationStarbaseResponse implements Serializable {
      * attack_if_other_security_status_dropping boolean
      * 
      * @return attackIfOtherSecurityStatusDropping
-     **/
+     */
     @javax.annotation.Nonnull
     public Boolean getAttackIfOtherSecurityStatusDropping() {
         return attackIfOtherSecurityStatusDropping;
     }
 
-    public void setAttackIfOtherSecurityStatusDropping(Boolean attackIfOtherSecurityStatusDropping) {
+    public void setAttackIfOtherSecurityStatusDropping(
+            @javax.annotation.Nonnull Boolean attackIfOtherSecurityStatusDropping) {
         this.attackIfOtherSecurityStatusDropping = attackIfOtherSecurityStatusDropping;
     }
 
-    public CorporationStarbaseResponse attackSecurityStatusThreshold(Float attackSecurityStatusThreshold) {
-
+    public CorporationStarbaseResponse attackSecurityStatusThreshold(
+            @javax.annotation.Nullable Float attackSecurityStatusThreshold) {
         this.attackSecurityStatusThreshold = attackSecurityStatusThreshold;
         return this;
     }
@@ -559,18 +597,17 @@ public class CorporationStarbaseResponse implements Serializable {
      * than this value
      * 
      * @return attackSecurityStatusThreshold
-     **/
+     */
     @javax.annotation.Nullable
     public Float getAttackSecurityStatusThreshold() {
         return attackSecurityStatusThreshold;
     }
 
-    public void setAttackSecurityStatusThreshold(Float attackSecurityStatusThreshold) {
+    public void setAttackSecurityStatusThreshold(@javax.annotation.Nullable Float attackSecurityStatusThreshold) {
         this.attackSecurityStatusThreshold = attackSecurityStatusThreshold;
     }
 
-    public CorporationStarbaseResponse attackStandingThreshold(Float attackStandingThreshold) {
-
+    public CorporationStarbaseResponse attackStandingThreshold(@javax.annotation.Nullable Float attackStandingThreshold) {
         this.attackStandingThreshold = attackStandingThreshold;
         return this;
     }
@@ -580,25 +617,23 @@ public class CorporationStarbaseResponse implements Serializable {
      * value
      * 
      * @return attackStandingThreshold
-     **/
+     */
     @javax.annotation.Nullable
     public Float getAttackStandingThreshold() {
         return attackStandingThreshold;
     }
 
-    public void setAttackStandingThreshold(Float attackStandingThreshold) {
+    public void setAttackStandingThreshold(@javax.annotation.Nullable Float attackStandingThreshold) {
         this.attackStandingThreshold = attackStandingThreshold;
     }
 
-    public CorporationStarbaseResponse fuelBayTakeString(String fuelBayTake) {
-
-        this.fuelBayTake = fuelBayTake;
+    public CorporationStarbaseResponse fuelBayTake(@javax.annotation.Nonnull FuelBayTakeEnum fuelBayTake) {
+        this.fuelBayTakeEnum = fuelBayTake;
         return this;
     }
 
-    public CorporationStarbaseResponse fuelBayTake(FuelBayTakeEnum fuelBayTakeEnum) {
-
-        this.fuelBayTakeEnum = fuelBayTakeEnum;
+    public CorporationStarbaseResponse fuelBayTakeString(@javax.annotation.Nonnull String fuelBayTake) {
+        this.fuelBayTake = fuelBayTake;
         return this;
     }
 
@@ -606,8 +641,8 @@ public class CorporationStarbaseResponse implements Serializable {
      * Who can take fuel blocks out of the starbase (POS)&#39;s fuel bay
      * 
      * @return fuelBayTake
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public FuelBayTakeEnum getFuelBayTake() {
         if (fuelBayTakeEnum == null) {
             fuelBayTakeEnum = FuelBayTakeEnum.fromValue(fuelBayTake);
@@ -619,23 +654,21 @@ public class CorporationStarbaseResponse implements Serializable {
         return fuelBayTake;
     }
 
-    public void setFuelBayTake(FuelBayTakeEnum fuelBayTakeEnum) {
-        this.fuelBayTakeEnum = fuelBayTakeEnum;
+    public void setFuelBayTake(@javax.annotation.Nonnull FuelBayTakeEnum fuelBayTake) {
+        this.fuelBayTakeEnum = fuelBayTake;
     }
 
-    public void setFuelBayTakeString(String fuelBayTake) {
+    public void setFuelBayTakeString(@javax.annotation.Nonnull String fuelBayTake) {
         this.fuelBayTake = fuelBayTake;
     }
 
-    public CorporationStarbaseResponse fuelBayViewString(String fuelBayView) {
-
-        this.fuelBayView = fuelBayView;
+    public CorporationStarbaseResponse fuelBayView(@javax.annotation.Nonnull FuelBayViewEnum fuelBayView) {
+        this.fuelBayViewEnum = fuelBayView;
         return this;
     }
 
-    public CorporationStarbaseResponse fuelBayView(FuelBayViewEnum fuelBayViewEnum) {
-
-        this.fuelBayViewEnum = fuelBayViewEnum;
+    public CorporationStarbaseResponse fuelBayViewString(@javax.annotation.Nonnull String fuelBayView) {
+        this.fuelBayView = fuelBayView;
         return this;
     }
 
@@ -646,8 +679,8 @@ public class CorporationStarbaseResponse implements Serializable {
      * settings follows the same scheme
      * 
      * @return fuelBayView
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public FuelBayViewEnum getFuelBayView() {
         if (fuelBayViewEnum == null) {
             fuelBayViewEnum = FuelBayViewEnum.fromValue(fuelBayView);
@@ -659,24 +692,24 @@ public class CorporationStarbaseResponse implements Serializable {
         return fuelBayView;
     }
 
-    public void setFuelBayView(FuelBayViewEnum fuelBayViewEnum) {
-        this.fuelBayViewEnum = fuelBayViewEnum;
+    public void setFuelBayView(@javax.annotation.Nonnull FuelBayViewEnum fuelBayView) {
+        this.fuelBayViewEnum = fuelBayView;
     }
 
-    public void setFuelBayViewString(String fuelBayView) {
+    public void setFuelBayViewString(@javax.annotation.Nonnull String fuelBayView) {
         this.fuelBayView = fuelBayView;
     }
 
-    public CorporationStarbaseResponse fuels(List<CorporationStarbaseFuel> fuels) {
-
+    public CorporationStarbaseResponse fuels(@javax.annotation.Nullable List<CorporationStarbaseFuel> fuels) {
         this.fuels = fuels;
         return this;
     }
 
-    public CorporationStarbaseResponse addfuelsItem(CorporationStarbaseFuel fuelsItem) {
+    public CorporationStarbaseResponse addFuelsItem(CorporationStarbaseFuel fuelsItem) {
         if (this.fuels == null) {
             this.fuels = new ArrayList<>();
         }
+
         this.fuels.add(fuelsItem);
         return this;
     }
@@ -686,25 +719,23 @@ public class CorporationStarbaseResponse implements Serializable {
      * starbase (POS)
      * 
      * @return fuels
-     **/
+     */
     @javax.annotation.Nullable
     public List<CorporationStarbaseFuel> getFuels() {
         return fuels;
     }
 
-    public void setFuels(List<CorporationStarbaseFuel> fuels) {
+    public void setFuels(@javax.annotation.Nullable List<CorporationStarbaseFuel> fuels) {
         this.fuels = fuels;
     }
 
-    public CorporationStarbaseResponse offlineString(String offline) {
-
-        this.offline = offline;
+    public CorporationStarbaseResponse offline(@javax.annotation.Nonnull OfflineEnum offline) {
+        this.offlineEnum = offline;
         return this;
     }
 
-    public CorporationStarbaseResponse offline(OfflineEnum offlineEnum) {
-
-        this.offlineEnum = offlineEnum;
+    public CorporationStarbaseResponse offlineString(@javax.annotation.Nonnull String offline) {
+        this.offline = offline;
         return this;
     }
 
@@ -712,8 +743,8 @@ public class CorporationStarbaseResponse implements Serializable {
      * Who can offline starbase (POS) and its structures
      * 
      * @return offline
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public OfflineEnum getOffline() {
         if (offlineEnum == null) {
             offlineEnum = OfflineEnum.fromValue(offline);
@@ -725,23 +756,21 @@ public class CorporationStarbaseResponse implements Serializable {
         return offline;
     }
 
-    public void setOffline(OfflineEnum offlineEnum) {
-        this.offlineEnum = offlineEnum;
+    public void setOffline(@javax.annotation.Nonnull OfflineEnum offline) {
+        this.offlineEnum = offline;
     }
 
-    public void setOfflineString(String offline) {
+    public void setOfflineString(@javax.annotation.Nonnull String offline) {
         this.offline = offline;
     }
 
-    public CorporationStarbaseResponse onlineString(String online) {
-
-        this.online = online;
+    public CorporationStarbaseResponse online(@javax.annotation.Nonnull OnlineEnum online) {
+        this.onlineEnum = online;
         return this;
     }
 
-    public CorporationStarbaseResponse online(OnlineEnum onlineEnum) {
-
-        this.onlineEnum = onlineEnum;
+    public CorporationStarbaseResponse onlineString(@javax.annotation.Nonnull String online) {
+        this.online = online;
         return this;
     }
 
@@ -749,8 +778,8 @@ public class CorporationStarbaseResponse implements Serializable {
      * Who can online starbase (POS) and its structures
      * 
      * @return online
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public OnlineEnum getOnline() {
         if (onlineEnum == null) {
             onlineEnum = OnlineEnum.fromValue(online);
@@ -762,23 +791,21 @@ public class CorporationStarbaseResponse implements Serializable {
         return online;
     }
 
-    public void setOnline(OnlineEnum onlineEnum) {
-        this.onlineEnum = onlineEnum;
+    public void setOnline(@javax.annotation.Nonnull OnlineEnum online) {
+        this.onlineEnum = online;
     }
 
-    public void setOnlineString(String online) {
+    public void setOnlineString(@javax.annotation.Nonnull String online) {
         this.online = online;
     }
 
-    public CorporationStarbaseResponse unanchorString(String unanchor) {
-
-        this.unanchor = unanchor;
+    public CorporationStarbaseResponse unanchor(@javax.annotation.Nonnull UnanchorEnum unanchor) {
+        this.unanchorEnum = unanchor;
         return this;
     }
 
-    public CorporationStarbaseResponse unanchor(UnanchorEnum unanchorEnum) {
-
-        this.unanchorEnum = unanchorEnum;
+    public CorporationStarbaseResponse unanchorString(@javax.annotation.Nonnull String unanchor) {
+        this.unanchor = unanchor;
         return this;
     }
 
@@ -786,8 +813,8 @@ public class CorporationStarbaseResponse implements Serializable {
      * Who can unanchor starbase (POS) and its structures
      * 
      * @return unanchor
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public UnanchorEnum getUnanchor() {
         if (unanchorEnum == null) {
             unanchorEnum = UnanchorEnum.fromValue(unanchor);
@@ -799,16 +826,15 @@ public class CorporationStarbaseResponse implements Serializable {
         return unanchor;
     }
 
-    public void setUnanchor(UnanchorEnum unanchorEnum) {
-        this.unanchorEnum = unanchorEnum;
+    public void setUnanchor(@javax.annotation.Nonnull UnanchorEnum unanchor) {
+        this.unanchorEnum = unanchor;
     }
 
-    public void setUnanchorString(String unanchor) {
+    public void setUnanchorString(@javax.annotation.Nonnull String unanchor) {
         this.unanchor = unanchor;
     }
 
-    public CorporationStarbaseResponse useAllianceStandings(Boolean useAllianceStandings) {
-
+    public CorporationStarbaseResponse useAllianceStandings(@javax.annotation.Nonnull Boolean useAllianceStandings) {
         this.useAllianceStandings = useAllianceStandings;
         return this;
     }
@@ -818,13 +844,13 @@ public class CorporationStarbaseResponse implements Serializable {
      * corporation&#39;s
      * 
      * @return useAllianceStandings
-     **/
+     */
     @javax.annotation.Nonnull
     public Boolean getUseAllianceStandings() {
         return useAllianceStandings;
     }
 
-    public void setUseAllianceStandings(Boolean useAllianceStandings) {
+    public void setUseAllianceStandings(@javax.annotation.Nonnull Boolean useAllianceStandings) {
         this.useAllianceStandings = useAllianceStandings;
     }
 
@@ -934,22 +960,22 @@ public class CorporationStarbaseResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CorporationStarbaseResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CorporationStarbaseResponse.openapiRequiredFields.isEmpty()) { // has
                                                                                 // required
                                                                                 // fields
                                                                                 // but
                                                                                 // JSON
-                                                                                // object
+                                                                                // element
                                                                                 // is
                                                                                 // null
                 throw new IllegalArgumentException(
@@ -959,41 +985,48 @@ public class CorporationStarbaseResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CorporationStarbaseResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CorporationStarbaseResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CorporationStarbaseResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("anchor").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `anchor` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("anchor").toString()));
         }
+        // validate the required field `anchor`
+        AnchorEnum.validateJsonElement(jsonObj.get("anchor"));
         if (!jsonObj.get("fuel_bay_take").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `fuel_bay_take` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("fuel_bay_take").toString()));
         }
+        // validate the required field `fuel_bay_take`
+        FuelBayTakeEnum.validateJsonElement(jsonObj.get("fuel_bay_take"));
         if (!jsonObj.get("fuel_bay_view").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `fuel_bay_view` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("fuel_bay_view").toString()));
         }
+        // validate the required field `fuel_bay_view`
+        FuelBayViewEnum.validateJsonElement(jsonObj.get("fuel_bay_view"));
         if (jsonObj.get("fuels") != null && !jsonObj.get("fuels").isJsonNull()) {
             JsonArray jsonArrayfuels = jsonObj.getAsJsonArray("fuels");
             if (jsonArrayfuels != null) {
@@ -1006,7 +1039,7 @@ public class CorporationStarbaseResponse implements Serializable {
 
                 // validate the optional field `fuels` (array)
                 for (int i = 0; i < jsonArrayfuels.size(); i++) {
-                    CorporationStarbaseFuel.validateJsonObject(jsonArrayfuels.get(i).getAsJsonObject());
+                    CorporationStarbaseFuel.validateJsonElement(jsonArrayfuels.get(i));
                 };
             }
         }
@@ -1015,16 +1048,22 @@ public class CorporationStarbaseResponse implements Serializable {
                     "Expected the field `offline` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("offline").toString()));
         }
+        // validate the required field `offline`
+        OfflineEnum.validateJsonElement(jsonObj.get("offline"));
         if (!jsonObj.get("online").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `online` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("online").toString()));
         }
+        // validate the required field `online`
+        OnlineEnum.validateJsonElement(jsonObj.get("online"));
         if (!jsonObj.get("unanchor").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `unanchor` to be a primitive type in the JSON string but got `%s`", jsonObj
                             .get("unanchor").toString()));
         }
+        // validate the required field `unanchor`
+        UnanchorEnum.validateJsonElement(jsonObj.get("unanchor"));
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -1048,9 +1087,9 @@ public class CorporationStarbaseResponse implements Serializable {
 
                 @Override
                 public CorporationStarbaseResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

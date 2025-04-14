@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -56,49 +54,58 @@ public class DogmaAttributeResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ATTRIBUTE_ID = "attribute_id";
     @SerializedName(SERIALIZED_NAME_ATTRIBUTE_ID)
+    @javax.annotation.Nonnull
     private Integer attributeId;
 
     public static final String SERIALIZED_NAME_DEFAULT_VALUE = "default_value";
     @SerializedName(SERIALIZED_NAME_DEFAULT_VALUE)
+    @javax.annotation.Nullable
     private Float defaultValue;
 
     public static final String SERIALIZED_NAME_DESCRIPTION = "description";
     @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+    @javax.annotation.Nullable
     private String description;
 
     public static final String SERIALIZED_NAME_DISPLAY_NAME = "display_name";
     @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+    @javax.annotation.Nullable
     private String displayName;
 
     public static final String SERIALIZED_NAME_HIGH_IS_GOOD = "high_is_good";
     @SerializedName(SERIALIZED_NAME_HIGH_IS_GOOD)
+    @javax.annotation.Nullable
     private Boolean highIsGood;
 
     public static final String SERIALIZED_NAME_ICON_ID = "icon_id";
     @SerializedName(SERIALIZED_NAME_ICON_ID)
+    @javax.annotation.Nullable
     private Integer iconId;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
+    @javax.annotation.Nullable
     private String name;
 
     public static final String SERIALIZED_NAME_PUBLISHED = "published";
     @SerializedName(SERIALIZED_NAME_PUBLISHED)
+    @javax.annotation.Nullable
     private Boolean published;
 
     public static final String SERIALIZED_NAME_STACKABLE = "stackable";
     @SerializedName(SERIALIZED_NAME_STACKABLE)
+    @javax.annotation.Nullable
     private Boolean stackable;
 
     public static final String SERIALIZED_NAME_UNIT_ID = "unit_id";
     @SerializedName(SERIALIZED_NAME_UNIT_ID)
+    @javax.annotation.Nullable
     private Integer unitId;
 
     public DogmaAttributeResponse() {
     }
 
-    public DogmaAttributeResponse attributeId(Integer attributeId) {
-
+    public DogmaAttributeResponse attributeId(@javax.annotation.Nonnull Integer attributeId) {
         this.attributeId = attributeId;
         return this;
     }
@@ -107,18 +114,17 @@ public class DogmaAttributeResponse implements Serializable {
      * attribute_id integer
      * 
      * @return attributeId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getAttributeId() {
         return attributeId;
     }
 
-    public void setAttributeId(Integer attributeId) {
+    public void setAttributeId(@javax.annotation.Nonnull Integer attributeId) {
         this.attributeId = attributeId;
     }
 
-    public DogmaAttributeResponse defaultValue(Float defaultValue) {
-
+    public DogmaAttributeResponse defaultValue(@javax.annotation.Nullable Float defaultValue) {
         this.defaultValue = defaultValue;
         return this;
     }
@@ -127,18 +133,17 @@ public class DogmaAttributeResponse implements Serializable {
      * default_value number
      * 
      * @return defaultValue
-     **/
+     */
     @javax.annotation.Nullable
     public Float getDefaultValue() {
         return defaultValue;
     }
 
-    public void setDefaultValue(Float defaultValue) {
+    public void setDefaultValue(@javax.annotation.Nullable Float defaultValue) {
         this.defaultValue = defaultValue;
     }
 
-    public DogmaAttributeResponse description(String description) {
-
+    public DogmaAttributeResponse description(@javax.annotation.Nullable String description) {
         this.description = description;
         return this;
     }
@@ -147,18 +152,17 @@ public class DogmaAttributeResponse implements Serializable {
      * description string
      * 
      * @return description
-     **/
+     */
     @javax.annotation.Nullable
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(@javax.annotation.Nullable String description) {
         this.description = description;
     }
 
-    public DogmaAttributeResponse displayName(String displayName) {
-
+    public DogmaAttributeResponse displayName(@javax.annotation.Nullable String displayName) {
         this.displayName = displayName;
         return this;
     }
@@ -167,18 +171,17 @@ public class DogmaAttributeResponse implements Serializable {
      * display_name string
      * 
      * @return displayName
-     **/
+     */
     @javax.annotation.Nullable
     public String getDisplayName() {
         return displayName;
     }
 
-    public void setDisplayName(String displayName) {
+    public void setDisplayName(@javax.annotation.Nullable String displayName) {
         this.displayName = displayName;
     }
 
-    public DogmaAttributeResponse highIsGood(Boolean highIsGood) {
-
+    public DogmaAttributeResponse highIsGood(@javax.annotation.Nullable Boolean highIsGood) {
         this.highIsGood = highIsGood;
         return this;
     }
@@ -187,18 +190,17 @@ public class DogmaAttributeResponse implements Serializable {
      * high_is_good boolean
      * 
      * @return highIsGood
-     **/
+     */
     @javax.annotation.Nullable
     public Boolean getHighIsGood() {
         return highIsGood;
     }
 
-    public void setHighIsGood(Boolean highIsGood) {
+    public void setHighIsGood(@javax.annotation.Nullable Boolean highIsGood) {
         this.highIsGood = highIsGood;
     }
 
-    public DogmaAttributeResponse iconId(Integer iconId) {
-
+    public DogmaAttributeResponse iconId(@javax.annotation.Nullable Integer iconId) {
         this.iconId = iconId;
         return this;
     }
@@ -207,18 +209,17 @@ public class DogmaAttributeResponse implements Serializable {
      * icon_id integer
      * 
      * @return iconId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getIconId() {
         return iconId;
     }
 
-    public void setIconId(Integer iconId) {
+    public void setIconId(@javax.annotation.Nullable Integer iconId) {
         this.iconId = iconId;
     }
 
-    public DogmaAttributeResponse name(String name) {
-
+    public DogmaAttributeResponse name(@javax.annotation.Nullable String name) {
         this.name = name;
         return this;
     }
@@ -227,18 +228,17 @@ public class DogmaAttributeResponse implements Serializable {
      * name string
      * 
      * @return name
-     **/
+     */
     @javax.annotation.Nullable
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@javax.annotation.Nullable String name) {
         this.name = name;
     }
 
-    public DogmaAttributeResponse published(Boolean published) {
-
+    public DogmaAttributeResponse published(@javax.annotation.Nullable Boolean published) {
         this.published = published;
         return this;
     }
@@ -247,18 +247,17 @@ public class DogmaAttributeResponse implements Serializable {
      * published boolean
      * 
      * @return published
-     **/
+     */
     @javax.annotation.Nullable
     public Boolean getPublished() {
         return published;
     }
 
-    public void setPublished(Boolean published) {
+    public void setPublished(@javax.annotation.Nullable Boolean published) {
         this.published = published;
     }
 
-    public DogmaAttributeResponse stackable(Boolean stackable) {
-
+    public DogmaAttributeResponse stackable(@javax.annotation.Nullable Boolean stackable) {
         this.stackable = stackable;
         return this;
     }
@@ -267,18 +266,17 @@ public class DogmaAttributeResponse implements Serializable {
      * stackable boolean
      * 
      * @return stackable
-     **/
+     */
     @javax.annotation.Nullable
     public Boolean getStackable() {
         return stackable;
     }
 
-    public void setStackable(Boolean stackable) {
+    public void setStackable(@javax.annotation.Nullable Boolean stackable) {
         this.stackable = stackable;
     }
 
-    public DogmaAttributeResponse unitId(Integer unitId) {
-
+    public DogmaAttributeResponse unitId(@javax.annotation.Nullable Integer unitId) {
         this.unitId = unitId;
         return this;
     }
@@ -287,13 +285,13 @@ public class DogmaAttributeResponse implements Serializable {
      * unit_id integer
      * 
      * @return unitId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getUnitId() {
         return unitId;
     }
 
-    public void setUnitId(Integer unitId) {
+    public void setUnitId(@javax.annotation.Nullable Integer unitId) {
         this.unitId = unitId;
     }
 
@@ -376,22 +374,22 @@ public class DogmaAttributeResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             DogmaAttributeResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!DogmaAttributeResponse.openapiRequiredFields.isEmpty()) { // has
                                                                            // required
                                                                            // fields
                                                                            // but
                                                                            // JSON
-                                                                           // object
+                                                                           // element
                                                                            // is
                                                                            // null
                 throw new IllegalArgumentException(String.format(
@@ -400,26 +398,27 @@ public class DogmaAttributeResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!DogmaAttributeResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `DogmaAttributeResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : DogmaAttributeResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull())
                 && !jsonObj.get("description").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
@@ -461,9 +460,9 @@ public class DogmaAttributeResponse implements Serializable {
 
                 @Override
                 public DogmaAttributeResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

@@ -38,12 +38,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -57,38 +55,47 @@ public class CharacterOrdersResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_DURATION = "duration";
     @SerializedName(SERIALIZED_NAME_DURATION)
+    @javax.annotation.Nonnull
     private Integer duration;
 
     public static final String SERIALIZED_NAME_ESCROW = "escrow";
     @SerializedName(SERIALIZED_NAME_ESCROW)
+    @javax.annotation.Nullable
     private Double escrow;
 
     public static final String SERIALIZED_NAME_IS_BUY_ORDER = "is_buy_order";
     @SerializedName(SERIALIZED_NAME_IS_BUY_ORDER)
+    @javax.annotation.Nullable
     private Boolean isBuyOrder;
 
     public static final String SERIALIZED_NAME_IS_CORPORATION = "is_corporation";
     @SerializedName(SERIALIZED_NAME_IS_CORPORATION)
+    @javax.annotation.Nonnull
     private Boolean isCorporation;
 
     public static final String SERIALIZED_NAME_ISSUED = "issued";
     @SerializedName(SERIALIZED_NAME_ISSUED)
+    @javax.annotation.Nonnull
     private OffsetDateTime issued;
 
     public static final String SERIALIZED_NAME_LOCATION_ID = "location_id";
     @SerializedName(SERIALIZED_NAME_LOCATION_ID)
+    @javax.annotation.Nonnull
     private Long locationId;
 
     public static final String SERIALIZED_NAME_MIN_VOLUME = "min_volume";
     @SerializedName(SERIALIZED_NAME_MIN_VOLUME)
+    @javax.annotation.Nullable
     private Integer minVolume;
 
     public static final String SERIALIZED_NAME_ORDER_ID = "order_id";
     @SerializedName(SERIALIZED_NAME_ORDER_ID)
+    @javax.annotation.Nonnull
     private Long orderId;
 
     public static final String SERIALIZED_NAME_PRICE = "price";
     @SerializedName(SERIALIZED_NAME_PRICE)
+    @javax.annotation.Nonnull
     private Double price;
 
     /**
@@ -156,34 +163,43 @@ public class CharacterOrdersResponse implements Serializable {
                 return RangeEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            RangeEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_RANGE = "range";
     @SerializedName(SERIALIZED_NAME_RANGE)
+    @javax.annotation.Nonnull
     private String range;
     private RangeEnum rangeEnum;
 
     public static final String SERIALIZED_NAME_REGION_ID = "region_id";
     @SerializedName(SERIALIZED_NAME_REGION_ID)
+    @javax.annotation.Nonnull
     private Integer regionId;
 
     public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
+    @javax.annotation.Nonnull
     private Integer typeId;
 
     public static final String SERIALIZED_NAME_VOLUME_REMAIN = "volume_remain";
     @SerializedName(SERIALIZED_NAME_VOLUME_REMAIN)
+    @javax.annotation.Nonnull
     private Integer volumeRemain;
 
     public static final String SERIALIZED_NAME_VOLUME_TOTAL = "volume_total";
     @SerializedName(SERIALIZED_NAME_VOLUME_TOTAL)
+    @javax.annotation.Nonnull
     private Integer volumeTotal;
 
     public CharacterOrdersResponse() {
     }
 
-    public CharacterOrdersResponse duration(Integer duration) {
-
+    public CharacterOrdersResponse duration(@javax.annotation.Nonnull Integer duration) {
         this.duration = duration;
         return this;
     }
@@ -193,18 +209,17 @@ public class CharacterOrdersResponse implements Serializable {
      * An order expires at time issued + duration
      * 
      * @return duration
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getDuration() {
         return duration;
     }
 
-    public void setDuration(Integer duration) {
+    public void setDuration(@javax.annotation.Nonnull Integer duration) {
         this.duration = duration;
     }
 
-    public CharacterOrdersResponse escrow(Double escrow) {
-
+    public CharacterOrdersResponse escrow(@javax.annotation.Nullable Double escrow) {
         this.escrow = escrow;
         return this;
     }
@@ -213,18 +228,17 @@ public class CharacterOrdersResponse implements Serializable {
      * For buy orders, the amount of ISK in escrow
      * 
      * @return escrow
-     **/
+     */
     @javax.annotation.Nullable
     public Double getEscrow() {
         return escrow;
     }
 
-    public void setEscrow(Double escrow) {
+    public void setEscrow(@javax.annotation.Nullable Double escrow) {
         this.escrow = escrow;
     }
 
-    public CharacterOrdersResponse isBuyOrder(Boolean isBuyOrder) {
-
+    public CharacterOrdersResponse isBuyOrder(@javax.annotation.Nullable Boolean isBuyOrder) {
         this.isBuyOrder = isBuyOrder;
         return this;
     }
@@ -233,18 +247,17 @@ public class CharacterOrdersResponse implements Serializable {
      * True if the order is a bid (buy) order
      * 
      * @return isBuyOrder
-     **/
+     */
     @javax.annotation.Nullable
     public Boolean getIsBuyOrder() {
         return isBuyOrder;
     }
 
-    public void setIsBuyOrder(Boolean isBuyOrder) {
+    public void setIsBuyOrder(@javax.annotation.Nullable Boolean isBuyOrder) {
         this.isBuyOrder = isBuyOrder;
     }
 
-    public CharacterOrdersResponse isCorporation(Boolean isCorporation) {
-
+    public CharacterOrdersResponse isCorporation(@javax.annotation.Nonnull Boolean isCorporation) {
         this.isCorporation = isCorporation;
         return this;
     }
@@ -254,18 +267,17 @@ public class CharacterOrdersResponse implements Serializable {
      * corporation.
      * 
      * @return isCorporation
-     **/
+     */
     @javax.annotation.Nonnull
     public Boolean getIsCorporation() {
         return isCorporation;
     }
 
-    public void setIsCorporation(Boolean isCorporation) {
+    public void setIsCorporation(@javax.annotation.Nonnull Boolean isCorporation) {
         this.isCorporation = isCorporation;
     }
 
-    public CharacterOrdersResponse issued(OffsetDateTime issued) {
-
+    public CharacterOrdersResponse issued(@javax.annotation.Nonnull OffsetDateTime issued) {
         this.issued = issued;
         return this;
     }
@@ -274,18 +286,17 @@ public class CharacterOrdersResponse implements Serializable {
      * Date and time when this order was issued
      * 
      * @return issued
-     **/
+     */
     @javax.annotation.Nonnull
     public OffsetDateTime getIssued() {
         return issued;
     }
 
-    public void setIssued(OffsetDateTime issued) {
+    public void setIssued(@javax.annotation.Nonnull OffsetDateTime issued) {
         this.issued = issued;
     }
 
-    public CharacterOrdersResponse locationId(Long locationId) {
-
+    public CharacterOrdersResponse locationId(@javax.annotation.Nonnull Long locationId) {
         this.locationId = locationId;
         return this;
     }
@@ -294,18 +305,17 @@ public class CharacterOrdersResponse implements Serializable {
      * ID of the location where order was placed
      * 
      * @return locationId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getLocationId() {
         return locationId;
     }
 
-    public void setLocationId(Long locationId) {
+    public void setLocationId(@javax.annotation.Nonnull Long locationId) {
         this.locationId = locationId;
     }
 
-    public CharacterOrdersResponse minVolume(Integer minVolume) {
-
+    public CharacterOrdersResponse minVolume(@javax.annotation.Nullable Integer minVolume) {
         this.minVolume = minVolume;
         return this;
     }
@@ -315,18 +325,17 @@ public class CharacterOrdersResponse implements Serializable {
      * sell order
      * 
      * @return minVolume
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getMinVolume() {
         return minVolume;
     }
 
-    public void setMinVolume(Integer minVolume) {
+    public void setMinVolume(@javax.annotation.Nullable Integer minVolume) {
         this.minVolume = minVolume;
     }
 
-    public CharacterOrdersResponse orderId(Long orderId) {
-
+    public CharacterOrdersResponse orderId(@javax.annotation.Nonnull Long orderId) {
         this.orderId = orderId;
         return this;
     }
@@ -335,18 +344,17 @@ public class CharacterOrdersResponse implements Serializable {
      * Unique order ID
      * 
      * @return orderId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(Long orderId) {
+    public void setOrderId(@javax.annotation.Nonnull Long orderId) {
         this.orderId = orderId;
     }
 
-    public CharacterOrdersResponse price(Double price) {
-
+    public CharacterOrdersResponse price(@javax.annotation.Nonnull Double price) {
         this.price = price;
         return this;
     }
@@ -355,25 +363,23 @@ public class CharacterOrdersResponse implements Serializable {
      * Cost per unit for this order
      * 
      * @return price
-     **/
+     */
     @javax.annotation.Nonnull
     public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(@javax.annotation.Nonnull Double price) {
         this.price = price;
     }
 
-    public CharacterOrdersResponse rangeString(String range) {
-
-        this.range = range;
+    public CharacterOrdersResponse range(@javax.annotation.Nonnull RangeEnum range) {
+        this.rangeEnum = range;
         return this;
     }
 
-    public CharacterOrdersResponse range(RangeEnum rangeEnum) {
-
-        this.rangeEnum = rangeEnum;
+    public CharacterOrdersResponse rangeString(@javax.annotation.Nonnull String range) {
+        this.range = range;
         return this;
     }
 
@@ -381,8 +387,8 @@ public class CharacterOrdersResponse implements Serializable {
      * Valid order range, numbers are ranges in jumps
      * 
      * @return range
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public RangeEnum getRange() {
         if (rangeEnum == null) {
             rangeEnum = RangeEnum.fromValue(range);
@@ -394,16 +400,15 @@ public class CharacterOrdersResponse implements Serializable {
         return range;
     }
 
-    public void setRange(RangeEnum rangeEnum) {
-        this.rangeEnum = rangeEnum;
+    public void setRange(@javax.annotation.Nonnull RangeEnum range) {
+        this.rangeEnum = range;
     }
 
-    public void setRangeString(String range) {
+    public void setRangeString(@javax.annotation.Nonnull String range) {
         this.range = range;
     }
 
-    public CharacterOrdersResponse regionId(Integer regionId) {
-
+    public CharacterOrdersResponse regionId(@javax.annotation.Nonnull Integer regionId) {
         this.regionId = regionId;
         return this;
     }
@@ -412,18 +417,17 @@ public class CharacterOrdersResponse implements Serializable {
      * ID of the region where order was placed
      * 
      * @return regionId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getRegionId() {
         return regionId;
     }
 
-    public void setRegionId(Integer regionId) {
+    public void setRegionId(@javax.annotation.Nonnull Integer regionId) {
         this.regionId = regionId;
     }
 
-    public CharacterOrdersResponse typeId(Integer typeId) {
-
+    public CharacterOrdersResponse typeId(@javax.annotation.Nonnull Integer typeId) {
         this.typeId = typeId;
         return this;
     }
@@ -432,18 +436,17 @@ public class CharacterOrdersResponse implements Serializable {
      * The type ID of the item transacted in this order
      * 
      * @return typeId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(Integer typeId) {
+    public void setTypeId(@javax.annotation.Nonnull Integer typeId) {
         this.typeId = typeId;
     }
 
-    public CharacterOrdersResponse volumeRemain(Integer volumeRemain) {
-
+    public CharacterOrdersResponse volumeRemain(@javax.annotation.Nonnull Integer volumeRemain) {
         this.volumeRemain = volumeRemain;
         return this;
     }
@@ -452,18 +455,17 @@ public class CharacterOrdersResponse implements Serializable {
      * Quantity of items still required or offered
      * 
      * @return volumeRemain
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getVolumeRemain() {
         return volumeRemain;
     }
 
-    public void setVolumeRemain(Integer volumeRemain) {
+    public void setVolumeRemain(@javax.annotation.Nonnull Integer volumeRemain) {
         this.volumeRemain = volumeRemain;
     }
 
-    public CharacterOrdersResponse volumeTotal(Integer volumeTotal) {
-
+    public CharacterOrdersResponse volumeTotal(@javax.annotation.Nonnull Integer volumeTotal) {
         this.volumeTotal = volumeTotal;
         return this;
     }
@@ -472,13 +474,13 @@ public class CharacterOrdersResponse implements Serializable {
      * Quantity of items required or offered at time order was placed
      * 
      * @return volumeTotal
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getVolumeTotal() {
         return volumeTotal;
     }
 
-    public void setVolumeTotal(Integer volumeTotal) {
+    public void setVolumeTotal(@javax.annotation.Nonnull Integer volumeTotal) {
         this.volumeTotal = volumeTotal;
     }
 
@@ -583,22 +585,22 @@ public class CharacterOrdersResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CharacterOrdersResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CharacterOrdersResponse.openapiRequiredFields.isEmpty()) { // has
                                                                             // required
                                                                             // fields
                                                                             // but
                                                                             // JSON
-                                                                            // object
+                                                                            // element
                                                                             // is
                                                                             // null
                 throw new IllegalArgumentException(String.format(
@@ -607,31 +609,34 @@ public class CharacterOrdersResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CharacterOrdersResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CharacterOrdersResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CharacterOrdersResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("range").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `range` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("range").toString()));
         }
+        // validate the required field `range`
+        RangeEnum.validateJsonElement(jsonObj.get("range"));
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -655,9 +660,9 @@ public class CharacterOrdersResponse implements Serializable {
 
                 @Override
                 public CharacterOrdersResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

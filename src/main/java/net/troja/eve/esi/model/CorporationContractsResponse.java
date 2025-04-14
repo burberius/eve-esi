@@ -38,12 +38,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -57,10 +55,12 @@ public class CorporationContractsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ACCEPTOR_ID = "acceptor_id";
     @SerializedName(SERIALIZED_NAME_ACCEPTOR_ID)
+    @javax.annotation.Nonnull
     private Integer acceptorId;
 
     public static final String SERIALIZED_NAME_ASSIGNEE_ID = "assignee_id";
     @SerializedName(SERIALIZED_NAME_ASSIGNEE_ID)
+    @javax.annotation.Nonnull
     private Integer assigneeId;
 
     /**
@@ -112,71 +112,92 @@ public class CorporationContractsResponse implements Serializable {
                 return AvailabilityEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            AvailabilityEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_AVAILABILITY = "availability";
     @SerializedName(SERIALIZED_NAME_AVAILABILITY)
+    @javax.annotation.Nonnull
     private String availability;
     private AvailabilityEnum availabilityEnum;
 
     public static final String SERIALIZED_NAME_BUYOUT = "buyout";
     @SerializedName(SERIALIZED_NAME_BUYOUT)
+    @javax.annotation.Nullable
     private Double buyout;
 
     public static final String SERIALIZED_NAME_COLLATERAL = "collateral";
     @SerializedName(SERIALIZED_NAME_COLLATERAL)
+    @javax.annotation.Nullable
     private Double collateral;
 
     public static final String SERIALIZED_NAME_CONTRACT_ID = "contract_id";
     @SerializedName(SERIALIZED_NAME_CONTRACT_ID)
+    @javax.annotation.Nonnull
     private Integer contractId;
 
     public static final String SERIALIZED_NAME_DATE_ACCEPTED = "date_accepted";
     @SerializedName(SERIALIZED_NAME_DATE_ACCEPTED)
+    @javax.annotation.Nullable
     private OffsetDateTime dateAccepted;
 
     public static final String SERIALIZED_NAME_DATE_COMPLETED = "date_completed";
     @SerializedName(SERIALIZED_NAME_DATE_COMPLETED)
+    @javax.annotation.Nullable
     private OffsetDateTime dateCompleted;
 
     public static final String SERIALIZED_NAME_DATE_EXPIRED = "date_expired";
     @SerializedName(SERIALIZED_NAME_DATE_EXPIRED)
+    @javax.annotation.Nonnull
     private OffsetDateTime dateExpired;
 
     public static final String SERIALIZED_NAME_DATE_ISSUED = "date_issued";
     @SerializedName(SERIALIZED_NAME_DATE_ISSUED)
+    @javax.annotation.Nonnull
     private OffsetDateTime dateIssued;
 
     public static final String SERIALIZED_NAME_DAYS_TO_COMPLETE = "days_to_complete";
     @SerializedName(SERIALIZED_NAME_DAYS_TO_COMPLETE)
+    @javax.annotation.Nullable
     private Integer daysToComplete;
 
     public static final String SERIALIZED_NAME_END_LOCATION_ID = "end_location_id";
     @SerializedName(SERIALIZED_NAME_END_LOCATION_ID)
+    @javax.annotation.Nullable
     private Long endLocationId;
 
     public static final String SERIALIZED_NAME_FOR_CORPORATION = "for_corporation";
     @SerializedName(SERIALIZED_NAME_FOR_CORPORATION)
+    @javax.annotation.Nonnull
     private Boolean forCorporation;
 
     public static final String SERIALIZED_NAME_ISSUER_CORPORATION_ID = "issuer_corporation_id";
     @SerializedName(SERIALIZED_NAME_ISSUER_CORPORATION_ID)
+    @javax.annotation.Nonnull
     private Integer issuerCorporationId;
 
     public static final String SERIALIZED_NAME_ISSUER_ID = "issuer_id";
     @SerializedName(SERIALIZED_NAME_ISSUER_ID)
+    @javax.annotation.Nonnull
     private Integer issuerId;
 
     public static final String SERIALIZED_NAME_PRICE = "price";
     @SerializedName(SERIALIZED_NAME_PRICE)
+    @javax.annotation.Nullable
     private Double price;
 
     public static final String SERIALIZED_NAME_REWARD = "reward";
     @SerializedName(SERIALIZED_NAME_REWARD)
+    @javax.annotation.Nullable
     private Double reward;
 
     public static final String SERIALIZED_NAME_START_LOCATION_ID = "start_location_id";
     @SerializedName(SERIALIZED_NAME_START_LOCATION_ID)
+    @javax.annotation.Nullable
     private Long startLocationId;
 
     /**
@@ -240,15 +261,22 @@ public class CorporationContractsResponse implements Serializable {
                 return StatusEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            StatusEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_STATUS = "status";
     @SerializedName(SERIALIZED_NAME_STATUS)
+    @javax.annotation.Nonnull
     private String status;
     private StatusEnum statusEnum;
 
     public static final String SERIALIZED_NAME_TITLE = "title";
     @SerializedName(SERIALIZED_NAME_TITLE)
+    @javax.annotation.Nullable
     private String title;
 
     /**
@@ -302,22 +330,28 @@ public class CorporationContractsResponse implements Serializable {
                 return TypeEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            TypeEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_TYPE = "type";
     @SerializedName(SERIALIZED_NAME_TYPE)
+    @javax.annotation.Nonnull
     private String type;
     private TypeEnum typeEnum;
 
     public static final String SERIALIZED_NAME_VOLUME = "volume";
     @SerializedName(SERIALIZED_NAME_VOLUME)
+    @javax.annotation.Nullable
     private Double volume;
 
     public CorporationContractsResponse() {
     }
 
-    public CorporationContractsResponse acceptorId(Integer acceptorId) {
-
+    public CorporationContractsResponse acceptorId(@javax.annotation.Nonnull Integer acceptorId) {
         this.acceptorId = acceptorId;
         return this;
     }
@@ -326,18 +360,17 @@ public class CorporationContractsResponse implements Serializable {
      * Who will accept the contract
      * 
      * @return acceptorId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getAcceptorId() {
         return acceptorId;
     }
 
-    public void setAcceptorId(Integer acceptorId) {
+    public void setAcceptorId(@javax.annotation.Nonnull Integer acceptorId) {
         this.acceptorId = acceptorId;
     }
 
-    public CorporationContractsResponse assigneeId(Integer assigneeId) {
-
+    public CorporationContractsResponse assigneeId(@javax.annotation.Nonnull Integer assigneeId) {
         this.assigneeId = assigneeId;
         return this;
     }
@@ -346,25 +379,23 @@ public class CorporationContractsResponse implements Serializable {
      * ID to whom the contract is assigned, can be corporation or character ID
      * 
      * @return assigneeId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getAssigneeId() {
         return assigneeId;
     }
 
-    public void setAssigneeId(Integer assigneeId) {
+    public void setAssigneeId(@javax.annotation.Nonnull Integer assigneeId) {
         this.assigneeId = assigneeId;
     }
 
-    public CorporationContractsResponse availabilityString(String availability) {
-
-        this.availability = availability;
+    public CorporationContractsResponse availability(@javax.annotation.Nonnull AvailabilityEnum availability) {
+        this.availabilityEnum = availability;
         return this;
     }
 
-    public CorporationContractsResponse availability(AvailabilityEnum availabilityEnum) {
-
-        this.availabilityEnum = availabilityEnum;
+    public CorporationContractsResponse availabilityString(@javax.annotation.Nonnull String availability) {
+        this.availability = availability;
         return this;
     }
 
@@ -372,8 +403,8 @@ public class CorporationContractsResponse implements Serializable {
      * To whom the contract is available
      * 
      * @return availability
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public AvailabilityEnum getAvailability() {
         if (availabilityEnum == null) {
             availabilityEnum = AvailabilityEnum.fromValue(availability);
@@ -385,16 +416,15 @@ public class CorporationContractsResponse implements Serializable {
         return availability;
     }
 
-    public void setAvailability(AvailabilityEnum availabilityEnum) {
-        this.availabilityEnum = availabilityEnum;
+    public void setAvailability(@javax.annotation.Nonnull AvailabilityEnum availability) {
+        this.availabilityEnum = availability;
     }
 
-    public void setAvailabilityString(String availability) {
+    public void setAvailabilityString(@javax.annotation.Nonnull String availability) {
         this.availability = availability;
     }
 
-    public CorporationContractsResponse buyout(Double buyout) {
-
+    public CorporationContractsResponse buyout(@javax.annotation.Nullable Double buyout) {
         this.buyout = buyout;
         return this;
     }
@@ -403,18 +433,17 @@ public class CorporationContractsResponse implements Serializable {
      * Buyout price (for Auctions only)
      * 
      * @return buyout
-     **/
+     */
     @javax.annotation.Nullable
     public Double getBuyout() {
         return buyout;
     }
 
-    public void setBuyout(Double buyout) {
+    public void setBuyout(@javax.annotation.Nullable Double buyout) {
         this.buyout = buyout;
     }
 
-    public CorporationContractsResponse collateral(Double collateral) {
-
+    public CorporationContractsResponse collateral(@javax.annotation.Nullable Double collateral) {
         this.collateral = collateral;
         return this;
     }
@@ -423,18 +452,17 @@ public class CorporationContractsResponse implements Serializable {
      * Collateral price (for Couriers only)
      * 
      * @return collateral
-     **/
+     */
     @javax.annotation.Nullable
     public Double getCollateral() {
         return collateral;
     }
 
-    public void setCollateral(Double collateral) {
+    public void setCollateral(@javax.annotation.Nullable Double collateral) {
         this.collateral = collateral;
     }
 
-    public CorporationContractsResponse contractId(Integer contractId) {
-
+    public CorporationContractsResponse contractId(@javax.annotation.Nonnull Integer contractId) {
         this.contractId = contractId;
         return this;
     }
@@ -443,18 +471,17 @@ public class CorporationContractsResponse implements Serializable {
      * contract_id integer
      * 
      * @return contractId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getContractId() {
         return contractId;
     }
 
-    public void setContractId(Integer contractId) {
+    public void setContractId(@javax.annotation.Nonnull Integer contractId) {
         this.contractId = contractId;
     }
 
-    public CorporationContractsResponse dateAccepted(OffsetDateTime dateAccepted) {
-
+    public CorporationContractsResponse dateAccepted(@javax.annotation.Nullable OffsetDateTime dateAccepted) {
         this.dateAccepted = dateAccepted;
         return this;
     }
@@ -463,18 +490,17 @@ public class CorporationContractsResponse implements Serializable {
      * Date of confirmation of contract
      * 
      * @return dateAccepted
-     **/
+     */
     @javax.annotation.Nullable
     public OffsetDateTime getDateAccepted() {
         return dateAccepted;
     }
 
-    public void setDateAccepted(OffsetDateTime dateAccepted) {
+    public void setDateAccepted(@javax.annotation.Nullable OffsetDateTime dateAccepted) {
         this.dateAccepted = dateAccepted;
     }
 
-    public CorporationContractsResponse dateCompleted(OffsetDateTime dateCompleted) {
-
+    public CorporationContractsResponse dateCompleted(@javax.annotation.Nullable OffsetDateTime dateCompleted) {
         this.dateCompleted = dateCompleted;
         return this;
     }
@@ -483,18 +509,17 @@ public class CorporationContractsResponse implements Serializable {
      * Date of completed of contract
      * 
      * @return dateCompleted
-     **/
+     */
     @javax.annotation.Nullable
     public OffsetDateTime getDateCompleted() {
         return dateCompleted;
     }
 
-    public void setDateCompleted(OffsetDateTime dateCompleted) {
+    public void setDateCompleted(@javax.annotation.Nullable OffsetDateTime dateCompleted) {
         this.dateCompleted = dateCompleted;
     }
 
-    public CorporationContractsResponse dateExpired(OffsetDateTime dateExpired) {
-
+    public CorporationContractsResponse dateExpired(@javax.annotation.Nonnull OffsetDateTime dateExpired) {
         this.dateExpired = dateExpired;
         return this;
     }
@@ -503,18 +528,17 @@ public class CorporationContractsResponse implements Serializable {
      * Expiration date of the contract
      * 
      * @return dateExpired
-     **/
+     */
     @javax.annotation.Nonnull
     public OffsetDateTime getDateExpired() {
         return dateExpired;
     }
 
-    public void setDateExpired(OffsetDateTime dateExpired) {
+    public void setDateExpired(@javax.annotation.Nonnull OffsetDateTime dateExpired) {
         this.dateExpired = dateExpired;
     }
 
-    public CorporationContractsResponse dateIssued(OffsetDateTime dateIssued) {
-
+    public CorporationContractsResponse dateIssued(@javax.annotation.Nonnull OffsetDateTime dateIssued) {
         this.dateIssued = dateIssued;
         return this;
     }
@@ -523,18 +547,17 @@ public class CorporationContractsResponse implements Serializable {
      * Сreation date of the contract
      * 
      * @return dateIssued
-     **/
+     */
     @javax.annotation.Nonnull
     public OffsetDateTime getDateIssued() {
         return dateIssued;
     }
 
-    public void setDateIssued(OffsetDateTime dateIssued) {
+    public void setDateIssued(@javax.annotation.Nonnull OffsetDateTime dateIssued) {
         this.dateIssued = dateIssued;
     }
 
-    public CorporationContractsResponse daysToComplete(Integer daysToComplete) {
-
+    public CorporationContractsResponse daysToComplete(@javax.annotation.Nullable Integer daysToComplete) {
         this.daysToComplete = daysToComplete;
         return this;
     }
@@ -543,18 +566,17 @@ public class CorporationContractsResponse implements Serializable {
      * Number of days to perform the contract
      * 
      * @return daysToComplete
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getDaysToComplete() {
         return daysToComplete;
     }
 
-    public void setDaysToComplete(Integer daysToComplete) {
+    public void setDaysToComplete(@javax.annotation.Nullable Integer daysToComplete) {
         this.daysToComplete = daysToComplete;
     }
 
-    public CorporationContractsResponse endLocationId(Long endLocationId) {
-
+    public CorporationContractsResponse endLocationId(@javax.annotation.Nullable Long endLocationId) {
         this.endLocationId = endLocationId;
         return this;
     }
@@ -563,18 +585,17 @@ public class CorporationContractsResponse implements Serializable {
      * End location ID (for Couriers contract)
      * 
      * @return endLocationId
-     **/
+     */
     @javax.annotation.Nullable
     public Long getEndLocationId() {
         return endLocationId;
     }
 
-    public void setEndLocationId(Long endLocationId) {
+    public void setEndLocationId(@javax.annotation.Nullable Long endLocationId) {
         this.endLocationId = endLocationId;
     }
 
-    public CorporationContractsResponse forCorporation(Boolean forCorporation) {
-
+    public CorporationContractsResponse forCorporation(@javax.annotation.Nonnull Boolean forCorporation) {
         this.forCorporation = forCorporation;
         return this;
     }
@@ -583,18 +604,17 @@ public class CorporationContractsResponse implements Serializable {
      * true if the contract was issued on behalf of the issuer&#39;s corporation
      * 
      * @return forCorporation
-     **/
+     */
     @javax.annotation.Nonnull
     public Boolean getForCorporation() {
         return forCorporation;
     }
 
-    public void setForCorporation(Boolean forCorporation) {
+    public void setForCorporation(@javax.annotation.Nonnull Boolean forCorporation) {
         this.forCorporation = forCorporation;
     }
 
-    public CorporationContractsResponse issuerCorporationId(Integer issuerCorporationId) {
-
+    public CorporationContractsResponse issuerCorporationId(@javax.annotation.Nonnull Integer issuerCorporationId) {
         this.issuerCorporationId = issuerCorporationId;
         return this;
     }
@@ -603,18 +623,17 @@ public class CorporationContractsResponse implements Serializable {
      * Character&#39;s corporation ID for the issuer
      * 
      * @return issuerCorporationId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getIssuerCorporationId() {
         return issuerCorporationId;
     }
 
-    public void setIssuerCorporationId(Integer issuerCorporationId) {
+    public void setIssuerCorporationId(@javax.annotation.Nonnull Integer issuerCorporationId) {
         this.issuerCorporationId = issuerCorporationId;
     }
 
-    public CorporationContractsResponse issuerId(Integer issuerId) {
-
+    public CorporationContractsResponse issuerId(@javax.annotation.Nonnull Integer issuerId) {
         this.issuerId = issuerId;
         return this;
     }
@@ -623,18 +642,17 @@ public class CorporationContractsResponse implements Serializable {
      * Character ID for the issuer
      * 
      * @return issuerId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getIssuerId() {
         return issuerId;
     }
 
-    public void setIssuerId(Integer issuerId) {
+    public void setIssuerId(@javax.annotation.Nonnull Integer issuerId) {
         this.issuerId = issuerId;
     }
 
-    public CorporationContractsResponse price(Double price) {
-
+    public CorporationContractsResponse price(@javax.annotation.Nullable Double price) {
         this.price = price;
         return this;
     }
@@ -643,18 +661,17 @@ public class CorporationContractsResponse implements Serializable {
      * Price of contract (for ItemsExchange and Auctions)
      * 
      * @return price
-     **/
+     */
     @javax.annotation.Nullable
     public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(@javax.annotation.Nullable Double price) {
         this.price = price;
     }
 
-    public CorporationContractsResponse reward(Double reward) {
-
+    public CorporationContractsResponse reward(@javax.annotation.Nullable Double reward) {
         this.reward = reward;
         return this;
     }
@@ -663,18 +680,17 @@ public class CorporationContractsResponse implements Serializable {
      * Remuneration for contract (for Couriers only)
      * 
      * @return reward
-     **/
+     */
     @javax.annotation.Nullable
     public Double getReward() {
         return reward;
     }
 
-    public void setReward(Double reward) {
+    public void setReward(@javax.annotation.Nullable Double reward) {
         this.reward = reward;
     }
 
-    public CorporationContractsResponse startLocationId(Long startLocationId) {
-
+    public CorporationContractsResponse startLocationId(@javax.annotation.Nullable Long startLocationId) {
         this.startLocationId = startLocationId;
         return this;
     }
@@ -683,25 +699,23 @@ public class CorporationContractsResponse implements Serializable {
      * Start location ID (for Couriers contract)
      * 
      * @return startLocationId
-     **/
+     */
     @javax.annotation.Nullable
     public Long getStartLocationId() {
         return startLocationId;
     }
 
-    public void setStartLocationId(Long startLocationId) {
+    public void setStartLocationId(@javax.annotation.Nullable Long startLocationId) {
         this.startLocationId = startLocationId;
     }
 
-    public CorporationContractsResponse statusString(String status) {
-
-        this.status = status;
+    public CorporationContractsResponse status(@javax.annotation.Nonnull StatusEnum status) {
+        this.statusEnum = status;
         return this;
     }
 
-    public CorporationContractsResponse status(StatusEnum statusEnum) {
-
-        this.statusEnum = statusEnum;
+    public CorporationContractsResponse statusString(@javax.annotation.Nonnull String status) {
+        this.status = status;
         return this;
     }
 
@@ -709,8 +723,8 @@ public class CorporationContractsResponse implements Serializable {
      * Status of the the contract
      * 
      * @return status
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public StatusEnum getStatus() {
         if (statusEnum == null) {
             statusEnum = StatusEnum.fromValue(status);
@@ -722,16 +736,15 @@ public class CorporationContractsResponse implements Serializable {
         return status;
     }
 
-    public void setStatus(StatusEnum statusEnum) {
-        this.statusEnum = statusEnum;
+    public void setStatus(@javax.annotation.Nonnull StatusEnum status) {
+        this.statusEnum = status;
     }
 
-    public void setStatusString(String status) {
+    public void setStatusString(@javax.annotation.Nonnull String status) {
         this.status = status;
     }
 
-    public CorporationContractsResponse title(String title) {
-
+    public CorporationContractsResponse title(@javax.annotation.Nullable String title) {
         this.title = title;
         return this;
     }
@@ -740,25 +753,23 @@ public class CorporationContractsResponse implements Serializable {
      * Title of the contract
      * 
      * @return title
-     **/
+     */
     @javax.annotation.Nullable
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(@javax.annotation.Nullable String title) {
         this.title = title;
     }
 
-    public CorporationContractsResponse typeString(String type) {
-
-        this.type = type;
+    public CorporationContractsResponse type(@javax.annotation.Nonnull TypeEnum type) {
+        this.typeEnum = type;
         return this;
     }
 
-    public CorporationContractsResponse type(TypeEnum typeEnum) {
-
-        this.typeEnum = typeEnum;
+    public CorporationContractsResponse typeString(@javax.annotation.Nonnull String type) {
+        this.type = type;
         return this;
     }
 
@@ -766,8 +777,8 @@ public class CorporationContractsResponse implements Serializable {
      * Type of the contract
      * 
      * @return type
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public TypeEnum getType() {
         if (typeEnum == null) {
             typeEnum = TypeEnum.fromValue(type);
@@ -779,16 +790,15 @@ public class CorporationContractsResponse implements Serializable {
         return type;
     }
 
-    public void setType(TypeEnum typeEnum) {
-        this.typeEnum = typeEnum;
+    public void setType(@javax.annotation.Nonnull TypeEnum type) {
+        this.typeEnum = type;
     }
 
-    public void setTypeString(String type) {
+    public void setTypeString(@javax.annotation.Nonnull String type) {
         this.type = type;
     }
 
-    public CorporationContractsResponse volume(Double volume) {
-
+    public CorporationContractsResponse volume(@javax.annotation.Nullable Double volume) {
         this.volume = volume;
         return this;
     }
@@ -797,13 +807,13 @@ public class CorporationContractsResponse implements Serializable {
      * Volume of items in the contract
      * 
      * @return volume
-     **/
+     */
     @javax.annotation.Nullable
     public Double getVolume() {
         return volume;
     }
 
-    public void setVolume(Double volume) {
+    public void setVolume(@javax.annotation.Nullable Double volume) {
         this.volume = volume;
     }
 
@@ -933,22 +943,22 @@ public class CorporationContractsResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CorporationContractsResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CorporationContractsResponse.openapiRequiredFields.isEmpty()) { // has
                                                                                  // required
                                                                                  // fields
                                                                                  // but
                                                                                  // JSON
-                                                                                 // object
+                                                                                 // element
                                                                                  // is
                                                                                  // null
                 throw new IllegalArgumentException(
@@ -958,36 +968,41 @@ public class CorporationContractsResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CorporationContractsResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CorporationContractsResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CorporationContractsResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("availability").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `availability` to be a primitive type in the JSON string but got `%s`", jsonObj
                             .get("availability").toString()));
         }
+        // validate the required field `availability`
+        AvailabilityEnum.validateJsonElement(jsonObj.get("availability"));
         if (!jsonObj.get("status").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `status` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("status").toString()));
         }
+        // validate the required field `status`
+        StatusEnum.validateJsonElement(jsonObj.get("status"));
         if ((jsonObj.get("title") != null && !jsonObj.get("title").isJsonNull())
                 && !jsonObj.get("title").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
@@ -999,6 +1014,8 @@ public class CorporationContractsResponse implements Serializable {
                     "Expected the field `type` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("type").toString()));
         }
+        // validate the required field `type`
+        TypeEnum.validateJsonElement(jsonObj.get("type"));
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -1022,9 +1039,9 @@ public class CorporationContractsResponse implements Serializable {
 
                 @Override
                 public CorporationContractsResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

@@ -38,12 +38,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -57,29 +55,33 @@ public class CorporationMiningObserverResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_CHARACTER_ID = "character_id";
     @SerializedName(SERIALIZED_NAME_CHARACTER_ID)
+    @javax.annotation.Nonnull
     private Integer characterId;
 
     public static final String SERIALIZED_NAME_LAST_UPDATED = "last_updated";
     @SerializedName(SERIALIZED_NAME_LAST_UPDATED)
+    @javax.annotation.Nonnull
     private LocalDate lastUpdated;
 
     public static final String SERIALIZED_NAME_QUANTITY = "quantity";
     @SerializedName(SERIALIZED_NAME_QUANTITY)
+    @javax.annotation.Nonnull
     private Long quantity;
 
     public static final String SERIALIZED_NAME_RECORDED_CORPORATION_ID = "recorded_corporation_id";
     @SerializedName(SERIALIZED_NAME_RECORDED_CORPORATION_ID)
+    @javax.annotation.Nonnull
     private Integer recordedCorporationId;
 
     public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
+    @javax.annotation.Nonnull
     private Integer typeId;
 
     public CorporationMiningObserverResponse() {
     }
 
-    public CorporationMiningObserverResponse characterId(Integer characterId) {
-
+    public CorporationMiningObserverResponse characterId(@javax.annotation.Nonnull Integer characterId) {
         this.characterId = characterId;
         return this;
     }
@@ -88,18 +90,17 @@ public class CorporationMiningObserverResponse implements Serializable {
      * The character that did the mining
      * 
      * @return characterId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getCharacterId() {
         return characterId;
     }
 
-    public void setCharacterId(Integer characterId) {
+    public void setCharacterId(@javax.annotation.Nonnull Integer characterId) {
         this.characterId = characterId;
     }
 
-    public CorporationMiningObserverResponse lastUpdated(LocalDate lastUpdated) {
-
+    public CorporationMiningObserverResponse lastUpdated(@javax.annotation.Nonnull LocalDate lastUpdated) {
         this.lastUpdated = lastUpdated;
         return this;
     }
@@ -108,18 +109,17 @@ public class CorporationMiningObserverResponse implements Serializable {
      * last_updated string
      * 
      * @return lastUpdated
-     **/
+     */
     @javax.annotation.Nonnull
     public LocalDate getLastUpdated() {
         return lastUpdated;
     }
 
-    public void setLastUpdated(LocalDate lastUpdated) {
+    public void setLastUpdated(@javax.annotation.Nonnull LocalDate lastUpdated) {
         this.lastUpdated = lastUpdated;
     }
 
-    public CorporationMiningObserverResponse quantity(Long quantity) {
-
+    public CorporationMiningObserverResponse quantity(@javax.annotation.Nonnull Long quantity) {
         this.quantity = quantity;
         return this;
     }
@@ -128,18 +128,18 @@ public class CorporationMiningObserverResponse implements Serializable {
      * quantity integer
      * 
      * @return quantity
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Long quantity) {
+    public void setQuantity(@javax.annotation.Nonnull Long quantity) {
         this.quantity = quantity;
     }
 
-    public CorporationMiningObserverResponse recordedCorporationId(Integer recordedCorporationId) {
-
+    public CorporationMiningObserverResponse recordedCorporationId(
+            @javax.annotation.Nonnull Integer recordedCorporationId) {
         this.recordedCorporationId = recordedCorporationId;
         return this;
     }
@@ -148,18 +148,17 @@ public class CorporationMiningObserverResponse implements Serializable {
      * The corporation id of the character at the time data was recorded.
      * 
      * @return recordedCorporationId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getRecordedCorporationId() {
         return recordedCorporationId;
     }
 
-    public void setRecordedCorporationId(Integer recordedCorporationId) {
+    public void setRecordedCorporationId(@javax.annotation.Nonnull Integer recordedCorporationId) {
         this.recordedCorporationId = recordedCorporationId;
     }
 
-    public CorporationMiningObserverResponse typeId(Integer typeId) {
-
+    public CorporationMiningObserverResponse typeId(@javax.annotation.Nonnull Integer typeId) {
         this.typeId = typeId;
         return this;
     }
@@ -168,13 +167,13 @@ public class CorporationMiningObserverResponse implements Serializable {
      * type_id integer
      * 
      * @return typeId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(Integer typeId) {
+    public void setTypeId(@javax.annotation.Nonnull Integer typeId) {
         this.typeId = typeId;
     }
 
@@ -245,22 +244,22 @@ public class CorporationMiningObserverResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CorporationMiningObserverResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CorporationMiningObserverResponse.openapiRequiredFields.isEmpty()) { // has
                                                                                       // required
                                                                                       // fields
                                                                                       // but
                                                                                       // JSON
-                                                                                      // object
+                                                                                      // element
                                                                                       // is
                                                                                       // null
                 throw new IllegalArgumentException(
@@ -270,26 +269,27 @@ public class CorporationMiningObserverResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CorporationMiningObserverResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CorporationMiningObserverResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CorporationMiningObserverResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -314,9 +314,9 @@ public class CorporationMiningObserverResponse implements Serializable {
 
                 @Override
                 public CorporationMiningObserverResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

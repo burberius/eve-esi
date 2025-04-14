@@ -4,12 +4,18 @@
 # EVE-ESI
 A Java client library for the EVE Swagger Interface (ESI)
 
+## Version 6.0.0 changes
+
+We regenerated the classes with the latest openAPI generator (currently 7.12.0) and try to keep it uptodate now.
+Theoretically there should be any breaking changes.
+
 ## Version 4.0.0 changes
 
 Enum changes no longer require a version bump in ESI, therefor eve-esi will return `null` for unknown enum values.
 You can get the string value of the unknown enum with `get[VariableName]String()`
 
-We don't check for changes regularly, so please, make an issue (or even better a PR with the changes) if you need the enum values updated.
+We don't check for changes regularly, so please, make an issue (or even better a PR with the changes) if you need
+the enum values updated.
 
 ## Version 3.0.0 changes
 After several years with many changes to ESI it is now quite stable, so

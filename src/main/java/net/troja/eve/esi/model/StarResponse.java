@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -56,22 +54,27 @@ public class StarResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_AGE = "age";
     @SerializedName(SERIALIZED_NAME_AGE)
+    @javax.annotation.Nonnull
     private Long age;
 
     public static final String SERIALIZED_NAME_LUMINOSITY = "luminosity";
     @SerializedName(SERIALIZED_NAME_LUMINOSITY)
+    @javax.annotation.Nonnull
     private Float luminosity;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
+    @javax.annotation.Nonnull
     private String name;
 
     public static final String SERIALIZED_NAME_RADIUS = "radius";
     @SerializedName(SERIALIZED_NAME_RADIUS)
+    @javax.annotation.Nonnull
     private Long radius;
 
     public static final String SERIALIZED_NAME_SOLAR_SYSTEM_ID = "solar_system_id";
     @SerializedName(SERIALIZED_NAME_SOLAR_SYSTEM_ID)
+    @javax.annotation.Nonnull
     private Integer solarSystemId;
 
     /**
@@ -293,26 +296,33 @@ public class StarResponse implements Serializable {
                 return SpectralClassEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            SpectralClassEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_SPECTRAL_CLASS = "spectral_class";
     @SerializedName(SERIALIZED_NAME_SPECTRAL_CLASS)
+    @javax.annotation.Nonnull
     private String spectralClass;
     private SpectralClassEnum spectralClassEnum;
 
     public static final String SERIALIZED_NAME_TEMPERATURE = "temperature";
     @SerializedName(SERIALIZED_NAME_TEMPERATURE)
+    @javax.annotation.Nonnull
     private Integer temperature;
 
     public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
+    @javax.annotation.Nonnull
     private Integer typeId;
 
     public StarResponse() {
     }
 
-    public StarResponse age(Long age) {
-
+    public StarResponse age(@javax.annotation.Nonnull Long age) {
         this.age = age;
         return this;
     }
@@ -321,18 +331,17 @@ public class StarResponse implements Serializable {
      * Age of star in years
      * 
      * @return age
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getAge() {
         return age;
     }
 
-    public void setAge(Long age) {
+    public void setAge(@javax.annotation.Nonnull Long age) {
         this.age = age;
     }
 
-    public StarResponse luminosity(Float luminosity) {
-
+    public StarResponse luminosity(@javax.annotation.Nonnull Float luminosity) {
         this.luminosity = luminosity;
         return this;
     }
@@ -341,18 +350,17 @@ public class StarResponse implements Serializable {
      * luminosity number
      * 
      * @return luminosity
-     **/
+     */
     @javax.annotation.Nonnull
     public Float getLuminosity() {
         return luminosity;
     }
 
-    public void setLuminosity(Float luminosity) {
+    public void setLuminosity(@javax.annotation.Nonnull Float luminosity) {
         this.luminosity = luminosity;
     }
 
-    public StarResponse name(String name) {
-
+    public StarResponse name(@javax.annotation.Nonnull String name) {
         this.name = name;
         return this;
     }
@@ -361,18 +369,17 @@ public class StarResponse implements Serializable {
      * name string
      * 
      * @return name
-     **/
+     */
     @javax.annotation.Nonnull
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@javax.annotation.Nonnull String name) {
         this.name = name;
     }
 
-    public StarResponse radius(Long radius) {
-
+    public StarResponse radius(@javax.annotation.Nonnull Long radius) {
         this.radius = radius;
         return this;
     }
@@ -381,18 +388,17 @@ public class StarResponse implements Serializable {
      * radius integer
      * 
      * @return radius
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getRadius() {
         return radius;
     }
 
-    public void setRadius(Long radius) {
+    public void setRadius(@javax.annotation.Nonnull Long radius) {
         this.radius = radius;
     }
 
-    public StarResponse solarSystemId(Integer solarSystemId) {
-
+    public StarResponse solarSystemId(@javax.annotation.Nonnull Integer solarSystemId) {
         this.solarSystemId = solarSystemId;
         return this;
     }
@@ -401,25 +407,23 @@ public class StarResponse implements Serializable {
      * solar_system_id integer
      * 
      * @return solarSystemId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getSolarSystemId() {
         return solarSystemId;
     }
 
-    public void setSolarSystemId(Integer solarSystemId) {
+    public void setSolarSystemId(@javax.annotation.Nonnull Integer solarSystemId) {
         this.solarSystemId = solarSystemId;
     }
 
-    public StarResponse spectralClassString(String spectralClass) {
-
-        this.spectralClass = spectralClass;
+    public StarResponse spectralClass(@javax.annotation.Nonnull SpectralClassEnum spectralClass) {
+        this.spectralClassEnum = spectralClass;
         return this;
     }
 
-    public StarResponse spectralClass(SpectralClassEnum spectralClassEnum) {
-
-        this.spectralClassEnum = spectralClassEnum;
+    public StarResponse spectralClassString(@javax.annotation.Nonnull String spectralClass) {
+        this.spectralClass = spectralClass;
         return this;
     }
 
@@ -427,8 +431,8 @@ public class StarResponse implements Serializable {
      * spectral_class string
      * 
      * @return spectralClass
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public SpectralClassEnum getSpectralClass() {
         if (spectralClassEnum == null) {
             spectralClassEnum = SpectralClassEnum.fromValue(spectralClass);
@@ -440,16 +444,15 @@ public class StarResponse implements Serializable {
         return spectralClass;
     }
 
-    public void setSpectralClass(SpectralClassEnum spectralClassEnum) {
-        this.spectralClassEnum = spectralClassEnum;
+    public void setSpectralClass(@javax.annotation.Nonnull SpectralClassEnum spectralClass) {
+        this.spectralClassEnum = spectralClass;
     }
 
-    public void setSpectralClassString(String spectralClass) {
+    public void setSpectralClassString(@javax.annotation.Nonnull String spectralClass) {
         this.spectralClass = spectralClass;
     }
 
-    public StarResponse temperature(Integer temperature) {
-
+    public StarResponse temperature(@javax.annotation.Nonnull Integer temperature) {
         this.temperature = temperature;
         return this;
     }
@@ -458,18 +461,17 @@ public class StarResponse implements Serializable {
      * temperature integer
      * 
      * @return temperature
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(Integer temperature) {
+    public void setTemperature(@javax.annotation.Nonnull Integer temperature) {
         this.temperature = temperature;
     }
 
-    public StarResponse typeId(Integer typeId) {
-
+    public StarResponse typeId(@javax.annotation.Nonnull Integer typeId) {
         this.typeId = typeId;
         return this;
     }
@@ -478,13 +480,13 @@ public class StarResponse implements Serializable {
      * type_id integer
      * 
      * @return typeId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(Integer typeId) {
+    public void setTypeId(@javax.annotation.Nonnull Integer typeId) {
         this.typeId = typeId;
     }
 
@@ -565,18 +567,18 @@ public class StarResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to StarResponse
+     *             if the JSON Element is invalid with respect to StarResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!StarResponse.openapiRequiredFields.isEmpty()) { // has required
                                                                  // fields but
-                                                                 // JSON object
+                                                                 // JSON element
                                                                  // is null
                 throw new IllegalArgumentException(String.format(
                         "The required field(s) %s in StarResponse is not found in the empty JSON string",
@@ -584,25 +586,26 @@ public class StarResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!StarResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(String.format(
                         "The field `%s` in the JSON string is not defined in the `StarResponse` properties. JSON: %s",
-                        entry.getKey(), jsonObj.toString()));
+                        entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : StarResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("name").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `name` to be a primitive type in the JSON string but got `%s`",
@@ -613,6 +616,8 @@ public class StarResponse implements Serializable {
                     "Expected the field `spectral_class` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("spectral_class").toString()));
         }
+        // validate the required field `spectral_class`
+        SpectralClassEnum.validateJsonElement(jsonObj.get("spectral_class"));
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -636,9 +641,9 @@ public class StarResponse implements Serializable {
 
                 @Override
                 public StarResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

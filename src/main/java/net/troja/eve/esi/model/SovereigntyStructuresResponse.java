@@ -38,12 +38,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -57,37 +55,43 @@ public class SovereigntyStructuresResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ALLIANCE_ID = "alliance_id";
     @SerializedName(SERIALIZED_NAME_ALLIANCE_ID)
+    @javax.annotation.Nonnull
     private Integer allianceId;
 
     public static final String SERIALIZED_NAME_SOLAR_SYSTEM_ID = "solar_system_id";
     @SerializedName(SERIALIZED_NAME_SOLAR_SYSTEM_ID)
+    @javax.annotation.Nonnull
     private Integer solarSystemId;
 
     public static final String SERIALIZED_NAME_STRUCTURE_ID = "structure_id";
     @SerializedName(SERIALIZED_NAME_STRUCTURE_ID)
+    @javax.annotation.Nonnull
     private Long structureId;
 
     public static final String SERIALIZED_NAME_STRUCTURE_TYPE_ID = "structure_type_id";
     @SerializedName(SERIALIZED_NAME_STRUCTURE_TYPE_ID)
+    @javax.annotation.Nonnull
     private Integer structureTypeId;
 
     public static final String SERIALIZED_NAME_VULNERABILITY_OCCUPANCY_LEVEL = "vulnerability_occupancy_level";
     @SerializedName(SERIALIZED_NAME_VULNERABILITY_OCCUPANCY_LEVEL)
+    @javax.annotation.Nullable
     private Float vulnerabilityOccupancyLevel;
 
     public static final String SERIALIZED_NAME_VULNERABLE_END_TIME = "vulnerable_end_time";
     @SerializedName(SERIALIZED_NAME_VULNERABLE_END_TIME)
+    @javax.annotation.Nullable
     private OffsetDateTime vulnerableEndTime;
 
     public static final String SERIALIZED_NAME_VULNERABLE_START_TIME = "vulnerable_start_time";
     @SerializedName(SERIALIZED_NAME_VULNERABLE_START_TIME)
+    @javax.annotation.Nullable
     private OffsetDateTime vulnerableStartTime;
 
     public SovereigntyStructuresResponse() {
     }
 
-    public SovereigntyStructuresResponse allianceId(Integer allianceId) {
-
+    public SovereigntyStructuresResponse allianceId(@javax.annotation.Nonnull Integer allianceId) {
         this.allianceId = allianceId;
         return this;
     }
@@ -96,18 +100,17 @@ public class SovereigntyStructuresResponse implements Serializable {
      * The alliance that owns the structure.
      * 
      * @return allianceId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getAllianceId() {
         return allianceId;
     }
 
-    public void setAllianceId(Integer allianceId) {
+    public void setAllianceId(@javax.annotation.Nonnull Integer allianceId) {
         this.allianceId = allianceId;
     }
 
-    public SovereigntyStructuresResponse solarSystemId(Integer solarSystemId) {
-
+    public SovereigntyStructuresResponse solarSystemId(@javax.annotation.Nonnull Integer solarSystemId) {
         this.solarSystemId = solarSystemId;
         return this;
     }
@@ -116,18 +119,17 @@ public class SovereigntyStructuresResponse implements Serializable {
      * Solar system in which the structure is located.
      * 
      * @return solarSystemId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getSolarSystemId() {
         return solarSystemId;
     }
 
-    public void setSolarSystemId(Integer solarSystemId) {
+    public void setSolarSystemId(@javax.annotation.Nonnull Integer solarSystemId) {
         this.solarSystemId = solarSystemId;
     }
 
-    public SovereigntyStructuresResponse structureId(Long structureId) {
-
+    public SovereigntyStructuresResponse structureId(@javax.annotation.Nonnull Long structureId) {
         this.structureId = structureId;
         return this;
     }
@@ -136,18 +138,17 @@ public class SovereigntyStructuresResponse implements Serializable {
      * Unique item ID for this structure.
      * 
      * @return structureId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getStructureId() {
         return structureId;
     }
 
-    public void setStructureId(Long structureId) {
+    public void setStructureId(@javax.annotation.Nonnull Long structureId) {
         this.structureId = structureId;
     }
 
-    public SovereigntyStructuresResponse structureTypeId(Integer structureTypeId) {
-
+    public SovereigntyStructuresResponse structureTypeId(@javax.annotation.Nonnull Integer structureTypeId) {
         this.structureTypeId = structureTypeId;
         return this;
     }
@@ -156,18 +157,18 @@ public class SovereigntyStructuresResponse implements Serializable {
      * A reference to the type of structure this is.
      * 
      * @return structureTypeId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getStructureTypeId() {
         return structureTypeId;
     }
 
-    public void setStructureTypeId(Integer structureTypeId) {
+    public void setStructureTypeId(@javax.annotation.Nonnull Integer structureTypeId) {
         this.structureTypeId = structureTypeId;
     }
 
-    public SovereigntyStructuresResponse vulnerabilityOccupancyLevel(Float vulnerabilityOccupancyLevel) {
-
+    public SovereigntyStructuresResponse vulnerabilityOccupancyLevel(
+            @javax.annotation.Nullable Float vulnerabilityOccupancyLevel) {
         this.vulnerabilityOccupancyLevel = vulnerabilityOccupancyLevel;
         return this;
     }
@@ -180,18 +181,17 @@ public class SovereigntyStructuresResponse implements Serializable {
      * the structure.
      * 
      * @return vulnerabilityOccupancyLevel
-     **/
+     */
     @javax.annotation.Nullable
     public Float getVulnerabilityOccupancyLevel() {
         return vulnerabilityOccupancyLevel;
     }
 
-    public void setVulnerabilityOccupancyLevel(Float vulnerabilityOccupancyLevel) {
+    public void setVulnerabilityOccupancyLevel(@javax.annotation.Nullable Float vulnerabilityOccupancyLevel) {
         this.vulnerabilityOccupancyLevel = vulnerabilityOccupancyLevel;
     }
 
-    public SovereigntyStructuresResponse vulnerableEndTime(OffsetDateTime vulnerableEndTime) {
-
+    public SovereigntyStructuresResponse vulnerableEndTime(@javax.annotation.Nullable OffsetDateTime vulnerableEndTime) {
         this.vulnerableEndTime = vulnerableEndTime;
         return this;
     }
@@ -206,18 +206,18 @@ public class SovereigntyStructuresResponse implements Serializable {
      * does the vulnerability interval expire and a new one is calculated.
      * 
      * @return vulnerableEndTime
-     **/
+     */
     @javax.annotation.Nullable
     public OffsetDateTime getVulnerableEndTime() {
         return vulnerableEndTime;
     }
 
-    public void setVulnerableEndTime(OffsetDateTime vulnerableEndTime) {
+    public void setVulnerableEndTime(@javax.annotation.Nullable OffsetDateTime vulnerableEndTime) {
         this.vulnerableEndTime = vulnerableEndTime;
     }
 
-    public SovereigntyStructuresResponse vulnerableStartTime(OffsetDateTime vulnerableStartTime) {
-
+    public SovereigntyStructuresResponse vulnerableStartTime(
+            @javax.annotation.Nullable OffsetDateTime vulnerableStartTime) {
         this.vulnerableStartTime = vulnerableStartTime;
         return this;
     }
@@ -228,13 +228,13 @@ public class SovereigntyStructuresResponse implements Serializable {
      * vulnerableEndTime.
      * 
      * @return vulnerableStartTime
-     **/
+     */
     @javax.annotation.Nullable
     public OffsetDateTime getVulnerableStartTime() {
         return vulnerableStartTime;
     }
 
-    public void setVulnerableStartTime(OffsetDateTime vulnerableStartTime) {
+    public void setVulnerableStartTime(@javax.annotation.Nullable OffsetDateTime vulnerableStartTime) {
         this.vulnerableStartTime = vulnerableStartTime;
     }
 
@@ -313,22 +313,22 @@ public class SovereigntyStructuresResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             SovereigntyStructuresResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!SovereigntyStructuresResponse.openapiRequiredFields.isEmpty()) { // has
                                                                                   // required
                                                                                   // fields
                                                                                   // but
                                                                                   // JSON
-                                                                                  // object
+                                                                                  // element
                                                                                   // is
                                                                                   // null
                 throw new IllegalArgumentException(
@@ -338,26 +338,27 @@ public class SovereigntyStructuresResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!SovereigntyStructuresResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `SovereigntyStructuresResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : SovereigntyStructuresResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -381,9 +382,9 @@ public class SovereigntyStructuresResponse implements Serializable {
 
                 @Override
                 public SovereigntyStructuresResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

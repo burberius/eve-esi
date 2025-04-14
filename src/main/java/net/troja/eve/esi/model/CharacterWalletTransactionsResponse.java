@@ -38,12 +38,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -57,49 +55,58 @@ public class CharacterWalletTransactionsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_CLIENT_ID = "client_id";
     @SerializedName(SERIALIZED_NAME_CLIENT_ID)
+    @javax.annotation.Nonnull
     private Integer clientId;
 
     public static final String SERIALIZED_NAME_DATE = "date";
     @SerializedName(SERIALIZED_NAME_DATE)
+    @javax.annotation.Nonnull
     private OffsetDateTime date;
 
     public static final String SERIALIZED_NAME_IS_BUY = "is_buy";
     @SerializedName(SERIALIZED_NAME_IS_BUY)
+    @javax.annotation.Nonnull
     private Boolean isBuy;
 
     public static final String SERIALIZED_NAME_IS_PERSONAL = "is_personal";
     @SerializedName(SERIALIZED_NAME_IS_PERSONAL)
+    @javax.annotation.Nonnull
     private Boolean isPersonal;
 
     public static final String SERIALIZED_NAME_JOURNAL_REF_ID = "journal_ref_id";
     @SerializedName(SERIALIZED_NAME_JOURNAL_REF_ID)
+    @javax.annotation.Nonnull
     private Long journalRefId;
 
     public static final String SERIALIZED_NAME_LOCATION_ID = "location_id";
     @SerializedName(SERIALIZED_NAME_LOCATION_ID)
+    @javax.annotation.Nonnull
     private Long locationId;
 
     public static final String SERIALIZED_NAME_QUANTITY = "quantity";
     @SerializedName(SERIALIZED_NAME_QUANTITY)
+    @javax.annotation.Nonnull
     private Integer quantity;
 
     public static final String SERIALIZED_NAME_TRANSACTION_ID = "transaction_id";
     @SerializedName(SERIALIZED_NAME_TRANSACTION_ID)
+    @javax.annotation.Nonnull
     private Long transactionId;
 
     public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
+    @javax.annotation.Nonnull
     private Integer typeId;
 
     public static final String SERIALIZED_NAME_UNIT_PRICE = "unit_price";
     @SerializedName(SERIALIZED_NAME_UNIT_PRICE)
+    @javax.annotation.Nonnull
     private Double unitPrice;
 
     public CharacterWalletTransactionsResponse() {
     }
 
-    public CharacterWalletTransactionsResponse clientId(Integer clientId) {
-
+    public CharacterWalletTransactionsResponse clientId(@javax.annotation.Nonnull Integer clientId) {
         this.clientId = clientId;
         return this;
     }
@@ -108,18 +115,17 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * client_id integer
      * 
      * @return clientId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getClientId() {
         return clientId;
     }
 
-    public void setClientId(Integer clientId) {
+    public void setClientId(@javax.annotation.Nonnull Integer clientId) {
         this.clientId = clientId;
     }
 
-    public CharacterWalletTransactionsResponse date(OffsetDateTime date) {
-
+    public CharacterWalletTransactionsResponse date(@javax.annotation.Nonnull OffsetDateTime date) {
         this.date = date;
         return this;
     }
@@ -128,18 +134,17 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * Date and time of transaction
      * 
      * @return date
-     **/
+     */
     @javax.annotation.Nonnull
     public OffsetDateTime getDate() {
         return date;
     }
 
-    public void setDate(OffsetDateTime date) {
+    public void setDate(@javax.annotation.Nonnull OffsetDateTime date) {
         this.date = date;
     }
 
-    public CharacterWalletTransactionsResponse isBuy(Boolean isBuy) {
-
+    public CharacterWalletTransactionsResponse isBuy(@javax.annotation.Nonnull Boolean isBuy) {
         this.isBuy = isBuy;
         return this;
     }
@@ -148,18 +153,17 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * is_buy boolean
      * 
      * @return isBuy
-     **/
+     */
     @javax.annotation.Nonnull
     public Boolean getIsBuy() {
         return isBuy;
     }
 
-    public void setIsBuy(Boolean isBuy) {
+    public void setIsBuy(@javax.annotation.Nonnull Boolean isBuy) {
         this.isBuy = isBuy;
     }
 
-    public CharacterWalletTransactionsResponse isPersonal(Boolean isPersonal) {
-
+    public CharacterWalletTransactionsResponse isPersonal(@javax.annotation.Nonnull Boolean isPersonal) {
         this.isPersonal = isPersonal;
         return this;
     }
@@ -168,18 +172,17 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * is_personal boolean
      * 
      * @return isPersonal
-     **/
+     */
     @javax.annotation.Nonnull
     public Boolean getIsPersonal() {
         return isPersonal;
     }
 
-    public void setIsPersonal(Boolean isPersonal) {
+    public void setIsPersonal(@javax.annotation.Nonnull Boolean isPersonal) {
         this.isPersonal = isPersonal;
     }
 
-    public CharacterWalletTransactionsResponse journalRefId(Long journalRefId) {
-
+    public CharacterWalletTransactionsResponse journalRefId(@javax.annotation.Nonnull Long journalRefId) {
         this.journalRefId = journalRefId;
         return this;
     }
@@ -188,18 +191,17 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * journal_ref_id integer
      * 
      * @return journalRefId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getJournalRefId() {
         return journalRefId;
     }
 
-    public void setJournalRefId(Long journalRefId) {
+    public void setJournalRefId(@javax.annotation.Nonnull Long journalRefId) {
         this.journalRefId = journalRefId;
     }
 
-    public CharacterWalletTransactionsResponse locationId(Long locationId) {
-
+    public CharacterWalletTransactionsResponse locationId(@javax.annotation.Nonnull Long locationId) {
         this.locationId = locationId;
         return this;
     }
@@ -208,18 +210,17 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * location_id integer
      * 
      * @return locationId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getLocationId() {
         return locationId;
     }
 
-    public void setLocationId(Long locationId) {
+    public void setLocationId(@javax.annotation.Nonnull Long locationId) {
         this.locationId = locationId;
     }
 
-    public CharacterWalletTransactionsResponse quantity(Integer quantity) {
-
+    public CharacterWalletTransactionsResponse quantity(@javax.annotation.Nonnull Integer quantity) {
         this.quantity = quantity;
         return this;
     }
@@ -228,18 +229,17 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * quantity integer
      * 
      * @return quantity
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(@javax.annotation.Nonnull Integer quantity) {
         this.quantity = quantity;
     }
 
-    public CharacterWalletTransactionsResponse transactionId(Long transactionId) {
-
+    public CharacterWalletTransactionsResponse transactionId(@javax.annotation.Nonnull Long transactionId) {
         this.transactionId = transactionId;
         return this;
     }
@@ -248,18 +248,17 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * Unique transaction ID
      * 
      * @return transactionId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getTransactionId() {
         return transactionId;
     }
 
-    public void setTransactionId(Long transactionId) {
+    public void setTransactionId(@javax.annotation.Nonnull Long transactionId) {
         this.transactionId = transactionId;
     }
 
-    public CharacterWalletTransactionsResponse typeId(Integer typeId) {
-
+    public CharacterWalletTransactionsResponse typeId(@javax.annotation.Nonnull Integer typeId) {
         this.typeId = typeId;
         return this;
     }
@@ -268,18 +267,17 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * type_id integer
      * 
      * @return typeId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(Integer typeId) {
+    public void setTypeId(@javax.annotation.Nonnull Integer typeId) {
         this.typeId = typeId;
     }
 
-    public CharacterWalletTransactionsResponse unitPrice(Double unitPrice) {
-
+    public CharacterWalletTransactionsResponse unitPrice(@javax.annotation.Nonnull Double unitPrice) {
         this.unitPrice = unitPrice;
         return this;
     }
@@ -288,13 +286,13 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * Amount paid per unit
      * 
      * @return unitPrice
-     **/
+     */
     @javax.annotation.Nonnull
     public Double getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(Double unitPrice) {
+    public void setUnitPrice(@javax.annotation.Nonnull Double unitPrice) {
         this.unitPrice = unitPrice;
     }
 
@@ -386,22 +384,22 @@ public class CharacterWalletTransactionsResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CharacterWalletTransactionsResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CharacterWalletTransactionsResponse.openapiRequiredFields.isEmpty()) { // has
                                                                                         // required
                                                                                         // fields
                                                                                         // but
                                                                                         // JSON
-                                                                                        // object
+                                                                                        // element
                                                                                         // is
                                                                                         // null
                 throw new IllegalArgumentException(
@@ -411,26 +409,27 @@ public class CharacterWalletTransactionsResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CharacterWalletTransactionsResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CharacterWalletTransactionsResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CharacterWalletTransactionsResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -455,9 +454,9 @@ public class CharacterWalletTransactionsResponse implements Serializable {
 
                 @Override
                 public CharacterWalletTransactionsResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

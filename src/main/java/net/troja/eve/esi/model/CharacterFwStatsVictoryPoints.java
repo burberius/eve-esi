@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -57,21 +55,23 @@ public class CharacterFwStatsVictoryPoints implements Serializable {
 
     public static final String SERIALIZED_NAME_LAST_WEEK = "last_week";
     @SerializedName(SERIALIZED_NAME_LAST_WEEK)
+    @javax.annotation.Nonnull
     private Integer lastWeek;
 
     public static final String SERIALIZED_NAME_TOTAL = "total";
     @SerializedName(SERIALIZED_NAME_TOTAL)
+    @javax.annotation.Nonnull
     private Integer total;
 
     public static final String SERIALIZED_NAME_YESTERDAY = "yesterday";
     @SerializedName(SERIALIZED_NAME_YESTERDAY)
+    @javax.annotation.Nonnull
     private Integer yesterday;
 
     public CharacterFwStatsVictoryPoints() {
     }
 
-    public CharacterFwStatsVictoryPoints lastWeek(Integer lastWeek) {
-
+    public CharacterFwStatsVictoryPoints lastWeek(@javax.annotation.Nonnull Integer lastWeek) {
         this.lastWeek = lastWeek;
         return this;
     }
@@ -80,18 +80,17 @@ public class CharacterFwStatsVictoryPoints implements Serializable {
      * Last week&#39;s victory points gained by the given character
      * 
      * @return lastWeek
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getLastWeek() {
         return lastWeek;
     }
 
-    public void setLastWeek(Integer lastWeek) {
+    public void setLastWeek(@javax.annotation.Nonnull Integer lastWeek) {
         this.lastWeek = lastWeek;
     }
 
-    public CharacterFwStatsVictoryPoints total(Integer total) {
-
+    public CharacterFwStatsVictoryPoints total(@javax.annotation.Nonnull Integer total) {
         this.total = total;
         return this;
     }
@@ -100,18 +99,17 @@ public class CharacterFwStatsVictoryPoints implements Serializable {
      * Total victory points gained since the given character enlisted
      * 
      * @return total
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getTotal() {
         return total;
     }
 
-    public void setTotal(Integer total) {
+    public void setTotal(@javax.annotation.Nonnull Integer total) {
         this.total = total;
     }
 
-    public CharacterFwStatsVictoryPoints yesterday(Integer yesterday) {
-
+    public CharacterFwStatsVictoryPoints yesterday(@javax.annotation.Nonnull Integer yesterday) {
         this.yesterday = yesterday;
         return this;
     }
@@ -120,13 +118,13 @@ public class CharacterFwStatsVictoryPoints implements Serializable {
      * Yesterday&#39;s victory points gained by the given character
      * 
      * @return yesterday
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getYesterday() {
         return yesterday;
     }
 
-    public void setYesterday(Integer yesterday) {
+    public void setYesterday(@javax.annotation.Nonnull Integer yesterday) {
         this.yesterday = yesterday;
     }
 
@@ -189,22 +187,22 @@ public class CharacterFwStatsVictoryPoints implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CharacterFwStatsVictoryPoints
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CharacterFwStatsVictoryPoints.openapiRequiredFields.isEmpty()) { // has
                                                                                   // required
                                                                                   // fields
                                                                                   // but
                                                                                   // JSON
-                                                                                  // object
+                                                                                  // element
                                                                                   // is
                                                                                   // null
                 throw new IllegalArgumentException(
@@ -214,26 +212,27 @@ public class CharacterFwStatsVictoryPoints implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CharacterFwStatsVictoryPoints.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CharacterFwStatsVictoryPoints` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CharacterFwStatsVictoryPoints.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -257,9 +256,9 @@ public class CharacterFwStatsVictoryPoints implements Serializable {
 
                 @Override
                 public CharacterFwStatsVictoryPoints read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

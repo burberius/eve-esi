@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -56,21 +54,23 @@ public class PlanetHead implements Serializable {
 
     public static final String SERIALIZED_NAME_HEAD_ID = "head_id";
     @SerializedName(SERIALIZED_NAME_HEAD_ID)
+    @javax.annotation.Nonnull
     private Integer headId;
 
     public static final String SERIALIZED_NAME_LATITUDE = "latitude";
     @SerializedName(SERIALIZED_NAME_LATITUDE)
+    @javax.annotation.Nonnull
     private Float latitude;
 
     public static final String SERIALIZED_NAME_LONGITUDE = "longitude";
     @SerializedName(SERIALIZED_NAME_LONGITUDE)
+    @javax.annotation.Nonnull
     private Float longitude;
 
     public PlanetHead() {
     }
 
-    public PlanetHead headId(Integer headId) {
-
+    public PlanetHead headId(@javax.annotation.Nonnull Integer headId) {
         this.headId = headId;
         return this;
     }
@@ -79,18 +79,17 @@ public class PlanetHead implements Serializable {
      * head_id integer minimum: 0 maximum: 9
      * 
      * @return headId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getHeadId() {
         return headId;
     }
 
-    public void setHeadId(Integer headId) {
+    public void setHeadId(@javax.annotation.Nonnull Integer headId) {
         this.headId = headId;
     }
 
-    public PlanetHead latitude(Float latitude) {
-
+    public PlanetHead latitude(@javax.annotation.Nonnull Float latitude) {
         this.latitude = latitude;
         return this;
     }
@@ -99,18 +98,17 @@ public class PlanetHead implements Serializable {
      * latitude number
      * 
      * @return latitude
-     **/
+     */
     @javax.annotation.Nonnull
     public Float getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(Float latitude) {
+    public void setLatitude(@javax.annotation.Nonnull Float latitude) {
         this.latitude = latitude;
     }
 
-    public PlanetHead longitude(Float longitude) {
-
+    public PlanetHead longitude(@javax.annotation.Nonnull Float longitude) {
         this.longitude = longitude;
         return this;
     }
@@ -119,13 +117,13 @@ public class PlanetHead implements Serializable {
      * longitude number
      * 
      * @return longitude
-     **/
+     */
     @javax.annotation.Nonnull
     public Float getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(Float longitude) {
+    public void setLongitude(@javax.annotation.Nonnull Float longitude) {
         this.longitude = longitude;
     }
 
@@ -187,44 +185,45 @@ public class PlanetHead implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to PlanetHead
+     *             if the JSON Element is invalid with respect to PlanetHead
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!PlanetHead.openapiRequiredFields.isEmpty()) { // has required
                                                                // fields but
-                                                               // JSON object is
-                                                               // null
+                                                               // JSON element
+                                                               // is null
                 throw new IllegalArgumentException(String.format(
                         "The required field(s) %s in PlanetHead is not found in the empty JSON string",
                         PlanetHead.openapiRequiredFields.toString()));
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!PlanetHead.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(String.format(
                         "The field `%s` in the JSON string is not defined in the `PlanetHead` properties. JSON: %s",
-                        entry.getKey(), jsonObj.toString()));
+                        entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : PlanetHead.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -247,9 +246,9 @@ public class PlanetHead implements Serializable {
 
                 @Override
                 public PlanetHead read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -56,29 +54,33 @@ public class KillmailSubItem implements Serializable {
 
     public static final String SERIALIZED_NAME_FLAG = "flag";
     @SerializedName(SERIALIZED_NAME_FLAG)
+    @javax.annotation.Nonnull
     private Integer flag;
 
     public static final String SERIALIZED_NAME_ITEM_TYPE_ID = "item_type_id";
     @SerializedName(SERIALIZED_NAME_ITEM_TYPE_ID)
+    @javax.annotation.Nonnull
     private Integer itemTypeId;
 
     public static final String SERIALIZED_NAME_QUANTITY_DESTROYED = "quantity_destroyed";
     @SerializedName(SERIALIZED_NAME_QUANTITY_DESTROYED)
+    @javax.annotation.Nullable
     private Long quantityDestroyed;
 
     public static final String SERIALIZED_NAME_QUANTITY_DROPPED = "quantity_dropped";
     @SerializedName(SERIALIZED_NAME_QUANTITY_DROPPED)
+    @javax.annotation.Nullable
     private Long quantityDropped;
 
     public static final String SERIALIZED_NAME_SINGLETON = "singleton";
     @SerializedName(SERIALIZED_NAME_SINGLETON)
+    @javax.annotation.Nonnull
     private Integer singleton;
 
     public KillmailSubItem() {
     }
 
-    public KillmailSubItem flag(Integer flag) {
-
+    public KillmailSubItem flag(@javax.annotation.Nonnull Integer flag) {
         this.flag = flag;
         return this;
     }
@@ -87,18 +89,17 @@ public class KillmailSubItem implements Serializable {
      * flag integer
      * 
      * @return flag
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getFlag() {
         return flag;
     }
 
-    public void setFlag(Integer flag) {
+    public void setFlag(@javax.annotation.Nonnull Integer flag) {
         this.flag = flag;
     }
 
-    public KillmailSubItem itemTypeId(Integer itemTypeId) {
-
+    public KillmailSubItem itemTypeId(@javax.annotation.Nonnull Integer itemTypeId) {
         this.itemTypeId = itemTypeId;
         return this;
     }
@@ -107,18 +108,17 @@ public class KillmailSubItem implements Serializable {
      * item_type_id integer
      * 
      * @return itemTypeId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getItemTypeId() {
         return itemTypeId;
     }
 
-    public void setItemTypeId(Integer itemTypeId) {
+    public void setItemTypeId(@javax.annotation.Nonnull Integer itemTypeId) {
         this.itemTypeId = itemTypeId;
     }
 
-    public KillmailSubItem quantityDestroyed(Long quantityDestroyed) {
-
+    public KillmailSubItem quantityDestroyed(@javax.annotation.Nullable Long quantityDestroyed) {
         this.quantityDestroyed = quantityDestroyed;
         return this;
     }
@@ -127,18 +127,17 @@ public class KillmailSubItem implements Serializable {
      * quantity_destroyed integer
      * 
      * @return quantityDestroyed
-     **/
+     */
     @javax.annotation.Nullable
     public Long getQuantityDestroyed() {
         return quantityDestroyed;
     }
 
-    public void setQuantityDestroyed(Long quantityDestroyed) {
+    public void setQuantityDestroyed(@javax.annotation.Nullable Long quantityDestroyed) {
         this.quantityDestroyed = quantityDestroyed;
     }
 
-    public KillmailSubItem quantityDropped(Long quantityDropped) {
-
+    public KillmailSubItem quantityDropped(@javax.annotation.Nullable Long quantityDropped) {
         this.quantityDropped = quantityDropped;
         return this;
     }
@@ -147,18 +146,17 @@ public class KillmailSubItem implements Serializable {
      * quantity_dropped integer
      * 
      * @return quantityDropped
-     **/
+     */
     @javax.annotation.Nullable
     public Long getQuantityDropped() {
         return quantityDropped;
     }
 
-    public void setQuantityDropped(Long quantityDropped) {
+    public void setQuantityDropped(@javax.annotation.Nullable Long quantityDropped) {
         this.quantityDropped = quantityDropped;
     }
 
-    public KillmailSubItem singleton(Integer singleton) {
-
+    public KillmailSubItem singleton(@javax.annotation.Nonnull Integer singleton) {
         this.singleton = singleton;
         return this;
     }
@@ -167,13 +165,13 @@ public class KillmailSubItem implements Serializable {
      * singleton integer
      * 
      * @return singleton
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getSingleton() {
         return singleton;
     }
 
-    public void setSingleton(Integer singleton) {
+    public void setSingleton(@javax.annotation.Nonnull Integer singleton) {
         this.singleton = singleton;
     }
 
@@ -242,47 +240,49 @@ public class KillmailSubItem implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to KillmailSubItem
+     *             if the JSON Element is invalid with respect to
+     *             KillmailSubItem
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!KillmailSubItem.openapiRequiredFields.isEmpty()) { // has
                                                                     // required
                                                                     // fields
                                                                     // but JSON
-                                                                    // object is
-                                                                    // null
+                                                                    // element
+                                                                    // is null
                 throw new IllegalArgumentException(String.format(
                         "The required field(s) %s in KillmailSubItem is not found in the empty JSON string",
                         KillmailSubItem.openapiRequiredFields.toString()));
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!KillmailSubItem.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `KillmailSubItem` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : KillmailSubItem.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -306,9 +306,9 @@ public class KillmailSubItem implements Serializable {
 
                 @Override
                 public KillmailSubItem read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

@@ -39,12 +39,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -58,33 +56,38 @@ public class StargateResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_DESTINATION = "destination";
     @SerializedName(SERIALIZED_NAME_DESTINATION)
+    @javax.annotation.Nonnull
     private StargateDestination destination;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
+    @javax.annotation.Nonnull
     private String name;
 
     public static final String SERIALIZED_NAME_POSITION = "position";
     @SerializedName(SERIALIZED_NAME_POSITION)
+    @javax.annotation.Nonnull
     private Position position;
 
     public static final String SERIALIZED_NAME_STARGATE_ID = "stargate_id";
     @SerializedName(SERIALIZED_NAME_STARGATE_ID)
+    @javax.annotation.Nonnull
     private Integer stargateId;
 
     public static final String SERIALIZED_NAME_SYSTEM_ID = "system_id";
     @SerializedName(SERIALIZED_NAME_SYSTEM_ID)
+    @javax.annotation.Nonnull
     private Integer systemId;
 
     public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
+    @javax.annotation.Nonnull
     private Integer typeId;
 
     public StargateResponse() {
     }
 
-    public StargateResponse destination(StargateDestination destination) {
-
+    public StargateResponse destination(@javax.annotation.Nonnull StargateDestination destination) {
         this.destination = destination;
         return this;
     }
@@ -93,18 +96,17 @@ public class StargateResponse implements Serializable {
      * Get destination
      * 
      * @return destination
-     **/
+     */
     @javax.annotation.Nonnull
     public StargateDestination getDestination() {
         return destination;
     }
 
-    public void setDestination(StargateDestination destination) {
+    public void setDestination(@javax.annotation.Nonnull StargateDestination destination) {
         this.destination = destination;
     }
 
-    public StargateResponse name(String name) {
-
+    public StargateResponse name(@javax.annotation.Nonnull String name) {
         this.name = name;
         return this;
     }
@@ -113,18 +115,17 @@ public class StargateResponse implements Serializable {
      * name string
      * 
      * @return name
-     **/
+     */
     @javax.annotation.Nonnull
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@javax.annotation.Nonnull String name) {
         this.name = name;
     }
 
-    public StargateResponse position(Position position) {
-
+    public StargateResponse position(@javax.annotation.Nonnull Position position) {
         this.position = position;
         return this;
     }
@@ -133,18 +134,17 @@ public class StargateResponse implements Serializable {
      * Get position
      * 
      * @return position
-     **/
+     */
     @javax.annotation.Nonnull
     public Position getPosition() {
         return position;
     }
 
-    public void setPosition(Position position) {
+    public void setPosition(@javax.annotation.Nonnull Position position) {
         this.position = position;
     }
 
-    public StargateResponse stargateId(Integer stargateId) {
-
+    public StargateResponse stargateId(@javax.annotation.Nonnull Integer stargateId) {
         this.stargateId = stargateId;
         return this;
     }
@@ -153,18 +153,17 @@ public class StargateResponse implements Serializable {
      * stargate_id integer
      * 
      * @return stargateId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getStargateId() {
         return stargateId;
     }
 
-    public void setStargateId(Integer stargateId) {
+    public void setStargateId(@javax.annotation.Nonnull Integer stargateId) {
         this.stargateId = stargateId;
     }
 
-    public StargateResponse systemId(Integer systemId) {
-
+    public StargateResponse systemId(@javax.annotation.Nonnull Integer systemId) {
         this.systemId = systemId;
         return this;
     }
@@ -173,18 +172,17 @@ public class StargateResponse implements Serializable {
      * The solar system this stargate is in
      * 
      * @return systemId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getSystemId() {
         return systemId;
     }
 
-    public void setSystemId(Integer systemId) {
+    public void setSystemId(@javax.annotation.Nonnull Integer systemId) {
         this.systemId = systemId;
     }
 
-    public StargateResponse typeId(Integer typeId) {
-
+    public StargateResponse typeId(@javax.annotation.Nonnull Integer typeId) {
         this.typeId = typeId;
         return this;
     }
@@ -193,13 +191,13 @@ public class StargateResponse implements Serializable {
      * type_id integer
      * 
      * @return typeId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(Integer typeId) {
+    public void setTypeId(@javax.annotation.Nonnull Integer typeId) {
         this.typeId = typeId;
     }
 
@@ -274,21 +272,21 @@ public class StargateResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             StargateResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!StargateResponse.openapiRequiredFields.isEmpty()) { // has
                                                                      // required
                                                                      // fields
                                                                      // but JSON
-                                                                     // object
+                                                                     // element
                                                                      // is null
                 throw new IllegalArgumentException(String.format(
                         "The required field(s) %s in StargateResponse is not found in the empty JSON string",
@@ -296,35 +294,36 @@ public class StargateResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!StargateResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `StargateResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : StargateResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         // validate the required field `destination`
-        StargateDestination.validateJsonObject(jsonObj.getAsJsonObject("destination"));
+        StargateDestination.validateJsonElement(jsonObj.get("destination"));
         if (!jsonObj.get("name").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `name` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("name").toString()));
         }
         // validate the required field `position`
-        Position.validateJsonObject(jsonObj.getAsJsonObject("position"));
+        Position.validateJsonElement(jsonObj.get("position"));
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -348,9 +347,9 @@ public class StargateResponse implements Serializable {
 
                 @Override
                 public StargateResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

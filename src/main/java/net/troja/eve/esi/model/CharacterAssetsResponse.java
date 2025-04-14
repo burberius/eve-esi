@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -56,14 +54,17 @@ public class CharacterAssetsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_IS_BLUEPRINT_COPY = "is_blueprint_copy";
     @SerializedName(SERIALIZED_NAME_IS_BLUEPRINT_COPY)
+    @javax.annotation.Nullable
     private Boolean isBlueprintCopy;
 
     public static final String SERIALIZED_NAME_IS_SINGLETON = "is_singleton";
     @SerializedName(SERIALIZED_NAME_IS_SINGLETON)
+    @javax.annotation.Nonnull
     private Boolean isSingleton;
 
     public static final String SERIALIZED_NAME_ITEM_ID = "item_id";
     @SerializedName(SERIALIZED_NAME_ITEM_ID)
+    @javax.annotation.Nonnull
     private Long itemId;
 
     /**
@@ -281,15 +282,22 @@ public class CharacterAssetsResponse implements Serializable {
                 return LocationFlagEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            LocationFlagEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_LOCATION_FLAG = "location_flag";
     @SerializedName(SERIALIZED_NAME_LOCATION_FLAG)
+    @javax.annotation.Nonnull
     private String locationFlag;
     private LocationFlagEnum locationFlagEnum;
 
     public static final String SERIALIZED_NAME_LOCATION_ID = "location_id";
     @SerializedName(SERIALIZED_NAME_LOCATION_ID)
+    @javax.annotation.Nonnull
     private Long locationId;
 
     /**
@@ -341,26 +349,33 @@ public class CharacterAssetsResponse implements Serializable {
                 return LocationTypeEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            LocationTypeEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_LOCATION_TYPE = "location_type";
     @SerializedName(SERIALIZED_NAME_LOCATION_TYPE)
+    @javax.annotation.Nonnull
     private String locationType;
     private LocationTypeEnum locationTypeEnum;
 
     public static final String SERIALIZED_NAME_QUANTITY = "quantity";
     @SerializedName(SERIALIZED_NAME_QUANTITY)
+    @javax.annotation.Nonnull
     private Integer quantity;
 
     public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
+    @javax.annotation.Nonnull
     private Integer typeId;
 
     public CharacterAssetsResponse() {
     }
 
-    public CharacterAssetsResponse isBlueprintCopy(Boolean isBlueprintCopy) {
-
+    public CharacterAssetsResponse isBlueprintCopy(@javax.annotation.Nullable Boolean isBlueprintCopy) {
         this.isBlueprintCopy = isBlueprintCopy;
         return this;
     }
@@ -369,18 +384,17 @@ public class CharacterAssetsResponse implements Serializable {
      * is_blueprint_copy boolean
      * 
      * @return isBlueprintCopy
-     **/
+     */
     @javax.annotation.Nullable
     public Boolean getIsBlueprintCopy() {
         return isBlueprintCopy;
     }
 
-    public void setIsBlueprintCopy(Boolean isBlueprintCopy) {
+    public void setIsBlueprintCopy(@javax.annotation.Nullable Boolean isBlueprintCopy) {
         this.isBlueprintCopy = isBlueprintCopy;
     }
 
-    public CharacterAssetsResponse isSingleton(Boolean isSingleton) {
-
+    public CharacterAssetsResponse isSingleton(@javax.annotation.Nonnull Boolean isSingleton) {
         this.isSingleton = isSingleton;
         return this;
     }
@@ -389,18 +403,17 @@ public class CharacterAssetsResponse implements Serializable {
      * is_singleton boolean
      * 
      * @return isSingleton
-     **/
+     */
     @javax.annotation.Nonnull
     public Boolean getIsSingleton() {
         return isSingleton;
     }
 
-    public void setIsSingleton(Boolean isSingleton) {
+    public void setIsSingleton(@javax.annotation.Nonnull Boolean isSingleton) {
         this.isSingleton = isSingleton;
     }
 
-    public CharacterAssetsResponse itemId(Long itemId) {
-
+    public CharacterAssetsResponse itemId(@javax.annotation.Nonnull Long itemId) {
         this.itemId = itemId;
         return this;
     }
@@ -409,25 +422,23 @@ public class CharacterAssetsResponse implements Serializable {
      * item_id integer
      * 
      * @return itemId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getItemId() {
         return itemId;
     }
 
-    public void setItemId(Long itemId) {
+    public void setItemId(@javax.annotation.Nonnull Long itemId) {
         this.itemId = itemId;
     }
 
-    public CharacterAssetsResponse locationFlagString(String locationFlag) {
-
-        this.locationFlag = locationFlag;
+    public CharacterAssetsResponse locationFlag(@javax.annotation.Nonnull LocationFlagEnum locationFlag) {
+        this.locationFlagEnum = locationFlag;
         return this;
     }
 
-    public CharacterAssetsResponse locationFlag(LocationFlagEnum locationFlagEnum) {
-
-        this.locationFlagEnum = locationFlagEnum;
+    public CharacterAssetsResponse locationFlagString(@javax.annotation.Nonnull String locationFlag) {
+        this.locationFlag = locationFlag;
         return this;
     }
 
@@ -435,8 +446,8 @@ public class CharacterAssetsResponse implements Serializable {
      * location_flag string
      * 
      * @return locationFlag
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public LocationFlagEnum getLocationFlag() {
         if (locationFlagEnum == null) {
             locationFlagEnum = LocationFlagEnum.fromValue(locationFlag);
@@ -448,16 +459,15 @@ public class CharacterAssetsResponse implements Serializable {
         return locationFlag;
     }
 
-    public void setLocationFlag(LocationFlagEnum locationFlagEnum) {
-        this.locationFlagEnum = locationFlagEnum;
+    public void setLocationFlag(@javax.annotation.Nonnull LocationFlagEnum locationFlag) {
+        this.locationFlagEnum = locationFlag;
     }
 
-    public void setLocationFlagString(String locationFlag) {
+    public void setLocationFlagString(@javax.annotation.Nonnull String locationFlag) {
         this.locationFlag = locationFlag;
     }
 
-    public CharacterAssetsResponse locationId(Long locationId) {
-
+    public CharacterAssetsResponse locationId(@javax.annotation.Nonnull Long locationId) {
         this.locationId = locationId;
         return this;
     }
@@ -466,25 +476,23 @@ public class CharacterAssetsResponse implements Serializable {
      * location_id integer
      * 
      * @return locationId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getLocationId() {
         return locationId;
     }
 
-    public void setLocationId(Long locationId) {
+    public void setLocationId(@javax.annotation.Nonnull Long locationId) {
         this.locationId = locationId;
     }
 
-    public CharacterAssetsResponse locationTypeString(String locationType) {
-
-        this.locationType = locationType;
+    public CharacterAssetsResponse locationType(@javax.annotation.Nonnull LocationTypeEnum locationType) {
+        this.locationTypeEnum = locationType;
         return this;
     }
 
-    public CharacterAssetsResponse locationType(LocationTypeEnum locationTypeEnum) {
-
-        this.locationTypeEnum = locationTypeEnum;
+    public CharacterAssetsResponse locationTypeString(@javax.annotation.Nonnull String locationType) {
+        this.locationType = locationType;
         return this;
     }
 
@@ -492,8 +500,8 @@ public class CharacterAssetsResponse implements Serializable {
      * location_type string
      * 
      * @return locationType
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public LocationTypeEnum getLocationType() {
         if (locationTypeEnum == null) {
             locationTypeEnum = LocationTypeEnum.fromValue(locationType);
@@ -505,16 +513,15 @@ public class CharacterAssetsResponse implements Serializable {
         return locationType;
     }
 
-    public void setLocationType(LocationTypeEnum locationTypeEnum) {
-        this.locationTypeEnum = locationTypeEnum;
+    public void setLocationType(@javax.annotation.Nonnull LocationTypeEnum locationType) {
+        this.locationTypeEnum = locationType;
     }
 
-    public void setLocationTypeString(String locationType) {
+    public void setLocationTypeString(@javax.annotation.Nonnull String locationType) {
         this.locationType = locationType;
     }
 
-    public CharacterAssetsResponse quantity(Integer quantity) {
-
+    public CharacterAssetsResponse quantity(@javax.annotation.Nonnull Integer quantity) {
         this.quantity = quantity;
         return this;
     }
@@ -523,18 +530,17 @@ public class CharacterAssetsResponse implements Serializable {
      * quantity integer
      * 
      * @return quantity
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(@javax.annotation.Nonnull Integer quantity) {
         this.quantity = quantity;
     }
 
-    public CharacterAssetsResponse typeId(Integer typeId) {
-
+    public CharacterAssetsResponse typeId(@javax.annotation.Nonnull Integer typeId) {
         this.typeId = typeId;
         return this;
     }
@@ -543,13 +549,13 @@ public class CharacterAssetsResponse implements Serializable {
      * type_id integer
      * 
      * @return typeId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(Integer typeId) {
+    public void setTypeId(@javax.annotation.Nonnull Integer typeId) {
         this.typeId = typeId;
     }
 
@@ -632,22 +638,22 @@ public class CharacterAssetsResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CharacterAssetsResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CharacterAssetsResponse.openapiRequiredFields.isEmpty()) { // has
                                                                             // required
                                                                             // fields
                                                                             // but
                                                                             // JSON
-                                                                            // object
+                                                                            // element
                                                                             // is
                                                                             // null
                 throw new IllegalArgumentException(String.format(
@@ -656,36 +662,41 @@ public class CharacterAssetsResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CharacterAssetsResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CharacterAssetsResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CharacterAssetsResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("location_flag").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `location_flag` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("location_flag").toString()));
         }
+        // validate the required field `location_flag`
+        LocationFlagEnum.validateJsonElement(jsonObj.get("location_flag"));
         if (!jsonObj.get("location_type").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `location_type` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("location_type").toString()));
         }
+        // validate the required field `location_type`
+        LocationTypeEnum.validateJsonElement(jsonObj.get("location_type"));
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -709,9 +720,9 @@ public class CharacterAssetsResponse implements Serializable {
 
                 @Override
                 public CharacterAssetsResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -56,45 +54,53 @@ public class PublicContractsItemsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_IS_BLUEPRINT_COPY = "is_blueprint_copy";
     @SerializedName(SERIALIZED_NAME_IS_BLUEPRINT_COPY)
+    @javax.annotation.Nullable
     private Boolean isBlueprintCopy;
 
     public static final String SERIALIZED_NAME_IS_INCLUDED = "is_included";
     @SerializedName(SERIALIZED_NAME_IS_INCLUDED)
+    @javax.annotation.Nonnull
     private Boolean isIncluded;
 
     public static final String SERIALIZED_NAME_ITEM_ID = "item_id";
     @SerializedName(SERIALIZED_NAME_ITEM_ID)
+    @javax.annotation.Nullable
     private Long itemId;
 
     public static final String SERIALIZED_NAME_MATERIAL_EFFICIENCY = "material_efficiency";
     @SerializedName(SERIALIZED_NAME_MATERIAL_EFFICIENCY)
+    @javax.annotation.Nullable
     private Integer materialEfficiency;
 
     public static final String SERIALIZED_NAME_QUANTITY = "quantity";
     @SerializedName(SERIALIZED_NAME_QUANTITY)
+    @javax.annotation.Nonnull
     private Integer quantity;
 
     public static final String SERIALIZED_NAME_RECORD_ID = "record_id";
     @SerializedName(SERIALIZED_NAME_RECORD_ID)
+    @javax.annotation.Nonnull
     private Long recordId;
 
     public static final String SERIALIZED_NAME_RUNS = "runs";
     @SerializedName(SERIALIZED_NAME_RUNS)
+    @javax.annotation.Nullable
     private Integer runs;
 
     public static final String SERIALIZED_NAME_TIME_EFFICIENCY = "time_efficiency";
     @SerializedName(SERIALIZED_NAME_TIME_EFFICIENCY)
+    @javax.annotation.Nullable
     private Integer timeEfficiency;
 
     public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
+    @javax.annotation.Nonnull
     private Integer typeId;
 
     public PublicContractsItemsResponse() {
     }
 
-    public PublicContractsItemsResponse isBlueprintCopy(Boolean isBlueprintCopy) {
-
+    public PublicContractsItemsResponse isBlueprintCopy(@javax.annotation.Nullable Boolean isBlueprintCopy) {
         this.isBlueprintCopy = isBlueprintCopy;
         return this;
     }
@@ -103,18 +109,17 @@ public class PublicContractsItemsResponse implements Serializable {
      * is_blueprint_copy boolean
      * 
      * @return isBlueprintCopy
-     **/
+     */
     @javax.annotation.Nullable
     public Boolean getIsBlueprintCopy() {
         return isBlueprintCopy;
     }
 
-    public void setIsBlueprintCopy(Boolean isBlueprintCopy) {
+    public void setIsBlueprintCopy(@javax.annotation.Nullable Boolean isBlueprintCopy) {
         this.isBlueprintCopy = isBlueprintCopy;
     }
 
-    public PublicContractsItemsResponse isIncluded(Boolean isIncluded) {
-
+    public PublicContractsItemsResponse isIncluded(@javax.annotation.Nonnull Boolean isIncluded) {
         this.isIncluded = isIncluded;
         return this;
     }
@@ -124,18 +129,17 @@ public class PublicContractsItemsResponse implements Serializable {
      * false if the isser is asking for this item in the contract
      * 
      * @return isIncluded
-     **/
+     */
     @javax.annotation.Nonnull
     public Boolean getIsIncluded() {
         return isIncluded;
     }
 
-    public void setIsIncluded(Boolean isIncluded) {
+    public void setIsIncluded(@javax.annotation.Nonnull Boolean isIncluded) {
         this.isIncluded = isIncluded;
     }
 
-    public PublicContractsItemsResponse itemId(Long itemId) {
-
+    public PublicContractsItemsResponse itemId(@javax.annotation.Nullable Long itemId) {
         this.itemId = itemId;
         return this;
     }
@@ -145,18 +149,17 @@ public class PublicContractsItemsResponse implements Serializable {
      * by contract rather than sold with contract
      * 
      * @return itemId
-     **/
+     */
     @javax.annotation.Nullable
     public Long getItemId() {
         return itemId;
     }
 
-    public void setItemId(Long itemId) {
+    public void setItemId(@javax.annotation.Nullable Long itemId) {
         this.itemId = itemId;
     }
 
-    public PublicContractsItemsResponse materialEfficiency(Integer materialEfficiency) {
-
+    public PublicContractsItemsResponse materialEfficiency(@javax.annotation.Nullable Integer materialEfficiency) {
         this.materialEfficiency = materialEfficiency;
         return this;
     }
@@ -165,18 +168,17 @@ public class PublicContractsItemsResponse implements Serializable {
      * Material Efficiency Level of the blueprint minimum: 0 maximum: 25
      * 
      * @return materialEfficiency
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getMaterialEfficiency() {
         return materialEfficiency;
     }
 
-    public void setMaterialEfficiency(Integer materialEfficiency) {
+    public void setMaterialEfficiency(@javax.annotation.Nullable Integer materialEfficiency) {
         this.materialEfficiency = materialEfficiency;
     }
 
-    public PublicContractsItemsResponse quantity(Integer quantity) {
-
+    public PublicContractsItemsResponse quantity(@javax.annotation.Nonnull Integer quantity) {
         this.quantity = quantity;
         return this;
     }
@@ -185,18 +187,17 @@ public class PublicContractsItemsResponse implements Serializable {
      * Number of items in the stack
      * 
      * @return quantity
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(@javax.annotation.Nonnull Integer quantity) {
         this.quantity = quantity;
     }
 
-    public PublicContractsItemsResponse recordId(Long recordId) {
-
+    public PublicContractsItemsResponse recordId(@javax.annotation.Nonnull Long recordId) {
         this.recordId = recordId;
         return this;
     }
@@ -205,18 +206,17 @@ public class PublicContractsItemsResponse implements Serializable {
      * Unique ID for the item, used by the contract system
      * 
      * @return recordId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getRecordId() {
         return recordId;
     }
 
-    public void setRecordId(Long recordId) {
+    public void setRecordId(@javax.annotation.Nonnull Long recordId) {
         this.recordId = recordId;
     }
 
-    public PublicContractsItemsResponse runs(Integer runs) {
-
+    public PublicContractsItemsResponse runs(@javax.annotation.Nullable Integer runs) {
         this.runs = runs;
         return this;
     }
@@ -226,18 +226,17 @@ public class PublicContractsItemsResponse implements Serializable {
      * original minimum: -1
      * 
      * @return runs
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getRuns() {
         return runs;
     }
 
-    public void setRuns(Integer runs) {
+    public void setRuns(@javax.annotation.Nullable Integer runs) {
         this.runs = runs;
     }
 
-    public PublicContractsItemsResponse timeEfficiency(Integer timeEfficiency) {
-
+    public PublicContractsItemsResponse timeEfficiency(@javax.annotation.Nullable Integer timeEfficiency) {
         this.timeEfficiency = timeEfficiency;
         return this;
     }
@@ -246,18 +245,17 @@ public class PublicContractsItemsResponse implements Serializable {
      * Time Efficiency Level of the blueprint minimum: 0 maximum: 20
      * 
      * @return timeEfficiency
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getTimeEfficiency() {
         return timeEfficiency;
     }
 
-    public void setTimeEfficiency(Integer timeEfficiency) {
+    public void setTimeEfficiency(@javax.annotation.Nullable Integer timeEfficiency) {
         this.timeEfficiency = timeEfficiency;
     }
 
-    public PublicContractsItemsResponse typeId(Integer typeId) {
-
+    public PublicContractsItemsResponse typeId(@javax.annotation.Nonnull Integer typeId) {
         this.typeId = typeId;
         return this;
     }
@@ -266,13 +264,13 @@ public class PublicContractsItemsResponse implements Serializable {
      * Type ID for item
      * 
      * @return typeId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(Integer typeId) {
+    public void setTypeId(@javax.annotation.Nonnull Integer typeId) {
         this.typeId = typeId;
     }
 
@@ -355,22 +353,22 @@ public class PublicContractsItemsResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             PublicContractsItemsResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!PublicContractsItemsResponse.openapiRequiredFields.isEmpty()) { // has
                                                                                  // required
                                                                                  // fields
                                                                                  // but
                                                                                  // JSON
-                                                                                 // object
+                                                                                 // element
                                                                                  // is
                                                                                  // null
                 throw new IllegalArgumentException(
@@ -380,26 +378,27 @@ public class PublicContractsItemsResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!PublicContractsItemsResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `PublicContractsItemsResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : PublicContractsItemsResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -423,9 +422,9 @@ public class PublicContractsItemsResponse implements Serializable {
 
                 @Override
                 public PublicContractsItemsResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

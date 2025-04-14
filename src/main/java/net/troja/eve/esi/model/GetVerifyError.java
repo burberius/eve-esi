@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -56,17 +54,18 @@ public class GetVerifyError implements Serializable {
 
     public static final String SERIALIZED_NAME_ERROR = "error";
     @SerializedName(SERIALIZED_NAME_ERROR)
+    @javax.annotation.Nonnull
     private String error;
 
     public static final String SERIALIZED_NAME_ERROR_DESCRIPTION = "error_description";
     @SerializedName(SERIALIZED_NAME_ERROR_DESCRIPTION)
+    @javax.annotation.Nullable
     private String errorDescription;
 
     public GetVerifyError() {
     }
 
-    public GetVerifyError error(String error) {
-
+    public GetVerifyError error(@javax.annotation.Nonnull String error) {
         this.error = error;
         return this;
     }
@@ -75,18 +74,17 @@ public class GetVerifyError implements Serializable {
      * Generic error returned by SSO
      * 
      * @return error
-     **/
+     */
     @javax.annotation.Nonnull
     public String getError() {
         return error;
     }
 
-    public void setError(String error) {
+    public void setError(@javax.annotation.Nonnull String error) {
         this.error = error;
     }
 
-    public GetVerifyError errorDescription(String errorDescription) {
-
+    public GetVerifyError errorDescription(@javax.annotation.Nullable String errorDescription) {
         this.errorDescription = errorDescription;
         return this;
     }
@@ -95,13 +93,13 @@ public class GetVerifyError implements Serializable {
      * Detailed error description from SSO
      * 
      * @return errorDescription
-     **/
+     */
     @javax.annotation.Nullable
     public String getErrorDescription() {
         return errorDescription;
     }
 
-    public void setErrorDescription(String errorDescription) {
+    public void setErrorDescription(@javax.annotation.Nullable String errorDescription) {
         this.errorDescription = errorDescription;
     }
 
@@ -159,20 +157,20 @@ public class GetVerifyError implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to GetVerifyError
+     *             if the JSON Element is invalid with respect to GetVerifyError
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!GetVerifyError.openapiRequiredFields.isEmpty()) { // has
                                                                    // required
                                                                    // fields but
                                                                    // JSON
-                                                                   // object is
+                                                                   // element is
                                                                    // null
                 throw new IllegalArgumentException(String.format(
                         "The required field(s) %s in GetVerifyError is not found in the empty JSON string",
@@ -180,26 +178,27 @@ public class GetVerifyError implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!GetVerifyError.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `GetVerifyError` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : GetVerifyError.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("error").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `error` to be a primitive type in the JSON string but got `%s`",
@@ -234,9 +233,9 @@ public class GetVerifyError implements Serializable {
 
                 @Override
                 public GetVerifyError read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

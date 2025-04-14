@@ -38,12 +38,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -57,30 +55,37 @@ public class MarketStructuresResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_DURATION = "duration";
     @SerializedName(SERIALIZED_NAME_DURATION)
+    @javax.annotation.Nonnull
     private Integer duration;
 
     public static final String SERIALIZED_NAME_IS_BUY_ORDER = "is_buy_order";
     @SerializedName(SERIALIZED_NAME_IS_BUY_ORDER)
+    @javax.annotation.Nonnull
     private Boolean isBuyOrder;
 
     public static final String SERIALIZED_NAME_ISSUED = "issued";
     @SerializedName(SERIALIZED_NAME_ISSUED)
+    @javax.annotation.Nonnull
     private OffsetDateTime issued;
 
     public static final String SERIALIZED_NAME_LOCATION_ID = "location_id";
     @SerializedName(SERIALIZED_NAME_LOCATION_ID)
+    @javax.annotation.Nonnull
     private Long locationId;
 
     public static final String SERIALIZED_NAME_MIN_VOLUME = "min_volume";
     @SerializedName(SERIALIZED_NAME_MIN_VOLUME)
+    @javax.annotation.Nonnull
     private Integer minVolume;
 
     public static final String SERIALIZED_NAME_ORDER_ID = "order_id";
     @SerializedName(SERIALIZED_NAME_ORDER_ID)
+    @javax.annotation.Nonnull
     private Long orderId;
 
     public static final String SERIALIZED_NAME_PRICE = "price";
     @SerializedName(SERIALIZED_NAME_PRICE)
+    @javax.annotation.Nonnull
     private Double price;
 
     /**
@@ -148,30 +153,38 @@ public class MarketStructuresResponse implements Serializable {
                 return RangeEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            RangeEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_RANGE = "range";
     @SerializedName(SERIALIZED_NAME_RANGE)
+    @javax.annotation.Nonnull
     private String range;
     private RangeEnum rangeEnum;
 
     public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
+    @javax.annotation.Nonnull
     private Integer typeId;
 
     public static final String SERIALIZED_NAME_VOLUME_REMAIN = "volume_remain";
     @SerializedName(SERIALIZED_NAME_VOLUME_REMAIN)
+    @javax.annotation.Nonnull
     private Integer volumeRemain;
 
     public static final String SERIALIZED_NAME_VOLUME_TOTAL = "volume_total";
     @SerializedName(SERIALIZED_NAME_VOLUME_TOTAL)
+    @javax.annotation.Nonnull
     private Integer volumeTotal;
 
     public MarketStructuresResponse() {
     }
 
-    public MarketStructuresResponse duration(Integer duration) {
-
+    public MarketStructuresResponse duration(@javax.annotation.Nonnull Integer duration) {
         this.duration = duration;
         return this;
     }
@@ -180,18 +193,17 @@ public class MarketStructuresResponse implements Serializable {
      * duration integer
      * 
      * @return duration
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getDuration() {
         return duration;
     }
 
-    public void setDuration(Integer duration) {
+    public void setDuration(@javax.annotation.Nonnull Integer duration) {
         this.duration = duration;
     }
 
-    public MarketStructuresResponse isBuyOrder(Boolean isBuyOrder) {
-
+    public MarketStructuresResponse isBuyOrder(@javax.annotation.Nonnull Boolean isBuyOrder) {
         this.isBuyOrder = isBuyOrder;
         return this;
     }
@@ -200,18 +212,17 @@ public class MarketStructuresResponse implements Serializable {
      * is_buy_order boolean
      * 
      * @return isBuyOrder
-     **/
+     */
     @javax.annotation.Nonnull
     public Boolean getIsBuyOrder() {
         return isBuyOrder;
     }
 
-    public void setIsBuyOrder(Boolean isBuyOrder) {
+    public void setIsBuyOrder(@javax.annotation.Nonnull Boolean isBuyOrder) {
         this.isBuyOrder = isBuyOrder;
     }
 
-    public MarketStructuresResponse issued(OffsetDateTime issued) {
-
+    public MarketStructuresResponse issued(@javax.annotation.Nonnull OffsetDateTime issued) {
         this.issued = issued;
         return this;
     }
@@ -220,18 +231,17 @@ public class MarketStructuresResponse implements Serializable {
      * issued string
      * 
      * @return issued
-     **/
+     */
     @javax.annotation.Nonnull
     public OffsetDateTime getIssued() {
         return issued;
     }
 
-    public void setIssued(OffsetDateTime issued) {
+    public void setIssued(@javax.annotation.Nonnull OffsetDateTime issued) {
         this.issued = issued;
     }
 
-    public MarketStructuresResponse locationId(Long locationId) {
-
+    public MarketStructuresResponse locationId(@javax.annotation.Nonnull Long locationId) {
         this.locationId = locationId;
         return this;
     }
@@ -240,18 +250,17 @@ public class MarketStructuresResponse implements Serializable {
      * location_id integer
      * 
      * @return locationId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getLocationId() {
         return locationId;
     }
 
-    public void setLocationId(Long locationId) {
+    public void setLocationId(@javax.annotation.Nonnull Long locationId) {
         this.locationId = locationId;
     }
 
-    public MarketStructuresResponse minVolume(Integer minVolume) {
-
+    public MarketStructuresResponse minVolume(@javax.annotation.Nonnull Integer minVolume) {
         this.minVolume = minVolume;
         return this;
     }
@@ -260,18 +269,17 @@ public class MarketStructuresResponse implements Serializable {
      * min_volume integer
      * 
      * @return minVolume
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getMinVolume() {
         return minVolume;
     }
 
-    public void setMinVolume(Integer minVolume) {
+    public void setMinVolume(@javax.annotation.Nonnull Integer minVolume) {
         this.minVolume = minVolume;
     }
 
-    public MarketStructuresResponse orderId(Long orderId) {
-
+    public MarketStructuresResponse orderId(@javax.annotation.Nonnull Long orderId) {
         this.orderId = orderId;
         return this;
     }
@@ -280,18 +288,17 @@ public class MarketStructuresResponse implements Serializable {
      * order_id integer
      * 
      * @return orderId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(Long orderId) {
+    public void setOrderId(@javax.annotation.Nonnull Long orderId) {
         this.orderId = orderId;
     }
 
-    public MarketStructuresResponse price(Double price) {
-
+    public MarketStructuresResponse price(@javax.annotation.Nonnull Double price) {
         this.price = price;
         return this;
     }
@@ -300,25 +307,23 @@ public class MarketStructuresResponse implements Serializable {
      * price number
      * 
      * @return price
-     **/
+     */
     @javax.annotation.Nonnull
     public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(@javax.annotation.Nonnull Double price) {
         this.price = price;
     }
 
-    public MarketStructuresResponse rangeString(String range) {
-
-        this.range = range;
+    public MarketStructuresResponse range(@javax.annotation.Nonnull RangeEnum range) {
+        this.rangeEnum = range;
         return this;
     }
 
-    public MarketStructuresResponse range(RangeEnum rangeEnum) {
-
-        this.rangeEnum = rangeEnum;
+    public MarketStructuresResponse rangeString(@javax.annotation.Nonnull String range) {
+        this.range = range;
         return this;
     }
 
@@ -326,8 +331,8 @@ public class MarketStructuresResponse implements Serializable {
      * range string
      * 
      * @return range
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public RangeEnum getRange() {
         if (rangeEnum == null) {
             rangeEnum = RangeEnum.fromValue(range);
@@ -339,16 +344,15 @@ public class MarketStructuresResponse implements Serializable {
         return range;
     }
 
-    public void setRange(RangeEnum rangeEnum) {
-        this.rangeEnum = rangeEnum;
+    public void setRange(@javax.annotation.Nonnull RangeEnum range) {
+        this.rangeEnum = range;
     }
 
-    public void setRangeString(String range) {
+    public void setRangeString(@javax.annotation.Nonnull String range) {
         this.range = range;
     }
 
-    public MarketStructuresResponse typeId(Integer typeId) {
-
+    public MarketStructuresResponse typeId(@javax.annotation.Nonnull Integer typeId) {
         this.typeId = typeId;
         return this;
     }
@@ -357,18 +361,17 @@ public class MarketStructuresResponse implements Serializable {
      * type_id integer
      * 
      * @return typeId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(Integer typeId) {
+    public void setTypeId(@javax.annotation.Nonnull Integer typeId) {
         this.typeId = typeId;
     }
 
-    public MarketStructuresResponse volumeRemain(Integer volumeRemain) {
-
+    public MarketStructuresResponse volumeRemain(@javax.annotation.Nonnull Integer volumeRemain) {
         this.volumeRemain = volumeRemain;
         return this;
     }
@@ -377,18 +380,17 @@ public class MarketStructuresResponse implements Serializable {
      * volume_remain integer
      * 
      * @return volumeRemain
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getVolumeRemain() {
         return volumeRemain;
     }
 
-    public void setVolumeRemain(Integer volumeRemain) {
+    public void setVolumeRemain(@javax.annotation.Nonnull Integer volumeRemain) {
         this.volumeRemain = volumeRemain;
     }
 
-    public MarketStructuresResponse volumeTotal(Integer volumeTotal) {
-
+    public MarketStructuresResponse volumeTotal(@javax.annotation.Nonnull Integer volumeTotal) {
         this.volumeTotal = volumeTotal;
         return this;
     }
@@ -397,13 +399,13 @@ public class MarketStructuresResponse implements Serializable {
      * volume_total integer
      * 
      * @return volumeTotal
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getVolumeTotal() {
         return volumeTotal;
     }
 
-    public void setVolumeTotal(Integer volumeTotal) {
+    public void setVolumeTotal(@javax.annotation.Nonnull Integer volumeTotal) {
         this.volumeTotal = volumeTotal;
     }
 
@@ -499,22 +501,22 @@ public class MarketStructuresResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             MarketStructuresResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!MarketStructuresResponse.openapiRequiredFields.isEmpty()) { // has
                                                                              // required
                                                                              // fields
                                                                              // but
                                                                              // JSON
-                                                                             // object
+                                                                             // element
                                                                              // is
                                                                              // null
                 throw new IllegalArgumentException(String.format(
@@ -523,31 +525,34 @@ public class MarketStructuresResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!MarketStructuresResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `MarketStructuresResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : MarketStructuresResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("range").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `range` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("range").toString()));
         }
+        // validate the required field `range`
+        RangeEnum.validateJsonElement(jsonObj.get("range"));
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -571,9 +576,9 @@ public class MarketStructuresResponse implements Serializable {
 
                 @Override
                 public MarketStructuresResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

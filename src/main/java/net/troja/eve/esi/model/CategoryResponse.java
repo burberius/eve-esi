@@ -39,12 +39,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -58,25 +56,28 @@ public class CategoryResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_CATEGORY_ID = "category_id";
     @SerializedName(SERIALIZED_NAME_CATEGORY_ID)
+    @javax.annotation.Nonnull
     private Integer categoryId;
 
     public static final String SERIALIZED_NAME_GROUPS = "groups";
     @SerializedName(SERIALIZED_NAME_GROUPS)
+    @javax.annotation.Nonnull
     private List<Integer> groups = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
+    @javax.annotation.Nonnull
     private String name;
 
     public static final String SERIALIZED_NAME_PUBLISHED = "published";
     @SerializedName(SERIALIZED_NAME_PUBLISHED)
+    @javax.annotation.Nonnull
     private Boolean published;
 
     public CategoryResponse() {
     }
 
-    public CategoryResponse categoryId(Integer categoryId) {
-
+    public CategoryResponse categoryId(@javax.annotation.Nonnull Integer categoryId) {
         this.categoryId = categoryId;
         return this;
     }
@@ -85,26 +86,26 @@ public class CategoryResponse implements Serializable {
      * category_id integer
      * 
      * @return categoryId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(Integer categoryId) {
+    public void setCategoryId(@javax.annotation.Nonnull Integer categoryId) {
         this.categoryId = categoryId;
     }
 
-    public CategoryResponse groups(List<Integer> groups) {
-
+    public CategoryResponse groups(@javax.annotation.Nonnull List<Integer> groups) {
         this.groups = groups;
         return this;
     }
 
-    public CategoryResponse addgroupsItem(Integer groupsItem) {
+    public CategoryResponse addGroupsItem(Integer groupsItem) {
         if (this.groups == null) {
             this.groups = new ArrayList<>();
         }
+
         this.groups.add(groupsItem);
         return this;
     }
@@ -113,18 +114,17 @@ public class CategoryResponse implements Serializable {
      * groups array
      * 
      * @return groups
-     **/
+     */
     @javax.annotation.Nonnull
     public List<Integer> getGroups() {
         return groups;
     }
 
-    public void setGroups(List<Integer> groups) {
+    public void setGroups(@javax.annotation.Nonnull List<Integer> groups) {
         this.groups = groups;
     }
 
-    public CategoryResponse name(String name) {
-
+    public CategoryResponse name(@javax.annotation.Nonnull String name) {
         this.name = name;
         return this;
     }
@@ -133,18 +133,17 @@ public class CategoryResponse implements Serializable {
      * name string
      * 
      * @return name
-     **/
+     */
     @javax.annotation.Nonnull
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@javax.annotation.Nonnull String name) {
         this.name = name;
     }
 
-    public CategoryResponse published(Boolean published) {
-
+    public CategoryResponse published(@javax.annotation.Nonnull Boolean published) {
         this.published = published;
         return this;
     }
@@ -153,13 +152,13 @@ public class CategoryResponse implements Serializable {
      * published boolean
      * 
      * @return published
-     **/
+     */
     @javax.annotation.Nonnull
     public Boolean getPublished() {
         return published;
     }
 
-    public void setPublished(Boolean published) {
+    public void setPublished(@javax.annotation.Nonnull Boolean published) {
         this.published = published;
     }
 
@@ -226,21 +225,21 @@ public class CategoryResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CategoryResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CategoryResponse.openapiRequiredFields.isEmpty()) { // has
                                                                      // required
                                                                      // fields
                                                                      // but JSON
-                                                                     // object
+                                                                     // element
                                                                      // is null
                 throw new IllegalArgumentException(String.format(
                         "The required field(s) %s in CategoryResponse is not found in the empty JSON string",
@@ -248,26 +247,27 @@ public class CategoryResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CategoryResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CategoryResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CategoryResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         // ensure the required json array is present
         if (jsonObj.get("groups") == null) {
             throw new IllegalArgumentException(
@@ -305,9 +305,9 @@ public class CategoryResponse implements Serializable {
 
                 @Override
                 public CategoryResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

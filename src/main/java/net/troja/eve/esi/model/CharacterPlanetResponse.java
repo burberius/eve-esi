@@ -42,12 +42,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -61,29 +59,32 @@ public class CharacterPlanetResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_LINKS = "links";
     @SerializedName(SERIALIZED_NAME_LINKS)
+    @javax.annotation.Nonnull
     private List<PlanetLink> links = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_PINS = "pins";
     @SerializedName(SERIALIZED_NAME_PINS)
+    @javax.annotation.Nonnull
     private List<PlanetPin> pins = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_ROUTES = "routes";
     @SerializedName(SERIALIZED_NAME_ROUTES)
+    @javax.annotation.Nonnull
     private List<PlanetRoute> routes = new ArrayList<>();
 
     public CharacterPlanetResponse() {
     }
 
-    public CharacterPlanetResponse links(List<PlanetLink> links) {
-
+    public CharacterPlanetResponse links(@javax.annotation.Nonnull List<PlanetLink> links) {
         this.links = links;
         return this;
     }
 
-    public CharacterPlanetResponse addlinksItem(PlanetLink linksItem) {
+    public CharacterPlanetResponse addLinksItem(PlanetLink linksItem) {
         if (this.links == null) {
             this.links = new ArrayList<>();
         }
+
         this.links.add(linksItem);
         return this;
     }
@@ -92,26 +93,26 @@ public class CharacterPlanetResponse implements Serializable {
      * links array
      * 
      * @return links
-     **/
+     */
     @javax.annotation.Nonnull
     public List<PlanetLink> getLinks() {
         return links;
     }
 
-    public void setLinks(List<PlanetLink> links) {
+    public void setLinks(@javax.annotation.Nonnull List<PlanetLink> links) {
         this.links = links;
     }
 
-    public CharacterPlanetResponse pins(List<PlanetPin> pins) {
-
+    public CharacterPlanetResponse pins(@javax.annotation.Nonnull List<PlanetPin> pins) {
         this.pins = pins;
         return this;
     }
 
-    public CharacterPlanetResponse addpinsItem(PlanetPin pinsItem) {
+    public CharacterPlanetResponse addPinsItem(PlanetPin pinsItem) {
         if (this.pins == null) {
             this.pins = new ArrayList<>();
         }
+
         this.pins.add(pinsItem);
         return this;
     }
@@ -120,26 +121,26 @@ public class CharacterPlanetResponse implements Serializable {
      * pins array
      * 
      * @return pins
-     **/
+     */
     @javax.annotation.Nonnull
     public List<PlanetPin> getPins() {
         return pins;
     }
 
-    public void setPins(List<PlanetPin> pins) {
+    public void setPins(@javax.annotation.Nonnull List<PlanetPin> pins) {
         this.pins = pins;
     }
 
-    public CharacterPlanetResponse routes(List<PlanetRoute> routes) {
-
+    public CharacterPlanetResponse routes(@javax.annotation.Nonnull List<PlanetRoute> routes) {
         this.routes = routes;
         return this;
     }
 
-    public CharacterPlanetResponse addroutesItem(PlanetRoute routesItem) {
+    public CharacterPlanetResponse addRoutesItem(PlanetRoute routesItem) {
         if (this.routes == null) {
             this.routes = new ArrayList<>();
         }
+
         this.routes.add(routesItem);
         return this;
     }
@@ -148,13 +149,13 @@ public class CharacterPlanetResponse implements Serializable {
      * routes array
      * 
      * @return routes
-     **/
+     */
     @javax.annotation.Nonnull
     public List<PlanetRoute> getRoutes() {
         return routes;
     }
 
-    public void setRoutes(List<PlanetRoute> routes) {
+    public void setRoutes(@javax.annotation.Nonnull List<PlanetRoute> routes) {
         this.routes = routes;
     }
 
@@ -217,22 +218,22 @@ public class CharacterPlanetResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CharacterPlanetResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CharacterPlanetResponse.openapiRequiredFields.isEmpty()) { // has
                                                                             // required
                                                                             // fields
                                                                             // but
                                                                             // JSON
-                                                                            // object
+                                                                            // element
                                                                             // is
                                                                             // null
                 throw new IllegalArgumentException(String.format(
@@ -241,26 +242,27 @@ public class CharacterPlanetResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CharacterPlanetResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CharacterPlanetResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CharacterPlanetResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         // ensure the json data is an array
         if (!jsonObj.get("links").isJsonArray()) {
             throw new IllegalArgumentException(String.format(
@@ -271,7 +273,7 @@ public class CharacterPlanetResponse implements Serializable {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
         // validate the required field `links` (array)
         for (int i = 0; i < jsonArraylinks.size(); i++) {
-            PlanetLink.validateJsonObject(jsonArraylinks.get(i).getAsJsonObject());
+            PlanetLink.validateJsonElement(jsonArraylinks.get(i));
         };
         // ensure the json data is an array
         if (!jsonObj.get("pins").isJsonArray()) {
@@ -283,7 +285,7 @@ public class CharacterPlanetResponse implements Serializable {
         JsonArray jsonArraypins = jsonObj.getAsJsonArray("pins");
         // validate the required field `pins` (array)
         for (int i = 0; i < jsonArraypins.size(); i++) {
-            PlanetPin.validateJsonObject(jsonArraypins.get(i).getAsJsonObject());
+            PlanetPin.validateJsonElement(jsonArraypins.get(i));
         };
         // ensure the json data is an array
         if (!jsonObj.get("routes").isJsonArray()) {
@@ -295,7 +297,7 @@ public class CharacterPlanetResponse implements Serializable {
         JsonArray jsonArrayroutes = jsonObj.getAsJsonArray("routes");
         // validate the required field `routes` (array)
         for (int i = 0; i < jsonArrayroutes.size(); i++) {
-            PlanetRoute.validateJsonObject(jsonArrayroutes.get(i).getAsJsonObject());
+            PlanetRoute.validateJsonElement(jsonArrayroutes.get(i));
         };
     }
 
@@ -320,9 +322,9 @@ public class CharacterPlanetResponse implements Serializable {
 
                 @Override
                 public CharacterPlanetResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

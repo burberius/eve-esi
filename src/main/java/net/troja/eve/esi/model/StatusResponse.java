@@ -38,12 +38,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -57,25 +55,28 @@ public class StatusResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_PLAYERS = "players";
     @SerializedName(SERIALIZED_NAME_PLAYERS)
+    @javax.annotation.Nonnull
     private Integer players;
 
     public static final String SERIALIZED_NAME_SERVER_VERSION = "server_version";
     @SerializedName(SERIALIZED_NAME_SERVER_VERSION)
+    @javax.annotation.Nonnull
     private String serverVersion;
 
     public static final String SERIALIZED_NAME_START_TIME = "start_time";
     @SerializedName(SERIALIZED_NAME_START_TIME)
+    @javax.annotation.Nonnull
     private OffsetDateTime startTime;
 
     public static final String SERIALIZED_NAME_VIP = "vip";
     @SerializedName(SERIALIZED_NAME_VIP)
+    @javax.annotation.Nullable
     private Boolean vip;
 
     public StatusResponse() {
     }
 
-    public StatusResponse players(Integer players) {
-
+    public StatusResponse players(@javax.annotation.Nonnull Integer players) {
         this.players = players;
         return this;
     }
@@ -84,18 +85,17 @@ public class StatusResponse implements Serializable {
      * Current online player count
      * 
      * @return players
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getPlayers() {
         return players;
     }
 
-    public void setPlayers(Integer players) {
+    public void setPlayers(@javax.annotation.Nonnull Integer players) {
         this.players = players;
     }
 
-    public StatusResponse serverVersion(String serverVersion) {
-
+    public StatusResponse serverVersion(@javax.annotation.Nonnull String serverVersion) {
         this.serverVersion = serverVersion;
         return this;
     }
@@ -104,18 +104,17 @@ public class StatusResponse implements Serializable {
      * Running version as string
      * 
      * @return serverVersion
-     **/
+     */
     @javax.annotation.Nonnull
     public String getServerVersion() {
         return serverVersion;
     }
 
-    public void setServerVersion(String serverVersion) {
+    public void setServerVersion(@javax.annotation.Nonnull String serverVersion) {
         this.serverVersion = serverVersion;
     }
 
-    public StatusResponse startTime(OffsetDateTime startTime) {
-
+    public StatusResponse startTime(@javax.annotation.Nonnull OffsetDateTime startTime) {
         this.startTime = startTime;
         return this;
     }
@@ -124,18 +123,17 @@ public class StatusResponse implements Serializable {
      * Server start timestamp
      * 
      * @return startTime
-     **/
+     */
     @javax.annotation.Nonnull
     public OffsetDateTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(OffsetDateTime startTime) {
+    public void setStartTime(@javax.annotation.Nonnull OffsetDateTime startTime) {
         this.startTime = startTime;
     }
 
-    public StatusResponse vip(Boolean vip) {
-
+    public StatusResponse vip(@javax.annotation.Nullable Boolean vip) {
         this.vip = vip;
         return this;
     }
@@ -144,13 +142,13 @@ public class StatusResponse implements Serializable {
      * If the server is in VIP mode
      * 
      * @return vip
-     **/
+     */
     @javax.annotation.Nullable
     public Boolean getVip() {
         return vip;
     }
 
-    public void setVip(Boolean vip) {
+    public void setVip(@javax.annotation.Nullable Boolean vip) {
         this.vip = vip;
     }
 
@@ -216,20 +214,20 @@ public class StatusResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to StatusResponse
+     *             if the JSON Element is invalid with respect to StatusResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!StatusResponse.openapiRequiredFields.isEmpty()) { // has
                                                                    // required
                                                                    // fields but
                                                                    // JSON
-                                                                   // object is
+                                                                   // element is
                                                                    // null
                 throw new IllegalArgumentException(String.format(
                         "The required field(s) %s in StatusResponse is not found in the empty JSON string",
@@ -237,26 +235,27 @@ public class StatusResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!StatusResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `StatusResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : StatusResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("server_version").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `server_version` to be a primitive type in the JSON string but got `%s`",
@@ -285,9 +284,9 @@ public class StatusResponse implements Serializable {
 
                 @Override
                 public StatusResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

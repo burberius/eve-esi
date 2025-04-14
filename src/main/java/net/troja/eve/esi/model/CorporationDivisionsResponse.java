@@ -41,12 +41,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -60,25 +58,27 @@ public class CorporationDivisionsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_HANGAR = "hangar";
     @SerializedName(SERIALIZED_NAME_HANGAR)
+    @javax.annotation.Nullable
     private List<CorporationDivisionsHangar> hangar = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_WALLET = "wallet";
     @SerializedName(SERIALIZED_NAME_WALLET)
+    @javax.annotation.Nullable
     private List<CorporationDivisionsWallet> wallet = new ArrayList<>();
 
     public CorporationDivisionsResponse() {
     }
 
-    public CorporationDivisionsResponse hangar(List<CorporationDivisionsHangar> hangar) {
-
+    public CorporationDivisionsResponse hangar(@javax.annotation.Nullable List<CorporationDivisionsHangar> hangar) {
         this.hangar = hangar;
         return this;
     }
 
-    public CorporationDivisionsResponse addhangarItem(CorporationDivisionsHangar hangarItem) {
+    public CorporationDivisionsResponse addHangarItem(CorporationDivisionsHangar hangarItem) {
         if (this.hangar == null) {
             this.hangar = new ArrayList<>();
         }
+
         this.hangar.add(hangarItem);
         return this;
     }
@@ -87,26 +87,26 @@ public class CorporationDivisionsResponse implements Serializable {
      * hangar array
      * 
      * @return hangar
-     **/
+     */
     @javax.annotation.Nullable
     public List<CorporationDivisionsHangar> getHangar() {
         return hangar;
     }
 
-    public void setHangar(List<CorporationDivisionsHangar> hangar) {
+    public void setHangar(@javax.annotation.Nullable List<CorporationDivisionsHangar> hangar) {
         this.hangar = hangar;
     }
 
-    public CorporationDivisionsResponse wallet(List<CorporationDivisionsWallet> wallet) {
-
+    public CorporationDivisionsResponse wallet(@javax.annotation.Nullable List<CorporationDivisionsWallet> wallet) {
         this.wallet = wallet;
         return this;
     }
 
-    public CorporationDivisionsResponse addwalletItem(CorporationDivisionsWallet walletItem) {
+    public CorporationDivisionsResponse addWalletItem(CorporationDivisionsWallet walletItem) {
         if (this.wallet == null) {
             this.wallet = new ArrayList<>();
         }
+
         this.wallet.add(walletItem);
         return this;
     }
@@ -115,13 +115,13 @@ public class CorporationDivisionsResponse implements Serializable {
      * wallet array
      * 
      * @return wallet
-     **/
+     */
     @javax.annotation.Nullable
     public List<CorporationDivisionsWallet> getWallet() {
         return wallet;
     }
 
-    public void setWallet(List<CorporationDivisionsWallet> wallet) {
+    public void setWallet(@javax.annotation.Nullable List<CorporationDivisionsWallet> wallet) {
         this.wallet = wallet;
     }
 
@@ -178,22 +178,22 @@ public class CorporationDivisionsResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CorporationDivisionsResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CorporationDivisionsResponse.openapiRequiredFields.isEmpty()) { // has
                                                                                  // required
                                                                                  // fields
                                                                                  // but
                                                                                  // JSON
-                                                                                 // object
+                                                                                 // element
                                                                                  // is
                                                                                  // null
                 throw new IllegalArgumentException(
@@ -203,16 +203,17 @@ public class CorporationDivisionsResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CorporationDivisionsResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CorporationDivisionsResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (jsonObj.get("hangar") != null && !jsonObj.get("hangar").isJsonNull()) {
             JsonArray jsonArrayhangar = jsonObj.getAsJsonArray("hangar");
             if (jsonArrayhangar != null) {
@@ -225,7 +226,7 @@ public class CorporationDivisionsResponse implements Serializable {
 
                 // validate the optional field `hangar` (array)
                 for (int i = 0; i < jsonArrayhangar.size(); i++) {
-                    CorporationDivisionsHangar.validateJsonObject(jsonArrayhangar.get(i).getAsJsonObject());
+                    CorporationDivisionsHangar.validateJsonElement(jsonArrayhangar.get(i));
                 };
             }
         }
@@ -241,7 +242,7 @@ public class CorporationDivisionsResponse implements Serializable {
 
                 // validate the optional field `wallet` (array)
                 for (int i = 0; i < jsonArraywallet.size(); i++) {
-                    CorporationDivisionsWallet.validateJsonObject(jsonArraywallet.get(i).getAsJsonObject());
+                    CorporationDivisionsWallet.validateJsonElement(jsonArraywallet.get(i));
                 };
             }
         }
@@ -268,9 +269,9 @@ public class CorporationDivisionsResponse implements Serializable {
 
                 @Override
                 public CorporationDivisionsResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

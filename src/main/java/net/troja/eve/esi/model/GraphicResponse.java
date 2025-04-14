@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -56,41 +54,48 @@ public class GraphicResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_COLLISION_FILE = "collision_file";
     @SerializedName(SERIALIZED_NAME_COLLISION_FILE)
+    @javax.annotation.Nullable
     private String collisionFile;
 
     public static final String SERIALIZED_NAME_GRAPHIC_FILE = "graphic_file";
     @SerializedName(SERIALIZED_NAME_GRAPHIC_FILE)
+    @javax.annotation.Nullable
     private String graphicFile;
 
     public static final String SERIALIZED_NAME_GRAPHIC_ID = "graphic_id";
     @SerializedName(SERIALIZED_NAME_GRAPHIC_ID)
+    @javax.annotation.Nonnull
     private Integer graphicId;
 
     public static final String SERIALIZED_NAME_ICON_FOLDER = "icon_folder";
     @SerializedName(SERIALIZED_NAME_ICON_FOLDER)
+    @javax.annotation.Nullable
     private String iconFolder;
 
     public static final String SERIALIZED_NAME_SOF_DNA = "sof_dna";
     @SerializedName(SERIALIZED_NAME_SOF_DNA)
+    @javax.annotation.Nullable
     private String sofDna;
 
     public static final String SERIALIZED_NAME_SOF_FATION_NAME = "sof_fation_name";
     @SerializedName(SERIALIZED_NAME_SOF_FATION_NAME)
+    @javax.annotation.Nullable
     private String sofFationName;
 
     public static final String SERIALIZED_NAME_SOF_HULL_NAME = "sof_hull_name";
     @SerializedName(SERIALIZED_NAME_SOF_HULL_NAME)
+    @javax.annotation.Nullable
     private String sofHullName;
 
     public static final String SERIALIZED_NAME_SOF_RACE_NAME = "sof_race_name";
     @SerializedName(SERIALIZED_NAME_SOF_RACE_NAME)
+    @javax.annotation.Nullable
     private String sofRaceName;
 
     public GraphicResponse() {
     }
 
-    public GraphicResponse collisionFile(String collisionFile) {
-
+    public GraphicResponse collisionFile(@javax.annotation.Nullable String collisionFile) {
         this.collisionFile = collisionFile;
         return this;
     }
@@ -99,18 +104,17 @@ public class GraphicResponse implements Serializable {
      * collision_file string
      * 
      * @return collisionFile
-     **/
+     */
     @javax.annotation.Nullable
     public String getCollisionFile() {
         return collisionFile;
     }
 
-    public void setCollisionFile(String collisionFile) {
+    public void setCollisionFile(@javax.annotation.Nullable String collisionFile) {
         this.collisionFile = collisionFile;
     }
 
-    public GraphicResponse graphicFile(String graphicFile) {
-
+    public GraphicResponse graphicFile(@javax.annotation.Nullable String graphicFile) {
         this.graphicFile = graphicFile;
         return this;
     }
@@ -119,18 +123,17 @@ public class GraphicResponse implements Serializable {
      * graphic_file string
      * 
      * @return graphicFile
-     **/
+     */
     @javax.annotation.Nullable
     public String getGraphicFile() {
         return graphicFile;
     }
 
-    public void setGraphicFile(String graphicFile) {
+    public void setGraphicFile(@javax.annotation.Nullable String graphicFile) {
         this.graphicFile = graphicFile;
     }
 
-    public GraphicResponse graphicId(Integer graphicId) {
-
+    public GraphicResponse graphicId(@javax.annotation.Nonnull Integer graphicId) {
         this.graphicId = graphicId;
         return this;
     }
@@ -139,18 +142,17 @@ public class GraphicResponse implements Serializable {
      * graphic_id integer
      * 
      * @return graphicId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getGraphicId() {
         return graphicId;
     }
 
-    public void setGraphicId(Integer graphicId) {
+    public void setGraphicId(@javax.annotation.Nonnull Integer graphicId) {
         this.graphicId = graphicId;
     }
 
-    public GraphicResponse iconFolder(String iconFolder) {
-
+    public GraphicResponse iconFolder(@javax.annotation.Nullable String iconFolder) {
         this.iconFolder = iconFolder;
         return this;
     }
@@ -159,18 +161,17 @@ public class GraphicResponse implements Serializable {
      * icon_folder string
      * 
      * @return iconFolder
-     **/
+     */
     @javax.annotation.Nullable
     public String getIconFolder() {
         return iconFolder;
     }
 
-    public void setIconFolder(String iconFolder) {
+    public void setIconFolder(@javax.annotation.Nullable String iconFolder) {
         this.iconFolder = iconFolder;
     }
 
-    public GraphicResponse sofDna(String sofDna) {
-
+    public GraphicResponse sofDna(@javax.annotation.Nullable String sofDna) {
         this.sofDna = sofDna;
         return this;
     }
@@ -179,18 +180,17 @@ public class GraphicResponse implements Serializable {
      * sof_dna string
      * 
      * @return sofDna
-     **/
+     */
     @javax.annotation.Nullable
     public String getSofDna() {
         return sofDna;
     }
 
-    public void setSofDna(String sofDna) {
+    public void setSofDna(@javax.annotation.Nullable String sofDna) {
         this.sofDna = sofDna;
     }
 
-    public GraphicResponse sofFationName(String sofFationName) {
-
+    public GraphicResponse sofFationName(@javax.annotation.Nullable String sofFationName) {
         this.sofFationName = sofFationName;
         return this;
     }
@@ -199,18 +199,17 @@ public class GraphicResponse implements Serializable {
      * sof_fation_name string
      * 
      * @return sofFationName
-     **/
+     */
     @javax.annotation.Nullable
     public String getSofFationName() {
         return sofFationName;
     }
 
-    public void setSofFationName(String sofFationName) {
+    public void setSofFationName(@javax.annotation.Nullable String sofFationName) {
         this.sofFationName = sofFationName;
     }
 
-    public GraphicResponse sofHullName(String sofHullName) {
-
+    public GraphicResponse sofHullName(@javax.annotation.Nullable String sofHullName) {
         this.sofHullName = sofHullName;
         return this;
     }
@@ -219,18 +218,17 @@ public class GraphicResponse implements Serializable {
      * sof_hull_name string
      * 
      * @return sofHullName
-     **/
+     */
     @javax.annotation.Nullable
     public String getSofHullName() {
         return sofHullName;
     }
 
-    public void setSofHullName(String sofHullName) {
+    public void setSofHullName(@javax.annotation.Nullable String sofHullName) {
         this.sofHullName = sofHullName;
     }
 
-    public GraphicResponse sofRaceName(String sofRaceName) {
-
+    public GraphicResponse sofRaceName(@javax.annotation.Nullable String sofRaceName) {
         this.sofRaceName = sofRaceName;
         return this;
     }
@@ -239,13 +237,13 @@ public class GraphicResponse implements Serializable {
      * sof_race_name string
      * 
      * @return sofRaceName
-     **/
+     */
     @javax.annotation.Nullable
     public String getSofRaceName() {
         return sofRaceName;
     }
 
-    public void setSofRaceName(String sofRaceName) {
+    public void setSofRaceName(@javax.annotation.Nullable String sofRaceName) {
         this.sofRaceName = sofRaceName;
     }
 
@@ -322,47 +320,49 @@ public class GraphicResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to GraphicResponse
+     *             if the JSON Element is invalid with respect to
+     *             GraphicResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!GraphicResponse.openapiRequiredFields.isEmpty()) { // has
                                                                     // required
                                                                     // fields
                                                                     // but JSON
-                                                                    // object is
-                                                                    // null
+                                                                    // element
+                                                                    // is null
                 throw new IllegalArgumentException(String.format(
                         "The required field(s) %s in GraphicResponse is not found in the empty JSON string",
                         GraphicResponse.openapiRequiredFields.toString()));
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!GraphicResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `GraphicResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : GraphicResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if ((jsonObj.get("collision_file") != null && !jsonObj.get("collision_file").isJsonNull())
                 && !jsonObj.get("collision_file").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
@@ -428,9 +428,9 @@ public class GraphicResponse implements Serializable {
 
                 @Override
                 public GraphicResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

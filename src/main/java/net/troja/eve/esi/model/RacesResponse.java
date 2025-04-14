@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -56,25 +54,28 @@ public class RacesResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ALLIANCE_ID = "alliance_id";
     @SerializedName(SERIALIZED_NAME_ALLIANCE_ID)
+    @javax.annotation.Nonnull
     private Integer allianceId;
 
     public static final String SERIALIZED_NAME_DESCRIPTION = "description";
     @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+    @javax.annotation.Nonnull
     private String description;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
+    @javax.annotation.Nonnull
     private String name;
 
     public static final String SERIALIZED_NAME_RACE_ID = "race_id";
     @SerializedName(SERIALIZED_NAME_RACE_ID)
+    @javax.annotation.Nonnull
     private Integer raceId;
 
     public RacesResponse() {
     }
 
-    public RacesResponse allianceId(Integer allianceId) {
-
+    public RacesResponse allianceId(@javax.annotation.Nonnull Integer allianceId) {
         this.allianceId = allianceId;
         return this;
     }
@@ -83,18 +84,17 @@ public class RacesResponse implements Serializable {
      * The alliance generally associated with this race
      * 
      * @return allianceId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getAllianceId() {
         return allianceId;
     }
 
-    public void setAllianceId(Integer allianceId) {
+    public void setAllianceId(@javax.annotation.Nonnull Integer allianceId) {
         this.allianceId = allianceId;
     }
 
-    public RacesResponse description(String description) {
-
+    public RacesResponse description(@javax.annotation.Nonnull String description) {
         this.description = description;
         return this;
     }
@@ -103,18 +103,17 @@ public class RacesResponse implements Serializable {
      * description string
      * 
      * @return description
-     **/
+     */
     @javax.annotation.Nonnull
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(@javax.annotation.Nonnull String description) {
         this.description = description;
     }
 
-    public RacesResponse name(String name) {
-
+    public RacesResponse name(@javax.annotation.Nonnull String name) {
         this.name = name;
         return this;
     }
@@ -123,18 +122,17 @@ public class RacesResponse implements Serializable {
      * name string
      * 
      * @return name
-     **/
+     */
     @javax.annotation.Nonnull
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@javax.annotation.Nonnull String name) {
         this.name = name;
     }
 
-    public RacesResponse raceId(Integer raceId) {
-
+    public RacesResponse raceId(@javax.annotation.Nonnull Integer raceId) {
         this.raceId = raceId;
         return this;
     }
@@ -143,13 +141,13 @@ public class RacesResponse implements Serializable {
      * race_id integer
      * 
      * @return raceId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getRaceId() {
         return raceId;
     }
 
-    public void setRaceId(Integer raceId) {
+    public void setRaceId(@javax.annotation.Nonnull Integer raceId) {
         this.raceId = raceId;
     }
 
@@ -215,45 +213,47 @@ public class RacesResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to RacesResponse
+     *             if the JSON Element is invalid with respect to RacesResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!RacesResponse.openapiRequiredFields.isEmpty()) { // has
                                                                   // required
                                                                   // fields but
-                                                                  // JSON object
-                                                                  // is null
+                                                                  // JSON
+                                                                  // element is
+                                                                  // null
                 throw new IllegalArgumentException(String.format(
                         "The required field(s) %s in RacesResponse is not found in the empty JSON string",
                         RacesResponse.openapiRequiredFields.toString()));
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!RacesResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(String.format(
                         "The field `%s` in the JSON string is not defined in the `RacesResponse` properties. JSON: %s",
-                        entry.getKey(), jsonObj.toString()));
+                        entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : RacesResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("description").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj
@@ -287,9 +287,9 @@ public class RacesResponse implements Serializable {
 
                 @Override
                 public RacesResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

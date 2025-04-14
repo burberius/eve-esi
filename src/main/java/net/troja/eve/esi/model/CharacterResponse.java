@@ -38,12 +38,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -57,26 +55,32 @@ public class CharacterResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ALLIANCE_ID = "alliance_id";
     @SerializedName(SERIALIZED_NAME_ALLIANCE_ID)
+    @javax.annotation.Nullable
     private Integer allianceId;
 
     public static final String SERIALIZED_NAME_BIRTHDAY = "birthday";
     @SerializedName(SERIALIZED_NAME_BIRTHDAY)
+    @javax.annotation.Nonnull
     private OffsetDateTime birthday;
 
     public static final String SERIALIZED_NAME_BLOODLINE_ID = "bloodline_id";
     @SerializedName(SERIALIZED_NAME_BLOODLINE_ID)
+    @javax.annotation.Nonnull
     private Integer bloodlineId;
 
     public static final String SERIALIZED_NAME_CORPORATION_ID = "corporation_id";
     @SerializedName(SERIALIZED_NAME_CORPORATION_ID)
+    @javax.annotation.Nonnull
     private Integer corporationId;
 
     public static final String SERIALIZED_NAME_DESCRIPTION = "description";
     @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+    @javax.annotation.Nullable
     private String description;
 
     public static final String SERIALIZED_NAME_FACTION_ID = "faction_id";
     @SerializedName(SERIALIZED_NAME_FACTION_ID)
+    @javax.annotation.Nullable
     private Integer factionId;
 
     /**
@@ -124,34 +128,43 @@ public class CharacterResponse implements Serializable {
                 return GenderEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            GenderEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_GENDER = "gender";
     @SerializedName(SERIALIZED_NAME_GENDER)
+    @javax.annotation.Nonnull
     private String gender;
     private GenderEnum genderEnum;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
+    @javax.annotation.Nonnull
     private String name;
 
     public static final String SERIALIZED_NAME_RACE_ID = "race_id";
     @SerializedName(SERIALIZED_NAME_RACE_ID)
+    @javax.annotation.Nonnull
     private Integer raceId;
 
     public static final String SERIALIZED_NAME_SECURITY_STATUS = "security_status";
     @SerializedName(SERIALIZED_NAME_SECURITY_STATUS)
+    @javax.annotation.Nullable
     private Float securityStatus;
 
     public static final String SERIALIZED_NAME_TITLE = "title";
     @SerializedName(SERIALIZED_NAME_TITLE)
+    @javax.annotation.Nullable
     private String title;
 
     public CharacterResponse() {
     }
 
-    public CharacterResponse allianceId(Integer allianceId) {
-
+    public CharacterResponse allianceId(@javax.annotation.Nullable Integer allianceId) {
         this.allianceId = allianceId;
         return this;
     }
@@ -160,18 +173,17 @@ public class CharacterResponse implements Serializable {
      * The character&#39;s alliance ID
      * 
      * @return allianceId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getAllianceId() {
         return allianceId;
     }
 
-    public void setAllianceId(Integer allianceId) {
+    public void setAllianceId(@javax.annotation.Nullable Integer allianceId) {
         this.allianceId = allianceId;
     }
 
-    public CharacterResponse birthday(OffsetDateTime birthday) {
-
+    public CharacterResponse birthday(@javax.annotation.Nonnull OffsetDateTime birthday) {
         this.birthday = birthday;
         return this;
     }
@@ -180,18 +192,17 @@ public class CharacterResponse implements Serializable {
      * Creation date of the character
      * 
      * @return birthday
-     **/
+     */
     @javax.annotation.Nonnull
     public OffsetDateTime getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(OffsetDateTime birthday) {
+    public void setBirthday(@javax.annotation.Nonnull OffsetDateTime birthday) {
         this.birthday = birthday;
     }
 
-    public CharacterResponse bloodlineId(Integer bloodlineId) {
-
+    public CharacterResponse bloodlineId(@javax.annotation.Nonnull Integer bloodlineId) {
         this.bloodlineId = bloodlineId;
         return this;
     }
@@ -200,18 +211,17 @@ public class CharacterResponse implements Serializable {
      * bloodline_id integer
      * 
      * @return bloodlineId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getBloodlineId() {
         return bloodlineId;
     }
 
-    public void setBloodlineId(Integer bloodlineId) {
+    public void setBloodlineId(@javax.annotation.Nonnull Integer bloodlineId) {
         this.bloodlineId = bloodlineId;
     }
 
-    public CharacterResponse corporationId(Integer corporationId) {
-
+    public CharacterResponse corporationId(@javax.annotation.Nonnull Integer corporationId) {
         this.corporationId = corporationId;
         return this;
     }
@@ -220,18 +230,17 @@ public class CharacterResponse implements Serializable {
      * The character&#39;s corporation ID
      * 
      * @return corporationId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getCorporationId() {
         return corporationId;
     }
 
-    public void setCorporationId(Integer corporationId) {
+    public void setCorporationId(@javax.annotation.Nonnull Integer corporationId) {
         this.corporationId = corporationId;
     }
 
-    public CharacterResponse description(String description) {
-
+    public CharacterResponse description(@javax.annotation.Nullable String description) {
         this.description = description;
         return this;
     }
@@ -240,18 +249,17 @@ public class CharacterResponse implements Serializable {
      * description string
      * 
      * @return description
-     **/
+     */
     @javax.annotation.Nullable
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(@javax.annotation.Nullable String description) {
         this.description = description;
     }
 
-    public CharacterResponse factionId(Integer factionId) {
-
+    public CharacterResponse factionId(@javax.annotation.Nullable Integer factionId) {
         this.factionId = factionId;
         return this;
     }
@@ -261,25 +269,23 @@ public class CharacterResponse implements Serializable {
      * enlisted in Factional Warfare
      * 
      * @return factionId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getFactionId() {
         return factionId;
     }
 
-    public void setFactionId(Integer factionId) {
+    public void setFactionId(@javax.annotation.Nullable Integer factionId) {
         this.factionId = factionId;
     }
 
-    public CharacterResponse genderString(String gender) {
-
-        this.gender = gender;
+    public CharacterResponse gender(@javax.annotation.Nonnull GenderEnum gender) {
+        this.genderEnum = gender;
         return this;
     }
 
-    public CharacterResponse gender(GenderEnum genderEnum) {
-
-        this.genderEnum = genderEnum;
+    public CharacterResponse genderString(@javax.annotation.Nonnull String gender) {
+        this.gender = gender;
         return this;
     }
 
@@ -287,8 +293,8 @@ public class CharacterResponse implements Serializable {
      * gender string
      * 
      * @return gender
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public GenderEnum getGender() {
         if (genderEnum == null) {
             genderEnum = GenderEnum.fromValue(gender);
@@ -300,16 +306,15 @@ public class CharacterResponse implements Serializable {
         return gender;
     }
 
-    public void setGender(GenderEnum genderEnum) {
-        this.genderEnum = genderEnum;
+    public void setGender(@javax.annotation.Nonnull GenderEnum gender) {
+        this.genderEnum = gender;
     }
 
-    public void setGenderString(String gender) {
+    public void setGenderString(@javax.annotation.Nonnull String gender) {
         this.gender = gender;
     }
 
-    public CharacterResponse name(String name) {
-
+    public CharacterResponse name(@javax.annotation.Nonnull String name) {
         this.name = name;
         return this;
     }
@@ -318,18 +323,17 @@ public class CharacterResponse implements Serializable {
      * name string
      * 
      * @return name
-     **/
+     */
     @javax.annotation.Nonnull
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@javax.annotation.Nonnull String name) {
         this.name = name;
     }
 
-    public CharacterResponse raceId(Integer raceId) {
-
+    public CharacterResponse raceId(@javax.annotation.Nonnull Integer raceId) {
         this.raceId = raceId;
         return this;
     }
@@ -338,18 +342,17 @@ public class CharacterResponse implements Serializable {
      * race_id integer
      * 
      * @return raceId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getRaceId() {
         return raceId;
     }
 
-    public void setRaceId(Integer raceId) {
+    public void setRaceId(@javax.annotation.Nonnull Integer raceId) {
         this.raceId = raceId;
     }
 
-    public CharacterResponse securityStatus(Float securityStatus) {
-
+    public CharacterResponse securityStatus(@javax.annotation.Nullable Float securityStatus) {
         this.securityStatus = securityStatus;
         return this;
     }
@@ -358,18 +361,17 @@ public class CharacterResponse implements Serializable {
      * security_status number minimum: -1E+1 maximum: 1E+1
      * 
      * @return securityStatus
-     **/
+     */
     @javax.annotation.Nullable
     public Float getSecurityStatus() {
         return securityStatus;
     }
 
-    public void setSecurityStatus(Float securityStatus) {
+    public void setSecurityStatus(@javax.annotation.Nullable Float securityStatus) {
         this.securityStatus = securityStatus;
     }
 
-    public CharacterResponse title(String title) {
-
+    public CharacterResponse title(@javax.annotation.Nullable String title) {
         this.title = title;
         return this;
     }
@@ -378,13 +380,13 @@ public class CharacterResponse implements Serializable {
      * The individual title of the character
      * 
      * @return title
-     **/
+     */
     @javax.annotation.Nullable
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(@javax.annotation.Nullable String title) {
         this.title = title;
     }
 
@@ -475,22 +477,22 @@ public class CharacterResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CharacterResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CharacterResponse.openapiRequiredFields.isEmpty()) { // has
                                                                       // required
                                                                       // fields
                                                                       // but
                                                                       // JSON
-                                                                      // object
+                                                                      // element
                                                                       // is null
                 throw new IllegalArgumentException(String.format(
                         "The required field(s) %s in CharacterResponse is not found in the empty JSON string",
@@ -498,26 +500,27 @@ public class CharacterResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CharacterResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CharacterResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CharacterResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull())
                 && !jsonObj.get("description").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
@@ -529,6 +532,8 @@ public class CharacterResponse implements Serializable {
                     "Expected the field `gender` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("gender").toString()));
         }
+        // validate the required field `gender`
+        GenderEnum.validateJsonElement(jsonObj.get("gender"));
         if (!jsonObj.get("name").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `name` to be a primitive type in the JSON string but got `%s`",
@@ -563,9 +568,9 @@ public class CharacterResponse implements Serializable {
 
                 @Override
                 public CharacterResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

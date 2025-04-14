@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -56,6 +54,7 @@ public class FleetInvitation implements Serializable {
 
     public static final String SERIALIZED_NAME_CHARACTER_ID = "character_id";
     @SerializedName(SERIALIZED_NAME_CHARACTER_ID)
+    @javax.annotation.Nonnull
     private Integer characterId;
 
     /**
@@ -116,26 +115,33 @@ public class FleetInvitation implements Serializable {
                 return RoleEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            RoleEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_ROLE = "role";
     @SerializedName(SERIALIZED_NAME_ROLE)
+    @javax.annotation.Nonnull
     private String role;
     private RoleEnum roleEnum;
 
     public static final String SERIALIZED_NAME_SQUAD_ID = "squad_id";
     @SerializedName(SERIALIZED_NAME_SQUAD_ID)
+    @javax.annotation.Nullable
     private Long squadId;
 
     public static final String SERIALIZED_NAME_WING_ID = "wing_id";
     @SerializedName(SERIALIZED_NAME_WING_ID)
+    @javax.annotation.Nullable
     private Long wingId;
 
     public FleetInvitation() {
     }
 
-    public FleetInvitation characterId(Integer characterId) {
-
+    public FleetInvitation characterId(@javax.annotation.Nonnull Integer characterId) {
         this.characterId = characterId;
         return this;
     }
@@ -144,25 +150,23 @@ public class FleetInvitation implements Serializable {
      * The character you want to invite
      * 
      * @return characterId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getCharacterId() {
         return characterId;
     }
 
-    public void setCharacterId(Integer characterId) {
+    public void setCharacterId(@javax.annotation.Nonnull Integer characterId) {
         this.characterId = characterId;
     }
 
-    public FleetInvitation roleString(String role) {
-
-        this.role = role;
+    public FleetInvitation role(@javax.annotation.Nonnull RoleEnum role) {
+        this.roleEnum = role;
         return this;
     }
 
-    public FleetInvitation role(RoleEnum roleEnum) {
-
-        this.roleEnum = roleEnum;
+    public FleetInvitation roleString(@javax.annotation.Nonnull String role) {
+        this.role = role;
         return this;
     }
 
@@ -179,8 +183,8 @@ public class FleetInvitation implements Serializable {
      * with available positions.
      * 
      * @return role
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public RoleEnum getRole() {
         if (roleEnum == null) {
             roleEnum = RoleEnum.fromValue(role);
@@ -192,16 +196,15 @@ public class FleetInvitation implements Serializable {
         return role;
     }
 
-    public void setRole(RoleEnum roleEnum) {
-        this.roleEnum = roleEnum;
+    public void setRole(@javax.annotation.Nonnull RoleEnum role) {
+        this.roleEnum = role;
     }
 
-    public void setRoleString(String role) {
+    public void setRoleString(@javax.annotation.Nonnull String role) {
         this.role = role;
     }
 
-    public FleetInvitation squadId(Long squadId) {
-
+    public FleetInvitation squadId(@javax.annotation.Nullable Long squadId) {
         this.squadId = squadId;
         return this;
     }
@@ -210,18 +213,17 @@ public class FleetInvitation implements Serializable {
      * squad_id integer minimum: 0
      * 
      * @return squadId
-     **/
+     */
     @javax.annotation.Nullable
     public Long getSquadId() {
         return squadId;
     }
 
-    public void setSquadId(Long squadId) {
+    public void setSquadId(@javax.annotation.Nullable Long squadId) {
         this.squadId = squadId;
     }
 
-    public FleetInvitation wingId(Long wingId) {
-
+    public FleetInvitation wingId(@javax.annotation.Nullable Long wingId) {
         this.wingId = wingId;
         return this;
     }
@@ -230,13 +232,13 @@ public class FleetInvitation implements Serializable {
      * wing_id integer minimum: 0
      * 
      * @return wingId
-     **/
+     */
     @javax.annotation.Nullable
     public Long getWingId() {
         return wingId;
     }
 
-    public void setWingId(Long wingId) {
+    public void setWingId(@javax.annotation.Nullable Long wingId) {
         this.wingId = wingId;
     }
 
@@ -301,52 +303,56 @@ public class FleetInvitation implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to FleetInvitation
+     *             if the JSON Element is invalid with respect to
+     *             FleetInvitation
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!FleetInvitation.openapiRequiredFields.isEmpty()) { // has
                                                                     // required
                                                                     // fields
                                                                     // but JSON
-                                                                    // object is
-                                                                    // null
+                                                                    // element
+                                                                    // is null
                 throw new IllegalArgumentException(String.format(
                         "The required field(s) %s in FleetInvitation is not found in the empty JSON string",
                         FleetInvitation.openapiRequiredFields.toString()));
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!FleetInvitation.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `FleetInvitation` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : FleetInvitation.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("role").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `role` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("role").toString()));
         }
+        // validate the required field `role`
+        RoleEnum.validateJsonElement(jsonObj.get("role"));
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -370,9 +376,9 @@ public class FleetInvitation implements Serializable {
 
                 @Override
                 public FleetInvitation read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

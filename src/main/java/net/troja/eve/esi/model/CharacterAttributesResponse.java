@@ -38,12 +38,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -57,41 +55,49 @@ public class CharacterAttributesResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ACCRUED_REMAP_COOLDOWN_DATE = "accrued_remap_cooldown_date";
     @SerializedName(SERIALIZED_NAME_ACCRUED_REMAP_COOLDOWN_DATE)
+    @javax.annotation.Nullable
     private OffsetDateTime accruedRemapCooldownDate;
 
     public static final String SERIALIZED_NAME_BONUS_REMAPS = "bonus_remaps";
     @SerializedName(SERIALIZED_NAME_BONUS_REMAPS)
+    @javax.annotation.Nullable
     private Integer bonusRemaps;
 
     public static final String SERIALIZED_NAME_CHARISMA = "charisma";
     @SerializedName(SERIALIZED_NAME_CHARISMA)
+    @javax.annotation.Nonnull
     private Integer charisma;
 
     public static final String SERIALIZED_NAME_INTELLIGENCE = "intelligence";
     @SerializedName(SERIALIZED_NAME_INTELLIGENCE)
+    @javax.annotation.Nonnull
     private Integer intelligence;
 
     public static final String SERIALIZED_NAME_LAST_REMAP_DATE = "last_remap_date";
     @SerializedName(SERIALIZED_NAME_LAST_REMAP_DATE)
+    @javax.annotation.Nullable
     private OffsetDateTime lastRemapDate;
 
     public static final String SERIALIZED_NAME_MEMORY = "memory";
     @SerializedName(SERIALIZED_NAME_MEMORY)
+    @javax.annotation.Nonnull
     private Integer memory;
 
     public static final String SERIALIZED_NAME_PERCEPTION = "perception";
     @SerializedName(SERIALIZED_NAME_PERCEPTION)
+    @javax.annotation.Nonnull
     private Integer perception;
 
     public static final String SERIALIZED_NAME_WILLPOWER = "willpower";
     @SerializedName(SERIALIZED_NAME_WILLPOWER)
+    @javax.annotation.Nonnull
     private Integer willpower;
 
     public CharacterAttributesResponse() {
     }
 
-    public CharacterAttributesResponse accruedRemapCooldownDate(OffsetDateTime accruedRemapCooldownDate) {
-
+    public CharacterAttributesResponse accruedRemapCooldownDate(
+            @javax.annotation.Nullable OffsetDateTime accruedRemapCooldownDate) {
         this.accruedRemapCooldownDate = accruedRemapCooldownDate;
         return this;
     }
@@ -100,18 +106,17 @@ public class CharacterAttributesResponse implements Serializable {
      * Neural remapping cooldown after a character uses remap accrued over time
      * 
      * @return accruedRemapCooldownDate
-     **/
+     */
     @javax.annotation.Nullable
     public OffsetDateTime getAccruedRemapCooldownDate() {
         return accruedRemapCooldownDate;
     }
 
-    public void setAccruedRemapCooldownDate(OffsetDateTime accruedRemapCooldownDate) {
+    public void setAccruedRemapCooldownDate(@javax.annotation.Nullable OffsetDateTime accruedRemapCooldownDate) {
         this.accruedRemapCooldownDate = accruedRemapCooldownDate;
     }
 
-    public CharacterAttributesResponse bonusRemaps(Integer bonusRemaps) {
-
+    public CharacterAttributesResponse bonusRemaps(@javax.annotation.Nullable Integer bonusRemaps) {
         this.bonusRemaps = bonusRemaps;
         return this;
     }
@@ -120,18 +125,17 @@ public class CharacterAttributesResponse implements Serializable {
      * Number of available bonus character neural remaps
      * 
      * @return bonusRemaps
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getBonusRemaps() {
         return bonusRemaps;
     }
 
-    public void setBonusRemaps(Integer bonusRemaps) {
+    public void setBonusRemaps(@javax.annotation.Nullable Integer bonusRemaps) {
         this.bonusRemaps = bonusRemaps;
     }
 
-    public CharacterAttributesResponse charisma(Integer charisma) {
-
+    public CharacterAttributesResponse charisma(@javax.annotation.Nonnull Integer charisma) {
         this.charisma = charisma;
         return this;
     }
@@ -140,18 +144,17 @@ public class CharacterAttributesResponse implements Serializable {
      * charisma integer
      * 
      * @return charisma
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getCharisma() {
         return charisma;
     }
 
-    public void setCharisma(Integer charisma) {
+    public void setCharisma(@javax.annotation.Nonnull Integer charisma) {
         this.charisma = charisma;
     }
 
-    public CharacterAttributesResponse intelligence(Integer intelligence) {
-
+    public CharacterAttributesResponse intelligence(@javax.annotation.Nonnull Integer intelligence) {
         this.intelligence = intelligence;
         return this;
     }
@@ -160,18 +163,17 @@ public class CharacterAttributesResponse implements Serializable {
      * intelligence integer
      * 
      * @return intelligence
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getIntelligence() {
         return intelligence;
     }
 
-    public void setIntelligence(Integer intelligence) {
+    public void setIntelligence(@javax.annotation.Nonnull Integer intelligence) {
         this.intelligence = intelligence;
     }
 
-    public CharacterAttributesResponse lastRemapDate(OffsetDateTime lastRemapDate) {
-
+    public CharacterAttributesResponse lastRemapDate(@javax.annotation.Nullable OffsetDateTime lastRemapDate) {
         this.lastRemapDate = lastRemapDate;
         return this;
     }
@@ -180,18 +182,17 @@ public class CharacterAttributesResponse implements Serializable {
      * Datetime of last neural remap, including usage of bonus remaps
      * 
      * @return lastRemapDate
-     **/
+     */
     @javax.annotation.Nullable
     public OffsetDateTime getLastRemapDate() {
         return lastRemapDate;
     }
 
-    public void setLastRemapDate(OffsetDateTime lastRemapDate) {
+    public void setLastRemapDate(@javax.annotation.Nullable OffsetDateTime lastRemapDate) {
         this.lastRemapDate = lastRemapDate;
     }
 
-    public CharacterAttributesResponse memory(Integer memory) {
-
+    public CharacterAttributesResponse memory(@javax.annotation.Nonnull Integer memory) {
         this.memory = memory;
         return this;
     }
@@ -200,18 +201,17 @@ public class CharacterAttributesResponse implements Serializable {
      * memory integer
      * 
      * @return memory
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getMemory() {
         return memory;
     }
 
-    public void setMemory(Integer memory) {
+    public void setMemory(@javax.annotation.Nonnull Integer memory) {
         this.memory = memory;
     }
 
-    public CharacterAttributesResponse perception(Integer perception) {
-
+    public CharacterAttributesResponse perception(@javax.annotation.Nonnull Integer perception) {
         this.perception = perception;
         return this;
     }
@@ -220,18 +220,17 @@ public class CharacterAttributesResponse implements Serializable {
      * perception integer
      * 
      * @return perception
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getPerception() {
         return perception;
     }
 
-    public void setPerception(Integer perception) {
+    public void setPerception(@javax.annotation.Nonnull Integer perception) {
         this.perception = perception;
     }
 
-    public CharacterAttributesResponse willpower(Integer willpower) {
-
+    public CharacterAttributesResponse willpower(@javax.annotation.Nonnull Integer willpower) {
         this.willpower = willpower;
         return this;
     }
@@ -240,13 +239,13 @@ public class CharacterAttributesResponse implements Serializable {
      * willpower integer
      * 
      * @return willpower
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getWillpower() {
         return willpower;
     }
 
-    public void setWillpower(Integer willpower) {
+    public void setWillpower(@javax.annotation.Nonnull Integer willpower) {
         this.willpower = willpower;
     }
 
@@ -327,22 +326,22 @@ public class CharacterAttributesResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CharacterAttributesResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CharacterAttributesResponse.openapiRequiredFields.isEmpty()) { // has
                                                                                 // required
                                                                                 // fields
                                                                                 // but
                                                                                 // JSON
-                                                                                // object
+                                                                                // element
                                                                                 // is
                                                                                 // null
                 throw new IllegalArgumentException(
@@ -352,26 +351,27 @@ public class CharacterAttributesResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CharacterAttributesResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CharacterAttributesResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CharacterAttributesResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -395,9 +395,9 @@ public class CharacterAttributesResponse implements Serializable {
 
                 @Override
                 public CharacterAttributesResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

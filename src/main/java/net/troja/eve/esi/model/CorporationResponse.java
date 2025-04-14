@@ -38,12 +38,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -57,65 +55,78 @@ public class CorporationResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ALLIANCE_ID = "alliance_id";
     @SerializedName(SERIALIZED_NAME_ALLIANCE_ID)
+    @javax.annotation.Nullable
     private Integer allianceId;
 
     public static final String SERIALIZED_NAME_CEO_ID = "ceo_id";
     @SerializedName(SERIALIZED_NAME_CEO_ID)
+    @javax.annotation.Nonnull
     private Integer ceoId;
 
     public static final String SERIALIZED_NAME_CREATOR_ID = "creator_id";
     @SerializedName(SERIALIZED_NAME_CREATOR_ID)
+    @javax.annotation.Nonnull
     private Integer creatorId;
 
     public static final String SERIALIZED_NAME_DATE_FOUNDED = "date_founded";
     @SerializedName(SERIALIZED_NAME_DATE_FOUNDED)
+    @javax.annotation.Nullable
     private OffsetDateTime dateFounded;
 
     public static final String SERIALIZED_NAME_DESCRIPTION = "description";
     @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+    @javax.annotation.Nullable
     private String description;
 
     public static final String SERIALIZED_NAME_FACTION_ID = "faction_id";
     @SerializedName(SERIALIZED_NAME_FACTION_ID)
+    @javax.annotation.Nullable
     private Integer factionId;
 
     public static final String SERIALIZED_NAME_HOME_STATION_ID = "home_station_id";
     @SerializedName(SERIALIZED_NAME_HOME_STATION_ID)
+    @javax.annotation.Nullable
     private Integer homeStationId;
 
     public static final String SERIALIZED_NAME_MEMBER_COUNT = "member_count";
     @SerializedName(SERIALIZED_NAME_MEMBER_COUNT)
+    @javax.annotation.Nonnull
     private Integer memberCount;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
+    @javax.annotation.Nonnull
     private String name;
 
     public static final String SERIALIZED_NAME_SHARES = "shares";
     @SerializedName(SERIALIZED_NAME_SHARES)
+    @javax.annotation.Nullable
     private Long shares;
 
     public static final String SERIALIZED_NAME_TAX_RATE = "tax_rate";
     @SerializedName(SERIALIZED_NAME_TAX_RATE)
+    @javax.annotation.Nonnull
     private Float taxRate;
 
     public static final String SERIALIZED_NAME_TICKER = "ticker";
     @SerializedName(SERIALIZED_NAME_TICKER)
+    @javax.annotation.Nonnull
     private String ticker;
 
     public static final String SERIALIZED_NAME_URL = "url";
     @SerializedName(SERIALIZED_NAME_URL)
+    @javax.annotation.Nullable
     private String url;
 
     public static final String SERIALIZED_NAME_WAR_ELIGIBLE = "war_eligible";
     @SerializedName(SERIALIZED_NAME_WAR_ELIGIBLE)
+    @javax.annotation.Nullable
     private Boolean warEligible;
 
     public CorporationResponse() {
     }
 
-    public CorporationResponse allianceId(Integer allianceId) {
-
+    public CorporationResponse allianceId(@javax.annotation.Nullable Integer allianceId) {
         this.allianceId = allianceId;
         return this;
     }
@@ -124,18 +135,17 @@ public class CorporationResponse implements Serializable {
      * ID of the alliance that corporation is a member of, if any
      * 
      * @return allianceId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getAllianceId() {
         return allianceId;
     }
 
-    public void setAllianceId(Integer allianceId) {
+    public void setAllianceId(@javax.annotation.Nullable Integer allianceId) {
         this.allianceId = allianceId;
     }
 
-    public CorporationResponse ceoId(Integer ceoId) {
-
+    public CorporationResponse ceoId(@javax.annotation.Nonnull Integer ceoId) {
         this.ceoId = ceoId;
         return this;
     }
@@ -144,18 +154,17 @@ public class CorporationResponse implements Serializable {
      * ceo_id integer
      * 
      * @return ceoId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getCeoId() {
         return ceoId;
     }
 
-    public void setCeoId(Integer ceoId) {
+    public void setCeoId(@javax.annotation.Nonnull Integer ceoId) {
         this.ceoId = ceoId;
     }
 
-    public CorporationResponse creatorId(Integer creatorId) {
-
+    public CorporationResponse creatorId(@javax.annotation.Nonnull Integer creatorId) {
         this.creatorId = creatorId;
         return this;
     }
@@ -164,18 +173,17 @@ public class CorporationResponse implements Serializable {
      * creator_id integer
      * 
      * @return creatorId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getCreatorId() {
         return creatorId;
     }
 
-    public void setCreatorId(Integer creatorId) {
+    public void setCreatorId(@javax.annotation.Nonnull Integer creatorId) {
         this.creatorId = creatorId;
     }
 
-    public CorporationResponse dateFounded(OffsetDateTime dateFounded) {
-
+    public CorporationResponse dateFounded(@javax.annotation.Nullable OffsetDateTime dateFounded) {
         this.dateFounded = dateFounded;
         return this;
     }
@@ -184,18 +192,17 @@ public class CorporationResponse implements Serializable {
      * date_founded string
      * 
      * @return dateFounded
-     **/
+     */
     @javax.annotation.Nullable
     public OffsetDateTime getDateFounded() {
         return dateFounded;
     }
 
-    public void setDateFounded(OffsetDateTime dateFounded) {
+    public void setDateFounded(@javax.annotation.Nullable OffsetDateTime dateFounded) {
         this.dateFounded = dateFounded;
     }
 
-    public CorporationResponse description(String description) {
-
+    public CorporationResponse description(@javax.annotation.Nullable String description) {
         this.description = description;
         return this;
     }
@@ -204,18 +211,17 @@ public class CorporationResponse implements Serializable {
      * description string
      * 
      * @return description
-     **/
+     */
     @javax.annotation.Nullable
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(@javax.annotation.Nullable String description) {
         this.description = description;
     }
 
-    public CorporationResponse factionId(Integer factionId) {
-
+    public CorporationResponse factionId(@javax.annotation.Nullable Integer factionId) {
         this.factionId = factionId;
         return this;
     }
@@ -224,18 +230,17 @@ public class CorporationResponse implements Serializable {
      * faction_id integer
      * 
      * @return factionId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getFactionId() {
         return factionId;
     }
 
-    public void setFactionId(Integer factionId) {
+    public void setFactionId(@javax.annotation.Nullable Integer factionId) {
         this.factionId = factionId;
     }
 
-    public CorporationResponse homeStationId(Integer homeStationId) {
-
+    public CorporationResponse homeStationId(@javax.annotation.Nullable Integer homeStationId) {
         this.homeStationId = homeStationId;
         return this;
     }
@@ -244,18 +249,17 @@ public class CorporationResponse implements Serializable {
      * home_station_id integer
      * 
      * @return homeStationId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getHomeStationId() {
         return homeStationId;
     }
 
-    public void setHomeStationId(Integer homeStationId) {
+    public void setHomeStationId(@javax.annotation.Nullable Integer homeStationId) {
         this.homeStationId = homeStationId;
     }
 
-    public CorporationResponse memberCount(Integer memberCount) {
-
+    public CorporationResponse memberCount(@javax.annotation.Nonnull Integer memberCount) {
         this.memberCount = memberCount;
         return this;
     }
@@ -264,18 +268,17 @@ public class CorporationResponse implements Serializable {
      * member_count integer
      * 
      * @return memberCount
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getMemberCount() {
         return memberCount;
     }
 
-    public void setMemberCount(Integer memberCount) {
+    public void setMemberCount(@javax.annotation.Nonnull Integer memberCount) {
         this.memberCount = memberCount;
     }
 
-    public CorporationResponse name(String name) {
-
+    public CorporationResponse name(@javax.annotation.Nonnull String name) {
         this.name = name;
         return this;
     }
@@ -284,18 +287,17 @@ public class CorporationResponse implements Serializable {
      * the full name of the corporation
      * 
      * @return name
-     **/
+     */
     @javax.annotation.Nonnull
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@javax.annotation.Nonnull String name) {
         this.name = name;
     }
 
-    public CorporationResponse shares(Long shares) {
-
+    public CorporationResponse shares(@javax.annotation.Nullable Long shares) {
         this.shares = shares;
         return this;
     }
@@ -304,18 +306,17 @@ public class CorporationResponse implements Serializable {
      * shares integer
      * 
      * @return shares
-     **/
+     */
     @javax.annotation.Nullable
     public Long getShares() {
         return shares;
     }
 
-    public void setShares(Long shares) {
+    public void setShares(@javax.annotation.Nullable Long shares) {
         this.shares = shares;
     }
 
-    public CorporationResponse taxRate(Float taxRate) {
-
+    public CorporationResponse taxRate(@javax.annotation.Nonnull Float taxRate) {
         this.taxRate = taxRate;
         return this;
     }
@@ -324,18 +325,17 @@ public class CorporationResponse implements Serializable {
      * tax_rate number minimum: 0 maximum: 1
      * 
      * @return taxRate
-     **/
+     */
     @javax.annotation.Nonnull
     public Float getTaxRate() {
         return taxRate;
     }
 
-    public void setTaxRate(Float taxRate) {
+    public void setTaxRate(@javax.annotation.Nonnull Float taxRate) {
         this.taxRate = taxRate;
     }
 
-    public CorporationResponse ticker(String ticker) {
-
+    public CorporationResponse ticker(@javax.annotation.Nonnull String ticker) {
         this.ticker = ticker;
         return this;
     }
@@ -344,18 +344,17 @@ public class CorporationResponse implements Serializable {
      * the short name of the corporation
      * 
      * @return ticker
-     **/
+     */
     @javax.annotation.Nonnull
     public String getTicker() {
         return ticker;
     }
 
-    public void setTicker(String ticker) {
+    public void setTicker(@javax.annotation.Nonnull String ticker) {
         this.ticker = ticker;
     }
 
-    public CorporationResponse url(String url) {
-
+    public CorporationResponse url(@javax.annotation.Nullable String url) {
         this.url = url;
         return this;
     }
@@ -364,18 +363,17 @@ public class CorporationResponse implements Serializable {
      * url string
      * 
      * @return url
-     **/
+     */
     @javax.annotation.Nullable
     public String getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(@javax.annotation.Nullable String url) {
         this.url = url;
     }
 
-    public CorporationResponse warEligible(Boolean warEligible) {
-
+    public CorporationResponse warEligible(@javax.annotation.Nullable Boolean warEligible) {
         this.warEligible = warEligible;
         return this;
     }
@@ -384,13 +382,13 @@ public class CorporationResponse implements Serializable {
      * war_eligible boolean
      * 
      * @return warEligible
-     **/
+     */
     @javax.annotation.Nullable
     public Boolean getWarEligible() {
         return warEligible;
     }
 
-    public void setWarEligible(Boolean warEligible) {
+    public void setWarEligible(@javax.annotation.Nullable Boolean warEligible) {
         this.warEligible = warEligible;
     }
 
@@ -490,22 +488,22 @@ public class CorporationResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CorporationResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CorporationResponse.openapiRequiredFields.isEmpty()) { // has
                                                                         // required
                                                                         // fields
                                                                         // but
                                                                         // JSON
-                                                                        // object
+                                                                        // element
                                                                         // is
                                                                         // null
                 throw new IllegalArgumentException(String.format(
@@ -514,26 +512,27 @@ public class CorporationResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CorporationResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CorporationResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CorporationResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull())
                 && !jsonObj.get("description").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
@@ -578,9 +577,9 @@ public class CorporationResponse implements Serializable {
 
                 @Override
                 public CorporationResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

@@ -39,12 +39,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -58,26 +56,32 @@ public class IncursionsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_CONSTELLATION_ID = "constellation_id";
     @SerializedName(SERIALIZED_NAME_CONSTELLATION_ID)
+    @javax.annotation.Nonnull
     private Integer constellationId;
 
     public static final String SERIALIZED_NAME_FACTION_ID = "faction_id";
     @SerializedName(SERIALIZED_NAME_FACTION_ID)
+    @javax.annotation.Nonnull
     private Integer factionId;
 
     public static final String SERIALIZED_NAME_HAS_BOSS = "has_boss";
     @SerializedName(SERIALIZED_NAME_HAS_BOSS)
+    @javax.annotation.Nonnull
     private Boolean hasBoss;
 
     public static final String SERIALIZED_NAME_INFESTED_SOLAR_SYSTEMS = "infested_solar_systems";
     @SerializedName(SERIALIZED_NAME_INFESTED_SOLAR_SYSTEMS)
+    @javax.annotation.Nonnull
     private List<Integer> infestedSolarSystems = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_INFLUENCE = "influence";
     @SerializedName(SERIALIZED_NAME_INFLUENCE)
+    @javax.annotation.Nonnull
     private Float influence;
 
     public static final String SERIALIZED_NAME_STAGING_SOLAR_SYSTEM_ID = "staging_solar_system_id";
     @SerializedName(SERIALIZED_NAME_STAGING_SOLAR_SYSTEM_ID)
+    @javax.annotation.Nonnull
     private Integer stagingSolarSystemId;
 
     /**
@@ -127,22 +131,28 @@ public class IncursionsResponse implements Serializable {
                 return StateEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            StateEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_STATE = "state";
     @SerializedName(SERIALIZED_NAME_STATE)
+    @javax.annotation.Nonnull
     private String state;
     private StateEnum stateEnum;
 
     public static final String SERIALIZED_NAME_TYPE = "type";
     @SerializedName(SERIALIZED_NAME_TYPE)
+    @javax.annotation.Nonnull
     private String type;
 
     public IncursionsResponse() {
     }
 
-    public IncursionsResponse constellationId(Integer constellationId) {
-
+    public IncursionsResponse constellationId(@javax.annotation.Nonnull Integer constellationId) {
         this.constellationId = constellationId;
         return this;
     }
@@ -151,18 +161,17 @@ public class IncursionsResponse implements Serializable {
      * The constellation id in which this incursion takes place
      * 
      * @return constellationId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getConstellationId() {
         return constellationId;
     }
 
-    public void setConstellationId(Integer constellationId) {
+    public void setConstellationId(@javax.annotation.Nonnull Integer constellationId) {
         this.constellationId = constellationId;
     }
 
-    public IncursionsResponse factionId(Integer factionId) {
-
+    public IncursionsResponse factionId(@javax.annotation.Nonnull Integer factionId) {
         this.factionId = factionId;
         return this;
     }
@@ -171,18 +180,17 @@ public class IncursionsResponse implements Serializable {
      * The attacking faction&#39;s id
      * 
      * @return factionId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getFactionId() {
         return factionId;
     }
 
-    public void setFactionId(Integer factionId) {
+    public void setFactionId(@javax.annotation.Nonnull Integer factionId) {
         this.factionId = factionId;
     }
 
-    public IncursionsResponse hasBoss(Boolean hasBoss) {
-
+    public IncursionsResponse hasBoss(@javax.annotation.Nonnull Boolean hasBoss) {
         this.hasBoss = hasBoss;
         return this;
     }
@@ -191,26 +199,26 @@ public class IncursionsResponse implements Serializable {
      * Whether the final encounter has boss or not
      * 
      * @return hasBoss
-     **/
+     */
     @javax.annotation.Nonnull
     public Boolean getHasBoss() {
         return hasBoss;
     }
 
-    public void setHasBoss(Boolean hasBoss) {
+    public void setHasBoss(@javax.annotation.Nonnull Boolean hasBoss) {
         this.hasBoss = hasBoss;
     }
 
-    public IncursionsResponse infestedSolarSystems(List<Integer> infestedSolarSystems) {
-
+    public IncursionsResponse infestedSolarSystems(@javax.annotation.Nonnull List<Integer> infestedSolarSystems) {
         this.infestedSolarSystems = infestedSolarSystems;
         return this;
     }
 
-    public IncursionsResponse addinfestedSolarSystemsItem(Integer infestedSolarSystemsItem) {
+    public IncursionsResponse addInfestedSolarSystemsItem(Integer infestedSolarSystemsItem) {
         if (this.infestedSolarSystems == null) {
             this.infestedSolarSystems = new ArrayList<>();
         }
+
         this.infestedSolarSystems.add(infestedSolarSystemsItem);
         return this;
     }
@@ -219,18 +227,17 @@ public class IncursionsResponse implements Serializable {
      * A list of infested solar system ids that are a part of this incursion
      * 
      * @return infestedSolarSystems
-     **/
+     */
     @javax.annotation.Nonnull
     public List<Integer> getInfestedSolarSystems() {
         return infestedSolarSystems;
     }
 
-    public void setInfestedSolarSystems(List<Integer> infestedSolarSystems) {
+    public void setInfestedSolarSystems(@javax.annotation.Nonnull List<Integer> infestedSolarSystems) {
         this.infestedSolarSystems = infestedSolarSystems;
     }
 
-    public IncursionsResponse influence(Float influence) {
-
+    public IncursionsResponse influence(@javax.annotation.Nonnull Float influence) {
         this.influence = influence;
         return this;
     }
@@ -239,18 +246,17 @@ public class IncursionsResponse implements Serializable {
      * Influence of this incursion as a float from 0 to 1
      * 
      * @return influence
-     **/
+     */
     @javax.annotation.Nonnull
     public Float getInfluence() {
         return influence;
     }
 
-    public void setInfluence(Float influence) {
+    public void setInfluence(@javax.annotation.Nonnull Float influence) {
         this.influence = influence;
     }
 
-    public IncursionsResponse stagingSolarSystemId(Integer stagingSolarSystemId) {
-
+    public IncursionsResponse stagingSolarSystemId(@javax.annotation.Nonnull Integer stagingSolarSystemId) {
         this.stagingSolarSystemId = stagingSolarSystemId;
         return this;
     }
@@ -259,25 +265,23 @@ public class IncursionsResponse implements Serializable {
      * Staging solar system for this incursion
      * 
      * @return stagingSolarSystemId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getStagingSolarSystemId() {
         return stagingSolarSystemId;
     }
 
-    public void setStagingSolarSystemId(Integer stagingSolarSystemId) {
+    public void setStagingSolarSystemId(@javax.annotation.Nonnull Integer stagingSolarSystemId) {
         this.stagingSolarSystemId = stagingSolarSystemId;
     }
 
-    public IncursionsResponse stateString(String state) {
-
-        this.state = state;
+    public IncursionsResponse state(@javax.annotation.Nonnull StateEnum state) {
+        this.stateEnum = state;
         return this;
     }
 
-    public IncursionsResponse state(StateEnum stateEnum) {
-
-        this.stateEnum = stateEnum;
+    public IncursionsResponse stateString(@javax.annotation.Nonnull String state) {
+        this.state = state;
         return this;
     }
 
@@ -285,8 +289,8 @@ public class IncursionsResponse implements Serializable {
      * The state of this incursion
      * 
      * @return state
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public StateEnum getState() {
         if (stateEnum == null) {
             stateEnum = StateEnum.fromValue(state);
@@ -298,16 +302,15 @@ public class IncursionsResponse implements Serializable {
         return state;
     }
 
-    public void setState(StateEnum stateEnum) {
-        this.stateEnum = stateEnum;
+    public void setState(@javax.annotation.Nonnull StateEnum state) {
+        this.stateEnum = state;
     }
 
-    public void setStateString(String state) {
+    public void setStateString(@javax.annotation.Nonnull String state) {
         this.state = state;
     }
 
-    public IncursionsResponse type(String type) {
-
+    public IncursionsResponse type(@javax.annotation.Nonnull String type) {
         this.type = type;
         return this;
     }
@@ -316,13 +319,13 @@ public class IncursionsResponse implements Serializable {
      * The type of this incursion
      * 
      * @return type
-     **/
+     */
     @javax.annotation.Nonnull
     public String getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(@javax.annotation.Nonnull String type) {
         this.type = type;
     }
 
@@ -406,22 +409,22 @@ public class IncursionsResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             IncursionsResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!IncursionsResponse.openapiRequiredFields.isEmpty()) { // has
                                                                        // required
                                                                        // fields
                                                                        // but
                                                                        // JSON
-                                                                       // object
+                                                                       // element
                                                                        // is
                                                                        // null
                 throw new IllegalArgumentException(String.format(
@@ -430,26 +433,27 @@ public class IncursionsResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!IncursionsResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `IncursionsResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : IncursionsResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         // ensure the required json array is present
         if (jsonObj.get("infested_solar_systems") == null) {
             throw new IllegalArgumentException(
@@ -464,6 +468,8 @@ public class IncursionsResponse implements Serializable {
                     "Expected the field `state` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("state").toString()));
         }
+        // validate the required field `state`
+        StateEnum.validateJsonElement(jsonObj.get("state"));
         if (!jsonObj.get("type").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `type` to be a primitive type in the JSON string but got `%s`",
@@ -492,9 +498,9 @@ public class IncursionsResponse implements Serializable {
 
                 @Override
                 public IncursionsResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

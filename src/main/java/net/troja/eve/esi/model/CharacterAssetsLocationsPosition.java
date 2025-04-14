@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -56,21 +54,23 @@ public class CharacterAssetsLocationsPosition implements Serializable {
 
     public static final String SERIALIZED_NAME_X = "x";
     @SerializedName(SERIALIZED_NAME_X)
+    @javax.annotation.Nonnull
     private Double x;
 
     public static final String SERIALIZED_NAME_Y = "y";
     @SerializedName(SERIALIZED_NAME_Y)
+    @javax.annotation.Nonnull
     private Double y;
 
     public static final String SERIALIZED_NAME_Z = "z";
     @SerializedName(SERIALIZED_NAME_Z)
+    @javax.annotation.Nonnull
     private Double z;
 
     public CharacterAssetsLocationsPosition() {
     }
 
-    public CharacterAssetsLocationsPosition x(Double x) {
-
+    public CharacterAssetsLocationsPosition x(@javax.annotation.Nonnull Double x) {
         this.x = x;
         return this;
     }
@@ -79,18 +79,17 @@ public class CharacterAssetsLocationsPosition implements Serializable {
      * x number
      * 
      * @return x
-     **/
+     */
     @javax.annotation.Nonnull
     public Double getX() {
         return x;
     }
 
-    public void setX(Double x) {
+    public void setX(@javax.annotation.Nonnull Double x) {
         this.x = x;
     }
 
-    public CharacterAssetsLocationsPosition y(Double y) {
-
+    public CharacterAssetsLocationsPosition y(@javax.annotation.Nonnull Double y) {
         this.y = y;
         return this;
     }
@@ -99,18 +98,17 @@ public class CharacterAssetsLocationsPosition implements Serializable {
      * y number
      * 
      * @return y
-     **/
+     */
     @javax.annotation.Nonnull
     public Double getY() {
         return y;
     }
 
-    public void setY(Double y) {
+    public void setY(@javax.annotation.Nonnull Double y) {
         this.y = y;
     }
 
-    public CharacterAssetsLocationsPosition z(Double z) {
-
+    public CharacterAssetsLocationsPosition z(@javax.annotation.Nonnull Double z) {
         this.z = z;
         return this;
     }
@@ -119,13 +117,13 @@ public class CharacterAssetsLocationsPosition implements Serializable {
      * z number
      * 
      * @return z
-     **/
+     */
     @javax.annotation.Nonnull
     public Double getZ() {
         return z;
     }
 
-    public void setZ(Double z) {
+    public void setZ(@javax.annotation.Nonnull Double z) {
         this.z = z;
     }
 
@@ -188,22 +186,22 @@ public class CharacterAssetsLocationsPosition implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CharacterAssetsLocationsPosition
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CharacterAssetsLocationsPosition.openapiRequiredFields.isEmpty()) { // has
                                                                                      // required
                                                                                      // fields
                                                                                      // but
                                                                                      // JSON
-                                                                                     // object
+                                                                                     // element
                                                                                      // is
                                                                                      // null
                 throw new IllegalArgumentException(
@@ -213,26 +211,27 @@ public class CharacterAssetsLocationsPosition implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CharacterAssetsLocationsPosition.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CharacterAssetsLocationsPosition` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CharacterAssetsLocationsPosition.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -257,9 +256,9 @@ public class CharacterAssetsLocationsPosition implements Serializable {
 
                 @Override
                 public CharacterAssetsLocationsPosition read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

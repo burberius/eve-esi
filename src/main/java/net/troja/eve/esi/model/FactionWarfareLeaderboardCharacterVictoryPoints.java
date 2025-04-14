@@ -42,12 +42,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -62,31 +60,34 @@ public class FactionWarfareLeaderboardCharacterVictoryPoints implements Serializ
 
     public static final String SERIALIZED_NAME_ACTIVE_TOTAL = "active_total";
     @SerializedName(SERIALIZED_NAME_ACTIVE_TOTAL)
+    @javax.annotation.Nonnull
     private List<FactionWarfareLeaderboardCharactersActiveTotalVictoryPoints> activeTotal = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_LAST_WEEK = "last_week";
     @SerializedName(SERIALIZED_NAME_LAST_WEEK)
+    @javax.annotation.Nonnull
     private List<FactionWarfareLeaderboardCharactersLastWeekVictoryPoints> lastWeek = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_YESTERDAY = "yesterday";
     @SerializedName(SERIALIZED_NAME_YESTERDAY)
+    @javax.annotation.Nonnull
     private List<FactionWarfareLeaderboardCharactersYesterdayVictoryPoints> yesterday = new ArrayList<>();
 
     public FactionWarfareLeaderboardCharacterVictoryPoints() {
     }
 
     public FactionWarfareLeaderboardCharacterVictoryPoints activeTotal(
-            List<FactionWarfareLeaderboardCharactersActiveTotalVictoryPoints> activeTotal) {
-
+            @javax.annotation.Nonnull List<FactionWarfareLeaderboardCharactersActiveTotalVictoryPoints> activeTotal) {
         this.activeTotal = activeTotal;
         return this;
     }
 
-    public FactionWarfareLeaderboardCharacterVictoryPoints addactiveTotalItem(
+    public FactionWarfareLeaderboardCharacterVictoryPoints addActiveTotalItem(
             FactionWarfareLeaderboardCharactersActiveTotalVictoryPoints activeTotalItem) {
         if (this.activeTotal == null) {
             this.activeTotal = new ArrayList<>();
         }
+
         this.activeTotal.add(activeTotalItem);
         return this;
     }
@@ -97,28 +98,29 @@ public class FactionWarfareLeaderboardCharacterVictoryPoints implements Serializ
      * participated in faction warfare in the past 14 days
      * 
      * @return activeTotal
-     **/
+     */
     @javax.annotation.Nonnull
     public List<FactionWarfareLeaderboardCharactersActiveTotalVictoryPoints> getActiveTotal() {
         return activeTotal;
     }
 
-    public void setActiveTotal(List<FactionWarfareLeaderboardCharactersActiveTotalVictoryPoints> activeTotal) {
+    public void setActiveTotal(
+            @javax.annotation.Nonnull List<FactionWarfareLeaderboardCharactersActiveTotalVictoryPoints> activeTotal) {
         this.activeTotal = activeTotal;
     }
 
     public FactionWarfareLeaderboardCharacterVictoryPoints lastWeek(
-            List<FactionWarfareLeaderboardCharactersLastWeekVictoryPoints> lastWeek) {
-
+            @javax.annotation.Nonnull List<FactionWarfareLeaderboardCharactersLastWeekVictoryPoints> lastWeek) {
         this.lastWeek = lastWeek;
         return this;
     }
 
-    public FactionWarfareLeaderboardCharacterVictoryPoints addlastWeekItem(
+    public FactionWarfareLeaderboardCharacterVictoryPoints addLastWeekItem(
             FactionWarfareLeaderboardCharactersLastWeekVictoryPoints lastWeekItem) {
         if (this.lastWeek == null) {
             this.lastWeek = new ArrayList<>();
         }
+
         this.lastWeek.add(lastWeekItem);
         return this;
     }
@@ -127,28 +129,29 @@ public class FactionWarfareLeaderboardCharacterVictoryPoints implements Serializ
      * Top 100 ranking of pilots by victory points in the past week
      * 
      * @return lastWeek
-     **/
+     */
     @javax.annotation.Nonnull
     public List<FactionWarfareLeaderboardCharactersLastWeekVictoryPoints> getLastWeek() {
         return lastWeek;
     }
 
-    public void setLastWeek(List<FactionWarfareLeaderboardCharactersLastWeekVictoryPoints> lastWeek) {
+    public void setLastWeek(
+            @javax.annotation.Nonnull List<FactionWarfareLeaderboardCharactersLastWeekVictoryPoints> lastWeek) {
         this.lastWeek = lastWeek;
     }
 
     public FactionWarfareLeaderboardCharacterVictoryPoints yesterday(
-            List<FactionWarfareLeaderboardCharactersYesterdayVictoryPoints> yesterday) {
-
+            @javax.annotation.Nonnull List<FactionWarfareLeaderboardCharactersYesterdayVictoryPoints> yesterday) {
         this.yesterday = yesterday;
         return this;
     }
 
-    public FactionWarfareLeaderboardCharacterVictoryPoints addyesterdayItem(
+    public FactionWarfareLeaderboardCharacterVictoryPoints addYesterdayItem(
             FactionWarfareLeaderboardCharactersYesterdayVictoryPoints yesterdayItem) {
         if (this.yesterday == null) {
             this.yesterday = new ArrayList<>();
         }
+
         this.yesterday.add(yesterdayItem);
         return this;
     }
@@ -157,13 +160,14 @@ public class FactionWarfareLeaderboardCharacterVictoryPoints implements Serializ
      * Top 100 ranking of pilots by victory points in the past day
      * 
      * @return yesterday
-     **/
+     */
     @javax.annotation.Nonnull
     public List<FactionWarfareLeaderboardCharactersYesterdayVictoryPoints> getYesterday() {
         return yesterday;
     }
 
-    public void setYesterday(List<FactionWarfareLeaderboardCharactersYesterdayVictoryPoints> yesterday) {
+    public void setYesterday(
+            @javax.annotation.Nonnull List<FactionWarfareLeaderboardCharactersYesterdayVictoryPoints> yesterday) {
         this.yesterday = yesterday;
     }
 
@@ -226,22 +230,22 @@ public class FactionWarfareLeaderboardCharacterVictoryPoints implements Serializ
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             FactionWarfareLeaderboardCharacterVictoryPoints
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!FactionWarfareLeaderboardCharacterVictoryPoints.openapiRequiredFields.isEmpty()) { // has
                                                                                                     // required
                                                                                                     // fields
                                                                                                     // but
                                                                                                     // JSON
-                                                                                                    // object
+                                                                                                    // element
                                                                                                     // is
                                                                                                     // null
                 throw new IllegalArgumentException(
@@ -251,26 +255,27 @@ public class FactionWarfareLeaderboardCharacterVictoryPoints implements Serializ
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!FactionWarfareLeaderboardCharacterVictoryPoints.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `FactionWarfareLeaderboardCharacterVictoryPoints` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : FactionWarfareLeaderboardCharacterVictoryPoints.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         // ensure the json data is an array
         if (!jsonObj.get("active_total").isJsonArray()) {
             throw new IllegalArgumentException(String.format(
@@ -281,8 +286,8 @@ public class FactionWarfareLeaderboardCharacterVictoryPoints implements Serializ
         JsonArray jsonArrayactiveTotal = jsonObj.getAsJsonArray("active_total");
         // validate the required field `active_total` (array)
         for (int i = 0; i < jsonArrayactiveTotal.size(); i++) {
-            FactionWarfareLeaderboardCharactersActiveTotalVictoryPoints.validateJsonObject(jsonArrayactiveTotal.get(i)
-                    .getAsJsonObject());
+            FactionWarfareLeaderboardCharactersActiveTotalVictoryPoints
+                    .validateJsonElement(jsonArrayactiveTotal.get(i));
         };
         // ensure the json data is an array
         if (!jsonObj.get("last_week").isJsonArray()) {
@@ -294,8 +299,7 @@ public class FactionWarfareLeaderboardCharacterVictoryPoints implements Serializ
         JsonArray jsonArraylastWeek = jsonObj.getAsJsonArray("last_week");
         // validate the required field `last_week` (array)
         for (int i = 0; i < jsonArraylastWeek.size(); i++) {
-            FactionWarfareLeaderboardCharactersLastWeekVictoryPoints.validateJsonObject(jsonArraylastWeek.get(i)
-                    .getAsJsonObject());
+            FactionWarfareLeaderboardCharactersLastWeekVictoryPoints.validateJsonElement(jsonArraylastWeek.get(i));
         };
         // ensure the json data is an array
         if (!jsonObj.get("yesterday").isJsonArray()) {
@@ -307,8 +311,7 @@ public class FactionWarfareLeaderboardCharacterVictoryPoints implements Serializ
         JsonArray jsonArrayyesterday = jsonObj.getAsJsonArray("yesterday");
         // validate the required field `yesterday` (array)
         for (int i = 0; i < jsonArrayyesterday.size(); i++) {
-            FactionWarfareLeaderboardCharactersYesterdayVictoryPoints.validateJsonObject(jsonArrayyesterday.get(i)
-                    .getAsJsonObject());
+            FactionWarfareLeaderboardCharactersYesterdayVictoryPoints.validateJsonElement(jsonArrayyesterday.get(i));
         };
     }
 
@@ -335,9 +338,9 @@ public class FactionWarfareLeaderboardCharacterVictoryPoints implements Serializ
 
                 @Override
                 public FactionWarfareLeaderboardCharacterVictoryPoints read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

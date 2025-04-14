@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -56,17 +54,18 @@ public class FactionWarfareLeaderboardActiveTotalKills implements Serializable {
 
     public static final String SERIALIZED_NAME_AMOUNT = "amount";
     @SerializedName(SERIALIZED_NAME_AMOUNT)
+    @javax.annotation.Nullable
     private Integer amount;
 
     public static final String SERIALIZED_NAME_FACTION_ID = "faction_id";
     @SerializedName(SERIALIZED_NAME_FACTION_ID)
+    @javax.annotation.Nullable
     private Integer factionId;
 
     public FactionWarfareLeaderboardActiveTotalKills() {
     }
 
-    public FactionWarfareLeaderboardActiveTotalKills amount(Integer amount) {
-
+    public FactionWarfareLeaderboardActiveTotalKills amount(@javax.annotation.Nullable Integer amount) {
         this.amount = amount;
         return this;
     }
@@ -75,18 +74,17 @@ public class FactionWarfareLeaderboardActiveTotalKills implements Serializable {
      * Amount of kills
      * 
      * @return amount
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getAmount() {
         return amount;
     }
 
-    public void setAmount(Integer amount) {
+    public void setAmount(@javax.annotation.Nullable Integer amount) {
         this.amount = amount;
     }
 
-    public FactionWarfareLeaderboardActiveTotalKills factionId(Integer factionId) {
-
+    public FactionWarfareLeaderboardActiveTotalKills factionId(@javax.annotation.Nullable Integer factionId) {
         this.factionId = factionId;
         return this;
     }
@@ -95,13 +93,13 @@ public class FactionWarfareLeaderboardActiveTotalKills implements Serializable {
      * faction_id integer
      * 
      * @return factionId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getFactionId() {
         return factionId;
     }
 
-    public void setFactionId(Integer factionId) {
+    public void setFactionId(@javax.annotation.Nullable Integer factionId) {
         this.factionId = factionId;
     }
 
@@ -158,22 +156,22 @@ public class FactionWarfareLeaderboardActiveTotalKills implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             FactionWarfareLeaderboardActiveTotalKills
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!FactionWarfareLeaderboardActiveTotalKills.openapiRequiredFields.isEmpty()) { // has
                                                                                               // required
                                                                                               // fields
                                                                                               // but
                                                                                               // JSON
-                                                                                              // object
+                                                                                              // element
                                                                                               // is
                                                                                               // null
                 throw new IllegalArgumentException(
@@ -183,16 +181,17 @@ public class FactionWarfareLeaderboardActiveTotalKills implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!FactionWarfareLeaderboardActiveTotalKills.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `FactionWarfareLeaderboardActiveTotalKills` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -217,9 +216,9 @@ public class FactionWarfareLeaderboardActiveTotalKills implements Serializable {
 
                 @Override
                 public FactionWarfareLeaderboardActiveTotalKills read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

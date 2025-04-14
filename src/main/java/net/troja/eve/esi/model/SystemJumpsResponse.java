@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -56,17 +54,18 @@ public class SystemJumpsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_SHIP_JUMPS = "ship_jumps";
     @SerializedName(SERIALIZED_NAME_SHIP_JUMPS)
+    @javax.annotation.Nonnull
     private Integer shipJumps;
 
     public static final String SERIALIZED_NAME_SYSTEM_ID = "system_id";
     @SerializedName(SERIALIZED_NAME_SYSTEM_ID)
+    @javax.annotation.Nonnull
     private Integer systemId;
 
     public SystemJumpsResponse() {
     }
 
-    public SystemJumpsResponse shipJumps(Integer shipJumps) {
-
+    public SystemJumpsResponse shipJumps(@javax.annotation.Nonnull Integer shipJumps) {
         this.shipJumps = shipJumps;
         return this;
     }
@@ -75,18 +74,17 @@ public class SystemJumpsResponse implements Serializable {
      * ship_jumps integer
      * 
      * @return shipJumps
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getShipJumps() {
         return shipJumps;
     }
 
-    public void setShipJumps(Integer shipJumps) {
+    public void setShipJumps(@javax.annotation.Nonnull Integer shipJumps) {
         this.shipJumps = shipJumps;
     }
 
-    public SystemJumpsResponse systemId(Integer systemId) {
-
+    public SystemJumpsResponse systemId(@javax.annotation.Nonnull Integer systemId) {
         this.systemId = systemId;
         return this;
     }
@@ -95,13 +93,13 @@ public class SystemJumpsResponse implements Serializable {
      * system_id integer
      * 
      * @return systemId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getSystemId() {
         return systemId;
     }
 
-    public void setSystemId(Integer systemId) {
+    public void setSystemId(@javax.annotation.Nonnull Integer systemId) {
         this.systemId = systemId;
     }
 
@@ -160,22 +158,22 @@ public class SystemJumpsResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             SystemJumpsResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!SystemJumpsResponse.openapiRequiredFields.isEmpty()) { // has
                                                                         // required
                                                                         // fields
                                                                         // but
                                                                         // JSON
-                                                                        // object
+                                                                        // element
                                                                         // is
                                                                         // null
                 throw new IllegalArgumentException(String.format(
@@ -184,26 +182,27 @@ public class SystemJumpsResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!SystemJumpsResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `SystemJumpsResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : SystemJumpsResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -227,9 +226,9 @@ public class SystemJumpsResponse implements Serializable {
 
                 @Override
                 public SystemJumpsResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

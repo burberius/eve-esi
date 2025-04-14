@@ -41,12 +41,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -60,41 +58,48 @@ public class KillmailVictim implements Serializable {
 
     public static final String SERIALIZED_NAME_ALLIANCE_ID = "alliance_id";
     @SerializedName(SERIALIZED_NAME_ALLIANCE_ID)
+    @javax.annotation.Nullable
     private Integer allianceId;
 
     public static final String SERIALIZED_NAME_CHARACTER_ID = "character_id";
     @SerializedName(SERIALIZED_NAME_CHARACTER_ID)
+    @javax.annotation.Nullable
     private Integer characterId;
 
     public static final String SERIALIZED_NAME_CORPORATION_ID = "corporation_id";
     @SerializedName(SERIALIZED_NAME_CORPORATION_ID)
+    @javax.annotation.Nullable
     private Integer corporationId;
 
     public static final String SERIALIZED_NAME_DAMAGE_TAKEN = "damage_taken";
     @SerializedName(SERIALIZED_NAME_DAMAGE_TAKEN)
+    @javax.annotation.Nonnull
     private Integer damageTaken;
 
     public static final String SERIALIZED_NAME_FACTION_ID = "faction_id";
     @SerializedName(SERIALIZED_NAME_FACTION_ID)
+    @javax.annotation.Nullable
     private Integer factionId;
 
     public static final String SERIALIZED_NAME_ITEMS = "items";
     @SerializedName(SERIALIZED_NAME_ITEMS)
+    @javax.annotation.Nullable
     private List<KillmailItem> items = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_POSITION = "position";
     @SerializedName(SERIALIZED_NAME_POSITION)
+    @javax.annotation.Nullable
     private Position position;
 
     public static final String SERIALIZED_NAME_SHIP_TYPE_ID = "ship_type_id";
     @SerializedName(SERIALIZED_NAME_SHIP_TYPE_ID)
+    @javax.annotation.Nonnull
     private Integer shipTypeId;
 
     public KillmailVictim() {
     }
 
-    public KillmailVictim allianceId(Integer allianceId) {
-
+    public KillmailVictim allianceId(@javax.annotation.Nullable Integer allianceId) {
         this.allianceId = allianceId;
         return this;
     }
@@ -103,18 +108,17 @@ public class KillmailVictim implements Serializable {
      * alliance_id integer
      * 
      * @return allianceId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getAllianceId() {
         return allianceId;
     }
 
-    public void setAllianceId(Integer allianceId) {
+    public void setAllianceId(@javax.annotation.Nullable Integer allianceId) {
         this.allianceId = allianceId;
     }
 
-    public KillmailVictim characterId(Integer characterId) {
-
+    public KillmailVictim characterId(@javax.annotation.Nullable Integer characterId) {
         this.characterId = characterId;
         return this;
     }
@@ -123,18 +127,17 @@ public class KillmailVictim implements Serializable {
      * character_id integer
      * 
      * @return characterId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getCharacterId() {
         return characterId;
     }
 
-    public void setCharacterId(Integer characterId) {
+    public void setCharacterId(@javax.annotation.Nullable Integer characterId) {
         this.characterId = characterId;
     }
 
-    public KillmailVictim corporationId(Integer corporationId) {
-
+    public KillmailVictim corporationId(@javax.annotation.Nullable Integer corporationId) {
         this.corporationId = corporationId;
         return this;
     }
@@ -143,18 +146,17 @@ public class KillmailVictim implements Serializable {
      * corporation_id integer
      * 
      * @return corporationId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getCorporationId() {
         return corporationId;
     }
 
-    public void setCorporationId(Integer corporationId) {
+    public void setCorporationId(@javax.annotation.Nullable Integer corporationId) {
         this.corporationId = corporationId;
     }
 
-    public KillmailVictim damageTaken(Integer damageTaken) {
-
+    public KillmailVictim damageTaken(@javax.annotation.Nonnull Integer damageTaken) {
         this.damageTaken = damageTaken;
         return this;
     }
@@ -163,18 +165,17 @@ public class KillmailVictim implements Serializable {
      * How much total damage was taken by the victim
      * 
      * @return damageTaken
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getDamageTaken() {
         return damageTaken;
     }
 
-    public void setDamageTaken(Integer damageTaken) {
+    public void setDamageTaken(@javax.annotation.Nonnull Integer damageTaken) {
         this.damageTaken = damageTaken;
     }
 
-    public KillmailVictim factionId(Integer factionId) {
-
+    public KillmailVictim factionId(@javax.annotation.Nullable Integer factionId) {
         this.factionId = factionId;
         return this;
     }
@@ -183,26 +184,26 @@ public class KillmailVictim implements Serializable {
      * faction_id integer
      * 
      * @return factionId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getFactionId() {
         return factionId;
     }
 
-    public void setFactionId(Integer factionId) {
+    public void setFactionId(@javax.annotation.Nullable Integer factionId) {
         this.factionId = factionId;
     }
 
-    public KillmailVictim items(List<KillmailItem> items) {
-
+    public KillmailVictim items(@javax.annotation.Nullable List<KillmailItem> items) {
         this.items = items;
         return this;
     }
 
-    public KillmailVictim additemsItem(KillmailItem itemsItem) {
+    public KillmailVictim addItemsItem(KillmailItem itemsItem) {
         if (this.items == null) {
             this.items = new ArrayList<>();
         }
+
         this.items.add(itemsItem);
         return this;
     }
@@ -211,18 +212,17 @@ public class KillmailVictim implements Serializable {
      * items array
      * 
      * @return items
-     **/
+     */
     @javax.annotation.Nullable
     public List<KillmailItem> getItems() {
         return items;
     }
 
-    public void setItems(List<KillmailItem> items) {
+    public void setItems(@javax.annotation.Nullable List<KillmailItem> items) {
         this.items = items;
     }
 
-    public KillmailVictim position(Position position) {
-
+    public KillmailVictim position(@javax.annotation.Nullable Position position) {
         this.position = position;
         return this;
     }
@@ -231,18 +231,17 @@ public class KillmailVictim implements Serializable {
      * Get position
      * 
      * @return position
-     **/
+     */
     @javax.annotation.Nullable
     public Position getPosition() {
         return position;
     }
 
-    public void setPosition(Position position) {
+    public void setPosition(@javax.annotation.Nullable Position position) {
         this.position = position;
     }
 
-    public KillmailVictim shipTypeId(Integer shipTypeId) {
-
+    public KillmailVictim shipTypeId(@javax.annotation.Nonnull Integer shipTypeId) {
         this.shipTypeId = shipTypeId;
         return this;
     }
@@ -251,13 +250,13 @@ public class KillmailVictim implements Serializable {
      * The ship that the victim was piloting and was destroyed
      * 
      * @return shipTypeId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getShipTypeId() {
         return shipTypeId;
     }
 
-    public void setShipTypeId(Integer shipTypeId) {
+    public void setShipTypeId(@javax.annotation.Nonnull Integer shipTypeId) {
         this.shipTypeId = shipTypeId;
     }
 
@@ -335,20 +334,20 @@ public class KillmailVictim implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to KillmailVictim
+     *             if the JSON Element is invalid with respect to KillmailVictim
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!KillmailVictim.openapiRequiredFields.isEmpty()) { // has
                                                                    // required
                                                                    // fields but
                                                                    // JSON
-                                                                   // object is
+                                                                   // element is
                                                                    // null
                 throw new IllegalArgumentException(String.format(
                         "The required field(s) %s in KillmailVictim is not found in the empty JSON string",
@@ -356,26 +355,27 @@ public class KillmailVictim implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!KillmailVictim.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `KillmailVictim` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : KillmailVictim.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (jsonObj.get("items") != null && !jsonObj.get("items").isJsonNull()) {
             JsonArray jsonArrayitems = jsonObj.getAsJsonArray("items");
             if (jsonArrayitems != null) {
@@ -388,13 +388,13 @@ public class KillmailVictim implements Serializable {
 
                 // validate the optional field `items` (array)
                 for (int i = 0; i < jsonArrayitems.size(); i++) {
-                    KillmailItem.validateJsonObject(jsonArrayitems.get(i).getAsJsonObject());
+                    KillmailItem.validateJsonElement(jsonArrayitems.get(i));
                 };
             }
         }
         // validate the optional field `position`
         if (jsonObj.get("position") != null && !jsonObj.get("position").isJsonNull()) {
-            Position.validateJsonObject(jsonObj.getAsJsonObject("position"));
+            Position.validateJsonElement(jsonObj.get("position"));
         }
     }
 
@@ -419,9 +419,9 @@ public class KillmailVictim implements Serializable {
 
                 @Override
                 public KillmailVictim read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

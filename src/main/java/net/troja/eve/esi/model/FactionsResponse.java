@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -56,49 +54,58 @@ public class FactionsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_CORPORATION_ID = "corporation_id";
     @SerializedName(SERIALIZED_NAME_CORPORATION_ID)
+    @javax.annotation.Nullable
     private Integer corporationId;
 
     public static final String SERIALIZED_NAME_DESCRIPTION = "description";
     @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+    @javax.annotation.Nonnull
     private String description;
 
     public static final String SERIALIZED_NAME_FACTION_ID = "faction_id";
     @SerializedName(SERIALIZED_NAME_FACTION_ID)
+    @javax.annotation.Nonnull
     private Integer factionId;
 
     public static final String SERIALIZED_NAME_IS_UNIQUE = "is_unique";
     @SerializedName(SERIALIZED_NAME_IS_UNIQUE)
+    @javax.annotation.Nonnull
     private Boolean isUnique;
 
     public static final String SERIALIZED_NAME_MILITIA_CORPORATION_ID = "militia_corporation_id";
     @SerializedName(SERIALIZED_NAME_MILITIA_CORPORATION_ID)
+    @javax.annotation.Nullable
     private Integer militiaCorporationId;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
+    @javax.annotation.Nonnull
     private String name;
 
     public static final String SERIALIZED_NAME_SIZE_FACTOR = "size_factor";
     @SerializedName(SERIALIZED_NAME_SIZE_FACTOR)
+    @javax.annotation.Nonnull
     private Float sizeFactor;
 
     public static final String SERIALIZED_NAME_SOLAR_SYSTEM_ID = "solar_system_id";
     @SerializedName(SERIALIZED_NAME_SOLAR_SYSTEM_ID)
+    @javax.annotation.Nullable
     private Integer solarSystemId;
 
     public static final String SERIALIZED_NAME_STATION_COUNT = "station_count";
     @SerializedName(SERIALIZED_NAME_STATION_COUNT)
+    @javax.annotation.Nonnull
     private Integer stationCount;
 
     public static final String SERIALIZED_NAME_STATION_SYSTEM_COUNT = "station_system_count";
     @SerializedName(SERIALIZED_NAME_STATION_SYSTEM_COUNT)
+    @javax.annotation.Nonnull
     private Integer stationSystemCount;
 
     public FactionsResponse() {
     }
 
-    public FactionsResponse corporationId(Integer corporationId) {
-
+    public FactionsResponse corporationId(@javax.annotation.Nullable Integer corporationId) {
         this.corporationId = corporationId;
         return this;
     }
@@ -107,18 +114,17 @@ public class FactionsResponse implements Serializable {
      * corporation_id integer
      * 
      * @return corporationId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getCorporationId() {
         return corporationId;
     }
 
-    public void setCorporationId(Integer corporationId) {
+    public void setCorporationId(@javax.annotation.Nullable Integer corporationId) {
         this.corporationId = corporationId;
     }
 
-    public FactionsResponse description(String description) {
-
+    public FactionsResponse description(@javax.annotation.Nonnull String description) {
         this.description = description;
         return this;
     }
@@ -127,18 +133,17 @@ public class FactionsResponse implements Serializable {
      * description string
      * 
      * @return description
-     **/
+     */
     @javax.annotation.Nonnull
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(@javax.annotation.Nonnull String description) {
         this.description = description;
     }
 
-    public FactionsResponse factionId(Integer factionId) {
-
+    public FactionsResponse factionId(@javax.annotation.Nonnull Integer factionId) {
         this.factionId = factionId;
         return this;
     }
@@ -147,18 +152,17 @@ public class FactionsResponse implements Serializable {
      * faction_id integer
      * 
      * @return factionId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getFactionId() {
         return factionId;
     }
 
-    public void setFactionId(Integer factionId) {
+    public void setFactionId(@javax.annotation.Nonnull Integer factionId) {
         this.factionId = factionId;
     }
 
-    public FactionsResponse isUnique(Boolean isUnique) {
-
+    public FactionsResponse isUnique(@javax.annotation.Nonnull Boolean isUnique) {
         this.isUnique = isUnique;
         return this;
     }
@@ -167,18 +171,17 @@ public class FactionsResponse implements Serializable {
      * is_unique boolean
      * 
      * @return isUnique
-     **/
+     */
     @javax.annotation.Nonnull
     public Boolean getIsUnique() {
         return isUnique;
     }
 
-    public void setIsUnique(Boolean isUnique) {
+    public void setIsUnique(@javax.annotation.Nonnull Boolean isUnique) {
         this.isUnique = isUnique;
     }
 
-    public FactionsResponse militiaCorporationId(Integer militiaCorporationId) {
-
+    public FactionsResponse militiaCorporationId(@javax.annotation.Nullable Integer militiaCorporationId) {
         this.militiaCorporationId = militiaCorporationId;
         return this;
     }
@@ -187,18 +190,17 @@ public class FactionsResponse implements Serializable {
      * militia_corporation_id integer
      * 
      * @return militiaCorporationId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getMilitiaCorporationId() {
         return militiaCorporationId;
     }
 
-    public void setMilitiaCorporationId(Integer militiaCorporationId) {
+    public void setMilitiaCorporationId(@javax.annotation.Nullable Integer militiaCorporationId) {
         this.militiaCorporationId = militiaCorporationId;
     }
 
-    public FactionsResponse name(String name) {
-
+    public FactionsResponse name(@javax.annotation.Nonnull String name) {
         this.name = name;
         return this;
     }
@@ -207,18 +209,17 @@ public class FactionsResponse implements Serializable {
      * name string
      * 
      * @return name
-     **/
+     */
     @javax.annotation.Nonnull
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@javax.annotation.Nonnull String name) {
         this.name = name;
     }
 
-    public FactionsResponse sizeFactor(Float sizeFactor) {
-
+    public FactionsResponse sizeFactor(@javax.annotation.Nonnull Float sizeFactor) {
         this.sizeFactor = sizeFactor;
         return this;
     }
@@ -227,18 +228,17 @@ public class FactionsResponse implements Serializable {
      * size_factor number
      * 
      * @return sizeFactor
-     **/
+     */
     @javax.annotation.Nonnull
     public Float getSizeFactor() {
         return sizeFactor;
     }
 
-    public void setSizeFactor(Float sizeFactor) {
+    public void setSizeFactor(@javax.annotation.Nonnull Float sizeFactor) {
         this.sizeFactor = sizeFactor;
     }
 
-    public FactionsResponse solarSystemId(Integer solarSystemId) {
-
+    public FactionsResponse solarSystemId(@javax.annotation.Nullable Integer solarSystemId) {
         this.solarSystemId = solarSystemId;
         return this;
     }
@@ -247,18 +247,17 @@ public class FactionsResponse implements Serializable {
      * solar_system_id integer
      * 
      * @return solarSystemId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getSolarSystemId() {
         return solarSystemId;
     }
 
-    public void setSolarSystemId(Integer solarSystemId) {
+    public void setSolarSystemId(@javax.annotation.Nullable Integer solarSystemId) {
         this.solarSystemId = solarSystemId;
     }
 
-    public FactionsResponse stationCount(Integer stationCount) {
-
+    public FactionsResponse stationCount(@javax.annotation.Nonnull Integer stationCount) {
         this.stationCount = stationCount;
         return this;
     }
@@ -267,18 +266,17 @@ public class FactionsResponse implements Serializable {
      * station_count integer
      * 
      * @return stationCount
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getStationCount() {
         return stationCount;
     }
 
-    public void setStationCount(Integer stationCount) {
+    public void setStationCount(@javax.annotation.Nonnull Integer stationCount) {
         this.stationCount = stationCount;
     }
 
-    public FactionsResponse stationSystemCount(Integer stationSystemCount) {
-
+    public FactionsResponse stationSystemCount(@javax.annotation.Nonnull Integer stationSystemCount) {
         this.stationSystemCount = stationSystemCount;
         return this;
     }
@@ -287,13 +285,13 @@ public class FactionsResponse implements Serializable {
      * station_system_count integer
      * 
      * @return stationSystemCount
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getStationSystemCount() {
         return stationSystemCount;
     }
 
-    public void setStationSystemCount(Integer stationSystemCount) {
+    public void setStationSystemCount(@javax.annotation.Nonnull Integer stationSystemCount) {
         this.stationSystemCount = stationSystemCount;
     }
 
@@ -382,21 +380,21 @@ public class FactionsResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             FactionsResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!FactionsResponse.openapiRequiredFields.isEmpty()) { // has
                                                                      // required
                                                                      // fields
                                                                      // but JSON
-                                                                     // object
+                                                                     // element
                                                                      // is null
                 throw new IllegalArgumentException(String.format(
                         "The required field(s) %s in FactionsResponse is not found in the empty JSON string",
@@ -404,26 +402,27 @@ public class FactionsResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!FactionsResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `FactionsResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : FactionsResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("description").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj
@@ -457,9 +456,9 @@ public class FactionsResponse implements Serializable {
 
                 @Override
                 public FactionsResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

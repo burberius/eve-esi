@@ -111,7 +111,7 @@ public class ContactsApiTest extends GeneralApiTest {
         Integer page = null;
         String token = null;
         List<ContactsResponse> response = api.getCharactersCharacterIdContacts(characterId, DATASOURCE, ifNoneMatch, page, token);
-        assertThat(response).hasSizeGreaterThan(0);
+        assertThat(response).isNotEmpty();
     }
 
     /**
@@ -126,7 +126,7 @@ public class ContactsApiTest extends GeneralApiTest {
         String ifNoneMatch = null;
         String token = null;
         List<ContactLabelsResponse> response = api.getCharactersCharacterIdContactsLabels(characterId, DATASOURCE, ifNoneMatch, token);
-        assertThat(response).hasSizeGreaterThan(0);
+        assertThat(response).isNotEmpty();
     }
 
     /**
@@ -137,15 +137,12 @@ public class ContactsApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    @Disabled("Needs corporation with read access")
     public void getCorporationsCorporationIdContactsTest() throws ApiException {
-        Integer corporationId = null;
-        String datasource = null;
         String ifNoneMatch = null;
         Integer page = null;
         String token = null;
-        List<CorporationContactsResponse> response = api.getCorporationsCorporationIdContacts(corporationId, datasource, ifNoneMatch, page, token);
-        // TODO: test validations
+        List<CorporationContactsResponse> response = api.getCorporationsCorporationIdContacts(corporationId, DATASOURCE, ifNoneMatch, page, token);
+        assertThat(response).isNotEmpty();
     }
 
     /**
@@ -156,14 +153,11 @@ public class ContactsApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    @Disabled("Needs corporation with read access")
     public void getCorporationsCorporationIdContactsLabelsTest() throws ApiException {
-        Integer corporationId = null;
-        String datasource = null;
         String ifNoneMatch = null;
         String token = null;
-        List<CorporationContactsLabelsResponse> response = api.getCorporationsCorporationIdContactsLabels(corporationId, datasource, ifNoneMatch, token);
-        // TODO: test validations
+        List<CorporationContactsLabelsResponse> response = api.getCorporationsCorporationIdContactsLabels(corporationId, DATASOURCE, ifNoneMatch, token);
+        assertThat(response).isNotEmpty();
     }
 
     /**

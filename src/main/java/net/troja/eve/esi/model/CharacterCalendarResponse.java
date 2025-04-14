@@ -38,12 +38,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -57,10 +55,12 @@ public class CharacterCalendarResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_EVENT_DATE = "event_date";
     @SerializedName(SERIALIZED_NAME_EVENT_DATE)
+    @javax.annotation.Nullable
     private OffsetDateTime eventDate;
 
     public static final String SERIALIZED_NAME_EVENT_ID = "event_id";
     @SerializedName(SERIALIZED_NAME_EVENT_ID)
+    @javax.annotation.Nullable
     private Integer eventId;
 
     /**
@@ -112,26 +112,33 @@ public class CharacterCalendarResponse implements Serializable {
                 return EventResponseEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            EventResponseEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_EVENT_RESPONSE = "event_response";
     @SerializedName(SERIALIZED_NAME_EVENT_RESPONSE)
+    @javax.annotation.Nullable
     private String eventResponse;
     private EventResponseEnum eventResponseEnum;
 
     public static final String SERIALIZED_NAME_IMPORTANCE = "importance";
     @SerializedName(SERIALIZED_NAME_IMPORTANCE)
+    @javax.annotation.Nullable
     private Integer importance;
 
     public static final String SERIALIZED_NAME_TITLE = "title";
     @SerializedName(SERIALIZED_NAME_TITLE)
+    @javax.annotation.Nullable
     private String title;
 
     public CharacterCalendarResponse() {
     }
 
-    public CharacterCalendarResponse eventDate(OffsetDateTime eventDate) {
-
+    public CharacterCalendarResponse eventDate(@javax.annotation.Nullable OffsetDateTime eventDate) {
         this.eventDate = eventDate;
         return this;
     }
@@ -140,18 +147,17 @@ public class CharacterCalendarResponse implements Serializable {
      * event_date string
      * 
      * @return eventDate
-     **/
+     */
     @javax.annotation.Nullable
     public OffsetDateTime getEventDate() {
         return eventDate;
     }
 
-    public void setEventDate(OffsetDateTime eventDate) {
+    public void setEventDate(@javax.annotation.Nullable OffsetDateTime eventDate) {
         this.eventDate = eventDate;
     }
 
-    public CharacterCalendarResponse eventId(Integer eventId) {
-
+    public CharacterCalendarResponse eventId(@javax.annotation.Nullable Integer eventId) {
         this.eventId = eventId;
         return this;
     }
@@ -160,25 +166,23 @@ public class CharacterCalendarResponse implements Serializable {
      * event_id integer
      * 
      * @return eventId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getEventId() {
         return eventId;
     }
 
-    public void setEventId(Integer eventId) {
+    public void setEventId(@javax.annotation.Nullable Integer eventId) {
         this.eventId = eventId;
     }
 
-    public CharacterCalendarResponse eventResponseString(String eventResponse) {
-
-        this.eventResponse = eventResponse;
+    public CharacterCalendarResponse eventResponse(@javax.annotation.Nullable EventResponseEnum eventResponse) {
+        this.eventResponseEnum = eventResponse;
         return this;
     }
 
-    public CharacterCalendarResponse eventResponse(EventResponseEnum eventResponseEnum) {
-
-        this.eventResponseEnum = eventResponseEnum;
+    public CharacterCalendarResponse eventResponseString(@javax.annotation.Nullable String eventResponse) {
+        this.eventResponse = eventResponse;
         return this;
     }
 
@@ -186,8 +190,8 @@ public class CharacterCalendarResponse implements Serializable {
      * event_response string
      * 
      * @return eventResponse
-     **/
-    @javax.annotation.Nullable
+     */
+
     public EventResponseEnum getEventResponse() {
         if (eventResponseEnum == null) {
             eventResponseEnum = EventResponseEnum.fromValue(eventResponse);
@@ -199,16 +203,15 @@ public class CharacterCalendarResponse implements Serializable {
         return eventResponse;
     }
 
-    public void setEventResponse(EventResponseEnum eventResponseEnum) {
-        this.eventResponseEnum = eventResponseEnum;
+    public void setEventResponse(@javax.annotation.Nullable EventResponseEnum eventResponse) {
+        this.eventResponseEnum = eventResponse;
     }
 
-    public void setEventResponseString(String eventResponse) {
+    public void setEventResponseString(@javax.annotation.Nullable String eventResponse) {
         this.eventResponse = eventResponse;
     }
 
-    public CharacterCalendarResponse importance(Integer importance) {
-
+    public CharacterCalendarResponse importance(@javax.annotation.Nullable Integer importance) {
         this.importance = importance;
         return this;
     }
@@ -217,18 +220,17 @@ public class CharacterCalendarResponse implements Serializable {
      * importance integer
      * 
      * @return importance
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getImportance() {
         return importance;
     }
 
-    public void setImportance(Integer importance) {
+    public void setImportance(@javax.annotation.Nullable Integer importance) {
         this.importance = importance;
     }
 
-    public CharacterCalendarResponse title(String title) {
-
+    public CharacterCalendarResponse title(@javax.annotation.Nullable String title) {
         this.title = title;
         return this;
     }
@@ -237,13 +239,13 @@ public class CharacterCalendarResponse implements Serializable {
      * title string
      * 
      * @return title
-     **/
+     */
     @javax.annotation.Nullable
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(@javax.annotation.Nullable String title) {
         this.title = title;
     }
 
@@ -309,22 +311,22 @@ public class CharacterCalendarResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CharacterCalendarResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CharacterCalendarResponse.openapiRequiredFields.isEmpty()) { // has
                                                                               // required
                                                                               // fields
                                                                               // but
                                                                               // JSON
-                                                                              // object
+                                                                              // element
                                                                               // is
                                                                               // null
                 throw new IllegalArgumentException(String.format(
@@ -333,21 +335,26 @@ public class CharacterCalendarResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CharacterCalendarResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CharacterCalendarResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if ((jsonObj.get("event_response") != null && !jsonObj.get("event_response").isJsonNull())
                 && !jsonObj.get("event_response").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `event_response` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("event_response").toString()));
+        }
+        // validate the optional field `event_response`
+        if (jsonObj.get("event_response") != null && !jsonObj.get("event_response").isJsonNull()) {
+            EventResponseEnum.validateJsonElement(jsonObj.get("event_response"));
         }
         if ((jsonObj.get("title") != null && !jsonObj.get("title").isJsonNull())
                 && !jsonObj.get("title").isJsonPrimitive()) {
@@ -378,9 +385,9 @@ public class CharacterCalendarResponse implements Serializable {
 
                 @Override
                 public CharacterCalendarResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

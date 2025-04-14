@@ -40,12 +40,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -59,29 +57,33 @@ public class PlanetExtractorDetails implements Serializable {
 
     public static final String SERIALIZED_NAME_CYCLE_TIME = "cycle_time";
     @SerializedName(SERIALIZED_NAME_CYCLE_TIME)
+    @javax.annotation.Nullable
     private Integer cycleTime;
 
     public static final String SERIALIZED_NAME_HEAD_RADIUS = "head_radius";
     @SerializedName(SERIALIZED_NAME_HEAD_RADIUS)
+    @javax.annotation.Nullable
     private Float headRadius;
 
     public static final String SERIALIZED_NAME_HEADS = "heads";
     @SerializedName(SERIALIZED_NAME_HEADS)
+    @javax.annotation.Nonnull
     private List<PlanetHead> heads = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_PRODUCT_TYPE_ID = "product_type_id";
     @SerializedName(SERIALIZED_NAME_PRODUCT_TYPE_ID)
+    @javax.annotation.Nullable
     private Integer productTypeId;
 
     public static final String SERIALIZED_NAME_QTY_PER_CYCLE = "qty_per_cycle";
     @SerializedName(SERIALIZED_NAME_QTY_PER_CYCLE)
+    @javax.annotation.Nullable
     private Integer qtyPerCycle;
 
     public PlanetExtractorDetails() {
     }
 
-    public PlanetExtractorDetails cycleTime(Integer cycleTime) {
-
+    public PlanetExtractorDetails cycleTime(@javax.annotation.Nullable Integer cycleTime) {
         this.cycleTime = cycleTime;
         return this;
     }
@@ -90,18 +92,17 @@ public class PlanetExtractorDetails implements Serializable {
      * in seconds
      * 
      * @return cycleTime
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getCycleTime() {
         return cycleTime;
     }
 
-    public void setCycleTime(Integer cycleTime) {
+    public void setCycleTime(@javax.annotation.Nullable Integer cycleTime) {
         this.cycleTime = cycleTime;
     }
 
-    public PlanetExtractorDetails headRadius(Float headRadius) {
-
+    public PlanetExtractorDetails headRadius(@javax.annotation.Nullable Float headRadius) {
         this.headRadius = headRadius;
         return this;
     }
@@ -110,26 +111,26 @@ public class PlanetExtractorDetails implements Serializable {
      * head_radius number
      * 
      * @return headRadius
-     **/
+     */
     @javax.annotation.Nullable
     public Float getHeadRadius() {
         return headRadius;
     }
 
-    public void setHeadRadius(Float headRadius) {
+    public void setHeadRadius(@javax.annotation.Nullable Float headRadius) {
         this.headRadius = headRadius;
     }
 
-    public PlanetExtractorDetails heads(List<PlanetHead> heads) {
-
+    public PlanetExtractorDetails heads(@javax.annotation.Nonnull List<PlanetHead> heads) {
         this.heads = heads;
         return this;
     }
 
-    public PlanetExtractorDetails addheadsItem(PlanetHead headsItem) {
+    public PlanetExtractorDetails addHeadsItem(PlanetHead headsItem) {
         if (this.heads == null) {
             this.heads = new ArrayList<>();
         }
+
         this.heads.add(headsItem);
         return this;
     }
@@ -138,18 +139,17 @@ public class PlanetExtractorDetails implements Serializable {
      * heads array
      * 
      * @return heads
-     **/
+     */
     @javax.annotation.Nonnull
     public List<PlanetHead> getHeads() {
         return heads;
     }
 
-    public void setHeads(List<PlanetHead> heads) {
+    public void setHeads(@javax.annotation.Nonnull List<PlanetHead> heads) {
         this.heads = heads;
     }
 
-    public PlanetExtractorDetails productTypeId(Integer productTypeId) {
-
+    public PlanetExtractorDetails productTypeId(@javax.annotation.Nullable Integer productTypeId) {
         this.productTypeId = productTypeId;
         return this;
     }
@@ -158,18 +158,17 @@ public class PlanetExtractorDetails implements Serializable {
      * product_type_id integer
      * 
      * @return productTypeId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getProductTypeId() {
         return productTypeId;
     }
 
-    public void setProductTypeId(Integer productTypeId) {
+    public void setProductTypeId(@javax.annotation.Nullable Integer productTypeId) {
         this.productTypeId = productTypeId;
     }
 
-    public PlanetExtractorDetails qtyPerCycle(Integer qtyPerCycle) {
-
+    public PlanetExtractorDetails qtyPerCycle(@javax.annotation.Nullable Integer qtyPerCycle) {
         this.qtyPerCycle = qtyPerCycle;
         return this;
     }
@@ -178,13 +177,13 @@ public class PlanetExtractorDetails implements Serializable {
      * qty_per_cycle integer
      * 
      * @return qtyPerCycle
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getQtyPerCycle() {
         return qtyPerCycle;
     }
 
-    public void setQtyPerCycle(Integer qtyPerCycle) {
+    public void setQtyPerCycle(@javax.annotation.Nullable Integer qtyPerCycle) {
         this.qtyPerCycle = qtyPerCycle;
     }
 
@@ -251,22 +250,22 @@ public class PlanetExtractorDetails implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             PlanetExtractorDetails
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!PlanetExtractorDetails.openapiRequiredFields.isEmpty()) { // has
                                                                            // required
                                                                            // fields
                                                                            // but
                                                                            // JSON
-                                                                           // object
+                                                                           // element
                                                                            // is
                                                                            // null
                 throw new IllegalArgumentException(String.format(
@@ -275,26 +274,27 @@ public class PlanetExtractorDetails implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!PlanetExtractorDetails.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `PlanetExtractorDetails` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : PlanetExtractorDetails.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         // ensure the json data is an array
         if (!jsonObj.get("heads").isJsonArray()) {
             throw new IllegalArgumentException(String.format(
@@ -305,7 +305,7 @@ public class PlanetExtractorDetails implements Serializable {
         JsonArray jsonArrayheads = jsonObj.getAsJsonArray("heads");
         // validate the required field `heads` (array)
         for (int i = 0; i < jsonArrayheads.size(); i++) {
-            PlanetHead.validateJsonObject(jsonArrayheads.get(i).getAsJsonObject());
+            PlanetHead.validateJsonElement(jsonArrayheads.get(i));
         };
     }
 
@@ -330,9 +330,9 @@ public class PlanetExtractorDetails implements Serializable {
 
                 @Override
                 public PlanetExtractorDetails read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

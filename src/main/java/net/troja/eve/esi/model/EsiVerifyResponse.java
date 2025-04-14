@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -56,37 +54,43 @@ public class EsiVerifyResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_CHARACTER_I_D = "CharacterID";
     @SerializedName(SERIALIZED_NAME_CHARACTER_I_D)
+    @javax.annotation.Nonnull
     private Integer characterID;
 
     public static final String SERIALIZED_NAME_CHARACTER_NAME = "CharacterName";
     @SerializedName(SERIALIZED_NAME_CHARACTER_NAME)
+    @javax.annotation.Nullable
     private String characterName;
 
     public static final String SERIALIZED_NAME_CHARACTER_OWNER_HASH = "CharacterOwnerHash";
     @SerializedName(SERIALIZED_NAME_CHARACTER_OWNER_HASH)
+    @javax.annotation.Nullable
     private String characterOwnerHash;
 
     public static final String SERIALIZED_NAME_EXPIRES_ON = "ExpiresOn";
     @SerializedName(SERIALIZED_NAME_EXPIRES_ON)
+    @javax.annotation.Nullable
     private String expiresOn;
 
     public static final String SERIALIZED_NAME_INTELLECTUAL_PROPERTY = "IntellectualProperty";
     @SerializedName(SERIALIZED_NAME_INTELLECTUAL_PROPERTY)
+    @javax.annotation.Nullable
     private String intellectualProperty;
 
     public static final String SERIALIZED_NAME_SCOPES = "Scopes";
     @SerializedName(SERIALIZED_NAME_SCOPES)
+    @javax.annotation.Nullable
     private String scopes;
 
     public static final String SERIALIZED_NAME_TOKEN_TYPE = "TokenType";
     @SerializedName(SERIALIZED_NAME_TOKEN_TYPE)
+    @javax.annotation.Nullable
     private String tokenType;
 
     public EsiVerifyResponse() {
     }
 
-    public EsiVerifyResponse characterID(Integer characterID) {
-
+    public EsiVerifyResponse characterID(@javax.annotation.Nonnull Integer characterID) {
         this.characterID = characterID;
         return this;
     }
@@ -95,18 +99,17 @@ public class EsiVerifyResponse implements Serializable {
      * Token owner&#39;s character ID
      * 
      * @return characterID
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getCharacterID() {
         return characterID;
     }
 
-    public void setCharacterID(Integer characterID) {
+    public void setCharacterID(@javax.annotation.Nonnull Integer characterID) {
         this.characterID = characterID;
     }
 
-    public EsiVerifyResponse characterName(String characterName) {
-
+    public EsiVerifyResponse characterName(@javax.annotation.Nullable String characterName) {
         this.characterName = characterName;
         return this;
     }
@@ -115,18 +118,17 @@ public class EsiVerifyResponse implements Serializable {
      * Token owner&#39;s character name
      * 
      * @return characterName
-     **/
+     */
     @javax.annotation.Nullable
     public String getCharacterName() {
         return characterName;
     }
 
-    public void setCharacterName(String characterName) {
+    public void setCharacterName(@javax.annotation.Nullable String characterName) {
         this.characterName = characterName;
     }
 
-    public EsiVerifyResponse characterOwnerHash(String characterOwnerHash) {
-
+    public EsiVerifyResponse characterOwnerHash(@javax.annotation.Nullable String characterOwnerHash) {
         this.characterOwnerHash = characterOwnerHash;
         return this;
     }
@@ -136,18 +138,17 @@ public class EsiVerifyResponse implements Serializable {
      * transferred, this will change
      * 
      * @return characterOwnerHash
-     **/
+     */
     @javax.annotation.Nullable
     public String getCharacterOwnerHash() {
         return characterOwnerHash;
     }
 
-    public void setCharacterOwnerHash(String characterOwnerHash) {
+    public void setCharacterOwnerHash(@javax.annotation.Nullable String characterOwnerHash) {
         this.characterOwnerHash = characterOwnerHash;
     }
 
-    public EsiVerifyResponse expiresOn(String expiresOn) {
-
+    public EsiVerifyResponse expiresOn(@javax.annotation.Nullable String expiresOn) {
         this.expiresOn = expiresOn;
         return this;
     }
@@ -156,18 +157,17 @@ public class EsiVerifyResponse implements Serializable {
      * Expiry time of the token (not RFC3339)
      * 
      * @return expiresOn
-     **/
+     */
     @javax.annotation.Nullable
     public String getExpiresOn() {
         return expiresOn;
     }
 
-    public void setExpiresOn(String expiresOn) {
+    public void setExpiresOn(@javax.annotation.Nullable String expiresOn) {
         this.expiresOn = expiresOn;
     }
 
-    public EsiVerifyResponse intellectualProperty(String intellectualProperty) {
-
+    public EsiVerifyResponse intellectualProperty(@javax.annotation.Nullable String intellectualProperty) {
         this.intellectualProperty = intellectualProperty;
         return this;
     }
@@ -176,18 +176,17 @@ public class EsiVerifyResponse implements Serializable {
      * The IP which generated the token
      * 
      * @return intellectualProperty
-     **/
+     */
     @javax.annotation.Nullable
     public String getIntellectualProperty() {
         return intellectualProperty;
     }
 
-    public void setIntellectualProperty(String intellectualProperty) {
+    public void setIntellectualProperty(@javax.annotation.Nullable String intellectualProperty) {
         this.intellectualProperty = intellectualProperty;
     }
 
-    public EsiVerifyResponse scopes(String scopes) {
-
+    public EsiVerifyResponse scopes(@javax.annotation.Nullable String scopes) {
         this.scopes = scopes;
         return this;
     }
@@ -196,18 +195,17 @@ public class EsiVerifyResponse implements Serializable {
      * Space separated list of scopes the token is valid for
      * 
      * @return scopes
-     **/
+     */
     @javax.annotation.Nullable
     public String getScopes() {
         return scopes;
     }
 
-    public void setScopes(String scopes) {
+    public void setScopes(@javax.annotation.Nullable String scopes) {
         this.scopes = scopes;
     }
 
-    public EsiVerifyResponse tokenType(String tokenType) {
-
+    public EsiVerifyResponse tokenType(@javax.annotation.Nullable String tokenType) {
         this.tokenType = tokenType;
         return this;
     }
@@ -216,13 +214,13 @@ public class EsiVerifyResponse implements Serializable {
      * Type of access token
      * 
      * @return tokenType
-     **/
+     */
     @javax.annotation.Nullable
     public String getTokenType() {
         return tokenType;
     }
 
-    public void setTokenType(String tokenType) {
+    public void setTokenType(@javax.annotation.Nullable String tokenType) {
         this.tokenType = tokenType;
     }
 
@@ -296,22 +294,22 @@ public class EsiVerifyResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             EsiVerifyResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!EsiVerifyResponse.openapiRequiredFields.isEmpty()) { // has
                                                                       // required
                                                                       // fields
                                                                       // but
                                                                       // JSON
-                                                                      // object
+                                                                      // element
                                                                       // is null
                 throw new IllegalArgumentException(String.format(
                         "The required field(s) %s in EsiVerifyResponse is not found in the empty JSON string",
@@ -319,26 +317,27 @@ public class EsiVerifyResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!EsiVerifyResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `EsiVerifyResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : EsiVerifyResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if ((jsonObj.get("CharacterName") != null && !jsonObj.get("CharacterName").isJsonNull())
                 && !jsonObj.get("CharacterName").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
@@ -398,9 +397,9 @@ public class EsiVerifyResponse implements Serializable {
 
                 @Override
                 public EsiVerifyResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

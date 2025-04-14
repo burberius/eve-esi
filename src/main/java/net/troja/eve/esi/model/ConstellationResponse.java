@@ -40,12 +40,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -59,29 +57,33 @@ public class ConstellationResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_CONSTELLATION_ID = "constellation_id";
     @SerializedName(SERIALIZED_NAME_CONSTELLATION_ID)
+    @javax.annotation.Nonnull
     private Integer constellationId;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
+    @javax.annotation.Nonnull
     private String name;
 
     public static final String SERIALIZED_NAME_POSITION = "position";
     @SerializedName(SERIALIZED_NAME_POSITION)
+    @javax.annotation.Nonnull
     private Position position;
 
     public static final String SERIALIZED_NAME_REGION_ID = "region_id";
     @SerializedName(SERIALIZED_NAME_REGION_ID)
+    @javax.annotation.Nonnull
     private Integer regionId;
 
     public static final String SERIALIZED_NAME_SYSTEMS = "systems";
     @SerializedName(SERIALIZED_NAME_SYSTEMS)
+    @javax.annotation.Nonnull
     private List<Integer> systems = new ArrayList<>();
 
     public ConstellationResponse() {
     }
 
-    public ConstellationResponse constellationId(Integer constellationId) {
-
+    public ConstellationResponse constellationId(@javax.annotation.Nonnull Integer constellationId) {
         this.constellationId = constellationId;
         return this;
     }
@@ -90,18 +92,17 @@ public class ConstellationResponse implements Serializable {
      * constellation_id integer
      * 
      * @return constellationId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getConstellationId() {
         return constellationId;
     }
 
-    public void setConstellationId(Integer constellationId) {
+    public void setConstellationId(@javax.annotation.Nonnull Integer constellationId) {
         this.constellationId = constellationId;
     }
 
-    public ConstellationResponse name(String name) {
-
+    public ConstellationResponse name(@javax.annotation.Nonnull String name) {
         this.name = name;
         return this;
     }
@@ -110,18 +111,17 @@ public class ConstellationResponse implements Serializable {
      * name string
      * 
      * @return name
-     **/
+     */
     @javax.annotation.Nonnull
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@javax.annotation.Nonnull String name) {
         this.name = name;
     }
 
-    public ConstellationResponse position(Position position) {
-
+    public ConstellationResponse position(@javax.annotation.Nonnull Position position) {
         this.position = position;
         return this;
     }
@@ -130,18 +130,17 @@ public class ConstellationResponse implements Serializable {
      * Get position
      * 
      * @return position
-     **/
+     */
     @javax.annotation.Nonnull
     public Position getPosition() {
         return position;
     }
 
-    public void setPosition(Position position) {
+    public void setPosition(@javax.annotation.Nonnull Position position) {
         this.position = position;
     }
 
-    public ConstellationResponse regionId(Integer regionId) {
-
+    public ConstellationResponse regionId(@javax.annotation.Nonnull Integer regionId) {
         this.regionId = regionId;
         return this;
     }
@@ -150,26 +149,26 @@ public class ConstellationResponse implements Serializable {
      * The region this constellation is in
      * 
      * @return regionId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getRegionId() {
         return regionId;
     }
 
-    public void setRegionId(Integer regionId) {
+    public void setRegionId(@javax.annotation.Nonnull Integer regionId) {
         this.regionId = regionId;
     }
 
-    public ConstellationResponse systems(List<Integer> systems) {
-
+    public ConstellationResponse systems(@javax.annotation.Nonnull List<Integer> systems) {
         this.systems = systems;
         return this;
     }
 
-    public ConstellationResponse addsystemsItem(Integer systemsItem) {
+    public ConstellationResponse addSystemsItem(Integer systemsItem) {
         if (this.systems == null) {
             this.systems = new ArrayList<>();
         }
+
         this.systems.add(systemsItem);
         return this;
     }
@@ -178,13 +177,13 @@ public class ConstellationResponse implements Serializable {
      * systems array
      * 
      * @return systems
-     **/
+     */
     @javax.annotation.Nonnull
     public List<Integer> getSystems() {
         return systems;
     }
 
-    public void setSystems(List<Integer> systems) {
+    public void setSystems(@javax.annotation.Nonnull List<Integer> systems) {
         this.systems = systems;
     }
 
@@ -255,22 +254,22 @@ public class ConstellationResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             ConstellationResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!ConstellationResponse.openapiRequiredFields.isEmpty()) { // has
                                                                           // required
                                                                           // fields
                                                                           // but
                                                                           // JSON
-                                                                          // object
+                                                                          // element
                                                                           // is
                                                                           // null
                 throw new IllegalArgumentException(String.format(
@@ -279,33 +278,34 @@ public class ConstellationResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!ConstellationResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `ConstellationResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : ConstellationResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("name").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `name` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("name").toString()));
         }
         // validate the required field `position`
-        Position.validateJsonObject(jsonObj.getAsJsonObject("position"));
+        Position.validateJsonElement(jsonObj.get("position"));
         // ensure the required json array is present
         if (jsonObj.get("systems") == null) {
             throw new IllegalArgumentException(
@@ -338,9 +338,9 @@ public class ConstellationResponse implements Serializable {
 
                 @Override
                 public ConstellationResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

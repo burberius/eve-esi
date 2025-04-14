@@ -38,12 +38,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -57,37 +55,43 @@ public class CorporationMemberTrackingResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_BASE_ID = "base_id";
     @SerializedName(SERIALIZED_NAME_BASE_ID)
+    @javax.annotation.Nullable
     private Integer baseId;
 
     public static final String SERIALIZED_NAME_CHARACTER_ID = "character_id";
     @SerializedName(SERIALIZED_NAME_CHARACTER_ID)
+    @javax.annotation.Nonnull
     private Integer characterId;
 
     public static final String SERIALIZED_NAME_LOCATION_ID = "location_id";
     @SerializedName(SERIALIZED_NAME_LOCATION_ID)
+    @javax.annotation.Nullable
     private Long locationId;
 
     public static final String SERIALIZED_NAME_LOGOFF_DATE = "logoff_date";
     @SerializedName(SERIALIZED_NAME_LOGOFF_DATE)
+    @javax.annotation.Nullable
     private OffsetDateTime logoffDate;
 
     public static final String SERIALIZED_NAME_LOGON_DATE = "logon_date";
     @SerializedName(SERIALIZED_NAME_LOGON_DATE)
+    @javax.annotation.Nullable
     private OffsetDateTime logonDate;
 
     public static final String SERIALIZED_NAME_SHIP_TYPE_ID = "ship_type_id";
     @SerializedName(SERIALIZED_NAME_SHIP_TYPE_ID)
+    @javax.annotation.Nullable
     private Integer shipTypeId;
 
     public static final String SERIALIZED_NAME_START_DATE = "start_date";
     @SerializedName(SERIALIZED_NAME_START_DATE)
+    @javax.annotation.Nullable
     private OffsetDateTime startDate;
 
     public CorporationMemberTrackingResponse() {
     }
 
-    public CorporationMemberTrackingResponse baseId(Integer baseId) {
-
+    public CorporationMemberTrackingResponse baseId(@javax.annotation.Nullable Integer baseId) {
         this.baseId = baseId;
         return this;
     }
@@ -96,18 +100,17 @@ public class CorporationMemberTrackingResponse implements Serializable {
      * base_id integer
      * 
      * @return baseId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getBaseId() {
         return baseId;
     }
 
-    public void setBaseId(Integer baseId) {
+    public void setBaseId(@javax.annotation.Nullable Integer baseId) {
         this.baseId = baseId;
     }
 
-    public CorporationMemberTrackingResponse characterId(Integer characterId) {
-
+    public CorporationMemberTrackingResponse characterId(@javax.annotation.Nonnull Integer characterId) {
         this.characterId = characterId;
         return this;
     }
@@ -116,18 +119,17 @@ public class CorporationMemberTrackingResponse implements Serializable {
      * character_id integer
      * 
      * @return characterId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getCharacterId() {
         return characterId;
     }
 
-    public void setCharacterId(Integer characterId) {
+    public void setCharacterId(@javax.annotation.Nonnull Integer characterId) {
         this.characterId = characterId;
     }
 
-    public CorporationMemberTrackingResponse locationId(Long locationId) {
-
+    public CorporationMemberTrackingResponse locationId(@javax.annotation.Nullable Long locationId) {
         this.locationId = locationId;
         return this;
     }
@@ -136,18 +138,17 @@ public class CorporationMemberTrackingResponse implements Serializable {
      * location_id integer
      * 
      * @return locationId
-     **/
+     */
     @javax.annotation.Nullable
     public Long getLocationId() {
         return locationId;
     }
 
-    public void setLocationId(Long locationId) {
+    public void setLocationId(@javax.annotation.Nullable Long locationId) {
         this.locationId = locationId;
     }
 
-    public CorporationMemberTrackingResponse logoffDate(OffsetDateTime logoffDate) {
-
+    public CorporationMemberTrackingResponse logoffDate(@javax.annotation.Nullable OffsetDateTime logoffDate) {
         this.logoffDate = logoffDate;
         return this;
     }
@@ -156,18 +157,17 @@ public class CorporationMemberTrackingResponse implements Serializable {
      * logoff_date string
      * 
      * @return logoffDate
-     **/
+     */
     @javax.annotation.Nullable
     public OffsetDateTime getLogoffDate() {
         return logoffDate;
     }
 
-    public void setLogoffDate(OffsetDateTime logoffDate) {
+    public void setLogoffDate(@javax.annotation.Nullable OffsetDateTime logoffDate) {
         this.logoffDate = logoffDate;
     }
 
-    public CorporationMemberTrackingResponse logonDate(OffsetDateTime logonDate) {
-
+    public CorporationMemberTrackingResponse logonDate(@javax.annotation.Nullable OffsetDateTime logonDate) {
         this.logonDate = logonDate;
         return this;
     }
@@ -176,18 +176,17 @@ public class CorporationMemberTrackingResponse implements Serializable {
      * logon_date string
      * 
      * @return logonDate
-     **/
+     */
     @javax.annotation.Nullable
     public OffsetDateTime getLogonDate() {
         return logonDate;
     }
 
-    public void setLogonDate(OffsetDateTime logonDate) {
+    public void setLogonDate(@javax.annotation.Nullable OffsetDateTime logonDate) {
         this.logonDate = logonDate;
     }
 
-    public CorporationMemberTrackingResponse shipTypeId(Integer shipTypeId) {
-
+    public CorporationMemberTrackingResponse shipTypeId(@javax.annotation.Nullable Integer shipTypeId) {
         this.shipTypeId = shipTypeId;
         return this;
     }
@@ -196,18 +195,17 @@ public class CorporationMemberTrackingResponse implements Serializable {
      * ship_type_id integer
      * 
      * @return shipTypeId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getShipTypeId() {
         return shipTypeId;
     }
 
-    public void setShipTypeId(Integer shipTypeId) {
+    public void setShipTypeId(@javax.annotation.Nullable Integer shipTypeId) {
         this.shipTypeId = shipTypeId;
     }
 
-    public CorporationMemberTrackingResponse startDate(OffsetDateTime startDate) {
-
+    public CorporationMemberTrackingResponse startDate(@javax.annotation.Nullable OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
     }
@@ -216,13 +214,13 @@ public class CorporationMemberTrackingResponse implements Serializable {
      * start_date string
      * 
      * @return startDate
-     **/
+     */
     @javax.annotation.Nullable
     public OffsetDateTime getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(OffsetDateTime startDate) {
+    public void setStartDate(@javax.annotation.Nullable OffsetDateTime startDate) {
         this.startDate = startDate;
     }
 
@@ -295,22 +293,22 @@ public class CorporationMemberTrackingResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CorporationMemberTrackingResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CorporationMemberTrackingResponse.openapiRequiredFields.isEmpty()) { // has
                                                                                       // required
                                                                                       // fields
                                                                                       // but
                                                                                       // JSON
-                                                                                      // object
+                                                                                      // element
                                                                                       // is
                                                                                       // null
                 throw new IllegalArgumentException(
@@ -320,26 +318,27 @@ public class CorporationMemberTrackingResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CorporationMemberTrackingResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CorporationMemberTrackingResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CorporationMemberTrackingResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -364,9 +363,9 @@ public class CorporationMemberTrackingResponse implements Serializable {
 
                 @Override
                 public CorporationMemberTrackingResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

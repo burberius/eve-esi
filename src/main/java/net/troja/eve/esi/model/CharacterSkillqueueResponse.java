@@ -38,12 +38,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -57,41 +55,48 @@ public class CharacterSkillqueueResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_FINISH_DATE = "finish_date";
     @SerializedName(SERIALIZED_NAME_FINISH_DATE)
+    @javax.annotation.Nullable
     private OffsetDateTime finishDate;
 
     public static final String SERIALIZED_NAME_FINISHED_LEVEL = "finished_level";
     @SerializedName(SERIALIZED_NAME_FINISHED_LEVEL)
+    @javax.annotation.Nonnull
     private Integer finishedLevel;
 
     public static final String SERIALIZED_NAME_LEVEL_END_SP = "level_end_sp";
     @SerializedName(SERIALIZED_NAME_LEVEL_END_SP)
+    @javax.annotation.Nullable
     private Integer levelEndSp;
 
     public static final String SERIALIZED_NAME_LEVEL_START_SP = "level_start_sp";
     @SerializedName(SERIALIZED_NAME_LEVEL_START_SP)
+    @javax.annotation.Nullable
     private Integer levelStartSp;
 
     public static final String SERIALIZED_NAME_QUEUE_POSITION = "queue_position";
     @SerializedName(SERIALIZED_NAME_QUEUE_POSITION)
+    @javax.annotation.Nonnull
     private Integer queuePosition;
 
     public static final String SERIALIZED_NAME_SKILL_ID = "skill_id";
     @SerializedName(SERIALIZED_NAME_SKILL_ID)
+    @javax.annotation.Nonnull
     private Integer skillId;
 
     public static final String SERIALIZED_NAME_START_DATE = "start_date";
     @SerializedName(SERIALIZED_NAME_START_DATE)
+    @javax.annotation.Nullable
     private OffsetDateTime startDate;
 
     public static final String SERIALIZED_NAME_TRAINING_START_SP = "training_start_sp";
     @SerializedName(SERIALIZED_NAME_TRAINING_START_SP)
+    @javax.annotation.Nullable
     private Integer trainingStartSp;
 
     public CharacterSkillqueueResponse() {
     }
 
-    public CharacterSkillqueueResponse finishDate(OffsetDateTime finishDate) {
-
+    public CharacterSkillqueueResponse finishDate(@javax.annotation.Nullable OffsetDateTime finishDate) {
         this.finishDate = finishDate;
         return this;
     }
@@ -101,18 +106,17 @@ public class CharacterSkillqueueResponse implements Serializable {
      * queue is paused.
      * 
      * @return finishDate
-     **/
+     */
     @javax.annotation.Nullable
     public OffsetDateTime getFinishDate() {
         return finishDate;
     }
 
-    public void setFinishDate(OffsetDateTime finishDate) {
+    public void setFinishDate(@javax.annotation.Nullable OffsetDateTime finishDate) {
         this.finishDate = finishDate;
     }
 
-    public CharacterSkillqueueResponse finishedLevel(Integer finishedLevel) {
-
+    public CharacterSkillqueueResponse finishedLevel(@javax.annotation.Nonnull Integer finishedLevel) {
         this.finishedLevel = finishedLevel;
         return this;
     }
@@ -121,18 +125,17 @@ public class CharacterSkillqueueResponse implements Serializable {
      * finished_level integer minimum: 0 maximum: 5
      * 
      * @return finishedLevel
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getFinishedLevel() {
         return finishedLevel;
     }
 
-    public void setFinishedLevel(Integer finishedLevel) {
+    public void setFinishedLevel(@javax.annotation.Nonnull Integer finishedLevel) {
         this.finishedLevel = finishedLevel;
     }
 
-    public CharacterSkillqueueResponse levelEndSp(Integer levelEndSp) {
-
+    public CharacterSkillqueueResponse levelEndSp(@javax.annotation.Nullable Integer levelEndSp) {
         this.levelEndSp = levelEndSp;
         return this;
     }
@@ -141,18 +144,17 @@ public class CharacterSkillqueueResponse implements Serializable {
      * level_end_sp integer
      * 
      * @return levelEndSp
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getLevelEndSp() {
         return levelEndSp;
     }
 
-    public void setLevelEndSp(Integer levelEndSp) {
+    public void setLevelEndSp(@javax.annotation.Nullable Integer levelEndSp) {
         this.levelEndSp = levelEndSp;
     }
 
-    public CharacterSkillqueueResponse levelStartSp(Integer levelStartSp) {
-
+    public CharacterSkillqueueResponse levelStartSp(@javax.annotation.Nullable Integer levelStartSp) {
         this.levelStartSp = levelStartSp;
         return this;
     }
@@ -162,18 +164,17 @@ public class CharacterSkillqueueResponse implements Serializable {
      * current level. Used to calculate % of current level complete.
      * 
      * @return levelStartSp
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getLevelStartSp() {
         return levelStartSp;
     }
 
-    public void setLevelStartSp(Integer levelStartSp) {
+    public void setLevelStartSp(@javax.annotation.Nullable Integer levelStartSp) {
         this.levelStartSp = levelStartSp;
     }
 
-    public CharacterSkillqueueResponse queuePosition(Integer queuePosition) {
-
+    public CharacterSkillqueueResponse queuePosition(@javax.annotation.Nonnull Integer queuePosition) {
         this.queuePosition = queuePosition;
         return this;
     }
@@ -182,18 +183,17 @@ public class CharacterSkillqueueResponse implements Serializable {
      * queue_position integer
      * 
      * @return queuePosition
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getQueuePosition() {
         return queuePosition;
     }
 
-    public void setQueuePosition(Integer queuePosition) {
+    public void setQueuePosition(@javax.annotation.Nonnull Integer queuePosition) {
         this.queuePosition = queuePosition;
     }
 
-    public CharacterSkillqueueResponse skillId(Integer skillId) {
-
+    public CharacterSkillqueueResponse skillId(@javax.annotation.Nonnull Integer skillId) {
         this.skillId = skillId;
         return this;
     }
@@ -202,18 +202,17 @@ public class CharacterSkillqueueResponse implements Serializable {
      * skill_id integer
      * 
      * @return skillId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getSkillId() {
         return skillId;
     }
 
-    public void setSkillId(Integer skillId) {
+    public void setSkillId(@javax.annotation.Nonnull Integer skillId) {
         this.skillId = skillId;
     }
 
-    public CharacterSkillqueueResponse startDate(OffsetDateTime startDate) {
-
+    public CharacterSkillqueueResponse startDate(@javax.annotation.Nullable OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
     }
@@ -222,18 +221,17 @@ public class CharacterSkillqueueResponse implements Serializable {
      * start_date string
      * 
      * @return startDate
-     **/
+     */
     @javax.annotation.Nullable
     public OffsetDateTime getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(OffsetDateTime startDate) {
+    public void setStartDate(@javax.annotation.Nullable OffsetDateTime startDate) {
         this.startDate = startDate;
     }
 
-    public CharacterSkillqueueResponse trainingStartSp(Integer trainingStartSp) {
-
+    public CharacterSkillqueueResponse trainingStartSp(@javax.annotation.Nullable Integer trainingStartSp) {
         this.trainingStartSp = trainingStartSp;
         return this;
     }
@@ -242,13 +240,13 @@ public class CharacterSkillqueueResponse implements Serializable {
      * training_start_sp integer
      * 
      * @return trainingStartSp
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getTrainingStartSp() {
         return trainingStartSp;
     }
 
-    public void setTrainingStartSp(Integer trainingStartSp) {
+    public void setTrainingStartSp(@javax.annotation.Nullable Integer trainingStartSp) {
         this.trainingStartSp = trainingStartSp;
     }
 
@@ -327,22 +325,22 @@ public class CharacterSkillqueueResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CharacterSkillqueueResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CharacterSkillqueueResponse.openapiRequiredFields.isEmpty()) { // has
                                                                                 // required
                                                                                 // fields
                                                                                 // but
                                                                                 // JSON
-                                                                                // object
+                                                                                // element
                                                                                 // is
                                                                                 // null
                 throw new IllegalArgumentException(
@@ -352,26 +350,27 @@ public class CharacterSkillqueueResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CharacterSkillqueueResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CharacterSkillqueueResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CharacterSkillqueueResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -395,9 +394,9 @@ public class CharacterSkillqueueResponse implements Serializable {
 
                 @Override
                 public CharacterSkillqueueResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

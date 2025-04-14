@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -56,25 +54,28 @@ public class CharacterPortraitResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_PX128X128 = "px128x128";
     @SerializedName(SERIALIZED_NAME_PX128X128)
+    @javax.annotation.Nullable
     private String px128x128;
 
     public static final String SERIALIZED_NAME_PX256X256 = "px256x256";
     @SerializedName(SERIALIZED_NAME_PX256X256)
+    @javax.annotation.Nullable
     private String px256x256;
 
     public static final String SERIALIZED_NAME_PX512X512 = "px512x512";
     @SerializedName(SERIALIZED_NAME_PX512X512)
+    @javax.annotation.Nullable
     private String px512x512;
 
     public static final String SERIALIZED_NAME_PX64X64 = "px64x64";
     @SerializedName(SERIALIZED_NAME_PX64X64)
+    @javax.annotation.Nullable
     private String px64x64;
 
     public CharacterPortraitResponse() {
     }
 
-    public CharacterPortraitResponse px128x128(String px128x128) {
-
+    public CharacterPortraitResponse px128x128(@javax.annotation.Nullable String px128x128) {
         this.px128x128 = px128x128;
         return this;
     }
@@ -83,18 +84,17 @@ public class CharacterPortraitResponse implements Serializable {
      * px128x128 string
      * 
      * @return px128x128
-     **/
+     */
     @javax.annotation.Nullable
     public String getPx128x128() {
         return px128x128;
     }
 
-    public void setPx128x128(String px128x128) {
+    public void setPx128x128(@javax.annotation.Nullable String px128x128) {
         this.px128x128 = px128x128;
     }
 
-    public CharacterPortraitResponse px256x256(String px256x256) {
-
+    public CharacterPortraitResponse px256x256(@javax.annotation.Nullable String px256x256) {
         this.px256x256 = px256x256;
         return this;
     }
@@ -103,18 +103,17 @@ public class CharacterPortraitResponse implements Serializable {
      * px256x256 string
      * 
      * @return px256x256
-     **/
+     */
     @javax.annotation.Nullable
     public String getPx256x256() {
         return px256x256;
     }
 
-    public void setPx256x256(String px256x256) {
+    public void setPx256x256(@javax.annotation.Nullable String px256x256) {
         this.px256x256 = px256x256;
     }
 
-    public CharacterPortraitResponse px512x512(String px512x512) {
-
+    public CharacterPortraitResponse px512x512(@javax.annotation.Nullable String px512x512) {
         this.px512x512 = px512x512;
         return this;
     }
@@ -123,18 +122,17 @@ public class CharacterPortraitResponse implements Serializable {
      * px512x512 string
      * 
      * @return px512x512
-     **/
+     */
     @javax.annotation.Nullable
     public String getPx512x512() {
         return px512x512;
     }
 
-    public void setPx512x512(String px512x512) {
+    public void setPx512x512(@javax.annotation.Nullable String px512x512) {
         this.px512x512 = px512x512;
     }
 
-    public CharacterPortraitResponse px64x64(String px64x64) {
-
+    public CharacterPortraitResponse px64x64(@javax.annotation.Nullable String px64x64) {
         this.px64x64 = px64x64;
         return this;
     }
@@ -143,13 +141,13 @@ public class CharacterPortraitResponse implements Serializable {
      * px64x64 string
      * 
      * @return px64x64
-     **/
+     */
     @javax.annotation.Nullable
     public String getPx64x64() {
         return px64x64;
     }
 
-    public void setPx64x64(String px64x64) {
+    public void setPx64x64(@javax.annotation.Nullable String px64x64) {
         this.px64x64 = px64x64;
     }
 
@@ -212,22 +210,22 @@ public class CharacterPortraitResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CharacterPortraitResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CharacterPortraitResponse.openapiRequiredFields.isEmpty()) { // has
                                                                               // required
                                                                               // fields
                                                                               // but
                                                                               // JSON
-                                                                              // object
+                                                                              // element
                                                                               // is
                                                                               // null
                 throw new IllegalArgumentException(String.format(
@@ -236,16 +234,17 @@ public class CharacterPortraitResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CharacterPortraitResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CharacterPortraitResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if ((jsonObj.get("px128x128") != null && !jsonObj.get("px128x128").isJsonNull())
                 && !jsonObj.get("px128x128").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
@@ -293,9 +292,9 @@ public class CharacterPortraitResponse implements Serializable {
 
                 @Override
                 public CharacterPortraitResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

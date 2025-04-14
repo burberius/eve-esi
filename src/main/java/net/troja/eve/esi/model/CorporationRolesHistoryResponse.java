@@ -40,12 +40,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -59,14 +57,17 @@ public class CorporationRolesHistoryResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_CHANGED_AT = "changed_at";
     @SerializedName(SERIALIZED_NAME_CHANGED_AT)
+    @javax.annotation.Nonnull
     private OffsetDateTime changedAt;
 
     public static final String SERIALIZED_NAME_CHARACTER_ID = "character_id";
     @SerializedName(SERIALIZED_NAME_CHARACTER_ID)
+    @javax.annotation.Nonnull
     private Integer characterId;
 
     public static final String SERIALIZED_NAME_ISSUER_ID = "issuer_id";
     @SerializedName(SERIALIZED_NAME_ISSUER_ID)
+    @javax.annotation.Nonnull
     private Integer issuerId;
 
     /**
@@ -218,10 +219,16 @@ public class CorporationRolesHistoryResponse implements Serializable {
                 return NewRolesEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            NewRolesEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_NEW_ROLES = "new_roles";
     @SerializedName(SERIALIZED_NAME_NEW_ROLES)
+    @javax.annotation.Nonnull
     private List<String> newRoles = new ArrayList<>();
     private List<NewRolesEnum> newRolesEnum = new ArrayList<>();
 
@@ -374,10 +381,16 @@ public class CorporationRolesHistoryResponse implements Serializable {
                 return OldRolesEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            OldRolesEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_OLD_ROLES = "old_roles";
     @SerializedName(SERIALIZED_NAME_OLD_ROLES)
+    @javax.annotation.Nonnull
     private List<String> oldRoles = new ArrayList<>();
     private List<OldRolesEnum> oldRolesEnum = new ArrayList<>();
 
@@ -438,18 +451,23 @@ public class CorporationRolesHistoryResponse implements Serializable {
                 return RoleTypeEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            RoleTypeEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_ROLE_TYPE = "role_type";
     @SerializedName(SERIALIZED_NAME_ROLE_TYPE)
+    @javax.annotation.Nonnull
     private String roleType;
     private RoleTypeEnum roleTypeEnum;
 
     public CorporationRolesHistoryResponse() {
     }
 
-    public CorporationRolesHistoryResponse changedAt(OffsetDateTime changedAt) {
-
+    public CorporationRolesHistoryResponse changedAt(@javax.annotation.Nonnull OffsetDateTime changedAt) {
         this.changedAt = changedAt;
         return this;
     }
@@ -458,18 +476,17 @@ public class CorporationRolesHistoryResponse implements Serializable {
      * changed_at string
      * 
      * @return changedAt
-     **/
+     */
     @javax.annotation.Nonnull
     public OffsetDateTime getChangedAt() {
         return changedAt;
     }
 
-    public void setChangedAt(OffsetDateTime changedAt) {
+    public void setChangedAt(@javax.annotation.Nonnull OffsetDateTime changedAt) {
         this.changedAt = changedAt;
     }
 
-    public CorporationRolesHistoryResponse characterId(Integer characterId) {
-
+    public CorporationRolesHistoryResponse characterId(@javax.annotation.Nonnull Integer characterId) {
         this.characterId = characterId;
         return this;
     }
@@ -478,18 +495,17 @@ public class CorporationRolesHistoryResponse implements Serializable {
      * The character whose roles are changed
      * 
      * @return characterId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getCharacterId() {
         return characterId;
     }
 
-    public void setCharacterId(Integer characterId) {
+    public void setCharacterId(@javax.annotation.Nonnull Integer characterId) {
         this.characterId = characterId;
     }
 
-    public CorporationRolesHistoryResponse issuerId(Integer issuerId) {
-
+    public CorporationRolesHistoryResponse issuerId(@javax.annotation.Nonnull Integer issuerId) {
         this.issuerId = issuerId;
         return this;
     }
@@ -498,33 +514,35 @@ public class CorporationRolesHistoryResponse implements Serializable {
      * ID of the character who issued this change
      * 
      * @return issuerId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getIssuerId() {
         return issuerId;
     }
 
-    public void setIssuerId(Integer issuerId) {
+    public void setIssuerId(@javax.annotation.Nonnull Integer issuerId) {
         this.issuerId = issuerId;
     }
 
-    public CorporationRolesHistoryResponse newRolesString(List<String> newRoles) {
+    public CorporationRolesHistoryResponse newRoles(@javax.annotation.Nonnull List<NewRolesEnum> newRoles) {
+        this.newRolesEnum = newRoles;
+        return this;
+    }
 
+    public CorporationRolesHistoryResponse newRolesString(@javax.annotation.Nonnull List<String> newRoles) {
         this.newRoles = newRoles;
         return this;
     }
 
-    public CorporationRolesHistoryResponse newRoles(List<NewRolesEnum> newRolesEnum) {
-
-        this.newRolesEnum = newRolesEnum;
-        return this;
-    }
-
-    public CorporationRolesHistoryResponse addnewRolesItem(String newRolesItem) {
+    public CorporationRolesHistoryResponse addNewRolesItem(NewRolesEnum newRolesItem) {
         if (this.newRoles == null) {
             this.newRoles = new ArrayList<>();
         }
-        this.newRoles.add(newRolesItem);
+        if (this.newRolesEnum == null) {
+            this.newRolesEnum = new ArrayList<>();
+        }
+        this.newRoles.add(newRolesItem.toString());
+        this.newRolesEnum.add(newRolesItem);
         return this;
     }
 
@@ -532,16 +550,13 @@ public class CorporationRolesHistoryResponse implements Serializable {
      * new_roles array
      * 
      * @return newRoles
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public List<NewRolesEnum> getNewRoles() {
         if (newRolesEnum == null) {
             newRolesEnum = new ArrayList<>();
             for (String value : newRoles) {
-                NewRolesEnum enumValue = NewRolesEnum.fromValue(value);
-                if (enumValue != null) {
-                    newRolesEnum.add(enumValue);
-                }
+                newRolesEnum.add(NewRolesEnum.fromValue(value));
             }
         }
         return newRolesEnum;
@@ -551,31 +566,33 @@ public class CorporationRolesHistoryResponse implements Serializable {
         return newRoles;
     }
 
-    public void setNewRoles(List<NewRolesEnum> newRolesEnum) {
-        this.newRolesEnum = newRolesEnum;
+    public void setNewRoles(@javax.annotation.Nonnull List<NewRolesEnum> newRoles) {
+        this.newRolesEnum = newRoles;
     }
 
-    public void setNewRolesString(List<String> newRoles) {
+    public void setNewRolesString(@javax.annotation.Nonnull List<String> newRoles) {
         this.newRoles = newRoles;
     }
 
-    public CorporationRolesHistoryResponse oldRolesString(List<String> oldRoles) {
+    public CorporationRolesHistoryResponse oldRoles(@javax.annotation.Nonnull List<OldRolesEnum> oldRoles) {
+        this.oldRolesEnum = oldRoles;
+        return this;
+    }
 
+    public CorporationRolesHistoryResponse oldRolesString(@javax.annotation.Nonnull List<String> oldRoles) {
         this.oldRoles = oldRoles;
         return this;
     }
 
-    public CorporationRolesHistoryResponse oldRoles(List<OldRolesEnum> oldRolesEnum) {
-
-        this.oldRolesEnum = oldRolesEnum;
-        return this;
-    }
-
-    public CorporationRolesHistoryResponse addoldRolesItem(String oldRolesItem) {
+    public CorporationRolesHistoryResponse addOldRolesItem(OldRolesEnum oldRolesItem) {
         if (this.oldRoles == null) {
             this.oldRoles = new ArrayList<>();
         }
-        this.oldRoles.add(oldRolesItem);
+        if (this.oldRolesEnum == null) {
+            this.oldRolesEnum = new ArrayList<>();
+        }
+        this.oldRoles.add(oldRolesItem.toString());
+        this.oldRolesEnum.add(oldRolesItem);
         return this;
     }
 
@@ -583,16 +600,13 @@ public class CorporationRolesHistoryResponse implements Serializable {
      * old_roles array
      * 
      * @return oldRoles
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public List<OldRolesEnum> getOldRoles() {
         if (oldRolesEnum == null) {
             oldRolesEnum = new ArrayList<>();
             for (String value : oldRoles) {
-                OldRolesEnum enumValue = OldRolesEnum.fromValue(value);
-                if (enumValue != null) {
-                    oldRolesEnum.add(enumValue);
-                }
+                oldRolesEnum.add(OldRolesEnum.fromValue(value));
             }
         }
         return oldRolesEnum;
@@ -602,23 +616,21 @@ public class CorporationRolesHistoryResponse implements Serializable {
         return oldRoles;
     }
 
-    public void setOldRoles(List<OldRolesEnum> oldRolesEnum) {
-        this.oldRolesEnum = oldRolesEnum;
+    public void setOldRoles(@javax.annotation.Nonnull List<OldRolesEnum> oldRoles) {
+        this.oldRolesEnum = oldRoles;
     }
 
-    public void setOldRolesString(List<String> oldRoles) {
+    public void setOldRolesString(@javax.annotation.Nonnull List<String> oldRoles) {
         this.oldRoles = oldRoles;
     }
 
-    public CorporationRolesHistoryResponse roleTypeString(String roleType) {
-
-        this.roleType = roleType;
+    public CorporationRolesHistoryResponse roleType(@javax.annotation.Nonnull RoleTypeEnum roleType) {
+        this.roleTypeEnum = roleType;
         return this;
     }
 
-    public CorporationRolesHistoryResponse roleType(RoleTypeEnum roleTypeEnum) {
-
-        this.roleTypeEnum = roleTypeEnum;
+    public CorporationRolesHistoryResponse roleTypeString(@javax.annotation.Nonnull String roleType) {
+        this.roleType = roleType;
         return this;
     }
 
@@ -626,8 +638,8 @@ public class CorporationRolesHistoryResponse implements Serializable {
      * role_type string
      * 
      * @return roleType
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public RoleTypeEnum getRoleType() {
         if (roleTypeEnum == null) {
             roleTypeEnum = RoleTypeEnum.fromValue(roleType);
@@ -639,11 +651,11 @@ public class CorporationRolesHistoryResponse implements Serializable {
         return roleType;
     }
 
-    public void setRoleType(RoleTypeEnum roleTypeEnum) {
-        this.roleTypeEnum = roleTypeEnum;
+    public void setRoleType(@javax.annotation.Nonnull RoleTypeEnum roleType) {
+        this.roleTypeEnum = roleType;
     }
 
-    public void setRoleTypeString(String roleType) {
+    public void setRoleTypeString(@javax.annotation.Nonnull String roleType) {
         this.roleType = roleType;
     }
 
@@ -718,22 +730,22 @@ public class CorporationRolesHistoryResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CorporationRolesHistoryResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CorporationRolesHistoryResponse.openapiRequiredFields.isEmpty()) { // has
                                                                                     // required
                                                                                     // fields
                                                                                     // but
                                                                                     // JSON
-                                                                                    // object
+                                                                                    // element
                                                                                     // is
                                                                                     // null
                 throw new IllegalArgumentException(
@@ -743,26 +755,27 @@ public class CorporationRolesHistoryResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CorporationRolesHistoryResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CorporationRolesHistoryResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CorporationRolesHistoryResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         // ensure the required json array is present
         if (jsonObj.get("new_roles") == null) {
             throw new IllegalArgumentException(
@@ -786,6 +799,8 @@ public class CorporationRolesHistoryResponse implements Serializable {
                     "Expected the field `role_type` to be a primitive type in the JSON string but got `%s`", jsonObj
                             .get("role_type").toString()));
         }
+        // validate the required field `role_type`
+        RoleTypeEnum.validateJsonElement(jsonObj.get("role_type"));
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -810,9 +825,9 @@ public class CorporationRolesHistoryResponse implements Serializable {
 
                 @Override
                 public CorporationRolesHistoryResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

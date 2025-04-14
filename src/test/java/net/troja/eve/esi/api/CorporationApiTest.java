@@ -292,14 +292,11 @@ public class CorporationApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    @Disabled("Testing these would need special rights in the corp")
     public void getCorporationsCorporationIdRolesTest() throws ApiException {
-        Integer corporationId = null;
-        String datasource = null;
         String ifNoneMatch = null;
         String token = null;
-        List<CorporationRolesResponse> response = api.getCorporationsCorporationIdRoles(corporationId, datasource, ifNoneMatch, token);
-        // TODO: test validations
+        List<CorporationRolesResponse> response = api.getCorporationsCorporationIdRoles(corporationId, DATASOURCE, ifNoneMatch, token);
+        assertThat(response).isNotEmpty();
     }
 
     /**
@@ -310,15 +307,12 @@ public class CorporationApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    @Disabled("Needs corporation with read access")
     public void getCorporationsCorporationIdRolesHistoryTest() throws ApiException {
-        Integer corporationId = null;
-        String datasource = null;
         String ifNoneMatch = null;
         Integer page = null;
         String token = null;
-        List<CorporationRolesHistoryResponse> response = api.getCorporationsCorporationIdRolesHistory(corporationId, datasource, ifNoneMatch, page, token);
-        // TODO: test validations
+        List<CorporationRolesHistoryResponse> response = api.getCorporationsCorporationIdRolesHistory(corporationId, DATASOURCE, ifNoneMatch, page, token);
+        assertThat(response).isNotEmpty();
     }
 
     /**

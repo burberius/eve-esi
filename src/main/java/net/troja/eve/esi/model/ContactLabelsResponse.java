@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -56,17 +54,18 @@ public class ContactLabelsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_LABEL_ID = "label_id";
     @SerializedName(SERIALIZED_NAME_LABEL_ID)
+    @javax.annotation.Nonnull
     private Long labelId;
 
     public static final String SERIALIZED_NAME_LABEL_NAME = "label_name";
     @SerializedName(SERIALIZED_NAME_LABEL_NAME)
+    @javax.annotation.Nonnull
     private String labelName;
 
     public ContactLabelsResponse() {
     }
 
-    public ContactLabelsResponse labelId(Long labelId) {
-
+    public ContactLabelsResponse labelId(@javax.annotation.Nonnull Long labelId) {
         this.labelId = labelId;
         return this;
     }
@@ -75,18 +74,17 @@ public class ContactLabelsResponse implements Serializable {
      * label_id integer
      * 
      * @return labelId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getLabelId() {
         return labelId;
     }
 
-    public void setLabelId(Long labelId) {
+    public void setLabelId(@javax.annotation.Nonnull Long labelId) {
         this.labelId = labelId;
     }
 
-    public ContactLabelsResponse labelName(String labelName) {
-
+    public ContactLabelsResponse labelName(@javax.annotation.Nonnull String labelName) {
         this.labelName = labelName;
         return this;
     }
@@ -95,13 +93,13 @@ public class ContactLabelsResponse implements Serializable {
      * label_name string
      * 
      * @return labelName
-     **/
+     */
     @javax.annotation.Nonnull
     public String getLabelName() {
         return labelName;
     }
 
-    public void setLabelName(String labelName) {
+    public void setLabelName(@javax.annotation.Nonnull String labelName) {
         this.labelName = labelName;
     }
 
@@ -160,22 +158,22 @@ public class ContactLabelsResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             ContactLabelsResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!ContactLabelsResponse.openapiRequiredFields.isEmpty()) { // has
                                                                           // required
                                                                           // fields
                                                                           // but
                                                                           // JSON
-                                                                          // object
+                                                                          // element
                                                                           // is
                                                                           // null
                 throw new IllegalArgumentException(String.format(
@@ -184,26 +182,27 @@ public class ContactLabelsResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!ContactLabelsResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `ContactLabelsResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : ContactLabelsResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("label_name").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `label_name` to be a primitive type in the JSON string but got `%s`", jsonObj
@@ -232,9 +231,9 @@ public class ContactLabelsResponse implements Serializable {
 
                 @Override
                 public ContactLabelsResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

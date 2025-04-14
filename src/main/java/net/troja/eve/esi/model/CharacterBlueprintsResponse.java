@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -56,6 +54,7 @@ public class CharacterBlueprintsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ITEM_ID = "item_id";
     @SerializedName(SERIALIZED_NAME_ITEM_ID)
+    @javax.annotation.Nonnull
     private Long itemId;
 
     /**
@@ -251,42 +250,53 @@ public class CharacterBlueprintsResponse implements Serializable {
                 return LocationFlagEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            LocationFlagEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_LOCATION_FLAG = "location_flag";
     @SerializedName(SERIALIZED_NAME_LOCATION_FLAG)
+    @javax.annotation.Nonnull
     private String locationFlag;
     private LocationFlagEnum locationFlagEnum;
 
     public static final String SERIALIZED_NAME_LOCATION_ID = "location_id";
     @SerializedName(SERIALIZED_NAME_LOCATION_ID)
+    @javax.annotation.Nonnull
     private Long locationId;
 
     public static final String SERIALIZED_NAME_MATERIAL_EFFICIENCY = "material_efficiency";
     @SerializedName(SERIALIZED_NAME_MATERIAL_EFFICIENCY)
+    @javax.annotation.Nonnull
     private Integer materialEfficiency;
 
     public static final String SERIALIZED_NAME_QUANTITY = "quantity";
     @SerializedName(SERIALIZED_NAME_QUANTITY)
+    @javax.annotation.Nonnull
     private Integer quantity;
 
     public static final String SERIALIZED_NAME_RUNS = "runs";
     @SerializedName(SERIALIZED_NAME_RUNS)
+    @javax.annotation.Nonnull
     private Integer runs;
 
     public static final String SERIALIZED_NAME_TIME_EFFICIENCY = "time_efficiency";
     @SerializedName(SERIALIZED_NAME_TIME_EFFICIENCY)
+    @javax.annotation.Nonnull
     private Integer timeEfficiency;
 
     public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
+    @javax.annotation.Nonnull
     private Integer typeId;
 
     public CharacterBlueprintsResponse() {
     }
 
-    public CharacterBlueprintsResponse itemId(Long itemId) {
-
+    public CharacterBlueprintsResponse itemId(@javax.annotation.Nonnull Long itemId) {
         this.itemId = itemId;
         return this;
     }
@@ -295,25 +305,23 @@ public class CharacterBlueprintsResponse implements Serializable {
      * Unique ID for this item.
      * 
      * @return itemId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getItemId() {
         return itemId;
     }
 
-    public void setItemId(Long itemId) {
+    public void setItemId(@javax.annotation.Nonnull Long itemId) {
         this.itemId = itemId;
     }
 
-    public CharacterBlueprintsResponse locationFlagString(String locationFlag) {
-
-        this.locationFlag = locationFlag;
+    public CharacterBlueprintsResponse locationFlag(@javax.annotation.Nonnull LocationFlagEnum locationFlag) {
+        this.locationFlagEnum = locationFlag;
         return this;
     }
 
-    public CharacterBlueprintsResponse locationFlag(LocationFlagEnum locationFlagEnum) {
-
-        this.locationFlagEnum = locationFlagEnum;
+    public CharacterBlueprintsResponse locationFlagString(@javax.annotation.Nonnull String locationFlag) {
+        this.locationFlag = locationFlag;
         return this;
     }
 
@@ -321,8 +329,8 @@ public class CharacterBlueprintsResponse implements Serializable {
      * Type of the location_id
      * 
      * @return locationFlag
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public LocationFlagEnum getLocationFlag() {
         if (locationFlagEnum == null) {
             locationFlagEnum = LocationFlagEnum.fromValue(locationFlag);
@@ -334,16 +342,15 @@ public class CharacterBlueprintsResponse implements Serializable {
         return locationFlag;
     }
 
-    public void setLocationFlag(LocationFlagEnum locationFlagEnum) {
-        this.locationFlagEnum = locationFlagEnum;
+    public void setLocationFlag(@javax.annotation.Nonnull LocationFlagEnum locationFlag) {
+        this.locationFlagEnum = locationFlag;
     }
 
-    public void setLocationFlagString(String locationFlag) {
+    public void setLocationFlagString(@javax.annotation.Nonnull String locationFlag) {
         this.locationFlag = locationFlag;
     }
 
-    public CharacterBlueprintsResponse locationId(Long locationId) {
-
+    public CharacterBlueprintsResponse locationId(@javax.annotation.Nonnull Long locationId) {
         this.locationId = locationId;
         return this;
     }
@@ -355,18 +362,17 @@ public class CharacterBlueprintsResponse implements Serializable {
      * item_id to determine the correct location of the Blueprint.
      * 
      * @return locationId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getLocationId() {
         return locationId;
     }
 
-    public void setLocationId(Long locationId) {
+    public void setLocationId(@javax.annotation.Nonnull Long locationId) {
         this.locationId = locationId;
     }
 
-    public CharacterBlueprintsResponse materialEfficiency(Integer materialEfficiency) {
-
+    public CharacterBlueprintsResponse materialEfficiency(@javax.annotation.Nonnull Integer materialEfficiency) {
         this.materialEfficiency = materialEfficiency;
         return this;
     }
@@ -375,18 +381,17 @@ public class CharacterBlueprintsResponse implements Serializable {
      * Material Efficiency Level of the blueprint. minimum: 0 maximum: 25
      * 
      * @return materialEfficiency
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getMaterialEfficiency() {
         return materialEfficiency;
     }
 
-    public void setMaterialEfficiency(Integer materialEfficiency) {
+    public void setMaterialEfficiency(@javax.annotation.Nonnull Integer materialEfficiency) {
         this.materialEfficiency = materialEfficiency;
     }
 
-    public CharacterBlueprintsResponse quantity(Integer quantity) {
-
+    public CharacterBlueprintsResponse quantity(@javax.annotation.Nonnull Integer quantity) {
         this.quantity = quantity;
         return this;
     }
@@ -398,18 +403,17 @@ public class CharacterBlueprintsResponse implements Serializable {
      * performed on them yet). minimum: -2
      * 
      * @return quantity
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(@javax.annotation.Nonnull Integer quantity) {
         this.quantity = quantity;
     }
 
-    public CharacterBlueprintsResponse runs(Integer runs) {
-
+    public CharacterBlueprintsResponse runs(@javax.annotation.Nonnull Integer runs) {
         this.runs = runs;
         return this;
     }
@@ -419,18 +423,17 @@ public class CharacterBlueprintsResponse implements Serializable {
      * original. minimum: -1
      * 
      * @return runs
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getRuns() {
         return runs;
     }
 
-    public void setRuns(Integer runs) {
+    public void setRuns(@javax.annotation.Nonnull Integer runs) {
         this.runs = runs;
     }
 
-    public CharacterBlueprintsResponse timeEfficiency(Integer timeEfficiency) {
-
+    public CharacterBlueprintsResponse timeEfficiency(@javax.annotation.Nonnull Integer timeEfficiency) {
         this.timeEfficiency = timeEfficiency;
         return this;
     }
@@ -439,18 +442,17 @@ public class CharacterBlueprintsResponse implements Serializable {
      * Time Efficiency Level of the blueprint. minimum: 0 maximum: 20
      * 
      * @return timeEfficiency
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getTimeEfficiency() {
         return timeEfficiency;
     }
 
-    public void setTimeEfficiency(Integer timeEfficiency) {
+    public void setTimeEfficiency(@javax.annotation.Nonnull Integer timeEfficiency) {
         this.timeEfficiency = timeEfficiency;
     }
 
-    public CharacterBlueprintsResponse typeId(Integer typeId) {
-
+    public CharacterBlueprintsResponse typeId(@javax.annotation.Nonnull Integer typeId) {
         this.typeId = typeId;
         return this;
     }
@@ -459,13 +461,13 @@ public class CharacterBlueprintsResponse implements Serializable {
      * type_id integer
      * 
      * @return typeId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(Integer typeId) {
+    public void setTypeId(@javax.annotation.Nonnull Integer typeId) {
         this.typeId = typeId;
     }
 
@@ -549,22 +551,22 @@ public class CharacterBlueprintsResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CharacterBlueprintsResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CharacterBlueprintsResponse.openapiRequiredFields.isEmpty()) { // has
                                                                                 // required
                                                                                 // fields
                                                                                 // but
                                                                                 // JSON
-                                                                                // object
+                                                                                // element
                                                                                 // is
                                                                                 // null
                 throw new IllegalArgumentException(
@@ -574,31 +576,34 @@ public class CharacterBlueprintsResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CharacterBlueprintsResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CharacterBlueprintsResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CharacterBlueprintsResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("location_flag").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `location_flag` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("location_flag").toString()));
         }
+        // validate the required field `location_flag`
+        LocationFlagEnum.validateJsonElement(jsonObj.get("location_flag"));
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -622,9 +627,9 @@ public class CharacterBlueprintsResponse implements Serializable {
 
                 @Override
                 public CharacterBlueprintsResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

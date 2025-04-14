@@ -38,12 +38,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -57,33 +55,38 @@ public class MarketHistoryResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_AVERAGE = "average";
     @SerializedName(SERIALIZED_NAME_AVERAGE)
+    @javax.annotation.Nonnull
     private Double average;
 
     public static final String SERIALIZED_NAME_DATE = "date";
     @SerializedName(SERIALIZED_NAME_DATE)
+    @javax.annotation.Nonnull
     private LocalDate date;
 
     public static final String SERIALIZED_NAME_HIGHEST = "highest";
     @SerializedName(SERIALIZED_NAME_HIGHEST)
+    @javax.annotation.Nonnull
     private Double highest;
 
     public static final String SERIALIZED_NAME_LOWEST = "lowest";
     @SerializedName(SERIALIZED_NAME_LOWEST)
+    @javax.annotation.Nonnull
     private Double lowest;
 
     public static final String SERIALIZED_NAME_ORDER_COUNT = "order_count";
     @SerializedName(SERIALIZED_NAME_ORDER_COUNT)
+    @javax.annotation.Nonnull
     private Long orderCount;
 
     public static final String SERIALIZED_NAME_VOLUME = "volume";
     @SerializedName(SERIALIZED_NAME_VOLUME)
+    @javax.annotation.Nonnull
     private Long volume;
 
     public MarketHistoryResponse() {
     }
 
-    public MarketHistoryResponse average(Double average) {
-
+    public MarketHistoryResponse average(@javax.annotation.Nonnull Double average) {
         this.average = average;
         return this;
     }
@@ -92,18 +95,17 @@ public class MarketHistoryResponse implements Serializable {
      * average number
      * 
      * @return average
-     **/
+     */
     @javax.annotation.Nonnull
     public Double getAverage() {
         return average;
     }
 
-    public void setAverage(Double average) {
+    public void setAverage(@javax.annotation.Nonnull Double average) {
         this.average = average;
     }
 
-    public MarketHistoryResponse date(LocalDate date) {
-
+    public MarketHistoryResponse date(@javax.annotation.Nonnull LocalDate date) {
         this.date = date;
         return this;
     }
@@ -112,18 +114,17 @@ public class MarketHistoryResponse implements Serializable {
      * The date of this historical statistic entry
      * 
      * @return date
-     **/
+     */
     @javax.annotation.Nonnull
     public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(@javax.annotation.Nonnull LocalDate date) {
         this.date = date;
     }
 
-    public MarketHistoryResponse highest(Double highest) {
-
+    public MarketHistoryResponse highest(@javax.annotation.Nonnull Double highest) {
         this.highest = highest;
         return this;
     }
@@ -132,18 +133,17 @@ public class MarketHistoryResponse implements Serializable {
      * highest number
      * 
      * @return highest
-     **/
+     */
     @javax.annotation.Nonnull
     public Double getHighest() {
         return highest;
     }
 
-    public void setHighest(Double highest) {
+    public void setHighest(@javax.annotation.Nonnull Double highest) {
         this.highest = highest;
     }
 
-    public MarketHistoryResponse lowest(Double lowest) {
-
+    public MarketHistoryResponse lowest(@javax.annotation.Nonnull Double lowest) {
         this.lowest = lowest;
         return this;
     }
@@ -152,18 +152,17 @@ public class MarketHistoryResponse implements Serializable {
      * lowest number
      * 
      * @return lowest
-     **/
+     */
     @javax.annotation.Nonnull
     public Double getLowest() {
         return lowest;
     }
 
-    public void setLowest(Double lowest) {
+    public void setLowest(@javax.annotation.Nonnull Double lowest) {
         this.lowest = lowest;
     }
 
-    public MarketHistoryResponse orderCount(Long orderCount) {
-
+    public MarketHistoryResponse orderCount(@javax.annotation.Nonnull Long orderCount) {
         this.orderCount = orderCount;
         return this;
     }
@@ -172,18 +171,17 @@ public class MarketHistoryResponse implements Serializable {
      * Total number of orders happened that day
      * 
      * @return orderCount
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getOrderCount() {
         return orderCount;
     }
 
-    public void setOrderCount(Long orderCount) {
+    public void setOrderCount(@javax.annotation.Nonnull Long orderCount) {
         this.orderCount = orderCount;
     }
 
-    public MarketHistoryResponse volume(Long volume) {
-
+    public MarketHistoryResponse volume(@javax.annotation.Nonnull Long volume) {
         this.volume = volume;
         return this;
     }
@@ -192,13 +190,13 @@ public class MarketHistoryResponse implements Serializable {
      * Total
      * 
      * @return volume
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getVolume() {
         return volume;
     }
 
-    public void setVolume(Long volume) {
+    public void setVolume(@javax.annotation.Nonnull Long volume) {
         this.volume = volume;
     }
 
@@ -273,22 +271,22 @@ public class MarketHistoryResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             MarketHistoryResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!MarketHistoryResponse.openapiRequiredFields.isEmpty()) { // has
                                                                           // required
                                                                           // fields
                                                                           // but
                                                                           // JSON
-                                                                          // object
+                                                                          // element
                                                                           // is
                                                                           // null
                 throw new IllegalArgumentException(String.format(
@@ -297,26 +295,27 @@ public class MarketHistoryResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!MarketHistoryResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `MarketHistoryResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : MarketHistoryResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -340,9 +339,9 @@ public class MarketHistoryResponse implements Serializable {
 
                 @Override
                 public MarketHistoryResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

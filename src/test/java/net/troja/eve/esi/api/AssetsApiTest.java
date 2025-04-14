@@ -71,9 +71,7 @@ public class AssetsApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    @Disabled("Needs corporation with read access")
     public void getCorporationsCorporationIdAssetsTest() throws ApiException {
-        Integer corporationId = null;
         String ifNoneMatch = null;
         Integer page = null;
         String token = null;
@@ -122,13 +120,13 @@ public class AssetsApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    @Disabled("Needs corporation with read access")
     public void postCorporationsCorporationIdAssetsLocationsTest() throws ApiException {
-        Integer corporationId = null;
-        Set<Long> itemIds = null;
+        Set<Long> itemIds = get5CorpItemIds();
         String token = null;
         List<CorporationAssetsLocationsResponse> response = api.postCorporationsCorporationIdAssetsLocations(corporationId, itemIds, DATASOURCE, token);
-        // TODO: test validations
+        assertThat(response).hasSize(5);
+        assertThat(response.stream().map(CorporationAssetsLocationsResponse::getItemId).collect(Collectors.toSet()))
+                .containsExactlyElementsOf(itemIds);
     }
 
     /**
@@ -139,17 +137,27 @@ public class AssetsApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    @Disabled("Needs corporation with read access")
     public void postCorporationsCorporationIdAssetsNamesTest() throws ApiException {
-        Integer corporationId = null;
-        Set<Long> itemIds = null;
+        Set<Long> itemIds = get5CorpItemsWithName();
         String token = null;
         List<CorporationAssetsNamesResponse> response = api.postCorporationsCorporationIdAssetsNames(corporationId, itemIds, DATASOURCE, token);
-        // TODO: test validations
+        assertThat(response).hasSize(5);
+        assertThat(response.stream().map(CorporationAssetsNamesResponse::getItemId).collect(Collectors.toSet()))
+                .containsExactlyElementsOf(itemIds);
     }
 
     private Set<Long> get5AssetIds() throws ApiException {
         final List<CharacterAssetsResponse> response = api.getCharactersCharacterIdAssets(characterId, DATASOURCE, null, null, null);
         return response.stream().limit(5).map(CharacterAssetsResponse::getItemId).collect(Collectors.toSet());
+    }
+
+    private Set<Long> get5CorpItemIds() throws ApiException {
+        List<CorporationAssetsResponse> response = api.getCorporationsCorporationIdAssets(corporationId, DATASOURCE, null, null, null);
+        return response.stream().map(CorporationAssetsResponse::getItemId).limit(5).collect(Collectors.toSet());
+    }
+
+    private Set<Long> get5CorpItemsWithName() throws ApiException {
+        List<CorporationAssetsResponse> response = api.getCorporationsCorporationIdAssets(corporationId, DATASOURCE, null, null, null);
+        return response.stream().filter(item -> item.getTypeId() == 17366).map(CorporationAssetsResponse::getItemId).limit(5).collect(Collectors.toSet());
     }
 }

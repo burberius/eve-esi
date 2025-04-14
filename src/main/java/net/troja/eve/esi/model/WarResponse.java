@@ -43,12 +43,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -62,49 +60,58 @@ public class WarResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_AGGRESSOR = "aggressor";
     @SerializedName(SERIALIZED_NAME_AGGRESSOR)
+    @javax.annotation.Nonnull
     private Aggressor aggressor;
 
     public static final String SERIALIZED_NAME_ALLIES = "allies";
     @SerializedName(SERIALIZED_NAME_ALLIES)
+    @javax.annotation.Nullable
     private List<WarAlly> allies = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_DECLARED = "declared";
     @SerializedName(SERIALIZED_NAME_DECLARED)
+    @javax.annotation.Nonnull
     private OffsetDateTime declared;
 
     public static final String SERIALIZED_NAME_DEFENDER = "defender";
     @SerializedName(SERIALIZED_NAME_DEFENDER)
+    @javax.annotation.Nonnull
     private Defender defender;
 
     public static final String SERIALIZED_NAME_FINISHED = "finished";
     @SerializedName(SERIALIZED_NAME_FINISHED)
+    @javax.annotation.Nullable
     private OffsetDateTime finished;
 
     public static final String SERIALIZED_NAME_ID = "id";
     @SerializedName(SERIALIZED_NAME_ID)
+    @javax.annotation.Nonnull
     private Integer id;
 
     public static final String SERIALIZED_NAME_MUTUAL = "mutual";
     @SerializedName(SERIALIZED_NAME_MUTUAL)
+    @javax.annotation.Nonnull
     private Boolean mutual;
 
     public static final String SERIALIZED_NAME_OPEN_FOR_ALLIES = "open_for_allies";
     @SerializedName(SERIALIZED_NAME_OPEN_FOR_ALLIES)
+    @javax.annotation.Nonnull
     private Boolean openForAllies;
 
     public static final String SERIALIZED_NAME_RETRACTED = "retracted";
     @SerializedName(SERIALIZED_NAME_RETRACTED)
+    @javax.annotation.Nullable
     private OffsetDateTime retracted;
 
     public static final String SERIALIZED_NAME_STARTED = "started";
     @SerializedName(SERIALIZED_NAME_STARTED)
+    @javax.annotation.Nullable
     private OffsetDateTime started;
 
     public WarResponse() {
     }
 
-    public WarResponse aggressor(Aggressor aggressor) {
-
+    public WarResponse aggressor(@javax.annotation.Nonnull Aggressor aggressor) {
         this.aggressor = aggressor;
         return this;
     }
@@ -113,26 +120,26 @@ public class WarResponse implements Serializable {
      * Get aggressor
      * 
      * @return aggressor
-     **/
+     */
     @javax.annotation.Nonnull
     public Aggressor getAggressor() {
         return aggressor;
     }
 
-    public void setAggressor(Aggressor aggressor) {
+    public void setAggressor(@javax.annotation.Nonnull Aggressor aggressor) {
         this.aggressor = aggressor;
     }
 
-    public WarResponse allies(List<WarAlly> allies) {
-
+    public WarResponse allies(@javax.annotation.Nullable List<WarAlly> allies) {
         this.allies = allies;
         return this;
     }
 
-    public WarResponse addalliesItem(WarAlly alliesItem) {
+    public WarResponse addAlliesItem(WarAlly alliesItem) {
         if (this.allies == null) {
             this.allies = new ArrayList<>();
         }
+
         this.allies.add(alliesItem);
         return this;
     }
@@ -142,18 +149,17 @@ public class WarResponse implements Serializable {
      * corporation_id or alliance_id
      * 
      * @return allies
-     **/
+     */
     @javax.annotation.Nullable
     public List<WarAlly> getAllies() {
         return allies;
     }
 
-    public void setAllies(List<WarAlly> allies) {
+    public void setAllies(@javax.annotation.Nullable List<WarAlly> allies) {
         this.allies = allies;
     }
 
-    public WarResponse declared(OffsetDateTime declared) {
-
+    public WarResponse declared(@javax.annotation.Nonnull OffsetDateTime declared) {
         this.declared = declared;
         return this;
     }
@@ -162,18 +168,17 @@ public class WarResponse implements Serializable {
      * Time that the war was declared
      * 
      * @return declared
-     **/
+     */
     @javax.annotation.Nonnull
     public OffsetDateTime getDeclared() {
         return declared;
     }
 
-    public void setDeclared(OffsetDateTime declared) {
+    public void setDeclared(@javax.annotation.Nonnull OffsetDateTime declared) {
         this.declared = declared;
     }
 
-    public WarResponse defender(Defender defender) {
-
+    public WarResponse defender(@javax.annotation.Nonnull Defender defender) {
         this.defender = defender;
         return this;
     }
@@ -182,18 +187,17 @@ public class WarResponse implements Serializable {
      * Get defender
      * 
      * @return defender
-     **/
+     */
     @javax.annotation.Nonnull
     public Defender getDefender() {
         return defender;
     }
 
-    public void setDefender(Defender defender) {
+    public void setDefender(@javax.annotation.Nonnull Defender defender) {
         this.defender = defender;
     }
 
-    public WarResponse finished(OffsetDateTime finished) {
-
+    public WarResponse finished(@javax.annotation.Nullable OffsetDateTime finished) {
         this.finished = finished;
         return this;
     }
@@ -202,18 +206,17 @@ public class WarResponse implements Serializable {
      * Time the war ended and shooting was no longer allowed
      * 
      * @return finished
-     **/
+     */
     @javax.annotation.Nullable
     public OffsetDateTime getFinished() {
         return finished;
     }
 
-    public void setFinished(OffsetDateTime finished) {
+    public void setFinished(@javax.annotation.Nullable OffsetDateTime finished) {
         this.finished = finished;
     }
 
-    public WarResponse id(Integer id) {
-
+    public WarResponse id(@javax.annotation.Nonnull Integer id) {
         this.id = id;
         return this;
     }
@@ -222,18 +225,17 @@ public class WarResponse implements Serializable {
      * ID of the specified war
      * 
      * @return id
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(@javax.annotation.Nonnull Integer id) {
         this.id = id;
     }
 
-    public WarResponse mutual(Boolean mutual) {
-
+    public WarResponse mutual(@javax.annotation.Nonnull Boolean mutual) {
         this.mutual = mutual;
         return this;
     }
@@ -242,18 +244,17 @@ public class WarResponse implements Serializable {
      * Was the war declared mutual by both parties
      * 
      * @return mutual
-     **/
+     */
     @javax.annotation.Nonnull
     public Boolean getMutual() {
         return mutual;
     }
 
-    public void setMutual(Boolean mutual) {
+    public void setMutual(@javax.annotation.Nonnull Boolean mutual) {
         this.mutual = mutual;
     }
 
-    public WarResponse openForAllies(Boolean openForAllies) {
-
+    public WarResponse openForAllies(@javax.annotation.Nonnull Boolean openForAllies) {
         this.openForAllies = openForAllies;
         return this;
     }
@@ -262,18 +263,17 @@ public class WarResponse implements Serializable {
      * Is the war currently open for allies or not
      * 
      * @return openForAllies
-     **/
+     */
     @javax.annotation.Nonnull
     public Boolean getOpenForAllies() {
         return openForAllies;
     }
 
-    public void setOpenForAllies(Boolean openForAllies) {
+    public void setOpenForAllies(@javax.annotation.Nonnull Boolean openForAllies) {
         this.openForAllies = openForAllies;
     }
 
-    public WarResponse retracted(OffsetDateTime retracted) {
-
+    public WarResponse retracted(@javax.annotation.Nullable OffsetDateTime retracted) {
         this.retracted = retracted;
         return this;
     }
@@ -282,18 +282,17 @@ public class WarResponse implements Serializable {
      * Time the war was retracted but both sides could still shoot each other
      * 
      * @return retracted
-     **/
+     */
     @javax.annotation.Nullable
     public OffsetDateTime getRetracted() {
         return retracted;
     }
 
-    public void setRetracted(OffsetDateTime retracted) {
+    public void setRetracted(@javax.annotation.Nullable OffsetDateTime retracted) {
         this.retracted = retracted;
     }
 
-    public WarResponse started(OffsetDateTime started) {
-
+    public WarResponse started(@javax.annotation.Nullable OffsetDateTime started) {
         this.started = started;
         return this;
     }
@@ -302,13 +301,13 @@ public class WarResponse implements Serializable {
      * Time when the war started and both sides could shoot each other
      * 
      * @return started
-     **/
+     */
     @javax.annotation.Nullable
     public OffsetDateTime getStarted() {
         return started;
     }
 
-    public void setStarted(OffsetDateTime started) {
+    public void setStarted(@javax.annotation.Nullable OffsetDateTime started) {
         this.started = started;
     }
 
@@ -394,18 +393,18 @@ public class WarResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to WarResponse
+     *             if the JSON Element is invalid with respect to WarResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!WarResponse.openapiRequiredFields.isEmpty()) { // has required
                                                                 // fields but
-                                                                // JSON object
+                                                                // JSON element
                                                                 // is null
                 throw new IllegalArgumentException(String.format(
                         "The required field(s) %s in WarResponse is not found in the empty JSON string",
@@ -413,27 +412,28 @@ public class WarResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!WarResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(String.format(
                         "The field `%s` in the JSON string is not defined in the `WarResponse` properties. JSON: %s",
-                        entry.getKey(), jsonObj.toString()));
+                        entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : WarResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         // validate the required field `aggressor`
-        Aggressor.validateJsonObject(jsonObj.getAsJsonObject("aggressor"));
+        Aggressor.validateJsonElement(jsonObj.get("aggressor"));
         if (jsonObj.get("allies") != null && !jsonObj.get("allies").isJsonNull()) {
             JsonArray jsonArrayallies = jsonObj.getAsJsonArray("allies");
             if (jsonArrayallies != null) {
@@ -446,12 +446,12 @@ public class WarResponse implements Serializable {
 
                 // validate the optional field `allies` (array)
                 for (int i = 0; i < jsonArrayallies.size(); i++) {
-                    WarAlly.validateJsonObject(jsonArrayallies.get(i).getAsJsonObject());
+                    WarAlly.validateJsonElement(jsonArrayallies.get(i));
                 };
             }
         }
         // validate the required field `defender`
-        Defender.validateJsonObject(jsonObj.getAsJsonObject("defender"));
+        Defender.validateJsonElement(jsonObj.get("defender"));
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -475,9 +475,9 @@ public class WarResponse implements Serializable {
 
                 @Override
                 public WarResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

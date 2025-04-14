@@ -41,12 +41,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -60,22 +58,27 @@ public class SovereigntyCampaignsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ATTACKERS_SCORE = "attackers_score";
     @SerializedName(SERIALIZED_NAME_ATTACKERS_SCORE)
+    @javax.annotation.Nullable
     private Float attackersScore;
 
     public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaign_id";
     @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
+    @javax.annotation.Nonnull
     private Integer campaignId;
 
     public static final String SERIALIZED_NAME_CONSTELLATION_ID = "constellation_id";
     @SerializedName(SERIALIZED_NAME_CONSTELLATION_ID)
+    @javax.annotation.Nonnull
     private Integer constellationId;
 
     public static final String SERIALIZED_NAME_DEFENDER_ID = "defender_id";
     @SerializedName(SERIALIZED_NAME_DEFENDER_ID)
+    @javax.annotation.Nullable
     private Integer defenderId;
 
     public static final String SERIALIZED_NAME_DEFENDER_SCORE = "defender_score";
     @SerializedName(SERIALIZED_NAME_DEFENDER_SCORE)
+    @javax.annotation.Nullable
     private Float defenderScore;
 
     /**
@@ -129,34 +132,43 @@ public class SovereigntyCampaignsResponse implements Serializable {
                 return EventTypeEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            EventTypeEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_EVENT_TYPE = "event_type";
     @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
+    @javax.annotation.Nonnull
     private String eventType;
     private EventTypeEnum eventTypeEnum;
 
     public static final String SERIALIZED_NAME_PARTICIPANTS = "participants";
     @SerializedName(SERIALIZED_NAME_PARTICIPANTS)
+    @javax.annotation.Nullable
     private List<SovereigntyCampaignParticipant> participants = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_SOLAR_SYSTEM_ID = "solar_system_id";
     @SerializedName(SERIALIZED_NAME_SOLAR_SYSTEM_ID)
+    @javax.annotation.Nonnull
     private Integer solarSystemId;
 
     public static final String SERIALIZED_NAME_START_TIME = "start_time";
     @SerializedName(SERIALIZED_NAME_START_TIME)
+    @javax.annotation.Nonnull
     private OffsetDateTime startTime;
 
     public static final String SERIALIZED_NAME_STRUCTURE_ID = "structure_id";
     @SerializedName(SERIALIZED_NAME_STRUCTURE_ID)
+    @javax.annotation.Nonnull
     private Long structureId;
 
     public SovereigntyCampaignsResponse() {
     }
 
-    public SovereigntyCampaignsResponse attackersScore(Float attackersScore) {
-
+    public SovereigntyCampaignsResponse attackersScore(@javax.annotation.Nullable Float attackersScore) {
         this.attackersScore = attackersScore;
         return this;
     }
@@ -165,18 +177,17 @@ public class SovereigntyCampaignsResponse implements Serializable {
      * Score for all attacking parties, only present in Defense Events.
      * 
      * @return attackersScore
-     **/
+     */
     @javax.annotation.Nullable
     public Float getAttackersScore() {
         return attackersScore;
     }
 
-    public void setAttackersScore(Float attackersScore) {
+    public void setAttackersScore(@javax.annotation.Nullable Float attackersScore) {
         this.attackersScore = attackersScore;
     }
 
-    public SovereigntyCampaignsResponse campaignId(Integer campaignId) {
-
+    public SovereigntyCampaignsResponse campaignId(@javax.annotation.Nonnull Integer campaignId) {
         this.campaignId = campaignId;
         return this;
     }
@@ -185,18 +196,17 @@ public class SovereigntyCampaignsResponse implements Serializable {
      * Unique ID for this campaign.
      * 
      * @return campaignId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getCampaignId() {
         return campaignId;
     }
 
-    public void setCampaignId(Integer campaignId) {
+    public void setCampaignId(@javax.annotation.Nonnull Integer campaignId) {
         this.campaignId = campaignId;
     }
 
-    public SovereigntyCampaignsResponse constellationId(Integer constellationId) {
-
+    public SovereigntyCampaignsResponse constellationId(@javax.annotation.Nonnull Integer constellationId) {
         this.constellationId = constellationId;
         return this;
     }
@@ -205,18 +215,17 @@ public class SovereigntyCampaignsResponse implements Serializable {
      * The constellation in which the campaign will take place.
      * 
      * @return constellationId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getConstellationId() {
         return constellationId;
     }
 
-    public void setConstellationId(Integer constellationId) {
+    public void setConstellationId(@javax.annotation.Nonnull Integer constellationId) {
         this.constellationId = constellationId;
     }
 
-    public SovereigntyCampaignsResponse defenderId(Integer defenderId) {
-
+    public SovereigntyCampaignsResponse defenderId(@javax.annotation.Nullable Integer defenderId) {
         this.defenderId = defenderId;
         return this;
     }
@@ -225,18 +234,17 @@ public class SovereigntyCampaignsResponse implements Serializable {
      * Defending alliance, only present in Defense Events
      * 
      * @return defenderId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getDefenderId() {
         return defenderId;
     }
 
-    public void setDefenderId(Integer defenderId) {
+    public void setDefenderId(@javax.annotation.Nullable Integer defenderId) {
         this.defenderId = defenderId;
     }
 
-    public SovereigntyCampaignsResponse defenderScore(Float defenderScore) {
-
+    public SovereigntyCampaignsResponse defenderScore(@javax.annotation.Nullable Float defenderScore) {
         this.defenderScore = defenderScore;
         return this;
     }
@@ -245,25 +253,23 @@ public class SovereigntyCampaignsResponse implements Serializable {
      * Score for the defending alliance, only present in Defense Events.
      * 
      * @return defenderScore
-     **/
+     */
     @javax.annotation.Nullable
     public Float getDefenderScore() {
         return defenderScore;
     }
 
-    public void setDefenderScore(Float defenderScore) {
+    public void setDefenderScore(@javax.annotation.Nullable Float defenderScore) {
         this.defenderScore = defenderScore;
     }
 
-    public SovereigntyCampaignsResponse eventTypeString(String eventType) {
-
-        this.eventType = eventType;
+    public SovereigntyCampaignsResponse eventType(@javax.annotation.Nonnull EventTypeEnum eventType) {
+        this.eventTypeEnum = eventType;
         return this;
     }
 
-    public SovereigntyCampaignsResponse eventType(EventTypeEnum eventTypeEnum) {
-
-        this.eventTypeEnum = eventTypeEnum;
+    public SovereigntyCampaignsResponse eventTypeString(@javax.annotation.Nonnull String eventType) {
+        this.eventType = eventType;
         return this;
     }
 
@@ -273,8 +279,8 @@ public class SovereigntyCampaignsResponse implements Serializable {
      * station_freeport as \&quot;Freeport Events\&quot;.
      * 
      * @return eventType
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public EventTypeEnum getEventType() {
         if (eventTypeEnum == null) {
             eventTypeEnum = EventTypeEnum.fromValue(eventType);
@@ -286,24 +292,25 @@ public class SovereigntyCampaignsResponse implements Serializable {
         return eventType;
     }
 
-    public void setEventType(EventTypeEnum eventTypeEnum) {
-        this.eventTypeEnum = eventTypeEnum;
+    public void setEventType(@javax.annotation.Nonnull EventTypeEnum eventType) {
+        this.eventTypeEnum = eventType;
     }
 
-    public void setEventTypeString(String eventType) {
+    public void setEventTypeString(@javax.annotation.Nonnull String eventType) {
         this.eventType = eventType;
     }
 
-    public SovereigntyCampaignsResponse participants(List<SovereigntyCampaignParticipant> participants) {
-
+    public SovereigntyCampaignsResponse participants(
+            @javax.annotation.Nullable List<SovereigntyCampaignParticipant> participants) {
         this.participants = participants;
         return this;
     }
 
-    public SovereigntyCampaignsResponse addparticipantsItem(SovereigntyCampaignParticipant participantsItem) {
+    public SovereigntyCampaignsResponse addParticipantsItem(SovereigntyCampaignParticipant participantsItem) {
         if (this.participants == null) {
             this.participants = new ArrayList<>();
         }
+
         this.participants.add(participantsItem);
         return this;
     }
@@ -313,18 +320,17 @@ public class SovereigntyCampaignsResponse implements Serializable {
      * Freeport Events.
      * 
      * @return participants
-     **/
+     */
     @javax.annotation.Nullable
     public List<SovereigntyCampaignParticipant> getParticipants() {
         return participants;
     }
 
-    public void setParticipants(List<SovereigntyCampaignParticipant> participants) {
+    public void setParticipants(@javax.annotation.Nullable List<SovereigntyCampaignParticipant> participants) {
         this.participants = participants;
     }
 
-    public SovereigntyCampaignsResponse solarSystemId(Integer solarSystemId) {
-
+    public SovereigntyCampaignsResponse solarSystemId(@javax.annotation.Nonnull Integer solarSystemId) {
         this.solarSystemId = solarSystemId;
         return this;
     }
@@ -333,18 +339,17 @@ public class SovereigntyCampaignsResponse implements Serializable {
      * The solar system the structure is located in.
      * 
      * @return solarSystemId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getSolarSystemId() {
         return solarSystemId;
     }
 
-    public void setSolarSystemId(Integer solarSystemId) {
+    public void setSolarSystemId(@javax.annotation.Nonnull Integer solarSystemId) {
         this.solarSystemId = solarSystemId;
     }
 
-    public SovereigntyCampaignsResponse startTime(OffsetDateTime startTime) {
-
+    public SovereigntyCampaignsResponse startTime(@javax.annotation.Nonnull OffsetDateTime startTime) {
         this.startTime = startTime;
         return this;
     }
@@ -353,18 +358,17 @@ public class SovereigntyCampaignsResponse implements Serializable {
      * Time the event is scheduled to start.
      * 
      * @return startTime
-     **/
+     */
     @javax.annotation.Nonnull
     public OffsetDateTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(OffsetDateTime startTime) {
+    public void setStartTime(@javax.annotation.Nonnull OffsetDateTime startTime) {
         this.startTime = startTime;
     }
 
-    public SovereigntyCampaignsResponse structureId(Long structureId) {
-
+    public SovereigntyCampaignsResponse structureId(@javax.annotation.Nonnull Long structureId) {
         this.structureId = structureId;
         return this;
     }
@@ -373,13 +377,13 @@ public class SovereigntyCampaignsResponse implements Serializable {
      * The structure item ID that is related to this campaign.
      * 
      * @return structureId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getStructureId() {
         return structureId;
     }
 
-    public void setStructureId(Long structureId) {
+    public void setStructureId(@javax.annotation.Nonnull Long structureId) {
         this.structureId = structureId;
     }
 
@@ -467,22 +471,22 @@ public class SovereigntyCampaignsResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             SovereigntyCampaignsResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!SovereigntyCampaignsResponse.openapiRequiredFields.isEmpty()) { // has
                                                                                  // required
                                                                                  // fields
                                                                                  // but
                                                                                  // JSON
-                                                                                 // object
+                                                                                 // element
                                                                                  // is
                                                                                  // null
                 throw new IllegalArgumentException(
@@ -492,31 +496,34 @@ public class SovereigntyCampaignsResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!SovereigntyCampaignsResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `SovereigntyCampaignsResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : SovereigntyCampaignsResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("event_type").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `event_type` to be a primitive type in the JSON string but got `%s`", jsonObj
                             .get("event_type").toString()));
         }
+        // validate the required field `event_type`
+        EventTypeEnum.validateJsonElement(jsonObj.get("event_type"));
         if (jsonObj.get("participants") != null && !jsonObj.get("participants").isJsonNull()) {
             JsonArray jsonArrayparticipants = jsonObj.getAsJsonArray("participants");
             if (jsonArrayparticipants != null) {
@@ -529,7 +536,7 @@ public class SovereigntyCampaignsResponse implements Serializable {
 
                 // validate the optional field `participants` (array)
                 for (int i = 0; i < jsonArrayparticipants.size(); i++) {
-                    SovereigntyCampaignParticipant.validateJsonObject(jsonArrayparticipants.get(i).getAsJsonObject());
+                    SovereigntyCampaignParticipant.validateJsonElement(jsonArrayparticipants.get(i));
                 };
             }
         }
@@ -556,9 +563,9 @@ public class SovereigntyCampaignsResponse implements Serializable {
 
                 @Override
                 public SovereigntyCampaignsResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

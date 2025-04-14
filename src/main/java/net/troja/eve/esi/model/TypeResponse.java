@@ -41,12 +41,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -60,73 +58,88 @@ public class TypeResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_CAPACITY = "capacity";
     @SerializedName(SERIALIZED_NAME_CAPACITY)
+    @javax.annotation.Nullable
     private Float capacity;
 
     public static final String SERIALIZED_NAME_DESCRIPTION = "description";
     @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+    @javax.annotation.Nonnull
     private String description;
 
     public static final String SERIALIZED_NAME_DOGMA_ATTRIBUTES = "dogma_attributes";
     @SerializedName(SERIALIZED_NAME_DOGMA_ATTRIBUTES)
+    @javax.annotation.Nullable
     private List<TypeDogmaAttribute> dogmaAttributes = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_DOGMA_EFFECTS = "dogma_effects";
     @SerializedName(SERIALIZED_NAME_DOGMA_EFFECTS)
+    @javax.annotation.Nullable
     private List<TypeDogmaEffect> dogmaEffects = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_GRAPHIC_ID = "graphic_id";
     @SerializedName(SERIALIZED_NAME_GRAPHIC_ID)
+    @javax.annotation.Nullable
     private Integer graphicId;
 
     public static final String SERIALIZED_NAME_GROUP_ID = "group_id";
     @SerializedName(SERIALIZED_NAME_GROUP_ID)
+    @javax.annotation.Nonnull
     private Integer groupId;
 
     public static final String SERIALIZED_NAME_ICON_ID = "icon_id";
     @SerializedName(SERIALIZED_NAME_ICON_ID)
+    @javax.annotation.Nullable
     private Integer iconId;
 
     public static final String SERIALIZED_NAME_MARKET_GROUP_ID = "market_group_id";
     @SerializedName(SERIALIZED_NAME_MARKET_GROUP_ID)
+    @javax.annotation.Nullable
     private Integer marketGroupId;
 
     public static final String SERIALIZED_NAME_MASS = "mass";
     @SerializedName(SERIALIZED_NAME_MASS)
+    @javax.annotation.Nullable
     private Float mass;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
+    @javax.annotation.Nonnull
     private String name;
 
     public static final String SERIALIZED_NAME_PACKAGED_VOLUME = "packaged_volume";
     @SerializedName(SERIALIZED_NAME_PACKAGED_VOLUME)
+    @javax.annotation.Nullable
     private Float packagedVolume;
 
     public static final String SERIALIZED_NAME_PORTION_SIZE = "portion_size";
     @SerializedName(SERIALIZED_NAME_PORTION_SIZE)
+    @javax.annotation.Nullable
     private Integer portionSize;
 
     public static final String SERIALIZED_NAME_PUBLISHED = "published";
     @SerializedName(SERIALIZED_NAME_PUBLISHED)
+    @javax.annotation.Nonnull
     private Boolean published;
 
     public static final String SERIALIZED_NAME_RADIUS = "radius";
     @SerializedName(SERIALIZED_NAME_RADIUS)
+    @javax.annotation.Nullable
     private Float radius;
 
     public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
+    @javax.annotation.Nonnull
     private Integer typeId;
 
     public static final String SERIALIZED_NAME_VOLUME = "volume";
     @SerializedName(SERIALIZED_NAME_VOLUME)
+    @javax.annotation.Nullable
     private Float volume;
 
     public TypeResponse() {
     }
 
-    public TypeResponse capacity(Float capacity) {
-
+    public TypeResponse capacity(@javax.annotation.Nullable Float capacity) {
         this.capacity = capacity;
         return this;
     }
@@ -135,18 +148,17 @@ public class TypeResponse implements Serializable {
      * capacity number
      * 
      * @return capacity
-     **/
+     */
     @javax.annotation.Nullable
     public Float getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(Float capacity) {
+    public void setCapacity(@javax.annotation.Nullable Float capacity) {
         this.capacity = capacity;
     }
 
-    public TypeResponse description(String description) {
-
+    public TypeResponse description(@javax.annotation.Nonnull String description) {
         this.description = description;
         return this;
     }
@@ -155,26 +167,26 @@ public class TypeResponse implements Serializable {
      * description string
      * 
      * @return description
-     **/
+     */
     @javax.annotation.Nonnull
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(@javax.annotation.Nonnull String description) {
         this.description = description;
     }
 
-    public TypeResponse dogmaAttributes(List<TypeDogmaAttribute> dogmaAttributes) {
-
+    public TypeResponse dogmaAttributes(@javax.annotation.Nullable List<TypeDogmaAttribute> dogmaAttributes) {
         this.dogmaAttributes = dogmaAttributes;
         return this;
     }
 
-    public TypeResponse adddogmaAttributesItem(TypeDogmaAttribute dogmaAttributesItem) {
+    public TypeResponse addDogmaAttributesItem(TypeDogmaAttribute dogmaAttributesItem) {
         if (this.dogmaAttributes == null) {
             this.dogmaAttributes = new ArrayList<>();
         }
+
         this.dogmaAttributes.add(dogmaAttributesItem);
         return this;
     }
@@ -183,26 +195,26 @@ public class TypeResponse implements Serializable {
      * dogma_attributes array
      * 
      * @return dogmaAttributes
-     **/
+     */
     @javax.annotation.Nullable
     public List<TypeDogmaAttribute> getDogmaAttributes() {
         return dogmaAttributes;
     }
 
-    public void setDogmaAttributes(List<TypeDogmaAttribute> dogmaAttributes) {
+    public void setDogmaAttributes(@javax.annotation.Nullable List<TypeDogmaAttribute> dogmaAttributes) {
         this.dogmaAttributes = dogmaAttributes;
     }
 
-    public TypeResponse dogmaEffects(List<TypeDogmaEffect> dogmaEffects) {
-
+    public TypeResponse dogmaEffects(@javax.annotation.Nullable List<TypeDogmaEffect> dogmaEffects) {
         this.dogmaEffects = dogmaEffects;
         return this;
     }
 
-    public TypeResponse adddogmaEffectsItem(TypeDogmaEffect dogmaEffectsItem) {
+    public TypeResponse addDogmaEffectsItem(TypeDogmaEffect dogmaEffectsItem) {
         if (this.dogmaEffects == null) {
             this.dogmaEffects = new ArrayList<>();
         }
+
         this.dogmaEffects.add(dogmaEffectsItem);
         return this;
     }
@@ -211,18 +223,17 @@ public class TypeResponse implements Serializable {
      * dogma_effects array
      * 
      * @return dogmaEffects
-     **/
+     */
     @javax.annotation.Nullable
     public List<TypeDogmaEffect> getDogmaEffects() {
         return dogmaEffects;
     }
 
-    public void setDogmaEffects(List<TypeDogmaEffect> dogmaEffects) {
+    public void setDogmaEffects(@javax.annotation.Nullable List<TypeDogmaEffect> dogmaEffects) {
         this.dogmaEffects = dogmaEffects;
     }
 
-    public TypeResponse graphicId(Integer graphicId) {
-
+    public TypeResponse graphicId(@javax.annotation.Nullable Integer graphicId) {
         this.graphicId = graphicId;
         return this;
     }
@@ -231,18 +242,17 @@ public class TypeResponse implements Serializable {
      * graphic_id integer
      * 
      * @return graphicId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getGraphicId() {
         return graphicId;
     }
 
-    public void setGraphicId(Integer graphicId) {
+    public void setGraphicId(@javax.annotation.Nullable Integer graphicId) {
         this.graphicId = graphicId;
     }
 
-    public TypeResponse groupId(Integer groupId) {
-
+    public TypeResponse groupId(@javax.annotation.Nonnull Integer groupId) {
         this.groupId = groupId;
         return this;
     }
@@ -251,18 +261,17 @@ public class TypeResponse implements Serializable {
      * group_id integer
      * 
      * @return groupId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getGroupId() {
         return groupId;
     }
 
-    public void setGroupId(Integer groupId) {
+    public void setGroupId(@javax.annotation.Nonnull Integer groupId) {
         this.groupId = groupId;
     }
 
-    public TypeResponse iconId(Integer iconId) {
-
+    public TypeResponse iconId(@javax.annotation.Nullable Integer iconId) {
         this.iconId = iconId;
         return this;
     }
@@ -271,18 +280,17 @@ public class TypeResponse implements Serializable {
      * icon_id integer
      * 
      * @return iconId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getIconId() {
         return iconId;
     }
 
-    public void setIconId(Integer iconId) {
+    public void setIconId(@javax.annotation.Nullable Integer iconId) {
         this.iconId = iconId;
     }
 
-    public TypeResponse marketGroupId(Integer marketGroupId) {
-
+    public TypeResponse marketGroupId(@javax.annotation.Nullable Integer marketGroupId) {
         this.marketGroupId = marketGroupId;
         return this;
     }
@@ -291,18 +299,17 @@ public class TypeResponse implements Serializable {
      * This only exists for types that can be put on the market
      * 
      * @return marketGroupId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getMarketGroupId() {
         return marketGroupId;
     }
 
-    public void setMarketGroupId(Integer marketGroupId) {
+    public void setMarketGroupId(@javax.annotation.Nullable Integer marketGroupId) {
         this.marketGroupId = marketGroupId;
     }
 
-    public TypeResponse mass(Float mass) {
-
+    public TypeResponse mass(@javax.annotation.Nullable Float mass) {
         this.mass = mass;
         return this;
     }
@@ -311,18 +318,17 @@ public class TypeResponse implements Serializable {
      * mass number
      * 
      * @return mass
-     **/
+     */
     @javax.annotation.Nullable
     public Float getMass() {
         return mass;
     }
 
-    public void setMass(Float mass) {
+    public void setMass(@javax.annotation.Nullable Float mass) {
         this.mass = mass;
     }
 
-    public TypeResponse name(String name) {
-
+    public TypeResponse name(@javax.annotation.Nonnull String name) {
         this.name = name;
         return this;
     }
@@ -331,18 +337,17 @@ public class TypeResponse implements Serializable {
      * name string
      * 
      * @return name
-     **/
+     */
     @javax.annotation.Nonnull
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@javax.annotation.Nonnull String name) {
         this.name = name;
     }
 
-    public TypeResponse packagedVolume(Float packagedVolume) {
-
+    public TypeResponse packagedVolume(@javax.annotation.Nullable Float packagedVolume) {
         this.packagedVolume = packagedVolume;
         return this;
     }
@@ -351,18 +356,17 @@ public class TypeResponse implements Serializable {
      * packaged_volume number
      * 
      * @return packagedVolume
-     **/
+     */
     @javax.annotation.Nullable
     public Float getPackagedVolume() {
         return packagedVolume;
     }
 
-    public void setPackagedVolume(Float packagedVolume) {
+    public void setPackagedVolume(@javax.annotation.Nullable Float packagedVolume) {
         this.packagedVolume = packagedVolume;
     }
 
-    public TypeResponse portionSize(Integer portionSize) {
-
+    public TypeResponse portionSize(@javax.annotation.Nullable Integer portionSize) {
         this.portionSize = portionSize;
         return this;
     }
@@ -371,18 +375,17 @@ public class TypeResponse implements Serializable {
      * portion_size integer
      * 
      * @return portionSize
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getPortionSize() {
         return portionSize;
     }
 
-    public void setPortionSize(Integer portionSize) {
+    public void setPortionSize(@javax.annotation.Nullable Integer portionSize) {
         this.portionSize = portionSize;
     }
 
-    public TypeResponse published(Boolean published) {
-
+    public TypeResponse published(@javax.annotation.Nonnull Boolean published) {
         this.published = published;
         return this;
     }
@@ -391,18 +394,17 @@ public class TypeResponse implements Serializable {
      * published boolean
      * 
      * @return published
-     **/
+     */
     @javax.annotation.Nonnull
     public Boolean getPublished() {
         return published;
     }
 
-    public void setPublished(Boolean published) {
+    public void setPublished(@javax.annotation.Nonnull Boolean published) {
         this.published = published;
     }
 
-    public TypeResponse radius(Float radius) {
-
+    public TypeResponse radius(@javax.annotation.Nullable Float radius) {
         this.radius = radius;
         return this;
     }
@@ -411,18 +413,17 @@ public class TypeResponse implements Serializable {
      * radius number
      * 
      * @return radius
-     **/
+     */
     @javax.annotation.Nullable
     public Float getRadius() {
         return radius;
     }
 
-    public void setRadius(Float radius) {
+    public void setRadius(@javax.annotation.Nullable Float radius) {
         this.radius = radius;
     }
 
-    public TypeResponse typeId(Integer typeId) {
-
+    public TypeResponse typeId(@javax.annotation.Nonnull Integer typeId) {
         this.typeId = typeId;
         return this;
     }
@@ -431,18 +432,17 @@ public class TypeResponse implements Serializable {
      * type_id integer
      * 
      * @return typeId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(Integer typeId) {
+    public void setTypeId(@javax.annotation.Nonnull Integer typeId) {
         this.typeId = typeId;
     }
 
-    public TypeResponse volume(Float volume) {
-
+    public TypeResponse volume(@javax.annotation.Nullable Float volume) {
         this.volume = volume;
         return this;
     }
@@ -451,13 +451,13 @@ public class TypeResponse implements Serializable {
      * volume number
      * 
      * @return volume
-     **/
+     */
     @javax.annotation.Nullable
     public Float getVolume() {
         return volume;
     }
 
-    public void setVolume(Float volume) {
+    public void setVolume(@javax.annotation.Nullable Float volume) {
         this.volume = volume;
     }
 
@@ -560,18 +560,18 @@ public class TypeResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to TypeResponse
+     *             if the JSON Element is invalid with respect to TypeResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!TypeResponse.openapiRequiredFields.isEmpty()) { // has required
                                                                  // fields but
-                                                                 // JSON object
+                                                                 // JSON element
                                                                  // is null
                 throw new IllegalArgumentException(String.format(
                         "The required field(s) %s in TypeResponse is not found in the empty JSON string",
@@ -579,25 +579,26 @@ public class TypeResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!TypeResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(String.format(
                         "The field `%s` in the JSON string is not defined in the `TypeResponse` properties. JSON: %s",
-                        entry.getKey(), jsonObj.toString()));
+                        entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : TypeResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("description").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj
@@ -615,7 +616,7 @@ public class TypeResponse implements Serializable {
 
                 // validate the optional field `dogma_attributes` (array)
                 for (int i = 0; i < jsonArraydogmaAttributes.size(); i++) {
-                    TypeDogmaAttribute.validateJsonObject(jsonArraydogmaAttributes.get(i).getAsJsonObject());
+                    TypeDogmaAttribute.validateJsonElement(jsonArraydogmaAttributes.get(i));
                 };
             }
         }
@@ -631,7 +632,7 @@ public class TypeResponse implements Serializable {
 
                 // validate the optional field `dogma_effects` (array)
                 for (int i = 0; i < jsonArraydogmaEffects.size(); i++) {
-                    TypeDogmaEffect.validateJsonObject(jsonArraydogmaEffects.get(i).getAsJsonObject());
+                    TypeDogmaEffect.validateJsonElement(jsonArraydogmaEffects.get(i));
                 };
             }
         }
@@ -663,9 +664,9 @@ public class TypeResponse implements Serializable {
 
                 @Override
                 public TypeResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

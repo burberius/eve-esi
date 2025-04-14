@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -56,13 +54,13 @@ public class FleetWingCreatedResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_WING_ID = "wing_id";
     @SerializedName(SERIALIZED_NAME_WING_ID)
+    @javax.annotation.Nonnull
     private Long wingId;
 
     public FleetWingCreatedResponse() {
     }
 
-    public FleetWingCreatedResponse wingId(Long wingId) {
-
+    public FleetWingCreatedResponse wingId(@javax.annotation.Nonnull Long wingId) {
         this.wingId = wingId;
         return this;
     }
@@ -71,13 +69,13 @@ public class FleetWingCreatedResponse implements Serializable {
      * The wing_id of the newly created wing
      * 
      * @return wingId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getWingId() {
         return wingId;
     }
 
-    public void setWingId(Long wingId) {
+    public void setWingId(@javax.annotation.Nonnull Long wingId) {
         this.wingId = wingId;
     }
 
@@ -132,22 +130,22 @@ public class FleetWingCreatedResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             FleetWingCreatedResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!FleetWingCreatedResponse.openapiRequiredFields.isEmpty()) { // has
                                                                              // required
                                                                              // fields
                                                                              // but
                                                                              // JSON
-                                                                             // object
+                                                                             // element
                                                                              // is
                                                                              // null
                 throw new IllegalArgumentException(String.format(
@@ -156,26 +154,27 @@ public class FleetWingCreatedResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!FleetWingCreatedResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `FleetWingCreatedResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : FleetWingCreatedResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -199,9 +198,9 @@ public class FleetWingCreatedResponse implements Serializable {
 
                 @Override
                 public FleetWingCreatedResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

@@ -40,12 +40,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -59,33 +57,38 @@ public class KillmailItem implements Serializable {
 
     public static final String SERIALIZED_NAME_FLAG = "flag";
     @SerializedName(SERIALIZED_NAME_FLAG)
+    @javax.annotation.Nonnull
     private Integer flag;
 
     public static final String SERIALIZED_NAME_ITEM_TYPE_ID = "item_type_id";
     @SerializedName(SERIALIZED_NAME_ITEM_TYPE_ID)
+    @javax.annotation.Nonnull
     private Integer itemTypeId;
 
     public static final String SERIALIZED_NAME_ITEMS = "items";
     @SerializedName(SERIALIZED_NAME_ITEMS)
+    @javax.annotation.Nullable
     private List<KillmailSubItem> items = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_QUANTITY_DESTROYED = "quantity_destroyed";
     @SerializedName(SERIALIZED_NAME_QUANTITY_DESTROYED)
+    @javax.annotation.Nullable
     private Long quantityDestroyed;
 
     public static final String SERIALIZED_NAME_QUANTITY_DROPPED = "quantity_dropped";
     @SerializedName(SERIALIZED_NAME_QUANTITY_DROPPED)
+    @javax.annotation.Nullable
     private Long quantityDropped;
 
     public static final String SERIALIZED_NAME_SINGLETON = "singleton";
     @SerializedName(SERIALIZED_NAME_SINGLETON)
+    @javax.annotation.Nonnull
     private Integer singleton;
 
     public KillmailItem() {
     }
 
-    public KillmailItem flag(Integer flag) {
-
+    public KillmailItem flag(@javax.annotation.Nonnull Integer flag) {
         this.flag = flag;
         return this;
     }
@@ -94,18 +97,17 @@ public class KillmailItem implements Serializable {
      * Flag for the location of the item
      * 
      * @return flag
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getFlag() {
         return flag;
     }
 
-    public void setFlag(Integer flag) {
+    public void setFlag(@javax.annotation.Nonnull Integer flag) {
         this.flag = flag;
     }
 
-    public KillmailItem itemTypeId(Integer itemTypeId) {
-
+    public KillmailItem itemTypeId(@javax.annotation.Nonnull Integer itemTypeId) {
         this.itemTypeId = itemTypeId;
         return this;
     }
@@ -114,26 +116,26 @@ public class KillmailItem implements Serializable {
      * item_type_id integer
      * 
      * @return itemTypeId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getItemTypeId() {
         return itemTypeId;
     }
 
-    public void setItemTypeId(Integer itemTypeId) {
+    public void setItemTypeId(@javax.annotation.Nonnull Integer itemTypeId) {
         this.itemTypeId = itemTypeId;
     }
 
-    public KillmailItem items(List<KillmailSubItem> items) {
-
+    public KillmailItem items(@javax.annotation.Nullable List<KillmailSubItem> items) {
         this.items = items;
         return this;
     }
 
-    public KillmailItem additemsItem(KillmailSubItem itemsItem) {
+    public KillmailItem addItemsItem(KillmailSubItem itemsItem) {
         if (this.items == null) {
             this.items = new ArrayList<>();
         }
+
         this.items.add(itemsItem);
         return this;
     }
@@ -142,18 +144,17 @@ public class KillmailItem implements Serializable {
      * items array
      * 
      * @return items
-     **/
+     */
     @javax.annotation.Nullable
     public List<KillmailSubItem> getItems() {
         return items;
     }
 
-    public void setItems(List<KillmailSubItem> items) {
+    public void setItems(@javax.annotation.Nullable List<KillmailSubItem> items) {
         this.items = items;
     }
 
-    public KillmailItem quantityDestroyed(Long quantityDestroyed) {
-
+    public KillmailItem quantityDestroyed(@javax.annotation.Nullable Long quantityDestroyed) {
         this.quantityDestroyed = quantityDestroyed;
         return this;
     }
@@ -162,18 +163,17 @@ public class KillmailItem implements Serializable {
      * How many of the item were destroyed if any
      * 
      * @return quantityDestroyed
-     **/
+     */
     @javax.annotation.Nullable
     public Long getQuantityDestroyed() {
         return quantityDestroyed;
     }
 
-    public void setQuantityDestroyed(Long quantityDestroyed) {
+    public void setQuantityDestroyed(@javax.annotation.Nullable Long quantityDestroyed) {
         this.quantityDestroyed = quantityDestroyed;
     }
 
-    public KillmailItem quantityDropped(Long quantityDropped) {
-
+    public KillmailItem quantityDropped(@javax.annotation.Nullable Long quantityDropped) {
         this.quantityDropped = quantityDropped;
         return this;
     }
@@ -182,18 +182,17 @@ public class KillmailItem implements Serializable {
      * How many of the item were dropped if any
      * 
      * @return quantityDropped
-     **/
+     */
     @javax.annotation.Nullable
     public Long getQuantityDropped() {
         return quantityDropped;
     }
 
-    public void setQuantityDropped(Long quantityDropped) {
+    public void setQuantityDropped(@javax.annotation.Nullable Long quantityDropped) {
         this.quantityDropped = quantityDropped;
     }
 
-    public KillmailItem singleton(Integer singleton) {
-
+    public KillmailItem singleton(@javax.annotation.Nonnull Integer singleton) {
         this.singleton = singleton;
         return this;
     }
@@ -202,13 +201,13 @@ public class KillmailItem implements Serializable {
      * singleton integer
      * 
      * @return singleton
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getSingleton() {
         return singleton;
     }
 
-    public void setSingleton(Integer singleton) {
+    public void setSingleton(@javax.annotation.Nonnull Integer singleton) {
         this.singleton = singleton;
     }
 
@@ -279,18 +278,18 @@ public class KillmailItem implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to KillmailItem
+     *             if the JSON Element is invalid with respect to KillmailItem
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!KillmailItem.openapiRequiredFields.isEmpty()) { // has required
                                                                  // fields but
-                                                                 // JSON object
+                                                                 // JSON element
                                                                  // is null
                 throw new IllegalArgumentException(String.format(
                         "The required field(s) %s in KillmailItem is not found in the empty JSON string",
@@ -298,25 +297,26 @@ public class KillmailItem implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!KillmailItem.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(String.format(
                         "The field `%s` in the JSON string is not defined in the `KillmailItem` properties. JSON: %s",
-                        entry.getKey(), jsonObj.toString()));
+                        entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : KillmailItem.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (jsonObj.get("items") != null && !jsonObj.get("items").isJsonNull()) {
             JsonArray jsonArrayitems = jsonObj.getAsJsonArray("items");
             if (jsonArrayitems != null) {
@@ -329,7 +329,7 @@ public class KillmailItem implements Serializable {
 
                 // validate the optional field `items` (array)
                 for (int i = 0; i < jsonArrayitems.size(); i++) {
-                    KillmailSubItem.validateJsonObject(jsonArrayitems.get(i).getAsJsonObject());
+                    KillmailSubItem.validateJsonElement(jsonArrayitems.get(i));
                 };
             }
         }
@@ -356,9 +356,9 @@ public class KillmailItem implements Serializable {
 
                 @Override
                 public KillmailItem read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

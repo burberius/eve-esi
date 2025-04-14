@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -56,17 +54,18 @@ public class UniverseIdsCorporation implements Serializable {
 
     public static final String SERIALIZED_NAME_ID = "id";
     @SerializedName(SERIALIZED_NAME_ID)
+    @javax.annotation.Nullable
     private Integer id;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
+    @javax.annotation.Nullable
     private String name;
 
     public UniverseIdsCorporation() {
     }
 
-    public UniverseIdsCorporation id(Integer id) {
-
+    public UniverseIdsCorporation id(@javax.annotation.Nullable Integer id) {
         this.id = id;
         return this;
     }
@@ -75,18 +74,17 @@ public class UniverseIdsCorporation implements Serializable {
      * id integer
      * 
      * @return id
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(@javax.annotation.Nullable Integer id) {
         this.id = id;
     }
 
-    public UniverseIdsCorporation name(String name) {
-
+    public UniverseIdsCorporation name(@javax.annotation.Nullable String name) {
         this.name = name;
         return this;
     }
@@ -95,13 +93,13 @@ public class UniverseIdsCorporation implements Serializable {
      * name string
      * 
      * @return name
-     **/
+     */
     @javax.annotation.Nullable
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@javax.annotation.Nullable String name) {
         this.name = name;
     }
 
@@ -158,22 +156,22 @@ public class UniverseIdsCorporation implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             UniverseIdsCorporation
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!UniverseIdsCorporation.openapiRequiredFields.isEmpty()) { // has
                                                                            // required
                                                                            // fields
                                                                            // but
                                                                            // JSON
-                                                                           // object
+                                                                           // element
                                                                            // is
                                                                            // null
                 throw new IllegalArgumentException(String.format(
@@ -182,16 +180,17 @@ public class UniverseIdsCorporation implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!UniverseIdsCorporation.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `UniverseIdsCorporation` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull())
                 && !jsonObj.get("name").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
@@ -221,9 +220,9 @@ public class UniverseIdsCorporation implements Serializable {
 
                 @Override
                 public UniverseIdsCorporation read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

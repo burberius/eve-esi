@@ -39,12 +39,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -58,25 +56,27 @@ public class MailMetaData implements Serializable {
 
     public static final String SERIALIZED_NAME_LABELS = "labels";
     @SerializedName(SERIALIZED_NAME_LABELS)
+    @javax.annotation.Nullable
     private List<Integer> labels = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_READ = "read";
     @SerializedName(SERIALIZED_NAME_READ)
+    @javax.annotation.Nullable
     private Boolean read;
 
     public MailMetaData() {
     }
 
-    public MailMetaData labels(List<Integer> labels) {
-
+    public MailMetaData labels(@javax.annotation.Nullable List<Integer> labels) {
         this.labels = labels;
         return this;
     }
 
-    public MailMetaData addlabelsItem(Integer labelsItem) {
+    public MailMetaData addLabelsItem(Integer labelsItem) {
         if (this.labels == null) {
             this.labels = new ArrayList<>();
         }
+
         this.labels.add(labelsItem);
         return this;
     }
@@ -85,18 +85,17 @@ public class MailMetaData implements Serializable {
      * Labels to assign to the mail. Pre-existing labels are unassigned.
      * 
      * @return labels
-     **/
+     */
     @javax.annotation.Nullable
     public List<Integer> getLabels() {
         return labels;
     }
 
-    public void setLabels(List<Integer> labels) {
+    public void setLabels(@javax.annotation.Nullable List<Integer> labels) {
         this.labels = labels;
     }
 
-    public MailMetaData read(Boolean read) {
-
+    public MailMetaData read(@javax.annotation.Nullable Boolean read) {
         this.read = read;
         return this;
     }
@@ -105,13 +104,13 @@ public class MailMetaData implements Serializable {
      * Whether the mail is flagged as read
      * 
      * @return read
-     **/
+     */
     @javax.annotation.Nullable
     public Boolean getRead() {
         return read;
     }
 
-    public void setRead(Boolean read) {
+    public void setRead(@javax.annotation.Nullable Boolean read) {
         this.read = read;
     }
 
@@ -167,18 +166,18 @@ public class MailMetaData implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to MailMetaData
+     *             if the JSON Element is invalid with respect to MailMetaData
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!MailMetaData.openapiRequiredFields.isEmpty()) { // has required
                                                                  // fields but
-                                                                 // JSON object
+                                                                 // JSON element
                                                                  // is null
                 throw new IllegalArgumentException(String.format(
                         "The required field(s) %s in MailMetaData is not found in the empty JSON string",
@@ -186,17 +185,19 @@ public class MailMetaData implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!MailMetaData.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(String.format(
                         "The field `%s` in the JSON string is not defined in the `MailMetaData` properties. JSON: %s",
-                        entry.getKey(), jsonObj.toString()));
+                        entry.getKey(), jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         // ensure the optional json data is an array if present
-        if (jsonObj.get("labels") != null && !jsonObj.get("labels").isJsonArray()) {
+        if (jsonObj.get("labels") != null && !jsonObj.get("labels").isJsonNull()
+                && !jsonObj.get("labels").isJsonArray()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `labels` to be an array in the JSON string but got `%s`", jsonObj.get("labels")
                             .toString()));
@@ -224,9 +225,9 @@ public class MailMetaData implements Serializable {
 
                 @Override
                 public MailMetaData read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

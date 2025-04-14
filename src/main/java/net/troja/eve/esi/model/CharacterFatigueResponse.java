@@ -38,12 +38,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -57,21 +55,24 @@ public class CharacterFatigueResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_JUMP_FATIGUE_EXPIRE_DATE = "jump_fatigue_expire_date";
     @SerializedName(SERIALIZED_NAME_JUMP_FATIGUE_EXPIRE_DATE)
+    @javax.annotation.Nullable
     private OffsetDateTime jumpFatigueExpireDate;
 
     public static final String SERIALIZED_NAME_LAST_JUMP_DATE = "last_jump_date";
     @SerializedName(SERIALIZED_NAME_LAST_JUMP_DATE)
+    @javax.annotation.Nullable
     private OffsetDateTime lastJumpDate;
 
     public static final String SERIALIZED_NAME_LAST_UPDATE_DATE = "last_update_date";
     @SerializedName(SERIALIZED_NAME_LAST_UPDATE_DATE)
+    @javax.annotation.Nullable
     private OffsetDateTime lastUpdateDate;
 
     public CharacterFatigueResponse() {
     }
 
-    public CharacterFatigueResponse jumpFatigueExpireDate(OffsetDateTime jumpFatigueExpireDate) {
-
+    public CharacterFatigueResponse jumpFatigueExpireDate(
+            @javax.annotation.Nullable OffsetDateTime jumpFatigueExpireDate) {
         this.jumpFatigueExpireDate = jumpFatigueExpireDate;
         return this;
     }
@@ -80,18 +81,17 @@ public class CharacterFatigueResponse implements Serializable {
      * Character&#39;s jump fatigue expiry
      * 
      * @return jumpFatigueExpireDate
-     **/
+     */
     @javax.annotation.Nullable
     public OffsetDateTime getJumpFatigueExpireDate() {
         return jumpFatigueExpireDate;
     }
 
-    public void setJumpFatigueExpireDate(OffsetDateTime jumpFatigueExpireDate) {
+    public void setJumpFatigueExpireDate(@javax.annotation.Nullable OffsetDateTime jumpFatigueExpireDate) {
         this.jumpFatigueExpireDate = jumpFatigueExpireDate;
     }
 
-    public CharacterFatigueResponse lastJumpDate(OffsetDateTime lastJumpDate) {
-
+    public CharacterFatigueResponse lastJumpDate(@javax.annotation.Nullable OffsetDateTime lastJumpDate) {
         this.lastJumpDate = lastJumpDate;
         return this;
     }
@@ -100,18 +100,17 @@ public class CharacterFatigueResponse implements Serializable {
      * Character&#39;s last jump activation
      * 
      * @return lastJumpDate
-     **/
+     */
     @javax.annotation.Nullable
     public OffsetDateTime getLastJumpDate() {
         return lastJumpDate;
     }
 
-    public void setLastJumpDate(OffsetDateTime lastJumpDate) {
+    public void setLastJumpDate(@javax.annotation.Nullable OffsetDateTime lastJumpDate) {
         this.lastJumpDate = lastJumpDate;
     }
 
-    public CharacterFatigueResponse lastUpdateDate(OffsetDateTime lastUpdateDate) {
-
+    public CharacterFatigueResponse lastUpdateDate(@javax.annotation.Nullable OffsetDateTime lastUpdateDate) {
         this.lastUpdateDate = lastUpdateDate;
         return this;
     }
@@ -120,13 +119,13 @@ public class CharacterFatigueResponse implements Serializable {
      * Character&#39;s last jump update
      * 
      * @return lastUpdateDate
-     **/
+     */
     @javax.annotation.Nullable
     public OffsetDateTime getLastUpdateDate() {
         return lastUpdateDate;
     }
 
-    public void setLastUpdateDate(OffsetDateTime lastUpdateDate) {
+    public void setLastUpdateDate(@javax.annotation.Nullable OffsetDateTime lastUpdateDate) {
         this.lastUpdateDate = lastUpdateDate;
     }
 
@@ -186,22 +185,22 @@ public class CharacterFatigueResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CharacterFatigueResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CharacterFatigueResponse.openapiRequiredFields.isEmpty()) { // has
                                                                              // required
                                                                              // fields
                                                                              // but
                                                                              // JSON
-                                                                             // object
+                                                                             // element
                                                                              // is
                                                                              // null
                 throw new IllegalArgumentException(String.format(
@@ -210,16 +209,17 @@ public class CharacterFatigueResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CharacterFatigueResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CharacterFatigueResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -243,9 +243,9 @@ public class CharacterFatigueResponse implements Serializable {
 
                 @Override
                 public CharacterFatigueResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

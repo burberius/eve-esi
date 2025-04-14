@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -181,33 +179,39 @@ public class FittingItem implements Serializable {
                 return FlagEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            FlagEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_FLAG = "flag";
     @SerializedName(SERIALIZED_NAME_FLAG)
+    @javax.annotation.Nonnull
     private String flag;
     private FlagEnum flagEnum;
 
     public static final String SERIALIZED_NAME_QUANTITY = "quantity";
     @SerializedName(SERIALIZED_NAME_QUANTITY)
+    @javax.annotation.Nonnull
     private Integer quantity;
 
     public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
+    @javax.annotation.Nonnull
     private Integer typeId;
 
     public FittingItem() {
     }
 
-    public FittingItem flagString(String flag) {
-
-        this.flag = flag;
+    public FittingItem flag(@javax.annotation.Nonnull FlagEnum flag) {
+        this.flagEnum = flag;
         return this;
     }
 
-    public FittingItem flag(FlagEnum flagEnum) {
-
-        this.flagEnum = flagEnum;
+    public FittingItem flagString(@javax.annotation.Nonnull String flag) {
+        this.flag = flag;
         return this;
     }
 
@@ -215,8 +219,8 @@ public class FittingItem implements Serializable {
      * flag string
      * 
      * @return flag
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public FlagEnum getFlag() {
         if (flagEnum == null) {
             flagEnum = FlagEnum.fromValue(flag);
@@ -228,16 +232,15 @@ public class FittingItem implements Serializable {
         return flag;
     }
 
-    public void setFlag(FlagEnum flagEnum) {
-        this.flagEnum = flagEnum;
+    public void setFlag(@javax.annotation.Nonnull FlagEnum flag) {
+        this.flagEnum = flag;
     }
 
-    public void setFlagString(String flag) {
+    public void setFlagString(@javax.annotation.Nonnull String flag) {
         this.flag = flag;
     }
 
-    public FittingItem quantity(Integer quantity) {
-
+    public FittingItem quantity(@javax.annotation.Nonnull Integer quantity) {
         this.quantity = quantity;
         return this;
     }
@@ -246,18 +249,17 @@ public class FittingItem implements Serializable {
      * quantity integer
      * 
      * @return quantity
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(@javax.annotation.Nonnull Integer quantity) {
         this.quantity = quantity;
     }
 
-    public FittingItem typeId(Integer typeId) {
-
+    public FittingItem typeId(@javax.annotation.Nonnull Integer typeId) {
         this.typeId = typeId;
         return this;
     }
@@ -266,13 +268,13 @@ public class FittingItem implements Serializable {
      * type_id integer
      * 
      * @return typeId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(Integer typeId) {
+    public void setTypeId(@javax.annotation.Nonnull Integer typeId) {
         this.typeId = typeId;
     }
 
@@ -334,18 +336,18 @@ public class FittingItem implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to FittingItem
+     *             if the JSON Element is invalid with respect to FittingItem
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!FittingItem.openapiRequiredFields.isEmpty()) { // has required
                                                                 // fields but
-                                                                // JSON object
+                                                                // JSON element
                                                                 // is null
                 throw new IllegalArgumentException(String.format(
                         "The required field(s) %s in FittingItem is not found in the empty JSON string",
@@ -353,30 +355,33 @@ public class FittingItem implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!FittingItem.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(String.format(
                         "The field `%s` in the JSON string is not defined in the `FittingItem` properties. JSON: %s",
-                        entry.getKey(), jsonObj.toString()));
+                        entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : FittingItem.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("flag").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `flag` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("flag").toString()));
         }
+        // validate the required field `flag`
+        FlagEnum.validateJsonElement(jsonObj.get("flag"));
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -400,9 +405,9 @@ public class FittingItem implements Serializable {
 
                 @Override
                 public FittingItem read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

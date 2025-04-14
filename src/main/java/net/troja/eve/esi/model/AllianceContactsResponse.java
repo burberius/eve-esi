@@ -39,12 +39,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -58,6 +56,7 @@ public class AllianceContactsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_CONTACT_ID = "contact_id";
     @SerializedName(SERIALIZED_NAME_CONTACT_ID)
+    @javax.annotation.Nonnull
     private Integer contactId;
 
     /**
@@ -109,26 +108,33 @@ public class AllianceContactsResponse implements Serializable {
                 return ContactTypeEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ContactTypeEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_CONTACT_TYPE = "contact_type";
     @SerializedName(SERIALIZED_NAME_CONTACT_TYPE)
+    @javax.annotation.Nonnull
     private String contactType;
     private ContactTypeEnum contactTypeEnum;
 
     public static final String SERIALIZED_NAME_LABEL_IDS = "label_ids";
     @SerializedName(SERIALIZED_NAME_LABEL_IDS)
+    @javax.annotation.Nullable
     private List<Long> labelIds = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_STANDING = "standing";
     @SerializedName(SERIALIZED_NAME_STANDING)
+    @javax.annotation.Nonnull
     private Float standing;
 
     public AllianceContactsResponse() {
     }
 
-    public AllianceContactsResponse contactId(Integer contactId) {
-
+    public AllianceContactsResponse contactId(@javax.annotation.Nonnull Integer contactId) {
         this.contactId = contactId;
         return this;
     }
@@ -137,25 +143,23 @@ public class AllianceContactsResponse implements Serializable {
      * contact_id integer
      * 
      * @return contactId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getContactId() {
         return contactId;
     }
 
-    public void setContactId(Integer contactId) {
+    public void setContactId(@javax.annotation.Nonnull Integer contactId) {
         this.contactId = contactId;
     }
 
-    public AllianceContactsResponse contactTypeString(String contactType) {
-
-        this.contactType = contactType;
+    public AllianceContactsResponse contactType(@javax.annotation.Nonnull ContactTypeEnum contactType) {
+        this.contactTypeEnum = contactType;
         return this;
     }
 
-    public AllianceContactsResponse contactType(ContactTypeEnum contactTypeEnum) {
-
-        this.contactTypeEnum = contactTypeEnum;
+    public AllianceContactsResponse contactTypeString(@javax.annotation.Nonnull String contactType) {
+        this.contactType = contactType;
         return this;
     }
 
@@ -163,8 +167,8 @@ public class AllianceContactsResponse implements Serializable {
      * contact_type string
      * 
      * @return contactType
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public ContactTypeEnum getContactType() {
         if (contactTypeEnum == null) {
             contactTypeEnum = ContactTypeEnum.fromValue(contactType);
@@ -176,24 +180,24 @@ public class AllianceContactsResponse implements Serializable {
         return contactType;
     }
 
-    public void setContactType(ContactTypeEnum contactTypeEnum) {
-        this.contactTypeEnum = contactTypeEnum;
+    public void setContactType(@javax.annotation.Nonnull ContactTypeEnum contactType) {
+        this.contactTypeEnum = contactType;
     }
 
-    public void setContactTypeString(String contactType) {
+    public void setContactTypeString(@javax.annotation.Nonnull String contactType) {
         this.contactType = contactType;
     }
 
-    public AllianceContactsResponse labelIds(List<Long> labelIds) {
-
+    public AllianceContactsResponse labelIds(@javax.annotation.Nullable List<Long> labelIds) {
         this.labelIds = labelIds;
         return this;
     }
 
-    public AllianceContactsResponse addlabelIdsItem(Long labelIdsItem) {
+    public AllianceContactsResponse addLabelIdsItem(Long labelIdsItem) {
         if (this.labelIds == null) {
             this.labelIds = new ArrayList<>();
         }
+
         this.labelIds.add(labelIdsItem);
         return this;
     }
@@ -202,18 +206,17 @@ public class AllianceContactsResponse implements Serializable {
      * label_ids array
      * 
      * @return labelIds
-     **/
+     */
     @javax.annotation.Nullable
     public List<Long> getLabelIds() {
         return labelIds;
     }
 
-    public void setLabelIds(List<Long> labelIds) {
+    public void setLabelIds(@javax.annotation.Nullable List<Long> labelIds) {
         this.labelIds = labelIds;
     }
 
-    public AllianceContactsResponse standing(Float standing) {
-
+    public AllianceContactsResponse standing(@javax.annotation.Nonnull Float standing) {
         this.standing = standing;
         return this;
     }
@@ -222,13 +225,13 @@ public class AllianceContactsResponse implements Serializable {
      * Standing of the contact
      * 
      * @return standing
-     **/
+     */
     @javax.annotation.Nonnull
     public Float getStanding() {
         return standing;
     }
 
-    public void setStanding(Float standing) {
+    public void setStanding(@javax.annotation.Nonnull Float standing) {
         this.standing = standing;
     }
 
@@ -294,22 +297,22 @@ public class AllianceContactsResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             AllianceContactsResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!AllianceContactsResponse.openapiRequiredFields.isEmpty()) { // has
                                                                              // required
                                                                              // fields
                                                                              // but
                                                                              // JSON
-                                                                             // object
+                                                                             // element
                                                                              // is
                                                                              // null
                 throw new IllegalArgumentException(String.format(
@@ -318,33 +321,37 @@ public class AllianceContactsResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!AllianceContactsResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `AllianceContactsResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : AllianceContactsResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("contact_type").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `contact_type` to be a primitive type in the JSON string but got `%s`", jsonObj
                             .get("contact_type").toString()));
         }
+        // validate the required field `contact_type`
+        ContactTypeEnum.validateJsonElement(jsonObj.get("contact_type"));
         // ensure the optional json data is an array if present
-        if (jsonObj.get("label_ids") != null && !jsonObj.get("label_ids").isJsonArray()) {
+        if (jsonObj.get("label_ids") != null && !jsonObj.get("label_ids").isJsonNull()
+                && !jsonObj.get("label_ids").isJsonArray()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `label_ids` to be an array in the JSON string but got `%s`",
                     jsonObj.get("label_ids").toString()));
@@ -372,9 +379,9 @@ public class AllianceContactsResponse implements Serializable {
 
                 @Override
                 public AllianceContactsResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

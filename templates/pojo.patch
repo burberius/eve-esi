@@ -1,0 +1,115 @@
+--- out/libraries/okhttp-gson/pojo.mustache	2025-04-13 22:37:42.346075689 +0200
++++ templates/pojo.mustache	2025-04-14 10:35:33.016226922 +0200
+@@ -71,7 +71,14 @@
+   {{{vendorExtensions.x-field-extra-annotation}}}
+   {{/vendorExtensions.x-field-extra-annotation}}
+   {{>nullable_var_annotations}}
+-  {{#isDiscriminator}}protected{{/isDiscriminator}}{{^isDiscriminator}}private{{/isDiscriminator}} {{{datatypeWithEnum}}} {{name}}{{#defaultValue}} = {{{.}}}{{/defaultValue}};
++  {{#isContainer}}
++  {{#isEnum}}{{#isDiscriminator}}protected{{/isDiscriminator}}{{^isDiscriminator}}private{{/isDiscriminator}} List<String> {{name}}{{#defaultValue}} = {{{.}}}{{/defaultValue}};{{/isEnum}}
++  {{#isDiscriminator}}protected{{/isDiscriminator}}{{^isDiscriminator}}private{{/isDiscriminator}} {{{datatypeWithEnum}}} {{name}}{{#isEnum}}Enum{{/isEnum}}{{#defaultValue}} = {{{.}}}{{/defaultValue}};
++  {{/isContainer}}
++  {{^isContainer}}
++  {{#isEnum}}{{#isDiscriminator}}protected{{/isDiscriminator}}{{^isDiscriminator}}private{{/isDiscriminator}} String {{name}};{{/isEnum}}
++  {{#isDiscriminator}}protected{{/isDiscriminator}}{{^isDiscriminator}}private{{/isDiscriminator}} {{{datatypeWithEnum}}} {{name}}{{#isEnum}}Enum{{/isEnum}}{{#defaultValue}} = {{{.}}}{{/defaultValue}};
++  {{/isContainer}}
+ 
+   {{/vars}}
+   public {{classname}}() {
+@@ -109,6 +116,24 @@
+   {{#vars}}
+ 
+   {{^isReadOnly}}
++  {{#isEnum}}
++  {{#deprecated}}
++  @Deprecated
++  {{/deprecated}}
++  public {{classname}} {{name}}({{>nullable_var_annotations}} {{{datatypeWithEnum}}} {{name}}) {
++    this.{{name}}Enum = {{name}};
++    return this;
++  }
++
++  {{#deprecated}}
++  @Deprecated
++  {{/deprecated}}
++  public {{classname}} {{name}}String({{>nullable_var_annotations}} {{#isContainer}}List<String>{{/isContainer}}{{^isContainer}}String{{/isContainer}} {{name}}) {
++    this.{{name}} = {{name}};
++    return this;
++  }
++  {{/isEnum}}
++  {{^isEnum}}
+   {{#deprecated}}
+   @Deprecated
+   {{/deprecated}}
+@@ -116,13 +141,20 @@
+     this.{{name}} = {{name}};
+     return this;
+   }
++  {{/isEnum}}
+   {{#isArray}}
+ 
+   public {{classname}} add{{nameInPascalCase}}Item({{{items.datatypeWithEnum}}} {{name}}Item) {
+     if (this.{{name}} == null) {
+       this.{{name}} = {{{defaultValue}}}{{^defaultValue}}new {{#uniqueItems}}LinkedHashSet{{/uniqueItems}}{{^uniqueItems}}ArrayList{{/uniqueItems}}<>(){{/defaultValue}};
+     }
+-    this.{{name}}.add({{name}}Item);
++    {{#isEnum}}
++    if (this.{{name}}Enum == null) {
++      this.{{name}}Enum = {{{defaultValue}}}{{^defaultValue}}new {{#uniqueItems}}LinkedHashSet{{/uniqueItems}}{{^uniqueItems}}ArrayList{{/uniqueItems}}<>(){{/defaultValue}};
++    }
++    {{/isEnum}}
++    {{#isEnum}}this.{{name}}.add({{name}}Item.toString());{{/isEnum}}
++    this.{{name}}{{#isEnum}}Enum{{/isEnum}}.add({{name}}Item);
+     return this;
+   }
+   {{/isArray}}
+@@ -159,7 +191,7 @@
+ {{#deprecated}}
+   @Deprecated
+ {{/deprecated}}
+-  {{>nullable_var_annotations}}
++  {{^isEnum}}{{>nullable_var_annotations}}{{/isEnum}}
+ {{#useBeanValidation}}
+ {{>beanValidation}}
+ {{/useBeanValidation}}
+@@ -173,15 +205,39 @@
+   {{{vendorExtensions.x-extra-annotation}}}
+ {{/vendorExtensions.x-extra-annotation}}
+   public {{{datatypeWithEnum}}} {{getter}}() {
+-    return {{name}};
++    {{#isEnum}}
++    if ({{name}}Enum == null) {
++      {{#isContainer}}
++      {{name}}Enum = new ArrayList<>();
++      for (String value : {{name}}) {
++        {{name}}Enum.add({{{items.datatypeWithEnum}}}.fromValue(value));
++      }
++      {{/isContainer}}
++      {{^isContainer}}
++      {{name}}Enum = {{datatypeWithEnum}}.fromValue({{name}});
++      {{/isContainer}}
++    }
++    {{/isEnum}}
++    return {{name}}{{#isEnum}}Enum{{/isEnum}};
+   }
++  {{#isEnum}}
++
++  public {{#isContainer}}List<String>{{/isContainer}}{{^isContainer}}String{{/isContainer}} {{getter}}String() {
++    return {{name}};
++  }{{/isEnum}}
+ 
+   {{^isReadOnly}}
+ {{#vendorExtensions.x-setter-extra-annotation}}  {{{vendorExtensions.x-setter-extra-annotation}}}
+ {{/vendorExtensions.x-setter-extra-annotation}}{{#deprecated}}  @Deprecated
+ {{/deprecated}}  public void {{setter}}({{>nullable_var_annotations}} {{{datatypeWithEnum}}} {{name}}) {
++    this.{{name}}{{#isEnum}}Enum{{/isEnum}} = {{name}};
++  }
++{{#isEnum}}
++{{#deprecated}}  @Deprecated
++{{/deprecated}}  public void {{setter}}String({{>nullable_var_annotations}} {{#isContainer}}List<String>{{/isContainer}}{{^isContainer}}String{{/isContainer}} {{name}}) {
+     this.{{name}} = {{name}};
+   }
++{{/isEnum}}
+   {{/isReadOnly}}
+ 
+   {{/vars}}

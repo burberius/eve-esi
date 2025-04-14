@@ -38,12 +38,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -57,14 +55,17 @@ public class CharacterNotificationsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_IS_READ = "is_read";
     @SerializedName(SERIALIZED_NAME_IS_READ)
+    @javax.annotation.Nullable
     private Boolean isRead;
 
     public static final String SERIALIZED_NAME_NOTIFICATION_ID = "notification_id";
     @SerializedName(SERIALIZED_NAME_NOTIFICATION_ID)
+    @javax.annotation.Nonnull
     private Long notificationId;
 
     public static final String SERIALIZED_NAME_SENDER_ID = "sender_id";
     @SerializedName(SERIALIZED_NAME_SENDER_ID)
+    @javax.annotation.Nonnull
     private Integer senderId;
 
     /**
@@ -118,19 +119,27 @@ public class CharacterNotificationsResponse implements Serializable {
                 return SenderTypeEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            SenderTypeEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_SENDER_TYPE = "sender_type";
     @SerializedName(SERIALIZED_NAME_SENDER_TYPE)
+    @javax.annotation.Nonnull
     private String senderType;
     private SenderTypeEnum senderTypeEnum;
 
     public static final String SERIALIZED_NAME_TEXT = "text";
     @SerializedName(SERIALIZED_NAME_TEXT)
+    @javax.annotation.Nullable
     private String text;
 
     public static final String SERIALIZED_NAME_TIMESTAMP = "timestamp";
     @SerializedName(SERIALIZED_NAME_TIMESTAMP)
+    @javax.annotation.Nonnull
     private OffsetDateTime timestamp;
 
     /**
@@ -654,18 +663,23 @@ public class CharacterNotificationsResponse implements Serializable {
                 return TypeEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            TypeEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_TYPE = "type";
     @SerializedName(SERIALIZED_NAME_TYPE)
+    @javax.annotation.Nonnull
     private String type;
     private TypeEnum typeEnum;
 
     public CharacterNotificationsResponse() {
     }
 
-    public CharacterNotificationsResponse isRead(Boolean isRead) {
-
+    public CharacterNotificationsResponse isRead(@javax.annotation.Nullable Boolean isRead) {
         this.isRead = isRead;
         return this;
     }
@@ -674,18 +688,17 @@ public class CharacterNotificationsResponse implements Serializable {
      * is_read boolean
      * 
      * @return isRead
-     **/
+     */
     @javax.annotation.Nullable
     public Boolean getIsRead() {
         return isRead;
     }
 
-    public void setIsRead(Boolean isRead) {
+    public void setIsRead(@javax.annotation.Nullable Boolean isRead) {
         this.isRead = isRead;
     }
 
-    public CharacterNotificationsResponse notificationId(Long notificationId) {
-
+    public CharacterNotificationsResponse notificationId(@javax.annotation.Nonnull Long notificationId) {
         this.notificationId = notificationId;
         return this;
     }
@@ -694,18 +707,17 @@ public class CharacterNotificationsResponse implements Serializable {
      * notification_id integer
      * 
      * @return notificationId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getNotificationId() {
         return notificationId;
     }
 
-    public void setNotificationId(Long notificationId) {
+    public void setNotificationId(@javax.annotation.Nonnull Long notificationId) {
         this.notificationId = notificationId;
     }
 
-    public CharacterNotificationsResponse senderId(Integer senderId) {
-
+    public CharacterNotificationsResponse senderId(@javax.annotation.Nonnull Integer senderId) {
         this.senderId = senderId;
         return this;
     }
@@ -714,25 +726,23 @@ public class CharacterNotificationsResponse implements Serializable {
      * sender_id integer
      * 
      * @return senderId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getSenderId() {
         return senderId;
     }
 
-    public void setSenderId(Integer senderId) {
+    public void setSenderId(@javax.annotation.Nonnull Integer senderId) {
         this.senderId = senderId;
     }
 
-    public CharacterNotificationsResponse senderTypeString(String senderType) {
-
-        this.senderType = senderType;
+    public CharacterNotificationsResponse senderType(@javax.annotation.Nonnull SenderTypeEnum senderType) {
+        this.senderTypeEnum = senderType;
         return this;
     }
 
-    public CharacterNotificationsResponse senderType(SenderTypeEnum senderTypeEnum) {
-
-        this.senderTypeEnum = senderTypeEnum;
+    public CharacterNotificationsResponse senderTypeString(@javax.annotation.Nonnull String senderType) {
+        this.senderType = senderType;
         return this;
     }
 
@@ -740,8 +750,8 @@ public class CharacterNotificationsResponse implements Serializable {
      * sender_type string
      * 
      * @return senderType
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public SenderTypeEnum getSenderType() {
         if (senderTypeEnum == null) {
             senderTypeEnum = SenderTypeEnum.fromValue(senderType);
@@ -753,16 +763,15 @@ public class CharacterNotificationsResponse implements Serializable {
         return senderType;
     }
 
-    public void setSenderType(SenderTypeEnum senderTypeEnum) {
-        this.senderTypeEnum = senderTypeEnum;
+    public void setSenderType(@javax.annotation.Nonnull SenderTypeEnum senderType) {
+        this.senderTypeEnum = senderType;
     }
 
-    public void setSenderTypeString(String senderType) {
+    public void setSenderTypeString(@javax.annotation.Nonnull String senderType) {
         this.senderType = senderType;
     }
 
-    public CharacterNotificationsResponse text(String text) {
-
+    public CharacterNotificationsResponse text(@javax.annotation.Nullable String text) {
         this.text = text;
         return this;
     }
@@ -771,18 +780,17 @@ public class CharacterNotificationsResponse implements Serializable {
      * text string
      * 
      * @return text
-     **/
+     */
     @javax.annotation.Nullable
     public String getText() {
         return text;
     }
 
-    public void setText(String text) {
+    public void setText(@javax.annotation.Nullable String text) {
         this.text = text;
     }
 
-    public CharacterNotificationsResponse timestamp(OffsetDateTime timestamp) {
-
+    public CharacterNotificationsResponse timestamp(@javax.annotation.Nonnull OffsetDateTime timestamp) {
         this.timestamp = timestamp;
         return this;
     }
@@ -791,25 +799,23 @@ public class CharacterNotificationsResponse implements Serializable {
      * timestamp string
      * 
      * @return timestamp
-     **/
+     */
     @javax.annotation.Nonnull
     public OffsetDateTime getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(OffsetDateTime timestamp) {
+    public void setTimestamp(@javax.annotation.Nonnull OffsetDateTime timestamp) {
         this.timestamp = timestamp;
     }
 
-    public CharacterNotificationsResponse typeString(String type) {
-
-        this.type = type;
+    public CharacterNotificationsResponse type(@javax.annotation.Nonnull TypeEnum type) {
+        this.typeEnum = type;
         return this;
     }
 
-    public CharacterNotificationsResponse type(TypeEnum typeEnum) {
-
-        this.typeEnum = typeEnum;
+    public CharacterNotificationsResponse typeString(@javax.annotation.Nonnull String type) {
+        this.type = type;
         return this;
     }
 
@@ -817,8 +823,8 @@ public class CharacterNotificationsResponse implements Serializable {
      * type string
      * 
      * @return type
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public TypeEnum getType() {
         if (typeEnum == null) {
             typeEnum = TypeEnum.fromValue(type);
@@ -830,11 +836,11 @@ public class CharacterNotificationsResponse implements Serializable {
         return type;
     }
 
-    public void setType(TypeEnum typeEnum) {
-        this.typeEnum = typeEnum;
+    public void setType(@javax.annotation.Nonnull TypeEnum type) {
+        this.typeEnum = type;
     }
 
-    public void setTypeString(String type) {
+    public void setTypeString(@javax.annotation.Nonnull String type) {
         this.type = type;
     }
 
@@ -911,22 +917,22 @@ public class CharacterNotificationsResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CharacterNotificationsResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CharacterNotificationsResponse.openapiRequiredFields.isEmpty()) { // has
                                                                                    // required
                                                                                    // fields
                                                                                    // but
                                                                                    // JSON
-                                                                                   // object
+                                                                                   // element
                                                                                    // is
                                                                                    // null
                 throw new IllegalArgumentException(
@@ -936,31 +942,34 @@ public class CharacterNotificationsResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CharacterNotificationsResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CharacterNotificationsResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CharacterNotificationsResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("sender_type").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `sender_type` to be a primitive type in the JSON string but got `%s`", jsonObj
                             .get("sender_type").toString()));
         }
+        // validate the required field `sender_type`
+        SenderTypeEnum.validateJsonElement(jsonObj.get("sender_type"));
         if ((jsonObj.get("text") != null && !jsonObj.get("text").isJsonNull())
                 && !jsonObj.get("text").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
@@ -972,6 +981,8 @@ public class CharacterNotificationsResponse implements Serializable {
                     "Expected the field `type` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("type").toString()));
         }
+        // validate the required field `type`
+        TypeEnum.validateJsonElement(jsonObj.get("type"));
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -996,9 +1007,9 @@ public class CharacterNotificationsResponse implements Serializable {
 
                 @Override
                 public CharacterNotificationsResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

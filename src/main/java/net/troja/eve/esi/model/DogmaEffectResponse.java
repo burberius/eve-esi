@@ -40,12 +40,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -59,93 +57,113 @@ public class DogmaEffectResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_DESCRIPTION = "description";
     @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+    @javax.annotation.Nullable
     private String description;
 
     public static final String SERIALIZED_NAME_DISALLOW_AUTO_REPEAT = "disallow_auto_repeat";
     @SerializedName(SERIALIZED_NAME_DISALLOW_AUTO_REPEAT)
+    @javax.annotation.Nullable
     private Boolean disallowAutoRepeat;
 
     public static final String SERIALIZED_NAME_DISCHARGE_ATTRIBUTE_ID = "discharge_attribute_id";
     @SerializedName(SERIALIZED_NAME_DISCHARGE_ATTRIBUTE_ID)
+    @javax.annotation.Nullable
     private Integer dischargeAttributeId;
 
     public static final String SERIALIZED_NAME_DISPLAY_NAME = "display_name";
     @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+    @javax.annotation.Nullable
     private String displayName;
 
     public static final String SERIALIZED_NAME_DURATION_ATTRIBUTE_ID = "duration_attribute_id";
     @SerializedName(SERIALIZED_NAME_DURATION_ATTRIBUTE_ID)
+    @javax.annotation.Nullable
     private Integer durationAttributeId;
 
     public static final String SERIALIZED_NAME_EFFECT_CATEGORY = "effect_category";
     @SerializedName(SERIALIZED_NAME_EFFECT_CATEGORY)
+    @javax.annotation.Nullable
     private Integer effectCategory;
 
     public static final String SERIALIZED_NAME_EFFECT_ID = "effect_id";
     @SerializedName(SERIALIZED_NAME_EFFECT_ID)
+    @javax.annotation.Nonnull
     private Integer effectId;
 
     public static final String SERIALIZED_NAME_ELECTRONIC_CHANCE = "electronic_chance";
     @SerializedName(SERIALIZED_NAME_ELECTRONIC_CHANCE)
+    @javax.annotation.Nullable
     private Boolean electronicChance;
 
     public static final String SERIALIZED_NAME_FALLOFF_ATTRIBUTE_ID = "falloff_attribute_id";
     @SerializedName(SERIALIZED_NAME_FALLOFF_ATTRIBUTE_ID)
+    @javax.annotation.Nullable
     private Integer falloffAttributeId;
 
     public static final String SERIALIZED_NAME_ICON_ID = "icon_id";
     @SerializedName(SERIALIZED_NAME_ICON_ID)
+    @javax.annotation.Nullable
     private Integer iconId;
 
     public static final String SERIALIZED_NAME_IS_ASSISTANCE = "is_assistance";
     @SerializedName(SERIALIZED_NAME_IS_ASSISTANCE)
+    @javax.annotation.Nullable
     private Boolean isAssistance;
 
     public static final String SERIALIZED_NAME_IS_OFFENSIVE = "is_offensive";
     @SerializedName(SERIALIZED_NAME_IS_OFFENSIVE)
+    @javax.annotation.Nullable
     private Boolean isOffensive;
 
     public static final String SERIALIZED_NAME_IS_WARP_SAFE = "is_warp_safe";
     @SerializedName(SERIALIZED_NAME_IS_WARP_SAFE)
+    @javax.annotation.Nullable
     private Boolean isWarpSafe;
 
     public static final String SERIALIZED_NAME_MODIFIERS = "modifiers";
     @SerializedName(SERIALIZED_NAME_MODIFIERS)
+    @javax.annotation.Nullable
     private List<DogmaEffectModifier> modifiers = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
+    @javax.annotation.Nullable
     private String name;
 
     public static final String SERIALIZED_NAME_POST_EXPRESSION = "post_expression";
     @SerializedName(SERIALIZED_NAME_POST_EXPRESSION)
+    @javax.annotation.Nullable
     private Integer postExpression;
 
     public static final String SERIALIZED_NAME_PRE_EXPRESSION = "pre_expression";
     @SerializedName(SERIALIZED_NAME_PRE_EXPRESSION)
+    @javax.annotation.Nullable
     private Integer preExpression;
 
     public static final String SERIALIZED_NAME_PUBLISHED = "published";
     @SerializedName(SERIALIZED_NAME_PUBLISHED)
+    @javax.annotation.Nullable
     private Boolean published;
 
     public static final String SERIALIZED_NAME_RANGE_ATTRIBUTE_ID = "range_attribute_id";
     @SerializedName(SERIALIZED_NAME_RANGE_ATTRIBUTE_ID)
+    @javax.annotation.Nullable
     private Integer rangeAttributeId;
 
     public static final String SERIALIZED_NAME_RANGE_CHANCE = "range_chance";
     @SerializedName(SERIALIZED_NAME_RANGE_CHANCE)
+    @javax.annotation.Nullable
     private Boolean rangeChance;
 
     public static final String SERIALIZED_NAME_TRACKING_SPEED_ATTRIBUTE_ID = "tracking_speed_attribute_id";
     @SerializedName(SERIALIZED_NAME_TRACKING_SPEED_ATTRIBUTE_ID)
+    @javax.annotation.Nullable
     private Integer trackingSpeedAttributeId;
 
     public DogmaEffectResponse() {
     }
 
-    public DogmaEffectResponse description(String description) {
-
+    public DogmaEffectResponse description(@javax.annotation.Nullable String description) {
         this.description = description;
         return this;
     }
@@ -154,18 +172,17 @@ public class DogmaEffectResponse implements Serializable {
      * description string
      * 
      * @return description
-     **/
+     */
     @javax.annotation.Nullable
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(@javax.annotation.Nullable String description) {
         this.description = description;
     }
 
-    public DogmaEffectResponse disallowAutoRepeat(Boolean disallowAutoRepeat) {
-
+    public DogmaEffectResponse disallowAutoRepeat(@javax.annotation.Nullable Boolean disallowAutoRepeat) {
         this.disallowAutoRepeat = disallowAutoRepeat;
         return this;
     }
@@ -174,18 +191,17 @@ public class DogmaEffectResponse implements Serializable {
      * disallow_auto_repeat boolean
      * 
      * @return disallowAutoRepeat
-     **/
+     */
     @javax.annotation.Nullable
     public Boolean getDisallowAutoRepeat() {
         return disallowAutoRepeat;
     }
 
-    public void setDisallowAutoRepeat(Boolean disallowAutoRepeat) {
+    public void setDisallowAutoRepeat(@javax.annotation.Nullable Boolean disallowAutoRepeat) {
         this.disallowAutoRepeat = disallowAutoRepeat;
     }
 
-    public DogmaEffectResponse dischargeAttributeId(Integer dischargeAttributeId) {
-
+    public DogmaEffectResponse dischargeAttributeId(@javax.annotation.Nullable Integer dischargeAttributeId) {
         this.dischargeAttributeId = dischargeAttributeId;
         return this;
     }
@@ -194,18 +210,17 @@ public class DogmaEffectResponse implements Serializable {
      * discharge_attribute_id integer
      * 
      * @return dischargeAttributeId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getDischargeAttributeId() {
         return dischargeAttributeId;
     }
 
-    public void setDischargeAttributeId(Integer dischargeAttributeId) {
+    public void setDischargeAttributeId(@javax.annotation.Nullable Integer dischargeAttributeId) {
         this.dischargeAttributeId = dischargeAttributeId;
     }
 
-    public DogmaEffectResponse displayName(String displayName) {
-
+    public DogmaEffectResponse displayName(@javax.annotation.Nullable String displayName) {
         this.displayName = displayName;
         return this;
     }
@@ -214,18 +229,17 @@ public class DogmaEffectResponse implements Serializable {
      * display_name string
      * 
      * @return displayName
-     **/
+     */
     @javax.annotation.Nullable
     public String getDisplayName() {
         return displayName;
     }
 
-    public void setDisplayName(String displayName) {
+    public void setDisplayName(@javax.annotation.Nullable String displayName) {
         this.displayName = displayName;
     }
 
-    public DogmaEffectResponse durationAttributeId(Integer durationAttributeId) {
-
+    public DogmaEffectResponse durationAttributeId(@javax.annotation.Nullable Integer durationAttributeId) {
         this.durationAttributeId = durationAttributeId;
         return this;
     }
@@ -234,18 +248,17 @@ public class DogmaEffectResponse implements Serializable {
      * duration_attribute_id integer
      * 
      * @return durationAttributeId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getDurationAttributeId() {
         return durationAttributeId;
     }
 
-    public void setDurationAttributeId(Integer durationAttributeId) {
+    public void setDurationAttributeId(@javax.annotation.Nullable Integer durationAttributeId) {
         this.durationAttributeId = durationAttributeId;
     }
 
-    public DogmaEffectResponse effectCategory(Integer effectCategory) {
-
+    public DogmaEffectResponse effectCategory(@javax.annotation.Nullable Integer effectCategory) {
         this.effectCategory = effectCategory;
         return this;
     }
@@ -254,18 +267,17 @@ public class DogmaEffectResponse implements Serializable {
      * effect_category integer
      * 
      * @return effectCategory
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getEffectCategory() {
         return effectCategory;
     }
 
-    public void setEffectCategory(Integer effectCategory) {
+    public void setEffectCategory(@javax.annotation.Nullable Integer effectCategory) {
         this.effectCategory = effectCategory;
     }
 
-    public DogmaEffectResponse effectId(Integer effectId) {
-
+    public DogmaEffectResponse effectId(@javax.annotation.Nonnull Integer effectId) {
         this.effectId = effectId;
         return this;
     }
@@ -274,18 +286,17 @@ public class DogmaEffectResponse implements Serializable {
      * effect_id integer
      * 
      * @return effectId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getEffectId() {
         return effectId;
     }
 
-    public void setEffectId(Integer effectId) {
+    public void setEffectId(@javax.annotation.Nonnull Integer effectId) {
         this.effectId = effectId;
     }
 
-    public DogmaEffectResponse electronicChance(Boolean electronicChance) {
-
+    public DogmaEffectResponse electronicChance(@javax.annotation.Nullable Boolean electronicChance) {
         this.electronicChance = electronicChance;
         return this;
     }
@@ -294,18 +305,17 @@ public class DogmaEffectResponse implements Serializable {
      * electronic_chance boolean
      * 
      * @return electronicChance
-     **/
+     */
     @javax.annotation.Nullable
     public Boolean getElectronicChance() {
         return electronicChance;
     }
 
-    public void setElectronicChance(Boolean electronicChance) {
+    public void setElectronicChance(@javax.annotation.Nullable Boolean electronicChance) {
         this.electronicChance = electronicChance;
     }
 
-    public DogmaEffectResponse falloffAttributeId(Integer falloffAttributeId) {
-
+    public DogmaEffectResponse falloffAttributeId(@javax.annotation.Nullable Integer falloffAttributeId) {
         this.falloffAttributeId = falloffAttributeId;
         return this;
     }
@@ -314,18 +324,17 @@ public class DogmaEffectResponse implements Serializable {
      * falloff_attribute_id integer
      * 
      * @return falloffAttributeId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getFalloffAttributeId() {
         return falloffAttributeId;
     }
 
-    public void setFalloffAttributeId(Integer falloffAttributeId) {
+    public void setFalloffAttributeId(@javax.annotation.Nullable Integer falloffAttributeId) {
         this.falloffAttributeId = falloffAttributeId;
     }
 
-    public DogmaEffectResponse iconId(Integer iconId) {
-
+    public DogmaEffectResponse iconId(@javax.annotation.Nullable Integer iconId) {
         this.iconId = iconId;
         return this;
     }
@@ -334,18 +343,17 @@ public class DogmaEffectResponse implements Serializable {
      * icon_id integer
      * 
      * @return iconId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getIconId() {
         return iconId;
     }
 
-    public void setIconId(Integer iconId) {
+    public void setIconId(@javax.annotation.Nullable Integer iconId) {
         this.iconId = iconId;
     }
 
-    public DogmaEffectResponse isAssistance(Boolean isAssistance) {
-
+    public DogmaEffectResponse isAssistance(@javax.annotation.Nullable Boolean isAssistance) {
         this.isAssistance = isAssistance;
         return this;
     }
@@ -354,18 +362,17 @@ public class DogmaEffectResponse implements Serializable {
      * is_assistance boolean
      * 
      * @return isAssistance
-     **/
+     */
     @javax.annotation.Nullable
     public Boolean getIsAssistance() {
         return isAssistance;
     }
 
-    public void setIsAssistance(Boolean isAssistance) {
+    public void setIsAssistance(@javax.annotation.Nullable Boolean isAssistance) {
         this.isAssistance = isAssistance;
     }
 
-    public DogmaEffectResponse isOffensive(Boolean isOffensive) {
-
+    public DogmaEffectResponse isOffensive(@javax.annotation.Nullable Boolean isOffensive) {
         this.isOffensive = isOffensive;
         return this;
     }
@@ -374,18 +381,17 @@ public class DogmaEffectResponse implements Serializable {
      * is_offensive boolean
      * 
      * @return isOffensive
-     **/
+     */
     @javax.annotation.Nullable
     public Boolean getIsOffensive() {
         return isOffensive;
     }
 
-    public void setIsOffensive(Boolean isOffensive) {
+    public void setIsOffensive(@javax.annotation.Nullable Boolean isOffensive) {
         this.isOffensive = isOffensive;
     }
 
-    public DogmaEffectResponse isWarpSafe(Boolean isWarpSafe) {
-
+    public DogmaEffectResponse isWarpSafe(@javax.annotation.Nullable Boolean isWarpSafe) {
         this.isWarpSafe = isWarpSafe;
         return this;
     }
@@ -394,26 +400,26 @@ public class DogmaEffectResponse implements Serializable {
      * is_warp_safe boolean
      * 
      * @return isWarpSafe
-     **/
+     */
     @javax.annotation.Nullable
     public Boolean getIsWarpSafe() {
         return isWarpSafe;
     }
 
-    public void setIsWarpSafe(Boolean isWarpSafe) {
+    public void setIsWarpSafe(@javax.annotation.Nullable Boolean isWarpSafe) {
         this.isWarpSafe = isWarpSafe;
     }
 
-    public DogmaEffectResponse modifiers(List<DogmaEffectModifier> modifiers) {
-
+    public DogmaEffectResponse modifiers(@javax.annotation.Nullable List<DogmaEffectModifier> modifiers) {
         this.modifiers = modifiers;
         return this;
     }
 
-    public DogmaEffectResponse addmodifiersItem(DogmaEffectModifier modifiersItem) {
+    public DogmaEffectResponse addModifiersItem(DogmaEffectModifier modifiersItem) {
         if (this.modifiers == null) {
             this.modifiers = new ArrayList<>();
         }
+
         this.modifiers.add(modifiersItem);
         return this;
     }
@@ -422,18 +428,17 @@ public class DogmaEffectResponse implements Serializable {
      * modifiers array
      * 
      * @return modifiers
-     **/
+     */
     @javax.annotation.Nullable
     public List<DogmaEffectModifier> getModifiers() {
         return modifiers;
     }
 
-    public void setModifiers(List<DogmaEffectModifier> modifiers) {
+    public void setModifiers(@javax.annotation.Nullable List<DogmaEffectModifier> modifiers) {
         this.modifiers = modifiers;
     }
 
-    public DogmaEffectResponse name(String name) {
-
+    public DogmaEffectResponse name(@javax.annotation.Nullable String name) {
         this.name = name;
         return this;
     }
@@ -442,18 +447,17 @@ public class DogmaEffectResponse implements Serializable {
      * name string
      * 
      * @return name
-     **/
+     */
     @javax.annotation.Nullable
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@javax.annotation.Nullable String name) {
         this.name = name;
     }
 
-    public DogmaEffectResponse postExpression(Integer postExpression) {
-
+    public DogmaEffectResponse postExpression(@javax.annotation.Nullable Integer postExpression) {
         this.postExpression = postExpression;
         return this;
     }
@@ -462,18 +466,17 @@ public class DogmaEffectResponse implements Serializable {
      * post_expression integer
      * 
      * @return postExpression
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getPostExpression() {
         return postExpression;
     }
 
-    public void setPostExpression(Integer postExpression) {
+    public void setPostExpression(@javax.annotation.Nullable Integer postExpression) {
         this.postExpression = postExpression;
     }
 
-    public DogmaEffectResponse preExpression(Integer preExpression) {
-
+    public DogmaEffectResponse preExpression(@javax.annotation.Nullable Integer preExpression) {
         this.preExpression = preExpression;
         return this;
     }
@@ -482,18 +485,17 @@ public class DogmaEffectResponse implements Serializable {
      * pre_expression integer
      * 
      * @return preExpression
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getPreExpression() {
         return preExpression;
     }
 
-    public void setPreExpression(Integer preExpression) {
+    public void setPreExpression(@javax.annotation.Nullable Integer preExpression) {
         this.preExpression = preExpression;
     }
 
-    public DogmaEffectResponse published(Boolean published) {
-
+    public DogmaEffectResponse published(@javax.annotation.Nullable Boolean published) {
         this.published = published;
         return this;
     }
@@ -502,18 +504,17 @@ public class DogmaEffectResponse implements Serializable {
      * published boolean
      * 
      * @return published
-     **/
+     */
     @javax.annotation.Nullable
     public Boolean getPublished() {
         return published;
     }
 
-    public void setPublished(Boolean published) {
+    public void setPublished(@javax.annotation.Nullable Boolean published) {
         this.published = published;
     }
 
-    public DogmaEffectResponse rangeAttributeId(Integer rangeAttributeId) {
-
+    public DogmaEffectResponse rangeAttributeId(@javax.annotation.Nullable Integer rangeAttributeId) {
         this.rangeAttributeId = rangeAttributeId;
         return this;
     }
@@ -522,18 +523,17 @@ public class DogmaEffectResponse implements Serializable {
      * range_attribute_id integer
      * 
      * @return rangeAttributeId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getRangeAttributeId() {
         return rangeAttributeId;
     }
 
-    public void setRangeAttributeId(Integer rangeAttributeId) {
+    public void setRangeAttributeId(@javax.annotation.Nullable Integer rangeAttributeId) {
         this.rangeAttributeId = rangeAttributeId;
     }
 
-    public DogmaEffectResponse rangeChance(Boolean rangeChance) {
-
+    public DogmaEffectResponse rangeChance(@javax.annotation.Nullable Boolean rangeChance) {
         this.rangeChance = rangeChance;
         return this;
     }
@@ -542,18 +542,17 @@ public class DogmaEffectResponse implements Serializable {
      * range_chance boolean
      * 
      * @return rangeChance
-     **/
+     */
     @javax.annotation.Nullable
     public Boolean getRangeChance() {
         return rangeChance;
     }
 
-    public void setRangeChance(Boolean rangeChance) {
+    public void setRangeChance(@javax.annotation.Nullable Boolean rangeChance) {
         this.rangeChance = rangeChance;
     }
 
-    public DogmaEffectResponse trackingSpeedAttributeId(Integer trackingSpeedAttributeId) {
-
+    public DogmaEffectResponse trackingSpeedAttributeId(@javax.annotation.Nullable Integer trackingSpeedAttributeId) {
         this.trackingSpeedAttributeId = trackingSpeedAttributeId;
         return this;
     }
@@ -562,13 +561,13 @@ public class DogmaEffectResponse implements Serializable {
      * tracking_speed_attribute_id integer
      * 
      * @return trackingSpeedAttributeId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getTrackingSpeedAttributeId() {
         return trackingSpeedAttributeId;
     }
 
-    public void setTrackingSpeedAttributeId(Integer trackingSpeedAttributeId) {
+    public void setTrackingSpeedAttributeId(@javax.annotation.Nullable Integer trackingSpeedAttributeId) {
         this.trackingSpeedAttributeId = trackingSpeedAttributeId;
     }
 
@@ -686,22 +685,22 @@ public class DogmaEffectResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             DogmaEffectResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!DogmaEffectResponse.openapiRequiredFields.isEmpty()) { // has
                                                                         // required
                                                                         // fields
                                                                         // but
                                                                         // JSON
-                                                                        // object
+                                                                        // element
                                                                         // is
                                                                         // null
                 throw new IllegalArgumentException(String.format(
@@ -710,26 +709,27 @@ public class DogmaEffectResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!DogmaEffectResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `DogmaEffectResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : DogmaEffectResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull())
                 && !jsonObj.get("description").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
@@ -754,7 +754,7 @@ public class DogmaEffectResponse implements Serializable {
 
                 // validate the optional field `modifiers` (array)
                 for (int i = 0; i < jsonArraymodifiers.size(); i++) {
-                    DogmaEffectModifier.validateJsonObject(jsonArraymodifiers.get(i).getAsJsonObject());
+                    DogmaEffectModifier.validateJsonElement(jsonArraymodifiers.get(i));
                 };
             }
         }
@@ -787,9 +787,9 @@ public class DogmaEffectResponse implements Serializable {
 
                 @Override
                 public DogmaEffectResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

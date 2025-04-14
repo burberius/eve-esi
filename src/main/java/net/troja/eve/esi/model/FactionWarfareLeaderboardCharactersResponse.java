@@ -39,12 +39,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -58,17 +56,19 @@ public class FactionWarfareLeaderboardCharactersResponse implements Serializable
 
     public static final String SERIALIZED_NAME_KILLS = "kills";
     @SerializedName(SERIALIZED_NAME_KILLS)
+    @javax.annotation.Nonnull
     private FactionWarfareLeaderboardCharacterKills kills;
 
     public static final String SERIALIZED_NAME_VICTORY_POINTS = "victory_points";
     @SerializedName(SERIALIZED_NAME_VICTORY_POINTS)
+    @javax.annotation.Nonnull
     private FactionWarfareLeaderboardCharacterVictoryPoints victoryPoints;
 
     public FactionWarfareLeaderboardCharactersResponse() {
     }
 
-    public FactionWarfareLeaderboardCharactersResponse kills(FactionWarfareLeaderboardCharacterKills kills) {
-
+    public FactionWarfareLeaderboardCharactersResponse kills(
+            @javax.annotation.Nonnull FactionWarfareLeaderboardCharacterKills kills) {
         this.kills = kills;
         return this;
     }
@@ -77,19 +77,18 @@ public class FactionWarfareLeaderboardCharactersResponse implements Serializable
      * Get kills
      * 
      * @return kills
-     **/
+     */
     @javax.annotation.Nonnull
     public FactionWarfareLeaderboardCharacterKills getKills() {
         return kills;
     }
 
-    public void setKills(FactionWarfareLeaderboardCharacterKills kills) {
+    public void setKills(@javax.annotation.Nonnull FactionWarfareLeaderboardCharacterKills kills) {
         this.kills = kills;
     }
 
     public FactionWarfareLeaderboardCharactersResponse victoryPoints(
-            FactionWarfareLeaderboardCharacterVictoryPoints victoryPoints) {
-
+            @javax.annotation.Nonnull FactionWarfareLeaderboardCharacterVictoryPoints victoryPoints) {
         this.victoryPoints = victoryPoints;
         return this;
     }
@@ -98,13 +97,13 @@ public class FactionWarfareLeaderboardCharactersResponse implements Serializable
      * Get victoryPoints
      * 
      * @return victoryPoints
-     **/
+     */
     @javax.annotation.Nonnull
     public FactionWarfareLeaderboardCharacterVictoryPoints getVictoryPoints() {
         return victoryPoints;
     }
 
-    public void setVictoryPoints(FactionWarfareLeaderboardCharacterVictoryPoints victoryPoints) {
+    public void setVictoryPoints(@javax.annotation.Nonnull FactionWarfareLeaderboardCharacterVictoryPoints victoryPoints) {
         this.victoryPoints = victoryPoints;
     }
 
@@ -163,22 +162,22 @@ public class FactionWarfareLeaderboardCharactersResponse implements Serializable
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             FactionWarfareLeaderboardCharactersResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!FactionWarfareLeaderboardCharactersResponse.openapiRequiredFields.isEmpty()) { // has
                                                                                                 // required
                                                                                                 // fields
                                                                                                 // but
                                                                                                 // JSON
-                                                                                                // object
+                                                                                                // element
                                                                                                 // is
                                                                                                 // null
                 throw new IllegalArgumentException(
@@ -188,30 +187,31 @@ public class FactionWarfareLeaderboardCharactersResponse implements Serializable
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!FactionWarfareLeaderboardCharactersResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `FactionWarfareLeaderboardCharactersResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : FactionWarfareLeaderboardCharactersResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         // validate the required field `kills`
-        FactionWarfareLeaderboardCharacterKills.validateJsonObject(jsonObj.getAsJsonObject("kills"));
+        FactionWarfareLeaderboardCharacterKills.validateJsonElement(jsonObj.get("kills"));
         // validate the required field `victory_points`
-        FactionWarfareLeaderboardCharacterVictoryPoints.validateJsonObject(jsonObj.getAsJsonObject("victory_points"));
+        FactionWarfareLeaderboardCharacterVictoryPoints.validateJsonElement(jsonObj.get("victory_points"));
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -236,9 +236,9 @@ public class FactionWarfareLeaderboardCharactersResponse implements Serializable
 
                 @Override
                 public FactionWarfareLeaderboardCharactersResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

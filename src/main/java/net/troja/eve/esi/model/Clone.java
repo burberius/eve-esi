@@ -39,12 +39,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -58,14 +56,17 @@ public class Clone implements Serializable {
 
     public static final String SERIALIZED_NAME_IMPLANTS = "implants";
     @SerializedName(SERIALIZED_NAME_IMPLANTS)
+    @javax.annotation.Nonnull
     private List<Integer> implants = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_JUMP_CLONE_ID = "jump_clone_id";
     @SerializedName(SERIALIZED_NAME_JUMP_CLONE_ID)
+    @javax.annotation.Nonnull
     private Integer jumpCloneId;
 
     public static final String SERIALIZED_NAME_LOCATION_ID = "location_id";
     @SerializedName(SERIALIZED_NAME_LOCATION_ID)
+    @javax.annotation.Nonnull
     private Long locationId;
 
     /**
@@ -113,30 +114,37 @@ public class Clone implements Serializable {
                 return LocationTypeEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            LocationTypeEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_LOCATION_TYPE = "location_type";
     @SerializedName(SERIALIZED_NAME_LOCATION_TYPE)
+    @javax.annotation.Nonnull
     private String locationType;
     private LocationTypeEnum locationTypeEnum;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
+    @javax.annotation.Nullable
     private String name;
 
     public Clone() {
     }
 
-    public Clone implants(List<Integer> implants) {
-
+    public Clone implants(@javax.annotation.Nonnull List<Integer> implants) {
         this.implants = implants;
         return this;
     }
 
-    public Clone addimplantsItem(Integer implantsItem) {
+    public Clone addImplantsItem(Integer implantsItem) {
         if (this.implants == null) {
             this.implants = new ArrayList<>();
         }
+
         this.implants.add(implantsItem);
         return this;
     }
@@ -145,18 +153,17 @@ public class Clone implements Serializable {
      * implants array
      * 
      * @return implants
-     **/
+     */
     @javax.annotation.Nonnull
     public List<Integer> getImplants() {
         return implants;
     }
 
-    public void setImplants(List<Integer> implants) {
+    public void setImplants(@javax.annotation.Nonnull List<Integer> implants) {
         this.implants = implants;
     }
 
-    public Clone jumpCloneId(Integer jumpCloneId) {
-
+    public Clone jumpCloneId(@javax.annotation.Nonnull Integer jumpCloneId) {
         this.jumpCloneId = jumpCloneId;
         return this;
     }
@@ -165,18 +172,17 @@ public class Clone implements Serializable {
      * jump_clone_id integer
      * 
      * @return jumpCloneId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getJumpCloneId() {
         return jumpCloneId;
     }
 
-    public void setJumpCloneId(Integer jumpCloneId) {
+    public void setJumpCloneId(@javax.annotation.Nonnull Integer jumpCloneId) {
         this.jumpCloneId = jumpCloneId;
     }
 
-    public Clone locationId(Long locationId) {
-
+    public Clone locationId(@javax.annotation.Nonnull Long locationId) {
         this.locationId = locationId;
         return this;
     }
@@ -185,25 +191,23 @@ public class Clone implements Serializable {
      * location_id integer
      * 
      * @return locationId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getLocationId() {
         return locationId;
     }
 
-    public void setLocationId(Long locationId) {
+    public void setLocationId(@javax.annotation.Nonnull Long locationId) {
         this.locationId = locationId;
     }
 
-    public Clone locationTypeString(String locationType) {
-
-        this.locationType = locationType;
+    public Clone locationType(@javax.annotation.Nonnull LocationTypeEnum locationType) {
+        this.locationTypeEnum = locationType;
         return this;
     }
 
-    public Clone locationType(LocationTypeEnum locationTypeEnum) {
-
-        this.locationTypeEnum = locationTypeEnum;
+    public Clone locationTypeString(@javax.annotation.Nonnull String locationType) {
+        this.locationType = locationType;
         return this;
     }
 
@@ -211,8 +215,8 @@ public class Clone implements Serializable {
      * location_type string
      * 
      * @return locationType
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public LocationTypeEnum getLocationType() {
         if (locationTypeEnum == null) {
             locationTypeEnum = LocationTypeEnum.fromValue(locationType);
@@ -224,16 +228,15 @@ public class Clone implements Serializable {
         return locationType;
     }
 
-    public void setLocationType(LocationTypeEnum locationTypeEnum) {
-        this.locationTypeEnum = locationTypeEnum;
+    public void setLocationType(@javax.annotation.Nonnull LocationTypeEnum locationType) {
+        this.locationTypeEnum = locationType;
     }
 
-    public void setLocationTypeString(String locationType) {
+    public void setLocationTypeString(@javax.annotation.Nonnull String locationType) {
         this.locationType = locationType;
     }
 
-    public Clone name(String name) {
-
+    public Clone name(@javax.annotation.Nullable String name) {
         this.name = name;
         return this;
     }
@@ -242,13 +245,13 @@ public class Clone implements Serializable {
      * name string
      * 
      * @return name
-     **/
+     */
     @javax.annotation.Nullable
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@javax.annotation.Nullable String name) {
         this.name = name;
     }
 
@@ -316,17 +319,17 @@ public class Clone implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to Clone
+     *             if the JSON Element is invalid with respect to Clone
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!Clone.openapiRequiredFields.isEmpty()) { // has required fields
-                                                          // but JSON object is
+                                                          // but JSON element is
                                                           // null
                 throw new IllegalArgumentException(String.format(
                         "The required field(s) %s in Clone is not found in the empty JSON string",
@@ -334,25 +337,26 @@ public class Clone implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!Clone.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(String.format(
                         "The field `%s` in the JSON string is not defined in the `Clone` properties. JSON: %s",
-                        entry.getKey(), jsonObj.toString()));
+                        entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : Clone.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         // ensure the required json array is present
         if (jsonObj.get("implants") == null) {
             throw new IllegalArgumentException(
@@ -367,6 +371,8 @@ public class Clone implements Serializable {
                     "Expected the field `location_type` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("location_type").toString()));
         }
+        // validate the required field `location_type`
+        LocationTypeEnum.validateJsonElement(jsonObj.get("location_type"));
         if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull())
                 && !jsonObj.get("name").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
@@ -395,9 +401,9 @@ public class Clone implements Serializable {
 
                 @Override
                 public Clone read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

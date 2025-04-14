@@ -40,12 +40,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -59,33 +57,38 @@ public class CharacterFwStatsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_CURRENT_RANK = "current_rank";
     @SerializedName(SERIALIZED_NAME_CURRENT_RANK)
+    @javax.annotation.Nullable
     private Integer currentRank;
 
     public static final String SERIALIZED_NAME_ENLISTED_ON = "enlisted_on";
     @SerializedName(SERIALIZED_NAME_ENLISTED_ON)
+    @javax.annotation.Nullable
     private OffsetDateTime enlistedOn;
 
     public static final String SERIALIZED_NAME_FACTION_ID = "faction_id";
     @SerializedName(SERIALIZED_NAME_FACTION_ID)
+    @javax.annotation.Nullable
     private Integer factionId;
 
     public static final String SERIALIZED_NAME_HIGHEST_RANK = "highest_rank";
     @SerializedName(SERIALIZED_NAME_HIGHEST_RANK)
+    @javax.annotation.Nullable
     private Integer highestRank;
 
     public static final String SERIALIZED_NAME_KILLS = "kills";
     @SerializedName(SERIALIZED_NAME_KILLS)
+    @javax.annotation.Nonnull
     private CharacterFwStatsKills kills;
 
     public static final String SERIALIZED_NAME_VICTORY_POINTS = "victory_points";
     @SerializedName(SERIALIZED_NAME_VICTORY_POINTS)
+    @javax.annotation.Nonnull
     private CharacterFwStatsVictoryPoints victoryPoints;
 
     public CharacterFwStatsResponse() {
     }
 
-    public CharacterFwStatsResponse currentRank(Integer currentRank) {
-
+    public CharacterFwStatsResponse currentRank(@javax.annotation.Nullable Integer currentRank) {
         this.currentRank = currentRank;
         return this;
     }
@@ -94,18 +97,17 @@ public class CharacterFwStatsResponse implements Serializable {
      * The given character&#39;s current faction rank minimum: 0 maximum: 9
      * 
      * @return currentRank
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getCurrentRank() {
         return currentRank;
     }
 
-    public void setCurrentRank(Integer currentRank) {
+    public void setCurrentRank(@javax.annotation.Nullable Integer currentRank) {
         this.currentRank = currentRank;
     }
 
-    public CharacterFwStatsResponse enlistedOn(OffsetDateTime enlistedOn) {
-
+    public CharacterFwStatsResponse enlistedOn(@javax.annotation.Nullable OffsetDateTime enlistedOn) {
         this.enlistedOn = enlistedOn;
         return this;
     }
@@ -115,18 +117,17 @@ public class CharacterFwStatsResponse implements Serializable {
      * be included if character is not enlisted in faction warfare
      * 
      * @return enlistedOn
-     **/
+     */
     @javax.annotation.Nullable
     public OffsetDateTime getEnlistedOn() {
         return enlistedOn;
     }
 
-    public void setEnlistedOn(OffsetDateTime enlistedOn) {
+    public void setEnlistedOn(@javax.annotation.Nullable OffsetDateTime enlistedOn) {
         this.enlistedOn = enlistedOn;
     }
 
-    public CharacterFwStatsResponse factionId(Integer factionId) {
-
+    public CharacterFwStatsResponse factionId(@javax.annotation.Nullable Integer factionId) {
         this.factionId = factionId;
         return this;
     }
@@ -136,18 +137,17 @@ public class CharacterFwStatsResponse implements Serializable {
      * included if character is not enlisted in faction warfare
      * 
      * @return factionId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getFactionId() {
         return factionId;
     }
 
-    public void setFactionId(Integer factionId) {
+    public void setFactionId(@javax.annotation.Nullable Integer factionId) {
         this.factionId = factionId;
     }
 
-    public CharacterFwStatsResponse highestRank(Integer highestRank) {
-
+    public CharacterFwStatsResponse highestRank(@javax.annotation.Nullable Integer highestRank) {
         this.highestRank = highestRank;
         return this;
     }
@@ -157,18 +157,17 @@ public class CharacterFwStatsResponse implements Serializable {
      * maximum: 9
      * 
      * @return highestRank
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getHighestRank() {
         return highestRank;
     }
 
-    public void setHighestRank(Integer highestRank) {
+    public void setHighestRank(@javax.annotation.Nullable Integer highestRank) {
         this.highestRank = highestRank;
     }
 
-    public CharacterFwStatsResponse kills(CharacterFwStatsKills kills) {
-
+    public CharacterFwStatsResponse kills(@javax.annotation.Nonnull CharacterFwStatsKills kills) {
         this.kills = kills;
         return this;
     }
@@ -177,18 +176,17 @@ public class CharacterFwStatsResponse implements Serializable {
      * Get kills
      * 
      * @return kills
-     **/
+     */
     @javax.annotation.Nonnull
     public CharacterFwStatsKills getKills() {
         return kills;
     }
 
-    public void setKills(CharacterFwStatsKills kills) {
+    public void setKills(@javax.annotation.Nonnull CharacterFwStatsKills kills) {
         this.kills = kills;
     }
 
-    public CharacterFwStatsResponse victoryPoints(CharacterFwStatsVictoryPoints victoryPoints) {
-
+    public CharacterFwStatsResponse victoryPoints(@javax.annotation.Nonnull CharacterFwStatsVictoryPoints victoryPoints) {
         this.victoryPoints = victoryPoints;
         return this;
     }
@@ -197,13 +195,13 @@ public class CharacterFwStatsResponse implements Serializable {
      * Get victoryPoints
      * 
      * @return victoryPoints
-     **/
+     */
     @javax.annotation.Nonnull
     public CharacterFwStatsVictoryPoints getVictoryPoints() {
         return victoryPoints;
     }
 
-    public void setVictoryPoints(CharacterFwStatsVictoryPoints victoryPoints) {
+    public void setVictoryPoints(@javax.annotation.Nonnull CharacterFwStatsVictoryPoints victoryPoints) {
         this.victoryPoints = victoryPoints;
     }
 
@@ -274,22 +272,22 @@ public class CharacterFwStatsResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CharacterFwStatsResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CharacterFwStatsResponse.openapiRequiredFields.isEmpty()) { // has
                                                                              // required
                                                                              // fields
                                                                              // but
                                                                              // JSON
-                                                                             // object
+                                                                             // element
                                                                              // is
                                                                              // null
                 throw new IllegalArgumentException(String.format(
@@ -298,30 +296,31 @@ public class CharacterFwStatsResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CharacterFwStatsResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CharacterFwStatsResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CharacterFwStatsResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         // validate the required field `kills`
-        CharacterFwStatsKills.validateJsonObject(jsonObj.getAsJsonObject("kills"));
+        CharacterFwStatsKills.validateJsonElement(jsonObj.get("kills"));
         // validate the required field `victory_points`
-        CharacterFwStatsVictoryPoints.validateJsonObject(jsonObj.getAsJsonObject("victory_points"));
+        CharacterFwStatsVictoryPoints.validateJsonElement(jsonObj.get("victory_points"));
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -345,9 +344,9 @@ public class CharacterFwStatsResponse implements Serializable {
 
                 @Override
                 public CharacterFwStatsResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

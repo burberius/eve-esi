@@ -38,12 +38,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -57,26 +55,32 @@ public class CharacterCalendarEventResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_DATE = "date";
     @SerializedName(SERIALIZED_NAME_DATE)
+    @javax.annotation.Nonnull
     private OffsetDateTime date;
 
     public static final String SERIALIZED_NAME_DURATION = "duration";
     @SerializedName(SERIALIZED_NAME_DURATION)
+    @javax.annotation.Nonnull
     private Integer duration;
 
     public static final String SERIALIZED_NAME_EVENT_ID = "event_id";
     @SerializedName(SERIALIZED_NAME_EVENT_ID)
+    @javax.annotation.Nonnull
     private Integer eventId;
 
     public static final String SERIALIZED_NAME_IMPORTANCE = "importance";
     @SerializedName(SERIALIZED_NAME_IMPORTANCE)
+    @javax.annotation.Nonnull
     private Integer importance;
 
     public static final String SERIALIZED_NAME_OWNER_ID = "owner_id";
     @SerializedName(SERIALIZED_NAME_OWNER_ID)
+    @javax.annotation.Nonnull
     private Integer ownerId;
 
     public static final String SERIALIZED_NAME_OWNER_NAME = "owner_name";
     @SerializedName(SERIALIZED_NAME_OWNER_NAME)
+    @javax.annotation.Nonnull
     private String ownerName;
 
     /**
@@ -130,30 +134,38 @@ public class CharacterCalendarEventResponse implements Serializable {
                 return OwnerTypeEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            OwnerTypeEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_OWNER_TYPE = "owner_type";
     @SerializedName(SERIALIZED_NAME_OWNER_TYPE)
+    @javax.annotation.Nonnull
     private String ownerType;
     private OwnerTypeEnum ownerTypeEnum;
 
     public static final String SERIALIZED_NAME_RESPONSE = "response";
     @SerializedName(SERIALIZED_NAME_RESPONSE)
+    @javax.annotation.Nonnull
     private String response;
 
     public static final String SERIALIZED_NAME_TEXT = "text";
     @SerializedName(SERIALIZED_NAME_TEXT)
+    @javax.annotation.Nonnull
     private String text;
 
     public static final String SERIALIZED_NAME_TITLE = "title";
     @SerializedName(SERIALIZED_NAME_TITLE)
+    @javax.annotation.Nonnull
     private String title;
 
     public CharacterCalendarEventResponse() {
     }
 
-    public CharacterCalendarEventResponse date(OffsetDateTime date) {
-
+    public CharacterCalendarEventResponse date(@javax.annotation.Nonnull OffsetDateTime date) {
         this.date = date;
         return this;
     }
@@ -162,18 +174,17 @@ public class CharacterCalendarEventResponse implements Serializable {
      * date string
      * 
      * @return date
-     **/
+     */
     @javax.annotation.Nonnull
     public OffsetDateTime getDate() {
         return date;
     }
 
-    public void setDate(OffsetDateTime date) {
+    public void setDate(@javax.annotation.Nonnull OffsetDateTime date) {
         this.date = date;
     }
 
-    public CharacterCalendarEventResponse duration(Integer duration) {
-
+    public CharacterCalendarEventResponse duration(@javax.annotation.Nonnull Integer duration) {
         this.duration = duration;
         return this;
     }
@@ -182,18 +193,17 @@ public class CharacterCalendarEventResponse implements Serializable {
      * Length in minutes
      * 
      * @return duration
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getDuration() {
         return duration;
     }
 
-    public void setDuration(Integer duration) {
+    public void setDuration(@javax.annotation.Nonnull Integer duration) {
         this.duration = duration;
     }
 
-    public CharacterCalendarEventResponse eventId(Integer eventId) {
-
+    public CharacterCalendarEventResponse eventId(@javax.annotation.Nonnull Integer eventId) {
         this.eventId = eventId;
         return this;
     }
@@ -202,18 +212,17 @@ public class CharacterCalendarEventResponse implements Serializable {
      * event_id integer
      * 
      * @return eventId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getEventId() {
         return eventId;
     }
 
-    public void setEventId(Integer eventId) {
+    public void setEventId(@javax.annotation.Nonnull Integer eventId) {
         this.eventId = eventId;
     }
 
-    public CharacterCalendarEventResponse importance(Integer importance) {
-
+    public CharacterCalendarEventResponse importance(@javax.annotation.Nonnull Integer importance) {
         this.importance = importance;
         return this;
     }
@@ -222,18 +231,17 @@ public class CharacterCalendarEventResponse implements Serializable {
      * importance integer
      * 
      * @return importance
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getImportance() {
         return importance;
     }
 
-    public void setImportance(Integer importance) {
+    public void setImportance(@javax.annotation.Nonnull Integer importance) {
         this.importance = importance;
     }
 
-    public CharacterCalendarEventResponse ownerId(Integer ownerId) {
-
+    public CharacterCalendarEventResponse ownerId(@javax.annotation.Nonnull Integer ownerId) {
         this.ownerId = ownerId;
         return this;
     }
@@ -242,18 +250,17 @@ public class CharacterCalendarEventResponse implements Serializable {
      * owner_id integer
      * 
      * @return ownerId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getOwnerId() {
         return ownerId;
     }
 
-    public void setOwnerId(Integer ownerId) {
+    public void setOwnerId(@javax.annotation.Nonnull Integer ownerId) {
         this.ownerId = ownerId;
     }
 
-    public CharacterCalendarEventResponse ownerName(String ownerName) {
-
+    public CharacterCalendarEventResponse ownerName(@javax.annotation.Nonnull String ownerName) {
         this.ownerName = ownerName;
         return this;
     }
@@ -262,25 +269,23 @@ public class CharacterCalendarEventResponse implements Serializable {
      * owner_name string
      * 
      * @return ownerName
-     **/
+     */
     @javax.annotation.Nonnull
     public String getOwnerName() {
         return ownerName;
     }
 
-    public void setOwnerName(String ownerName) {
+    public void setOwnerName(@javax.annotation.Nonnull String ownerName) {
         this.ownerName = ownerName;
     }
 
-    public CharacterCalendarEventResponse ownerTypeString(String ownerType) {
-
-        this.ownerType = ownerType;
+    public CharacterCalendarEventResponse ownerType(@javax.annotation.Nonnull OwnerTypeEnum ownerType) {
+        this.ownerTypeEnum = ownerType;
         return this;
     }
 
-    public CharacterCalendarEventResponse ownerType(OwnerTypeEnum ownerTypeEnum) {
-
-        this.ownerTypeEnum = ownerTypeEnum;
+    public CharacterCalendarEventResponse ownerTypeString(@javax.annotation.Nonnull String ownerType) {
+        this.ownerType = ownerType;
         return this;
     }
 
@@ -288,8 +293,8 @@ public class CharacterCalendarEventResponse implements Serializable {
      * owner_type string
      * 
      * @return ownerType
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public OwnerTypeEnum getOwnerType() {
         if (ownerTypeEnum == null) {
             ownerTypeEnum = OwnerTypeEnum.fromValue(ownerType);
@@ -301,16 +306,15 @@ public class CharacterCalendarEventResponse implements Serializable {
         return ownerType;
     }
 
-    public void setOwnerType(OwnerTypeEnum ownerTypeEnum) {
-        this.ownerTypeEnum = ownerTypeEnum;
+    public void setOwnerType(@javax.annotation.Nonnull OwnerTypeEnum ownerType) {
+        this.ownerTypeEnum = ownerType;
     }
 
-    public void setOwnerTypeString(String ownerType) {
+    public void setOwnerTypeString(@javax.annotation.Nonnull String ownerType) {
         this.ownerType = ownerType;
     }
 
-    public CharacterCalendarEventResponse response(String response) {
-
+    public CharacterCalendarEventResponse response(@javax.annotation.Nonnull String response) {
         this.response = response;
         return this;
     }
@@ -319,18 +323,17 @@ public class CharacterCalendarEventResponse implements Serializable {
      * response string
      * 
      * @return response
-     **/
+     */
     @javax.annotation.Nonnull
     public String getResponse() {
         return response;
     }
 
-    public void setResponse(String response) {
+    public void setResponse(@javax.annotation.Nonnull String response) {
         this.response = response;
     }
 
-    public CharacterCalendarEventResponse text(String text) {
-
+    public CharacterCalendarEventResponse text(@javax.annotation.Nonnull String text) {
         this.text = text;
         return this;
     }
@@ -339,18 +342,17 @@ public class CharacterCalendarEventResponse implements Serializable {
      * text string
      * 
      * @return text
-     **/
+     */
     @javax.annotation.Nonnull
     public String getText() {
         return text;
     }
 
-    public void setText(String text) {
+    public void setText(@javax.annotation.Nonnull String text) {
         this.text = text;
     }
 
-    public CharacterCalendarEventResponse title(String title) {
-
+    public CharacterCalendarEventResponse title(@javax.annotation.Nonnull String title) {
         this.title = title;
         return this;
     }
@@ -359,13 +361,13 @@ public class CharacterCalendarEventResponse implements Serializable {
      * title string
      * 
      * @return title
-     **/
+     */
     @javax.annotation.Nonnull
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(@javax.annotation.Nonnull String title) {
         this.title = title;
     }
 
@@ -456,22 +458,22 @@ public class CharacterCalendarEventResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CharacterCalendarEventResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CharacterCalendarEventResponse.openapiRequiredFields.isEmpty()) { // has
                                                                                    // required
                                                                                    // fields
                                                                                    // but
                                                                                    // JSON
-                                                                                   // object
+                                                                                   // element
                                                                                    // is
                                                                                    // null
                 throw new IllegalArgumentException(
@@ -481,26 +483,27 @@ public class CharacterCalendarEventResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CharacterCalendarEventResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CharacterCalendarEventResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CharacterCalendarEventResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("owner_name").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `owner_name` to be a primitive type in the JSON string but got `%s`", jsonObj
@@ -511,6 +514,8 @@ public class CharacterCalendarEventResponse implements Serializable {
                     "Expected the field `owner_type` to be a primitive type in the JSON string but got `%s`", jsonObj
                             .get("owner_type").toString()));
         }
+        // validate the required field `owner_type`
+        OwnerTypeEnum.validateJsonElement(jsonObj.get("owner_type"));
         if (!jsonObj.get("response").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `response` to be a primitive type in the JSON string but got `%s`", jsonObj
@@ -550,9 +555,9 @@ public class CharacterCalendarEventResponse implements Serializable {
 
                 @Override
                 public CharacterCalendarEventResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

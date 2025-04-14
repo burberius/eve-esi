@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -56,6 +54,7 @@ public class CorporationStandingsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_FROM_ID = "from_id";
     @SerializedName(SERIALIZED_NAME_FROM_ID)
+    @javax.annotation.Nonnull
     private Integer fromId;
 
     /**
@@ -105,22 +104,28 @@ public class CorporationStandingsResponse implements Serializable {
                 return FromTypeEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            FromTypeEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_FROM_TYPE = "from_type";
     @SerializedName(SERIALIZED_NAME_FROM_TYPE)
+    @javax.annotation.Nonnull
     private String fromType;
     private FromTypeEnum fromTypeEnum;
 
     public static final String SERIALIZED_NAME_STANDING = "standing";
     @SerializedName(SERIALIZED_NAME_STANDING)
+    @javax.annotation.Nonnull
     private Float standing;
 
     public CorporationStandingsResponse() {
     }
 
-    public CorporationStandingsResponse fromId(Integer fromId) {
-
+    public CorporationStandingsResponse fromId(@javax.annotation.Nonnull Integer fromId) {
         this.fromId = fromId;
         return this;
     }
@@ -129,25 +134,23 @@ public class CorporationStandingsResponse implements Serializable {
      * from_id integer
      * 
      * @return fromId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getFromId() {
         return fromId;
     }
 
-    public void setFromId(Integer fromId) {
+    public void setFromId(@javax.annotation.Nonnull Integer fromId) {
         this.fromId = fromId;
     }
 
-    public CorporationStandingsResponse fromTypeString(String fromType) {
-
-        this.fromType = fromType;
+    public CorporationStandingsResponse fromType(@javax.annotation.Nonnull FromTypeEnum fromType) {
+        this.fromTypeEnum = fromType;
         return this;
     }
 
-    public CorporationStandingsResponse fromType(FromTypeEnum fromTypeEnum) {
-
-        this.fromTypeEnum = fromTypeEnum;
+    public CorporationStandingsResponse fromTypeString(@javax.annotation.Nonnull String fromType) {
+        this.fromType = fromType;
         return this;
     }
 
@@ -155,8 +158,8 @@ public class CorporationStandingsResponse implements Serializable {
      * from_type string
      * 
      * @return fromType
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public FromTypeEnum getFromType() {
         if (fromTypeEnum == null) {
             fromTypeEnum = FromTypeEnum.fromValue(fromType);
@@ -168,16 +171,15 @@ public class CorporationStandingsResponse implements Serializable {
         return fromType;
     }
 
-    public void setFromType(FromTypeEnum fromTypeEnum) {
-        this.fromTypeEnum = fromTypeEnum;
+    public void setFromType(@javax.annotation.Nonnull FromTypeEnum fromType) {
+        this.fromTypeEnum = fromType;
     }
 
-    public void setFromTypeString(String fromType) {
+    public void setFromTypeString(@javax.annotation.Nonnull String fromType) {
         this.fromType = fromType;
     }
 
-    public CorporationStandingsResponse standing(Float standing) {
-
+    public CorporationStandingsResponse standing(@javax.annotation.Nonnull Float standing) {
         this.standing = standing;
         return this;
     }
@@ -186,13 +188,13 @@ public class CorporationStandingsResponse implements Serializable {
      * standing number
      * 
      * @return standing
-     **/
+     */
     @javax.annotation.Nonnull
     public Float getStanding() {
         return standing;
     }
 
-    public void setStanding(Float standing) {
+    public void setStanding(@javax.annotation.Nonnull Float standing) {
         this.standing = standing;
     }
 
@@ -255,22 +257,22 @@ public class CorporationStandingsResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CorporationStandingsResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CorporationStandingsResponse.openapiRequiredFields.isEmpty()) { // has
                                                                                  // required
                                                                                  // fields
                                                                                  // but
                                                                                  // JSON
-                                                                                 // object
+                                                                                 // element
                                                                                  // is
                                                                                  // null
                 throw new IllegalArgumentException(
@@ -280,31 +282,34 @@ public class CorporationStandingsResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CorporationStandingsResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CorporationStandingsResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CorporationStandingsResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("from_type").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `from_type` to be a primitive type in the JSON string but got `%s`", jsonObj
                             .get("from_type").toString()));
         }
+        // validate the required field `from_type`
+        FromTypeEnum.validateJsonElement(jsonObj.get("from_type"));
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -328,9 +333,9 @@ public class CorporationStandingsResponse implements Serializable {
 
                 @Override
                 public CorporationStandingsResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

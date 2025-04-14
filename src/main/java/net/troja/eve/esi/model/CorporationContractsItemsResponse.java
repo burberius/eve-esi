@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -56,33 +54,38 @@ public class CorporationContractsItemsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_IS_INCLUDED = "is_included";
     @SerializedName(SERIALIZED_NAME_IS_INCLUDED)
+    @javax.annotation.Nonnull
     private Boolean isIncluded;
 
     public static final String SERIALIZED_NAME_IS_SINGLETON = "is_singleton";
     @SerializedName(SERIALIZED_NAME_IS_SINGLETON)
+    @javax.annotation.Nonnull
     private Boolean isSingleton;
 
     public static final String SERIALIZED_NAME_QUANTITY = "quantity";
     @SerializedName(SERIALIZED_NAME_QUANTITY)
+    @javax.annotation.Nonnull
     private Integer quantity;
 
     public static final String SERIALIZED_NAME_RAW_QUANTITY = "raw_quantity";
     @SerializedName(SERIALIZED_NAME_RAW_QUANTITY)
+    @javax.annotation.Nullable
     private Integer rawQuantity;
 
     public static final String SERIALIZED_NAME_RECORD_ID = "record_id";
     @SerializedName(SERIALIZED_NAME_RECORD_ID)
+    @javax.annotation.Nonnull
     private Long recordId;
 
     public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
+    @javax.annotation.Nonnull
     private Integer typeId;
 
     public CorporationContractsItemsResponse() {
     }
 
-    public CorporationContractsItemsResponse isIncluded(Boolean isIncluded) {
-
+    public CorporationContractsItemsResponse isIncluded(@javax.annotation.Nonnull Boolean isIncluded) {
         this.isIncluded = isIncluded;
         return this;
     }
@@ -92,18 +95,17 @@ public class CorporationContractsItemsResponse implements Serializable {
      * false if the isser is asking for this item in the contract
      * 
      * @return isIncluded
-     **/
+     */
     @javax.annotation.Nonnull
     public Boolean getIsIncluded() {
         return isIncluded;
     }
 
-    public void setIsIncluded(Boolean isIncluded) {
+    public void setIsIncluded(@javax.annotation.Nonnull Boolean isIncluded) {
         this.isIncluded = isIncluded;
     }
 
-    public CorporationContractsItemsResponse isSingleton(Boolean isSingleton) {
-
+    public CorporationContractsItemsResponse isSingleton(@javax.annotation.Nonnull Boolean isSingleton) {
         this.isSingleton = isSingleton;
         return this;
     }
@@ -112,18 +114,17 @@ public class CorporationContractsItemsResponse implements Serializable {
      * is_singleton boolean
      * 
      * @return isSingleton
-     **/
+     */
     @javax.annotation.Nonnull
     public Boolean getIsSingleton() {
         return isSingleton;
     }
 
-    public void setIsSingleton(Boolean isSingleton) {
+    public void setIsSingleton(@javax.annotation.Nonnull Boolean isSingleton) {
         this.isSingleton = isSingleton;
     }
 
-    public CorporationContractsItemsResponse quantity(Integer quantity) {
-
+    public CorporationContractsItemsResponse quantity(@javax.annotation.Nonnull Integer quantity) {
         this.quantity = quantity;
         return this;
     }
@@ -132,18 +133,17 @@ public class CorporationContractsItemsResponse implements Serializable {
      * Number of items in the stack
      * 
      * @return quantity
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(@javax.annotation.Nonnull Integer quantity) {
         this.quantity = quantity;
     }
 
-    public CorporationContractsItemsResponse rawQuantity(Integer rawQuantity) {
-
+    public CorporationContractsItemsResponse rawQuantity(@javax.annotation.Nullable Integer rawQuantity) {
         this.rawQuantity = rawQuantity;
         return this;
     }
@@ -153,18 +153,17 @@ public class CorporationContractsItemsResponse implements Serializable {
      * happens to be a Blueprint, -1 is an Original and -2 is a Blueprint Copy
      * 
      * @return rawQuantity
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getRawQuantity() {
         return rawQuantity;
     }
 
-    public void setRawQuantity(Integer rawQuantity) {
+    public void setRawQuantity(@javax.annotation.Nullable Integer rawQuantity) {
         this.rawQuantity = rawQuantity;
     }
 
-    public CorporationContractsItemsResponse recordId(Long recordId) {
-
+    public CorporationContractsItemsResponse recordId(@javax.annotation.Nonnull Long recordId) {
         this.recordId = recordId;
         return this;
     }
@@ -173,18 +172,17 @@ public class CorporationContractsItemsResponse implements Serializable {
      * Unique ID for the item
      * 
      * @return recordId
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getRecordId() {
         return recordId;
     }
 
-    public void setRecordId(Long recordId) {
+    public void setRecordId(@javax.annotation.Nonnull Long recordId) {
         this.recordId = recordId;
     }
 
-    public CorporationContractsItemsResponse typeId(Integer typeId) {
-
+    public CorporationContractsItemsResponse typeId(@javax.annotation.Nonnull Integer typeId) {
         this.typeId = typeId;
         return this;
     }
@@ -193,13 +191,13 @@ public class CorporationContractsItemsResponse implements Serializable {
      * Type ID for item
      * 
      * @return typeId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(Integer typeId) {
+    public void setTypeId(@javax.annotation.Nonnull Integer typeId) {
         this.typeId = typeId;
     }
 
@@ -273,22 +271,22 @@ public class CorporationContractsItemsResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CorporationContractsItemsResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CorporationContractsItemsResponse.openapiRequiredFields.isEmpty()) { // has
                                                                                       // required
                                                                                       // fields
                                                                                       // but
                                                                                       // JSON
-                                                                                      // object
+                                                                                      // element
                                                                                       // is
                                                                                       // null
                 throw new IllegalArgumentException(
@@ -298,26 +296,27 @@ public class CorporationContractsItemsResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CorporationContractsItemsResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CorporationContractsItemsResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CorporationContractsItemsResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -342,9 +341,9 @@ public class CorporationContractsItemsResponse implements Serializable {
 
                 @Override
                 public CorporationContractsItemsResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

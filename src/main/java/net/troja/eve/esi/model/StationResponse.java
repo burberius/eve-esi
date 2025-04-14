@@ -40,12 +40,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -59,34 +57,42 @@ public class StationResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_MAX_DOCKABLE_SHIP_VOLUME = "max_dockable_ship_volume";
     @SerializedName(SERIALIZED_NAME_MAX_DOCKABLE_SHIP_VOLUME)
+    @javax.annotation.Nonnull
     private Float maxDockableShipVolume;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
+    @javax.annotation.Nonnull
     private String name;
 
     public static final String SERIALIZED_NAME_OFFICE_RENTAL_COST = "office_rental_cost";
     @SerializedName(SERIALIZED_NAME_OFFICE_RENTAL_COST)
+    @javax.annotation.Nonnull
     private Float officeRentalCost;
 
     public static final String SERIALIZED_NAME_OWNER = "owner";
     @SerializedName(SERIALIZED_NAME_OWNER)
+    @javax.annotation.Nullable
     private Integer owner;
 
     public static final String SERIALIZED_NAME_POSITION = "position";
     @SerializedName(SERIALIZED_NAME_POSITION)
+    @javax.annotation.Nonnull
     private Position position;
 
     public static final String SERIALIZED_NAME_RACE_ID = "race_id";
     @SerializedName(SERIALIZED_NAME_RACE_ID)
+    @javax.annotation.Nullable
     private Integer raceId;
 
     public static final String SERIALIZED_NAME_REPROCESSING_EFFICIENCY = "reprocessing_efficiency";
     @SerializedName(SERIALIZED_NAME_REPROCESSING_EFFICIENCY)
+    @javax.annotation.Nonnull
     private Float reprocessingEfficiency;
 
     public static final String SERIALIZED_NAME_REPROCESSING_STATIONS_TAKE = "reprocessing_stations_take";
     @SerializedName(SERIALIZED_NAME_REPROCESSING_STATIONS_TAKE)
+    @javax.annotation.Nonnull
     private Float reprocessingStationsTake;
 
     /**
@@ -184,30 +190,38 @@ public class StationResponse implements Serializable {
                 return ServicesEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ServicesEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_SERVICES = "services";
     @SerializedName(SERIALIZED_NAME_SERVICES)
+    @javax.annotation.Nonnull
     private List<String> services = new ArrayList<>();
     private List<ServicesEnum> servicesEnum = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_STATION_ID = "station_id";
     @SerializedName(SERIALIZED_NAME_STATION_ID)
+    @javax.annotation.Nonnull
     private Integer stationId;
 
     public static final String SERIALIZED_NAME_SYSTEM_ID = "system_id";
     @SerializedName(SERIALIZED_NAME_SYSTEM_ID)
+    @javax.annotation.Nonnull
     private Integer systemId;
 
     public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
+    @javax.annotation.Nonnull
     private Integer typeId;
 
     public StationResponse() {
     }
 
-    public StationResponse maxDockableShipVolume(Float maxDockableShipVolume) {
-
+    public StationResponse maxDockableShipVolume(@javax.annotation.Nonnull Float maxDockableShipVolume) {
         this.maxDockableShipVolume = maxDockableShipVolume;
         return this;
     }
@@ -216,18 +230,17 @@ public class StationResponse implements Serializable {
      * max_dockable_ship_volume number
      * 
      * @return maxDockableShipVolume
-     **/
+     */
     @javax.annotation.Nonnull
     public Float getMaxDockableShipVolume() {
         return maxDockableShipVolume;
     }
 
-    public void setMaxDockableShipVolume(Float maxDockableShipVolume) {
+    public void setMaxDockableShipVolume(@javax.annotation.Nonnull Float maxDockableShipVolume) {
         this.maxDockableShipVolume = maxDockableShipVolume;
     }
 
-    public StationResponse name(String name) {
-
+    public StationResponse name(@javax.annotation.Nonnull String name) {
         this.name = name;
         return this;
     }
@@ -236,18 +249,17 @@ public class StationResponse implements Serializable {
      * name string
      * 
      * @return name
-     **/
+     */
     @javax.annotation.Nonnull
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@javax.annotation.Nonnull String name) {
         this.name = name;
     }
 
-    public StationResponse officeRentalCost(Float officeRentalCost) {
-
+    public StationResponse officeRentalCost(@javax.annotation.Nonnull Float officeRentalCost) {
         this.officeRentalCost = officeRentalCost;
         return this;
     }
@@ -256,18 +268,17 @@ public class StationResponse implements Serializable {
      * office_rental_cost number
      * 
      * @return officeRentalCost
-     **/
+     */
     @javax.annotation.Nonnull
     public Float getOfficeRentalCost() {
         return officeRentalCost;
     }
 
-    public void setOfficeRentalCost(Float officeRentalCost) {
+    public void setOfficeRentalCost(@javax.annotation.Nonnull Float officeRentalCost) {
         this.officeRentalCost = officeRentalCost;
     }
 
-    public StationResponse owner(Integer owner) {
-
+    public StationResponse owner(@javax.annotation.Nullable Integer owner) {
         this.owner = owner;
         return this;
     }
@@ -276,18 +287,17 @@ public class StationResponse implements Serializable {
      * ID of the corporation that controls this station
      * 
      * @return owner
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getOwner() {
         return owner;
     }
 
-    public void setOwner(Integer owner) {
+    public void setOwner(@javax.annotation.Nullable Integer owner) {
         this.owner = owner;
     }
 
-    public StationResponse position(Position position) {
-
+    public StationResponse position(@javax.annotation.Nonnull Position position) {
         this.position = position;
         return this;
     }
@@ -296,18 +306,17 @@ public class StationResponse implements Serializable {
      * Get position
      * 
      * @return position
-     **/
+     */
     @javax.annotation.Nonnull
     public Position getPosition() {
         return position;
     }
 
-    public void setPosition(Position position) {
+    public void setPosition(@javax.annotation.Nonnull Position position) {
         this.position = position;
     }
 
-    public StationResponse raceId(Integer raceId) {
-
+    public StationResponse raceId(@javax.annotation.Nullable Integer raceId) {
         this.raceId = raceId;
         return this;
     }
@@ -316,18 +325,17 @@ public class StationResponse implements Serializable {
      * race_id integer
      * 
      * @return raceId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getRaceId() {
         return raceId;
     }
 
-    public void setRaceId(Integer raceId) {
+    public void setRaceId(@javax.annotation.Nullable Integer raceId) {
         this.raceId = raceId;
     }
 
-    public StationResponse reprocessingEfficiency(Float reprocessingEfficiency) {
-
+    public StationResponse reprocessingEfficiency(@javax.annotation.Nonnull Float reprocessingEfficiency) {
         this.reprocessingEfficiency = reprocessingEfficiency;
         return this;
     }
@@ -336,18 +344,17 @@ public class StationResponse implements Serializable {
      * reprocessing_efficiency number
      * 
      * @return reprocessingEfficiency
-     **/
+     */
     @javax.annotation.Nonnull
     public Float getReprocessingEfficiency() {
         return reprocessingEfficiency;
     }
 
-    public void setReprocessingEfficiency(Float reprocessingEfficiency) {
+    public void setReprocessingEfficiency(@javax.annotation.Nonnull Float reprocessingEfficiency) {
         this.reprocessingEfficiency = reprocessingEfficiency;
     }
 
-    public StationResponse reprocessingStationsTake(Float reprocessingStationsTake) {
-
+    public StationResponse reprocessingStationsTake(@javax.annotation.Nonnull Float reprocessingStationsTake) {
         this.reprocessingStationsTake = reprocessingStationsTake;
         return this;
     }
@@ -356,33 +363,35 @@ public class StationResponse implements Serializable {
      * reprocessing_stations_take number
      * 
      * @return reprocessingStationsTake
-     **/
+     */
     @javax.annotation.Nonnull
     public Float getReprocessingStationsTake() {
         return reprocessingStationsTake;
     }
 
-    public void setReprocessingStationsTake(Float reprocessingStationsTake) {
+    public void setReprocessingStationsTake(@javax.annotation.Nonnull Float reprocessingStationsTake) {
         this.reprocessingStationsTake = reprocessingStationsTake;
     }
 
-    public StationResponse servicesString(List<String> services) {
+    public StationResponse services(@javax.annotation.Nonnull List<ServicesEnum> services) {
+        this.servicesEnum = services;
+        return this;
+    }
 
+    public StationResponse servicesString(@javax.annotation.Nonnull List<String> services) {
         this.services = services;
         return this;
     }
 
-    public StationResponse services(List<ServicesEnum> servicesEnum) {
-
-        this.servicesEnum = servicesEnum;
-        return this;
-    }
-
-    public StationResponse addservicesItem(String servicesItem) {
+    public StationResponse addServicesItem(ServicesEnum servicesItem) {
         if (this.services == null) {
             this.services = new ArrayList<>();
         }
-        this.services.add(servicesItem);
+        if (this.servicesEnum == null) {
+            this.servicesEnum = new ArrayList<>();
+        }
+        this.services.add(servicesItem.toString());
+        this.servicesEnum.add(servicesItem);
         return this;
     }
 
@@ -390,16 +399,13 @@ public class StationResponse implements Serializable {
      * services array
      * 
      * @return services
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public List<ServicesEnum> getServices() {
         if (servicesEnum == null) {
             servicesEnum = new ArrayList<>();
             for (String value : services) {
-                ServicesEnum enumValue = ServicesEnum.fromValue(value);
-                if (enumValue != null) {
-                    servicesEnum.add(enumValue);
-                }
+                servicesEnum.add(ServicesEnum.fromValue(value));
             }
         }
         return servicesEnum;
@@ -409,16 +415,15 @@ public class StationResponse implements Serializable {
         return services;
     }
 
-    public void setServices(List<ServicesEnum> servicesEnum) {
-        this.servicesEnum = servicesEnum;
+    public void setServices(@javax.annotation.Nonnull List<ServicesEnum> services) {
+        this.servicesEnum = services;
     }
 
-    public void setServicesString(List<String> services) {
+    public void setServicesString(@javax.annotation.Nonnull List<String> services) {
         this.services = services;
     }
 
-    public StationResponse stationId(Integer stationId) {
-
+    public StationResponse stationId(@javax.annotation.Nonnull Integer stationId) {
         this.stationId = stationId;
         return this;
     }
@@ -427,18 +432,17 @@ public class StationResponse implements Serializable {
      * station_id integer
      * 
      * @return stationId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getStationId() {
         return stationId;
     }
 
-    public void setStationId(Integer stationId) {
+    public void setStationId(@javax.annotation.Nonnull Integer stationId) {
         this.stationId = stationId;
     }
 
-    public StationResponse systemId(Integer systemId) {
-
+    public StationResponse systemId(@javax.annotation.Nonnull Integer systemId) {
         this.systemId = systemId;
         return this;
     }
@@ -447,18 +451,17 @@ public class StationResponse implements Serializable {
      * The solar system this station is in
      * 
      * @return systemId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getSystemId() {
         return systemId;
     }
 
-    public void setSystemId(Integer systemId) {
+    public void setSystemId(@javax.annotation.Nonnull Integer systemId) {
         this.systemId = systemId;
     }
 
-    public StationResponse typeId(Integer typeId) {
-
+    public StationResponse typeId(@javax.annotation.Nonnull Integer typeId) {
         this.typeId = typeId;
         return this;
     }
@@ -467,13 +470,13 @@ public class StationResponse implements Serializable {
      * type_id integer
      * 
      * @return typeId
-     **/
+     */
     @javax.annotation.Nonnull
     public Integer getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(Integer typeId) {
+    public void setTypeId(@javax.annotation.Nonnull Integer typeId) {
         this.typeId = typeId;
     }
 
@@ -571,54 +574,56 @@ public class StationResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to StationResponse
+     *             if the JSON Element is invalid with respect to
+     *             StationResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!StationResponse.openapiRequiredFields.isEmpty()) { // has
                                                                     // required
                                                                     // fields
                                                                     // but JSON
-                                                                    // object is
-                                                                    // null
+                                                                    // element
+                                                                    // is null
                 throw new IllegalArgumentException(String.format(
                         "The required field(s) %s in StationResponse is not found in the empty JSON string",
                         StationResponse.openapiRequiredFields.toString()));
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!StationResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `StationResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : StationResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if (!jsonObj.get("name").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `name` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("name").toString()));
         }
         // validate the required field `position`
-        Position.validateJsonObject(jsonObj.getAsJsonObject("position"));
+        Position.validateJsonElement(jsonObj.get("position"));
         // ensure the required json array is present
         if (jsonObj.get("services") == null) {
             throw new IllegalArgumentException(
@@ -651,9 +656,9 @@ public class StationResponse implements Serializable {
 
                 @Override
                 public StationResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();

@@ -38,12 +38,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import net.troja.eve.esi.JSON;
@@ -57,14 +55,17 @@ public class CorporationWalletJournalResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_AMOUNT = "amount";
     @SerializedName(SERIALIZED_NAME_AMOUNT)
+    @javax.annotation.Nullable
     private Double amount;
 
     public static final String SERIALIZED_NAME_BALANCE = "balance";
     @SerializedName(SERIALIZED_NAME_BALANCE)
+    @javax.annotation.Nullable
     private Double balance;
 
     public static final String SERIALIZED_NAME_CONTEXT_ID = "context_id";
     @SerializedName(SERIALIZED_NAME_CONTEXT_ID)
+    @javax.annotation.Nullable
     private Long contextId;
 
     /**
@@ -132,31 +133,42 @@ public class CorporationWalletJournalResponse implements Serializable {
                 return ContextIdTypeEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ContextIdTypeEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_CONTEXT_ID_TYPE = "context_id_type";
     @SerializedName(SERIALIZED_NAME_CONTEXT_ID_TYPE)
+    @javax.annotation.Nullable
     private String contextIdType;
     private ContextIdTypeEnum contextIdTypeEnum;
 
     public static final String SERIALIZED_NAME_DATE = "date";
     @SerializedName(SERIALIZED_NAME_DATE)
+    @javax.annotation.Nonnull
     private OffsetDateTime date;
 
     public static final String SERIALIZED_NAME_DESCRIPTION = "description";
     @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+    @javax.annotation.Nonnull
     private String description;
 
     public static final String SERIALIZED_NAME_FIRST_PARTY_ID = "first_party_id";
     @SerializedName(SERIALIZED_NAME_FIRST_PARTY_ID)
+    @javax.annotation.Nullable
     private Integer firstPartyId;
 
     public static final String SERIALIZED_NAME_ID = "id";
     @SerializedName(SERIALIZED_NAME_ID)
+    @javax.annotation.Nonnull
     private Long id;
 
     public static final String SERIALIZED_NAME_REASON = "reason";
     @SerializedName(SERIALIZED_NAME_REASON)
+    @javax.annotation.Nullable
     private String reason;
 
     /**
@@ -498,30 +510,38 @@ public class CorporationWalletJournalResponse implements Serializable {
                 return RefTypeEnum.fromValue(value);
             }
         }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            RefTypeEnum.fromValue(value);
+        }
     }
 
     public static final String SERIALIZED_NAME_REF_TYPE = "ref_type";
     @SerializedName(SERIALIZED_NAME_REF_TYPE)
+    @javax.annotation.Nonnull
     private String refType;
     private RefTypeEnum refTypeEnum;
 
     public static final String SERIALIZED_NAME_SECOND_PARTY_ID = "second_party_id";
     @SerializedName(SERIALIZED_NAME_SECOND_PARTY_ID)
+    @javax.annotation.Nullable
     private Integer secondPartyId;
 
     public static final String SERIALIZED_NAME_TAX = "tax";
     @SerializedName(SERIALIZED_NAME_TAX)
+    @javax.annotation.Nullable
     private Double tax;
 
     public static final String SERIALIZED_NAME_TAX_RECEIVER_ID = "tax_receiver_id";
     @SerializedName(SERIALIZED_NAME_TAX_RECEIVER_ID)
+    @javax.annotation.Nullable
     private Integer taxReceiverId;
 
     public CorporationWalletJournalResponse() {
     }
 
-    public CorporationWalletJournalResponse amount(Double amount) {
-
+    public CorporationWalletJournalResponse amount(@javax.annotation.Nullable Double amount) {
         this.amount = amount;
         return this;
     }
@@ -532,18 +552,17 @@ public class CorporationWalletJournalResponse implements Serializable {
      * when ISK is withdrawn
      * 
      * @return amount
-     **/
+     */
     @javax.annotation.Nullable
     public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(Double amount) {
+    public void setAmount(@javax.annotation.Nullable Double amount) {
         this.amount = amount;
     }
 
-    public CorporationWalletJournalResponse balance(Double balance) {
-
+    public CorporationWalletJournalResponse balance(@javax.annotation.Nullable Double balance) {
         this.balance = balance;
         return this;
     }
@@ -552,18 +571,17 @@ public class CorporationWalletJournalResponse implements Serializable {
      * Wallet balance after transaction occurred
      * 
      * @return balance
-     **/
+     */
     @javax.annotation.Nullable
     public Double getBalance() {
         return balance;
     }
 
-    public void setBalance(Double balance) {
+    public void setBalance(@javax.annotation.Nullable Double balance) {
         this.balance = balance;
     }
 
-    public CorporationWalletJournalResponse contextId(Long contextId) {
-
+    public CorporationWalletJournalResponse contextId(@javax.annotation.Nullable Long contextId) {
         this.contextId = contextId;
         return this;
     }
@@ -574,25 +592,23 @@ public class CorporationWalletJournalResponse implements Serializable {
      * different things. It is also possible to not have a context_id
      * 
      * @return contextId
-     **/
+     */
     @javax.annotation.Nullable
     public Long getContextId() {
         return contextId;
     }
 
-    public void setContextId(Long contextId) {
+    public void setContextId(@javax.annotation.Nullable Long contextId) {
         this.contextId = contextId;
     }
 
-    public CorporationWalletJournalResponse contextIdTypeString(String contextIdType) {
-
-        this.contextIdType = contextIdType;
+    public CorporationWalletJournalResponse contextIdType(@javax.annotation.Nullable ContextIdTypeEnum contextIdType) {
+        this.contextIdTypeEnum = contextIdType;
         return this;
     }
 
-    public CorporationWalletJournalResponse contextIdType(ContextIdTypeEnum contextIdTypeEnum) {
-
-        this.contextIdTypeEnum = contextIdTypeEnum;
+    public CorporationWalletJournalResponse contextIdTypeString(@javax.annotation.Nullable String contextIdType) {
+        this.contextIdType = contextIdType;
         return this;
     }
 
@@ -600,8 +616,8 @@ public class CorporationWalletJournalResponse implements Serializable {
      * The type of the given context_id if present
      * 
      * @return contextIdType
-     **/
-    @javax.annotation.Nullable
+     */
+
     public ContextIdTypeEnum getContextIdType() {
         if (contextIdTypeEnum == null) {
             contextIdTypeEnum = ContextIdTypeEnum.fromValue(contextIdType);
@@ -613,16 +629,15 @@ public class CorporationWalletJournalResponse implements Serializable {
         return contextIdType;
     }
 
-    public void setContextIdType(ContextIdTypeEnum contextIdTypeEnum) {
-        this.contextIdTypeEnum = contextIdTypeEnum;
+    public void setContextIdType(@javax.annotation.Nullable ContextIdTypeEnum contextIdType) {
+        this.contextIdTypeEnum = contextIdType;
     }
 
-    public void setContextIdTypeString(String contextIdType) {
+    public void setContextIdTypeString(@javax.annotation.Nullable String contextIdType) {
         this.contextIdType = contextIdType;
     }
 
-    public CorporationWalletJournalResponse date(OffsetDateTime date) {
-
+    public CorporationWalletJournalResponse date(@javax.annotation.Nonnull OffsetDateTime date) {
         this.date = date;
         return this;
     }
@@ -631,18 +646,17 @@ public class CorporationWalletJournalResponse implements Serializable {
      * Date and time of transaction
      * 
      * @return date
-     **/
+     */
     @javax.annotation.Nonnull
     public OffsetDateTime getDate() {
         return date;
     }
 
-    public void setDate(OffsetDateTime date) {
+    public void setDate(@javax.annotation.Nonnull OffsetDateTime date) {
         this.date = date;
     }
 
-    public CorporationWalletJournalResponse description(String description) {
-
+    public CorporationWalletJournalResponse description(@javax.annotation.Nonnull String description) {
         this.description = description;
         return this;
     }
@@ -651,18 +665,17 @@ public class CorporationWalletJournalResponse implements Serializable {
      * The reason for the transaction, mirrors what is seen in the client
      * 
      * @return description
-     **/
+     */
     @javax.annotation.Nonnull
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(@javax.annotation.Nonnull String description) {
         this.description = description;
     }
 
-    public CorporationWalletJournalResponse firstPartyId(Integer firstPartyId) {
-
+    public CorporationWalletJournalResponse firstPartyId(@javax.annotation.Nullable Integer firstPartyId) {
         this.firstPartyId = firstPartyId;
         return this;
     }
@@ -675,18 +688,17 @@ public class CorporationWalletJournalResponse implements Serializable {
      * /universe/names/ ESI route to determine its type and name
      * 
      * @return firstPartyId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getFirstPartyId() {
         return firstPartyId;
     }
 
-    public void setFirstPartyId(Integer firstPartyId) {
+    public void setFirstPartyId(@javax.annotation.Nullable Integer firstPartyId) {
         this.firstPartyId = firstPartyId;
     }
 
-    public CorporationWalletJournalResponse id(Long id) {
-
+    public CorporationWalletJournalResponse id(@javax.annotation.Nonnull Long id) {
         this.id = id;
         return this;
     }
@@ -695,18 +707,17 @@ public class CorporationWalletJournalResponse implements Serializable {
      * Unique journal reference ID
      * 
      * @return id
-     **/
+     */
     @javax.annotation.Nonnull
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(@javax.annotation.Nonnull Long id) {
         this.id = id;
     }
 
-    public CorporationWalletJournalResponse reason(String reason) {
-
+    public CorporationWalletJournalResponse reason(@javax.annotation.Nullable String reason) {
         this.reason = reason;
         return this;
     }
@@ -716,25 +727,23 @@ public class CorporationWalletJournalResponse implements Serializable {
      * ref_types
      * 
      * @return reason
-     **/
+     */
     @javax.annotation.Nullable
     public String getReason() {
         return reason;
     }
 
-    public void setReason(String reason) {
+    public void setReason(@javax.annotation.Nullable String reason) {
         this.reason = reason;
     }
 
-    public CorporationWalletJournalResponse refTypeString(String refType) {
-
-        this.refType = refType;
+    public CorporationWalletJournalResponse refType(@javax.annotation.Nonnull RefTypeEnum refType) {
+        this.refTypeEnum = refType;
         return this;
     }
 
-    public CorporationWalletJournalResponse refType(RefTypeEnum refTypeEnum) {
-
-        this.refTypeEnum = refTypeEnum;
+    public CorporationWalletJournalResponse refTypeString(@javax.annotation.Nonnull String refType) {
+        this.refType = refType;
         return this;
     }
 
@@ -748,8 +757,8 @@ public class CorporationWalletJournalResponse implements Serializable {
      * /eve-glue/blob/master/eve_glue/wallet_journal_ref.py\&quot;
      * 
      * @return refType
-     **/
-    @javax.annotation.Nonnull
+     */
+
     public RefTypeEnum getRefType() {
         if (refTypeEnum == null) {
             refTypeEnum = RefTypeEnum.fromValue(refType);
@@ -761,16 +770,15 @@ public class CorporationWalletJournalResponse implements Serializable {
         return refType;
     }
 
-    public void setRefType(RefTypeEnum refTypeEnum) {
-        this.refTypeEnum = refTypeEnum;
+    public void setRefType(@javax.annotation.Nonnull RefTypeEnum refType) {
+        this.refTypeEnum = refType;
     }
 
-    public void setRefTypeString(String refType) {
+    public void setRefTypeString(@javax.annotation.Nonnull String refType) {
         this.refType = refType;
     }
 
-    public CorporationWalletJournalResponse secondPartyId(Integer secondPartyId) {
-
+    public CorporationWalletJournalResponse secondPartyId(@javax.annotation.Nullable Integer secondPartyId) {
         this.secondPartyId = secondPartyId;
         return this;
     }
@@ -783,18 +791,17 @@ public class CorporationWalletJournalResponse implements Serializable {
      * the /universe/names/ ESI route to determine its type and name
      * 
      * @return secondPartyId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getSecondPartyId() {
         return secondPartyId;
     }
 
-    public void setSecondPartyId(Integer secondPartyId) {
+    public void setSecondPartyId(@javax.annotation.Nullable Integer secondPartyId) {
         this.secondPartyId = secondPartyId;
     }
 
-    public CorporationWalletJournalResponse tax(Double tax) {
-
+    public CorporationWalletJournalResponse tax(@javax.annotation.Nullable Double tax) {
         this.tax = tax;
         return this;
     }
@@ -803,18 +810,17 @@ public class CorporationWalletJournalResponse implements Serializable {
      * Tax amount received. Only applies to tax related transactions
      * 
      * @return tax
-     **/
+     */
     @javax.annotation.Nullable
     public Double getTax() {
         return tax;
     }
 
-    public void setTax(Double tax) {
+    public void setTax(@javax.annotation.Nullable Double tax) {
         this.tax = tax;
     }
 
-    public CorporationWalletJournalResponse taxReceiverId(Integer taxReceiverId) {
-
+    public CorporationWalletJournalResponse taxReceiverId(@javax.annotation.Nullable Integer taxReceiverId) {
         this.taxReceiverId = taxReceiverId;
         return this;
     }
@@ -824,13 +830,13 @@ public class CorporationWalletJournalResponse implements Serializable {
      * transactions
      * 
      * @return taxReceiverId
-     **/
+     */
     @javax.annotation.Nullable
     public Integer getTaxReceiverId() {
         return taxReceiverId;
     }
 
-    public void setTaxReceiverId(Integer taxReceiverId) {
+    public void setTaxReceiverId(@javax.annotation.Nullable Integer taxReceiverId) {
         this.taxReceiverId = taxReceiverId;
     }
 
@@ -925,22 +931,22 @@ public class CorporationWalletJournalResponse implements Serializable {
     }
 
     /**
-     * Validates the JSON Object and throws an exception if issues found
+     * Validates the JSON Element and throws an exception if issues found
      *
-     * @param jsonObj
-     *            JSON Object
+     * @param jsonElement
+     *            JSON Element
      * @throws IOException
-     *             if the JSON Object is invalid with respect to
+     *             if the JSON Element is invalid with respect to
      *             CorporationWalletJournalResponse
      */
-    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-        if (jsonObj == null) {
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
             if (!CorporationWalletJournalResponse.openapiRequiredFields.isEmpty()) { // has
                                                                                      // required
                                                                                      // fields
                                                                                      // but
                                                                                      // JSON
-                                                                                     // object
+                                                                                     // element
                                                                                      // is
                                                                                      // null
                 throw new IllegalArgumentException(
@@ -950,31 +956,36 @@ public class CorporationWalletJournalResponse implements Serializable {
             }
         }
 
-        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
-        for (Entry<String, JsonElement> entry : entries) {
+        for (Map.Entry<String, JsonElement> entry : entries) {
             if (!CorporationWalletJournalResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
                                 "The field `%s` in the JSON string is not defined in the `CorporationWalletJournalResponse` properties. JSON: %s",
-                                entry.getKey(), jsonObj.toString()));
+                                entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
         for (String requiredField : CorporationWalletJournalResponse.openapiRequiredFields) {
-            if (jsonObj.get(requiredField) == null) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonObj.toString()));
+                        jsonElement.toString()));
             }
         }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
         if ((jsonObj.get("context_id_type") != null && !jsonObj.get("context_id_type").isJsonNull())
                 && !jsonObj.get("context_id_type").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `context_id_type` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("context_id_type").toString()));
+        }
+        // validate the optional field `context_id_type`
+        if (jsonObj.get("context_id_type") != null && !jsonObj.get("context_id_type").isJsonNull()) {
+            ContextIdTypeEnum.validateJsonElement(jsonObj.get("context_id_type"));
         }
         if (!jsonObj.get("description").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
@@ -992,6 +1003,8 @@ public class CorporationWalletJournalResponse implements Serializable {
                     "Expected the field `ref_type` to be a primitive type in the JSON string but got `%s`", jsonObj
                             .get("ref_type").toString()));
         }
+        // validate the required field `ref_type`
+        RefTypeEnum.validateJsonElement(jsonObj.get("ref_type"));
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -1016,9 +1029,9 @@ public class CorporationWalletJournalResponse implements Serializable {
 
                 @Override
                 public CorporationWalletJournalResponse read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    validateJsonObject(jsonObj);
-                    return thisAdapter.fromJsonTree(jsonObj);
+                    JsonElement jsonElement = elementAdapter.read(in);
+                    validateJsonElement(jsonElement);
+                    return thisAdapter.fromJsonTree(jsonElement);
                 }
 
             }.nullSafe();
