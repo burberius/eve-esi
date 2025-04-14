@@ -137,6 +137,7 @@ public class ContactsApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
+    @Disabled("No corporation read access")
     public void getCorporationsCorporationIdContactsTest() throws ApiException {
         String ifNoneMatch = null;
         Integer page = null;
@@ -153,6 +154,7 @@ public class ContactsApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
+    @Disabled("No corporation read access")
     public void getCorporationsCorporationIdContactsLabelsTest() throws ApiException {
         String ifNoneMatch = null;
         String token = null;
