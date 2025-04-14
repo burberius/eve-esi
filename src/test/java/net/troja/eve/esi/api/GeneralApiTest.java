@@ -12,8 +12,10 @@ import okhttp3.Call;
 import org.junit.jupiter.api.BeforeAll;
 
 import java.lang.reflect.Type;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import net.troja.eve.esi.model.CharacterAffiliationResponse;
 
 import static org.assertj.core.api.Fail.fail;
 import static org.junit.jupiter.api.Assumptions.assumeFalse;
@@ -78,9 +80,8 @@ public class GeneralApiTest {
         characterId = payload.getCharacterID();
         characterName = payload.getName();
 
-        CharacterResponse characterResponse =
-                new CharacterApi(apiClient).getCharactersCharacterId(characterId, DATASOURCE, null);
-        corporationId = characterResponse.getCorporationId();
+		List<CharacterAffiliationResponse> affiliation = new CharacterApi(apiClient).postCharactersAffiliation(Collections.singleton(characterId), DATASOURCE);
+        corporationId = affiliation.get(0).getCorporationId();
     }
 
     private static class ValidatingApiClient extends ApiClient {
