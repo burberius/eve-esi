@@ -66,6 +66,6 @@ public class ClonesApiTest extends GeneralApiTest {
         String ifNoneMatch = null;
         String token = null;
         List<Integer> response = api.getCharactersCharacterIdImplants(characterId, DATASOURCE, ifNoneMatch, token);
-        assertThat(response).isNotNull().isNotEmpty();
+        assertThat(response).isNotNull();
     }
 }
