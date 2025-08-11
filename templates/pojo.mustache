@@ -72,7 +72,7 @@ public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{{#vendorExtens
   {{/vendorExtensions.x-field-extra-annotation}}
   {{>nullable_var_annotations}}
   {{#isContainer}}
-  {{#isEnum}}{{#isDiscriminator}}protected{{/isDiscriminator}}{{^isDiscriminator}}private{{/isDiscriminator}} List<String> {{name}}{{#defaultValue}} = {{{.}}}{{/defaultValue}};{{/isEnum}}
+  {{#isEnum}}{{#isDiscriminator}}protected{{/isDiscriminator}}{{^isDiscriminator}}private{{/isDiscriminator}} {{#uniqueItems}}Set{{/uniqueItems}}{{^uniqueItems}}List{{/uniqueItems}}<String> {{name}}{{#defaultValue}} = {{{.}}}{{/defaultValue}};{{/isEnum}}
   {{#isDiscriminator}}protected{{/isDiscriminator}}{{^isDiscriminator}}private{{/isDiscriminator}} {{{datatypeWithEnum}}} {{name}}{{#isEnum}}Enum{{/isEnum}}{{#defaultValue}} = {{{.}}}{{/defaultValue}};
   {{/isContainer}}
   {{^isContainer}}
@@ -128,7 +128,7 @@ public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{{#vendorExtens
   {{#deprecated}}
   @Deprecated
   {{/deprecated}}
-  public {{classname}} {{name}}String({{>nullable_var_annotations}} {{#isContainer}}List<String>{{/isContainer}}{{^isContainer}}String{{/isContainer}} {{name}}) {
+  public {{classname}} {{name}}String({{>nullable_var_annotations}} {{#isContainer}}{{#uniqueItems}}Set{{/uniqueItems}}{{^uniqueItems}}List{{/uniqueItems}}<String>{{/isContainer}}{{^isContainer}}String{{/isContainer}} {{name}}) {
     this.{{name}} = {{name}};
     return this;
   }
@@ -208,7 +208,7 @@ public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{{#vendorExtens
     {{#isEnum}}
     if ({{name}}Enum == null) {
       {{#isContainer}}
-      {{name}}Enum = new ArrayList<>();
+      {{name}}Enum = new {{#uniqueItems}}LinkedHashSet{{/uniqueItems}}{{^uniqueItems}}ArrayList{{/uniqueItems}}<>();
       for (String value : {{name}}) {
         {{name}}Enum.add({{{items.datatypeWithEnum}}}.fromValue(value));
       }
@@ -222,7 +222,7 @@ public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{{#vendorExtens
   }
   {{#isEnum}}
 
-  public {{#isContainer}}List<String>{{/isContainer}}{{^isContainer}}String{{/isContainer}} {{getter}}String() {
+  public {{#isContainer}}{{#uniqueItems}}Set{{/uniqueItems}}{{^uniqueItems}}List{{/uniqueItems}}<String>{{/isContainer}}{{^isContainer}}String{{/isContainer}} {{getter}}String() {
     return {{name}};
   }{{/isEnum}}
 
@@ -234,7 +234,7 @@ public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{{#vendorExtens
   }
 {{#isEnum}}
 {{#deprecated}}  @Deprecated
-{{/deprecated}}  public void {{setter}}String({{>nullable_var_annotations}} {{#isContainer}}List<String>{{/isContainer}}{{^isContainer}}String{{/isContainer}} {{name}}) {
+{{/deprecated}}  public void {{setter}}String({{>nullable_var_annotations}} {{#isContainer}}{{#uniqueItems}}Set{{/uniqueItems}}{{^uniqueItems}}List{{/uniqueItems}}<String>{{/isContainer}}{{^isContainer}}String{{/isContainer}} {{name}}) {
     this.{{name}} = {{name}};
   }
 {{/isEnum}}
@@ -378,16 +378,20 @@ public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{{#vendorExtens
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    {{#allVars}}
-    openapiFields.add("{{baseName}}");
-    {{/allVars}}
+    {{#hasVars}}
+    openapiFields = new HashSet<String>(Arrays.asList({{#allVars}}"{{baseName}}"{{^-last}}, {{/-last}}{{/allVars}}));
+    {{/hasVars}}
+    {{^hasVars}}
+    openapiFields = new HashSet<String>(0);
+    {{/hasVars}}
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    {{#requiredVars}}
-    openapiRequiredFields.add("{{baseName}}");
-    {{/requiredVars}}
+    {{#hasRequired}}
+    openapiRequiredFields = new HashSet<String>(Arrays.asList({{#requiredVars}}"{{baseName}}"{{^-last}}, {{/-last}}{{/requiredVars}}));
+    {{/hasRequired}}
+    {{^hasRequired}}
+    openapiRequiredFields = new HashSet<String>(0);
+    {{/hasRequired}}
   }
 
   /**

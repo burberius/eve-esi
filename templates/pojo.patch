@@ -1,12 +1,12 @@
---- out/libraries/okhttp-gson/pojo.mustache	2025-04-13 22:37:42.346075689 +0200
-+++ templates/pojo.mustache	2025-04-14 10:35:33.016226922 +0200
+--- ../out/libraries/okhttp-gson/pojo.mustache	2025-08-11 14:22:51.476365744 +0200
++++ pojo.mustache	2025-08-11 14:56:30.266295967 +0200
 @@ -71,7 +71,14 @@
    {{{vendorExtensions.x-field-extra-annotation}}}
    {{/vendorExtensions.x-field-extra-annotation}}
    {{>nullable_var_annotations}}
 -  {{#isDiscriminator}}protected{{/isDiscriminator}}{{^isDiscriminator}}private{{/isDiscriminator}} {{{datatypeWithEnum}}} {{name}}{{#defaultValue}} = {{{.}}}{{/defaultValue}};
 +  {{#isContainer}}
-+  {{#isEnum}}{{#isDiscriminator}}protected{{/isDiscriminator}}{{^isDiscriminator}}private{{/isDiscriminator}} List<String> {{name}}{{#defaultValue}} = {{{.}}}{{/defaultValue}};{{/isEnum}}
++  {{#isEnum}}{{#isDiscriminator}}protected{{/isDiscriminator}}{{^isDiscriminator}}private{{/isDiscriminator}} {{#uniqueItems}}Set{{/uniqueItems}}{{^uniqueItems}}List{{/uniqueItems}}<String> {{name}}{{#defaultValue}} = {{{.}}}{{/defaultValue}};{{/isEnum}}
 +  {{#isDiscriminator}}protected{{/isDiscriminator}}{{^isDiscriminator}}private{{/isDiscriminator}} {{{datatypeWithEnum}}} {{name}}{{#isEnum}}Enum{{/isEnum}}{{#defaultValue}} = {{{.}}}{{/defaultValue}};
 +  {{/isContainer}}
 +  {{^isContainer}}
@@ -32,7 +32,7 @@
 +  {{#deprecated}}
 +  @Deprecated
 +  {{/deprecated}}
-+  public {{classname}} {{name}}String({{>nullable_var_annotations}} {{#isContainer}}List<String>{{/isContainer}}{{^isContainer}}String{{/isContainer}} {{name}}) {
++  public {{classname}} {{name}}String({{>nullable_var_annotations}} {{#isContainer}}{{#uniqueItems}}Set{{/uniqueItems}}{{^uniqueItems}}List{{/uniqueItems}}<String>{{/isContainer}}{{^isContainer}}String{{/isContainer}} {{name}}) {
 +    this.{{name}} = {{name}};
 +    return this;
 +  }
@@ -80,7 +80,7 @@
 +    {{#isEnum}}
 +    if ({{name}}Enum == null) {
 +      {{#isContainer}}
-+      {{name}}Enum = new ArrayList<>();
++      {{name}}Enum = new {{#uniqueItems}}LinkedHashSet{{/uniqueItems}}{{^uniqueItems}}ArrayList{{/uniqueItems}}<>();
 +      for (String value : {{name}}) {
 +        {{name}}Enum.add({{{items.datatypeWithEnum}}}.fromValue(value));
 +      }
@@ -94,7 +94,7 @@
    }
 +  {{#isEnum}}
 +
-+  public {{#isContainer}}List<String>{{/isContainer}}{{^isContainer}}String{{/isContainer}} {{getter}}String() {
++  public {{#isContainer}}{{#uniqueItems}}Set{{/uniqueItems}}{{^uniqueItems}}List{{/uniqueItems}}<String>{{/isContainer}}{{^isContainer}}String{{/isContainer}} {{getter}}String() {
 +    return {{name}};
 +  }{{/isEnum}}
  
@@ -106,7 +106,7 @@
 +  }
 +{{#isEnum}}
 +{{#deprecated}}  @Deprecated
-+{{/deprecated}}  public void {{setter}}String({{>nullable_var_annotations}} {{#isContainer}}List<String>{{/isContainer}}{{^isContainer}}String{{/isContainer}} {{name}}) {
++{{/deprecated}}  public void {{setter}}String({{>nullable_var_annotations}} {{#isContainer}}{{#uniqueItems}}Set{{/uniqueItems}}{{^uniqueItems}}List{{/uniqueItems}}<String>{{/isContainer}}{{^isContainer}}String{{/isContainer}} {{name}}) {
      this.{{name}} = {{name}};
    }
 +{{/isEnum}}
