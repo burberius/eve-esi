@@ -1,0 +1,10 @@
+--- ../out/libraries/okhttp-gson/api.mustache	2025-08-12 10:06:43.686515534 +0200
++++ api.mustache	2025-08-12 10:07:19.109847644 +0200
+@@ -53,6 +53,7 @@
+ 
+ {{#operations}}
+ public class {{classname}} {
++    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2020, 1,1);
+     private ApiClient localVarApiClient;
+     private int localHostIndex;
+     private String localCustomBaseUrl;

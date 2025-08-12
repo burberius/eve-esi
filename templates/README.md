@@ -19,7 +19,7 @@ bash ./templates.sh
 
 This extracts them in a folder called _out_.
 
-The _pojo.mustach_ and _modelInnerEnum.mustache_ files are not from the _out_ directory but 
+The _api.mustach_, _pojo.mustach_ and _modelInnerEnum.mustache_ files are not from the _out_ directory but 
 from _out/libraries/okhttp-gson_!
 
-Copy the files to this folder and apply the changes from the _pojo.patch_ and _modelInnerEnum.patch_ file.
+Copy the files to this folder and apply the changes from the _api.patch_, _pojo.patch_ and _modelInnerEnum.patch_ file.
