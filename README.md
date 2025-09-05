@@ -4,10 +4,16 @@
 # EVE-ESI
 A Java client library for the EVE Swagger Interface (ESI)
 
+## Version 7.0.0 changes
+
+The code is now generated from the OpenApi specification as the Swagger one is EoL.
+In that move we also adapted the namings, to be more like REST.
+But the whole process broke the backward compatibility.
+
 ## Version 6.0.0 changes
 
 We regenerated the classes with the latest openAPI generator (currently 7.12.0) and try to keep it uptodate now.
-Theoretically there should be any breaking changes.
+Theoretically there shouldn't be any breaking changes.
 
 ## Version 4.0.0 changes
 
