@@ -7,15 +7,13 @@ import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.ApiResponse;
 import net.troja.eve.esi.auth.JWT;
 import net.troja.eve.esi.auth.OAuth;
-import net.troja.eve.esi.model.CharacterResponse;
+import net.troja.eve.esi.model.CharacterAffiliationResponseInner;
 import okhttp3.Call;
 import org.junit.jupiter.api.BeforeAll;
 
 import java.lang.reflect.Type;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import net.troja.eve.esi.model.CharacterAffiliationResponse;
 
 import static org.assertj.core.api.Fail.fail;
 import static org.junit.jupiter.api.Assumptions.assumeFalse;
@@ -27,26 +25,26 @@ public class GeneralApiTest {
     protected static final String SSO_CLIENT_ID = "SSO_CLIENT_ID";
     protected static final String SSO_REFRESH_TOKEN = "SSO_REFRESH_TOKEN";
     protected static final String SSO_REFRESH_TOKEN_PUBLIC_DATA = "SSO_REFRESH_TOKEN_PUBLIC_DATA";
-    protected static final int CHARACTER_ID_CHRIBBA = 196379789;
+    protected static final long CHARACTER_ID_CHRIBBA = 196379789;
     protected static final String CHARACTER_NAME_CHRIBBA = "Chribba";
-    protected static final int CORPORATION_ID_TBD = 98435559;
+    protected static final long CORPORATION_ID_TBD = 98435559;
     protected static final String CORPORATION_NAME_TBD = "The Blue Donut";
-    protected static final int ALLIANCE_ID_TRI = 933731581;
+    protected static final long ALLIANCE_ID_TRI = 933731581;
     protected static final String ALLIANCE_NAME_TRI = "Triumvirate.";
-    protected static final int REGION_ID_THE_FORGE = 10000002;
-    protected static final int TYPE_ID_VELDSPAR = 1230;
+    protected static final long REGION_ID_THE_FORGE = 10000002;
+    protected static final long TYPE_ID_VELDSPAR = 1230;
     protected static final String NAME_VELDSPAR = "Veldspar";
-    protected static final int SOLARSYSTEM_ID_JITA = 30000142;
-    protected static final int SOLARSYSTEM_ID_ALIKARA = 30002754;
+    protected static final long SOLARSYSTEM_ID_JITA = 30000142;
+    protected static final long SOLARSYSTEM_ID_ALIKARA = 30002754;
 
     private static final int MAX_RETRIES = 3;
 
     protected static String clientId;
     protected static String refreshToken;
     protected static String refreshTokenPublicData;
-    protected static int characterId;
+    protected static long characterId;
     protected static String characterName;
-    protected static int corporationId;
+    protected static long corporationId;
 
     protected static ApiClient apiClient;
 
@@ -68,7 +66,7 @@ public class GeneralApiTest {
         }
         apiClient = new ApiClientBuilder().client(new ValidatingApiClient()).clientID(clientId).refreshToken(refreshToken).build();
 
-        final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");
+        final OAuth auth = (OAuth) apiClient.getAuthentication(ApiClientBuilder.AUTHENTICATION);
         JWT jwt = auth.getJWT();
         if (jwt == null) {
             throw new NullPointerException("jwt is null");
@@ -80,7 +78,7 @@ public class GeneralApiTest {
         characterId = payload.getCharacterID();
         characterName = payload.getName();
 
-		List<CharacterAffiliationResponse> affiliation = new CharacterApi(apiClient).postCharactersAffiliation(Collections.singleton(characterId), DATASOURCE);
+		List<CharacterAffiliationResponseInner> affiliation = new CharacterApi(apiClient).postCharactersAffiliation(CharacterApi.COMPATIBILITY_DATE, null, null, null, null);
         corporationId = affiliation.get(0).getCorporationId();
     }
 

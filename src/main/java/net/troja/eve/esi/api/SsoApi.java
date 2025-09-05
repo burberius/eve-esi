@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
 import net.troja.eve.esi.ApiCallback;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiClientBuilder;
@@ -14,7 +16,6 @@ import net.troja.eve.esi.ApiResponse;
 import net.troja.eve.esi.Configuration;
 import net.troja.eve.esi.Pair;
 import net.troja.eve.esi.auth.OAuth;
-import net.troja.eve.esi.model.CharacterInfo;
 
 /**
  * Api to retrieve the character information from the sso.
@@ -25,9 +26,9 @@ public class SsoApi {
     private static final String REFRESH_TOKEN = "refresh_token";
     private static final String DATASOURCE = "tranquility";
     protected static final String DATE_FORMAT = "yyyy-MM-dd'T'hh:mm:ss";
+    public static final String EVESSO = "evesso";
     private final ApiClient localVarApiClient = new ApiClientBuilder().build();
     private ApiClient apiClient;
-    private MetaApi metaApi;
 
     public SsoApi() {
         this(Configuration.getDefaultApiClient());
@@ -35,7 +36,6 @@ public class SsoApi {
 
     public SsoApi(final ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.metaApi = new MetaApi(apiClient);
         localVarApiClient.setBasePath(URI_REVOKE); // Set new basepath
     }
 
@@ -45,19 +45,26 @@ public class SsoApi {
 
     public void setApiClient(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.metaApi.setApiClient(apiClient);
     }
 
-    /**
-     * Alias for net.troja.eve.esi.api.MetaApi.getVerify() Return CharacterInfo
-     * that have helper methods: CharacterInfo.getScopes() : Set<String>
-     * CharacterInfo.getExpireOn() : OffsetDateTime
-     * 
-     * @return
-     * @throws ApiException
-     */
-    public CharacterInfo getCharacterInfo() throws ApiException {
-        return new CharacterInfo(metaApi.getVerify(null, null, DATASOURCE, null, null));
+    public String getCharacterName() {
+        OAuth evesso = (OAuth) apiClient.getAuthentication(EVESSO);
+        return evesso.getJWT().getPayload().getName();
+    }
+
+    public Integer getCharacterId() {
+        OAuth evesso = (OAuth) apiClient.getAuthentication(EVESSO);
+        return evesso.getJWT().getPayload().getCharacterID();
+    }
+
+    public Set<String> getScopes() {
+        OAuth evesso = (OAuth) apiClient.getAuthentication(EVESSO);
+        return evesso.getJWT().getPayload().getScopes();
+    }
+
+    public String getOwnerHash() {
+        OAuth evesso = (OAuth) apiClient.getAuthentication(EVESSO);
+        return evesso.getJWT().getPayload().getOwner();
     }
 
     public void revokeRefreshToken(String refreshToken) throws ApiException {
@@ -74,7 +81,7 @@ public class SsoApi {
         // Operation Servers
         Object localVarPostBody = new Object();
 
-        final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");
+        final OAuth auth = (OAuth) apiClient.getAuthentication(EVESSO);
         // create path and map variables
         String localVarPath = "/v2/oauth/revoke";
 

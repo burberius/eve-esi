@@ -4,6 +4,7 @@ import net.troja.eve.esi.auth.OAuth;
 import okhttp3.OkHttpClient;
 
 public class ApiClientBuilder {
+    public static final String AUTHENTICATION = "OAuth2";
 
     private String clientID;
     private String refreshToken;
@@ -26,7 +27,7 @@ public class ApiClientBuilder {
             client.setUserAgent("eve-esi/slack:@goldengnu");
         }
         // Set auth
-        final OAuth auth = (OAuth) client.getAuthentication("evesso");
+        final OAuth auth = (OAuth) client.getAuthentication(AUTHENTICATION);
         if (clientID != null) {
             if (refreshToken != null) {
                 auth.setAuth(clientID, refreshToken);

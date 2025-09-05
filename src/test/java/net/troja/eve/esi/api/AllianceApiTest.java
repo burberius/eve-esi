@@ -19,7 +19,7 @@ import net.troja.eve.esi.model.AllianceResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -38,28 +38,32 @@ public class AllianceApiTest extends GeneralApiTest {
     /**
      * List all alliances
      *
-     * List all active player alliances  ---  This route is cached for up to 3600 seconds
+     * List all active player alliances
      *
      * @throws ApiException if the Api call fails
      */
     @Test
     public void getAlliancesTest() throws ApiException {
+        String acceptLanguage = null;
         String ifNoneMatch = null;
-        List<Integer> response = api.getAlliances(DATASOURCE, ifNoneMatch);
+        String xTenant = null;
+        Set<Long> response = api.getAlliances(AllianceApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).hasSizeGreaterThan(1);
     }
 
     /**
      * Get alliance information
      *
-     * Public information about an alliance  ---  This route is cached for up to 3600 seconds
+     * Public information about an alliance
      *
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getAlliancesAllianceIdTest() throws ApiException {
+    public void getAllianceTest() throws ApiException {
+        String acceptLanguage = null;
         String ifNoneMatch = null;
-        AllianceResponse response = api.getAlliancesAllianceId(ALLIANCE_ID_TRI, DATASOURCE, ifNoneMatch);
+        String xTenant = null;
+        AllianceResponse response = api.getAlliance(ALLIANCE_ID_TRI, AllianceApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response.getName()).isEqualTo("Triumvirate.");
         assertThat(response.getTicker()).isEqualTo("TRI");
         assertThat(response.getExecutorCorporationId()).isEqualTo(98435559);
@@ -69,29 +73,33 @@ public class AllianceApiTest extends GeneralApiTest {
     /**
      * List alliance&#39;s corporations
      *
-     * List all current member corporations of an alliance  ---  This route is cached for up to 3600 seconds
+     * List all current member corporations of an alliance
      *
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getAlliancesAllianceIdCorporationsTest() throws ApiException {
+    public void getAllianceCorporationsTest() throws ApiException {
+        String acceptLanguage = null;
         String ifNoneMatch = null;
-        List<Integer> response = api.getAlliancesAllianceIdCorporations(ALLIANCE_ID_TRI, DATASOURCE, ifNoneMatch);
+        String xTenant = null;
+        Set<Long> response = api.getAllianceCorporations(ALLIANCE_ID_TRI, AllianceApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).hasSizeGreaterThan(1);
-        assertThat(response).contains( 98435559);
+        assertThat(response).contains(98435559L);
     }
 
     /**
      * Get alliance icon
      *
-     * Get the icon urls for a alliance  ---  This route expires daily at 11:05
+     * Get the icon urls for a alliance  This route expires daily at 11:05
      *
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getAlliancesAllianceIdIconsTest() throws ApiException {
+    public void getAllianceIconsTest() throws ApiException {
+        String acceptLanguage = null;
         String ifNoneMatch = null;
-        AllianceIconsResponse response = api.getAlliancesAllianceIdIcons(ALLIANCE_ID_TRI, DATASOURCE, ifNoneMatch);
+        String xTenant = null;
+        AllianceIconsResponse response = api.getAllianceIcons(ALLIANCE_ID_TRI, AllianceApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response.getPx128x128()).isEqualTo("https://images.evetech.net/alliances/933731581/logo?tenant=tranquility&size=128");
     }
 }

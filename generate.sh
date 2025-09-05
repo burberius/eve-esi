@@ -67,6 +67,7 @@ java -jar openapi-generator-cli-$VERSION.jar generate \
   -c config.json
 mv src/test/java/net/troja/eve/esi/api src/test/java/net/troja/eve/esi/api.new
 mv src/test/java/net/troja/eve/esi/api.old src/test/java/net/troja/eve/esi/api
+rm -rf src/test/java/net/troja/eve/esi/model
 #mv src/main/java/net/troja/eve/esi/CharacterInfo.java src/main/java/net/troja/eve/esi/model/CharacterInfo.java
 #mv src/main/java/net/troja/eve/esi/SsoApi.java src/main/java/net/troja/eve/esi/api/SsoApi.java
 
