@@ -58,32 +58,32 @@ mv src/main/java/net/troja/eve/esi/SsoApi.java src/main/java/net/troja/eve/esi/a
 #
 # Generate SSO scopes
 #
-#BAD_SCOPES=""
-#FILE="src/main/java/net/troja/eve/esi/auth/SsoScopes.java"
-#echo "package net.troja.eve.esi.auth;" > $FILE
-#echo "" >> $FILE
-#echo "import java.util.Arrays;" >> $FILE
-#echo "import java.util.Collections;" >> $FILE
-#echo "import java.util.HashSet;" >> $FILE
-#echo "import java.util.Set;" >> $FILE
-#echo "" >> $FILE
-#echo "public class SsoScopes {" >> $FILE
-#echo "public static final String PUBLIC_DATA = \"publicData\";" >> $FILE
-#for VAL in $(jq "(.paths[][]? | select(.security[0].evesso).security[0].evesso[0])" esi.json | sort | uniq | sed -e 's#"##g'); do
-#  echo $BAD_SCOPES | grep $VAL > /dev/null && continue
-#  UPPER=$(echo $VAL | tr [.a-z-] [_A-Z_])
-#  if [ "a$ALL" = "a" ]; then
-#    ALL="$UPPER"
-#  else
-#    ALL="$ALL, $UPPER"
-#  fi
-#  echo "public static final String $UPPER = \"$VAL\";" >> $FILE
-#done
-#echo -e "\nprivate static final String[] ALL_VALUES = {$ALL};" >> $FILE
-#echo "" >> $FILE
-#echo "    public static Set<String> ALL = Collections.unmodifiableSet(new HashSet<>(Arrays.asList(ALL_VALUES)));" >> $FILE
-#echo "" >> $FILE
-#echo "}" >> $FILE
+BAD_SCOPES=""
+FILE="src/main/java/net/troja/eve/esi/auth/SsoScopes.java"
+echo "package net.troja.eve.esi.auth;" > $FILE
+echo "" >> $FILE
+echo "import java.util.Arrays;" >> $FILE
+echo "import java.util.Collections;" >> $FILE
+echo "import java.util.HashSet;" >> $FILE
+echo "import java.util.Set;" >> $FILE
+echo "" >> $FILE
+echo "public class SsoScopes {" >> $FILE
+echo "public static final String PUBLIC_DATA = \"publicData\";" >> $FILE
+for VAL in $(jq ".components.securitySchemes.OAuth2.flows.authorizationCode.scopes" esi.json | sed -n -e 's#.*: "\(.*\)",#\1#p'); do
+  echo $BAD_SCOPES | grep $VAL > /dev/null && continue
+  UPPER=$(echo $VAL | tr [.a-z-] [_A-Z_])
+  if [ "a$ALL" = "a" ]; then
+    ALL="$UPPER"
+  else
+    ALL="$ALL, $UPPER"
+  fi
+  echo "public static final String $UPPER = \"$VAL\";" >> $FILE
+done
+echo -e "\nprivate static final String[] ALL_VALUES = {$ALL};" >> $FILE
+echo "" >> $FILE
+echo "    public static Set<String> ALL = Collections.unmodifiableSet(new HashSet<>(Arrays.asList(ALL_VALUES)));" >> $FILE
+echo "" >> $FILE
+echo "}" >> $FILE
 
 #
 # Clean formating
@@ -96,3 +96,10 @@ if (( $SECONDS >= 60 ))
    else
        echo "Generated in $(($SECONDS % 60))sec"
 fi
+
+echo
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+echo "! Did you update the date in templates/api.mustache?                              !"
+echo "! The current version is visible at https://developers.eveonline.com/api-explorer !"
+echo "! After a change you have to regenerate it!                                       !"
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"

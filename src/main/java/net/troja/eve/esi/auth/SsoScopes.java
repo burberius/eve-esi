@@ -36,6 +36,7 @@ public class SsoScopes {
     public static final String ESI_CORPORATIONS_READ_FACILITIES_V1 = "esi-corporations.read_facilities.v1";
     public static final String ESI_CORPORATIONS_READ_FW_STATS_V1 = "esi-corporations.read_fw_stats.v1";
     public static final String ESI_CORPORATIONS_READ_MEDALS_V1 = "esi-corporations.read_medals.v1";
+    public static final String ESI_CORPORATIONS_READ_PROJECTS_V1 = "esi-corporations.read_projects.v1";
     public static final String ESI_CORPORATIONS_READ_STANDINGS_V1 = "esi-corporations.read_standings.v1";
     public static final String ESI_CORPORATIONS_READ_STARBASES_V1 = "esi-corporations.read_starbases.v1";
     public static final String ESI_CORPORATIONS_READ_STRUCTURES_V1 = "esi-corporations.read_structures.v1";
@@ -69,7 +70,6 @@ public class SsoScopes {
     public static final String ESI_UI_WRITE_WAYPOINT_V1 = "esi-ui.write_waypoint.v1";
     public static final String ESI_UNIVERSE_READ_STRUCTURES_V1 = "esi-universe.read_structures.v1";
     public static final String ESI_WALLET_READ_CHARACTER_WALLET_V1 = "esi-wallet.read_character_wallet.v1";
-    public static final String ESI_WALLET_READ_CORPORATION_WALLETS_V1 = "esi-wallet.read_corporation_wallets.v1";
 
     private static final String[] ALL_VALUES = { ESI_ALLIANCES_READ_CONTACTS_V1, ESI_ASSETS_READ_ASSETS_V1,
             ESI_ASSETS_READ_CORPORATION_ASSETS_V1, ESI_CALENDAR_READ_CALENDAR_EVENTS_V1,
@@ -83,7 +83,7 @@ public class SsoScopes {
             ESI_CORPORATIONS_READ_CONTACTS_V1, ESI_CORPORATIONS_READ_CONTAINER_LOGS_V1,
             ESI_CORPORATIONS_READ_CORPORATION_MEMBERSHIP_V1, ESI_CORPORATIONS_READ_DIVISIONS_V1,
             ESI_CORPORATIONS_READ_FACILITIES_V1, ESI_CORPORATIONS_READ_FW_STATS_V1, ESI_CORPORATIONS_READ_MEDALS_V1,
-            ESI_CORPORATIONS_READ_STANDINGS_V1, ESI_CORPORATIONS_READ_STARBASES_V1,
+            ESI_CORPORATIONS_READ_PROJECTS_V1, ESI_CORPORATIONS_READ_STANDINGS_V1, ESI_CORPORATIONS_READ_STARBASES_V1,
             ESI_CORPORATIONS_READ_STRUCTURES_V1, ESI_CORPORATIONS_READ_TITLES_V1, ESI_CORPORATIONS_TRACK_MEMBERS_V1,
             ESI_FITTINGS_READ_FITTINGS_V1, ESI_FITTINGS_WRITE_FITTINGS_V1, ESI_FLEETS_READ_FLEET_V1,
             ESI_FLEETS_WRITE_FLEET_V1, ESI_INDUSTRY_READ_CHARACTER_JOBS_V1, ESI_INDUSTRY_READ_CHARACTER_MINING_V1,
@@ -95,7 +95,7 @@ public class SsoScopes {
             ESI_MARKETS_STRUCTURE_MARKETS_V1, ESI_PLANETS_MANAGE_PLANETS_V1, ESI_PLANETS_READ_CUSTOMS_OFFICES_V1,
             ESI_SEARCH_SEARCH_STRUCTURES_V1, ESI_SKILLS_READ_SKILLQUEUE_V1, ESI_SKILLS_READ_SKILLS_V1,
             ESI_UI_OPEN_WINDOW_V1, ESI_UI_WRITE_WAYPOINT_V1, ESI_UNIVERSE_READ_STRUCTURES_V1,
-            ESI_WALLET_READ_CHARACTER_WALLET_V1, ESI_WALLET_READ_CORPORATION_WALLETS_V1 };
+            ESI_WALLET_READ_CHARACTER_WALLET_V1 };
 
     public static Set<String> ALL = Collections.unmodifiableSet(new HashSet<>(Arrays.asList(ALL_VALUES)));
 
