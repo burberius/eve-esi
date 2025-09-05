@@ -24,9 +24,7 @@ public class SsoApi {
     private static final String URI_REVOKE = "https://login.eveonline.com";
     private static final String ACCESS_TOKEN = "access_token";
     private static final String REFRESH_TOKEN = "refresh_token";
-    private static final String DATASOURCE = "tranquility";
-    protected static final String DATE_FORMAT = "yyyy-MM-dd'T'hh:mm:ss";
-    public static final String EVESSO = "evesso";
+    public static final String EVESSO = "OAuth2";
     private final ApiClient localVarApiClient = new ApiClientBuilder().build();
     private ApiClient apiClient;
 

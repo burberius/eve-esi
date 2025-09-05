@@ -12,6 +12,7 @@ import okhttp3.Call;
 import org.junit.jupiter.api.BeforeAll;
 
 import java.lang.reflect.Type;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -20,8 +21,6 @@ import static org.junit.jupiter.api.Assumptions.assumeFalse;
 
 public class GeneralApiTest {
     protected static final boolean IGNORE_WARNING_HEADER_199 = false;
-    protected static final String DATASOURCE = "tranquility";
-    protected static final String LANGUAGE = "en-us";
     protected static final String SSO_CLIENT_ID = "SSO_CLIENT_ID";
     protected static final String SSO_REFRESH_TOKEN = "SSO_REFRESH_TOKEN";
     protected static final String SSO_REFRESH_TOKEN_PUBLIC_DATA = "SSO_REFRESH_TOKEN_PUBLIC_DATA";
@@ -64,7 +63,8 @@ public class GeneralApiTest {
         if (refreshTokenPublicData == null) {
             throw new NullPointerException(SSO_REFRESH_TOKEN_PUBLIC_DATA + " environment variable is null");
         }
-        apiClient = new ApiClientBuilder().client(new ValidatingApiClient()).clientID(clientId).refreshToken(refreshToken).build();
+        apiClient = new ApiClientBuilder().client(new ValidatingApiClient()).clientID(clientId)
+                .refreshToken(refreshToken).build();
 
         final OAuth auth = (OAuth) apiClient.getAuthentication(ApiClientBuilder.AUTHENTICATION);
         JWT jwt = auth.getJWT();
@@ -78,7 +78,11 @@ public class GeneralApiTest {
         characterId = payload.getCharacterID();
         characterName = payload.getName();
 
-		List<CharacterAffiliationResponseInner> affiliation = new CharacterApi(apiClient).postCharactersAffiliation(CharacterApi.COMPATIBILITY_DATE, null, null, null, null);
+        HashSet<Long> ids = new HashSet<>();
+        ids.add(characterId);
+        List<CharacterAffiliationResponseInner> affiliation =
+                new CharacterApi(apiClient).postCharactersAffiliation(CharacterApi.COMPATIBILITY_DATE, null, null, null,
+                        ids);
         corporationId = affiliation.get(0).getCorporationId();
     }
 

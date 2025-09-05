@@ -130,8 +130,7 @@ public class AssetsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        Set<Long> requestBody = null;
-        List<CharacterAssetsLocationsPostInner> response = api.postCorporationAssetsLocations(corporationId, AssetsApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant, requestBody);
+        List<CharacterAssetsLocationsPostInner> response = api.postCorporationAssetsLocations(corporationId, AssetsApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant, itemIds);
         assertThat(response).hasSize(5);
         assertThat(response.stream().map(CharacterAssetsLocationsPostInner::getItemId).collect(Collectors.toSet()))
                 .containsExactlyElementsOf(itemIds);
@@ -150,8 +149,7 @@ public class AssetsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        Set<Long> requestBody = null;
-        List<CharacterAssetsNamesPostInner> response = api.postCorporationAssetsNames(corporationId, AssetsApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant, requestBody);
+        List<CharacterAssetsNamesPostInner> response = api.postCorporationAssetsNames(corporationId, AssetsApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant, itemIds);
         assertThat(response).hasSize(5);
         assertThat(response.stream().map(CharacterAssetsNamesPostInner::getItemId).collect(Collectors.toSet()))
                 .containsExactlyElementsOf(itemIds);

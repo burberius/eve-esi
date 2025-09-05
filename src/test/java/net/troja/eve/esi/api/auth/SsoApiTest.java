@@ -32,6 +32,7 @@ import net.troja.eve.esi.auth.SsoScopes;
 import net.troja.eve.esi.model.CharacterAssetsResponseInner;
 import org.junit.jupiter.api.Test;
 
+import static net.troja.eve.esi.api.SsoApi.EVESSO;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Fail.fail;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
@@ -63,7 +64,7 @@ public class SsoApiTest extends GeneralApiTest {
     @Test
     public void refreshToken() throws ApiException {
         final ApiClient client = new ApiClientBuilder().clientID(clientId).refreshToken(refreshToken).build();
-        final OAuth auth = (OAuth) client.getAuthentication("evesso");
+        final OAuth auth = (OAuth) client.getAuthentication(EVESSO);
         final Map<String, String> headerParams = new HashMap<>();
         auth.applyToParams(null, headerParams, null, null, null, null);
 
@@ -87,7 +88,7 @@ public class SsoApiTest extends GeneralApiTest {
     public void singleScopeJWT() {
         assumeTrue(refreshTokenPublicData != null);
         final ApiClient client = new ApiClientBuilder().clientID(clientId).refreshToken(refreshTokenPublicData).build();
-        final OAuth auth = (OAuth) client.getAuthentication("evesso");
+        final OAuth auth = (OAuth) client.getAuthentication(EVESSO);
         JWT jwt = auth.getJWT();
         assertThat(jwt).isNotNull();
         JWT.Header header = jwt.getHeader();
@@ -113,7 +114,7 @@ public class SsoApiTest extends GeneralApiTest {
 
     @Test
     public void getJwtTest() {
-        final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");
+        final OAuth auth = (OAuth) apiClient.getAuthentication(EVESSO);
         JWT jwt = auth.getJWT();
         assertThat(jwt).isNotNull();
         JWT.Header header = jwt.getHeader();
@@ -191,7 +192,7 @@ public class SsoApiTest extends GeneralApiTest {
                 client = new ApiClientBuilder().build();
             }
         }
-        final OAuth auth = (OAuth) client.getAuthentication("evesso");
+        final OAuth auth = (OAuth) client.getAuthentication(EVESSO);
         //PUBLIC_DATA
         //final Set<String> scopes = Collections.singleton(SsoScopes.PUBLIC_DATA); // SsoScopes.ALL;
         //ALL

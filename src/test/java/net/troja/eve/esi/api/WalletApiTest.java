@@ -86,7 +86,6 @@ public class WalletApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharacterWalletTransactionsTest() throws ApiException {
-        Long characterId = null;
         Long fromId = null;
         String acceptLanguage = null;
         String ifNoneMatch = null;

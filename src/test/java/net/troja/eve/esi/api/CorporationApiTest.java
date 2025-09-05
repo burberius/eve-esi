@@ -304,6 +304,7 @@ public class CorporationApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
+    @Disabled("Needs corporation with read access")
     public void getCorporationRolesHistoryTest() throws ApiException {
         Integer page = null;
         String acceptLanguage = null;

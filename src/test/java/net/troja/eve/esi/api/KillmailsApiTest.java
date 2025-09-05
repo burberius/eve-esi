@@ -47,13 +47,11 @@ public class KillmailsApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharacterKillmailsRecentTest() throws ApiException {
-        Long characterId = null;
-        LocalDate xCompatibilityDate = null;
         Integer page = null;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterKillmailsResponseInner> response = api.getCharacterKillmailsRecent(characterId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterKillmailsResponseInner> response = api.getCharacterKillmailsRecent(characterId, KillmailsApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotNull();
     }
 
@@ -67,13 +65,11 @@ public class KillmailsApiTest extends GeneralApiTest {
     @Test
     @Disabled("Needs corporation with read access")
     public void getCorporationKillmailsRecentTest() throws ApiException {
-        Long corporationId = null;
-        LocalDate xCompatibilityDate = null;
         Integer page = null;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterKillmailsResponseInner> response = api.getCorporationKillmailsRecent(corporationId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterKillmailsResponseInner> response = api.getCorporationKillmailsRecent(corporationId, KillmailsApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -89,11 +85,10 @@ public class KillmailsApiTest extends GeneralApiTest {
     public void getKillmailsKillmailIdKillmailHashTest() throws ApiException {
         String killmailHash = null;
         Long killmailId = null;
-        LocalDate xCompatibilityDate = null;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        KillmailResponse response = api.getKillmailsKillmailIdKillmailHash(killmailHash, killmailId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
+        KillmailResponse response = api.getKillmailsKillmailIdKillmailHash(killmailHash, killmailId, KillmailsApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 

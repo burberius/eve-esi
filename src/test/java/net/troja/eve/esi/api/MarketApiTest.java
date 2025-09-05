@@ -55,7 +55,6 @@ public class MarketApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharacterOrdersTest() throws ApiException {
-        Long characterId = null;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;

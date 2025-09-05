@@ -28,6 +28,7 @@ import net.troja.eve.esi.model.CharacterRolesResponse;
 import net.troja.eve.esi.model.CharacterStandingsResponseInner;
 import net.troja.eve.esi.model.CharacterTitlesResponseInner;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -259,7 +260,8 @@ public class CharacterApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        Set<Long> requestBody = null;
+        Set<Long> requestBody = new HashSet<>();
+        requestBody.add(characterId);
         Double response = api.postCharacterCspa(characterId, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant, requestBody);
         assertThat(response).isNotNull().isEqualTo(0f);
     }
@@ -276,7 +278,8 @@ public class CharacterApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        Set<Long> requestBody = null;
+        Set<Long> requestBody = new HashSet<>();
+        requestBody.add(characterId);
         List<CharacterAffiliationResponseInner> response = api.postCharactersAffiliation(CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant, requestBody);
         assertThat(response).isNotNull().isNotEmpty();
     }
