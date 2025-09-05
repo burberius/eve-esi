@@ -14,6 +14,8 @@
 package net.troja.eve.esi.api;
 
 import net.troja.eve.esi.ApiException;
+import net.troja.eve.esi.model.AncestriesResponseInner;
+import net.troja.eve.esi.model.AsteroidBeltsResponse;
 import net.troja.eve.esi.model.BloodlinesResponseInner;
 import net.troja.eve.esi.model.CategoryResponse;
 import net.troja.eve.esi.model.ConstellationResponse;
@@ -21,12 +23,10 @@ import net.troja.eve.esi.model.FactionsResponseInner;
 import net.troja.eve.esi.model.GraphicResponse;
 import net.troja.eve.esi.model.GroupResponse;
 import net.troja.eve.esi.model.MoonResponse;
+import net.troja.eve.esi.model.NamesResponseInner;
 import net.troja.eve.esi.model.PlanetResponse;
 import net.troja.eve.esi.model.RacesResponseInner;
 import net.troja.eve.esi.model.RegionResponse;
-
-import java.util.HashSet;
-import java.util.Set;
 import net.troja.eve.esi.model.StarResponse;
 import net.troja.eve.esi.model.StargateResponse;
 import net.troja.eve.esi.model.StationResponse;
@@ -34,16 +34,15 @@ import net.troja.eve.esi.model.SystemJumpsResponseInner;
 import net.troja.eve.esi.model.SystemKillsResponseInner;
 import net.troja.eve.esi.model.SystemResponse;
 import net.troja.eve.esi.model.TypeResponse;
-import net.troja.eve.esi.model.UniverseAncestriesResponseInner;
-import net.troja.eve.esi.model.UniverseAsteroidBeltsResponse;
 import net.troja.eve.esi.model.UniverseIdsPost;
-import net.troja.eve.esi.model.UniverseNamesPostInner;
 import net.troja.eve.esi.model.UniverseStructureResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -67,13 +66,13 @@ public class UniverseApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getUniverseAncestriesTest() throws ApiException {
+    public void getAncestriesTest() throws ApiException {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<UniverseAncestriesResponseInner> response = api.getUniverseAncestries(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<AncestriesResponseInner> response = api.getAncestries(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).hasSize(43);
-        final UniverseAncestriesResponseInner ancestriesResponse = response.get(0);
+        final AncestriesResponseInner ancestriesResponse = response.get(0);
         assertThat(ancestriesResponse.getBloodlineId()).isGreaterThan(0);
     }
 
@@ -85,12 +84,13 @@ public class UniverseApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getUniverseAsteroidBeltsTest() throws ApiException {
+    public void getAsteroidBeltsTest() throws ApiException {
         Long asteroidBeltId = 40000018L;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        UniverseAsteroidBeltsResponse response = api.getUniverseAsteroidBelts(asteroidBeltId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        AsteroidBeltsResponse
+                response = api.getAsteroidBelts(asteroidBeltId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotNull();
         assertThat(response.getSystemId()).isEqualTo(30000001L);
     }
@@ -103,11 +103,11 @@ public class UniverseApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getUniverseBloodlinesTest() throws ApiException {
+    public void getBloodlinesTest() throws ApiException {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<BloodlinesResponseInner> response = api.getUniverseBloodlines(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<BloodlinesResponseInner> response = api.getBloodlines(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).hasSize(18);
         final BloodlinesResponseInner bloodlinesResponse = response.get(0);
         assertThat(bloodlinesResponse.getBloodlineId()).isGreaterThan(0);
@@ -121,11 +121,11 @@ public class UniverseApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getUniverseCategoriesTest() throws ApiException {
+    public void getCategoriesTest() throws ApiException {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<Long> response = api.getUniverseCategories(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<Long> response = api.getCategories(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).hasSize(47);
     }
 
@@ -137,12 +137,12 @@ public class UniverseApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getUniverseCategoriesCategoryIdTest() throws ApiException {
+    public void getCategoryTest() throws ApiException {
         Long categoryId = 8L;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        CategoryResponse response = api.getUniverseCategoriesCategoryId(categoryId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        CategoryResponse response = api.getCategory(categoryId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response.getName()).isEqualTo("Charge");
     }
 
@@ -154,11 +154,11 @@ public class UniverseApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getUniverseConstellationsTest() throws ApiException {
+    public void getConstellationsTest() throws ApiException {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<Long> response = api.getUniverseConstellations(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<Long> response = api.getConstellations(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).hasSize(1175);
     }
 
@@ -170,12 +170,12 @@ public class UniverseApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getUniverseConstellationsConstellationIdTest() throws ApiException {
+    public void getConstellationTest() throws ApiException {
         Long constellationId = 20000006L;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        ConstellationResponse response = api.getUniverseConstellationsConstellationId(constellationId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        ConstellationResponse response = api.getConstellation(constellationId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response.getName()).isEqualTo("Sazdih");
     }
 
@@ -187,11 +187,11 @@ public class UniverseApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getUniverseFactionsTest() throws ApiException {
+    public void getFactionsTest() throws ApiException {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<FactionsResponseInner> response = api.getUniverseFactions(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<FactionsResponseInner> response = api.getFactions(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).hasSize(27);
         final FactionsResponseInner factionsResponse = response.get(0);
         assertThat(factionsResponse.getName()).isEqualTo("Amarr Empire");
@@ -205,11 +205,11 @@ public class UniverseApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getUniverseGraphicsTest() throws ApiException {
+    public void getGraphicsTest() throws ApiException {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<Long> response = api.getUniverseGraphics(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<Long> response = api.getGraphics(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response.size()).isGreaterThan(0);
     }
 
@@ -221,12 +221,12 @@ public class UniverseApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getUniverseGraphicsGraphicIdTest() throws ApiException {
+    public void getGraphicTest() throws ApiException {
         Long graphicId = 1843L;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        GraphicResponse response = api.getUniverseGraphicsGraphicId(graphicId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        GraphicResponse response = api.getGraphic(graphicId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response.getGraphicId()).isEqualTo(graphicId);
         assertThat(response.getSofFationName()).isEqualTo("creodron");
     }
@@ -239,12 +239,12 @@ public class UniverseApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getUniverseGroupsTest() throws ApiException {
+    public void getGroupsTest() throws ApiException {
         Integer page = null;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<Long> response = api.getUniverseGroups(CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<Long> response = api.getGroups(CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).hasSize(1000);
     }
 
@@ -256,12 +256,12 @@ public class UniverseApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getUniverseGroupsGroupIdTest() throws ApiException {
+    public void getGroupTest() throws ApiException {
         Long groupId = 5L;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        GroupResponse response = api.getUniverseGroupsGroupId(groupId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        GroupResponse response = api.getGroup(groupId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response.getName()).isEqualTo("Solar System");
     }
 
@@ -273,12 +273,12 @@ public class UniverseApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getUniverseMoonsMoonIdTest() throws ApiException {
+    public void getMoonTest() throws ApiException {
         Long moonId = 40001588L;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        MoonResponse response = api.getUniverseMoonsMoonId(moonId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        MoonResponse response = api.getMoon(moonId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response.getName()).isEqualTo("Fovihi III - Moon 2") ;
     }
 
@@ -290,12 +290,12 @@ public class UniverseApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getUniversePlanetsPlanetIdTest() throws ApiException {
+    public void getPlanetTest() throws ApiException {
         Long planetId = 40001593L;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        PlanetResponse response = api.getUniversePlanetsPlanetId(planetId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        PlanetResponse response = api.getPlanet(planetId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response.getName()).isEqualTo("Fovihi V");
     }
 
@@ -307,11 +307,11 @@ public class UniverseApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getUniverseRacesTest() throws ApiException {
+    public void getRacesTest() throws ApiException {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<RacesResponseInner> response = api.getUniverseRaces(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<RacesResponseInner> response = api.getRaces(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).hasSize(6);
         final RacesResponseInner racesResponse = response.get(0);
         assertThat(racesResponse.getName()).isEqualTo("Caldari");
@@ -325,11 +325,11 @@ public class UniverseApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getUniverseRegionsTest() throws ApiException {
+    public void getRegionsTest() throws ApiException {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<Long> response = api.getUniverseRegions(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<Long> response = api.getRegions(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).hasSize(113);
     }
 
@@ -341,11 +341,11 @@ public class UniverseApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getUniverseRegionsRegionIdTest() throws ApiException {
+    public void getRegionTest() throws ApiException {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        RegionResponse response = api.getUniverseRegionsRegionId(REGION_ID_THE_FORGE, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        RegionResponse response = api.getRegion(REGION_ID_THE_FORGE, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response.getName()).isEqualTo("The Forge");
     }
 
@@ -357,12 +357,12 @@ public class UniverseApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getUniverseStargatesStargateIdTest() throws ApiException {
+    public void getStargateTest() throws ApiException {
         Long stargateId = 50000277L;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        StargateResponse response = api.getUniverseStargatesStargateId(stargateId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        StargateResponse response = api.getStargate(stargateId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response.getName()).isEqualTo("Stargate (Kiereend)");
     }
 
@@ -374,12 +374,12 @@ public class UniverseApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getUniverseStarsStarIdTest() throws ApiException {
+    public void getStarTest() throws ApiException {
         Long starId = 40001581L;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        StarResponse response = api.getUniverseStarsStarId(starId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        StarResponse response = api.getStar(starId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response.getName()).isEqualTo("Fovihi - Star");
     }
 
@@ -391,12 +391,12 @@ public class UniverseApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getUniverseStationsStationIdTest() throws ApiException {
+    public void getStationTest() throws ApiException {
         Long stationId = 60012541L;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        StationResponse response = api.getUniverseStationsStationId(stationId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        StationResponse response = api.getStation(stationId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response.getName()).isEqualTo("Fovihi V - Ammatar Consulate Bureau");
     }
 
@@ -408,12 +408,12 @@ public class UniverseApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getUniverseStructuresTest() throws ApiException {
+    public void getStructuresTest() throws ApiException {
         String filter = null;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        Set<Long> response = api.getUniverseStructures(CorporationApi.COMPATIBILITY_DATE, filter, acceptLanguage, ifNoneMatch, xTenant);
+        Set<Long> response = api.getStructures(CorporationApi.COMPATIBILITY_DATE, filter, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
     }
 
@@ -426,12 +426,12 @@ public class UniverseApiTest extends GeneralApiTest {
      */
     @Test
     @Disabled("Can't be tested")
-    public void getUniverseStructuresStructureIdTest() throws ApiException {
+    public void getUniverseStructureTest() throws ApiException {
         Long structureId = null;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        UniverseStructureResponse response = api.getUniverseStructuresStructureId(structureId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        UniverseStructureResponse response = api.getUniverseStructure(structureId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -443,11 +443,11 @@ public class UniverseApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getUniverseSystemJumpsTest() throws ApiException {
+    public void getSystemJumpsTest() throws ApiException {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<SystemJumpsResponseInner> response = api.getUniverseSystemJumps(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<SystemJumpsResponseInner> response = api.getSystemJumps(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
         assertThat(response.get(0).getSystemId()).isGreaterThan(30000);
     }
@@ -460,11 +460,11 @@ public class UniverseApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getUniverseSystemKillsTest() throws ApiException {
+    public void getSystemKillsTest() throws ApiException {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<SystemKillsResponseInner> response = api.getUniverseSystemKills(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<SystemKillsResponseInner> response = api.getSystemKills(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
         assertThat(response.get(0).getSystemId()).isGreaterThan(30000);
     }
@@ -477,11 +477,11 @@ public class UniverseApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getUniverseSystemsTest() throws ApiException {
+    public void getSystemsTest() throws ApiException {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<Long> response = api.getUniverseSystems(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<Long> response = api.getSystems(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).hasSize(8437);
     }
 
@@ -493,12 +493,12 @@ public class UniverseApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getUniverseSystemsSystemIdTest() throws ApiException {
+    public void getSystemTest() throws ApiException {
         Long systemId = 30000023L;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        SystemResponse response = api.getUniverseSystemsSystemId(systemId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        SystemResponse response = api.getSystem(systemId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response.getName()).isEqualTo("Fovihi");
     }
 
@@ -510,12 +510,12 @@ public class UniverseApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getUniverseTypesTest() throws ApiException {
+    public void getTypesTest() throws ApiException {
         Integer page = null;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<Long> response = api.getUniverseTypes(CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<Long> response = api.getTypes(CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).hasSize(1000);
     }
 
@@ -527,11 +527,12 @@ public class UniverseApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getUniverseTypesTypeIdTest() throws ApiException {
+    public void getTypeTest() throws ApiException {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        TypeResponse response = api.getUniverseTypesTypeId(TYPE_ID_VELDSPAR, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        TypeResponse
+                response = api.getType(TYPE_ID_VELDSPAR, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response.getName()).isEqualTo(NAME_VELDSPAR);
     }
 
@@ -556,7 +557,7 @@ public class UniverseApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        UniverseIdsPost response = api.postUniverseIds(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant, names);
+        UniverseIdsPost response = api.postUniverseIds(CorporationApi.COMPATIBILITY_DATE, names, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response.getAgents()).hasSizeGreaterThan(0);
         assertThat(response.getAlliances()).hasSizeGreaterThan(0);
         assertThat(response.getCharacters()).hasSizeGreaterThan(0);
@@ -575,15 +576,15 @@ public class UniverseApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void postUniverseNamesTest() throws ApiException {
+    public void postNamesTest() throws ApiException {
         final Set<Long> ids = new HashSet<>();
         ids.add(CHARACTER_ID_CHRIBBA);
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<UniverseNamesPostInner> response = api.postUniverseNames(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant, ids);
+        List<NamesResponseInner> response = api.postNames(CorporationApi.COMPATIBILITY_DATE, ids, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).hasSize(1);
-        final UniverseNamesPostInner result = response.get(0);
+        final NamesResponseInner result = response.get(0);
         assertThat(result.getName()).isEqualTo(CHARACTER_NAME_CHRIBBA);
     }
 

@@ -47,10 +47,10 @@ import java.util.Set;
 import net.troja.eve.esi.JSON;
 
 /**
- * MarketOrdersResponseInner
+ * MarketRegionOrdersResponseInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class MarketOrdersResponseInner implements Serializable {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+public class MarketRegionOrdersResponseInner implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_DURATION = "duration";
@@ -186,10 +186,10 @@ public class MarketOrdersResponseInner implements Serializable {
     @javax.annotation.Nonnull
     private Long volumeTotal;
 
-    public MarketOrdersResponseInner() {
+    public MarketRegionOrdersResponseInner() {
     }
 
-    public MarketOrdersResponseInner duration(@javax.annotation.Nonnull Long duration) {
+    public MarketRegionOrdersResponseInner duration(@javax.annotation.Nonnull Long duration) {
         this.duration = duration;
         return this;
     }
@@ -208,7 +208,7 @@ public class MarketOrdersResponseInner implements Serializable {
         this.duration = duration;
     }
 
-    public MarketOrdersResponseInner isBuyOrder(@javax.annotation.Nonnull Boolean isBuyOrder) {
+    public MarketRegionOrdersResponseInner isBuyOrder(@javax.annotation.Nonnull Boolean isBuyOrder) {
         this.isBuyOrder = isBuyOrder;
         return this;
     }
@@ -227,7 +227,7 @@ public class MarketOrdersResponseInner implements Serializable {
         this.isBuyOrder = isBuyOrder;
     }
 
-    public MarketOrdersResponseInner issued(@javax.annotation.Nonnull OffsetDateTime issued) {
+    public MarketRegionOrdersResponseInner issued(@javax.annotation.Nonnull OffsetDateTime issued) {
         this.issued = issued;
         return this;
     }
@@ -246,7 +246,7 @@ public class MarketOrdersResponseInner implements Serializable {
         this.issued = issued;
     }
 
-    public MarketOrdersResponseInner locationId(@javax.annotation.Nonnull Long locationId) {
+    public MarketRegionOrdersResponseInner locationId(@javax.annotation.Nonnull Long locationId) {
         this.locationId = locationId;
         return this;
     }
@@ -265,7 +265,7 @@ public class MarketOrdersResponseInner implements Serializable {
         this.locationId = locationId;
     }
 
-    public MarketOrdersResponseInner minVolume(@javax.annotation.Nonnull Long minVolume) {
+    public MarketRegionOrdersResponseInner minVolume(@javax.annotation.Nonnull Long minVolume) {
         this.minVolume = minVolume;
         return this;
     }
@@ -284,7 +284,7 @@ public class MarketOrdersResponseInner implements Serializable {
         this.minVolume = minVolume;
     }
 
-    public MarketOrdersResponseInner orderId(@javax.annotation.Nonnull Long orderId) {
+    public MarketRegionOrdersResponseInner orderId(@javax.annotation.Nonnull Long orderId) {
         this.orderId = orderId;
         return this;
     }
@@ -303,7 +303,7 @@ public class MarketOrdersResponseInner implements Serializable {
         this.orderId = orderId;
     }
 
-    public MarketOrdersResponseInner price(@javax.annotation.Nonnull Double price) {
+    public MarketRegionOrdersResponseInner price(@javax.annotation.Nonnull Double price) {
         this.price = price;
         return this;
     }
@@ -322,12 +322,12 @@ public class MarketOrdersResponseInner implements Serializable {
         this.price = price;
     }
 
-    public MarketOrdersResponseInner range(@javax.annotation.Nonnull RangeEnum range) {
+    public MarketRegionOrdersResponseInner range(@javax.annotation.Nonnull RangeEnum range) {
         this.rangeEnum = range;
         return this;
     }
 
-    public MarketOrdersResponseInner rangeString(@javax.annotation.Nonnull String range) {
+    public MarketRegionOrdersResponseInner rangeString(@javax.annotation.Nonnull String range) {
         this.range = range;
         return this;
     }
@@ -357,7 +357,7 @@ public class MarketOrdersResponseInner implements Serializable {
         this.range = range;
     }
 
-    public MarketOrdersResponseInner systemId(@javax.annotation.Nonnull Long systemId) {
+    public MarketRegionOrdersResponseInner systemId(@javax.annotation.Nonnull Long systemId) {
         this.systemId = systemId;
         return this;
     }
@@ -376,7 +376,7 @@ public class MarketOrdersResponseInner implements Serializable {
         this.systemId = systemId;
     }
 
-    public MarketOrdersResponseInner typeId(@javax.annotation.Nonnull Long typeId) {
+    public MarketRegionOrdersResponseInner typeId(@javax.annotation.Nonnull Long typeId) {
         this.typeId = typeId;
         return this;
     }
@@ -395,7 +395,7 @@ public class MarketOrdersResponseInner implements Serializable {
         this.typeId = typeId;
     }
 
-    public MarketOrdersResponseInner volumeRemain(@javax.annotation.Nonnull Long volumeRemain) {
+    public MarketRegionOrdersResponseInner volumeRemain(@javax.annotation.Nonnull Long volumeRemain) {
         this.volumeRemain = volumeRemain;
         return this;
     }
@@ -414,7 +414,7 @@ public class MarketOrdersResponseInner implements Serializable {
         this.volumeRemain = volumeRemain;
     }
 
-    public MarketOrdersResponseInner volumeTotal(@javax.annotation.Nonnull Long volumeTotal) {
+    public MarketRegionOrdersResponseInner volumeTotal(@javax.annotation.Nonnull Long volumeTotal) {
         this.volumeTotal = volumeTotal;
         return this;
     }
@@ -441,19 +441,19 @@ public class MarketOrdersResponseInner implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        MarketOrdersResponseInner marketOrdersResponseInner = (MarketOrdersResponseInner) o;
-        return Objects.equals(this.duration, marketOrdersResponseInner.duration)
-                && Objects.equals(this.isBuyOrder, marketOrdersResponseInner.isBuyOrder)
-                && Objects.equals(this.issued, marketOrdersResponseInner.issued)
-                && Objects.equals(this.locationId, marketOrdersResponseInner.locationId)
-                && Objects.equals(this.minVolume, marketOrdersResponseInner.minVolume)
-                && Objects.equals(this.orderId, marketOrdersResponseInner.orderId)
-                && Objects.equals(this.price, marketOrdersResponseInner.price)
-                && Objects.equals(this.range, marketOrdersResponseInner.range)
-                && Objects.equals(this.systemId, marketOrdersResponseInner.systemId)
-                && Objects.equals(this.typeId, marketOrdersResponseInner.typeId)
-                && Objects.equals(this.volumeRemain, marketOrdersResponseInner.volumeRemain)
-                && Objects.equals(this.volumeTotal, marketOrdersResponseInner.volumeTotal);
+        MarketRegionOrdersResponseInner marketRegionOrdersResponseInner = (MarketRegionOrdersResponseInner) o;
+        return Objects.equals(this.duration, marketRegionOrdersResponseInner.duration)
+                && Objects.equals(this.isBuyOrder, marketRegionOrdersResponseInner.isBuyOrder)
+                && Objects.equals(this.issued, marketRegionOrdersResponseInner.issued)
+                && Objects.equals(this.locationId, marketRegionOrdersResponseInner.locationId)
+                && Objects.equals(this.minVolume, marketRegionOrdersResponseInner.minVolume)
+                && Objects.equals(this.orderId, marketRegionOrdersResponseInner.orderId)
+                && Objects.equals(this.price, marketRegionOrdersResponseInner.price)
+                && Objects.equals(this.range, marketRegionOrdersResponseInner.range)
+                && Objects.equals(this.systemId, marketRegionOrdersResponseInner.systemId)
+                && Objects.equals(this.typeId, marketRegionOrdersResponseInner.typeId)
+                && Objects.equals(this.volumeRemain, marketRegionOrdersResponseInner.volumeRemain)
+                && Objects.equals(this.volumeTotal, marketRegionOrdersResponseInner.volumeTotal);
     }
 
     @Override
@@ -465,7 +465,7 @@ public class MarketOrdersResponseInner implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class MarketOrdersResponseInner {\n");
+        sb.append("class MarketRegionOrdersResponseInner {\n");
         sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
         sb.append("    isBuyOrder: ").append(toIndentedString(isBuyOrder)).append("\n");
         sb.append("    issued: ").append(toIndentedString(issued)).append("\n");
@@ -513,38 +513,39 @@ public class MarketOrdersResponseInner implements Serializable {
      *            JSON Element
      * @throws IOException
      *             if the JSON Element is invalid with respect to
-     *             MarketOrdersResponseInner
+     *             MarketRegionOrdersResponseInner
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         if (jsonElement == null) {
-            if (!MarketOrdersResponseInner.openapiRequiredFields.isEmpty()) { // has
-                                                                              // required
-                                                                              // fields
-                                                                              // but
-                                                                              // JSON
-                                                                              // element
-                                                                              // is
-                                                                              // null
-                throw new IllegalArgumentException(String.format(
-                        "The required field(s) %s in MarketOrdersResponseInner is not found in the empty JSON string",
-                        MarketOrdersResponseInner.openapiRequiredFields.toString()));
+            if (!MarketRegionOrdersResponseInner.openapiRequiredFields.isEmpty()) { // has
+                                                                                    // required
+                                                                                    // fields
+                                                                                    // but
+                                                                                    // JSON
+                                                                                    // element
+                                                                                    // is
+                                                                                    // null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in MarketRegionOrdersResponseInner is not found in the empty JSON string",
+                                MarketRegionOrdersResponseInner.openapiRequiredFields.toString()));
             }
         }
 
         Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
         for (Map.Entry<String, JsonElement> entry : entries) {
-            if (!MarketOrdersResponseInner.openapiFields.contains(entry.getKey())) {
+            if (!MarketRegionOrdersResponseInner.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
-                                "The field `%s` in the JSON string is not defined in the `MarketOrdersResponseInner` properties. JSON: %s",
+                                "The field `%s` in the JSON string is not defined in the `MarketRegionOrdersResponseInner` properties. JSON: %s",
                                 entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
-        for (String requiredField : MarketOrdersResponseInner.openapiRequiredFields) {
+        for (String requiredField : MarketRegionOrdersResponseInner.openapiRequiredFields) {
             if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
@@ -565,23 +566,24 @@ public class MarketOrdersResponseInner implements Serializable {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!MarketOrdersResponseInner.class.isAssignableFrom(type.getRawType())) {
+            if (!MarketRegionOrdersResponseInner.class.isAssignableFrom(type.getRawType())) {
                 return null; // this class only serializes
-                             // 'MarketOrdersResponseInner' and its subtypes
+                             // 'MarketRegionOrdersResponseInner' and its
+                             // subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<MarketOrdersResponseInner> thisAdapter = gson.getDelegateAdapter(this,
-                    TypeToken.get(MarketOrdersResponseInner.class));
+            final TypeAdapter<MarketRegionOrdersResponseInner> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(MarketRegionOrdersResponseInner.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<MarketOrdersResponseInner>() {
+            return (TypeAdapter<T>) new TypeAdapter<MarketRegionOrdersResponseInner>() {
                 @Override
-                public void write(JsonWriter out, MarketOrdersResponseInner value) throws IOException {
+                public void write(JsonWriter out, MarketRegionOrdersResponseInner value) throws IOException {
                     JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
                     elementAdapter.write(out, obj);
                 }
 
                 @Override
-                public MarketOrdersResponseInner read(JsonReader in) throws IOException {
+                public MarketRegionOrdersResponseInner read(JsonReader in) throws IOException {
                     JsonElement jsonElement = elementAdapter.read(in);
                     validateJsonElement(jsonElement);
                     return thisAdapter.fromJsonTree(jsonElement);
@@ -592,21 +594,22 @@ public class MarketOrdersResponseInner implements Serializable {
     }
 
     /**
-     * Create an instance of MarketOrdersResponseInner given an JSON string
+     * Create an instance of MarketRegionOrdersResponseInner given an JSON
+     * string
      *
      * @param jsonString
      *            JSON string
-     * @return An instance of MarketOrdersResponseInner
+     * @return An instance of MarketRegionOrdersResponseInner
      * @throws IOException
      *             if the JSON string is invalid with respect to
-     *             MarketOrdersResponseInner
+     *             MarketRegionOrdersResponseInner
      */
-    public static MarketOrdersResponseInner fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, MarketOrdersResponseInner.class);
+    public static MarketRegionOrdersResponseInner fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, MarketRegionOrdersResponseInner.class);
     }
 
     /**
-     * Convert an instance of MarketOrdersResponseInner to an JSON string
+     * Convert an instance of MarketRegionOrdersResponseInner to an JSON string
      *
      * @return JSON string
      */

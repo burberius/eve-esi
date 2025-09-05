@@ -20,6 +20,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import net.troja.eve.esi.model.CharacterAssetsLocationsPostInnerPosition;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -46,10 +47,10 @@ import java.util.Set;
 import net.troja.eve.esi.JSON;
 
 /**
- * PutFleetSquadsSquadIdRequest
+ * AsteroidBeltsResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class PutFleetSquadsSquadIdRequest implements Serializable {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+public class AsteroidBeltsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_NAME = "name";
@@ -57,10 +58,20 @@ public class PutFleetSquadsSquadIdRequest implements Serializable {
     @javax.annotation.Nonnull
     private String name;
 
-    public PutFleetSquadsSquadIdRequest() {
+    public static final String SERIALIZED_NAME_POSITION = "position";
+    @SerializedName(SERIALIZED_NAME_POSITION)
+    @javax.annotation.Nonnull
+    private CharacterAssetsLocationsPostInnerPosition position;
+
+    public static final String SERIALIZED_NAME_SYSTEM_ID = "system_id";
+    @SerializedName(SERIALIZED_NAME_SYSTEM_ID)
+    @javax.annotation.Nonnull
+    private Long systemId;
+
+    public AsteroidBeltsResponse() {
     }
 
-    public PutFleetSquadsSquadIdRequest name(@javax.annotation.Nonnull String name) {
+    public AsteroidBeltsResponse name(@javax.annotation.Nonnull String name) {
         this.name = name;
         return this;
     }
@@ -79,6 +90,44 @@ public class PutFleetSquadsSquadIdRequest implements Serializable {
         this.name = name;
     }
 
+    public AsteroidBeltsResponse position(@javax.annotation.Nonnull CharacterAssetsLocationsPostInnerPosition position) {
+        this.position = position;
+        return this;
+    }
+
+    /**
+     * Get position
+     * 
+     * @return position
+     */
+    @javax.annotation.Nonnull
+    public CharacterAssetsLocationsPostInnerPosition getPosition() {
+        return position;
+    }
+
+    public void setPosition(@javax.annotation.Nonnull CharacterAssetsLocationsPostInnerPosition position) {
+        this.position = position;
+    }
+
+    public AsteroidBeltsResponse systemId(@javax.annotation.Nonnull Long systemId) {
+        this.systemId = systemId;
+        return this;
+    }
+
+    /**
+     * The solar system this asteroid belt is in
+     * 
+     * @return systemId
+     */
+    @javax.annotation.Nonnull
+    public Long getSystemId() {
+        return systemId;
+    }
+
+    public void setSystemId(@javax.annotation.Nonnull Long systemId) {
+        this.systemId = systemId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -87,20 +136,24 @@ public class PutFleetSquadsSquadIdRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        PutFleetSquadsSquadIdRequest putFleetSquadsSquadIdRequest = (PutFleetSquadsSquadIdRequest) o;
-        return Objects.equals(this.name, putFleetSquadsSquadIdRequest.name);
+        AsteroidBeltsResponse asteroidBeltsResponse = (AsteroidBeltsResponse) o;
+        return Objects.equals(this.name, asteroidBeltsResponse.name)
+                && Objects.equals(this.position, asteroidBeltsResponse.position)
+                && Objects.equals(this.systemId, asteroidBeltsResponse.systemId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return Objects.hash(name, position, systemId);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class PutFleetSquadsSquadIdRequest {\n");
+        sb.append("class AsteroidBeltsResponse {\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    position: ").append(toIndentedString(position)).append("\n");
+        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
         sb.append("}");
         return sb.toString();
     }
@@ -121,10 +174,10 @@ public class PutFleetSquadsSquadIdRequest implements Serializable {
 
     static {
         // a set of all properties/fields (JSON key names)
-        openapiFields = new HashSet<String>(Arrays.asList("name"));
+        openapiFields = new HashSet<String>(Arrays.asList("name", "position", "system_id"));
 
         // a set of required properties/fields (JSON key names)
-        openapiRequiredFields = new HashSet<String>(Arrays.asList("name"));
+        openapiRequiredFields = new HashSet<String>(Arrays.asList("name", "position", "system_id"));
     }
 
     /**
@@ -134,39 +187,38 @@ public class PutFleetSquadsSquadIdRequest implements Serializable {
      *            JSON Element
      * @throws IOException
      *             if the JSON Element is invalid with respect to
-     *             PutFleetSquadsSquadIdRequest
+     *             AsteroidBeltsResponse
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         if (jsonElement == null) {
-            if (!PutFleetSquadsSquadIdRequest.openapiRequiredFields.isEmpty()) { // has
-                                                                                 // required
-                                                                                 // fields
-                                                                                 // but
-                                                                                 // JSON
-                                                                                 // element
-                                                                                 // is
-                                                                                 // null
-                throw new IllegalArgumentException(
-                        String.format(
-                                "The required field(s) %s in PutFleetSquadsSquadIdRequest is not found in the empty JSON string",
-                                PutFleetSquadsSquadIdRequest.openapiRequiredFields.toString()));
+            if (!AsteroidBeltsResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                          // required
+                                                                          // fields
+                                                                          // but
+                                                                          // JSON
+                                                                          // element
+                                                                          // is
+                                                                          // null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in AsteroidBeltsResponse is not found in the empty JSON string",
+                        AsteroidBeltsResponse.openapiRequiredFields.toString()));
             }
         }
 
         Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
         for (Map.Entry<String, JsonElement> entry : entries) {
-            if (!PutFleetSquadsSquadIdRequest.openapiFields.contains(entry.getKey())) {
+            if (!AsteroidBeltsResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
-                                "The field `%s` in the JSON string is not defined in the `PutFleetSquadsSquadIdRequest` properties. JSON: %s",
+                                "The field `%s` in the JSON string is not defined in the `AsteroidBeltsResponse` properties. JSON: %s",
                                 entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
-        for (String requiredField : PutFleetSquadsSquadIdRequest.openapiRequiredFields) {
+        for (String requiredField : AsteroidBeltsResponse.openapiRequiredFields) {
             if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
@@ -179,29 +231,31 @@ public class PutFleetSquadsSquadIdRequest implements Serializable {
                     "Expected the field `name` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("name").toString()));
         }
+        // validate the required field `position`
+        CharacterAssetsLocationsPostInnerPosition.validateJsonElement(jsonObj.get("position"));
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!PutFleetSquadsSquadIdRequest.class.isAssignableFrom(type.getRawType())) {
+            if (!AsteroidBeltsResponse.class.isAssignableFrom(type.getRawType())) {
                 return null; // this class only serializes
-                             // 'PutFleetSquadsSquadIdRequest' and its subtypes
+                             // 'AsteroidBeltsResponse' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<PutFleetSquadsSquadIdRequest> thisAdapter = gson.getDelegateAdapter(this,
-                    TypeToken.get(PutFleetSquadsSquadIdRequest.class));
+            final TypeAdapter<AsteroidBeltsResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(AsteroidBeltsResponse.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<PutFleetSquadsSquadIdRequest>() {
+            return (TypeAdapter<T>) new TypeAdapter<AsteroidBeltsResponse>() {
                 @Override
-                public void write(JsonWriter out, PutFleetSquadsSquadIdRequest value) throws IOException {
+                public void write(JsonWriter out, AsteroidBeltsResponse value) throws IOException {
                     JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
                     elementAdapter.write(out, obj);
                 }
 
                 @Override
-                public PutFleetSquadsSquadIdRequest read(JsonReader in) throws IOException {
+                public AsteroidBeltsResponse read(JsonReader in) throws IOException {
                     JsonElement jsonElement = elementAdapter.read(in);
                     validateJsonElement(jsonElement);
                     return thisAdapter.fromJsonTree(jsonElement);
@@ -212,21 +266,21 @@ public class PutFleetSquadsSquadIdRequest implements Serializable {
     }
 
     /**
-     * Create an instance of PutFleetSquadsSquadIdRequest given an JSON string
+     * Create an instance of AsteroidBeltsResponse given an JSON string
      *
      * @param jsonString
      *            JSON string
-     * @return An instance of PutFleetSquadsSquadIdRequest
+     * @return An instance of AsteroidBeltsResponse
      * @throws IOException
      *             if the JSON string is invalid with respect to
-     *             PutFleetSquadsSquadIdRequest
+     *             AsteroidBeltsResponse
      */
-    public static PutFleetSquadsSquadIdRequest fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, PutFleetSquadsSquadIdRequest.class);
+    public static AsteroidBeltsResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, AsteroidBeltsResponse.class);
     }
 
     /**
-     * Convert an instance of PutFleetSquadsSquadIdRequest to an JSON string
+     * Convert an instance of AsteroidBeltsResponse to an JSON string
      *
      * @return JSON string
      */

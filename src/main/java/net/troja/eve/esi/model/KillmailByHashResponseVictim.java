@@ -22,8 +22,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.troja.eve.esi.model.KillmailResponseVictimItemsInner;
-import net.troja.eve.esi.model.KillmailResponseVictimPosition;
+import net.troja.eve.esi.model.KillmailByHashResponseVictimItemsInner;
+import net.troja.eve.esi.model.KillmailByHashResponseVictimPosition;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -50,10 +50,10 @@ import java.util.Set;
 import net.troja.eve.esi.JSON;
 
 /**
- * KillmailResponseVictim
+ * KillmailByHashResponseVictim
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class KillmailResponseVictim implements Serializable {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+public class KillmailByHashResponseVictim implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_ALLIANCE_ID = "alliance_id";
@@ -84,22 +84,22 @@ public class KillmailResponseVictim implements Serializable {
     public static final String SERIALIZED_NAME_ITEMS = "items";
     @SerializedName(SERIALIZED_NAME_ITEMS)
     @javax.annotation.Nullable
-    private List<KillmailResponseVictimItemsInner> items;
+    private List<KillmailByHashResponseVictimItemsInner> items;
 
     public static final String SERIALIZED_NAME_POSITION = "position";
     @SerializedName(SERIALIZED_NAME_POSITION)
     @javax.annotation.Nullable
-    private KillmailResponseVictimPosition position;
+    private KillmailByHashResponseVictimPosition position;
 
     public static final String SERIALIZED_NAME_SHIP_TYPE_ID = "ship_type_id";
     @SerializedName(SERIALIZED_NAME_SHIP_TYPE_ID)
     @javax.annotation.Nonnull
     private Long shipTypeId;
 
-    public KillmailResponseVictim() {
+    public KillmailByHashResponseVictim() {
     }
 
-    public KillmailResponseVictim allianceId(@javax.annotation.Nullable Long allianceId) {
+    public KillmailByHashResponseVictim allianceId(@javax.annotation.Nullable Long allianceId) {
         this.allianceId = allianceId;
         return this;
     }
@@ -118,7 +118,7 @@ public class KillmailResponseVictim implements Serializable {
         this.allianceId = allianceId;
     }
 
-    public KillmailResponseVictim characterId(@javax.annotation.Nullable Long characterId) {
+    public KillmailByHashResponseVictim characterId(@javax.annotation.Nullable Long characterId) {
         this.characterId = characterId;
         return this;
     }
@@ -137,7 +137,7 @@ public class KillmailResponseVictim implements Serializable {
         this.characterId = characterId;
     }
 
-    public KillmailResponseVictim corporationId(@javax.annotation.Nullable Long corporationId) {
+    public KillmailByHashResponseVictim corporationId(@javax.annotation.Nullable Long corporationId) {
         this.corporationId = corporationId;
         return this;
     }
@@ -156,7 +156,7 @@ public class KillmailResponseVictim implements Serializable {
         this.corporationId = corporationId;
     }
 
-    public KillmailResponseVictim damageTaken(@javax.annotation.Nonnull Long damageTaken) {
+    public KillmailByHashResponseVictim damageTaken(@javax.annotation.Nonnull Long damageTaken) {
         this.damageTaken = damageTaken;
         return this;
     }
@@ -175,7 +175,7 @@ public class KillmailResponseVictim implements Serializable {
         this.damageTaken = damageTaken;
     }
 
-    public KillmailResponseVictim factionId(@javax.annotation.Nullable Long factionId) {
+    public KillmailByHashResponseVictim factionId(@javax.annotation.Nullable Long factionId) {
         this.factionId = factionId;
         return this;
     }
@@ -194,12 +194,13 @@ public class KillmailResponseVictim implements Serializable {
         this.factionId = factionId;
     }
 
-    public KillmailResponseVictim items(@javax.annotation.Nullable List<KillmailResponseVictimItemsInner> items) {
+    public KillmailByHashResponseVictim items(
+            @javax.annotation.Nullable List<KillmailByHashResponseVictimItemsInner> items) {
         this.items = items;
         return this;
     }
 
-    public KillmailResponseVictim addItemsItem(KillmailResponseVictimItemsInner itemsItem) {
+    public KillmailByHashResponseVictim addItemsItem(KillmailByHashResponseVictimItemsInner itemsItem) {
         if (this.items == null) {
             this.items = new ArrayList<>();
         }
@@ -214,15 +215,16 @@ public class KillmailResponseVictim implements Serializable {
      * @return items
      */
     @javax.annotation.Nullable
-    public List<KillmailResponseVictimItemsInner> getItems() {
+    public List<KillmailByHashResponseVictimItemsInner> getItems() {
         return items;
     }
 
-    public void setItems(@javax.annotation.Nullable List<KillmailResponseVictimItemsInner> items) {
+    public void setItems(@javax.annotation.Nullable List<KillmailByHashResponseVictimItemsInner> items) {
         this.items = items;
     }
 
-    public KillmailResponseVictim position(@javax.annotation.Nullable KillmailResponseVictimPosition position) {
+    public KillmailByHashResponseVictim position(
+            @javax.annotation.Nullable KillmailByHashResponseVictimPosition position) {
         this.position = position;
         return this;
     }
@@ -233,15 +235,15 @@ public class KillmailResponseVictim implements Serializable {
      * @return position
      */
     @javax.annotation.Nullable
-    public KillmailResponseVictimPosition getPosition() {
+    public KillmailByHashResponseVictimPosition getPosition() {
         return position;
     }
 
-    public void setPosition(@javax.annotation.Nullable KillmailResponseVictimPosition position) {
+    public void setPosition(@javax.annotation.Nullable KillmailByHashResponseVictimPosition position) {
         this.position = position;
     }
 
-    public KillmailResponseVictim shipTypeId(@javax.annotation.Nonnull Long shipTypeId) {
+    public KillmailByHashResponseVictim shipTypeId(@javax.annotation.Nonnull Long shipTypeId) {
         this.shipTypeId = shipTypeId;
         return this;
     }
@@ -268,15 +270,15 @@ public class KillmailResponseVictim implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        KillmailResponseVictim killmailResponseVictim = (KillmailResponseVictim) o;
-        return Objects.equals(this.allianceId, killmailResponseVictim.allianceId)
-                && Objects.equals(this.characterId, killmailResponseVictim.characterId)
-                && Objects.equals(this.corporationId, killmailResponseVictim.corporationId)
-                && Objects.equals(this.damageTaken, killmailResponseVictim.damageTaken)
-                && Objects.equals(this.factionId, killmailResponseVictim.factionId)
-                && Objects.equals(this.items, killmailResponseVictim.items)
-                && Objects.equals(this.position, killmailResponseVictim.position)
-                && Objects.equals(this.shipTypeId, killmailResponseVictim.shipTypeId);
+        KillmailByHashResponseVictim killmailByHashResponseVictim = (KillmailByHashResponseVictim) o;
+        return Objects.equals(this.allianceId, killmailByHashResponseVictim.allianceId)
+                && Objects.equals(this.characterId, killmailByHashResponseVictim.characterId)
+                && Objects.equals(this.corporationId, killmailByHashResponseVictim.corporationId)
+                && Objects.equals(this.damageTaken, killmailByHashResponseVictim.damageTaken)
+                && Objects.equals(this.factionId, killmailByHashResponseVictim.factionId)
+                && Objects.equals(this.items, killmailByHashResponseVictim.items)
+                && Objects.equals(this.position, killmailByHashResponseVictim.position)
+                && Objects.equals(this.shipTypeId, killmailByHashResponseVictim.shipTypeId);
     }
 
     @Override
@@ -288,7 +290,7 @@ public class KillmailResponseVictim implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class KillmailResponseVictim {\n");
+        sb.append("class KillmailByHashResponseVictim {\n");
         sb.append("    allianceId: ").append(toIndentedString(allianceId)).append("\n");
         sb.append("    characterId: ").append(toIndentedString(characterId)).append("\n");
         sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
@@ -331,38 +333,39 @@ public class KillmailResponseVictim implements Serializable {
      *            JSON Element
      * @throws IOException
      *             if the JSON Element is invalid with respect to
-     *             KillmailResponseVictim
+     *             KillmailByHashResponseVictim
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         if (jsonElement == null) {
-            if (!KillmailResponseVictim.openapiRequiredFields.isEmpty()) { // has
-                                                                           // required
-                                                                           // fields
-                                                                           // but
-                                                                           // JSON
-                                                                           // element
-                                                                           // is
-                                                                           // null
-                throw new IllegalArgumentException(String.format(
-                        "The required field(s) %s in KillmailResponseVictim is not found in the empty JSON string",
-                        KillmailResponseVictim.openapiRequiredFields.toString()));
+            if (!KillmailByHashResponseVictim.openapiRequiredFields.isEmpty()) { // has
+                                                                                 // required
+                                                                                 // fields
+                                                                                 // but
+                                                                                 // JSON
+                                                                                 // element
+                                                                                 // is
+                                                                                 // null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in KillmailByHashResponseVictim is not found in the empty JSON string",
+                                KillmailByHashResponseVictim.openapiRequiredFields.toString()));
             }
         }
 
         Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
         for (Map.Entry<String, JsonElement> entry : entries) {
-            if (!KillmailResponseVictim.openapiFields.contains(entry.getKey())) {
+            if (!KillmailByHashResponseVictim.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
-                                "The field `%s` in the JSON string is not defined in the `KillmailResponseVictim` properties. JSON: %s",
+                                "The field `%s` in the JSON string is not defined in the `KillmailByHashResponseVictim` properties. JSON: %s",
                                 entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
-        for (String requiredField : KillmailResponseVictim.openapiRequiredFields) {
+        for (String requiredField : KillmailByHashResponseVictim.openapiRequiredFields) {
             if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
@@ -382,13 +385,13 @@ public class KillmailResponseVictim implements Serializable {
 
                 // validate the optional field `items` (array)
                 for (int i = 0; i < jsonArrayitems.size(); i++) {
-                    KillmailResponseVictimItemsInner.validateJsonElement(jsonArrayitems.get(i));
+                    KillmailByHashResponseVictimItemsInner.validateJsonElement(jsonArrayitems.get(i));
                 };
             }
         }
         // validate the optional field `position`
         if (jsonObj.get("position") != null && !jsonObj.get("position").isJsonNull()) {
-            KillmailResponseVictimPosition.validateJsonElement(jsonObj.get("position"));
+            KillmailByHashResponseVictimPosition.validateJsonElement(jsonObj.get("position"));
         }
     }
 
@@ -396,23 +399,23 @@ public class KillmailResponseVictim implements Serializable {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!KillmailResponseVictim.class.isAssignableFrom(type.getRawType())) {
+            if (!KillmailByHashResponseVictim.class.isAssignableFrom(type.getRawType())) {
                 return null; // this class only serializes
-                             // 'KillmailResponseVictim' and its subtypes
+                             // 'KillmailByHashResponseVictim' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<KillmailResponseVictim> thisAdapter = gson.getDelegateAdapter(this,
-                    TypeToken.get(KillmailResponseVictim.class));
+            final TypeAdapter<KillmailByHashResponseVictim> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(KillmailByHashResponseVictim.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<KillmailResponseVictim>() {
+            return (TypeAdapter<T>) new TypeAdapter<KillmailByHashResponseVictim>() {
                 @Override
-                public void write(JsonWriter out, KillmailResponseVictim value) throws IOException {
+                public void write(JsonWriter out, KillmailByHashResponseVictim value) throws IOException {
                     JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
                     elementAdapter.write(out, obj);
                 }
 
                 @Override
-                public KillmailResponseVictim read(JsonReader in) throws IOException {
+                public KillmailByHashResponseVictim read(JsonReader in) throws IOException {
                     JsonElement jsonElement = elementAdapter.read(in);
                     validateJsonElement(jsonElement);
                     return thisAdapter.fromJsonTree(jsonElement);
@@ -423,21 +426,21 @@ public class KillmailResponseVictim implements Serializable {
     }
 
     /**
-     * Create an instance of KillmailResponseVictim given an JSON string
+     * Create an instance of KillmailByHashResponseVictim given an JSON string
      *
      * @param jsonString
      *            JSON string
-     * @return An instance of KillmailResponseVictim
+     * @return An instance of KillmailByHashResponseVictim
      * @throws IOException
      *             if the JSON string is invalid with respect to
-     *             KillmailResponseVictim
+     *             KillmailByHashResponseVictim
      */
-    public static KillmailResponseVictim fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, KillmailResponseVictim.class);
+    public static KillmailByHashResponseVictim fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, KillmailByHashResponseVictim.class);
     }
 
     /**
-     * Convert an instance of KillmailResponseVictim to an JSON string
+     * Convert an instance of KillmailByHashResponseVictim to an JSON string
      *
      * @return JSON string
      */

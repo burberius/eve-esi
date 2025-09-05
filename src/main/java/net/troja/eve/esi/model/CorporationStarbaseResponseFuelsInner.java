@@ -48,8 +48,8 @@ import net.troja.eve.esi.JSON;
 /**
  * fuel object
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class CorporationStarbaseFuelsInner implements Serializable {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+public class CorporationStarbaseResponseFuelsInner implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_QUANTITY = "quantity";
@@ -62,10 +62,10 @@ public class CorporationStarbaseFuelsInner implements Serializable {
     @javax.annotation.Nonnull
     private Long typeId;
 
-    public CorporationStarbaseFuelsInner() {
+    public CorporationStarbaseResponseFuelsInner() {
     }
 
-    public CorporationStarbaseFuelsInner quantity(@javax.annotation.Nonnull Long quantity) {
+    public CorporationStarbaseResponseFuelsInner quantity(@javax.annotation.Nonnull Long quantity) {
         this.quantity = quantity;
         return this;
     }
@@ -84,7 +84,7 @@ public class CorporationStarbaseFuelsInner implements Serializable {
         this.quantity = quantity;
     }
 
-    public CorporationStarbaseFuelsInner typeId(@javax.annotation.Nonnull Long typeId) {
+    public CorporationStarbaseResponseFuelsInner typeId(@javax.annotation.Nonnull Long typeId) {
         this.typeId = typeId;
         return this;
     }
@@ -111,9 +111,9 @@ public class CorporationStarbaseFuelsInner implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CorporationStarbaseFuelsInner corporationStarbaseFuelsInner = (CorporationStarbaseFuelsInner) o;
-        return Objects.equals(this.quantity, corporationStarbaseFuelsInner.quantity)
-                && Objects.equals(this.typeId, corporationStarbaseFuelsInner.typeId);
+        CorporationStarbaseResponseFuelsInner corporationStarbaseResponseFuelsInner = (CorporationStarbaseResponseFuelsInner) o;
+        return Objects.equals(this.quantity, corporationStarbaseResponseFuelsInner.quantity)
+                && Objects.equals(this.typeId, corporationStarbaseResponseFuelsInner.typeId);
     }
 
     @Override
@@ -124,7 +124,7 @@ public class CorporationStarbaseFuelsInner implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class CorporationStarbaseFuelsInner {\n");
+        sb.append("class CorporationStarbaseResponseFuelsInner {\n");
         sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("}");
@@ -160,39 +160,39 @@ public class CorporationStarbaseFuelsInner implements Serializable {
      *            JSON Element
      * @throws IOException
      *             if the JSON Element is invalid with respect to
-     *             CorporationStarbaseFuelsInner
+     *             CorporationStarbaseResponseFuelsInner
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         if (jsonElement == null) {
-            if (!CorporationStarbaseFuelsInner.openapiRequiredFields.isEmpty()) { // has
-                                                                                  // required
-                                                                                  // fields
-                                                                                  // but
-                                                                                  // JSON
-                                                                                  // element
-                                                                                  // is
-                                                                                  // null
+            if (!CorporationStarbaseResponseFuelsInner.openapiRequiredFields.isEmpty()) { // has
+                                                                                          // required
+                                                                                          // fields
+                                                                                          // but
+                                                                                          // JSON
+                                                                                          // element
+                                                                                          // is
+                                                                                          // null
                 throw new IllegalArgumentException(
                         String.format(
-                                "The required field(s) %s in CorporationStarbaseFuelsInner is not found in the empty JSON string",
-                                CorporationStarbaseFuelsInner.openapiRequiredFields.toString()));
+                                "The required field(s) %s in CorporationStarbaseResponseFuelsInner is not found in the empty JSON string",
+                                CorporationStarbaseResponseFuelsInner.openapiRequiredFields.toString()));
             }
         }
 
         Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
         for (Map.Entry<String, JsonElement> entry : entries) {
-            if (!CorporationStarbaseFuelsInner.openapiFields.contains(entry.getKey())) {
+            if (!CorporationStarbaseResponseFuelsInner.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
-                                "The field `%s` in the JSON string is not defined in the `CorporationStarbaseFuelsInner` properties. JSON: %s",
+                                "The field `%s` in the JSON string is not defined in the `CorporationStarbaseResponseFuelsInner` properties. JSON: %s",
                                 entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
-        for (String requiredField : CorporationStarbaseFuelsInner.openapiRequiredFields) {
+        for (String requiredField : CorporationStarbaseResponseFuelsInner.openapiRequiredFields) {
             if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
@@ -206,23 +206,24 @@ public class CorporationStarbaseFuelsInner implements Serializable {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!CorporationStarbaseFuelsInner.class.isAssignableFrom(type.getRawType())) {
+            if (!CorporationStarbaseResponseFuelsInner.class.isAssignableFrom(type.getRawType())) {
                 return null; // this class only serializes
-                             // 'CorporationStarbaseFuelsInner' and its subtypes
+                             // 'CorporationStarbaseResponseFuelsInner' and its
+                             // subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<CorporationStarbaseFuelsInner> thisAdapter = gson.getDelegateAdapter(this,
-                    TypeToken.get(CorporationStarbaseFuelsInner.class));
+            final TypeAdapter<CorporationStarbaseResponseFuelsInner> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(CorporationStarbaseResponseFuelsInner.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<CorporationStarbaseFuelsInner>() {
+            return (TypeAdapter<T>) new TypeAdapter<CorporationStarbaseResponseFuelsInner>() {
                 @Override
-                public void write(JsonWriter out, CorporationStarbaseFuelsInner value) throws IOException {
+                public void write(JsonWriter out, CorporationStarbaseResponseFuelsInner value) throws IOException {
                     JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
                     elementAdapter.write(out, obj);
                 }
 
                 @Override
-                public CorporationStarbaseFuelsInner read(JsonReader in) throws IOException {
+                public CorporationStarbaseResponseFuelsInner read(JsonReader in) throws IOException {
                     JsonElement jsonElement = elementAdapter.read(in);
                     validateJsonElement(jsonElement);
                     return thisAdapter.fromJsonTree(jsonElement);
@@ -233,21 +234,23 @@ public class CorporationStarbaseFuelsInner implements Serializable {
     }
 
     /**
-     * Create an instance of CorporationStarbaseFuelsInner given an JSON string
+     * Create an instance of CorporationStarbaseResponseFuelsInner given an JSON
+     * string
      *
      * @param jsonString
      *            JSON string
-     * @return An instance of CorporationStarbaseFuelsInner
+     * @return An instance of CorporationStarbaseResponseFuelsInner
      * @throws IOException
      *             if the JSON string is invalid with respect to
-     *             CorporationStarbaseFuelsInner
+     *             CorporationStarbaseResponseFuelsInner
      */
-    public static CorporationStarbaseFuelsInner fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, CorporationStarbaseFuelsInner.class);
+    public static CorporationStarbaseResponseFuelsInner fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CorporationStarbaseResponseFuelsInner.class);
     }
 
     /**
-     * Convert an instance of CorporationStarbaseFuelsInner to an JSON string
+     * Convert an instance of CorporationStarbaseResponseFuelsInner to an JSON
+     * string
      *
      * @return JSON string
      */

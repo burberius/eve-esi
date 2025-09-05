@@ -54,7 +54,7 @@ import net.troja.eve.esi.JSON;
  * Top 100 rankings of pilots by number of kills from yesterday, last week and
  * in total
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
 public class FactionWarfareLeaderboardsCharactersResponseKills implements Serializable {
     private static final long serialVersionUID = 1L;
 

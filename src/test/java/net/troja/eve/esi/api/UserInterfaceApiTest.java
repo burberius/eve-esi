@@ -50,8 +50,7 @@ public class UserInterfaceApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        Object response = api.postUiAutopilotWaypoint(addToBeginning, clearOtherWaypoints, destinationId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
-        // TODO: test validations
+        api.postUiAutopilotWaypoint(addToBeginning, clearOtherWaypoints, destinationId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
     }
 
     /**
@@ -68,8 +67,7 @@ public class UserInterfaceApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        Object response = api.postUiOpenwindowContract(contractId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
-        // TODO: test validations
+        api.postUiOpenwindowContract(contractId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
     }
 
     /**
@@ -86,8 +84,7 @@ public class UserInterfaceApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        Object response = api.postUiOpenwindowInformation(targetId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
-        // TODO: test validations
+        api.postUiOpenwindowInformation(targetId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
     }
 
     /**
@@ -104,8 +101,7 @@ public class UserInterfaceApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        Object response = api.postUiOpenwindowMarketdetails(typeId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
-        // TODO: test validations
+        api.postUiOpenwindowMarketdetails(typeId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
     }
 
     /**
@@ -122,8 +118,7 @@ public class UserInterfaceApiTest extends GeneralApiTest {
         String ifNoneMatch = null;
         String xTenant = null;
         PostUiOpenwindowNewmailRequest postUiOpenwindowNewmailRequest = null;
-        Object response = api.postUiOpenwindowNewmail(xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, postUiOpenwindowNewmailRequest);
-        // TODO: test validations
+        api.postUiOpenwindowNewmail(xCompatibilityDate, postUiOpenwindowNewmailRequest, acceptLanguage, ifNoneMatch, xTenant);
     }
 
 }

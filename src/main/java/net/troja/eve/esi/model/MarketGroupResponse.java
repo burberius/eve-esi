@@ -48,10 +48,10 @@ import java.util.Set;
 import net.troja.eve.esi.JSON;
 
 /**
- * MarketGroupsMarketGroupIdResponse
+ * MarketGroupResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class MarketGroupsMarketGroupIdResponse implements Serializable {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+public class MarketGroupResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_DESCRIPTION = "description";
@@ -79,10 +79,10 @@ public class MarketGroupsMarketGroupIdResponse implements Serializable {
     @javax.annotation.Nonnull
     private List<Long> types;
 
-    public MarketGroupsMarketGroupIdResponse() {
+    public MarketGroupResponse() {
     }
 
-    public MarketGroupsMarketGroupIdResponse description(@javax.annotation.Nonnull String description) {
+    public MarketGroupResponse description(@javax.annotation.Nonnull String description) {
         this.description = description;
         return this;
     }
@@ -101,7 +101,7 @@ public class MarketGroupsMarketGroupIdResponse implements Serializable {
         this.description = description;
     }
 
-    public MarketGroupsMarketGroupIdResponse marketGroupId(@javax.annotation.Nonnull Long marketGroupId) {
+    public MarketGroupResponse marketGroupId(@javax.annotation.Nonnull Long marketGroupId) {
         this.marketGroupId = marketGroupId;
         return this;
     }
@@ -120,7 +120,7 @@ public class MarketGroupsMarketGroupIdResponse implements Serializable {
         this.marketGroupId = marketGroupId;
     }
 
-    public MarketGroupsMarketGroupIdResponse name(@javax.annotation.Nonnull String name) {
+    public MarketGroupResponse name(@javax.annotation.Nonnull String name) {
         this.name = name;
         return this;
     }
@@ -139,7 +139,7 @@ public class MarketGroupsMarketGroupIdResponse implements Serializable {
         this.name = name;
     }
 
-    public MarketGroupsMarketGroupIdResponse parentGroupId(@javax.annotation.Nullable Long parentGroupId) {
+    public MarketGroupResponse parentGroupId(@javax.annotation.Nullable Long parentGroupId) {
         this.parentGroupId = parentGroupId;
         return this;
     }
@@ -158,12 +158,12 @@ public class MarketGroupsMarketGroupIdResponse implements Serializable {
         this.parentGroupId = parentGroupId;
     }
 
-    public MarketGroupsMarketGroupIdResponse types(@javax.annotation.Nonnull List<Long> types) {
+    public MarketGroupResponse types(@javax.annotation.Nonnull List<Long> types) {
         this.types = types;
         return this;
     }
 
-    public MarketGroupsMarketGroupIdResponse addTypesItem(Long typesItem) {
+    public MarketGroupResponse addTypesItem(Long typesItem) {
         if (this.types == null) {
             this.types = new ArrayList<>();
         }
@@ -194,12 +194,12 @@ public class MarketGroupsMarketGroupIdResponse implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        MarketGroupsMarketGroupIdResponse marketGroupsMarketGroupIdResponse = (MarketGroupsMarketGroupIdResponse) o;
-        return Objects.equals(this.description, marketGroupsMarketGroupIdResponse.description)
-                && Objects.equals(this.marketGroupId, marketGroupsMarketGroupIdResponse.marketGroupId)
-                && Objects.equals(this.name, marketGroupsMarketGroupIdResponse.name)
-                && Objects.equals(this.parentGroupId, marketGroupsMarketGroupIdResponse.parentGroupId)
-                && Objects.equals(this.types, marketGroupsMarketGroupIdResponse.types);
+        MarketGroupResponse marketGroupResponse = (MarketGroupResponse) o;
+        return Objects.equals(this.description, marketGroupResponse.description)
+                && Objects.equals(this.marketGroupId, marketGroupResponse.marketGroupId)
+                && Objects.equals(this.name, marketGroupResponse.name)
+                && Objects.equals(this.parentGroupId, marketGroupResponse.parentGroupId)
+                && Objects.equals(this.types, marketGroupResponse.types);
     }
 
     @Override
@@ -210,7 +210,7 @@ public class MarketGroupsMarketGroupIdResponse implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class MarketGroupsMarketGroupIdResponse {\n");
+        sb.append("class MarketGroupResponse {\n");
         sb.append("    description: ").append(toIndentedString(description)).append("\n");
         sb.append("    marketGroupId: ").append(toIndentedString(marketGroupId)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
@@ -250,39 +250,38 @@ public class MarketGroupsMarketGroupIdResponse implements Serializable {
      *            JSON Element
      * @throws IOException
      *             if the JSON Element is invalid with respect to
-     *             MarketGroupsMarketGroupIdResponse
+     *             MarketGroupResponse
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         if (jsonElement == null) {
-            if (!MarketGroupsMarketGroupIdResponse.openapiRequiredFields.isEmpty()) { // has
-                                                                                      // required
-                                                                                      // fields
-                                                                                      // but
-                                                                                      // JSON
-                                                                                      // element
-                                                                                      // is
-                                                                                      // null
-                throw new IllegalArgumentException(
-                        String.format(
-                                "The required field(s) %s in MarketGroupsMarketGroupIdResponse is not found in the empty JSON string",
-                                MarketGroupsMarketGroupIdResponse.openapiRequiredFields.toString()));
+            if (!MarketGroupResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                        // required
+                                                                        // fields
+                                                                        // but
+                                                                        // JSON
+                                                                        // element
+                                                                        // is
+                                                                        // null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in MarketGroupResponse is not found in the empty JSON string",
+                        MarketGroupResponse.openapiRequiredFields.toString()));
             }
         }
 
         Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
         for (Map.Entry<String, JsonElement> entry : entries) {
-            if (!MarketGroupsMarketGroupIdResponse.openapiFields.contains(entry.getKey())) {
+            if (!MarketGroupResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
-                                "The field `%s` in the JSON string is not defined in the `MarketGroupsMarketGroupIdResponse` properties. JSON: %s",
+                                "The field `%s` in the JSON string is not defined in the `MarketGroupResponse` properties. JSON: %s",
                                 entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
-        for (String requiredField : MarketGroupsMarketGroupIdResponse.openapiRequiredFields) {
+        for (String requiredField : MarketGroupResponse.openapiRequiredFields) {
             if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
@@ -315,24 +314,23 @@ public class MarketGroupsMarketGroupIdResponse implements Serializable {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!MarketGroupsMarketGroupIdResponse.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes
-                             // 'MarketGroupsMarketGroupIdResponse' and its
-                             // subtypes
+            if (!MarketGroupResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'MarketGroupResponse'
+                             // and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<MarketGroupsMarketGroupIdResponse> thisAdapter = gson.getDelegateAdapter(this,
-                    TypeToken.get(MarketGroupsMarketGroupIdResponse.class));
+            final TypeAdapter<MarketGroupResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(MarketGroupResponse.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<MarketGroupsMarketGroupIdResponse>() {
+            return (TypeAdapter<T>) new TypeAdapter<MarketGroupResponse>() {
                 @Override
-                public void write(JsonWriter out, MarketGroupsMarketGroupIdResponse value) throws IOException {
+                public void write(JsonWriter out, MarketGroupResponse value) throws IOException {
                     JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
                     elementAdapter.write(out, obj);
                 }
 
                 @Override
-                public MarketGroupsMarketGroupIdResponse read(JsonReader in) throws IOException {
+                public MarketGroupResponse read(JsonReader in) throws IOException {
                     JsonElement jsonElement = elementAdapter.read(in);
                     validateJsonElement(jsonElement);
                     return thisAdapter.fromJsonTree(jsonElement);
@@ -343,23 +341,21 @@ public class MarketGroupsMarketGroupIdResponse implements Serializable {
     }
 
     /**
-     * Create an instance of MarketGroupsMarketGroupIdResponse given an JSON
-     * string
+     * Create an instance of MarketGroupResponse given an JSON string
      *
      * @param jsonString
      *            JSON string
-     * @return An instance of MarketGroupsMarketGroupIdResponse
+     * @return An instance of MarketGroupResponse
      * @throws IOException
      *             if the JSON string is invalid with respect to
-     *             MarketGroupsMarketGroupIdResponse
+     *             MarketGroupResponse
      */
-    public static MarketGroupsMarketGroupIdResponse fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, MarketGroupsMarketGroupIdResponse.class);
+    public static MarketGroupResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, MarketGroupResponse.class);
     }
 
     /**
-     * Convert an instance of MarketGroupsMarketGroupIdResponse to an JSON
-     * string
+     * Convert an instance of MarketGroupResponse to an JSON string
      *
      * @return JSON string
      */

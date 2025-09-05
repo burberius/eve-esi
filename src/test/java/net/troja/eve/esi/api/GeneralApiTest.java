@@ -81,8 +81,8 @@ public class GeneralApiTest {
         HashSet<Long> ids = new HashSet<>();
         ids.add(characterId);
         List<CharacterAffiliationResponseInner> affiliation =
-                new CharacterApi(apiClient).postCharactersAffiliation(CharacterApi.COMPATIBILITY_DATE, null, null, null,
-                        ids);
+                new CharacterApi(apiClient).postCharactersAffiliation(CharacterApi.COMPATIBILITY_DATE, ids,
+                        null, null, null);
         corporationId = affiliation.get(0).getCorporationId();
     }
 

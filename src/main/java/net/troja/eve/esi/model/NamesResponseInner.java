@@ -46,10 +46,10 @@ import java.util.Set;
 import net.troja.eve.esi.JSON;
 
 /**
- * UniverseNamesPostInner
+ * NamesResponseInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class UniverseNamesPostInner implements Serializable {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+public class NamesResponseInner implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -134,15 +134,15 @@ public class UniverseNamesPostInner implements Serializable {
     @javax.annotation.Nonnull
     private String name;
 
-    public UniverseNamesPostInner() {
+    public NamesResponseInner() {
     }
 
-    public UniverseNamesPostInner category(@javax.annotation.Nonnull CategoryEnum category) {
+    public NamesResponseInner category(@javax.annotation.Nonnull CategoryEnum category) {
         this.categoryEnum = category;
         return this;
     }
 
-    public UniverseNamesPostInner categoryString(@javax.annotation.Nonnull String category) {
+    public NamesResponseInner categoryString(@javax.annotation.Nonnull String category) {
         this.category = category;
         return this;
     }
@@ -172,7 +172,7 @@ public class UniverseNamesPostInner implements Serializable {
         this.category = category;
     }
 
-    public UniverseNamesPostInner id(@javax.annotation.Nonnull Long id) {
+    public NamesResponseInner id(@javax.annotation.Nonnull Long id) {
         this.id = id;
         return this;
     }
@@ -191,7 +191,7 @@ public class UniverseNamesPostInner implements Serializable {
         this.id = id;
     }
 
-    public UniverseNamesPostInner name(@javax.annotation.Nonnull String name) {
+    public NamesResponseInner name(@javax.annotation.Nonnull String name) {
         this.name = name;
         return this;
     }
@@ -218,10 +218,9 @@ public class UniverseNamesPostInner implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        UniverseNamesPostInner universeNamesPostInner = (UniverseNamesPostInner) o;
-        return Objects.equals(this.category, universeNamesPostInner.category)
-                && Objects.equals(this.id, universeNamesPostInner.id)
-                && Objects.equals(this.name, universeNamesPostInner.name);
+        NamesResponseInner namesResponseInner = (NamesResponseInner) o;
+        return Objects.equals(this.category, namesResponseInner.category)
+                && Objects.equals(this.id, namesResponseInner.id) && Objects.equals(this.name, namesResponseInner.name);
     }
 
     @Override
@@ -232,7 +231,7 @@ public class UniverseNamesPostInner implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class UniverseNamesPostInner {\n");
+        sb.append("class NamesResponseInner {\n");
         sb.append("    category: ").append(toIndentedString(category)).append("\n");
         sb.append("    id: ").append(toIndentedString(id)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
@@ -269,38 +268,38 @@ public class UniverseNamesPostInner implements Serializable {
      *            JSON Element
      * @throws IOException
      *             if the JSON Element is invalid with respect to
-     *             UniverseNamesPostInner
+     *             NamesResponseInner
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         if (jsonElement == null) {
-            if (!UniverseNamesPostInner.openapiRequiredFields.isEmpty()) { // has
-                                                                           // required
-                                                                           // fields
-                                                                           // but
-                                                                           // JSON
-                                                                           // element
-                                                                           // is
-                                                                           // null
+            if (!NamesResponseInner.openapiRequiredFields.isEmpty()) { // has
+                                                                       // required
+                                                                       // fields
+                                                                       // but
+                                                                       // JSON
+                                                                       // element
+                                                                       // is
+                                                                       // null
                 throw new IllegalArgumentException(String.format(
-                        "The required field(s) %s in UniverseNamesPostInner is not found in the empty JSON string",
-                        UniverseNamesPostInner.openapiRequiredFields.toString()));
+                        "The required field(s) %s in NamesResponseInner is not found in the empty JSON string",
+                        NamesResponseInner.openapiRequiredFields.toString()));
             }
         }
 
         Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
         for (Map.Entry<String, JsonElement> entry : entries) {
-            if (!UniverseNamesPostInner.openapiFields.contains(entry.getKey())) {
+            if (!NamesResponseInner.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
-                                "The field `%s` in the JSON string is not defined in the `UniverseNamesPostInner` properties. JSON: %s",
+                                "The field `%s` in the JSON string is not defined in the `NamesResponseInner` properties. JSON: %s",
                                 entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
-        for (String requiredField : UniverseNamesPostInner.openapiRequiredFields) {
+        for (String requiredField : NamesResponseInner.openapiRequiredFields) {
             if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
@@ -326,23 +325,23 @@ public class UniverseNamesPostInner implements Serializable {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!UniverseNamesPostInner.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes
-                             // 'UniverseNamesPostInner' and its subtypes
+            if (!NamesResponseInner.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'NamesResponseInner'
+                             // and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<UniverseNamesPostInner> thisAdapter = gson.getDelegateAdapter(this,
-                    TypeToken.get(UniverseNamesPostInner.class));
+            final TypeAdapter<NamesResponseInner> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(NamesResponseInner.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<UniverseNamesPostInner>() {
+            return (TypeAdapter<T>) new TypeAdapter<NamesResponseInner>() {
                 @Override
-                public void write(JsonWriter out, UniverseNamesPostInner value) throws IOException {
+                public void write(JsonWriter out, NamesResponseInner value) throws IOException {
                     JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
                     elementAdapter.write(out, obj);
                 }
 
                 @Override
-                public UniverseNamesPostInner read(JsonReader in) throws IOException {
+                public NamesResponseInner read(JsonReader in) throws IOException {
                     JsonElement jsonElement = elementAdapter.read(in);
                     validateJsonElement(jsonElement);
                     return thisAdapter.fromJsonTree(jsonElement);
@@ -353,21 +352,21 @@ public class UniverseNamesPostInner implements Serializable {
     }
 
     /**
-     * Create an instance of UniverseNamesPostInner given an JSON string
+     * Create an instance of NamesResponseInner given an JSON string
      *
      * @param jsonString
      *            JSON string
-     * @return An instance of UniverseNamesPostInner
+     * @return An instance of NamesResponseInner
      * @throws IOException
      *             if the JSON string is invalid with respect to
-     *             UniverseNamesPostInner
+     *             NamesResponseInner
      */
-    public static UniverseNamesPostInner fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, UniverseNamesPostInner.class);
+    public static NamesResponseInner fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, NamesResponseInner.class);
     }
 
     /**
-     * Convert an instance of UniverseNamesPostInner to an JSON string
+     * Convert an instance of NamesResponseInner to an JSON string
      *
      * @return JSON string
      */

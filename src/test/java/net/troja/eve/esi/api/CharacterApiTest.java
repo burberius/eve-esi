@@ -76,11 +76,11 @@ public class CharacterApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getCharacterAgentsResearchTest() throws ApiException {
+    public void getCharacterResearchAgentsTest() throws ApiException {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterResearchAgentsResponseInner> response = api.getCharacterAgentsResearch(characterId, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterResearchAgentsResponseInner> response = api.getCharacterResearchAgents(characterId, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotNull().isNotEmpty();
     }
 
@@ -113,7 +113,7 @@ public class CharacterApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterCorporationHistoryResponseInner> response = api.getCharacterCorporationhistory(characterId, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterCorporationHistoryResponseInner> response = api.getCharacterCorporationHistory(characterId, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotNull().isNotEmpty();
     }
 
@@ -262,7 +262,7 @@ public class CharacterApiTest extends GeneralApiTest {
         String xTenant = null;
         Set<Long> requestBody = new HashSet<>();
         requestBody.add(characterId);
-        Double response = api.postCharacterCspa(characterId, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant, requestBody);
+        Double response = api.postCharacterCspa(characterId, CharacterApi.COMPATIBILITY_DATE, requestBody, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotNull().isEqualTo(0f);
     }
 
@@ -280,7 +280,7 @@ public class CharacterApiTest extends GeneralApiTest {
         String xTenant = null;
         Set<Long> requestBody = new HashSet<>();
         requestBody.add(characterId);
-        List<CharacterAffiliationResponseInner> response = api.postCharactersAffiliation(CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant, requestBody);
+        List<CharacterAffiliationResponseInner> response = api.postCharactersAffiliation(CharacterApi.COMPATIBILITY_DATE, requestBody, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotNull().isNotEmpty();
     }
 

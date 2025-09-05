@@ -38,7 +38,7 @@ import java.util.List;
 import java.util.Map;
 
 public class DogmaApi {
-    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2020, 1, 1);
+    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2025, 8, 26);
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
@@ -73,6 +73,296 @@ public class DogmaApi {
 
     public void setCustomBaseUrl(String customBaseUrl) {
         this.localCustomBaseUrl = customBaseUrl;
+    }
+
+    /**
+     * Build call for getDogmaAttribute
+     * 
+     * @param attributeId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getDogmaAttributeCall(@javax.annotation.Nonnull Long attributeId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/dogma/attributes/{attribute_id}".replace("{" + "attribute_id" + "}",
+                localVarApiClient.escapeString(attributeId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {};
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        if (acceptLanguage != null) {
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
+        }
+
+        if (ifNoneMatch != null) {
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
+        }
+
+        if (xCompatibilityDate != null) {
+            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
+        }
+
+        if (xTenant != null) {
+            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getDogmaAttributeValidateBeforeCall(@javax.annotation.Nonnull Long attributeId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'attributeId' is set
+        if (attributeId == null) {
+            throw new ApiException("Missing the required parameter 'attributeId' when calling getDogmaAttribute(Async)");
+        }
+
+        // verify the required parameter 'xCompatibilityDate' is set
+        if (xCompatibilityDate == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'xCompatibilityDate' when calling getDogmaAttribute(Async)");
+        }
+
+        return getDogmaAttributeCall(attributeId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
+
+    }
+
+    /**
+     * Get attribute information Get information on a dogma attribute This route
+     * expires daily at 11:05
+     * 
+     * @param attributeId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return DogmaAttributeResponse
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public DogmaAttributeResponse getDogmaAttribute(@javax.annotation.Nonnull Long attributeId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        ApiResponse<DogmaAttributeResponse> localVarResp = getDogmaAttributeWithHttpInfo(attributeId,
+                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get attribute information Get information on a dogma attribute This route
+     * expires daily at 11:05
+     * 
+     * @param attributeId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return ApiResponse&lt;DogmaAttributeResponse&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<DogmaAttributeResponse> getDogmaAttributeWithHttpInfo(
+            @javax.annotation.Nonnull Long attributeId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        okhttp3.Call localVarCall = getDogmaAttributeValidateBeforeCall(attributeId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant, null);
+        Type localVarReturnType = new TypeToken<DogmaAttributeResponse>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get attribute information (asynchronously) Get information on a dogma
+     * attribute This route expires daily at 11:05
+     * 
+     * @param attributeId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request
+     *             body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getDogmaAttributeAsync(@javax.annotation.Nonnull Long attributeId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback<DogmaAttributeResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getDogmaAttributeValidateBeforeCall(attributeId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant, _callback);
+        Type localVarReturnType = new TypeToken<DogmaAttributeResponse>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -348,299 +638,7 @@ public class DogmaApi {
     }
 
     /**
-     * Build call for getDogmaAttributesAttributeId
-     * 
-     * @param attributeId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException
-     *             If fail to serialize the request body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getDogmaAttributesAttributeIdCall(@javax.annotation.Nonnull Long attributeId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {};
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null) {
-            basePath = localCustomBaseUrl;
-        } else if (localBasePaths.length > 0) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/dogma/attributes/{attribute_id}".replace("{" + "attribute_id" + "}",
-                localVarApiClient.escapeString(attributeId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {};
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
-        }
-
-        if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
-        }
-
-        if (xCompatibilityDate != null) {
-            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
-        }
-
-        if (xTenant != null) {
-            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
-        }
-
-        String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
-                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
-                localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getDogmaAttributesAttributeIdValidateBeforeCall(@javax.annotation.Nonnull Long attributeId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'attributeId' is set
-        if (attributeId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'attributeId' when calling getDogmaAttributesAttributeId(Async)");
-        }
-
-        // verify the required parameter 'xCompatibilityDate' is set
-        if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getDogmaAttributesAttributeId(Async)");
-        }
-
-        return getDogmaAttributesAttributeIdCall(attributeId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
-                _callback);
-
-    }
-
-    /**
-     * Get attribute information Get information on a dogma attribute This route
-     * expires daily at 11:05
-     * 
-     * @param attributeId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return DogmaAttributeResponse
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public DogmaAttributeResponse getDogmaAttributesAttributeId(@javax.annotation.Nonnull Long attributeId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        ApiResponse<DogmaAttributeResponse> localVarResp = getDogmaAttributesAttributeIdWithHttpInfo(attributeId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Get attribute information Get information on a dogma attribute This route
-     * expires daily at 11:05
-     * 
-     * @param attributeId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return ApiResponse&lt;DogmaAttributeResponse&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<DogmaAttributeResponse> getDogmaAttributesAttributeIdWithHttpInfo(
-            @javax.annotation.Nonnull Long attributeId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        okhttp3.Call localVarCall = getDogmaAttributesAttributeIdValidateBeforeCall(attributeId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<DogmaAttributeResponse>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Get attribute information (asynchronously) Get information on a dogma
-     * attribute This route expires daily at 11:05
-     * 
-     * @param attributeId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException
-     *             If fail to process the API call, e.g. serializing the request
-     *             body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getDogmaAttributesAttributeIdAsync(@javax.annotation.Nonnull Long attributeId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<DogmaAttributeResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getDogmaAttributesAttributeIdValidateBeforeCall(attributeId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<DogmaAttributeResponse>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    /**
-     * Build call for getDogmaDynamicItemsTypeIdItemId
+     * Build call for getDogmaDynamicItems
      * 
      * @param itemId
      *            (required)
@@ -684,7 +682,7 @@ public class DogmaApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getDogmaDynamicItemsTypeIdItemIdCall(@javax.annotation.Nonnull Long itemId,
+    public okhttp3.Call getDogmaDynamicItemsCall(@javax.annotation.Nonnull Long itemId,
             @javax.annotation.Nonnull Long typeId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
@@ -749,30 +747,28 @@ public class DogmaApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getDogmaDynamicItemsTypeIdItemIdValidateBeforeCall(@javax.annotation.Nonnull Long itemId,
+    private okhttp3.Call getDogmaDynamicItemsValidateBeforeCall(@javax.annotation.Nonnull Long itemId,
             @javax.annotation.Nonnull Long typeId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'itemId' is set
         if (itemId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'itemId' when calling getDogmaDynamicItemsTypeIdItemId(Async)");
+            throw new ApiException("Missing the required parameter 'itemId' when calling getDogmaDynamicItems(Async)");
         }
 
         // verify the required parameter 'typeId' is set
         if (typeId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'typeId' when calling getDogmaDynamicItemsTypeIdItemId(Async)");
+            throw new ApiException("Missing the required parameter 'typeId' when calling getDogmaDynamicItems(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
             throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getDogmaDynamicItemsTypeIdItemId(Async)");
+                    "Missing the required parameter 'xCompatibilityDate' when calling getDogmaDynamicItems(Async)");
         }
 
-        return getDogmaDynamicItemsTypeIdItemIdCall(itemId, typeId, xCompatibilityDate, acceptLanguage, ifNoneMatch,
-                xTenant, _callback);
+        return getDogmaDynamicItemsCall(itemId, typeId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
+                _callback);
 
     }
 
@@ -821,12 +817,12 @@ public class DogmaApi {
      *                        </tr>
      *                        </table>
      */
-    public DogmaDynamicItemsResponse getDogmaDynamicItemsTypeIdItemId(@javax.annotation.Nonnull Long itemId,
+    public DogmaDynamicItemsResponse getDogmaDynamicItems(@javax.annotation.Nonnull Long itemId,
             @javax.annotation.Nonnull Long typeId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<DogmaDynamicItemsResponse> localVarResp = getDogmaDynamicItemsTypeIdItemIdWithHttpInfo(itemId,
-                typeId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<DogmaDynamicItemsResponse> localVarResp = getDogmaDynamicItemsWithHttpInfo(itemId, typeId,
+                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -875,13 +871,13 @@ public class DogmaApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<DogmaDynamicItemsResponse> getDogmaDynamicItemsTypeIdItemIdWithHttpInfo(
+    public ApiResponse<DogmaDynamicItemsResponse> getDogmaDynamicItemsWithHttpInfo(
             @javax.annotation.Nonnull Long itemId, @javax.annotation.Nonnull Long typeId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        okhttp3.Call localVarCall = getDogmaDynamicItemsTypeIdItemIdValidateBeforeCall(itemId, typeId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, null);
+        okhttp3.Call localVarCall = getDogmaDynamicItemsValidateBeforeCall(itemId, typeId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant, null);
         Type localVarReturnType = new TypeToken<DogmaDynamicItemsResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -935,15 +931,305 @@ public class DogmaApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getDogmaDynamicItemsTypeIdItemIdAsync(@javax.annotation.Nonnull Long itemId,
+    public okhttp3.Call getDogmaDynamicItemsAsync(@javax.annotation.Nonnull Long itemId,
             @javax.annotation.Nonnull Long typeId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback<DogmaDynamicItemsResponse> _callback)
             throws ApiException {
 
-        okhttp3.Call localVarCall = getDogmaDynamicItemsTypeIdItemIdValidateBeforeCall(itemId, typeId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
+        okhttp3.Call localVarCall = getDogmaDynamicItemsValidateBeforeCall(itemId, typeId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<DogmaDynamicItemsResponse>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
+     * Build call for getDogmaEffect
+     * 
+     * @param effectId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getDogmaEffectCall(@javax.annotation.Nonnull Long effectId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/dogma/effects/{effect_id}".replace("{" + "effect_id" + "}",
+                localVarApiClient.escapeString(effectId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {};
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        if (acceptLanguage != null) {
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
+        }
+
+        if (ifNoneMatch != null) {
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
+        }
+
+        if (xCompatibilityDate != null) {
+            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
+        }
+
+        if (xTenant != null) {
+            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getDogmaEffectValidateBeforeCall(@javax.annotation.Nonnull Long effectId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'effectId' is set
+        if (effectId == null) {
+            throw new ApiException("Missing the required parameter 'effectId' when calling getDogmaEffect(Async)");
+        }
+
+        // verify the required parameter 'xCompatibilityDate' is set
+        if (xCompatibilityDate == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'xCompatibilityDate' when calling getDogmaEffect(Async)");
+        }
+
+        return getDogmaEffectCall(effectId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
+
+    }
+
+    /**
+     * Get effect information Get information on a dogma effect This route
+     * expires daily at 11:05
+     * 
+     * @param effectId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return DogmaEffectResponse
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public DogmaEffectResponse getDogmaEffect(@javax.annotation.Nonnull Long effectId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        ApiResponse<DogmaEffectResponse> localVarResp = getDogmaEffectWithHttpInfo(effectId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get effect information Get information on a dogma effect This route
+     * expires daily at 11:05
+     * 
+     * @param effectId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return ApiResponse&lt;DogmaEffectResponse&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<DogmaEffectResponse> getDogmaEffectWithHttpInfo(@javax.annotation.Nonnull Long effectId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        okhttp3.Call localVarCall = getDogmaEffectValidateBeforeCall(effectId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant, null);
+        Type localVarReturnType = new TypeToken<DogmaEffectResponse>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get effect information (asynchronously) Get information on a dogma effect
+     * This route expires daily at 11:05
+     * 
+     * @param effectId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request
+     *             body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getDogmaEffectAsync(@javax.annotation.Nonnull Long effectId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback<DogmaEffectResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getDogmaEffectValidateBeforeCall(effectId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant, _callback);
+        Type localVarReturnType = new TypeToken<DogmaEffectResponse>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1215,298 +1501,6 @@ public class DogmaApi {
         okhttp3.Call localVarCall = getDogmaEffectsValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
                 xTenant, _callback);
         Type localVarReturnType = new TypeToken<List<Long>>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    /**
-     * Build call for getDogmaEffectsEffectId
-     * 
-     * @param effectId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException
-     *             If fail to serialize the request body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getDogmaEffectsEffectIdCall(@javax.annotation.Nonnull Long effectId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {};
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null) {
-            basePath = localCustomBaseUrl;
-        } else if (localBasePaths.length > 0) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/dogma/effects/{effect_id}".replace("{" + "effect_id" + "}",
-                localVarApiClient.escapeString(effectId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {};
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
-        }
-
-        if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
-        }
-
-        if (xCompatibilityDate != null) {
-            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
-        }
-
-        if (xTenant != null) {
-            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
-        }
-
-        String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
-                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
-                localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getDogmaEffectsEffectIdValidateBeforeCall(@javax.annotation.Nonnull Long effectId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'effectId' is set
-        if (effectId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'effectId' when calling getDogmaEffectsEffectId(Async)");
-        }
-
-        // verify the required parameter 'xCompatibilityDate' is set
-        if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getDogmaEffectsEffectId(Async)");
-        }
-
-        return getDogmaEffectsEffectIdCall(effectId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
-                _callback);
-
-    }
-
-    /**
-     * Get effect information Get information on a dogma effect This route
-     * expires daily at 11:05
-     * 
-     * @param effectId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return DogmaEffectResponse
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public DogmaEffectResponse getDogmaEffectsEffectId(@javax.annotation.Nonnull Long effectId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        ApiResponse<DogmaEffectResponse> localVarResp = getDogmaEffectsEffectIdWithHttpInfo(effectId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Get effect information Get information on a dogma effect This route
-     * expires daily at 11:05
-     * 
-     * @param effectId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return ApiResponse&lt;DogmaEffectResponse&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<DogmaEffectResponse> getDogmaEffectsEffectIdWithHttpInfo(
-            @javax.annotation.Nonnull Long effectId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        okhttp3.Call localVarCall = getDogmaEffectsEffectIdValidateBeforeCall(effectId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<DogmaEffectResponse>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Get effect information (asynchronously) Get information on a dogma effect
-     * This route expires daily at 11:05
-     * 
-     * @param effectId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException
-     *             If fail to process the API call, e.g. serializing the request
-     *             body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getDogmaEffectsEffectIdAsync(@javax.annotation.Nonnull Long effectId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<DogmaEffectResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getDogmaEffectsEffectIdValidateBeforeCall(effectId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<DogmaEffectResponse>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

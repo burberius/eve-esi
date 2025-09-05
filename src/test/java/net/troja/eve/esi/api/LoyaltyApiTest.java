@@ -61,12 +61,12 @@ public class LoyaltyApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getLoyaltyStoresCorporationIdOffersTest() throws ApiException {
+    public void getLoyaltyStoreOffers() throws ApiException {
         Long corporationId = 1000035L;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<LoyaltyStoreOffersResponseInner> response = api.getLoyaltyStoresCorporationIdOffers(corporationId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<LoyaltyStoreOffersResponseInner> response = api.getLoyaltyStoreOffers(corporationId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
         assertThat(response.get(0).getLpCost()).isGreaterThan(0);
     }

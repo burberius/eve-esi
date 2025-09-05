@@ -37,7 +37,7 @@ import java.util.List;
 import java.util.Map;
 
 public class LoyaltyApi {
-    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2020, 1, 1);
+    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2025, 8, 26);
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
@@ -368,7 +368,7 @@ public class LoyaltyApi {
     }
 
     /**
-     * Build call for getLoyaltyStoresCorporationIdOffers
+     * Build call for getLoyaltyStoreOffers
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -410,7 +410,7 @@ public class LoyaltyApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getLoyaltyStoresCorporationIdOffersCall(@javax.annotation.Nonnull Long corporationId,
+    public okhttp3.Call getLoyaltyStoreOffersCall(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
@@ -474,24 +474,24 @@ public class LoyaltyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLoyaltyStoresCorporationIdOffersValidateBeforeCall(
-            @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLoyaltyStoreOffersValidateBeforeCall(@javax.annotation.Nonnull Long corporationId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
             throw new ApiException(
-                    "Missing the required parameter 'corporationId' when calling getLoyaltyStoresCorporationIdOffers(Async)");
+                    "Missing the required parameter 'corporationId' when calling getLoyaltyStoreOffers(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
             throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getLoyaltyStoresCorporationIdOffers(Async)");
+                    "Missing the required parameter 'xCompatibilityDate' when calling getLoyaltyStoreOffers(Async)");
         }
 
-        return getLoyaltyStoresCorporationIdOffersCall(corporationId, xCompatibilityDate, acceptLanguage, ifNoneMatch,
-                xTenant, _callback);
+        return getLoyaltyStoreOffersCall(corporationId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
+                _callback);
 
     }
 
@@ -538,11 +538,11 @@ public class LoyaltyApi {
      *                        </tr>
      *                        </table>
      */
-    public List<LoyaltyStoreOffersResponseInner> getLoyaltyStoresCorporationIdOffers(
-            @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<LoyaltyStoreOffersResponseInner>> localVarResp = getLoyaltyStoresCorporationIdOffersWithHttpInfo(
+    public List<LoyaltyStoreOffersResponseInner> getLoyaltyStoreOffers(@javax.annotation.Nonnull Long corporationId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        ApiResponse<List<LoyaltyStoreOffersResponseInner>> localVarResp = getLoyaltyStoreOffersWithHttpInfo(
                 corporationId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -590,12 +590,12 @@ public class LoyaltyApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<LoyaltyStoreOffersResponseInner>> getLoyaltyStoresCorporationIdOffersWithHttpInfo(
+    public ApiResponse<List<LoyaltyStoreOffersResponseInner>> getLoyaltyStoreOffersWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        okhttp3.Call localVarCall = getLoyaltyStoresCorporationIdOffersValidateBeforeCall(corporationId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, null);
+        okhttp3.Call localVarCall = getLoyaltyStoreOffersValidateBeforeCall(corporationId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant, null);
         Type localVarReturnType = new TypeToken<List<LoyaltyStoreOffersResponseInner>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -647,13 +647,13 @@ public class LoyaltyApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getLoyaltyStoresCorporationIdOffersAsync(@javax.annotation.Nonnull Long corporationId,
+    public okhttp3.Call getLoyaltyStoreOffersAsync(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback<List<LoyaltyStoreOffersResponseInner>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getLoyaltyStoresCorporationIdOffersValidateBeforeCall(corporationId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
+        okhttp3.Call localVarCall = getLoyaltyStoreOffersValidateBeforeCall(corporationId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<List<LoyaltyStoreOffersResponseInner>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);

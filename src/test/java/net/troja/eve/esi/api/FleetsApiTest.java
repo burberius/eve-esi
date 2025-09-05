@@ -21,9 +21,9 @@ import net.troja.eve.esi.model.FleetWingSquadsPost;
 import net.troja.eve.esi.model.FleetWingsPost;
 import net.troja.eve.esi.model.FleetWingsResponseInner;
 import net.troja.eve.esi.model.PostFleetMembersRequest;
-import net.troja.eve.esi.model.PutFleetMembersMemberIdRequest;
+import net.troja.eve.esi.model.PutFleetMemberRequest;
 import net.troja.eve.esi.model.PutFleetRequest;
-import net.troja.eve.esi.model.PutFleetSquadsSquadIdRequest;
+import net.troja.eve.esi.model.PutFleetSquadRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -57,8 +57,7 @@ public class FleetsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        Object response = api.deleteFleetMembersMemberId(fleetId, memberId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
-        // TODO: test validations
+        api.deleteFleetMember(fleetId, memberId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
     }
 
     /**
@@ -76,8 +75,7 @@ public class FleetsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        Object response = api.deleteFleetSquadsSquadId(fleetId, squadId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
-        // TODO: test validations
+        api.deleteFleetSquad(fleetId, squadId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
     }
 
     /**
@@ -95,8 +93,7 @@ public class FleetsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        Object response = api.deleteFleetWingsWingId(fleetId, wingId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
-        // TODO: test validations
+        api.deleteFleetWing(fleetId, wingId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
     }
 
     /**
@@ -186,8 +183,7 @@ public class FleetsApiTest extends GeneralApiTest {
         String ifNoneMatch = null;
         String xTenant = null;
         PostFleetMembersRequest postFleetMembersRequest = null;
-        Object response = api.postFleetMembers(fleetId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant, postFleetMembersRequest);
-        // TODO: test validations
+        api.postFleetMembers(fleetId, CorporationApi.COMPATIBILITY_DATE, postFleetMembersRequest, acceptLanguage, ifNoneMatch, xTenant);
     }
 
     /**
@@ -223,7 +219,9 @@ public class FleetsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        FleetWingSquadsPost response = api.postFleetWingsWingIdSquads(fleetId, wingId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        FleetWingSquadsPost response =
+                api.postFleetWingSquads(fleetId, wingId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch,
+                        xTenant);
         // TODO: test validations
     }
 
@@ -242,8 +240,7 @@ public class FleetsApiTest extends GeneralApiTest {
         String ifNoneMatch = null;
         String xTenant = null;
         PutFleetRequest putFleetRequest = null;
-        Object response = api.putFleet(fleetId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant, putFleetRequest);
-        // TODO: test validations
+        api.putFleet(fleetId, CorporationApi.COMPATIBILITY_DATE, putFleetRequest, acceptLanguage, ifNoneMatch, xTenant);
     }
 
     /**
@@ -261,9 +258,8 @@ public class FleetsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        PutFleetMembersMemberIdRequest putFleetMembersMemberIdRequest = null;
-        Object response = api.putFleetMembersMemberId(fleetId, memberId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant, putFleetMembersMemberIdRequest);
-        // TODO: test validations
+        PutFleetMemberRequest putFleetMembersMemberIdRequest = null;
+        api.putFleetMember(fleetId, memberId, CorporationApi.COMPATIBILITY_DATE, putFleetMembersMemberIdRequest, acceptLanguage, ifNoneMatch, xTenant);
     }
 
     /**
@@ -281,9 +277,8 @@ public class FleetsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        PutFleetSquadsSquadIdRequest putFleetSquadsSquadIdRequest = null;
-        Object response = api.putFleetSquadsSquadId(fleetId, squadId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant, putFleetSquadsSquadIdRequest);
-        // TODO: test validations
+        PutFleetSquadRequest putFleetSquadsSquadIdRequest = null;
+        api.putFleetSquad(fleetId, squadId, CorporationApi.COMPATIBILITY_DATE, putFleetSquadsSquadIdRequest, acceptLanguage, ifNoneMatch, xTenant);
     }
 
     /**
@@ -301,9 +296,8 @@ public class FleetsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        PutFleetSquadsSquadIdRequest putFleetSquadsSquadIdRequest = null;
-        Object response = api.putFleetWingsWingId(fleetId, wingId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant, putFleetSquadsSquadIdRequest);
-        // TODO: test validations
+        PutFleetSquadRequest putFleetSquadsSquadIdRequest = null;
+        api.putFleetWing(fleetId, wingId, CorporationApi.COMPATIBILITY_DATE, putFleetSquadsSquadIdRequest, acceptLanguage, ifNoneMatch, xTenant);
     }
 
 }

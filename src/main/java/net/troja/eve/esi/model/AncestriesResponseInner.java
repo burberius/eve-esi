@@ -46,10 +46,10 @@ import java.util.Set;
 import net.troja.eve.esi.JSON;
 
 /**
- * UniverseAncestriesResponseInner
+ * AncestriesResponseInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class UniverseAncestriesResponseInner implements Serializable {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+public class AncestriesResponseInner implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_BLOODLINE_ID = "bloodline_id";
@@ -82,10 +82,10 @@ public class UniverseAncestriesResponseInner implements Serializable {
     @javax.annotation.Nullable
     private String shortDescription;
 
-    public UniverseAncestriesResponseInner() {
+    public AncestriesResponseInner() {
     }
 
-    public UniverseAncestriesResponseInner bloodlineId(@javax.annotation.Nonnull Long bloodlineId) {
+    public AncestriesResponseInner bloodlineId(@javax.annotation.Nonnull Long bloodlineId) {
         this.bloodlineId = bloodlineId;
         return this;
     }
@@ -104,7 +104,7 @@ public class UniverseAncestriesResponseInner implements Serializable {
         this.bloodlineId = bloodlineId;
     }
 
-    public UniverseAncestriesResponseInner description(@javax.annotation.Nonnull String description) {
+    public AncestriesResponseInner description(@javax.annotation.Nonnull String description) {
         this.description = description;
         return this;
     }
@@ -123,7 +123,7 @@ public class UniverseAncestriesResponseInner implements Serializable {
         this.description = description;
     }
 
-    public UniverseAncestriesResponseInner iconId(@javax.annotation.Nullable Long iconId) {
+    public AncestriesResponseInner iconId(@javax.annotation.Nullable Long iconId) {
         this.iconId = iconId;
         return this;
     }
@@ -142,7 +142,7 @@ public class UniverseAncestriesResponseInner implements Serializable {
         this.iconId = iconId;
     }
 
-    public UniverseAncestriesResponseInner id(@javax.annotation.Nonnull Long id) {
+    public AncestriesResponseInner id(@javax.annotation.Nonnull Long id) {
         this.id = id;
         return this;
     }
@@ -161,7 +161,7 @@ public class UniverseAncestriesResponseInner implements Serializable {
         this.id = id;
     }
 
-    public UniverseAncestriesResponseInner name(@javax.annotation.Nonnull String name) {
+    public AncestriesResponseInner name(@javax.annotation.Nonnull String name) {
         this.name = name;
         return this;
     }
@@ -180,7 +180,7 @@ public class UniverseAncestriesResponseInner implements Serializable {
         this.name = name;
     }
 
-    public UniverseAncestriesResponseInner shortDescription(@javax.annotation.Nullable String shortDescription) {
+    public AncestriesResponseInner shortDescription(@javax.annotation.Nullable String shortDescription) {
         this.shortDescription = shortDescription;
         return this;
     }
@@ -207,13 +207,13 @@ public class UniverseAncestriesResponseInner implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        UniverseAncestriesResponseInner universeAncestriesResponseInner = (UniverseAncestriesResponseInner) o;
-        return Objects.equals(this.bloodlineId, universeAncestriesResponseInner.bloodlineId)
-                && Objects.equals(this.description, universeAncestriesResponseInner.description)
-                && Objects.equals(this.iconId, universeAncestriesResponseInner.iconId)
-                && Objects.equals(this.id, universeAncestriesResponseInner.id)
-                && Objects.equals(this.name, universeAncestriesResponseInner.name)
-                && Objects.equals(this.shortDescription, universeAncestriesResponseInner.shortDescription);
+        AncestriesResponseInner ancestriesResponseInner = (AncestriesResponseInner) o;
+        return Objects.equals(this.bloodlineId, ancestriesResponseInner.bloodlineId)
+                && Objects.equals(this.description, ancestriesResponseInner.description)
+                && Objects.equals(this.iconId, ancestriesResponseInner.iconId)
+                && Objects.equals(this.id, ancestriesResponseInner.id)
+                && Objects.equals(this.name, ancestriesResponseInner.name)
+                && Objects.equals(this.shortDescription, ancestriesResponseInner.shortDescription);
     }
 
     @Override
@@ -224,7 +224,7 @@ public class UniverseAncestriesResponseInner implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class UniverseAncestriesResponseInner {\n");
+        sb.append("class AncestriesResponseInner {\n");
         sb.append("    bloodlineId: ").append(toIndentedString(bloodlineId)).append("\n");
         sb.append("    description: ").append(toIndentedString(description)).append("\n");
         sb.append("    iconId: ").append(toIndentedString(iconId)).append("\n");
@@ -265,39 +265,38 @@ public class UniverseAncestriesResponseInner implements Serializable {
      *            JSON Element
      * @throws IOException
      *             if the JSON Element is invalid with respect to
-     *             UniverseAncestriesResponseInner
+     *             AncestriesResponseInner
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         if (jsonElement == null) {
-            if (!UniverseAncestriesResponseInner.openapiRequiredFields.isEmpty()) { // has
-                                                                                    // required
-                                                                                    // fields
-                                                                                    // but
-                                                                                    // JSON
-                                                                                    // element
-                                                                                    // is
-                                                                                    // null
-                throw new IllegalArgumentException(
-                        String.format(
-                                "The required field(s) %s in UniverseAncestriesResponseInner is not found in the empty JSON string",
-                                UniverseAncestriesResponseInner.openapiRequiredFields.toString()));
+            if (!AncestriesResponseInner.openapiRequiredFields.isEmpty()) { // has
+                                                                            // required
+                                                                            // fields
+                                                                            // but
+                                                                            // JSON
+                                                                            // element
+                                                                            // is
+                                                                            // null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in AncestriesResponseInner is not found in the empty JSON string",
+                        AncestriesResponseInner.openapiRequiredFields.toString()));
             }
         }
 
         Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
         for (Map.Entry<String, JsonElement> entry : entries) {
-            if (!UniverseAncestriesResponseInner.openapiFields.contains(entry.getKey())) {
+            if (!AncestriesResponseInner.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
-                                "The field `%s` in the JSON string is not defined in the `UniverseAncestriesResponseInner` properties. JSON: %s",
+                                "The field `%s` in the JSON string is not defined in the `AncestriesResponseInner` properties. JSON: %s",
                                 entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
-        for (String requiredField : UniverseAncestriesResponseInner.openapiRequiredFields) {
+        for (String requiredField : AncestriesResponseInner.openapiRequiredFields) {
             if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
@@ -327,24 +326,23 @@ public class UniverseAncestriesResponseInner implements Serializable {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!UniverseAncestriesResponseInner.class.isAssignableFrom(type.getRawType())) {
+            if (!AncestriesResponseInner.class.isAssignableFrom(type.getRawType())) {
                 return null; // this class only serializes
-                             // 'UniverseAncestriesResponseInner' and its
-                             // subtypes
+                             // 'AncestriesResponseInner' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<UniverseAncestriesResponseInner> thisAdapter = gson.getDelegateAdapter(this,
-                    TypeToken.get(UniverseAncestriesResponseInner.class));
+            final TypeAdapter<AncestriesResponseInner> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(AncestriesResponseInner.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<UniverseAncestriesResponseInner>() {
+            return (TypeAdapter<T>) new TypeAdapter<AncestriesResponseInner>() {
                 @Override
-                public void write(JsonWriter out, UniverseAncestriesResponseInner value) throws IOException {
+                public void write(JsonWriter out, AncestriesResponseInner value) throws IOException {
                     JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
                     elementAdapter.write(out, obj);
                 }
 
                 @Override
-                public UniverseAncestriesResponseInner read(JsonReader in) throws IOException {
+                public AncestriesResponseInner read(JsonReader in) throws IOException {
                     JsonElement jsonElement = elementAdapter.read(in);
                     validateJsonElement(jsonElement);
                     return thisAdapter.fromJsonTree(jsonElement);
@@ -355,22 +353,21 @@ public class UniverseAncestriesResponseInner implements Serializable {
     }
 
     /**
-     * Create an instance of UniverseAncestriesResponseInner given an JSON
-     * string
+     * Create an instance of AncestriesResponseInner given an JSON string
      *
      * @param jsonString
      *            JSON string
-     * @return An instance of UniverseAncestriesResponseInner
+     * @return An instance of AncestriesResponseInner
      * @throws IOException
      *             if the JSON string is invalid with respect to
-     *             UniverseAncestriesResponseInner
+     *             AncestriesResponseInner
      */
-    public static UniverseAncestriesResponseInner fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, UniverseAncestriesResponseInner.class);
+    public static AncestriesResponseInner fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, AncestriesResponseInner.class);
     }
 
     /**
-     * Convert an instance of UniverseAncestriesResponseInner to an JSON string
+     * Convert an instance of AncestriesResponseInner to an JSON string
      *
      * @return JSON string
      */

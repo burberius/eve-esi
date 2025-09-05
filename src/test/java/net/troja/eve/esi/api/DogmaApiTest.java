@@ -67,7 +67,7 @@ public class DogmaApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        DogmaAttributeResponse response = api.getDogmaAttributesAttributeId(attributeId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        DogmaAttributeResponse response = api.getDogmaAttribute(attributeId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response.getAttributeId()).isEqualTo(attributeId);
         assertThat(response.getName()).isEqualTo("intelligence");
     }
@@ -87,7 +87,7 @@ public class DogmaApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        DogmaDynamicItemsResponse response = api.getDogmaDynamicItemsTypeIdItemId(itemId, typeId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        DogmaDynamicItemsResponse response = api.getDogmaDynamicItems(itemId, typeId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -120,7 +120,7 @@ public class DogmaApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        DogmaEffectResponse response = api.getDogmaEffectsEffectId(effectId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        DogmaEffectResponse response = api.getDogmaEffect(effectId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response.getEffectId()).isEqualTo(effectId);
         assertThat(response.getName()).isEqualTo("shadowBarrageFalloffWithFalloffPostPercentBarrageFalloffMutator");
     }

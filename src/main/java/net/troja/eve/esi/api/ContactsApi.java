@@ -39,7 +39,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ContactsApi {
-    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2020, 1, 1);
+    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2025, 8, 26);
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
@@ -233,7 +233,6 @@ public class ContactsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return Object
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -259,13 +258,11 @@ public class ContactsApi {
      *                        </tr>
      *                        </table>
      */
-    public Object deleteContacts(@javax.annotation.Nonnull Long characterId,
+    public void deleteContacts(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull List<Long> contactIds, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<Object> localVarResp = deleteContactsWithHttpInfo(characterId, contactIds, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant);
-        return localVarResp.getData();
+        deleteContactsWithHttpInfo(characterId, contactIds, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
     }
 
     /**
@@ -286,7 +283,7 @@ public class ContactsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -312,15 +309,13 @@ public class ContactsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Object> deleteContactsWithHttpInfo(@javax.annotation.Nonnull Long characterId,
+    public ApiResponse<Void> deleteContactsWithHttpInfo(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull List<Long> contactIds, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = deleteContactsValidateBeforeCall(characterId, contactIds, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -372,13 +367,11 @@ public class ContactsApi {
     public okhttp3.Call deleteContactsAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull List<Long> contactIds, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<Object> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteContactsValidateBeforeCall(characterId, contactIds, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
 
@@ -2197,6 +2190,8 @@ public class ContactsApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param labelIds
      *            (optional)
      * @param watched
@@ -2210,8 +2205,6 @@ public class ContactsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
@@ -2241,9 +2234,9 @@ public class ContactsApi {
      */
     public okhttp3.Call postContactsCall(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull Double standing, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable List<Long> labelIds, @javax.annotation.Nullable Boolean watched,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, @javax.annotation.Nullable List<Long> requestBody,
+            @javax.annotation.Nonnull List<Long> requestBody, @javax.annotation.Nullable List<Long> labelIds,
+            @javax.annotation.Nullable Boolean watched, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -2319,9 +2312,9 @@ public class ContactsApi {
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postContactsValidateBeforeCall(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull Double standing, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable List<Long> labelIds, @javax.annotation.Nullable Boolean watched,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, @javax.annotation.Nullable List<Long> requestBody,
+            @javax.annotation.Nonnull List<Long> requestBody, @javax.annotation.Nullable List<Long> labelIds,
+            @javax.annotation.Nullable Boolean watched, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -2339,8 +2332,13 @@ public class ContactsApi {
                     "Missing the required parameter 'xCompatibilityDate' when calling postContacts(Async)");
         }
 
-        return postContactsCall(characterId, standing, xCompatibilityDate, labelIds, watched, acceptLanguage,
-                ifNoneMatch, xTenant, requestBody, _callback);
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling postContacts(Async)");
+        }
+
+        return postContactsCall(characterId, standing, xCompatibilityDate, requestBody, labelIds, watched,
+                acceptLanguage, ifNoneMatch, xTenant, _callback);
 
     }
 
@@ -2353,6 +2351,8 @@ public class ContactsApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param labelIds
      *            (optional)
      * @param watched
@@ -2366,8 +2366,6 @@ public class ContactsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @return List&lt;Long&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
@@ -2396,12 +2394,12 @@ public class ContactsApi {
      */
     public List<Long> postContacts(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull Double standing, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable List<Long> labelIds, @javax.annotation.Nullable Boolean watched,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, @javax.annotation.Nullable List<Long> requestBody)
+            @javax.annotation.Nonnull List<Long> requestBody, @javax.annotation.Nullable List<Long> labelIds,
+            @javax.annotation.Nullable Boolean watched, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         ApiResponse<List<Long>> localVarResp = postContactsWithHttpInfo(characterId, standing, xCompatibilityDate,
-                labelIds, watched, acceptLanguage, ifNoneMatch, xTenant, requestBody);
+                requestBody, labelIds, watched, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -2414,6 +2412,8 @@ public class ContactsApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param labelIds
      *            (optional)
      * @param watched
@@ -2427,8 +2427,6 @@ public class ContactsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @return ApiResponse&lt;List&lt;Long&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
@@ -2457,12 +2455,12 @@ public class ContactsApi {
      */
     public ApiResponse<List<Long>> postContactsWithHttpInfo(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull Double standing, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable List<Long> labelIds, @javax.annotation.Nullable Boolean watched,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, @javax.annotation.Nullable List<Long> requestBody)
+            @javax.annotation.Nonnull List<Long> requestBody, @javax.annotation.Nullable List<Long> labelIds,
+            @javax.annotation.Nullable Boolean watched, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        okhttp3.Call localVarCall = postContactsValidateBeforeCall(characterId, standing, xCompatibilityDate, labelIds,
-                watched, acceptLanguage, ifNoneMatch, xTenant, requestBody, null);
+        okhttp3.Call localVarCall = postContactsValidateBeforeCall(characterId, standing, xCompatibilityDate,
+                requestBody, labelIds, watched, acceptLanguage, ifNoneMatch, xTenant, null);
         Type localVarReturnType = new TypeToken<List<Long>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2477,6 +2475,8 @@ public class ContactsApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param labelIds
      *            (optional)
      * @param watched
@@ -2490,8 +2490,6 @@ public class ContactsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
@@ -2522,13 +2520,13 @@ public class ContactsApi {
      */
     public okhttp3.Call postContactsAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull Double standing, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable List<Long> labelIds, @javax.annotation.Nullable Boolean watched,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, @javax.annotation.Nullable List<Long> requestBody,
+            @javax.annotation.Nonnull List<Long> requestBody, @javax.annotation.Nullable List<Long> labelIds,
+            @javax.annotation.Nullable Boolean watched, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback<List<Long>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postContactsValidateBeforeCall(characterId, standing, xCompatibilityDate, labelIds,
-                watched, acceptLanguage, ifNoneMatch, xTenant, requestBody, _callback);
+        okhttp3.Call localVarCall = postContactsValidateBeforeCall(characterId, standing, xCompatibilityDate,
+                requestBody, labelIds, watched, acceptLanguage, ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<List<Long>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -2544,6 +2542,8 @@ public class ContactsApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param labelIds
      *            (optional)
      * @param watched
@@ -2557,8 +2557,6 @@ public class ContactsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
@@ -2588,9 +2586,9 @@ public class ContactsApi {
      */
     public okhttp3.Call putContactsCall(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull Double standing, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable List<Long> labelIds, @javax.annotation.Nullable Boolean watched,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, @javax.annotation.Nullable List<Long> requestBody,
+            @javax.annotation.Nonnull List<Long> requestBody, @javax.annotation.Nullable List<Long> labelIds,
+            @javax.annotation.Nullable Boolean watched, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -2666,9 +2664,9 @@ public class ContactsApi {
     @SuppressWarnings("rawtypes")
     private okhttp3.Call putContactsValidateBeforeCall(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull Double standing, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable List<Long> labelIds, @javax.annotation.Nullable Boolean watched,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, @javax.annotation.Nullable List<Long> requestBody,
+            @javax.annotation.Nonnull List<Long> requestBody, @javax.annotation.Nullable List<Long> labelIds,
+            @javax.annotation.Nullable Boolean watched, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -2686,8 +2684,13 @@ public class ContactsApi {
                     "Missing the required parameter 'xCompatibilityDate' when calling putContacts(Async)");
         }
 
-        return putContactsCall(characterId, standing, xCompatibilityDate, labelIds, watched, acceptLanguage,
-                ifNoneMatch, xTenant, requestBody, _callback);
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling putContacts(Async)");
+        }
+
+        return putContactsCall(characterId, standing, xCompatibilityDate, requestBody, labelIds, watched,
+                acceptLanguage, ifNoneMatch, xTenant, _callback);
 
     }
 
@@ -2700,6 +2703,8 @@ public class ContactsApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param labelIds
      *            (optional)
      * @param watched
@@ -2713,9 +2718,6 @@ public class ContactsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
-     * @return Object
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2741,77 +2743,74 @@ public class ContactsApi {
      *                        </tr>
      *                        </table>
      */
-    public Object putContacts(@javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull Double standing,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable List<Long> labelIds,
-            @javax.annotation.Nullable Boolean watched, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable List<Long> requestBody) throws ApiException {
-        ApiResponse<Object> localVarResp = putContactsWithHttpInfo(characterId, standing, xCompatibilityDate, labelIds,
-                watched, acceptLanguage, ifNoneMatch, xTenant, requestBody);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Edit contacts Bulk edit contacts with same settings
-     * 
-     * @param characterId
-     *            The ID of the character (required)
-     * @param standing
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param labelIds
-     *            (optional)
-     * @param watched
-     *            (optional, default to false)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param requestBody
-     *            (optional)
-     * @return ApiResponse&lt;Object&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>204</td>
-     *                        <td>Contacts updated</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<Object> putContactsWithHttpInfo(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull Double standing, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public void putContacts(@javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull Double standing,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull List<Long> requestBody,
             @javax.annotation.Nullable List<Long> labelIds, @javax.annotation.Nullable Boolean watched,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, @javax.annotation.Nullable List<Long> requestBody)
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        putContactsWithHttpInfo(characterId, standing, xCompatibilityDate, requestBody, labelIds, watched,
+                acceptLanguage, ifNoneMatch, xTenant);
+    }
+
+    /**
+     * Edit contacts Bulk edit contacts with same settings
+     * 
+     * @param characterId
+     *            The ID of the character (required)
+     * @param standing
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
+     * @param labelIds
+     *            (optional)
+     * @param watched
+     *            (optional, default to false)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>Contacts updated</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<Void> putContactsWithHttpInfo(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull Double standing, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull List<Long> requestBody, @javax.annotation.Nullable List<Long> labelIds,
+            @javax.annotation.Nullable Boolean watched, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        okhttp3.Call localVarCall = putContactsValidateBeforeCall(characterId, standing, xCompatibilityDate, labelIds,
-                watched, acceptLanguage, ifNoneMatch, xTenant, requestBody, null);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        okhttp3.Call localVarCall = putContactsValidateBeforeCall(characterId, standing, xCompatibilityDate,
+                requestBody, labelIds, watched, acceptLanguage, ifNoneMatch, xTenant, null);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -2823,6 +2822,8 @@ public class ContactsApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param labelIds
      *            (optional)
      * @param watched
@@ -2836,8 +2837,6 @@ public class ContactsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
@@ -2868,16 +2867,14 @@ public class ContactsApi {
      */
     public okhttp3.Call putContactsAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull Double standing, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable List<Long> labelIds, @javax.annotation.Nullable Boolean watched,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, @javax.annotation.Nullable List<Long> requestBody,
-            final ApiCallback<Object> _callback) throws ApiException {
+            @javax.annotation.Nonnull List<Long> requestBody, @javax.annotation.Nullable List<Long> labelIds,
+            @javax.annotation.Nullable Boolean watched, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putContactsValidateBeforeCall(characterId, standing, xCompatibilityDate, labelIds,
-                watched, acceptLanguage, ifNoneMatch, xTenant, requestBody, _callback);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        okhttp3.Call localVarCall = putContactsValidateBeforeCall(characterId, standing, xCompatibilityDate,
+                requestBody, labelIds, watched, acceptLanguage, ifNoneMatch, xTenant, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
 }

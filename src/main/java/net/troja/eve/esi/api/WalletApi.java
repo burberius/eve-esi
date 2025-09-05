@@ -40,7 +40,7 @@ import java.util.List;
 import java.util.Map;
 
 public class WalletApi {
-    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2020, 1, 1);
+    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2025, 8, 26);
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
@@ -1140,8 +1140,7 @@ public class WalletApi {
 
     /**
      * Get corporation wallet journal Retrieve the given corporation&#39;s
-     * wallet journal for the given division going 30 days back Requires one of
-     * the following EVE corporation role(s): Accountant, Junior_Accountant
+     * wallet journal for the given division going 30 days back
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -1200,8 +1199,7 @@ public class WalletApi {
 
     /**
      * Get corporation wallet journal Retrieve the given corporation&#39;s
-     * wallet journal for the given division going 30 days back Requires one of
-     * the following EVE corporation role(s): Accountant, Junior_Accountant
+     * wallet journal for the given division going 30 days back
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -1265,8 +1263,7 @@ public class WalletApi {
     /**
      * Get corporation wallet journal (asynchronously) Retrieve the given
      * corporation&#39;s wallet journal for the given division going 30 days
-     * back Requires one of the following EVE corporation role(s): Accountant,
-     * Junior_Accountant
+     * back
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -1476,8 +1473,7 @@ public class WalletApi {
 
     /**
      * Get corporation wallet transactions Get wallet transactions of a
-     * corporation Requires one of the following EVE corporation role(s):
-     * Accountant, Junior_Accountant
+     * corporation
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -1534,8 +1530,7 @@ public class WalletApi {
 
     /**
      * Get corporation wallet transactions Get wallet transactions of a
-     * corporation Requires one of the following EVE corporation role(s):
-     * Accountant, Junior_Accountant
+     * corporation
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -1596,8 +1591,7 @@ public class WalletApi {
 
     /**
      * Get corporation wallet transactions (asynchronously) Get wallet
-     * transactions of a corporation Requires one of the following EVE
-     * corporation role(s): Accountant, Junior_Accountant
+     * transactions of a corporation
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -1788,8 +1782,7 @@ public class WalletApi {
 
     /**
      * Returns a corporation&#39;s wallet balance Get a corporation&#39;s
-     * wallets Requires one of the following EVE corporation role(s):
-     * Accountant, Junior_Accountant
+     * wallets
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -1841,8 +1834,7 @@ public class WalletApi {
 
     /**
      * Returns a corporation&#39;s wallet balance Get a corporation&#39;s
-     * wallets Requires one of the following EVE corporation role(s):
-     * Accountant, Junior_Accountant
+     * wallets
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -1896,8 +1888,7 @@ public class WalletApi {
 
     /**
      * Returns a corporation&#39;s wallet balance (asynchronously) Get a
-     * corporation&#39;s wallets Requires one of the following EVE corporation
-     * role(s): Accountant, Junior_Accountant
+     * corporation&#39;s wallets
      * 
      * @param corporationId
      *            The ID of the corporation (required)

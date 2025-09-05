@@ -48,7 +48,7 @@ import net.troja.eve.esi.JSON;
 /**
  * Summary of kills done by the given corporation against enemy factions
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
 public class CorporationFactionWarfareStatsResponseKills implements Serializable {
     private static final long serialVersionUID = 1L;
 

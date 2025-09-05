@@ -11,10 +11,6 @@ rm -f esi.json
 # esi _latest
 #
 wget -O esi.json https://esi.evetech.net/meta/openapi.json || exit 1
-#
-# meta
-#
-#wget -O meta.json https://esi.evetech.net/swagger.json || exit 1
 
 #
 # Get swagger code generator
@@ -33,32 +29,21 @@ fi
 #
 # Remove old model files in case something was removed
 #
-#mv src/main/java/net/troja/eve/esi/model/CharacterInfo.java src/main/java/net/troja/eve/esi/CharacterInfo.java
 rm -r src/main/java/net/troja/eve/esi/model
-#mv src/main/java/net/troja/eve/esi/api/SsoApi.java src/main/java/net/troja/eve/esi/SsoApi.java
+mv src/main/java/net/troja/eve/esi/api/SsoApi.java src/main/java/net/troja/eve/esi/SsoApi.java
 rm -r src/main/java/net/troja/eve/esi/api
 
 #
 # Transform and beautify swagger file
 #
 sed -i -f replace.sed esi.json
-#sed -i -f meta_replace.sed meta.json
 
-#./meta_transformation.sh
-### -!- Workaround continue in transformation.sh
-#./transformation.sh
 #
 # Generate code
 # Move tests so they are generated new and then moved to a different directory
 #
 test -d src/test/java/net/troja/eve/esi/api.new && rm -r src/test/java/net/troja/eve/esi/api.new
 mv src/test/java/net/troja/eve/esi/api src/test/java/net/troja/eve/esi/api.old
-#java -jar openapi-generator-cli-$VERSION.jar generate \
-#  --skip-validate-spec  \
-#  -i meta.json \
-#  -t templates \
-#  -g java \
-#  -c config.json
 java -jar openapi-generator-cli-$VERSION.jar generate \
   --skip-validate-spec  \
   -i esi.json \
@@ -68,11 +53,7 @@ java -jar openapi-generator-cli-$VERSION.jar generate \
 mv src/test/java/net/troja/eve/esi/api src/test/java/net/troja/eve/esi/api.new
 mv src/test/java/net/troja/eve/esi/api.old src/test/java/net/troja/eve/esi/api
 rm -rf src/test/java/net/troja/eve/esi/model
-#mv src/main/java/net/troja/eve/esi/CharacterInfo.java src/main/java/net/troja/eve/esi/model/CharacterInfo.java
-#mv src/main/java/net/troja/eve/esi/SsoApi.java src/main/java/net/troja/eve/esi/api/SsoApi.java
-
-# Fix route
-#jq ".paths | keys" esi.json > version-routes.txt
+mv src/main/java/net/troja/eve/esi/SsoApi.java src/main/java/net/troja/eve/esi/api/SsoApi.java
 
 #
 # Generate SSO scopes
@@ -108,9 +89,6 @@ rm -rf src/test/java/net/troja/eve/esi/model
 # Clean formating
 #
 mvn formatter:format
-
-#cp src/test/java/net/troja/eve/esi/api/GeneralApiTest.java src/test/java/net/troja/eve/esi/api.new/
-#cp -r src/test/java/net/troja/eve/esi/api/auth src/test/java/net/troja/eve/esi/api.new/
 
 if (( $SECONDS >= 60 ))
    then

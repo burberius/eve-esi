@@ -2,6 +2,11 @@ s/Get"/Response"/g
 
 # Schemas
 # jq . esi.json | sed -n -e 's#.*/schemas/\([^"]*\)"#\1#p' | grep -v Error | sort -u
+s/CharactersCharacterIdMailMailId/Mail/g
+s/CharactersCharacterIdMailLabels/MailLabels/g
+s/LabelsLabelId/Label/g
+s/CharactersCharacterIdMailLists/MailLists/g
+s/CharactersCharacterIdMail/Mails/g
 s/AlliancesAllianceId/Alliance/g
 s/CharactersAffiliationPost/CharacterAffiliationResponse/g
 s/CharactersCharacterIdAgentsResearch/CharacterResearchAgents/g
@@ -11,7 +16,6 @@ s/CharacterContacts/Contacts/g
 s/ContractsContractId/Contract/g
 s/CharacterCorporationhistory/CharacterCorporationHistory/g
 s/KillmailsRecent/Killmails/g
-s/CharacterMail/Mail/g
 s/CharacterPlanetsPlanetId/CharacterPlanet/g
 s/ContractsPublic/PublicContracts/g
 s/ContractIdResponse/Response/g
@@ -41,6 +45,8 @@ s/Markets/Market/g
 s/MarketGroupsMarketGroupId/MarketGroup/g
 s/StructuresStructureId/Structure/g
 s/AsteroidBeltsAsteroidBeltId/AsteroidBelts/g
+s/UniverseAncestries/Ancestries/g
+s/UniverseAsteroidBelts/AsteroidBelts/g
 s/UniverseBloodlines/Bloodlines/g
 s/UniverseCategoriesCategoryId/Category/g
 s/UniverseCategories/Categories/g
@@ -66,10 +72,11 @@ s/UniverseStructures/Structures/g
 s/UniverseStructuresStructureId/Structure/g
 s/UniverseSystemJumps/SystemJumps/g
 s/UniverseSystemKills/SystemKills/g
-s/UniverseSystems/Systems/g
 s/UniverseSystemsSystemId/System/g
-s/UniverseTypes/Types/g
+s/UniverseSystems/Systems/g
 s/UniverseTypesTypeId/Type/g
+s/UniverseTypes/Types/g
 s/UniverseNamesPost/NamesResponse/g
+s/UniverseNames/Names/g
 s/WarsWarIdKillmails/WarKillmails/g
 s/WarsWarId/War/g

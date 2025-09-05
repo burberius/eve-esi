@@ -19,7 +19,10 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import net.troja.eve.esi.model.KillmailByHashResponseVictimItemsInnerItemsInner;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -48,8 +51,8 @@ import net.troja.eve.esi.JSON;
 /**
  * item object
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class KillmailResponseVictimItemsInnerItemsInner implements Serializable {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+public class KillmailByHashResponseVictimItemsInner implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_FLAG = "flag";
@@ -61,6 +64,11 @@ public class KillmailResponseVictimItemsInnerItemsInner implements Serializable 
     @SerializedName(SERIALIZED_NAME_ITEM_TYPE_ID)
     @javax.annotation.Nonnull
     private Long itemTypeId;
+
+    public static final String SERIALIZED_NAME_ITEMS = "items";
+    @SerializedName(SERIALIZED_NAME_ITEMS)
+    @javax.annotation.Nullable
+    private List<KillmailByHashResponseVictimItemsInnerItemsInner> items;
 
     public static final String SERIALIZED_NAME_QUANTITY_DESTROYED = "quantity_destroyed";
     @SerializedName(SERIALIZED_NAME_QUANTITY_DESTROYED)
@@ -77,16 +85,16 @@ public class KillmailResponseVictimItemsInnerItemsInner implements Serializable 
     @javax.annotation.Nonnull
     private Long singleton;
 
-    public KillmailResponseVictimItemsInnerItemsInner() {
+    public KillmailByHashResponseVictimItemsInner() {
     }
 
-    public KillmailResponseVictimItemsInnerItemsInner flag(@javax.annotation.Nonnull Long flag) {
+    public KillmailByHashResponseVictimItemsInner flag(@javax.annotation.Nonnull Long flag) {
         this.flag = flag;
         return this;
     }
 
     /**
-     * Get flag
+     * Flag for the location of the item
      * 
      * @return flag
      */
@@ -99,7 +107,7 @@ public class KillmailResponseVictimItemsInnerItemsInner implements Serializable 
         this.flag = flag;
     }
 
-    public KillmailResponseVictimItemsInnerItemsInner itemTypeId(@javax.annotation.Nonnull Long itemTypeId) {
+    public KillmailByHashResponseVictimItemsInner itemTypeId(@javax.annotation.Nonnull Long itemTypeId) {
         this.itemTypeId = itemTypeId;
         return this;
     }
@@ -118,14 +126,43 @@ public class KillmailResponseVictimItemsInnerItemsInner implements Serializable 
         this.itemTypeId = itemTypeId;
     }
 
-    public KillmailResponseVictimItemsInnerItemsInner quantityDestroyed(
-            @javax.annotation.Nullable Long quantityDestroyed) {
+    public KillmailByHashResponseVictimItemsInner items(
+            @javax.annotation.Nullable List<KillmailByHashResponseVictimItemsInnerItemsInner> items) {
+        this.items = items;
+        return this;
+    }
+
+    public KillmailByHashResponseVictimItemsInner addItemsItem(
+            KillmailByHashResponseVictimItemsInnerItemsInner itemsItem) {
+        if (this.items == null) {
+            this.items = new ArrayList<>();
+        }
+
+        this.items.add(itemsItem);
+        return this;
+    }
+
+    /**
+     * Get items
+     * 
+     * @return items
+     */
+    @javax.annotation.Nullable
+    public List<KillmailByHashResponseVictimItemsInnerItemsInner> getItems() {
+        return items;
+    }
+
+    public void setItems(@javax.annotation.Nullable List<KillmailByHashResponseVictimItemsInnerItemsInner> items) {
+        this.items = items;
+    }
+
+    public KillmailByHashResponseVictimItemsInner quantityDestroyed(@javax.annotation.Nullable Long quantityDestroyed) {
         this.quantityDestroyed = quantityDestroyed;
         return this;
     }
 
     /**
-     * Get quantityDestroyed
+     * How many of the item were destroyed if any
      * 
      * @return quantityDestroyed
      */
@@ -138,13 +175,13 @@ public class KillmailResponseVictimItemsInnerItemsInner implements Serializable 
         this.quantityDestroyed = quantityDestroyed;
     }
 
-    public KillmailResponseVictimItemsInnerItemsInner quantityDropped(@javax.annotation.Nullable Long quantityDropped) {
+    public KillmailByHashResponseVictimItemsInner quantityDropped(@javax.annotation.Nullable Long quantityDropped) {
         this.quantityDropped = quantityDropped;
         return this;
     }
 
     /**
-     * Get quantityDropped
+     * How many of the item were dropped if any
      * 
      * @return quantityDropped
      */
@@ -157,7 +194,7 @@ public class KillmailResponseVictimItemsInnerItemsInner implements Serializable 
         this.quantityDropped = quantityDropped;
     }
 
-    public KillmailResponseVictimItemsInnerItemsInner singleton(@javax.annotation.Nonnull Long singleton) {
+    public KillmailByHashResponseVictimItemsInner singleton(@javax.annotation.Nonnull Long singleton) {
         this.singleton = singleton;
         return this;
     }
@@ -184,25 +221,27 @@ public class KillmailResponseVictimItemsInnerItemsInner implements Serializable 
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        KillmailResponseVictimItemsInnerItemsInner killmailResponseVictimItemsInnerItemsInner = (KillmailResponseVictimItemsInnerItemsInner) o;
-        return Objects.equals(this.flag, killmailResponseVictimItemsInnerItemsInner.flag)
-                && Objects.equals(this.itemTypeId, killmailResponseVictimItemsInnerItemsInner.itemTypeId)
-                && Objects.equals(this.quantityDestroyed, killmailResponseVictimItemsInnerItemsInner.quantityDestroyed)
-                && Objects.equals(this.quantityDropped, killmailResponseVictimItemsInnerItemsInner.quantityDropped)
-                && Objects.equals(this.singleton, killmailResponseVictimItemsInnerItemsInner.singleton);
+        KillmailByHashResponseVictimItemsInner killmailByHashResponseVictimItemsInner = (KillmailByHashResponseVictimItemsInner) o;
+        return Objects.equals(this.flag, killmailByHashResponseVictimItemsInner.flag)
+                && Objects.equals(this.itemTypeId, killmailByHashResponseVictimItemsInner.itemTypeId)
+                && Objects.equals(this.items, killmailByHashResponseVictimItemsInner.items)
+                && Objects.equals(this.quantityDestroyed, killmailByHashResponseVictimItemsInner.quantityDestroyed)
+                && Objects.equals(this.quantityDropped, killmailByHashResponseVictimItemsInner.quantityDropped)
+                && Objects.equals(this.singleton, killmailByHashResponseVictimItemsInner.singleton);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(flag, itemTypeId, quantityDestroyed, quantityDropped, singleton);
+        return Objects.hash(flag, itemTypeId, items, quantityDestroyed, quantityDropped, singleton);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class KillmailResponseVictimItemsInnerItemsInner {\n");
+        sb.append("class KillmailByHashResponseVictimItemsInner {\n");
         sb.append("    flag: ").append(toIndentedString(flag)).append("\n");
         sb.append("    itemTypeId: ").append(toIndentedString(itemTypeId)).append("\n");
+        sb.append("    items: ").append(toIndentedString(items)).append("\n");
         sb.append("    quantityDestroyed: ").append(toIndentedString(quantityDestroyed)).append("\n");
         sb.append("    quantityDropped: ").append(toIndentedString(quantityDropped)).append("\n");
         sb.append("    singleton: ").append(toIndentedString(singleton)).append("\n");
@@ -226,7 +265,7 @@ public class KillmailResponseVictimItemsInnerItemsInner implements Serializable 
 
     static {
         // a set of all properties/fields (JSON key names)
-        openapiFields = new HashSet<String>(Arrays.asList("flag", "item_type_id", "quantity_destroyed",
+        openapiFields = new HashSet<String>(Arrays.asList("flag", "item_type_id", "items", "quantity_destroyed",
                 "quantity_dropped", "singleton"));
 
         // a set of required properties/fields (JSON key names)
@@ -240,39 +279,39 @@ public class KillmailResponseVictimItemsInnerItemsInner implements Serializable 
      *            JSON Element
      * @throws IOException
      *             if the JSON Element is invalid with respect to
-     *             KillmailResponseVictimItemsInnerItemsInner
+     *             KillmailByHashResponseVictimItemsInner
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         if (jsonElement == null) {
-            if (!KillmailResponseVictimItemsInnerItemsInner.openapiRequiredFields.isEmpty()) { // has
-                                                                                               // required
-                                                                                               // fields
-                                                                                               // but
-                                                                                               // JSON
-                                                                                               // element
-                                                                                               // is
-                                                                                               // null
+            if (!KillmailByHashResponseVictimItemsInner.openapiRequiredFields.isEmpty()) { // has
+                                                                                           // required
+                                                                                           // fields
+                                                                                           // but
+                                                                                           // JSON
+                                                                                           // element
+                                                                                           // is
+                                                                                           // null
                 throw new IllegalArgumentException(
                         String.format(
-                                "The required field(s) %s in KillmailResponseVictimItemsInnerItemsInner is not found in the empty JSON string",
-                                KillmailResponseVictimItemsInnerItemsInner.openapiRequiredFields.toString()));
+                                "The required field(s) %s in KillmailByHashResponseVictimItemsInner is not found in the empty JSON string",
+                                KillmailByHashResponseVictimItemsInner.openapiRequiredFields.toString()));
             }
         }
 
         Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
         for (Map.Entry<String, JsonElement> entry : entries) {
-            if (!KillmailResponseVictimItemsInnerItemsInner.openapiFields.contains(entry.getKey())) {
+            if (!KillmailByHashResponseVictimItemsInner.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
-                                "The field `%s` in the JSON string is not defined in the `KillmailResponseVictimItemsInnerItemsInner` properties. JSON: %s",
+                                "The field `%s` in the JSON string is not defined in the `KillmailByHashResponseVictimItemsInner` properties. JSON: %s",
                                 entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
-        for (String requiredField : KillmailResponseVictimItemsInnerItemsInner.openapiRequiredFields) {
+        for (String requiredField : KillmailByHashResponseVictimItemsInner.openapiRequiredFields) {
             if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
@@ -280,30 +319,46 @@ public class KillmailResponseVictimItemsInnerItemsInner implements Serializable 
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("items") != null && !jsonObj.get("items").isJsonNull()) {
+            JsonArray jsonArrayitems = jsonObj.getAsJsonArray("items");
+            if (jsonArrayitems != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("items").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `items` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("items").toString()));
+                }
+
+                // validate the optional field `items` (array)
+                for (int i = 0; i < jsonArrayitems.size(); i++) {
+                    KillmailByHashResponseVictimItemsInnerItemsInner.validateJsonElement(jsonArrayitems.get(i));
+                };
+            }
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!KillmailResponseVictimItemsInnerItemsInner.class.isAssignableFrom(type.getRawType())) {
+            if (!KillmailByHashResponseVictimItemsInner.class.isAssignableFrom(type.getRawType())) {
                 return null; // this class only serializes
-                             // 'KillmailResponseVictimItemsInnerItemsInner' and
-                             // its subtypes
+                             // 'KillmailByHashResponseVictimItemsInner' and its
+                             // subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<KillmailResponseVictimItemsInnerItemsInner> thisAdapter = gson.getDelegateAdapter(this,
-                    TypeToken.get(KillmailResponseVictimItemsInnerItemsInner.class));
+            final TypeAdapter<KillmailByHashResponseVictimItemsInner> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(KillmailByHashResponseVictimItemsInner.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<KillmailResponseVictimItemsInnerItemsInner>() {
+            return (TypeAdapter<T>) new TypeAdapter<KillmailByHashResponseVictimItemsInner>() {
                 @Override
-                public void write(JsonWriter out, KillmailResponseVictimItemsInnerItemsInner value) throws IOException {
+                public void write(JsonWriter out, KillmailByHashResponseVictimItemsInner value) throws IOException {
                     JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
                     elementAdapter.write(out, obj);
                 }
 
                 @Override
-                public KillmailResponseVictimItemsInnerItemsInner read(JsonReader in) throws IOException {
+                public KillmailByHashResponseVictimItemsInner read(JsonReader in) throws IOException {
                     JsonElement jsonElement = elementAdapter.read(in);
                     validateJsonElement(jsonElement);
                     return thisAdapter.fromJsonTree(jsonElement);
@@ -314,23 +369,23 @@ public class KillmailResponseVictimItemsInnerItemsInner implements Serializable 
     }
 
     /**
-     * Create an instance of KillmailResponseVictimItemsInnerItemsInner given an
+     * Create an instance of KillmailByHashResponseVictimItemsInner given an
      * JSON string
      *
      * @param jsonString
      *            JSON string
-     * @return An instance of KillmailResponseVictimItemsInnerItemsInner
+     * @return An instance of KillmailByHashResponseVictimItemsInner
      * @throws IOException
      *             if the JSON string is invalid with respect to
-     *             KillmailResponseVictimItemsInnerItemsInner
+     *             KillmailByHashResponseVictimItemsInner
      */
-    public static KillmailResponseVictimItemsInnerItemsInner fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, KillmailResponseVictimItemsInnerItemsInner.class);
+    public static KillmailByHashResponseVictimItemsInner fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, KillmailByHashResponseVictimItemsInner.class);
     }
 
     /**
-     * Convert an instance of KillmailResponseVictimItemsInnerItemsInner to an
-     * JSON string
+     * Convert an instance of KillmailByHashResponseVictimItemsInner to an JSON
+     * string
      *
      * @return JSON string
      */

@@ -16,18 +16,17 @@ package net.troja.eve.esi.api;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.MailLabelsResponse;
 import net.troja.eve.esi.model.MailListsResponseInner;
-import net.troja.eve.esi.model.MailMailIdResponse;
-import net.troja.eve.esi.model.MailResponseInner;
+import net.troja.eve.esi.model.MailResponse;
+import net.troja.eve.esi.model.MailsResponseInner;
 import net.troja.eve.esi.model.PostMailLabelsRequest;
-import net.troja.eve.esi.model.PostMailRequest;
-import net.troja.eve.esi.model.PutMailMailIdRequest;
-import java.util.Set;
-
+import net.troja.eve.esi.model.PostMailsRequest;
+import net.troja.eve.esi.model.PutMailRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -52,14 +51,13 @@ public class MailApiTest extends GeneralApiTest {
      */
     @Test
     @Disabled("Delete operations can't be tested")
-    public void deleteMailLabelsLabelIdTest() throws ApiException {
+    public void deleteMailLabel() throws ApiException {
         Long characterId = null;
         Long labelId = null;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        Object response = api.deleteMailLabelsLabelId(characterId, labelId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
-        // TODO: test validations
+        api.deleteMailLabel(characterId, labelId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
     }
 
     /**
@@ -71,14 +69,13 @@ public class MailApiTest extends GeneralApiTest {
      */
     @Test
     @Disabled("Delete operations can't be tested")
-    public void deleteMailMailIdTest() throws ApiException {
+    public void deleteMail() throws ApiException {
         Long characterId = null;
         Long mailId = null;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        Object response = api.deleteMailMailId(characterId, mailId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
-        // TODO: test validations
+        api.deleteMail(characterId, mailId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
     }
 
     /**
@@ -89,15 +86,15 @@ public class MailApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getMailTest() throws ApiException {
+    public void getMailsTest() throws ApiException {
         Set<Long> labels = null;
         Long lastMailId = null;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<MailResponseInner> response = api.getMail(characterId, CorporationApi.COMPATIBILITY_DATE, labels, lastMailId, acceptLanguage, ifNoneMatch, xTenant);
+        List<MailsResponseInner> response = api.getMails(characterId, CorporationApi.COMPATIBILITY_DATE, labels, lastMailId, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).hasSize(50);
-        MailResponseInner mail = response.get(0);
+        MailsResponseInner mail = response.get(0);
         assertThat(mail.getFrom()).isGreaterThan(0);
         assertThat(mail.getSubject()).isNotBlank();
     }
@@ -149,7 +146,7 @@ public class MailApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        MailMailIdResponse response = api.getMailMailId(characterId, mailId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        MailResponse response = api.getMail(characterId, mailId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -162,13 +159,13 @@ public class MailApiTest extends GeneralApiTest {
      */
     @Test
     @Disabled("Send operations can't be tested")
-    public void postMailTest() throws ApiException {
+    public void postMailsTest() throws ApiException {
         Long characterId = null;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        PostMailRequest postMailRequest = null;
-        Long response = api.postMail(characterId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant, postMailRequest);
+        PostMailsRequest postMailRequest = null;
+        Long response = api.postMails(characterId, CorporationApi.COMPATIBILITY_DATE, postMailRequest, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -187,7 +184,7 @@ public class MailApiTest extends GeneralApiTest {
         String ifNoneMatch = null;
         String xTenant = null;
         PostMailLabelsRequest postMailLabelsRequest = null;
-        Long response = api.postMailLabels(characterId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant, postMailLabelsRequest);
+        Long response = api.postMailLabels(characterId, CorporationApi.COMPATIBILITY_DATE, postMailLabelsRequest, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -206,9 +203,8 @@ public class MailApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        PutMailMailIdRequest putMailMailIdRequest = null;
-        Object response = api.putMailMailId(characterId, mailId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant, putMailMailIdRequest);
-        // TODO: test validations
+        PutMailRequest putMailMailIdRequest = null;
+        api.putMail(characterId, mailId, CorporationApi.COMPATIBILITY_DATE, putMailMailIdRequest, acceptLanguage, ifNoneMatch, xTenant);
     }
 
 }

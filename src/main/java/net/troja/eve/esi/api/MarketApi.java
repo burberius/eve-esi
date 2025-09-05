@@ -31,10 +31,10 @@ import net.troja.eve.esi.model.CorporationOrdersHistoryResponseInner;
 import net.troja.eve.esi.model.CorporationOrdersResponseInner;
 import net.troja.eve.esi.model.Error;
 import java.time.LocalDate;
-import net.troja.eve.esi.model.MarketGroupsMarketGroupIdResponse;
-import net.troja.eve.esi.model.MarketHistoryResponseInner;
-import net.troja.eve.esi.model.MarketOrdersResponseInner;
+import net.troja.eve.esi.model.MarketGroupResponse;
 import net.troja.eve.esi.model.MarketPricesResponseInner;
+import net.troja.eve.esi.model.MarketRegionHistoryResponseInner;
+import net.troja.eve.esi.model.MarketRegionOrdersResponseInner;
 import net.troja.eve.esi.model.MarketStructureResponseInner;
 
 import java.lang.reflect.Type;
@@ -44,7 +44,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MarketApi {
-    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2020, 1, 1);
+    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2025, 8, 26);
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
@@ -826,8 +826,7 @@ public class MarketApi {
 
     /**
      * List open orders from a corporation List open market orders placed on
-     * behalf of a corporation Requires one of the following EVE corporation
-     * role(s): Accountant, Trader
+     * behalf of a corporation
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -883,8 +882,7 @@ public class MarketApi {
 
     /**
      * List open orders from a corporation List open market orders placed on
-     * behalf of a corporation Requires one of the following EVE corporation
-     * role(s): Accountant, Trader
+     * behalf of a corporation
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -943,8 +941,7 @@ public class MarketApi {
 
     /**
      * List open orders from a corporation (asynchronously) List open market
-     * orders placed on behalf of a corporation Requires one of the following
-     * EVE corporation role(s): Accountant, Trader
+     * orders placed on behalf of a corporation
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -1144,8 +1141,7 @@ public class MarketApi {
     /**
      * List historical orders from a corporation List cancelled and expired
      * market orders placed on behalf of a corporation up to 90 days in the
-     * past. Requires one of the following EVE corporation role(s): Accountant,
-     * Trader
+     * past.
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -1203,8 +1199,7 @@ public class MarketApi {
     /**
      * List historical orders from a corporation List cancelled and expired
      * market orders placed on behalf of a corporation up to 90 days in the
-     * past. Requires one of the following EVE corporation role(s): Accountant,
-     * Trader
+     * past.
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -1266,8 +1261,7 @@ public class MarketApi {
     /**
      * List historical orders from a corporation (asynchronously) List cancelled
      * and expired market orders placed on behalf of a corporation up to 90 days
-     * in the past. Requires one of the following EVE corporation role(s):
-     * Accountant, Trader
+     * in the past.
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -1323,6 +1317,300 @@ public class MarketApi {
         okhttp3.Call localVarCall = getCorporationOrdersHistoryValidateBeforeCall(corporationId, xCompatibilityDate,
                 page, acceptLanguage, ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationOrdersHistoryResponseInner>>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
+     * Build call for getMarketGroup
+     * 
+     * @param marketGroupId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        Content-Language - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getMarketGroupCall(@javax.annotation.Nonnull Long marketGroupId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/markets/groups/{market_group_id}".replace("{" + "market_group_id" + "}",
+                localVarApiClient.escapeString(marketGroupId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {};
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        if (acceptLanguage != null) {
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
+        }
+
+        if (ifNoneMatch != null) {
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
+        }
+
+        if (xCompatibilityDate != null) {
+            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
+        }
+
+        if (xTenant != null) {
+            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMarketGroupValidateBeforeCall(@javax.annotation.Nonnull Long marketGroupId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'marketGroupId' is set
+        if (marketGroupId == null) {
+            throw new ApiException("Missing the required parameter 'marketGroupId' when calling getMarketGroup(Async)");
+        }
+
+        // verify the required parameter 'xCompatibilityDate' is set
+        if (xCompatibilityDate == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'xCompatibilityDate' when calling getMarketGroup(Async)");
+        }
+
+        return getMarketGroupCall(marketGroupId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
+
+    }
+
+    /**
+     * Get item group information Get information on an item group This route
+     * expires daily at 11:05
+     * 
+     * @param marketGroupId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return MarketGroupResponse
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        Content-Language - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public MarketGroupResponse getMarketGroup(@javax.annotation.Nonnull Long marketGroupId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        ApiResponse<MarketGroupResponse> localVarResp = getMarketGroupWithHttpInfo(marketGroupId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get item group information Get information on an item group This route
+     * expires daily at 11:05
+     * 
+     * @param marketGroupId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return ApiResponse&lt;MarketGroupResponse&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        Content-Language - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<MarketGroupResponse> getMarketGroupWithHttpInfo(@javax.annotation.Nonnull Long marketGroupId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        okhttp3.Call localVarCall = getMarketGroupValidateBeforeCall(marketGroupId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant, null);
+        Type localVarReturnType = new TypeToken<MarketGroupResponse>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get item group information (asynchronously) Get information on an item
+     * group This route expires daily at 11:05
+     * 
+     * @param marketGroupId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request
+     *             body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        Content-Language - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getMarketGroupAsync(@javax.annotation.Nonnull Long marketGroupId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback<MarketGroupResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getMarketGroupValidateBeforeCall(marketGroupId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant, _callback);
+        Type localVarReturnType = new TypeToken<MarketGroupResponse>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1600,960 +1888,6 @@ public class MarketApi {
     }
 
     /**
-     * Build call for getMarketGroupsMarketGroupId
-     * 
-     * @param marketGroupId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException
-     *             If fail to serialize the request body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        Content-Language - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getMarketGroupsMarketGroupIdCall(@javax.annotation.Nonnull Long marketGroupId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {};
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null) {
-            basePath = localCustomBaseUrl;
-        } else if (localBasePaths.length > 0) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/markets/groups/{market_group_id}".replace("{" + "market_group_id" + "}",
-                localVarApiClient.escapeString(marketGroupId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {};
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
-        }
-
-        if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
-        }
-
-        if (xCompatibilityDate != null) {
-            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
-        }
-
-        if (xTenant != null) {
-            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
-        }
-
-        String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
-                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
-                localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMarketGroupsMarketGroupIdValidateBeforeCall(@javax.annotation.Nonnull Long marketGroupId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'marketGroupId' is set
-        if (marketGroupId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'marketGroupId' when calling getMarketGroupsMarketGroupId(Async)");
-        }
-
-        // verify the required parameter 'xCompatibilityDate' is set
-        if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getMarketGroupsMarketGroupId(Async)");
-        }
-
-        return getMarketGroupsMarketGroupIdCall(marketGroupId, xCompatibilityDate, acceptLanguage, ifNoneMatch,
-                xTenant, _callback);
-
-    }
-
-    /**
-     * Get item group information Get information on an item group This route
-     * expires daily at 11:05
-     * 
-     * @param marketGroupId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return MarketGroupsMarketGroupIdResponse
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        Content-Language - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public MarketGroupsMarketGroupIdResponse getMarketGroupsMarketGroupId(@javax.annotation.Nonnull Long marketGroupId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        ApiResponse<MarketGroupsMarketGroupIdResponse> localVarResp = getMarketGroupsMarketGroupIdWithHttpInfo(
-                marketGroupId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Get item group information Get information on an item group This route
-     * expires daily at 11:05
-     * 
-     * @param marketGroupId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return ApiResponse&lt;MarketGroupsMarketGroupIdResponse&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        Content-Language - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<MarketGroupsMarketGroupIdResponse> getMarketGroupsMarketGroupIdWithHttpInfo(
-            @javax.annotation.Nonnull Long marketGroupId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        okhttp3.Call localVarCall = getMarketGroupsMarketGroupIdValidateBeforeCall(marketGroupId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<MarketGroupsMarketGroupIdResponse>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Get item group information (asynchronously) Get information on an item
-     * group This route expires daily at 11:05
-     * 
-     * @param marketGroupId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException
-     *             If fail to process the API call, e.g. serializing the request
-     *             body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        Content-Language - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getMarketGroupsMarketGroupIdAsync(@javax.annotation.Nonnull Long marketGroupId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<MarketGroupsMarketGroupIdResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getMarketGroupsMarketGroupIdValidateBeforeCall(marketGroupId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<MarketGroupsMarketGroupIdResponse>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    /**
-     * Build call for getMarketHistory
-     * 
-     * @param regionId
-     *            (required)
-     * @param typeId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException
-     *             If fail to serialize the request body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getMarketHistoryCall(@javax.annotation.Nonnull Long regionId,
-            @javax.annotation.Nonnull Long typeId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {};
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null) {
-            basePath = localCustomBaseUrl;
-        } else if (localBasePaths.length > 0) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/markets/{region_id}/history".replace("{" + "region_id" + "}",
-                localVarApiClient.escapeString(regionId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (typeId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("type_id", typeId));
-        }
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {};
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
-        }
-
-        if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
-        }
-
-        if (xCompatibilityDate != null) {
-            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
-        }
-
-        if (xTenant != null) {
-            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
-        }
-
-        String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
-                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
-                localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMarketHistoryValidateBeforeCall(@javax.annotation.Nonnull Long regionId,
-            @javax.annotation.Nonnull Long typeId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'regionId' is set
-        if (regionId == null) {
-            throw new ApiException("Missing the required parameter 'regionId' when calling getMarketHistory(Async)");
-        }
-
-        // verify the required parameter 'typeId' is set
-        if (typeId == null) {
-            throw new ApiException("Missing the required parameter 'typeId' when calling getMarketHistory(Async)");
-        }
-
-        // verify the required parameter 'xCompatibilityDate' is set
-        if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getMarketHistory(Async)");
-        }
-
-        return getMarketHistoryCall(regionId, typeId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
-                _callback);
-
-    }
-
-    /**
-     * List historical market statistics in a region Return a list of historical
-     * market statistics for the specified type in a region This route expires
-     * daily at 11:05
-     * 
-     * @param regionId
-     *            (required)
-     * @param typeId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return List&lt;MarketHistoryResponseInner&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public List<MarketHistoryResponseInner> getMarketHistory(@javax.annotation.Nonnull Long regionId,
-            @javax.annotation.Nonnull Long typeId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<MarketHistoryResponseInner>> localVarResp = getMarketHistoryWithHttpInfo(regionId, typeId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
-        return localVarResp.getData();
-    }
-
-    /**
-     * List historical market statistics in a region Return a list of historical
-     * market statistics for the specified type in a region This route expires
-     * daily at 11:05
-     * 
-     * @param regionId
-     *            (required)
-     * @param typeId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return ApiResponse&lt;List&lt;MarketHistoryResponseInner&gt;&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<List<MarketHistoryResponseInner>> getMarketHistoryWithHttpInfo(
-            @javax.annotation.Nonnull Long regionId, @javax.annotation.Nonnull Long typeId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        okhttp3.Call localVarCall = getMarketHistoryValidateBeforeCall(regionId, typeId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<MarketHistoryResponseInner>>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * List historical market statistics in a region (asynchronously) Return a
-     * list of historical market statistics for the specified type in a region
-     * This route expires daily at 11:05
-     * 
-     * @param regionId
-     *            (required)
-     * @param typeId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException
-     *             If fail to process the API call, e.g. serializing the request
-     *             body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getMarketHistoryAsync(@javax.annotation.Nonnull Long regionId,
-            @javax.annotation.Nonnull Long typeId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<MarketHistoryResponseInner>> _callback)
-            throws ApiException {
-
-        okhttp3.Call localVarCall = getMarketHistoryValidateBeforeCall(regionId, typeId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<MarketHistoryResponseInner>>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    /**
-     * Build call for getMarketOrders
-     * 
-     * @param orderType
-     *            (required)
-     * @param regionId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param page
-     *            (optional)
-     * @param typeId
-     *            (optional)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException
-     *             If fail to serialize the request body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        X-Pages - The total number of pages in the result
-     *                        set. <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getMarketOrdersCall(@javax.annotation.Nonnull String orderType,
-            @javax.annotation.Nonnull Long regionId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Long typeId,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {};
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null) {
-            basePath = localCustomBaseUrl;
-        } else if (localBasePaths.length > 0) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/markets/{region_id}/orders".replace("{" + "region_id" + "}",
-                localVarApiClient.escapeString(regionId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (orderType != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("order_type", orderType));
-        }
-
-        if (page != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
-        }
-
-        if (typeId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("type_id", typeId));
-        }
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {};
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
-        }
-
-        if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
-        }
-
-        if (xCompatibilityDate != null) {
-            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
-        }
-
-        if (xTenant != null) {
-            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
-        }
-
-        String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
-                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
-                localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMarketOrdersValidateBeforeCall(@javax.annotation.Nonnull String orderType,
-            @javax.annotation.Nonnull Long regionId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Long typeId,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'orderType' is set
-        if (orderType == null) {
-            throw new ApiException("Missing the required parameter 'orderType' when calling getMarketOrders(Async)");
-        }
-
-        // verify the required parameter 'regionId' is set
-        if (regionId == null) {
-            throw new ApiException("Missing the required parameter 'regionId' when calling getMarketOrders(Async)");
-        }
-
-        // verify the required parameter 'xCompatibilityDate' is set
-        if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getMarketOrders(Async)");
-        }
-
-        return getMarketOrdersCall(orderType, regionId, xCompatibilityDate, page, typeId, acceptLanguage, ifNoneMatch,
-                xTenant, _callback);
-
-    }
-
-    /**
-     * List orders in a region Return a list of orders in a region
-     * 
-     * @param orderType
-     *            (required)
-     * @param regionId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param page
-     *            (optional)
-     * @param typeId
-     *            (optional)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return List&lt;MarketOrdersResponseInner&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        X-Pages - The total number of pages in the result
-     *                        set. <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public List<MarketOrdersResponseInner> getMarketOrders(@javax.annotation.Nonnull String orderType,
-            @javax.annotation.Nonnull Long regionId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Long typeId,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<MarketOrdersResponseInner>> localVarResp = getMarketOrdersWithHttpInfo(orderType, regionId,
-                xCompatibilityDate, page, typeId, acceptLanguage, ifNoneMatch, xTenant);
-        return localVarResp.getData();
-    }
-
-    /**
-     * List orders in a region Return a list of orders in a region
-     * 
-     * @param orderType
-     *            (required)
-     * @param regionId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param page
-     *            (optional)
-     * @param typeId
-     *            (optional)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return ApiResponse&lt;List&lt;MarketOrdersResponseInner&gt;&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        X-Pages - The total number of pages in the result
-     *                        set. <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<List<MarketOrdersResponseInner>> getMarketOrdersWithHttpInfo(
-            @javax.annotation.Nonnull String orderType, @javax.annotation.Nonnull Long regionId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
-            @javax.annotation.Nullable Long typeId, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        okhttp3.Call localVarCall = getMarketOrdersValidateBeforeCall(orderType, regionId, xCompatibilityDate, page,
-                typeId, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<MarketOrdersResponseInner>>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * List orders in a region (asynchronously) Return a list of orders in a
-     * region
-     * 
-     * @param orderType
-     *            (required)
-     * @param regionId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param page
-     *            (optional)
-     * @param typeId
-     *            (optional)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException
-     *             If fail to process the API call, e.g. serializing the request
-     *             body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        X-Pages - The total number of pages in the result
-     *                        set. <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getMarketOrdersAsync(@javax.annotation.Nonnull String orderType,
-            @javax.annotation.Nonnull Long regionId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Long typeId,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<MarketOrdersResponseInner>> _callback)
-            throws ApiException {
-
-        okhttp3.Call localVarCall = getMarketOrdersValidateBeforeCall(orderType, regionId, xCompatibilityDate, page,
-                typeId, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<MarketOrdersResponseInner>>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    /**
      * Build call for getMarketPrices
      * 
      * @param xCompatibilityDate
@@ -2824,13 +2158,331 @@ public class MarketApi {
     }
 
     /**
-     * Build call for getMarketStructuresStructureId
+     * Build call for getMarketRegionHistory
      * 
-     * @param structureId
+     * @param regionId
+     *            (required)
+     * @param typeId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getMarketRegionHistoryCall(@javax.annotation.Nonnull Long regionId,
+            @javax.annotation.Nonnull Long typeId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/markets/{region_id}/history".replace("{" + "region_id" + "}",
+                localVarApiClient.escapeString(regionId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (typeId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("type_id", typeId));
+        }
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {};
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        if (acceptLanguage != null) {
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
+        }
+
+        if (ifNoneMatch != null) {
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
+        }
+
+        if (xCompatibilityDate != null) {
+            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
+        }
+
+        if (xTenant != null) {
+            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMarketRegionHistoryValidateBeforeCall(@javax.annotation.Nonnull Long regionId,
+            @javax.annotation.Nonnull Long typeId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'regionId' is set
+        if (regionId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'regionId' when calling getMarketRegionHistory(Async)");
+        }
+
+        // verify the required parameter 'typeId' is set
+        if (typeId == null) {
+            throw new ApiException("Missing the required parameter 'typeId' when calling getMarketRegionHistory(Async)");
+        }
+
+        // verify the required parameter 'xCompatibilityDate' is set
+        if (xCompatibilityDate == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'xCompatibilityDate' when calling getMarketRegionHistory(Async)");
+        }
+
+        return getMarketRegionHistoryCall(regionId, typeId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
+                _callback);
+
+    }
+
+    /**
+     * List historical market statistics in a region Return a list of historical
+     * market statistics for the specified type in a region This route expires
+     * daily at 11:05
+     * 
+     * @param regionId
+     *            (required)
+     * @param typeId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return List&lt;MarketRegionHistoryResponseInner&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public List<MarketRegionHistoryResponseInner> getMarketRegionHistory(@javax.annotation.Nonnull Long regionId,
+            @javax.annotation.Nonnull Long typeId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        ApiResponse<List<MarketRegionHistoryResponseInner>> localVarResp = getMarketRegionHistoryWithHttpInfo(regionId,
+                typeId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
+        return localVarResp.getData();
+    }
+
+    /**
+     * List historical market statistics in a region Return a list of historical
+     * market statistics for the specified type in a region This route expires
+     * daily at 11:05
+     * 
+     * @param regionId
+     *            (required)
+     * @param typeId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return ApiResponse&lt;List&lt;MarketRegionHistoryResponseInner&gt;&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<List<MarketRegionHistoryResponseInner>> getMarketRegionHistoryWithHttpInfo(
+            @javax.annotation.Nonnull Long regionId, @javax.annotation.Nonnull Long typeId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        okhttp3.Call localVarCall = getMarketRegionHistoryValidateBeforeCall(regionId, typeId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant, null);
+        Type localVarReturnType = new TypeToken<List<MarketRegionHistoryResponseInner>>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * List historical market statistics in a region (asynchronously) Return a
+     * list of historical market statistics for the specified type in a region
+     * This route expires daily at 11:05
+     * 
+     * @param regionId
+     *            (required)
+     * @param typeId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request
+     *             body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getMarketRegionHistoryAsync(@javax.annotation.Nonnull Long regionId,
+            @javax.annotation.Nonnull Long typeId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant,
+            final ApiCallback<List<MarketRegionHistoryResponseInner>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getMarketRegionHistoryValidateBeforeCall(regionId, typeId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant, _callback);
+        Type localVarReturnType = new TypeToken<List<MarketRegionHistoryResponseInner>>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
+     * Build call for getMarketRegionOrders
+     * 
+     * @param orderType
+     *            (required)
+     * @param regionId
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
      * @param page
+     *            (optional)
+     * @param typeId
      *            (optional)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
@@ -2870,8 +2522,9 @@ public class MarketApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getMarketStructuresStructureIdCall(@javax.annotation.Nonnull Long structureId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
+    public okhttp3.Call getMarketRegionOrdersCall(@javax.annotation.Nonnull String orderType,
+            @javax.annotation.Nonnull Long regionId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Long typeId,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -2890,8 +2543,8 @@ public class MarketApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/markets/structures/{structure_id}".replace("{" + "structure_id" + "}",
-                localVarApiClient.escapeString(structureId.toString()));
+        String localVarPath = "/markets/{region_id}/orders".replace("{" + "region_id" + "}",
+                localVarApiClient.escapeString(regionId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2899,8 +2552,16 @@ public class MarketApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (orderType != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("order_type", orderType));
+        }
+
         if (page != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (typeId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("type_id", typeId));
         }
 
         final String[] localVarAccepts = { "application/json" };
@@ -2931,42 +2592,53 @@ public class MarketApi {
             localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
         }
 
-        String[] localVarAuthNames = new String[] { "OAuth2" };
+        String[] localVarAuthNames = new String[] {};
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
                 localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
                 localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMarketStructuresStructureIdValidateBeforeCall(@javax.annotation.Nonnull Long structureId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
+    private okhttp3.Call getMarketRegionOrdersValidateBeforeCall(@javax.annotation.Nonnull String orderType,
+            @javax.annotation.Nonnull Long regionId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Long typeId,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'structureId' is set
-        if (structureId == null) {
+        // verify the required parameter 'orderType' is set
+        if (orderType == null) {
             throw new ApiException(
-                    "Missing the required parameter 'structureId' when calling getMarketStructuresStructureId(Async)");
+                    "Missing the required parameter 'orderType' when calling getMarketRegionOrders(Async)");
+        }
+
+        // verify the required parameter 'regionId' is set
+        if (regionId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'regionId' when calling getMarketRegionOrders(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
             throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getMarketStructuresStructureId(Async)");
+                    "Missing the required parameter 'xCompatibilityDate' when calling getMarketRegionOrders(Async)");
         }
 
-        return getMarketStructuresStructureIdCall(structureId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch,
-                xTenant, _callback);
+        return getMarketRegionOrdersCall(orderType, regionId, xCompatibilityDate, page, typeId, acceptLanguage,
+                ifNoneMatch, xTenant, _callback);
 
     }
 
     /**
-     * List orders in a structure Return all orders in a structure
+     * List orders in a region Return a list of orders in a region
      * 
-     * @param structureId
+     * @param orderType
+     *            (required)
+     * @param regionId
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
      * @param page
+     *            (optional)
+     * @param typeId
      *            (optional)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
@@ -2977,7 +2649,7 @@ public class MarketApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;MarketStructureResponseInner&gt;
+     * @return List&lt;MarketRegionOrdersResponseInner&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -3005,24 +2677,28 @@ public class MarketApi {
      *                        </tr>
      *                        </table>
      */
-    public List<MarketStructureResponseInner> getMarketStructuresStructureId(
-            @javax.annotation.Nonnull Long structureId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        ApiResponse<List<MarketStructureResponseInner>> localVarResp = getMarketStructuresStructureIdWithHttpInfo(
-                structureId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
+    public List<MarketRegionOrdersResponseInner> getMarketRegionOrders(@javax.annotation.Nonnull String orderType,
+            @javax.annotation.Nonnull Long regionId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Long typeId,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        ApiResponse<List<MarketRegionOrdersResponseInner>> localVarResp = getMarketRegionOrdersWithHttpInfo(orderType,
+                regionId, xCompatibilityDate, page, typeId, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
     /**
-     * List orders in a structure Return all orders in a structure
+     * List orders in a region Return a list of orders in a region
      * 
-     * @param structureId
+     * @param orderType
+     *            (required)
+     * @param regionId
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
      * @param page
+     *            (optional)
+     * @param typeId
      *            (optional)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
@@ -3033,7 +2709,7 @@ public class MarketApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;MarketStructureResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;MarketRegionOrdersResponseInner&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -3061,27 +2737,32 @@ public class MarketApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<MarketStructureResponseInner>> getMarketStructuresStructureIdWithHttpInfo(
-            @javax.annotation.Nonnull Long structureId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
+    public ApiResponse<List<MarketRegionOrdersResponseInner>> getMarketRegionOrdersWithHttpInfo(
+            @javax.annotation.Nonnull String orderType, @javax.annotation.Nonnull Long regionId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
+            @javax.annotation.Nullable Long typeId, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        okhttp3.Call localVarCall = getMarketStructuresStructureIdValidateBeforeCall(structureId, xCompatibilityDate,
-                page, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<MarketStructureResponseInner>>() {
+        okhttp3.Call localVarCall = getMarketRegionOrdersValidateBeforeCall(orderType, regionId, xCompatibilityDate,
+                page, typeId, acceptLanguage, ifNoneMatch, xTenant, null);
+        Type localVarReturnType = new TypeToken<List<MarketRegionOrdersResponseInner>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * List orders in a structure (asynchronously) Return all orders in a
-     * structure
+     * List orders in a region (asynchronously) Return a list of orders in a
+     * region
      * 
-     * @param structureId
+     * @param orderType
+     *            (required)
+     * @param regionId
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
      * @param page
+     *            (optional)
+     * @param typeId
      *            (optional)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
@@ -3122,22 +2803,23 @@ public class MarketApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getMarketStructuresStructureIdAsync(@javax.annotation.Nonnull Long structureId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
+    public okhttp3.Call getMarketRegionOrdersAsync(@javax.annotation.Nonnull String orderType,
+            @javax.annotation.Nonnull Long regionId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Long typeId,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<MarketStructureResponseInner>> _callback)
-            throws ApiException {
+            @javax.annotation.Nullable String xTenant,
+            final ApiCallback<List<MarketRegionOrdersResponseInner>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getMarketStructuresStructureIdValidateBeforeCall(structureId, xCompatibilityDate,
-                page, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<MarketStructureResponseInner>>() {
+        okhttp3.Call localVarCall = getMarketRegionOrdersValidateBeforeCall(orderType, regionId, xCompatibilityDate,
+                page, typeId, acceptLanguage, ifNoneMatch, xTenant, _callback);
+        Type localVarReturnType = new TypeToken<List<MarketRegionOrdersResponseInner>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
     /**
-     * Build call for getMarketTypes
+     * Build call for getMarketRegionTypes
      * 
      * @param regionId
      *            (required)
@@ -3183,7 +2865,7 @@ public class MarketApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getMarketTypesCall(@javax.annotation.Nonnull Long regionId,
+    public okhttp3.Call getMarketRegionTypesCall(@javax.annotation.Nonnull Long regionId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
@@ -3251,22 +2933,23 @@ public class MarketApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMarketTypesValidateBeforeCall(@javax.annotation.Nonnull Long regionId,
+    private okhttp3.Call getMarketRegionTypesValidateBeforeCall(@javax.annotation.Nonnull Long regionId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'regionId' is set
         if (regionId == null) {
-            throw new ApiException("Missing the required parameter 'regionId' when calling getMarketTypes(Async)");
+            throw new ApiException("Missing the required parameter 'regionId' when calling getMarketRegionTypes(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
             throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getMarketTypes(Async)");
+                    "Missing the required parameter 'xCompatibilityDate' when calling getMarketRegionTypes(Async)");
         }
 
-        return getMarketTypesCall(regionId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant, _callback);
+        return getMarketRegionTypesCall(regionId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant,
+                _callback);
 
     }
 
@@ -3317,11 +3000,11 @@ public class MarketApi {
      *                        </tr>
      *                        </table>
      */
-    public List<Long> getMarketTypes(@javax.annotation.Nonnull Long regionId,
+    public List<Long> getMarketRegionTypes(@javax.annotation.Nonnull Long regionId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<Long>> localVarResp = getMarketTypesWithHttpInfo(regionId, xCompatibilityDate, page,
+        ApiResponse<List<Long>> localVarResp = getMarketRegionTypesWithHttpInfo(regionId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -3373,11 +3056,11 @@ public class MarketApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<Long>> getMarketTypesWithHttpInfo(@javax.annotation.Nonnull Long regionId,
+    public ApiResponse<List<Long>> getMarketRegionTypesWithHttpInfo(@javax.annotation.Nonnull Long regionId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        okhttp3.Call localVarCall = getMarketTypesValidateBeforeCall(regionId, xCompatibilityDate, page,
+        okhttp3.Call localVarCall = getMarketRegionTypesValidateBeforeCall(regionId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, null);
         Type localVarReturnType = new TypeToken<List<Long>>() {
         }.getType();
@@ -3433,14 +3116,326 @@ public class MarketApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getMarketTypesAsync(@javax.annotation.Nonnull Long regionId,
+    public okhttp3.Call getMarketRegionTypesAsync(@javax.annotation.Nonnull Long regionId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback<List<Long>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getMarketTypesValidateBeforeCall(regionId, xCompatibilityDate, page,
+        okhttp3.Call localVarCall = getMarketRegionTypesValidateBeforeCall(regionId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<List<Long>>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
+     * Build call for getMarketStructure
+     * 
+     * @param structureId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param page
+     *            (optional)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        X-Pages - The total number of pages in the result
+     *                        set. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getMarketStructureCall(@javax.annotation.Nonnull Long structureId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/markets/structures/{structure_id}".replace("{" + "structure_id" + "}",
+                localVarApiClient.escapeString(structureId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {};
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        if (acceptLanguage != null) {
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
+        }
+
+        if (ifNoneMatch != null) {
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
+        }
+
+        if (xCompatibilityDate != null) {
+            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
+        }
+
+        if (xTenant != null) {
+            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
+        }
+
+        String[] localVarAuthNames = new String[] { "OAuth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMarketStructureValidateBeforeCall(@javax.annotation.Nonnull Long structureId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'structureId' is set
+        if (structureId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'structureId' when calling getMarketStructure(Async)");
+        }
+
+        // verify the required parameter 'xCompatibilityDate' is set
+        if (xCompatibilityDate == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'xCompatibilityDate' when calling getMarketStructure(Async)");
+        }
+
+        return getMarketStructureCall(structureId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant,
+                _callback);
+
+    }
+
+    /**
+     * List orders in a structure Return all orders in a structure
+     * 
+     * @param structureId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param page
+     *            (optional)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return List&lt;MarketStructureResponseInner&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        X-Pages - The total number of pages in the result
+     *                        set. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public List<MarketStructureResponseInner> getMarketStructure(@javax.annotation.Nonnull Long structureId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        ApiResponse<List<MarketStructureResponseInner>> localVarResp = getMarketStructureWithHttpInfo(structureId,
+                xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
+        return localVarResp.getData();
+    }
+
+    /**
+     * List orders in a structure Return all orders in a structure
+     * 
+     * @param structureId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param page
+     *            (optional)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return ApiResponse&lt;List&lt;MarketStructureResponseInner&gt;&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        X-Pages - The total number of pages in the result
+     *                        set. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<List<MarketStructureResponseInner>> getMarketStructureWithHttpInfo(
+            @javax.annotation.Nonnull Long structureId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        okhttp3.Call localVarCall = getMarketStructureValidateBeforeCall(structureId, xCompatibilityDate, page,
+                acceptLanguage, ifNoneMatch, xTenant, null);
+        Type localVarReturnType = new TypeToken<List<MarketStructureResponseInner>>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * List orders in a structure (asynchronously) Return all orders in a
+     * structure
+     * 
+     * @param structureId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param page
+     *            (optional)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request
+     *             body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        X-Pages - The total number of pages in the result
+     *                        set. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getMarketStructureAsync(@javax.annotation.Nonnull Long structureId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<MarketStructureResponseInner>> _callback)
+            throws ApiException {
+
+        okhttp3.Call localVarCall = getMarketStructureValidateBeforeCall(structureId, xCompatibilityDate, page,
+                acceptLanguage, ifNoneMatch, xTenant, _callback);
+        Type localVarReturnType = new TypeToken<List<MarketStructureResponseInner>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

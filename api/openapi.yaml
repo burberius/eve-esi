@@ -345,6 +345,7 @@ paths:
               minItems: 1
               type: array
               uniqueItems: true
+        required: true
       responses:
         "200":
           content:
@@ -422,7 +423,7 @@ paths:
       description: "Return a list of agents research information for a character.\
         \ The formula for finding the current research points with an agent is: currentPoints\
         \ = remainderPoints + pointsPerDay * days(currentTime - researchStartDate)"
-      operationId: GetCharacterAgentsResearch
+      operationId: GetCharacterResearchAgents
       parameters:
       - description: The ID of the character
         explode: false
@@ -561,6 +562,7 @@ paths:
               minItems: 1
               type: array
               uniqueItems: true
+        required: true
       responses:
         "200":
           content:
@@ -622,6 +624,7 @@ paths:
               minItems: 1
               type: array
               uniqueItems: true
+        required: true
       responses:
         "200":
           content:
@@ -908,11 +911,9 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/PutCharacterCalendarEvent_request"
+        required: true
       responses:
         "204":
-          content:
-            application/json:
-              schema: {}
           description: Event updated
           headers:
             Cache-Control:
@@ -1073,9 +1074,6 @@ paths:
       - $ref: "#/components/parameters/Tenant"
       responses:
         "204":
-          content:
-            application/json:
-              schema: {}
           description: Contacts deleted
           headers:
             Cache-Control:
@@ -1220,6 +1218,7 @@ paths:
               maxItems: 100
               minItems: 1
               type: array
+        required: true
       responses:
         "201":
           content:
@@ -1308,11 +1307,9 @@ paths:
               maxItems: 100
               minItems: 1
               type: array
+        required: true
       responses:
         "204":
-          content:
-            application/json:
-              schema: {}
           description: Contacts updated
           headers:
             Cache-Control:
@@ -1566,7 +1563,7 @@ paths:
     get:
       description: Get a list of all the corporations a character has been a member
         of
-      operationId: GetCharacterCorporationhistory
+      operationId: GetCharacterCorporationHistory
       parameters:
       - description: The ID of the character
         explode: false
@@ -1637,6 +1634,7 @@ paths:
               minItems: 1
               type: array
               uniqueItems: true
+        required: true
       responses:
         "201":
           content:
@@ -1782,6 +1780,7 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/PostCharacterFittings_request"
+        required: true
       responses:
         "201":
           content:
@@ -1840,9 +1839,6 @@ paths:
       - $ref: "#/components/parameters/Tenant"
       responses:
         "204":
-          content:
-            application/json:
-              schema: {}
           description: Fitting deleted
           headers:
             Cache-Control:
@@ -2068,7 +2064,7 @@ paths:
   /characters/{character_id}/killmails/recent:
     get:
       description: Return a list of a character's kills and losses going back 90 days
-      operationId: GetCharacterKillmailsRecent
+      operationId: GetCharacterKillmails
       parameters:
       - description: The ID of the character
         explode: false
@@ -2231,7 +2227,7 @@ paths:
       description: "Return the 50 most recent mail headers belonging to the character\
         \ that match the query criteria. Queries can be filtered by label, and last_mail_id\
         \ can be used to paginate backwards"
-      operationId: GetMail
+      operationId: GetMails
       parameters:
       - description: The ID of the character
         explode: false
@@ -2273,7 +2269,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MailResponse"
+                $ref: "#/components/schemas/MailsResponse"
           description: OK
           headers:
             Cache-Control:
@@ -2300,7 +2296,7 @@ paths:
       - application/json
     post:
       description: Create and send a new mail
-      operationId: PostMail
+      operationId: PostMails
       parameters:
       - description: The ID of the character
         explode: false
@@ -2318,13 +2314,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/PostMail_request"
+              $ref: "#/components/schemas/PostMails_request"
+        required: true
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MailPost"
+                $ref: "#/components/schemas/MailsPost"
           description: Created
           headers:
             Cache-Control:
@@ -2418,6 +2415,7 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/PostMailLabels_request"
+        required: true
       responses:
         "201":
           content:
@@ -2451,7 +2449,7 @@ paths:
   /characters/{character_id}/mail/labels/{label_id}:
     delete:
       description: Delete a mail label
-      operationId: DeleteMailLabelsLabelId
+      operationId: DeleteMailLabel
       parameters:
       - description: The ID of the character
         explode: false
@@ -2476,9 +2474,6 @@ paths:
       - $ref: "#/components/parameters/Tenant"
       responses:
         "204":
-          content:
-            application/json:
-              schema: {}
           description: Label deleted
           headers:
             Cache-Control:
@@ -2552,7 +2547,7 @@ paths:
   /characters/{character_id}/mail/{mail_id}:
     delete:
       description: Delete a mail
-      operationId: DeleteMailMailId
+      operationId: DeleteMail
       parameters:
       - description: The ID of the character
         explode: false
@@ -2577,9 +2572,6 @@ paths:
       - $ref: "#/components/parameters/Tenant"
       responses:
         "204":
-          content:
-            application/json:
-              schema: {}
           description: Mail deleted
           headers:
             Cache-Control:
@@ -2605,7 +2597,7 @@ paths:
       - application/json
     get:
       description: Return the contents of an EVE mail
-      operationId: GetMailMailId
+      operationId: GetMail
       parameters:
       - description: The ID of the character
         explode: false
@@ -2633,7 +2625,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MailMailIdResponse"
+                $ref: "#/components/schemas/MailResponse"
           description: OK
           headers:
             Cache-Control:
@@ -2660,7 +2652,7 @@ paths:
       - application/json
     put:
       description: Update metadata about a mail
-      operationId: PutMailMailId
+      operationId: PutMail
       parameters:
       - description: The ID of the character
         explode: false
@@ -2687,12 +2679,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/PutMailMailId_request"
+              $ref: "#/components/schemas/PutMail_request"
+        required: true
       responses:
         "204":
-          content:
-            application/json:
-              schema: {}
           description: Mail updated
           headers:
             Cache-Control:
@@ -3136,7 +3126,7 @@ paths:
         \ including links, pins and routes. Note: Planetary information is only recalculated\
         \ when the colony is viewed through the client. Information will not update\
         \ until this criteria is met."
-      operationId: GetCharacterPlanetsPlanetId
+      operationId: GetCharacterPlanet
       parameters:
       - description: The ID of the character
         explode: false
@@ -3325,6 +3315,7 @@ paths:
         required: true
         schema:
           description: The string to search on
+          minLength: 3
           type: string
         style: form
       - explode: true
@@ -3915,7 +3906,7 @@ paths:
   /contracts/public/{region_id}:
     get:
       description: Returns a paginated list of all public contracts in the given region
-      operationId: GetPublicContractsRegionId
+      operationId: GetPublicContracts
       parameters:
       - explode: true
         in: query
@@ -3976,10 +3967,8 @@ paths:
       - application/json
   /corporation/{corporation_id}/mining/extractions:
     get:
-      description: |-
-        Extraction timers for all moon chunks being extracted by refineries belonging to a corporation.
-
-        Requires one of the following EVE corporation role(s): Station_Manager
+      description: Extraction timers for all moon chunks being extracted by refineries
+        belonging to a corporation.
       operationId: GetCorporationMiningExtractions
       parameters:
       - description: The ID of the corporation
@@ -4045,10 +4034,8 @@ paths:
       - application/json
   /corporation/{corporation_id}/mining/observers:
     get:
-      description: |-
-        Paginated list of all entities capable of observing and recording mining for a corporation
-
-        Requires one of the following EVE corporation role(s): Accountant
+      description: Paginated list of all entities capable of observing and recording
+        mining for a corporation
       operationId: GetCorporationMiningObservers
       parameters:
       - description: The ID of the corporation
@@ -4114,11 +4101,8 @@ paths:
       - application/json
   /corporation/{corporation_id}/mining/observers/{observer_id}:
     get:
-      description: |-
-        Paginated record of all mining seen by an observer
-
-        Requires one of the following EVE corporation role(s): Accountant
-      operationId: GetCorporationMiningObserversObserverId
+      description: Paginated record of all mining seen by an observer
+      operationId: GetCorporationMiningObserver
       parameters:
       - description: The ID of the corporation
         explode: false
@@ -4276,7 +4260,7 @@ paths:
     get:
       description: Get a list of all the alliances a corporation has been a member
         of
-      operationId: GetCorporationAlliancehistory
+      operationId: GetCorporationAllianceshistory
       parameters:
       - description: The ID of the corporation
         explode: false
@@ -4319,10 +4303,7 @@ paths:
       - application/json
   /corporations/{corporation_id}/assets:
     get:
-      description: |-
-        Return a list of the corporation assets
-
-        Requires one of the following EVE corporation role(s): Director
+      description: Return a list of the corporation assets
       operationId: GetCorporationAssets
       parameters:
       - description: The ID of the corporation
@@ -4388,10 +4369,9 @@ paths:
       - application/json
   /corporations/{corporation_id}/assets/locations:
     post:
-      description: |-
-        Return locations for a set of item ids, which you can get from corporation assets endpoint. Coordinates for items in hangars or stations are set to (0,0,0)
-
-        Requires one of the following EVE corporation role(s): Director
+      description: "Return locations for a set of item ids, which you can get from\
+        \ corporation assets endpoint. Coordinates for items in hangars or stations\
+        \ are set to (0,0,0)"
       operationId: PostCorporationAssetsLocations
       parameters:
       - description: The ID of the corporation
@@ -4418,6 +4398,7 @@ paths:
               minItems: 1
               type: array
               uniqueItems: true
+        required: true
       responses:
         "200":
           content:
@@ -4452,10 +4433,9 @@ paths:
       - application/json
   /corporations/{corporation_id}/assets/names:
     post:
-      description: |-
-        Return names for a set of item ids, which you can get from corporation assets endpoint. Only valid for items that can customize names, like containers or ships
-
-        Requires one of the following EVE corporation role(s): Director
+      description: "Return names for a set of item ids, which you can get from corporation\
+        \ assets endpoint. Only valid for items that can customize names, like containers\
+        \ or ships"
       operationId: PostCorporationAssetsNames
       parameters:
       - description: The ID of the corporation
@@ -4482,6 +4462,7 @@ paths:
               minItems: 1
               type: array
               uniqueItems: true
+        required: true
       responses:
         "200":
           content:
@@ -4516,10 +4497,7 @@ paths:
       - application/json
   /corporations/{corporation_id}/blueprints:
     get:
-      description: |-
-        Returns a list of blueprints the corporation owns
-
-        Requires one of the following EVE corporation role(s): Director
+      description: Returns a list of blueprints the corporation owns
       operationId: GetCorporationBlueprints
       parameters:
       - description: The ID of the corporation
@@ -4696,10 +4674,8 @@ paths:
       - application/json
   /corporations/{corporation_id}/containers/logs:
     get:
-      description: |-
-        Returns logs recorded in the past seven days from all audit log secure containers (ALSC) owned by a given corporation
-
-        Requires one of the following EVE corporation role(s): Director
+      description: Returns logs recorded in the past seven days from all audit log
+        secure containers (ALSC) owned by a given corporation
       operationId: GetCorporationContainersLogs
       parameters:
       - description: The ID of the corporation
@@ -4960,10 +4936,7 @@ paths:
       - application/json
   /corporations/{corporation_id}/customs_offices:
     get:
-      description: |-
-        List customs offices owned by a corporation
-
-        Requires one of the following EVE corporation role(s): Director
+      description: List customs offices owned by a corporation
       operationId: GetCorporationCustomsOffices
       parameters:
       - description: The ID of the corporation
@@ -5029,10 +5002,8 @@ paths:
       - application/json
   /corporations/{corporation_id}/divisions:
     get:
-      description: |-
-        Return corporation hangar and wallet division names, only show if a division is not using the default name
-
-        Requires one of the following EVE corporation role(s): Director
+      description: "Return corporation hangar and wallet division names, only show\
+        \ if a division is not using the default name"
       operationId: GetCorporationDivisions
       parameters:
       - description: The ID of the corporation
@@ -5081,10 +5052,7 @@ paths:
       - application/json
   /corporations/{corporation_id}/facilities:
     get:
-      description: |-
-        Return a corporation's facilities
-
-        Requires one of the following EVE corporation role(s): Factory_Manager
+      description: Return a corporation's facilities
       operationId: GetCorporationFacilities
       parameters:
       - description: The ID of the corporation
@@ -5226,10 +5194,7 @@ paths:
       - application/json
   /corporations/{corporation_id}/industry/jobs:
     get:
-      description: |-
-        List industry jobs run by a corporation
-
-        Requires one of the following EVE corporation role(s): Factory_Manager
+      description: List industry jobs run by a corporation
       operationId: GetCorporationIndustryJobs
       parameters:
       - description: The ID of the corporation
@@ -5305,11 +5270,8 @@ paths:
       - application/json
   /corporations/{corporation_id}/killmails/recent:
     get:
-      description: |-
-        Get a list of a corporation's kills and losses going back 90 days
-
-        Requires one of the following EVE corporation role(s): Director
-      operationId: GetCorporationKillmailsRecent
+      description: Get a list of a corporation's kills and losses going back 90 days
+      operationId: GetCorporationKillmails
       parameters:
       - description: The ID of the corporation
         explode: false
@@ -5438,10 +5400,7 @@ paths:
       - application/json
   /corporations/{corporation_id}/medals/issued:
     get:
-      description: |-
-        Returns medals issued by a corporation
-
-        Requires one of the following EVE corporation role(s): Director
+      description: Returns medals issued by a corporation
       operationId: GetCorporationMedalsIssued
       parameters:
       - description: The ID of the corporation
@@ -5555,10 +5514,7 @@ paths:
       - application/json
   /corporations/{corporation_id}/members/limit:
     get:
-      description: |-
-        Return a corporation's member limit, not including CEO himself
-
-        Requires one of the following EVE corporation role(s): Director
+      description: "Return a corporation's member limit, not including CEO himself"
       operationId: GetCorporationMembersLimit
       parameters:
       - description: The ID of the corporation
@@ -5607,10 +5563,7 @@ paths:
       - application/json
   /corporations/{corporation_id}/members/titles:
     get:
-      description: |-
-        Returns a corporation's members' titles
-
-        Requires one of the following EVE corporation role(s): Director
+      description: Returns a corporation's members' titles
       operationId: GetCorporationMembersTitles
       parameters:
       - description: The ID of the corporation
@@ -5659,11 +5612,9 @@ paths:
       - application/json
   /corporations/{corporation_id}/membertracking:
     get:
-      description: |-
-        Returns additional information about a corporation's members which helps tracking their activities
-
-        Requires one of the following EVE corporation role(s): Director
-      operationId: GetCorporationMembertracking
+      description: Returns additional information about a corporation's members which
+        helps tracking their activities
+      operationId: GetCorporationMemberTracking
       parameters:
       - description: The ID of the corporation
         explode: false
@@ -5711,10 +5662,7 @@ paths:
       - application/json
   /corporations/{corporation_id}/orders:
     get:
-      description: |-
-        List open market orders placed on behalf of a corporation
-
-        Requires one of the following EVE corporation role(s): Accountant, Trader
+      description: List open market orders placed on behalf of a corporation
       operationId: GetCorporationOrders
       parameters:
       - description: The ID of the corporation
@@ -5781,10 +5729,8 @@ paths:
       - application/json
   /corporations/{corporation_id}/orders/history:
     get:
-      description: |-
-        List cancelled and expired market orders placed on behalf of a corporation up to 90 days in the past.
-
-        Requires one of the following EVE corporation role(s): Accountant, Trader
+      description: List cancelled and expired market orders placed on behalf of a
+        corporation up to 90 days in the past.
       operationId: GetCorporationOrdersHistory
       parameters:
       - description: The ID of the corporation
@@ -5899,10 +5845,8 @@ paths:
       - application/json
   /corporations/{corporation_id}/roles/history:
     get:
-      description: |-
-        Return how roles have changed for a coporation's members, up to a month
-
-        Requires one of the following EVE corporation role(s): Director
+      description: "Return how roles have changed for a coporation's members, up to\
+        \ a month"
       operationId: GetCorporationRolesHistory
       parameters:
       - description: The ID of the corporation
@@ -5968,10 +5912,7 @@ paths:
       - application/json
   /corporations/{corporation_id}/shareholders:
     get:
-      description: |-
-        Return the current shareholders of a corporation.
-
-        Requires one of the following EVE corporation role(s): Director
+      description: Return the current shareholders of a corporation.
       operationId: GetCorporationShareholders
       parameters:
       - description: The ID of the corporation
@@ -6102,10 +6043,7 @@ paths:
       - application/json
   /corporations/{corporation_id}/starbases:
     get:
-      description: |-
-        Returns list of corporation starbases (POSes)
-
-        Requires one of the following EVE corporation role(s): Director
+      description: Returns list of corporation starbases (POSes)
       operationId: GetCorporationStarbases
       parameters:
       - description: The ID of the corporation
@@ -6171,11 +6109,8 @@ paths:
       - application/json
   /corporations/{corporation_id}/starbases/{starbase_id}:
     get:
-      description: |-
-        Returns various settings and fuels of a starbase (POS)
-
-        Requires one of the following EVE corporation role(s): Director
-      operationId: GetCorporationStarbasesStarbaseId
+      description: Returns various settings and fuels of a starbase (POS)
+      operationId: GetCorporationStarbase
       parameters:
       - description: The ID of the corporation
         explode: false
@@ -6212,7 +6147,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CorporationStarbase"
+                $ref: "#/components/schemas/CorporationStarbaseResponse"
           description: OK
           headers:
             Cache-Control:
@@ -6241,10 +6176,8 @@ paths:
       - application/json
   /corporations/{corporation_id}/structures:
     get:
-      description: |-
-        Get a list of corporation structures. This route's version includes the changes to structures detailed in this blog: https://www.eveonline.com/article/upwell-2.0-structures-changes-coming-on-february-13th
-
-        Requires one of the following EVE corporation role(s): Station_Manager
+      description: "Get a list of corporation structures. This route's version includes\
+        \ the changes to structures detailed in this blog: https://www.eveonline.com/article/upwell-2.0-structures-changes-coming-on-february-13th"
       operationId: GetCorporationStructures
       parameters:
       - description: The ID of the corporation
@@ -6312,10 +6245,7 @@ paths:
       - application/json
   /corporations/{corporation_id}/titles:
     get:
-      description: |-
-        Returns a corporation's titles
-
-        Requires one of the following EVE corporation role(s): Director
+      description: Returns a corporation's titles
       operationId: GetCorporationTitles
       parameters:
       - description: The ID of the corporation
@@ -6364,10 +6294,7 @@ paths:
       - application/json
   /corporations/{corporation_id}/wallets:
     get:
-      description: |-
-        Get a corporation's wallets
-
-        Requires one of the following EVE corporation role(s): Accountant, Junior_Accountant
+      description: Get a corporation's wallets
       operationId: GetCorporationWallets
       parameters:
       - description: The ID of the corporation
@@ -6417,10 +6344,8 @@ paths:
       - application/json
   /corporations/{corporation_id}/wallets/{division}/journal:
     get:
-      description: |-
-        Retrieve the given corporation's wallet journal for the given division going 30 days back
-
-        Requires one of the following EVE corporation role(s): Accountant, Junior_Accountant
+      description: Retrieve the given corporation's wallet journal for the given division
+        going 30 days back
       operationId: GetCorporationWalletJournal
       parameters:
       - description: The ID of the corporation
@@ -6496,10 +6421,7 @@ paths:
       - application/json
   /corporations/{corporation_id}/wallets/{division}/transactions:
     get:
-      description: |-
-        Get wallet transactions of a corporation
-
-        Requires one of the following EVE corporation role(s): Accountant, Junior_Accountant
+      description: Get wallet transactions of a corporation
       operationId: GetCorporationWalletTransactions
       parameters:
       - description: The ID of the corporation
@@ -6610,7 +6532,7 @@ paths:
         Get information on a dogma attribute
 
         This route expires daily at 11:05
-      operationId: GetDogmaAttributesAttributeId
+      operationId: GetDogmaAttribute
       parameters:
       - explode: false
         in: path
@@ -6657,7 +6579,7 @@ paths:
         Returns info about a dynamic item resulting from mutation with a mutaplasmid.
 
         This route expires daily at 11:05
-      operationId: GetDogmaDynamicItemsTypeIdItemId
+      operationId: GetDogmaDynamicItems
       parameters:
       - explode: false
         in: path
@@ -6749,7 +6671,7 @@ paths:
         Get information on a dogma effect
 
         This route expires daily at 11:05
-      operationId: GetDogmaEffectsEffectId
+      operationId: GetDogmaEffect
       parameters:
       - explode: false
         in: path
@@ -6860,11 +6782,9 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/PutFleet_request"
+        required: true
       responses:
         "204":
-          content:
-            application/json:
-              schema: {}
           description: Fleet updated
           headers:
             Cache-Control:
@@ -6962,11 +6882,9 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/PostFleetMembers_request"
+        required: true
       responses:
         "204":
-          content:
-            application/json:
-              schema: {}
           description: Fleet invitation sent
           headers:
             Cache-Control:
@@ -6994,7 +6912,7 @@ paths:
   /fleets/{fleet_id}/members/{member_id}:
     delete:
       description: Kick a fleet member
-      operationId: DeleteFleetMembersMemberId
+      operationId: DeleteFleetMember
       parameters:
       - explode: false
         in: path
@@ -7020,9 +6938,6 @@ paths:
       - $ref: "#/components/parameters/Tenant"
       responses:
         "204":
-          content:
-            application/json:
-              schema: {}
           description: Fleet member kicked
           headers:
             Cache-Control:
@@ -7048,7 +6963,7 @@ paths:
       - application/json
     put:
       description: Move a fleet member around
-      operationId: PutFleetMembersMemberId
+      operationId: PutFleetMember
       parameters:
       - explode: false
         in: path
@@ -7076,12 +6991,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/PutFleetMembersMemberId_request"
+              $ref: "#/components/schemas/PutFleetMember_request"
+        required: true
       responses:
         "204":
-          content:
-            application/json:
-              schema: {}
           description: Fleet invitation sent
           headers:
             Cache-Control:
@@ -7109,7 +7022,7 @@ paths:
   /fleets/{fleet_id}/squads/{squad_id}:
     delete:
       description: "Delete a fleet squad, only empty squads can be deleted"
-      operationId: DeleteFleetSquadsSquadId
+      operationId: DeleteFleetSquad
       parameters:
       - explode: false
         in: path
@@ -7135,9 +7048,6 @@ paths:
       - $ref: "#/components/parameters/Tenant"
       responses:
         "204":
-          content:
-            application/json:
-              schema: {}
           description: Squad deleted
           headers:
             Cache-Control:
@@ -7163,7 +7073,7 @@ paths:
       - application/json
     put:
       description: Rename a fleet squad
-      operationId: PutFleetSquadsSquadId
+      operationId: PutFleetSquad
       parameters:
       - explode: false
         in: path
@@ -7191,12 +7101,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/PutFleetSquadsSquadId_request"
+              $ref: "#/components/schemas/PutFleetSquad_request"
+        required: true
       responses:
         "204":
-          content:
-            application/json:
-              schema: {}
           description: Squad renamed
           headers:
             Cache-Control:
@@ -7321,7 +7229,7 @@ paths:
     delete:
       description: "Delete a fleet wing, only empty wings can be deleted. The wing\
         \ may contain squads, but the squads must be empty"
-      operationId: DeleteFleetWingsWingId
+      operationId: DeleteFleetWing
       parameters:
       - explode: false
         in: path
@@ -7347,9 +7255,6 @@ paths:
       - $ref: "#/components/parameters/Tenant"
       responses:
         "204":
-          content:
-            application/json:
-              schema: {}
           description: Wing deleted
           headers:
             Cache-Control:
@@ -7375,7 +7280,7 @@ paths:
       - application/json
     put:
       description: Rename a fleet wing
-      operationId: PutFleetWingsWingId
+      operationId: PutFleetWing
       parameters:
       - explode: false
         in: path
@@ -7403,12 +7308,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/PutFleetSquadsSquadId_request"
+              $ref: "#/components/schemas/PutFleetSquad_request"
+        required: true
       responses:
         "204":
-          content:
-            application/json:
-              schema: {}
           description: Wing renamed
           headers:
             Cache-Control:
@@ -7436,7 +7339,7 @@ paths:
   /fleets/{fleet_id}/wings/{wing_id}/squads:
     post:
       description: Create a new squad in a fleet
-      operationId: PostFleetWingsWingIdSquads
+      operationId: PostFleetWingSquads
       parameters:
       - explode: false
         in: path
@@ -7864,7 +7767,7 @@ paths:
   /killmails/{killmail_id}/{killmail_hash}:
     get:
       description: Return a single killmail from its ID and hash
-      operationId: GetKillmailsKillmailIdKillmailHash
+      operationId: GetKillmailByHash
       parameters:
       - explode: false
         in: path
@@ -7892,7 +7795,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/KillmailResponse"
+                $ref: "#/components/schemas/KillmailByHashResponse"
           description: OK
           headers:
             Cache-Control:
@@ -7920,7 +7823,7 @@ paths:
         Return a list of offers from a specific corporation's loyalty store
 
         This route expires daily at 11:05
-      operationId: GetLoyaltyStoresCorporationIdOffers
+      operationId: GetLoyaltyStoreOffers
       parameters:
       - description: The ID of the corporation
         explode: false
@@ -8004,7 +7907,7 @@ paths:
         Get information on an item group
 
         This route expires daily at 11:05
-      operationId: GetMarketGroupsMarketGroupId
+      operationId: GetMarketGroup
       parameters:
       - explode: false
         in: path
@@ -8024,7 +7927,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MarketGroupsMarketGroupIdResponse"
+                $ref: "#/components/schemas/MarketGroupResponse"
           description: OK
           headers:
             Cache-Control:
@@ -8086,7 +7989,7 @@ paths:
   /markets/structures/{structure_id}:
     get:
       description: Return all orders in a structure
-      operationId: GetMarketStructuresStructureId
+      operationId: GetMarketStructure
       parameters:
       - explode: true
         in: query
@@ -8154,7 +8057,7 @@ paths:
         Return a list of historical market statistics for the specified type in a region
 
         This route expires daily at 11:05
-      operationId: GetMarketHistory
+      operationId: GetMarketRegionHistory
       parameters:
       - explode: false
         in: path
@@ -8183,7 +8086,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MarketHistoryResponse"
+                $ref: "#/components/schemas/MarketRegionHistoryResponse"
           description: OK
           headers:
             Cache-Control:
@@ -8207,7 +8110,7 @@ paths:
   /markets/{region_id}/orders:
     get:
       description: Return a list of orders in a region
-      operationId: GetMarketOrders
+      operationId: GetMarketRegionOrders
       parameters:
       - explode: true
         in: query
@@ -8260,7 +8163,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MarketOrdersResponse"
+                $ref: "#/components/schemas/MarketRegionOrdersResponse"
           description: OK
           headers:
             Cache-Control:
@@ -8293,7 +8196,7 @@ paths:
     get:
       description: "Return a list of type IDs that have active orders in the region,\
         \ for efficient market indexing."
-      operationId: GetMarketTypes
+      operationId: GetMarketRegionTypes
       parameters:
       - explode: true
         in: query
@@ -8323,7 +8226,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MarketTypesResponse"
+                $ref: "#/components/schemas/MarketRegionTypesResponse"
           description: OK
           headers:
             Cache-Control:
@@ -8633,9 +8536,6 @@ paths:
       - $ref: "#/components/parameters/Tenant"
       responses:
         "204":
-          content:
-            application/json:
-              schema: {}
           description: Open window request received
           headers:
             Cache-Control:
@@ -8679,9 +8579,6 @@ paths:
       - $ref: "#/components/parameters/Tenant"
       responses:
         "204":
-          content:
-            application/json:
-              schema: {}
           description: Open window request received
           headers:
             Cache-Control:
@@ -8726,9 +8623,6 @@ paths:
       - $ref: "#/components/parameters/Tenant"
       responses:
         "204":
-          content:
-            application/json:
-              schema: {}
           description: Open window request received
           headers:
             Cache-Control:
@@ -8773,9 +8667,6 @@ paths:
       - $ref: "#/components/parameters/Tenant"
       responses:
         "204":
-          content:
-            application/json:
-              schema: {}
           description: Open window request received
           headers:
             Cache-Control:
@@ -8814,11 +8705,9 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/PostUiOpenwindowNewmail_request"
+        required: true
       responses:
         "204":
-          content:
-            application/json:
-              schema: {}
           description: Open window request received
           headers:
             Cache-Control:
@@ -8849,7 +8738,7 @@ paths:
         Get all character ancestries
 
         This route expires daily at 11:05
-      operationId: GetUniverseAncestries
+      operationId: GetAncestries
       parameters:
       - $ref: "#/components/parameters/AcceptLanguage"
       - $ref: "#/components/parameters/IfNoneMatch"
@@ -8860,7 +8749,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UniverseAncestriesResponse"
+                $ref: "#/components/schemas/AncestriesResponse"
           description: OK
           headers:
             Cache-Control:
@@ -8889,7 +8778,7 @@ paths:
         Get information on an asteroid belt
 
         This route expires daily at 11:05
-      operationId: GetUniverseAsteroidBelts
+      operationId: GetAsteroidBelts
       parameters:
       - explode: false
         in: path
@@ -8908,7 +8797,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UniverseAsteroidBeltsResponse"
+                $ref: "#/components/schemas/AsteroidBeltsResponse"
           description: OK
           headers:
             Cache-Control:
@@ -8935,7 +8824,7 @@ paths:
         Get a list of bloodlines
 
         This route expires daily at 11:05
-      operationId: GetUniverseBloodlines
+      operationId: GetBloodlines
       parameters:
       - $ref: "#/components/parameters/AcceptLanguage"
       - $ref: "#/components/parameters/IfNoneMatch"
@@ -8975,7 +8864,7 @@ paths:
         Get a list of item categories
 
         This route expires daily at 11:05
-      operationId: GetUniverseCategories
+      operationId: GetCategories
       parameters:
       - $ref: "#/components/parameters/AcceptLanguage"
       - $ref: "#/components/parameters/IfNoneMatch"
@@ -9013,7 +8902,7 @@ paths:
         Get information of an item category
 
         This route expires daily at 11:05
-      operationId: GetUniverseCategoriesCategoryId
+      operationId: GetCategory
       parameters:
       - explode: false
         in: path
@@ -9062,7 +8951,7 @@ paths:
         Get a list of constellations
 
         This route expires daily at 11:05
-      operationId: GetUniverseConstellations
+      operationId: GetConstellations
       parameters:
       - $ref: "#/components/parameters/AcceptLanguage"
       - $ref: "#/components/parameters/IfNoneMatch"
@@ -9100,7 +8989,7 @@ paths:
         Get information on a constellation
 
         This route expires daily at 11:05
-      operationId: GetUniverseConstellationsConstellationId
+      operationId: GetConstellation
       parameters:
       - explode: false
         in: path
@@ -9148,7 +9037,7 @@ paths:
         Get a list of factions
 
         This route expires daily at 11:05
-      operationId: GetUniverseFactions
+      operationId: GetFactions
       parameters:
       - $ref: "#/components/parameters/AcceptLanguage"
       - $ref: "#/components/parameters/IfNoneMatch"
@@ -9188,7 +9077,7 @@ paths:
         Get a list of graphics
 
         This route expires daily at 11:05
-      operationId: GetUniverseGraphics
+      operationId: GetGraphics
       parameters:
       - $ref: "#/components/parameters/AcceptLanguage"
       - $ref: "#/components/parameters/IfNoneMatch"
@@ -9226,7 +9115,7 @@ paths:
         Get information on a graphic
 
         This route expires daily at 11:05
-      operationId: GetUniverseGraphicsGraphicId
+      operationId: GetGraphic
       parameters:
       - explode: false
         in: path
@@ -9272,7 +9161,7 @@ paths:
         Get a list of item groups
 
         This route expires daily at 11:05
-      operationId: GetUniverseGroups
+      operationId: GetGroups
       parameters:
       - explode: true
         in: query
@@ -9327,7 +9216,7 @@ paths:
         Get information on an item group
 
         This route expires daily at 11:05
-      operationId: GetUniverseGroupsGroupId
+      operationId: GetGroup
       parameters:
       - explode: false
         in: path
@@ -9388,11 +9277,14 @@ paths:
             schema:
               items:
                 description: name string
+                maxLength: 100
+                minLength: 1
                 type: string
               maxItems: 500
               minItems: 1
               type: array
               uniqueItems: true
+        required: true
       responses:
         "200":
           content:
@@ -9428,7 +9320,7 @@ paths:
         Get information on a moon
 
         This route expires daily at 11:05
-      operationId: GetUniverseMoonsMoonId
+      operationId: GetMoon
       parameters:
       - explode: false
         in: path
@@ -9473,7 +9365,7 @@ paths:
       description: "Resolve a set of IDs to names and categories. Supported ID's for\
         \ resolving are: Characters, Corporations, Alliances, Stations, Solar Systems,\
         \ Constellations, Regions, Types, Factions"
-      operationId: PostUniverseNames
+      operationId: PostNames
       parameters:
       - $ref: "#/components/parameters/AcceptLanguage"
       - $ref: "#/components/parameters/IfNoneMatch"
@@ -9491,12 +9383,13 @@ paths:
               minItems: 1
               type: array
               uniqueItems: true
+        required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UniverseNamesPost"
+                $ref: "#/components/schemas/NamesResponse"
           description: OK
           headers:
             Cache-Control:
@@ -9524,7 +9417,7 @@ paths:
         Get information on a planet
 
         This route expires daily at 11:05
-      operationId: GetUniversePlanetsPlanetId
+      operationId: GetPlanet
       parameters:
       - explode: false
         in: path
@@ -9570,7 +9463,7 @@ paths:
         Get a list of character races
 
         This route expires daily at 11:05
-      operationId: GetUniverseRaces
+      operationId: GetRaces
       parameters:
       - $ref: "#/components/parameters/AcceptLanguage"
       - $ref: "#/components/parameters/IfNoneMatch"
@@ -9610,7 +9503,7 @@ paths:
         Get a list of regions
 
         This route expires daily at 11:05
-      operationId: GetUniverseRegions
+      operationId: GetRegions
       parameters:
       - $ref: "#/components/parameters/AcceptLanguage"
       - $ref: "#/components/parameters/IfNoneMatch"
@@ -9648,7 +9541,7 @@ paths:
         Get information on a region
 
         This route expires daily at 11:05
-      operationId: GetUniverseRegionsRegionId
+      operationId: GetRegion
       parameters:
       - explode: false
         in: path
@@ -9693,7 +9586,7 @@ paths:
   /universe/schematics/{schematic_id}:
     get:
       description: Get information on a planetary factory schematic
-      operationId: GetUniverseSchematicsSchematicId
+      operationId: GetSchematic
       parameters:
       - explode: false
         in: path
@@ -9741,7 +9634,7 @@ paths:
         Get information on a stargate
 
         This route expires daily at 11:05
-      operationId: GetUniverseStargatesStargateId
+      operationId: GetStargate
       parameters:
       - explode: false
         in: path
@@ -9787,7 +9680,7 @@ paths:
         Get information on a star
 
         This route expires daily at 11:05
-      operationId: GetUniverseStarsStarId
+      operationId: GetStar
       parameters:
       - explode: false
         in: path
@@ -9833,7 +9726,7 @@ paths:
         Get information on a station
 
         This route expires daily at 11:05
-      operationId: GetUniverseStationsStationId
+      operationId: GetStation
       parameters:
       - explode: false
         in: path
@@ -9876,7 +9769,7 @@ paths:
   /universe/structures:
     get:
       description: List all public structures
-      operationId: GetUniverseStructures
+      operationId: GetStructures
       parameters:
       - explode: true
         in: query
@@ -9924,7 +9817,7 @@ paths:
     get:
       description: "Returns information on requested structure if you are on the ACL.\
         \ Otherwise, returns \"Forbidden\" for all inputs."
-      operationId: GetUniverseStructuresStructureId
+      operationId: GetUniverseStructure
       parameters:
       - explode: false
         in: path
@@ -9974,7 +9867,7 @@ paths:
       description: "Get the number of jumps in solar systems within the last hour\
         \ ending at the timestamp of the Last-Modified header, excluding wormhole\
         \ space. Only systems with jumps will be listed"
-      operationId: GetUniverseSystemJumps
+      operationId: GetSystemJumps
       parameters:
       - $ref: "#/components/parameters/AcceptLanguage"
       - $ref: "#/components/parameters/IfNoneMatch"
@@ -10012,7 +9905,7 @@ paths:
       description: "Get the number of ship, pod and NPC kills per solar system within\
         \ the last hour ending at the timestamp of the Last-Modified header, excluding\
         \ wormhole space. Only systems with kills will be listed"
-      operationId: GetUniverseSystemKills
+      operationId: GetSystemKills
       parameters:
       - $ref: "#/components/parameters/AcceptLanguage"
       - $ref: "#/components/parameters/IfNoneMatch"
@@ -10051,7 +9944,7 @@ paths:
         Get a list of solar systems
 
         This route expires daily at 11:05
-      operationId: GetUniverseSystems
+      operationId: GetSystems
       parameters:
       - $ref: "#/components/parameters/AcceptLanguage"
       - $ref: "#/components/parameters/IfNoneMatch"
@@ -10089,7 +9982,7 @@ paths:
         Get information on a solar system.
 
         This route expires daily at 11:05
-      operationId: GetUniverseSystemsSystemId
+      operationId: GetSystem
       parameters:
       - explode: false
         in: path
@@ -10137,7 +10030,7 @@ paths:
         Get a list of type ids
 
         This route expires daily at 11:05
-      operationId: GetUniverseTypes
+      operationId: GetTypes
       parameters:
       - explode: true
         in: query
@@ -10192,7 +10085,7 @@ paths:
         Get information on a type
 
         This route expires daily at 11:05
-      operationId: GetUniverseTypesTypeId
+      operationId: GetType
       parameters:
       - explode: false
         in: path
@@ -10283,7 +10176,7 @@ paths:
   /wars/{war_id}:
     get:
       description: Return details about a war
-      operationId: GetWarsWarId
+      operationId: GetWar
       parameters:
       - explode: false
         in: path
@@ -10328,7 +10221,7 @@ paths:
   /wars/{war_id}/killmails:
     get:
       description: Return a list of kills related to a war
-      operationId: GetWarsWarIdKillmails
+      operationId: GetWarKillmails
       parameters:
       - explode: true
         in: query
@@ -10460,8 +10353,7 @@ components:
       in: header
       name: If-Modified-Since
       required: false
-      schema:
-        type: string
+      schema: {}
       style: simple
     IfNoneMatch:
       description: The ETag of the previous request. A 304 will be returned if this
@@ -10985,9 +10877,9 @@ components:
       items:
         $ref: "#/components/schemas/CharacterLoyaltyPointsResponse_inner"
       type: array
-    MailResponse:
+    MailsResponse:
       items:
-        $ref: "#/components/schemas/MailResponse_inner"
+        $ref: "#/components/schemas/MailsResponse_inner"
       type: array
     MailLabelsResponse:
       example:
@@ -11017,7 +10909,7 @@ components:
       items:
         $ref: "#/components/schemas/MailListsResponse_inner"
       type: array
-    MailMailIdResponse:
+    MailResponse:
       example:
         read: true
         recipients:
@@ -11054,7 +10946,7 @@ components:
         recipients:
           description: Recipients of the mail
           items:
-            $ref: "#/components/schemas/PostMail_request_recipients_inner"
+            $ref: "#/components/schemas/PostMails_request_recipients_inner"
           type: array
           uniqueItems: true
         subject:
@@ -11064,7 +10956,7 @@ components:
           description: When the mail was sent
           format: date-time
           type: string
-    MailPost:
+    MailsPost:
       description: Mail ID
       format: int64
       type: integer
@@ -11948,7 +11840,7 @@ components:
       items:
         $ref: "#/components/schemas/CorporationStarbasesResponse_inner"
       type: array
-    CorporationStarbase:
+    CorporationStarbaseResponse:
       example:
         attack_if_at_war: true
         fuels:
@@ -12018,7 +11910,7 @@ components:
           description: Fuel blocks and other things that will be consumed when operating
             a starbase (POS)
           items:
-            $ref: "#/components/schemas/CorporationStarbase_fuels_inner"
+            $ref: "#/components/schemas/CorporationStarbaseResponse_fuels_inner"
           type: array
         offline:
           description: Who can offline starbase (POS) and its structures
@@ -12529,7 +12421,7 @@ components:
       format: int64
       type: integer
       x-common-model: "true"
-    KillmailResponse:
+    KillmailByHashResponse:
       example:
         killmail_time: 2000-01-23T04:56:07.000+00:00
         moon_id: 2
@@ -12602,7 +12494,7 @@ components:
       properties:
         attackers:
           items:
-            $ref: "#/components/schemas/KillmailResponse_attackers_inner"
+            $ref: "#/components/schemas/KillmailByHashResponse_attackers_inner"
           type: array
         killmail_id:
           description: ID of the killmail
@@ -12623,7 +12515,7 @@ components:
           format: int64
           type: integer
         victim:
-          $ref: "#/components/schemas/KillmailResponse_victim"
+          $ref: "#/components/schemas/KillmailByHashResponse_victim"
         war_id:
           description: |
             War if the killmail is generated in relation to an official war
@@ -12644,7 +12536,7 @@ components:
         format: int64
         type: integer
       type: array
-    MarketGroupsMarketGroupIdResponse:
+    MarketGroupResponse:
       example:
         types:
         - 1
@@ -12679,15 +12571,15 @@ components:
       items:
         $ref: "#/components/schemas/MarketPricesResponse_inner"
       type: array
-    MarketHistoryResponse:
+    MarketRegionHistoryResponse:
       items:
-        $ref: "#/components/schemas/MarketHistoryResponse_inner"
+        $ref: "#/components/schemas/MarketRegionHistoryResponse_inner"
       type: array
-    MarketOrdersResponse:
+    MarketRegionOrdersResponse:
       items:
-        $ref: "#/components/schemas/MarketOrdersResponse_inner"
+        $ref: "#/components/schemas/MarketRegionOrdersResponse_inner"
       type: array
-    MarketTypesResponse:
+    MarketRegionTypesResponse:
       items:
         format: int64
         type: integer
@@ -12707,6 +12599,11 @@ components:
         format: int64
         type: integer
       type: array
+    ShipTreeGroupID:
+      description: Ship tree group identifier.
+      format: int64
+      type: integer
+      x-common-model: "true"
     SolarSystemID:
       format: int64
       type: integer
@@ -12759,11 +12656,11 @@ components:
       format: uuid
       type: string
       x-common-model: "true"
-    UniverseAncestriesResponse:
+    AncestriesResponse:
       items:
-        $ref: "#/components/schemas/UniverseAncestriesResponse_inner"
+        $ref: "#/components/schemas/AncestriesResponse_inner"
       type: array
-    UniverseAsteroidBeltsResponse:
+    AsteroidBeltsResponse:
       example:
         system_id: 0
         name: name
@@ -13056,9 +12953,9 @@ components:
       - name
       - position
       - system_id
-    UniverseNamesPost:
+    NamesResponse:
       items:
-        $ref: "#/components/schemas/UniverseNamesPost_inner"
+        $ref: "#/components/schemas/NamesResponse_inner"
       type: array
     PlanetResponse:
       example:
@@ -13770,6 +13667,7 @@ components:
     PostCharacterFittings_request:
       properties:
         description:
+          maxLength: 500
           type: string
         items:
           items:
@@ -13778,6 +13676,8 @@ components:
           minItems: 1
           type: array
         name:
+          maxLength: 50
+          minLength: 1
           type: string
         ship_type_id:
           format: int64
@@ -13787,7 +13687,7 @@ components:
       - items
       - name
       - ship_type_id
-    PostMail_request_recipients_inner:
+    PostMails_request_recipients_inner:
       description: recipient object
       example:
         recipient_type: alliance
@@ -13806,21 +13706,23 @@ components:
       required:
       - recipient_id
       - recipient_type
-    PostMail_request:
+    PostMails_request:
       properties:
         approved_cost:
           default: 0
           format: int64
           type: integer
         body:
+          maxLength: 10000
           type: string
         recipients:
           items:
-            $ref: "#/components/schemas/PostMail_request_recipients_inner"
+            $ref: "#/components/schemas/PostMails_request_recipients_inner"
           maxItems: 50
           minItems: 1
           type: array
         subject:
+          maxLength: 1000
           type: string
       required:
       - body
@@ -13852,10 +13754,12 @@ components:
           - "#ffffff"
           type: string
         name:
+          maxLength: 40
+          minLength: 1
           type: string
       required:
       - name
-    PutMailMailId_request:
+    PutMail_request:
       properties:
         labels:
           description: Labels to assign to the mail. Pre-existing labels are unassigned.
@@ -13907,7 +13811,7 @@ components:
       required:
       - character_id
       - role
-    PutFleetMembersMemberId_request:
+    PutFleetMember_request:
       properties:
         role:
           description: "If a character is moved to the `fleet_commander` role, neither\
@@ -13930,15 +13834,17 @@ components:
           type: integer
       required:
       - role
-    PutFleetSquadsSquadId_request:
+    PutFleetSquad_request:
       properties:
         name:
+          maxLength: 10
           type: string
       required:
       - name
     PostUiOpenwindowNewmail_request:
       properties:
         body:
+          maxLength: 10000
           type: string
         recipients:
           items:
@@ -13949,6 +13855,7 @@ components:
           minItems: 1
           type: array
         subject:
+          maxLength: 1000
           type: string
         to_corp_or_alliance_id:
           format: int64
@@ -15061,7 +14968,7 @@ components:
       required:
       - corporation_id
       - loyalty_points
-    MailResponse_inner:
+    MailsResponse_inner:
       example:
         is_read: true
         mail_id: 1
@@ -15096,7 +15003,7 @@ components:
         recipients:
           description: Recipients of the mail
           items:
-            $ref: "#/components/schemas/PostMail_request_recipients_inner"
+            $ref: "#/components/schemas/PostMails_request_recipients_inner"
           type: array
           uniqueItems: true
         subject:
@@ -18862,7 +18769,7 @@ components:
       - starbase_id
       - system_id
       - type_id
-    CorporationStarbase_fuels_inner:
+    CorporationStarbaseResponse_fuels_inner:
       description: fuel object
       example:
         quantity: 1
@@ -20805,7 +20712,7 @@ components:
       required:
       - levels
       - type_id
-    KillmailResponse_attackers_inner:
+    KillmailByHashResponse_attackers_inner:
       description: attacker object
       example:
         ship_type_id: 7
@@ -20856,7 +20763,7 @@ components:
       - damage_done
       - final_blow
       - security_status
-    KillmailResponse_victim_items_inner_items_inner:
+    KillmailByHashResponse_victim_items_inner_items_inner:
       description: item object
       example:
         quantity_destroyed: 9
@@ -20884,7 +20791,7 @@ components:
       - flag
       - item_type_id
       - singleton
-    KillmailResponse_victim_items_inner:
+    KillmailByHashResponse_victim_items_inner:
       description: item object
       example:
         quantity_destroyed: 8
@@ -20914,7 +20821,7 @@ components:
           type: integer
         items:
           items:
-            $ref: "#/components/schemas/KillmailResponse_victim_items_inner_items_inner"
+            $ref: "#/components/schemas/KillmailByHashResponse_victim_items_inner_items_inner"
           type: array
         quantity_destroyed:
           description: |
@@ -20933,7 +20840,7 @@ components:
       - flag
       - item_type_id
       - singleton
-    KillmailResponse_victim_position:
+    KillmailByHashResponse_victim_position:
       description: |
         Coordinates of the victim in Cartesian space relative to the Sun
       example:
@@ -20954,7 +20861,7 @@ components:
       - x
       - "y"
       - z
-    KillmailResponse_victim:
+    KillmailByHashResponse_victim:
       example:
         ship_type_id: 2
         alliance_id: 7
@@ -21019,10 +20926,10 @@ components:
           type: integer
         items:
           items:
-            $ref: "#/components/schemas/KillmailResponse_victim_items_inner"
+            $ref: "#/components/schemas/KillmailByHashResponse_victim_items_inner"
           type: array
         position:
-          $ref: "#/components/schemas/KillmailResponse_victim_position"
+          $ref: "#/components/schemas/KillmailByHashResponse_victim_position"
         ship_type_id:
           description: |
             The ship that the victim was piloting and was destroyed
@@ -21107,7 +21014,7 @@ components:
           type: integer
       required:
       - type_id
-    MarketHistoryResponse_inner:
+    MarketRegionHistoryResponse_inner:
       example:
         date: 2000-01-23
         volume: 5
@@ -21144,7 +21051,7 @@ components:
       - lowest
       - order_count
       - volume
-    MarketOrdersResponse_inner:
+    MarketRegionOrdersResponse_inner:
       example:
         duration: 0
         min_volume: 1
@@ -21453,7 +21360,7 @@ components:
       - solar_system_id
       - structure_id
       - structure_type_id
-    UniverseAncestriesResponse_inner:
+    AncestriesResponse_inner:
       example:
         short_description: short_description
         name: name
@@ -21698,7 +21605,7 @@ components:
           type: integer
         name:
           type: string
-    UniverseNamesPost_inner:
+    NamesResponse_inner:
       example:
         name: name
         id: 0

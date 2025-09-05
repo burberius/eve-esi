@@ -39,7 +39,7 @@ import java.util.List;
 import java.util.Map;
 
 public class PlanetaryInteractionApi {
-    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2020, 1, 1);
+    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2025, 8, 26);
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
@@ -74,6 +74,321 @@ public class PlanetaryInteractionApi {
 
     public void setCustomBaseUrl(String customBaseUrl) {
         this.localCustomBaseUrl = customBaseUrl;
+    }
+
+    /**
+     * Build call for getCharacterPlanet
+     * 
+     * @param characterId
+     *            The ID of the character (required)
+     * @param planetId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getCharacterPlanetCall(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull Long planetId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/characters/{character_id}/planets/{planet_id}".replace("{" + "character_id" + "}",
+                localVarApiClient.escapeString(characterId.toString())).replace("{" + "planet_id" + "}",
+                localVarApiClient.escapeString(planetId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {};
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        if (acceptLanguage != null) {
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
+        }
+
+        if (ifNoneMatch != null) {
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
+        }
+
+        if (xCompatibilityDate != null) {
+            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
+        }
+
+        if (xTenant != null) {
+            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
+        }
+
+        String[] localVarAuthNames = new String[] { "OAuth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCharacterPlanetValidateBeforeCall(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull Long planetId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'characterId' is set
+        if (characterId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'characterId' when calling getCharacterPlanet(Async)");
+        }
+
+        // verify the required parameter 'planetId' is set
+        if (planetId == null) {
+            throw new ApiException("Missing the required parameter 'planetId' when calling getCharacterPlanet(Async)");
+        }
+
+        // verify the required parameter 'xCompatibilityDate' is set
+        if (xCompatibilityDate == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'xCompatibilityDate' when calling getCharacterPlanet(Async)");
+        }
+
+        return getCharacterPlanetCall(characterId, planetId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
+                _callback);
+
+    }
+
+    /**
+     * Get colony layout Returns full details on the layout of a single
+     * planetary colony, including links, pins and routes. Note: Planetary
+     * information is only recalculated when the colony is viewed through the
+     * client. Information will not update until this criteria is met.
+     * 
+     * @param characterId
+     *            The ID of the character (required)
+     * @param planetId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return CharacterPlanetResponse
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public CharacterPlanetResponse getCharacterPlanet(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull Long planetId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        ApiResponse<CharacterPlanetResponse> localVarResp = getCharacterPlanetWithHttpInfo(characterId, planetId,
+                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get colony layout Returns full details on the layout of a single
+     * planetary colony, including links, pins and routes. Note: Planetary
+     * information is only recalculated when the colony is viewed through the
+     * client. Information will not update until this criteria is met.
+     * 
+     * @param characterId
+     *            The ID of the character (required)
+     * @param planetId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return ApiResponse&lt;CharacterPlanetResponse&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<CharacterPlanetResponse> getCharacterPlanetWithHttpInfo(
+            @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull Long planetId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        okhttp3.Call localVarCall = getCharacterPlanetValidateBeforeCall(characterId, planetId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant, null);
+        Type localVarReturnType = new TypeToken<CharacterPlanetResponse>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get colony layout (asynchronously) Returns full details on the layout of
+     * a single planetary colony, including links, pins and routes. Note:
+     * Planetary information is only recalculated when the colony is viewed
+     * through the client. Information will not update until this criteria is
+     * met.
+     * 
+     * @param characterId
+     *            The ID of the character (required)
+     * @param planetId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request
+     *             body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getCharacterPlanetAsync(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull Long planetId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback<CharacterPlanetResponse> _callback)
+            throws ApiException {
+
+        okhttp3.Call localVarCall = getCharacterPlanetValidateBeforeCall(characterId, planetId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant, _callback);
+        Type localVarReturnType = new TypeToken<CharacterPlanetResponse>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -368,322 +683,6 @@ public class PlanetaryInteractionApi {
     }
 
     /**
-     * Build call for getCharacterPlanetsPlanetId
-     * 
-     * @param characterId
-     *            The ID of the character (required)
-     * @param planetId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException
-     *             If fail to serialize the request body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getCharacterPlanetsPlanetIdCall(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull Long planetId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {};
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null) {
-            basePath = localCustomBaseUrl;
-        } else if (localBasePaths.length > 0) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/characters/{character_id}/planets/{planet_id}".replace("{" + "character_id" + "}",
-                localVarApiClient.escapeString(characterId.toString())).replace("{" + "planet_id" + "}",
-                localVarApiClient.escapeString(planetId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {};
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
-        }
-
-        if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
-        }
-
-        if (xCompatibilityDate != null) {
-            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
-        }
-
-        if (xTenant != null) {
-            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
-        }
-
-        String[] localVarAuthNames = new String[] { "OAuth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
-                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
-                localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCharacterPlanetsPlanetIdValidateBeforeCall(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull Long planetId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'characterId' is set
-        if (characterId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'characterId' when calling getCharacterPlanetsPlanetId(Async)");
-        }
-
-        // verify the required parameter 'planetId' is set
-        if (planetId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'planetId' when calling getCharacterPlanetsPlanetId(Async)");
-        }
-
-        // verify the required parameter 'xCompatibilityDate' is set
-        if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getCharacterPlanetsPlanetId(Async)");
-        }
-
-        return getCharacterPlanetsPlanetIdCall(characterId, planetId, xCompatibilityDate, acceptLanguage, ifNoneMatch,
-                xTenant, _callback);
-
-    }
-
-    /**
-     * Get colony layout Returns full details on the layout of a single
-     * planetary colony, including links, pins and routes. Note: Planetary
-     * information is only recalculated when the colony is viewed through the
-     * client. Information will not update until this criteria is met.
-     * 
-     * @param characterId
-     *            The ID of the character (required)
-     * @param planetId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return CharacterPlanetResponse
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public CharacterPlanetResponse getCharacterPlanetsPlanetId(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull Long planetId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<CharacterPlanetResponse> localVarResp = getCharacterPlanetsPlanetIdWithHttpInfo(characterId,
-                planetId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Get colony layout Returns full details on the layout of a single
-     * planetary colony, including links, pins and routes. Note: Planetary
-     * information is only recalculated when the colony is viewed through the
-     * client. Information will not update until this criteria is met.
-     * 
-     * @param characterId
-     *            The ID of the character (required)
-     * @param planetId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return ApiResponse&lt;CharacterPlanetResponse&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<CharacterPlanetResponse> getCharacterPlanetsPlanetIdWithHttpInfo(
-            @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull Long planetId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        okhttp3.Call localVarCall = getCharacterPlanetsPlanetIdValidateBeforeCall(characterId, planetId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<CharacterPlanetResponse>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Get colony layout (asynchronously) Returns full details on the layout of
-     * a single planetary colony, including links, pins and routes. Note:
-     * Planetary information is only recalculated when the colony is viewed
-     * through the client. Information will not update until this criteria is
-     * met.
-     * 
-     * @param characterId
-     *            The ID of the character (required)
-     * @param planetId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException
-     *             If fail to process the API call, e.g. serializing the request
-     *             body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getCharacterPlanetsPlanetIdAsync(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull Long planetId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<CharacterPlanetResponse> _callback)
-            throws ApiException {
-
-        okhttp3.Call localVarCall = getCharacterPlanetsPlanetIdValidateBeforeCall(characterId, planetId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<CharacterPlanetResponse>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    /**
      * Build call for getCorporationCustomsOffices
      * 
      * @param corporationId
@@ -821,8 +820,7 @@ public class PlanetaryInteractionApi {
 
     /**
      * List corporation customs offices List customs offices owned by a
-     * corporation Requires one of the following EVE corporation role(s):
-     * Director
+     * corporation
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -879,8 +877,7 @@ public class PlanetaryInteractionApi {
 
     /**
      * List corporation customs offices List customs offices owned by a
-     * corporation Requires one of the following EVE corporation role(s):
-     * Director
+     * corporation
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -941,8 +938,7 @@ public class PlanetaryInteractionApi {
 
     /**
      * List corporation customs offices (asynchronously) List customs offices
-     * owned by a corporation Requires one of the following EVE corporation
-     * role(s): Director
+     * owned by a corporation
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -1004,7 +1000,7 @@ public class PlanetaryInteractionApi {
     }
 
     /**
-     * Build call for getUniverseSchematicsSchematicId
+     * Build call for getSchematic
      * 
      * @param schematicId
      *            (required)
@@ -1046,7 +1042,7 @@ public class PlanetaryInteractionApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseSchematicsSchematicIdCall(@javax.annotation.Nonnull Long schematicId,
+    public okhttp3.Call getSchematicCall(@javax.annotation.Nonnull Long schematicId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
@@ -1110,24 +1106,22 @@ public class PlanetaryInteractionApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUniverseSchematicsSchematicIdValidateBeforeCall(@javax.annotation.Nonnull Long schematicId,
+    private okhttp3.Call getSchematicValidateBeforeCall(@javax.annotation.Nonnull Long schematicId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'schematicId' is set
         if (schematicId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'schematicId' when calling getUniverseSchematicsSchematicId(Async)");
+            throw new ApiException("Missing the required parameter 'schematicId' when calling getSchematic(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
             throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getUniverseSchematicsSchematicId(Async)");
+                    "Missing the required parameter 'xCompatibilityDate' when calling getSchematic(Async)");
         }
 
-        return getUniverseSchematicsSchematicIdCall(schematicId, xCompatibilityDate, acceptLanguage, ifNoneMatch,
-                xTenant, _callback);
+        return getSchematicCall(schematicId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
 
     }
 
@@ -1174,12 +1168,12 @@ public class PlanetaryInteractionApi {
      *                        </tr>
      *                        </table>
      */
-    public SchematicResponse getUniverseSchematicsSchematicId(@javax.annotation.Nonnull Long schematicId,
+    public SchematicResponse getSchematic(@javax.annotation.Nonnull Long schematicId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<SchematicResponse> localVarResp = getUniverseSchematicsSchematicIdWithHttpInfo(schematicId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<SchematicResponse> localVarResp = getSchematicWithHttpInfo(schematicId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -1226,12 +1220,12 @@ public class PlanetaryInteractionApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<SchematicResponse> getUniverseSchematicsSchematicIdWithHttpInfo(
-            @javax.annotation.Nonnull Long schematicId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        okhttp3.Call localVarCall = getUniverseSchematicsSchematicIdValidateBeforeCall(schematicId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, null);
+    public ApiResponse<SchematicResponse> getSchematicWithHttpInfo(@javax.annotation.Nonnull Long schematicId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        okhttp3.Call localVarCall = getSchematicValidateBeforeCall(schematicId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant, null);
         Type localVarReturnType = new TypeToken<SchematicResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1282,13 +1276,13 @@ public class PlanetaryInteractionApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseSchematicsSchematicIdAsync(@javax.annotation.Nonnull Long schematicId,
+    public okhttp3.Call getSchematicAsync(@javax.annotation.Nonnull Long schematicId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback<SchematicResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getUniverseSchematicsSchematicIdValidateBeforeCall(schematicId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, _callback);
+        okhttp3.Call localVarCall = getSchematicValidateBeforeCall(schematicId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<SchematicResponse>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);

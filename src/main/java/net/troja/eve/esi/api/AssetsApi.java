@@ -40,7 +40,7 @@ import java.util.List;
 import java.util.Map;
 
 public class AssetsApi {
-    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2020, 1, 1);
+    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2025, 8, 26);
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
@@ -526,8 +526,7 @@ public class AssetsApi {
     }
 
     /**
-     * Get corporation assets Return a list of the corporation assets Requires
-     * one of the following EVE corporation role(s): Director
+     * Get corporation assets Return a list of the corporation assets
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -582,8 +581,7 @@ public class AssetsApi {
     }
 
     /**
-     * Get corporation assets Return a list of the corporation assets Requires
-     * one of the following EVE corporation role(s): Director
+     * Get corporation assets Return a list of the corporation assets
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -642,7 +640,7 @@ public class AssetsApi {
 
     /**
      * Get corporation assets (asynchronously) Return a list of the corporation
-     * assets Requires one of the following EVE corporation role(s): Director
+     * assets
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -710,6 +708,8 @@ public class AssetsApi {
      *            The ID of the character (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -719,8 +719,6 @@ public class AssetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
@@ -749,9 +747,9 @@ public class AssetsApi {
      *                        </table>
      */
     public okhttp3.Call postCharacterAssetsLocationsCall(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable Set<Long> requestBody, final ApiCallback _callback) throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {};
@@ -813,9 +811,9 @@ public class AssetsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postCharacterAssetsLocationsValidateBeforeCall(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable Set<Long> requestBody, final ApiCallback _callback) throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException(
@@ -828,8 +826,14 @@ public class AssetsApi {
                     "Missing the required parameter 'xCompatibilityDate' when calling postCharacterAssetsLocations(Async)");
         }
 
-        return postCharacterAssetsLocationsCall(characterId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
-                requestBody, _callback);
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'requestBody' when calling postCharacterAssetsLocations(Async)");
+        }
+
+        return postCharacterAssetsLocationsCall(characterId, xCompatibilityDate, requestBody, acceptLanguage,
+                ifNoneMatch, xTenant, _callback);
 
     }
 
@@ -842,6 +846,8 @@ public class AssetsApi {
      *            The ID of the character (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -851,8 +857,6 @@ public class AssetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @return List&lt;CharacterAssetsLocationsPostInner&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
@@ -881,11 +885,11 @@ public class AssetsApi {
      */
     public List<CharacterAssetsLocationsPostInner> postCharacterAssetsLocations(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, @javax.annotation.Nullable Set<Long> requestBody)
+            @javax.annotation.Nonnull Set<Long> requestBody, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         ApiResponse<List<CharacterAssetsLocationsPostInner>> localVarResp = postCharacterAssetsLocationsWithHttpInfo(
-                characterId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, requestBody);
+                characterId, xCompatibilityDate, requestBody, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -898,6 +902,8 @@ public class AssetsApi {
      *            The ID of the character (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -907,8 +913,6 @@ public class AssetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @return ApiResponse&lt;List&lt;CharacterAssetsLocationsPostInner&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
@@ -937,11 +941,11 @@ public class AssetsApi {
      */
     public ApiResponse<List<CharacterAssetsLocationsPostInner>> postCharacterAssetsLocationsWithHttpInfo(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, @javax.annotation.Nullable Set<Long> requestBody)
+            @javax.annotation.Nonnull Set<Long> requestBody, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = postCharacterAssetsLocationsValidateBeforeCall(characterId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, requestBody, null);
+                requestBody, acceptLanguage, ifNoneMatch, xTenant, null);
         Type localVarReturnType = new TypeToken<List<CharacterAssetsLocationsPostInner>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -956,6 +960,8 @@ public class AssetsApi {
      *            The ID of the character (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -965,8 +971,6 @@ public class AssetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
@@ -996,13 +1000,13 @@ public class AssetsApi {
      *                        </table>
      */
     public okhttp3.Call postCharacterAssetsLocationsAsync(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable Set<Long> requestBody,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant,
             final ApiCallback<List<CharacterAssetsLocationsPostInner>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postCharacterAssetsLocationsValidateBeforeCall(characterId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, requestBody, _callback);
+                requestBody, acceptLanguage, ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterAssetsLocationsPostInner>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -1016,6 +1020,8 @@ public class AssetsApi {
      *            The ID of the character (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -1025,8 +1031,6 @@ public class AssetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
@@ -1055,9 +1059,9 @@ public class AssetsApi {
      *                        </table>
      */
     public okhttp3.Call postCharacterAssetsNamesCall(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable Set<Long> requestBody, final ApiCallback _callback) throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {};
@@ -1119,9 +1123,9 @@ public class AssetsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postCharacterAssetsNamesValidateBeforeCall(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable Set<Long> requestBody, final ApiCallback _callback) throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException(
@@ -1134,8 +1138,14 @@ public class AssetsApi {
                     "Missing the required parameter 'xCompatibilityDate' when calling postCharacterAssetsNames(Async)");
         }
 
-        return postCharacterAssetsNamesCall(characterId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
-                requestBody, _callback);
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'requestBody' when calling postCharacterAssetsNames(Async)");
+        }
+
+        return postCharacterAssetsNamesCall(characterId, xCompatibilityDate, requestBody, acceptLanguage, ifNoneMatch,
+                xTenant, _callback);
 
     }
 
@@ -1148,6 +1158,8 @@ public class AssetsApi {
      *            The ID of the character (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -1157,8 +1169,6 @@ public class AssetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @return List&lt;CharacterAssetsNamesPostInner&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
@@ -1186,11 +1196,11 @@ public class AssetsApi {
      *                        </table>
      */
     public List<CharacterAssetsNamesPostInner> postCharacterAssetsNames(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable Set<Long> requestBody) throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
         ApiResponse<List<CharacterAssetsNamesPostInner>> localVarResp = postCharacterAssetsNamesWithHttpInfo(
-                characterId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, requestBody);
+                characterId, xCompatibilityDate, requestBody, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -1203,6 +1213,8 @@ public class AssetsApi {
      *            The ID of the character (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -1212,8 +1224,6 @@ public class AssetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @return ApiResponse&lt;List&lt;CharacterAssetsNamesPostInner&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
@@ -1242,11 +1252,11 @@ public class AssetsApi {
      */
     public ApiResponse<List<CharacterAssetsNamesPostInner>> postCharacterAssetsNamesWithHttpInfo(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, @javax.annotation.Nullable Set<Long> requestBody)
+            @javax.annotation.Nonnull Set<Long> requestBody, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = postCharacterAssetsNamesValidateBeforeCall(characterId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, requestBody, null);
+                requestBody, acceptLanguage, ifNoneMatch, xTenant, null);
         Type localVarReturnType = new TypeToken<List<CharacterAssetsNamesPostInner>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1261,6 +1271,8 @@ public class AssetsApi {
      *            The ID of the character (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -1270,8 +1282,6 @@ public class AssetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
@@ -1301,13 +1311,13 @@ public class AssetsApi {
      *                        </table>
      */
     public okhttp3.Call postCharacterAssetsNamesAsync(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable Set<Long> requestBody,
-            final ApiCallback<List<CharacterAssetsNamesPostInner>> _callback) throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CharacterAssetsNamesPostInner>> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = postCharacterAssetsNamesValidateBeforeCall(characterId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, requestBody, _callback);
+                requestBody, acceptLanguage, ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterAssetsNamesPostInner>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -1321,6 +1331,8 @@ public class AssetsApi {
      *            The ID of the corporation (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -1330,8 +1342,6 @@ public class AssetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
@@ -1360,9 +1370,9 @@ public class AssetsApi {
      *                        </table>
      */
     public okhttp3.Call postCorporationAssetsLocationsCall(@javax.annotation.Nonnull Long corporationId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable Set<Long> requestBody, final ApiCallback _callback) throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {};
@@ -1424,9 +1434,9 @@ public class AssetsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postCorporationAssetsLocationsValidateBeforeCall(@javax.annotation.Nonnull Long corporationId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable Set<Long> requestBody, final ApiCallback _callback) throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
             throw new ApiException(
@@ -1439,21 +1449,28 @@ public class AssetsApi {
                     "Missing the required parameter 'xCompatibilityDate' when calling postCorporationAssetsLocations(Async)");
         }
 
-        return postCorporationAssetsLocationsCall(corporationId, xCompatibilityDate, acceptLanguage, ifNoneMatch,
-                xTenant, requestBody, _callback);
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'requestBody' when calling postCorporationAssetsLocations(Async)");
+        }
+
+        return postCorporationAssetsLocationsCall(corporationId, xCompatibilityDate, requestBody, acceptLanguage,
+                ifNoneMatch, xTenant, _callback);
 
     }
 
     /**
      * Get corporation asset locations Return locations for a set of item ids,
      * which you can get from corporation assets endpoint. Coordinates for items
-     * in hangars or stations are set to (0,0,0) Requires one of the following
-     * EVE corporation role(s): Director
+     * in hangars or stations are set to (0,0,0)
      * 
      * @param corporationId
      *            The ID of the corporation (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -1463,8 +1480,6 @@ public class AssetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @return List&lt;CharacterAssetsLocationsPostInner&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
@@ -1493,24 +1508,25 @@ public class AssetsApi {
      */
     public List<CharacterAssetsLocationsPostInner> postCorporationAssetsLocations(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, @javax.annotation.Nullable Set<Long> requestBody)
+            @javax.annotation.Nonnull Set<Long> requestBody, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         ApiResponse<List<CharacterAssetsLocationsPostInner>> localVarResp = postCorporationAssetsLocationsWithHttpInfo(
-                corporationId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, requestBody);
+                corporationId, xCompatibilityDate, requestBody, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
     /**
      * Get corporation asset locations Return locations for a set of item ids,
      * which you can get from corporation assets endpoint. Coordinates for items
-     * in hangars or stations are set to (0,0,0) Requires one of the following
-     * EVE corporation role(s): Director
+     * in hangars or stations are set to (0,0,0)
      * 
      * @param corporationId
      *            The ID of the corporation (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -1520,8 +1536,6 @@ public class AssetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @return ApiResponse&lt;List&lt;CharacterAssetsLocationsPostInner&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
@@ -1550,11 +1564,11 @@ public class AssetsApi {
      */
     public ApiResponse<List<CharacterAssetsLocationsPostInner>> postCorporationAssetsLocationsWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, @javax.annotation.Nullable Set<Long> requestBody)
+            @javax.annotation.Nonnull Set<Long> requestBody, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = postCorporationAssetsLocationsValidateBeforeCall(corporationId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, requestBody, null);
+                requestBody, acceptLanguage, ifNoneMatch, xTenant, null);
         Type localVarReturnType = new TypeToken<List<CharacterAssetsLocationsPostInner>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1563,13 +1577,14 @@ public class AssetsApi {
     /**
      * Get corporation asset locations (asynchronously) Return locations for a
      * set of item ids, which you can get from corporation assets endpoint.
-     * Coordinates for items in hangars or stations are set to (0,0,0) Requires
-     * one of the following EVE corporation role(s): Director
+     * Coordinates for items in hangars or stations are set to (0,0,0)
      * 
      * @param corporationId
      *            The ID of the corporation (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -1579,8 +1594,6 @@ public class AssetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
@@ -1610,13 +1623,13 @@ public class AssetsApi {
      *                        </table>
      */
     public okhttp3.Call postCorporationAssetsLocationsAsync(@javax.annotation.Nonnull Long corporationId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable Set<Long> requestBody,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant,
             final ApiCallback<List<CharacterAssetsLocationsPostInner>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postCorporationAssetsLocationsValidateBeforeCall(corporationId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, requestBody, _callback);
+                requestBody, acceptLanguage, ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterAssetsLocationsPostInner>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -1630,6 +1643,8 @@ public class AssetsApi {
      *            The ID of the corporation (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -1639,8 +1654,6 @@ public class AssetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
@@ -1669,9 +1682,9 @@ public class AssetsApi {
      *                        </table>
      */
     public okhttp3.Call postCorporationAssetsNamesCall(@javax.annotation.Nonnull Long corporationId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable Set<Long> requestBody, final ApiCallback _callback) throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {};
@@ -1733,9 +1746,9 @@ public class AssetsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postCorporationAssetsNamesValidateBeforeCall(@javax.annotation.Nonnull Long corporationId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable Set<Long> requestBody, final ApiCallback _callback) throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
             throw new ApiException(
@@ -1748,21 +1761,28 @@ public class AssetsApi {
                     "Missing the required parameter 'xCompatibilityDate' when calling postCorporationAssetsNames(Async)");
         }
 
-        return postCorporationAssetsNamesCall(corporationId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
-                requestBody, _callback);
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'requestBody' when calling postCorporationAssetsNames(Async)");
+        }
+
+        return postCorporationAssetsNamesCall(corporationId, xCompatibilityDate, requestBody, acceptLanguage,
+                ifNoneMatch, xTenant, _callback);
 
     }
 
     /**
      * Get corporation asset names Return names for a set of item ids, which you
      * can get from corporation assets endpoint. Only valid for items that can
-     * customize names, like containers or ships Requires one of the following
-     * EVE corporation role(s): Director
+     * customize names, like containers or ships
      * 
      * @param corporationId
      *            The ID of the corporation (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -1772,8 +1792,6 @@ public class AssetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @return List&lt;CharacterAssetsNamesPostInner&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
@@ -1801,24 +1819,25 @@ public class AssetsApi {
      *                        </table>
      */
     public List<CharacterAssetsNamesPostInner> postCorporationAssetsNames(@javax.annotation.Nonnull Long corporationId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable Set<Long> requestBody) throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
         ApiResponse<List<CharacterAssetsNamesPostInner>> localVarResp = postCorporationAssetsNamesWithHttpInfo(
-                corporationId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, requestBody);
+                corporationId, xCompatibilityDate, requestBody, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
     /**
      * Get corporation asset names Return names for a set of item ids, which you
      * can get from corporation assets endpoint. Only valid for items that can
-     * customize names, like containers or ships Requires one of the following
-     * EVE corporation role(s): Director
+     * customize names, like containers or ships
      * 
      * @param corporationId
      *            The ID of the corporation (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -1828,8 +1847,6 @@ public class AssetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @return ApiResponse&lt;List&lt;CharacterAssetsNamesPostInner&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
@@ -1858,11 +1875,11 @@ public class AssetsApi {
      */
     public ApiResponse<List<CharacterAssetsNamesPostInner>> postCorporationAssetsNamesWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, @javax.annotation.Nullable Set<Long> requestBody)
+            @javax.annotation.Nonnull Set<Long> requestBody, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = postCorporationAssetsNamesValidateBeforeCall(corporationId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, requestBody, null);
+                requestBody, acceptLanguage, ifNoneMatch, xTenant, null);
         Type localVarReturnType = new TypeToken<List<CharacterAssetsNamesPostInner>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1871,13 +1888,14 @@ public class AssetsApi {
     /**
      * Get corporation asset names (asynchronously) Return names for a set of
      * item ids, which you can get from corporation assets endpoint. Only valid
-     * for items that can customize names, like containers or ships Requires one
-     * of the following EVE corporation role(s): Director
+     * for items that can customize names, like containers or ships
      * 
      * @param corporationId
      *            The ID of the corporation (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -1887,8 +1905,6 @@ public class AssetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
@@ -1918,13 +1934,13 @@ public class AssetsApi {
      *                        </table>
      */
     public okhttp3.Call postCorporationAssetsNamesAsync(@javax.annotation.Nonnull Long corporationId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable Set<Long> requestBody,
-            final ApiCallback<List<CharacterAssetsNamesPostInner>> _callback) throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CharacterAssetsNamesPostInner>> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = postCorporationAssetsNamesValidateBeforeCall(corporationId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, requestBody, _callback);
+                requestBody, acceptLanguage, ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterAssetsNamesPostInner>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);

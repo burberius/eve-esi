@@ -40,7 +40,7 @@ import net.troja.eve.esi.model.CorporationResponse;
 import net.troja.eve.esi.model.CorporationRolesHistoryResponseInner;
 import net.troja.eve.esi.model.CorporationRolesResponseInner;
 import net.troja.eve.esi.model.CorporationShareholdersResponseInner;
-import net.troja.eve.esi.model.CorporationStarbase;
+import net.troja.eve.esi.model.CorporationStarbaseResponse;
 import net.troja.eve.esi.model.CorporationStarbasesResponseInner;
 import net.troja.eve.esi.model.CorporationStructuresResponseInner;
 import net.troja.eve.esi.model.CorporationTitlesResponseInner;
@@ -54,7 +54,7 @@ import java.util.List;
 import java.util.Map;
 
 public class CorporationApi {
-    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2020, 1, 1);
+    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2025, 8, 26);
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
@@ -380,7 +380,7 @@ public class CorporationApi {
     }
 
     /**
-     * Build call for getCorporationAlliancehistory
+     * Build call for getCorporationAllianceshistory
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -422,7 +422,7 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getCorporationAlliancehistoryCall(@javax.annotation.Nonnull Long corporationId,
+    public okhttp3.Call getCorporationAllianceshistoryCall(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
@@ -486,23 +486,23 @@ public class CorporationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCorporationAlliancehistoryValidateBeforeCall(@javax.annotation.Nonnull Long corporationId,
+    private okhttp3.Call getCorporationAllianceshistoryValidateBeforeCall(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
             throw new ApiException(
-                    "Missing the required parameter 'corporationId' when calling getCorporationAlliancehistory(Async)");
+                    "Missing the required parameter 'corporationId' when calling getCorporationAllianceshistory(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
             throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getCorporationAlliancehistory(Async)");
+                    "Missing the required parameter 'xCompatibilityDate' when calling getCorporationAllianceshistory(Async)");
         }
 
-        return getCorporationAlliancehistoryCall(corporationId, xCompatibilityDate, acceptLanguage, ifNoneMatch,
+        return getCorporationAllianceshistoryCall(corporationId, xCompatibilityDate, acceptLanguage, ifNoneMatch,
                 xTenant, _callback);
 
     }
@@ -550,11 +550,11 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CorporationAllianceshistoryResponseInner> getCorporationAlliancehistory(
+    public List<CorporationAllianceshistoryResponseInner> getCorporationAllianceshistory(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CorporationAllianceshistoryResponseInner>> localVarResp = getCorporationAlliancehistoryWithHttpInfo(
+        ApiResponse<List<CorporationAllianceshistoryResponseInner>> localVarResp = getCorporationAllianceshistoryWithHttpInfo(
                 corporationId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -604,11 +604,11 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CorporationAllianceshistoryResponseInner>> getCorporationAlliancehistoryWithHttpInfo(
+    public ApiResponse<List<CorporationAllianceshistoryResponseInner>> getCorporationAllianceshistoryWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        okhttp3.Call localVarCall = getCorporationAlliancehistoryValidateBeforeCall(corporationId, xCompatibilityDate,
+        okhttp3.Call localVarCall = getCorporationAllianceshistoryValidateBeforeCall(corporationId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
         Type localVarReturnType = new TypeToken<List<CorporationAllianceshistoryResponseInner>>() {
         }.getType();
@@ -660,12 +660,12 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getCorporationAlliancehistoryAsync(@javax.annotation.Nonnull Long corporationId,
+    public okhttp3.Call getCorporationAllianceshistoryAsync(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback<List<CorporationAllianceshistoryResponseInner>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCorporationAlliancehistoryValidateBeforeCall(corporationId, xCompatibilityDate,
+        okhttp3.Call localVarCall = getCorporationAllianceshistoryValidateBeforeCall(corporationId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationAllianceshistoryResponseInner>>() {
         }.getType();
@@ -811,7 +811,7 @@ public class CorporationApi {
 
     /**
      * Get corporation blueprints Returns a list of blueprints the corporation
-     * owns Requires one of the following EVE corporation role(s): Director
+     * owns
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -868,7 +868,7 @@ public class CorporationApi {
 
     /**
      * Get corporation blueprints Returns a list of blueprints the corporation
-     * owns Requires one of the following EVE corporation role(s): Director
+     * owns
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -927,8 +927,7 @@ public class CorporationApi {
 
     /**
      * Get corporation blueprints (asynchronously) Returns a list of blueprints
-     * the corporation owns Requires one of the following EVE corporation
-     * role(s): Director
+     * the corporation owns
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -1128,8 +1127,7 @@ public class CorporationApi {
     /**
      * Get all corporation ALSC logs Returns logs recorded in the past seven
      * days from all audit log secure containers (ALSC) owned by a given
-     * corporation Requires one of the following EVE corporation role(s):
-     * Director
+     * corporation
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -1187,8 +1185,7 @@ public class CorporationApi {
     /**
      * Get all corporation ALSC logs Returns logs recorded in the past seven
      * days from all audit log secure containers (ALSC) owned by a given
-     * corporation Requires one of the following EVE corporation role(s):
-     * Director
+     * corporation
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -1250,8 +1247,7 @@ public class CorporationApi {
     /**
      * Get all corporation ALSC logs (asynchronously) Returns logs recorded in
      * the past seven days from all audit log secure containers (ALSC) owned by
-     * a given corporation Requires one of the following EVE corporation
-     * role(s): Director
+     * a given corporation
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -1442,8 +1438,7 @@ public class CorporationApi {
 
     /**
      * Get corporation divisions Return corporation hangar and wallet division
-     * names, only show if a division is not using the default name Requires one
-     * of the following EVE corporation role(s): Director
+     * names, only show if a division is not using the default name
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -1495,8 +1490,7 @@ public class CorporationApi {
 
     /**
      * Get corporation divisions Return corporation hangar and wallet division
-     * names, only show if a division is not using the default name Requires one
-     * of the following EVE corporation role(s): Director
+     * names, only show if a division is not using the default name
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -1551,7 +1545,7 @@ public class CorporationApi {
     /**
      * Get corporation divisions (asynchronously) Return corporation hangar and
      * wallet division names, only show if a division is not using the default
-     * name Requires one of the following EVE corporation role(s): Director
+     * name
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -1736,8 +1730,7 @@ public class CorporationApi {
     }
 
     /**
-     * Get corporation facilities Return a corporation&#39;s facilities Requires
-     * one of the following EVE corporation role(s): Factory_Manager
+     * Get corporation facilities Return a corporation&#39;s facilities
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -1788,8 +1781,7 @@ public class CorporationApi {
     }
 
     /**
-     * Get corporation facilities Return a corporation&#39;s facilities Requires
-     * one of the following EVE corporation role(s): Factory_Manager
+     * Get corporation facilities Return a corporation&#39;s facilities
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -1843,8 +1835,7 @@ public class CorporationApi {
 
     /**
      * Get corporation facilities (asynchronously) Return a corporation&#39;s
-     * facilities Requires one of the following EVE corporation role(s):
-     * Factory_Manager
+     * facilities
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -2639,7 +2630,6 @@ public class CorporationApi {
 
     /**
      * Get corporation issued medals Returns medals issued by a corporation
-     * Requires one of the following EVE corporation role(s): Director
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -2696,7 +2686,6 @@ public class CorporationApi {
 
     /**
      * Get corporation issued medals Returns medals issued by a corporation
-     * Requires one of the following EVE corporation role(s): Director
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -2757,8 +2746,7 @@ public class CorporationApi {
 
     /**
      * Get corporation issued medals (asynchronously) Returns medals issued by a
-     * corporation Requires one of the following EVE corporation role(s):
-     * Director
+     * corporation
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -2814,6 +2802,300 @@ public class CorporationApi {
         okhttp3.Call localVarCall = getCorporationMedalsIssuedValidateBeforeCall(corporationId, xCompatibilityDate,
                 page, acceptLanguage, ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationMedalsIssuedResponseInner>>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
+     * Build call for getCorporationMemberTracking
+     * 
+     * @param corporationId
+     *            The ID of the corporation (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getCorporationMemberTrackingCall(@javax.annotation.Nonnull Long corporationId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/corporations/{corporation_id}/membertracking".replace("{" + "corporation_id" + "}",
+                localVarApiClient.escapeString(corporationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {};
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        if (acceptLanguage != null) {
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
+        }
+
+        if (ifNoneMatch != null) {
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
+        }
+
+        if (xCompatibilityDate != null) {
+            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
+        }
+
+        if (xTenant != null) {
+            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
+        }
+
+        String[] localVarAuthNames = new String[] { "OAuth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCorporationMemberTrackingValidateBeforeCall(@javax.annotation.Nonnull Long corporationId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'corporationId' is set
+        if (corporationId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'corporationId' when calling getCorporationMemberTracking(Async)");
+        }
+
+        // verify the required parameter 'xCompatibilityDate' is set
+        if (xCompatibilityDate == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'xCompatibilityDate' when calling getCorporationMemberTracking(Async)");
+        }
+
+        return getCorporationMemberTrackingCall(corporationId, xCompatibilityDate, acceptLanguage, ifNoneMatch,
+                xTenant, _callback);
+
+    }
+
+    /**
+     * Track corporation members Returns additional information about a
+     * corporation&#39;s members which helps tracking their activities
+     * 
+     * @param corporationId
+     *            The ID of the corporation (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return List&lt;CorporationMemberTrackingResponseInner&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public List<CorporationMemberTrackingResponseInner> getCorporationMemberTracking(
+            @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        ApiResponse<List<CorporationMemberTrackingResponseInner>> localVarResp = getCorporationMemberTrackingWithHttpInfo(
+                corporationId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Track corporation members Returns additional information about a
+     * corporation&#39;s members which helps tracking their activities
+     * 
+     * @param corporationId
+     *            The ID of the corporation (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return 
+     *         ApiResponse&lt;List&lt;CorporationMemberTrackingResponseInner&gt;&
+     *         gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<List<CorporationMemberTrackingResponseInner>> getCorporationMemberTrackingWithHttpInfo(
+            @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        okhttp3.Call localVarCall = getCorporationMemberTrackingValidateBeforeCall(corporationId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant, null);
+        Type localVarReturnType = new TypeToken<List<CorporationMemberTrackingResponseInner>>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Track corporation members (asynchronously) Returns additional information
+     * about a corporation&#39;s members which helps tracking their activities
+     * 
+     * @param corporationId
+     *            The ID of the corporation (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request
+     *             body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getCorporationMemberTrackingAsync(@javax.annotation.Nonnull Long corporationId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback<List<CorporationMemberTrackingResponseInner>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCorporationMemberTrackingValidateBeforeCall(corporationId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant, _callback);
+        Type localVarReturnType = new TypeToken<List<CorporationMemberTrackingResponseInner>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3242,8 +3524,7 @@ public class CorporationApi {
 
     /**
      * Get corporation member limit Return a corporation&#39;s member limit, not
-     * including CEO himself Requires one of the following EVE corporation
-     * role(s): Director
+     * including CEO himself
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -3295,8 +3576,7 @@ public class CorporationApi {
 
     /**
      * Get corporation member limit Return a corporation&#39;s member limit, not
-     * including CEO himself Requires one of the following EVE corporation
-     * role(s): Director
+     * including CEO himself
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -3350,8 +3630,7 @@ public class CorporationApi {
 
     /**
      * Get corporation member limit (asynchronously) Return a corporation&#39;s
-     * member limit, not including CEO himself Requires one of the following EVE
-     * corporation role(s): Director
+     * member limit, not including CEO himself
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -3537,8 +3816,7 @@ public class CorporationApi {
 
     /**
      * Get corporation&#39;s members&#39; titles Returns a corporation&#39;s
-     * members&#39; titles Requires one of the following EVE corporation
-     * role(s): Director
+     * members&#39; titles
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -3590,8 +3868,7 @@ public class CorporationApi {
 
     /**
      * Get corporation&#39;s members&#39; titles Returns a corporation&#39;s
-     * members&#39; titles Requires one of the following EVE corporation
-     * role(s): Director
+     * members&#39; titles
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -3647,8 +3924,7 @@ public class CorporationApi {
 
     /**
      * Get corporation&#39;s members&#39; titles (asynchronously) Returns a
-     * corporation&#39;s members&#39; titles Requires one of the following EVE
-     * corporation role(s): Director
+     * corporation&#39;s members&#39; titles
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -3699,303 +3975,6 @@ public class CorporationApi {
         okhttp3.Call localVarCall = getCorporationMembersTitlesValidateBeforeCall(corporationId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationMembersTitlesResponseInner>>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    /**
-     * Build call for getCorporationMembertracking
-     * 
-     * @param corporationId
-     *            The ID of the corporation (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException
-     *             If fail to serialize the request body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getCorporationMembertrackingCall(@javax.annotation.Nonnull Long corporationId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {};
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null) {
-            basePath = localCustomBaseUrl;
-        } else if (localBasePaths.length > 0) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/corporations/{corporation_id}/membertracking".replace("{" + "corporation_id" + "}",
-                localVarApiClient.escapeString(corporationId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {};
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
-        }
-
-        if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
-        }
-
-        if (xCompatibilityDate != null) {
-            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
-        }
-
-        if (xTenant != null) {
-            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
-        }
-
-        String[] localVarAuthNames = new String[] { "OAuth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
-                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
-                localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCorporationMembertrackingValidateBeforeCall(@javax.annotation.Nonnull Long corporationId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'corporationId' is set
-        if (corporationId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'corporationId' when calling getCorporationMembertracking(Async)");
-        }
-
-        // verify the required parameter 'xCompatibilityDate' is set
-        if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getCorporationMembertracking(Async)");
-        }
-
-        return getCorporationMembertrackingCall(corporationId, xCompatibilityDate, acceptLanguage, ifNoneMatch,
-                xTenant, _callback);
-
-    }
-
-    /**
-     * Track corporation members Returns additional information about a
-     * corporation&#39;s members which helps tracking their activities Requires
-     * one of the following EVE corporation role(s): Director
-     * 
-     * @param corporationId
-     *            The ID of the corporation (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return List&lt;CorporationMemberTrackingResponseInner&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public List<CorporationMemberTrackingResponseInner> getCorporationMembertracking(
-            @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CorporationMemberTrackingResponseInner>> localVarResp = getCorporationMembertrackingWithHttpInfo(
-                corporationId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Track corporation members Returns additional information about a
-     * corporation&#39;s members which helps tracking their activities Requires
-     * one of the following EVE corporation role(s): Director
-     * 
-     * @param corporationId
-     *            The ID of the corporation (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return 
-     *         ApiResponse&lt;List&lt;CorporationMemberTrackingResponseInner&gt;&
-     *         gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<List<CorporationMemberTrackingResponseInner>> getCorporationMembertrackingWithHttpInfo(
-            @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        okhttp3.Call localVarCall = getCorporationMembertrackingValidateBeforeCall(corporationId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CorporationMemberTrackingResponseInner>>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Track corporation members (asynchronously) Returns additional information
-     * about a corporation&#39;s members which helps tracking their activities
-     * Requires one of the following EVE corporation role(s): Director
-     * 
-     * @param corporationId
-     *            The ID of the corporation (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException
-     *             If fail to process the API call, e.g. serializing the request
-     *             body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getCorporationMembertrackingAsync(@javax.annotation.Nonnull Long corporationId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CorporationMemberTrackingResponseInner>> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getCorporationMembertrackingValidateBeforeCall(corporationId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CorporationMemberTrackingResponseInner>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4432,8 +4411,7 @@ public class CorporationApi {
 
     /**
      * Get corporation member roles history Return how roles have changed for a
-     * coporation&#39;s members, up to a month Requires one of the following EVE
-     * corporation role(s): Director
+     * coporation&#39;s members, up to a month
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -4490,8 +4468,7 @@ public class CorporationApi {
 
     /**
      * Get corporation member roles history Return how roles have changed for a
-     * coporation&#39;s members, up to a month Requires one of the following EVE
-     * corporation role(s): Director
+     * coporation&#39;s members, up to a month
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -4552,8 +4529,7 @@ public class CorporationApi {
 
     /**
      * Get corporation member roles history (asynchronously) Return how roles
-     * have changed for a coporation&#39;s members, up to a month Requires one
-     * of the following EVE corporation role(s): Director
+     * have changed for a coporation&#39;s members, up to a month
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -4752,8 +4728,7 @@ public class CorporationApi {
 
     /**
      * Get corporation shareholders Return the current shareholders of a
-     * corporation. Requires one of the following EVE corporation role(s):
-     * Director
+     * corporation.
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -4810,8 +4785,7 @@ public class CorporationApi {
 
     /**
      * Get corporation shareholders Return the current shareholders of a
-     * corporation. Requires one of the following EVE corporation role(s):
-     * Director
+     * corporation.
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -4872,8 +4846,7 @@ public class CorporationApi {
 
     /**
      * Get corporation shareholders (asynchronously) Return the current
-     * shareholders of a corporation. Requires one of the following EVE
-     * corporation role(s): Director
+     * shareholders of a corporation.
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -5249,6 +5222,336 @@ public class CorporationApi {
     }
 
     /**
+     * Build call for getCorporationStarbase
+     * 
+     * @param corporationId
+     *            The ID of the corporation (required)
+     * @param starbaseId
+     *            (required)
+     * @param systemId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getCorporationStarbaseCall(@javax.annotation.Nonnull Long corporationId,
+            @javax.annotation.Nonnull Long starbaseId, @javax.annotation.Nonnull Long systemId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/corporations/{corporation_id}/starbases/{starbase_id}".replace(
+                "{" + "corporation_id" + "}", localVarApiClient.escapeString(corporationId.toString())).replace(
+                "{" + "starbase_id" + "}", localVarApiClient.escapeString(starbaseId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (systemId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("system_id", systemId));
+        }
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {};
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        if (acceptLanguage != null) {
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
+        }
+
+        if (ifNoneMatch != null) {
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
+        }
+
+        if (xCompatibilityDate != null) {
+            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
+        }
+
+        if (xTenant != null) {
+            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
+        }
+
+        String[] localVarAuthNames = new String[] { "OAuth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCorporationStarbaseValidateBeforeCall(@javax.annotation.Nonnull Long corporationId,
+            @javax.annotation.Nonnull Long starbaseId, @javax.annotation.Nonnull Long systemId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'corporationId' is set
+        if (corporationId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'corporationId' when calling getCorporationStarbase(Async)");
+        }
+
+        // verify the required parameter 'starbaseId' is set
+        if (starbaseId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'starbaseId' when calling getCorporationStarbase(Async)");
+        }
+
+        // verify the required parameter 'systemId' is set
+        if (systemId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'systemId' when calling getCorporationStarbase(Async)");
+        }
+
+        // verify the required parameter 'xCompatibilityDate' is set
+        if (xCompatibilityDate == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'xCompatibilityDate' when calling getCorporationStarbase(Async)");
+        }
+
+        return getCorporationStarbaseCall(corporationId, starbaseId, systemId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant, _callback);
+
+    }
+
+    /**
+     * Get starbase (POS) detail Returns various settings and fuels of a
+     * starbase (POS)
+     * 
+     * @param corporationId
+     *            The ID of the corporation (required)
+     * @param starbaseId
+     *            (required)
+     * @param systemId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return CorporationStarbaseResponse
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public CorporationStarbaseResponse getCorporationStarbase(@javax.annotation.Nonnull Long corporationId,
+            @javax.annotation.Nonnull Long starbaseId, @javax.annotation.Nonnull Long systemId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        ApiResponse<CorporationStarbaseResponse> localVarResp = getCorporationStarbaseWithHttpInfo(corporationId,
+                starbaseId, systemId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get starbase (POS) detail Returns various settings and fuels of a
+     * starbase (POS)
+     * 
+     * @param corporationId
+     *            The ID of the corporation (required)
+     * @param starbaseId
+     *            (required)
+     * @param systemId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return ApiResponse&lt;CorporationStarbaseResponse&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<CorporationStarbaseResponse> getCorporationStarbaseWithHttpInfo(
+            @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull Long starbaseId,
+            @javax.annotation.Nonnull Long systemId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        okhttp3.Call localVarCall = getCorporationStarbaseValidateBeforeCall(corporationId, starbaseId, systemId,
+                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, null);
+        Type localVarReturnType = new TypeToken<CorporationStarbaseResponse>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get starbase (POS) detail (asynchronously) Returns various settings and
+     * fuels of a starbase (POS)
+     * 
+     * @param corporationId
+     *            The ID of the corporation (required)
+     * @param starbaseId
+     *            (required)
+     * @param systemId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request
+     *             body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getCorporationStarbaseAsync(@javax.annotation.Nonnull Long corporationId,
+            @javax.annotation.Nonnull Long starbaseId, @javax.annotation.Nonnull Long systemId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback<CorporationStarbaseResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCorporationStarbaseValidateBeforeCall(corporationId, starbaseId, systemId,
+                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
+        Type localVarReturnType = new TypeToken<CorporationStarbaseResponse>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
      * Build call for getCorporationStarbases
      * 
      * @param corporationId
@@ -5386,7 +5689,7 @@ public class CorporationApi {
 
     /**
      * Get corporation starbases (POSes) Returns list of corporation starbases
-     * (POSes) Requires one of the following EVE corporation role(s): Director
+     * (POSes)
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -5443,7 +5746,7 @@ public class CorporationApi {
 
     /**
      * Get corporation starbases (POSes) Returns list of corporation starbases
-     * (POSes) Requires one of the following EVE corporation role(s): Director
+     * (POSes)
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -5502,8 +5805,7 @@ public class CorporationApi {
 
     /**
      * Get corporation starbases (POSes) (asynchronously) Returns list of
-     * corporation starbases (POSes) Requires one of the following EVE
-     * corporation role(s): Director
+     * corporation starbases (POSes)
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -5559,339 +5861,6 @@ public class CorporationApi {
         okhttp3.Call localVarCall = getCorporationStarbasesValidateBeforeCall(corporationId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationStarbasesResponseInner>>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    /**
-     * Build call for getCorporationStarbasesStarbaseId
-     * 
-     * @param corporationId
-     *            The ID of the corporation (required)
-     * @param starbaseId
-     *            (required)
-     * @param systemId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException
-     *             If fail to serialize the request body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getCorporationStarbasesStarbaseIdCall(@javax.annotation.Nonnull Long corporationId,
-            @javax.annotation.Nonnull Long starbaseId, @javax.annotation.Nonnull Long systemId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {};
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null) {
-            basePath = localCustomBaseUrl;
-        } else if (localBasePaths.length > 0) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/corporations/{corporation_id}/starbases/{starbase_id}".replace(
-                "{" + "corporation_id" + "}", localVarApiClient.escapeString(corporationId.toString())).replace(
-                "{" + "starbase_id" + "}", localVarApiClient.escapeString(starbaseId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (systemId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("system_id", systemId));
-        }
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {};
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
-        }
-
-        if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
-        }
-
-        if (xCompatibilityDate != null) {
-            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
-        }
-
-        if (xTenant != null) {
-            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
-        }
-
-        String[] localVarAuthNames = new String[] { "OAuth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
-                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
-                localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCorporationStarbasesStarbaseIdValidateBeforeCall(
-            @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull Long starbaseId,
-            @javax.annotation.Nonnull Long systemId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'corporationId' is set
-        if (corporationId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'corporationId' when calling getCorporationStarbasesStarbaseId(Async)");
-        }
-
-        // verify the required parameter 'starbaseId' is set
-        if (starbaseId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'starbaseId' when calling getCorporationStarbasesStarbaseId(Async)");
-        }
-
-        // verify the required parameter 'systemId' is set
-        if (systemId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'systemId' when calling getCorporationStarbasesStarbaseId(Async)");
-        }
-
-        // verify the required parameter 'xCompatibilityDate' is set
-        if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getCorporationStarbasesStarbaseId(Async)");
-        }
-
-        return getCorporationStarbasesStarbaseIdCall(corporationId, starbaseId, systemId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, _callback);
-
-    }
-
-    /**
-     * Get starbase (POS) detail Returns various settings and fuels of a
-     * starbase (POS) Requires one of the following EVE corporation role(s):
-     * Director
-     * 
-     * @param corporationId
-     *            The ID of the corporation (required)
-     * @param starbaseId
-     *            (required)
-     * @param systemId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return CorporationStarbase
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public CorporationStarbase getCorporationStarbasesStarbaseId(@javax.annotation.Nonnull Long corporationId,
-            @javax.annotation.Nonnull Long starbaseId, @javax.annotation.Nonnull Long systemId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        ApiResponse<CorporationStarbase> localVarResp = getCorporationStarbasesStarbaseIdWithHttpInfo(corporationId,
-                starbaseId, systemId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Get starbase (POS) detail Returns various settings and fuels of a
-     * starbase (POS) Requires one of the following EVE corporation role(s):
-     * Director
-     * 
-     * @param corporationId
-     *            The ID of the corporation (required)
-     * @param starbaseId
-     *            (required)
-     * @param systemId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return ApiResponse&lt;CorporationStarbase&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<CorporationStarbase> getCorporationStarbasesStarbaseIdWithHttpInfo(
-            @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull Long starbaseId,
-            @javax.annotation.Nonnull Long systemId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        okhttp3.Call localVarCall = getCorporationStarbasesStarbaseIdValidateBeforeCall(corporationId, starbaseId,
-                systemId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<CorporationStarbase>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Get starbase (POS) detail (asynchronously) Returns various settings and
-     * fuels of a starbase (POS) Requires one of the following EVE corporation
-     * role(s): Director
-     * 
-     * @param corporationId
-     *            The ID of the corporation (required)
-     * @param starbaseId
-     *            (required)
-     * @param systemId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException
-     *             If fail to process the API call, e.g. serializing the request
-     *             body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getCorporationStarbasesStarbaseIdAsync(@javax.annotation.Nonnull Long corporationId,
-            @javax.annotation.Nonnull Long starbaseId, @javax.annotation.Nonnull Long systemId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<CorporationStarbase> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getCorporationStarbasesStarbaseIdValidateBeforeCall(corporationId, starbaseId,
-                systemId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<CorporationStarbase>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -6039,8 +6008,7 @@ public class CorporationApi {
      * route&#39;s version includes the changes to structures detailed in this
      * blog:
      * https://www.eveonline.com/article/upwell-2.0-structures-changes-coming
-     * -on-february-13th Requires one of the following EVE corporation role(s):
-     * Station_Manager
+     * -on-february-13th
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -6101,8 +6069,7 @@ public class CorporationApi {
      * route&#39;s version includes the changes to structures detailed in this
      * blog:
      * https://www.eveonline.com/article/upwell-2.0-structures-changes-coming
-     * -on-february-13th Requires one of the following EVE corporation role(s):
-     * Station_Manager
+     * -on-february-13th
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -6165,8 +6132,7 @@ public class CorporationApi {
      * structures. This route&#39;s version includes the changes to structures
      * detailed in this blog:
      * https://www.eveonline.com/article/upwell-2.0-structures
-     * -changes-coming-on-february-13th Requires one of the following EVE
-     * corporation role(s): Station_Manager
+     * -changes-coming-on-february-13th
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -6357,8 +6323,7 @@ public class CorporationApi {
     }
 
     /**
-     * Get corporation titles Returns a corporation&#39;s titles Requires one of
-     * the following EVE corporation role(s): Director
+     * Get corporation titles Returns a corporation&#39;s titles
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -6409,8 +6374,7 @@ public class CorporationApi {
     }
 
     /**
-     * Get corporation titles Returns a corporation&#39;s titles Requires one of
-     * the following EVE corporation role(s): Director
+     * Get corporation titles Returns a corporation&#39;s titles
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -6464,7 +6428,7 @@ public class CorporationApi {
 
     /**
      * Get corporation titles (asynchronously) Returns a corporation&#39;s
-     * titles Requires one of the following EVE corporation role(s): Director
+     * titles
      * 
      * @param corporationId
      *            The ID of the corporation (required)

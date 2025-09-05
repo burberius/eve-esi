@@ -36,7 +36,7 @@ import java.util.List;
 import java.util.Map;
 
 public class UserInterfaceApi {
-    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2020, 1, 1);
+    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2025, 8, 26);
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
@@ -250,7 +250,6 @@ public class UserInterfaceApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return Object
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -276,14 +275,13 @@ public class UserInterfaceApi {
      *                        </tr>
      *                        </table>
      */
-    public Object postUiAutopilotWaypoint(@javax.annotation.Nonnull Boolean addToBeginning,
+    public void postUiAutopilotWaypoint(@javax.annotation.Nonnull Boolean addToBeginning,
             @javax.annotation.Nonnull Boolean clearOtherWaypoints, @javax.annotation.Nonnull Long destinationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<Object> localVarResp = postUiAutopilotWaypointWithHttpInfo(addToBeginning, clearOtherWaypoints,
-                destinationId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
-        return localVarResp.getData();
+        postUiAutopilotWaypointWithHttpInfo(addToBeginning, clearOtherWaypoints, destinationId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant);
     }
 
     /**
@@ -306,7 +304,7 @@ public class UserInterfaceApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -332,16 +330,14 @@ public class UserInterfaceApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Object> postUiAutopilotWaypointWithHttpInfo(@javax.annotation.Nonnull Boolean addToBeginning,
+    public ApiResponse<Void> postUiAutopilotWaypointWithHttpInfo(@javax.annotation.Nonnull Boolean addToBeginning,
             @javax.annotation.Nonnull Boolean clearOtherWaypoints, @javax.annotation.Nonnull Long destinationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = postUiAutopilotWaypointValidateBeforeCall(addToBeginning, clearOtherWaypoints,
                 destinationId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -397,13 +393,11 @@ public class UserInterfaceApi {
             @javax.annotation.Nonnull Boolean clearOtherWaypoints, @javax.annotation.Nonnull Long destinationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<Object> _callback) throws ApiException {
+            final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postUiAutopilotWaypointValidateBeforeCall(addToBeginning, clearOtherWaypoints,
                 destinationId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
 
@@ -554,7 +548,6 @@ public class UserInterfaceApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return Object
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -580,13 +573,11 @@ public class UserInterfaceApi {
      *                        </tr>
      *                        </table>
      */
-    public Object postUiOpenwindowContract(@javax.annotation.Nonnull Long contractId,
+    public void postUiOpenwindowContract(@javax.annotation.Nonnull Long contractId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<Object> localVarResp = postUiOpenwindowContractWithHttpInfo(contractId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant);
-        return localVarResp.getData();
+        postUiOpenwindowContractWithHttpInfo(contractId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
     }
 
     /**
@@ -605,7 +596,7 @@ public class UserInterfaceApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -631,15 +622,13 @@ public class UserInterfaceApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Object> postUiOpenwindowContractWithHttpInfo(@javax.annotation.Nonnull Long contractId,
+    public ApiResponse<Void> postUiOpenwindowContractWithHttpInfo(@javax.annotation.Nonnull Long contractId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = postUiOpenwindowContractValidateBeforeCall(contractId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -690,13 +679,11 @@ public class UserInterfaceApi {
     public okhttp3.Call postUiOpenwindowContractAsync(@javax.annotation.Nonnull Long contractId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<Object> _callback) throws ApiException {
+            final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postUiOpenwindowContractValidateBeforeCall(contractId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
 
@@ -848,7 +835,6 @@ public class UserInterfaceApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return Object
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -874,13 +860,11 @@ public class UserInterfaceApi {
      *                        </tr>
      *                        </table>
      */
-    public Object postUiOpenwindowInformation(@javax.annotation.Nonnull Long targetId,
+    public void postUiOpenwindowInformation(@javax.annotation.Nonnull Long targetId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<Object> localVarResp = postUiOpenwindowInformationWithHttpInfo(targetId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant);
-        return localVarResp.getData();
+        postUiOpenwindowInformationWithHttpInfo(targetId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
     }
 
     /**
@@ -900,7 +884,7 @@ public class UserInterfaceApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -926,15 +910,13 @@ public class UserInterfaceApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Object> postUiOpenwindowInformationWithHttpInfo(@javax.annotation.Nonnull Long targetId,
+    public ApiResponse<Void> postUiOpenwindowInformationWithHttpInfo(@javax.annotation.Nonnull Long targetId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = postUiOpenwindowInformationValidateBeforeCall(targetId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -985,13 +967,11 @@ public class UserInterfaceApi {
     public okhttp3.Call postUiOpenwindowInformationAsync(@javax.annotation.Nonnull Long targetId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<Object> _callback) throws ApiException {
+            final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postUiOpenwindowInformationValidateBeforeCall(targetId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
 
@@ -1143,7 +1123,6 @@ public class UserInterfaceApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return Object
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1169,13 +1148,11 @@ public class UserInterfaceApi {
      *                        </tr>
      *                        </table>
      */
-    public Object postUiOpenwindowMarketdetails(@javax.annotation.Nonnull Long typeId,
+    public void postUiOpenwindowMarketdetails(@javax.annotation.Nonnull Long typeId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<Object> localVarResp = postUiOpenwindowMarketdetailsWithHttpInfo(typeId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant);
-        return localVarResp.getData();
+        postUiOpenwindowMarketdetailsWithHttpInfo(typeId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
     }
 
     /**
@@ -1195,7 +1172,7 @@ public class UserInterfaceApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1221,15 +1198,13 @@ public class UserInterfaceApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Object> postUiOpenwindowMarketdetailsWithHttpInfo(@javax.annotation.Nonnull Long typeId,
+    public ApiResponse<Void> postUiOpenwindowMarketdetailsWithHttpInfo(@javax.annotation.Nonnull Long typeId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = postUiOpenwindowMarketdetailsValidateBeforeCall(typeId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -1280,13 +1255,11 @@ public class UserInterfaceApi {
     public okhttp3.Call postUiOpenwindowMarketdetailsAsync(@javax.annotation.Nonnull Long typeId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<Object> _callback) throws ApiException {
+            final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postUiOpenwindowMarketdetailsValidateBeforeCall(typeId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
 
@@ -1295,6 +1268,8 @@ public class UserInterfaceApi {
      * 
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param postUiOpenwindowNewmailRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -1304,8 +1279,6 @@ public class UserInterfaceApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param postUiOpenwindowNewmailRequest
-     *            (optional)
      * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
@@ -1334,10 +1307,9 @@ public class UserInterfaceApi {
      *                        </table>
      */
     public okhttp3.Call postUiOpenwindowNewmailCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PostUiOpenwindowNewmailRequest postUiOpenwindowNewmailRequest,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PostUiOpenwindowNewmailRequest postUiOpenwindowNewmailRequest,
-            final ApiCallback _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {};
@@ -1398,18 +1370,24 @@ public class UserInterfaceApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postUiOpenwindowNewmailValidateBeforeCall(
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PostUiOpenwindowNewmailRequest postUiOpenwindowNewmailRequest,
-            final ApiCallback _callback) throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PostUiOpenwindowNewmailRequest postUiOpenwindowNewmailRequest,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
             throw new ApiException(
                     "Missing the required parameter 'xCompatibilityDate' when calling postUiOpenwindowNewmail(Async)");
         }
 
-        return postUiOpenwindowNewmailCall(xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
-                postUiOpenwindowNewmailRequest, _callback);
+        // verify the required parameter 'postUiOpenwindowNewmailRequest' is set
+        if (postUiOpenwindowNewmailRequest == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'postUiOpenwindowNewmailRequest' when calling postUiOpenwindowNewmail(Async)");
+        }
+
+        return postUiOpenwindowNewmailCall(xCompatibilityDate, postUiOpenwindowNewmailRequest, acceptLanguage,
+                ifNoneMatch, xTenant, _callback);
 
     }
 
@@ -1419,6 +1397,8 @@ public class UserInterfaceApi {
      * 
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param postUiOpenwindowNewmailRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -1428,9 +1408,6 @@ public class UserInterfaceApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param postUiOpenwindowNewmailRequest
-     *            (optional)
-     * @return Object
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1456,14 +1433,12 @@ public class UserInterfaceApi {
      *                        </tr>
      *                        </table>
      */
-    public Object postUiOpenwindowNewmail(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public void postUiOpenwindowNewmail(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PostUiOpenwindowNewmailRequest postUiOpenwindowNewmailRequest,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PostUiOpenwindowNewmailRequest postUiOpenwindowNewmailRequest)
-            throws ApiException {
-        ApiResponse<Object> localVarResp = postUiOpenwindowNewmailWithHttpInfo(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, postUiOpenwindowNewmailRequest);
-        return localVarResp.getData();
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        postUiOpenwindowNewmailWithHttpInfo(xCompatibilityDate, postUiOpenwindowNewmailRequest, acceptLanguage,
+                ifNoneMatch, xTenant);
     }
 
     /**
@@ -1472,6 +1447,8 @@ public class UserInterfaceApi {
      * 
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param postUiOpenwindowNewmailRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -1481,9 +1458,7 @@ public class UserInterfaceApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param postUiOpenwindowNewmailRequest
-     *            (optional)
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1509,16 +1484,14 @@ public class UserInterfaceApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Object> postUiOpenwindowNewmailWithHttpInfo(
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PostUiOpenwindowNewmailRequest postUiOpenwindowNewmailRequest)
-            throws ApiException {
-        okhttp3.Call localVarCall = postUiOpenwindowNewmailValidateBeforeCall(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, postUiOpenwindowNewmailRequest, null);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    public ApiResponse<Void> postUiOpenwindowNewmailWithHttpInfo(
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PostUiOpenwindowNewmailRequest postUiOpenwindowNewmailRequest,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        okhttp3.Call localVarCall = postUiOpenwindowNewmailValidateBeforeCall(xCompatibilityDate,
+                postUiOpenwindowNewmailRequest, acceptLanguage, ifNoneMatch, xTenant, null);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -1527,6 +1500,8 @@ public class UserInterfaceApi {
      * 
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param postUiOpenwindowNewmailRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -1536,8 +1511,6 @@ public class UserInterfaceApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param postUiOpenwindowNewmailRequest
-     *            (optional)
      * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
@@ -1567,16 +1540,13 @@ public class UserInterfaceApi {
      *                        </table>
      */
     public okhttp3.Call postUiOpenwindowNewmailAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PostUiOpenwindowNewmailRequest postUiOpenwindowNewmailRequest,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PostUiOpenwindowNewmailRequest postUiOpenwindowNewmailRequest,
-            final ApiCallback<Object> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postUiOpenwindowNewmailValidateBeforeCall(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, postUiOpenwindowNewmailRequest, _callback);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        okhttp3.Call localVarCall = postUiOpenwindowNewmailValidateBeforeCall(xCompatibilityDate,
+                postUiOpenwindowNewmailRequest, acceptLanguage, ifNoneMatch, xTenant, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
 }

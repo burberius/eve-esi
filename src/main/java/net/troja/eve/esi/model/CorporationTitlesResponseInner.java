@@ -50,7 +50,7 @@ import net.troja.eve.esi.JSON;
 /**
  * CorporationTitlesResponseInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
 public class CorporationTitlesResponseInner implements Serializable {
     private static final long serialVersionUID = 1L;
 

@@ -48,10 +48,10 @@ import java.util.Set;
 import net.troja.eve.esi.JSON;
 
 /**
- * PutMailMailIdRequest
+ * PutMailRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class PutMailMailIdRequest implements Serializable {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+public class PutMailRequest implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_LABELS = "labels";
@@ -64,15 +64,15 @@ public class PutMailMailIdRequest implements Serializable {
     @javax.annotation.Nullable
     private Boolean read;
 
-    public PutMailMailIdRequest() {
+    public PutMailRequest() {
     }
 
-    public PutMailMailIdRequest labels(@javax.annotation.Nullable Set<Long> labels) {
+    public PutMailRequest labels(@javax.annotation.Nullable Set<Long> labels) {
         this.labels = labels;
         return this;
     }
 
-    public PutMailMailIdRequest addLabelsItem(Long labelsItem) {
+    public PutMailRequest addLabelsItem(Long labelsItem) {
         if (this.labels == null) {
             this.labels = new LinkedHashSet<>();
         }
@@ -95,7 +95,7 @@ public class PutMailMailIdRequest implements Serializable {
         this.labels = labels;
     }
 
-    public PutMailMailIdRequest read(@javax.annotation.Nullable Boolean read) {
+    public PutMailRequest read(@javax.annotation.Nullable Boolean read) {
         this.read = read;
         return this;
     }
@@ -122,9 +122,8 @@ public class PutMailMailIdRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        PutMailMailIdRequest putMailMailIdRequest = (PutMailMailIdRequest) o;
-        return Objects.equals(this.labels, putMailMailIdRequest.labels)
-                && Objects.equals(this.read, putMailMailIdRequest.read);
+        PutMailRequest putMailRequest = (PutMailRequest) o;
+        return Objects.equals(this.labels, putMailRequest.labels) && Objects.equals(this.read, putMailRequest.read);
     }
 
     @Override
@@ -135,7 +134,7 @@ public class PutMailMailIdRequest implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class PutMailMailIdRequest {\n");
+        sb.append("class PutMailRequest {\n");
         sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
         sb.append("    read: ").append(toIndentedString(read)).append("\n");
         sb.append("}");
@@ -170,32 +169,29 @@ public class PutMailMailIdRequest implements Serializable {
      * @param jsonElement
      *            JSON Element
      * @throws IOException
-     *             if the JSON Element is invalid with respect to
-     *             PutMailMailIdRequest
+     *             if the JSON Element is invalid with respect to PutMailRequest
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         if (jsonElement == null) {
-            if (!PutMailMailIdRequest.openapiRequiredFields.isEmpty()) { // has
-                                                                         // required
-                                                                         // fields
-                                                                         // but
-                                                                         // JSON
-                                                                         // element
-                                                                         // is
-                                                                         // null
+            if (!PutMailRequest.openapiRequiredFields.isEmpty()) { // has
+                                                                   // required
+                                                                   // fields but
+                                                                   // JSON
+                                                                   // element is
+                                                                   // null
                 throw new IllegalArgumentException(String.format(
-                        "The required field(s) %s in PutMailMailIdRequest is not found in the empty JSON string",
-                        PutMailMailIdRequest.openapiRequiredFields.toString()));
+                        "The required field(s) %s in PutMailRequest is not found in the empty JSON string",
+                        PutMailRequest.openapiRequiredFields.toString()));
             }
         }
 
         Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
         for (Map.Entry<String, JsonElement> entry : entries) {
-            if (!PutMailMailIdRequest.openapiFields.contains(entry.getKey())) {
+            if (!PutMailRequest.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
-                                "The field `%s` in the JSON string is not defined in the `PutMailMailIdRequest` properties. JSON: %s",
+                                "The field `%s` in the JSON string is not defined in the `PutMailRequest` properties. JSON: %s",
                                 entry.getKey(), jsonElement.toString()));
             }
         }
@@ -213,23 +209,23 @@ public class PutMailMailIdRequest implements Serializable {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!PutMailMailIdRequest.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes
-                             // 'PutMailMailIdRequest' and its subtypes
+            if (!PutMailRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PutMailRequest' and
+                             // its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<PutMailMailIdRequest> thisAdapter = gson.getDelegateAdapter(this,
-                    TypeToken.get(PutMailMailIdRequest.class));
+            final TypeAdapter<PutMailRequest> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(PutMailRequest.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<PutMailMailIdRequest>() {
+            return (TypeAdapter<T>) new TypeAdapter<PutMailRequest>() {
                 @Override
-                public void write(JsonWriter out, PutMailMailIdRequest value) throws IOException {
+                public void write(JsonWriter out, PutMailRequest value) throws IOException {
                     JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
                     elementAdapter.write(out, obj);
                 }
 
                 @Override
-                public PutMailMailIdRequest read(JsonReader in) throws IOException {
+                public PutMailRequest read(JsonReader in) throws IOException {
                     JsonElement jsonElement = elementAdapter.read(in);
                     validateJsonElement(jsonElement);
                     return thisAdapter.fromJsonTree(jsonElement);
@@ -240,21 +236,20 @@ public class PutMailMailIdRequest implements Serializable {
     }
 
     /**
-     * Create an instance of PutMailMailIdRequest given an JSON string
+     * Create an instance of PutMailRequest given an JSON string
      *
      * @param jsonString
      *            JSON string
-     * @return An instance of PutMailMailIdRequest
+     * @return An instance of PutMailRequest
      * @throws IOException
-     *             if the JSON string is invalid with respect to
-     *             PutMailMailIdRequest
+     *             if the JSON string is invalid with respect to PutMailRequest
      */
-    public static PutMailMailIdRequest fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, PutMailMailIdRequest.class);
+    public static PutMailRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PutMailRequest.class);
     }
 
     /**
-     * Convert an instance of PutMailMailIdRequest to an JSON string
+     * Convert an instance of PutMailRequest to an JSON string
      *
      * @return JSON string
      */

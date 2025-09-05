@@ -27,7 +27,7 @@ import java.io.IOException;
 
 import net.troja.eve.esi.model.CharacterKillmailsResponseInner;
 import net.troja.eve.esi.model.Error;
-import net.troja.eve.esi.model.KillmailResponse;
+import net.troja.eve.esi.model.KillmailByHashResponse;
 import java.time.LocalDate;
 
 import java.lang.reflect.Type;
@@ -37,7 +37,7 @@ import java.util.List;
 import java.util.Map;
 
 public class KillmailsApi {
-    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2020, 1, 1);
+    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2025, 8, 26);
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
@@ -75,7 +75,7 @@ public class KillmailsApi {
     }
 
     /**
-     * Build call for getCharacterKillmailsRecent
+     * Build call for getCharacterKillmails
      * 
      * @param characterId
      *            The ID of the character (required)
@@ -121,7 +121,7 @@ public class KillmailsApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getCharacterKillmailsRecentCall(@javax.annotation.Nonnull Long characterId,
+    public okhttp3.Call getCharacterKillmailsCall(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
@@ -189,24 +189,24 @@ public class KillmailsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCharacterKillmailsRecentValidateBeforeCall(@javax.annotation.Nonnull Long characterId,
+    private okhttp3.Call getCharacterKillmailsValidateBeforeCall(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException(
-                    "Missing the required parameter 'characterId' when calling getCharacterKillmailsRecent(Async)");
+                    "Missing the required parameter 'characterId' when calling getCharacterKillmails(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
             throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getCharacterKillmailsRecent(Async)");
+                    "Missing the required parameter 'xCompatibilityDate' when calling getCharacterKillmails(Async)");
         }
 
-        return getCharacterKillmailsRecentCall(characterId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch,
-                xTenant, _callback);
+        return getCharacterKillmailsCall(characterId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant,
+                _callback);
 
     }
 
@@ -257,12 +257,11 @@ public class KillmailsApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterKillmailsResponseInner> getCharacterKillmailsRecent(
-            @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        ApiResponse<List<CharacterKillmailsResponseInner>> localVarResp = getCharacterKillmailsRecentWithHttpInfo(
+    public List<CharacterKillmailsResponseInner> getCharacterKillmails(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        ApiResponse<List<CharacterKillmailsResponseInner>> localVarResp = getCharacterKillmailsWithHttpInfo(
                 characterId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -314,13 +313,13 @@ public class KillmailsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterKillmailsResponseInner>> getCharacterKillmailsRecentWithHttpInfo(
+    public ApiResponse<List<CharacterKillmailsResponseInner>> getCharacterKillmailsWithHttpInfo(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        okhttp3.Call localVarCall = getCharacterKillmailsRecentValidateBeforeCall(characterId, xCompatibilityDate,
-                page, acceptLanguage, ifNoneMatch, xTenant, null);
+        okhttp3.Call localVarCall = getCharacterKillmailsValidateBeforeCall(characterId, xCompatibilityDate, page,
+                acceptLanguage, ifNoneMatch, xTenant, null);
         Type localVarReturnType = new TypeToken<List<CharacterKillmailsResponseInner>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -375,14 +374,14 @@ public class KillmailsApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getCharacterKillmailsRecentAsync(@javax.annotation.Nonnull Long characterId,
+    public okhttp3.Call getCharacterKillmailsAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant,
             final ApiCallback<List<CharacterKillmailsResponseInner>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCharacterKillmailsRecentValidateBeforeCall(characterId, xCompatibilityDate,
-                page, acceptLanguage, ifNoneMatch, xTenant, _callback);
+        okhttp3.Call localVarCall = getCharacterKillmailsValidateBeforeCall(characterId, xCompatibilityDate, page,
+                acceptLanguage, ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterKillmailsResponseInner>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -390,7 +389,7 @@ public class KillmailsApi {
     }
 
     /**
-     * Build call for getCorporationKillmailsRecent
+     * Build call for getCorporationKillmails
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -436,7 +435,7 @@ public class KillmailsApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getCorporationKillmailsRecentCall(@javax.annotation.Nonnull Long corporationId,
+    public okhttp3.Call getCorporationKillmailsCall(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
@@ -504,31 +503,30 @@ public class KillmailsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCorporationKillmailsRecentValidateBeforeCall(@javax.annotation.Nonnull Long corporationId,
+    private okhttp3.Call getCorporationKillmailsValidateBeforeCall(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
             throw new ApiException(
-                    "Missing the required parameter 'corporationId' when calling getCorporationKillmailsRecent(Async)");
+                    "Missing the required parameter 'corporationId' when calling getCorporationKillmails(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
             throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getCorporationKillmailsRecent(Async)");
+                    "Missing the required parameter 'xCompatibilityDate' when calling getCorporationKillmails(Async)");
         }
 
-        return getCorporationKillmailsRecentCall(corporationId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch,
+        return getCorporationKillmailsCall(corporationId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch,
                 xTenant, _callback);
 
     }
 
     /**
      * Get a corporation&#39;s recent kills and losses Get a list of a
-     * corporation&#39;s kills and losses going back 90 days Requires one of the
-     * following EVE corporation role(s): Director
+     * corporation&#39;s kills and losses going back 90 days
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -573,20 +571,18 @@ public class KillmailsApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterKillmailsResponseInner> getCorporationKillmailsRecent(
-            @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        ApiResponse<List<CharacterKillmailsResponseInner>> localVarResp = getCorporationKillmailsRecentWithHttpInfo(
+    public List<CharacterKillmailsResponseInner> getCorporationKillmails(@javax.annotation.Nonnull Long corporationId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        ApiResponse<List<CharacterKillmailsResponseInner>> localVarResp = getCorporationKillmailsWithHttpInfo(
                 corporationId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
     /**
      * Get a corporation&#39;s recent kills and losses Get a list of a
-     * corporation&#39;s kills and losses going back 90 days Requires one of the
-     * following EVE corporation role(s): Director
+     * corporation&#39;s kills and losses going back 90 days
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -631,13 +627,13 @@ public class KillmailsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterKillmailsResponseInner>> getCorporationKillmailsRecentWithHttpInfo(
+    public ApiResponse<List<CharacterKillmailsResponseInner>> getCorporationKillmailsWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        okhttp3.Call localVarCall = getCorporationKillmailsRecentValidateBeforeCall(corporationId, xCompatibilityDate,
-                page, acceptLanguage, ifNoneMatch, xTenant, null);
+        okhttp3.Call localVarCall = getCorporationKillmailsValidateBeforeCall(corporationId, xCompatibilityDate, page,
+                acceptLanguage, ifNoneMatch, xTenant, null);
         Type localVarReturnType = new TypeToken<List<CharacterKillmailsResponseInner>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -645,8 +641,7 @@ public class KillmailsApi {
 
     /**
      * Get a corporation&#39;s recent kills and losses (asynchronously) Get a
-     * list of a corporation&#39;s kills and losses going back 90 days Requires
-     * one of the following EVE corporation role(s): Director
+     * list of a corporation&#39;s kills and losses going back 90 days
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -693,14 +688,14 @@ public class KillmailsApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getCorporationKillmailsRecentAsync(@javax.annotation.Nonnull Long corporationId,
+    public okhttp3.Call getCorporationKillmailsAsync(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant,
             final ApiCallback<List<CharacterKillmailsResponseInner>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCorporationKillmailsRecentValidateBeforeCall(corporationId, xCompatibilityDate,
-                page, acceptLanguage, ifNoneMatch, xTenant, _callback);
+        okhttp3.Call localVarCall = getCorporationKillmailsValidateBeforeCall(corporationId, xCompatibilityDate, page,
+                acceptLanguage, ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterKillmailsResponseInner>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -708,7 +703,7 @@ public class KillmailsApi {
     }
 
     /**
-     * Build call for getKillmailsKillmailIdKillmailHash
+     * Build call for getKillmailByHash
      * 
      * @param killmailHash
      *            (required)
@@ -752,7 +747,7 @@ public class KillmailsApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getKillmailsKillmailIdKillmailHashCall(@javax.annotation.Nonnull String killmailHash,
+    public okhttp3.Call getKillmailByHashCall(@javax.annotation.Nonnull String killmailHash,
             @javax.annotation.Nonnull Long killmailId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
@@ -817,31 +812,29 @@ public class KillmailsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getKillmailsKillmailIdKillmailHashValidateBeforeCall(
-            @javax.annotation.Nonnull String killmailHash, @javax.annotation.Nonnull Long killmailId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getKillmailByHashValidateBeforeCall(@javax.annotation.Nonnull String killmailHash,
+            @javax.annotation.Nonnull Long killmailId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'killmailHash' is set
         if (killmailHash == null) {
             throw new ApiException(
-                    "Missing the required parameter 'killmailHash' when calling getKillmailsKillmailIdKillmailHash(Async)");
+                    "Missing the required parameter 'killmailHash' when calling getKillmailByHash(Async)");
         }
 
         // verify the required parameter 'killmailId' is set
         if (killmailId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'killmailId' when calling getKillmailsKillmailIdKillmailHash(Async)");
+            throw new ApiException("Missing the required parameter 'killmailId' when calling getKillmailByHash(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
             throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getKillmailsKillmailIdKillmailHash(Async)");
+                    "Missing the required parameter 'xCompatibilityDate' when calling getKillmailByHash(Async)");
         }
 
-        return getKillmailsKillmailIdKillmailHashCall(killmailHash, killmailId, xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, _callback);
+        return getKillmailByHashCall(killmailHash, killmailId, xCompatibilityDate, acceptLanguage, ifNoneMatch,
+                xTenant, _callback);
 
     }
 
@@ -863,7 +856,7 @@ public class KillmailsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return KillmailResponse
+     * @return KillmailByHashResponse
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -889,12 +882,12 @@ public class KillmailsApi {
      *                        </tr>
      *                        </table>
      */
-    public KillmailResponse getKillmailsKillmailIdKillmailHash(@javax.annotation.Nonnull String killmailHash,
+    public KillmailByHashResponse getKillmailByHash(@javax.annotation.Nonnull String killmailHash,
             @javax.annotation.Nonnull Long killmailId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<KillmailResponse> localVarResp = getKillmailsKillmailIdKillmailHashWithHttpInfo(killmailHash,
-                killmailId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<KillmailByHashResponse> localVarResp = getKillmailByHashWithHttpInfo(killmailHash, killmailId,
+                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -916,7 +909,7 @@ public class KillmailsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;KillmailResponse&gt;
+     * @return ApiResponse&lt;KillmailByHashResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -942,14 +935,14 @@ public class KillmailsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<KillmailResponse> getKillmailsKillmailIdKillmailHashWithHttpInfo(
+    public ApiResponse<KillmailByHashResponse> getKillmailByHashWithHttpInfo(
             @javax.annotation.Nonnull String killmailHash, @javax.annotation.Nonnull Long killmailId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        okhttp3.Call localVarCall = getKillmailsKillmailIdKillmailHashValidateBeforeCall(killmailHash, killmailId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<KillmailResponse>() {
+        okhttp3.Call localVarCall = getKillmailByHashValidateBeforeCall(killmailHash, killmailId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant, null);
+        Type localVarReturnType = new TypeToken<KillmailByHashResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1001,15 +994,15 @@ public class KillmailsApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getKillmailsKillmailIdKillmailHashAsync(@javax.annotation.Nonnull String killmailHash,
+    public okhttp3.Call getKillmailByHashAsync(@javax.annotation.Nonnull String killmailHash,
             @javax.annotation.Nonnull Long killmailId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<KillmailResponse> _callback)
+            @javax.annotation.Nullable String xTenant, final ApiCallback<KillmailByHashResponse> _callback)
             throws ApiException {
 
-        okhttp3.Call localVarCall = getKillmailsKillmailIdKillmailHashValidateBeforeCall(killmailHash, killmailId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<KillmailResponse>() {
+        okhttp3.Call localVarCall = getKillmailByHashValidateBeforeCall(killmailHash, killmailId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant, _callback);
+        Type localVarReturnType = new TypeToken<KillmailByHashResponse>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

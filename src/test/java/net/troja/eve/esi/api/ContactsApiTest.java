@@ -53,8 +53,7 @@ public class ContactsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        Object response = api.deleteContacts(characterId, contactIds, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
-        // TODO: test validations
+        api.deleteContacts(characterId, contactIds, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
     }
 
     /**
@@ -177,7 +176,7 @@ public class ContactsApiTest extends GeneralApiTest {
         String ifNoneMatch = null;
         String xTenant = null;
         List<Long> requestBody = null;
-        List<Long> response = api.postContacts(characterId, standing, CharacterApi.COMPATIBILITY_DATE, labelIds, watched, acceptLanguage, ifNoneMatch, xTenant, requestBody);
+        List<Long> response = api.postContacts(characterId, standing, CharacterApi.COMPATIBILITY_DATE, requestBody, labelIds, watched, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -198,8 +197,7 @@ public class ContactsApiTest extends GeneralApiTest {
         String ifNoneMatch = null;
         String xTenant = null;
         List<Long> requestBody = null;
-        Object response = api.putContacts(characterId, standing, CharacterApi.COMPATIBILITY_DATE, labelIds, watched, acceptLanguage, ifNoneMatch, xTenant, requestBody);
-        // TODO: test validations
+        api.putContacts(characterId, standing, CharacterApi.COMPATIBILITY_DATE, requestBody, labelIds, watched, acceptLanguage, ifNoneMatch, xTenant);
     }
 
 }

@@ -23,7 +23,7 @@ import java.time.OffsetDateTime;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
-import net.troja.eve.esi.model.PostMailRequestRecipientsInner;
+import net.troja.eve.esi.model.PostMailsRequestRecipientsInner;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -50,36 +50,36 @@ import java.util.Set;
 import net.troja.eve.esi.JSON;
 
 /**
- * MailMailIdResponse
+ * MailsResponseInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class MailMailIdResponse implements Serializable {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+public class MailsResponseInner implements Serializable {
     private static final long serialVersionUID = 1L;
-
-    public static final String SERIALIZED_NAME_BODY = "body";
-    @SerializedName(SERIALIZED_NAME_BODY)
-    @javax.annotation.Nullable
-    private String body;
 
     public static final String SERIALIZED_NAME_FROM = "from";
     @SerializedName(SERIALIZED_NAME_FROM)
     @javax.annotation.Nullable
     private Long from;
 
+    public static final String SERIALIZED_NAME_IS_READ = "is_read";
+    @SerializedName(SERIALIZED_NAME_IS_READ)
+    @javax.annotation.Nullable
+    private Boolean isRead;
+
     public static final String SERIALIZED_NAME_LABELS = "labels";
     @SerializedName(SERIALIZED_NAME_LABELS)
     @javax.annotation.Nullable
     private Set<Long> labels;
 
-    public static final String SERIALIZED_NAME_READ = "read";
-    @SerializedName(SERIALIZED_NAME_READ)
+    public static final String SERIALIZED_NAME_MAIL_ID = "mail_id";
+    @SerializedName(SERIALIZED_NAME_MAIL_ID)
     @javax.annotation.Nullable
-    private Boolean read;
+    private Long mailId;
 
     public static final String SERIALIZED_NAME_RECIPIENTS = "recipients";
     @SerializedName(SERIALIZED_NAME_RECIPIENTS)
     @javax.annotation.Nullable
-    private Set<PostMailRequestRecipientsInner> recipients;
+    private Set<PostMailsRequestRecipientsInner> recipients;
 
     public static final String SERIALIZED_NAME_SUBJECT = "subject";
     @SerializedName(SERIALIZED_NAME_SUBJECT)
@@ -91,29 +91,10 @@ public class MailMailIdResponse implements Serializable {
     @javax.annotation.Nullable
     private OffsetDateTime timestamp;
 
-    public MailMailIdResponse() {
+    public MailsResponseInner() {
     }
 
-    public MailMailIdResponse body(@javax.annotation.Nullable String body) {
-        this.body = body;
-        return this;
-    }
-
-    /**
-     * Mail&#39;s body
-     * 
-     * @return body
-     */
-    @javax.annotation.Nullable
-    public String getBody() {
-        return body;
-    }
-
-    public void setBody(@javax.annotation.Nullable String body) {
-        this.body = body;
-    }
-
-    public MailMailIdResponse from(@javax.annotation.Nullable Long from) {
+    public MailsResponseInner from(@javax.annotation.Nullable Long from) {
         this.from = from;
         return this;
     }
@@ -132,12 +113,31 @@ public class MailMailIdResponse implements Serializable {
         this.from = from;
     }
 
-    public MailMailIdResponse labels(@javax.annotation.Nullable Set<Long> labels) {
+    public MailsResponseInner isRead(@javax.annotation.Nullable Boolean isRead) {
+        this.isRead = isRead;
+        return this;
+    }
+
+    /**
+     * Get isRead
+     * 
+     * @return isRead
+     */
+    @javax.annotation.Nullable
+    public Boolean getIsRead() {
+        return isRead;
+    }
+
+    public void setIsRead(@javax.annotation.Nullable Boolean isRead) {
+        this.isRead = isRead;
+    }
+
+    public MailsResponseInner labels(@javax.annotation.Nullable Set<Long> labels) {
         this.labels = labels;
         return this;
     }
 
-    public MailMailIdResponse addLabelsItem(Long labelsItem) {
+    public MailsResponseInner addLabelsItem(Long labelsItem) {
         if (this.labels == null) {
             this.labels = new LinkedHashSet<>();
         }
@@ -147,7 +147,7 @@ public class MailMailIdResponse implements Serializable {
     }
 
     /**
-     * Labels attached to the mail
+     * Get labels
      * 
      * @return labels
      */
@@ -160,31 +160,31 @@ public class MailMailIdResponse implements Serializable {
         this.labels = labels;
     }
 
-    public MailMailIdResponse read(@javax.annotation.Nullable Boolean read) {
-        this.read = read;
+    public MailsResponseInner mailId(@javax.annotation.Nullable Long mailId) {
+        this.mailId = mailId;
         return this;
     }
 
     /**
-     * Whether the mail is flagged as read
+     * Get mailId
      * 
-     * @return read
+     * @return mailId
      */
     @javax.annotation.Nullable
-    public Boolean getRead() {
-        return read;
+    public Long getMailId() {
+        return mailId;
     }
 
-    public void setRead(@javax.annotation.Nullable Boolean read) {
-        this.read = read;
+    public void setMailId(@javax.annotation.Nullable Long mailId) {
+        this.mailId = mailId;
     }
 
-    public MailMailIdResponse recipients(@javax.annotation.Nullable Set<PostMailRequestRecipientsInner> recipients) {
+    public MailsResponseInner recipients(@javax.annotation.Nullable Set<PostMailsRequestRecipientsInner> recipients) {
         this.recipients = recipients;
         return this;
     }
 
-    public MailMailIdResponse addRecipientsItem(PostMailRequestRecipientsInner recipientsItem) {
+    public MailsResponseInner addRecipientsItem(PostMailsRequestRecipientsInner recipientsItem) {
         if (this.recipients == null) {
             this.recipients = new LinkedHashSet<>();
         }
@@ -199,15 +199,15 @@ public class MailMailIdResponse implements Serializable {
      * @return recipients
      */
     @javax.annotation.Nullable
-    public Set<PostMailRequestRecipientsInner> getRecipients() {
+    public Set<PostMailsRequestRecipientsInner> getRecipients() {
         return recipients;
     }
 
-    public void setRecipients(@javax.annotation.Nullable Set<PostMailRequestRecipientsInner> recipients) {
+    public void setRecipients(@javax.annotation.Nullable Set<PostMailsRequestRecipientsInner> recipients) {
         this.recipients = recipients;
     }
 
-    public MailMailIdResponse subject(@javax.annotation.Nullable String subject) {
+    public MailsResponseInner subject(@javax.annotation.Nullable String subject) {
         this.subject = subject;
         return this;
     }
@@ -226,7 +226,7 @@ public class MailMailIdResponse implements Serializable {
         this.subject = subject;
     }
 
-    public MailMailIdResponse timestamp(@javax.annotation.Nullable OffsetDateTime timestamp) {
+    public MailsResponseInner timestamp(@javax.annotation.Nullable OffsetDateTime timestamp) {
         this.timestamp = timestamp;
         return this;
     }
@@ -253,28 +253,29 @@ public class MailMailIdResponse implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        MailMailIdResponse mailMailIdResponse = (MailMailIdResponse) o;
-        return Objects.equals(this.body, mailMailIdResponse.body) && Objects.equals(this.from, mailMailIdResponse.from)
-                && Objects.equals(this.labels, mailMailIdResponse.labels)
-                && Objects.equals(this.read, mailMailIdResponse.read)
-                && Objects.equals(this.recipients, mailMailIdResponse.recipients)
-                && Objects.equals(this.subject, mailMailIdResponse.subject)
-                && Objects.equals(this.timestamp, mailMailIdResponse.timestamp);
+        MailsResponseInner mailsResponseInner = (MailsResponseInner) o;
+        return Objects.equals(this.from, mailsResponseInner.from)
+                && Objects.equals(this.isRead, mailsResponseInner.isRead)
+                && Objects.equals(this.labels, mailsResponseInner.labels)
+                && Objects.equals(this.mailId, mailsResponseInner.mailId)
+                && Objects.equals(this.recipients, mailsResponseInner.recipients)
+                && Objects.equals(this.subject, mailsResponseInner.subject)
+                && Objects.equals(this.timestamp, mailsResponseInner.timestamp);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(body, from, labels, read, recipients, subject, timestamp);
+        return Objects.hash(from, isRead, labels, mailId, recipients, subject, timestamp);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class MailMailIdResponse {\n");
-        sb.append("    body: ").append(toIndentedString(body)).append("\n");
+        sb.append("class MailsResponseInner {\n");
         sb.append("    from: ").append(toIndentedString(from)).append("\n");
+        sb.append("    isRead: ").append(toIndentedString(isRead)).append("\n");
         sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-        sb.append("    read: ").append(toIndentedString(read)).append("\n");
+        sb.append("    mailId: ").append(toIndentedString(mailId)).append("\n");
         sb.append("    recipients: ").append(toIndentedString(recipients)).append("\n");
         sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
         sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");
@@ -298,8 +299,8 @@ public class MailMailIdResponse implements Serializable {
 
     static {
         // a set of all properties/fields (JSON key names)
-        openapiFields = new HashSet<String>(Arrays.asList("body", "from", "labels", "read", "recipients", "subject",
-                "timestamp"));
+        openapiFields = new HashSet<String>(Arrays.asList("from", "is_read", "labels", "mail_id", "recipients",
+                "subject", "timestamp"));
 
         // a set of required properties/fields (JSON key names)
         openapiRequiredFields = new HashSet<String>(0);
@@ -312,11 +313,11 @@ public class MailMailIdResponse implements Serializable {
      *            JSON Element
      * @throws IOException
      *             if the JSON Element is invalid with respect to
-     *             MailMailIdResponse
+     *             MailsResponseInner
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         if (jsonElement == null) {
-            if (!MailMailIdResponse.openapiRequiredFields.isEmpty()) { // has
+            if (!MailsResponseInner.openapiRequiredFields.isEmpty()) { // has
                                                                        // required
                                                                        // fields
                                                                        // but
@@ -325,28 +326,22 @@ public class MailMailIdResponse implements Serializable {
                                                                        // is
                                                                        // null
                 throw new IllegalArgumentException(String.format(
-                        "The required field(s) %s in MailMailIdResponse is not found in the empty JSON string",
-                        MailMailIdResponse.openapiRequiredFields.toString()));
+                        "The required field(s) %s in MailsResponseInner is not found in the empty JSON string",
+                        MailsResponseInner.openapiRequiredFields.toString()));
             }
         }
 
         Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
         for (Map.Entry<String, JsonElement> entry : entries) {
-            if (!MailMailIdResponse.openapiFields.contains(entry.getKey())) {
+            if (!MailsResponseInner.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
-                                "The field `%s` in the JSON string is not defined in the `MailMailIdResponse` properties. JSON: %s",
+                                "The field `%s` in the JSON string is not defined in the `MailsResponseInner` properties. JSON: %s",
                                 entry.getKey(), jsonElement.toString()));
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-        if ((jsonObj.get("body") != null && !jsonObj.get("body").isJsonNull())
-                && !jsonObj.get("body").isJsonPrimitive()) {
-            throw new IllegalArgumentException(String.format(
-                    "Expected the field `body` to be a primitive type in the JSON string but got `%s`",
-                    jsonObj.get("body").toString()));
-        }
         // ensure the optional json data is an array if present
         if (jsonObj.get("labels") != null && !jsonObj.get("labels").isJsonNull()
                 && !jsonObj.get("labels").isJsonArray()) {
@@ -366,7 +361,7 @@ public class MailMailIdResponse implements Serializable {
 
                 // validate the optional field `recipients` (array)
                 for (int i = 0; i < jsonArrayrecipients.size(); i++) {
-                    PostMailRequestRecipientsInner.validateJsonElement(jsonArrayrecipients.get(i));
+                    PostMailsRequestRecipientsInner.validateJsonElement(jsonArrayrecipients.get(i));
                 };
             }
         }
@@ -382,23 +377,23 @@ public class MailMailIdResponse implements Serializable {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!MailMailIdResponse.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'MailMailIdResponse'
+            if (!MailsResponseInner.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'MailsResponseInner'
                              // and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<MailMailIdResponse> thisAdapter = gson.getDelegateAdapter(this,
-                    TypeToken.get(MailMailIdResponse.class));
+            final TypeAdapter<MailsResponseInner> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(MailsResponseInner.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<MailMailIdResponse>() {
+            return (TypeAdapter<T>) new TypeAdapter<MailsResponseInner>() {
                 @Override
-                public void write(JsonWriter out, MailMailIdResponse value) throws IOException {
+                public void write(JsonWriter out, MailsResponseInner value) throws IOException {
                     JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
                     elementAdapter.write(out, obj);
                 }
 
                 @Override
-                public MailMailIdResponse read(JsonReader in) throws IOException {
+                public MailsResponseInner read(JsonReader in) throws IOException {
                     JsonElement jsonElement = elementAdapter.read(in);
                     validateJsonElement(jsonElement);
                     return thisAdapter.fromJsonTree(jsonElement);
@@ -409,21 +404,21 @@ public class MailMailIdResponse implements Serializable {
     }
 
     /**
-     * Create an instance of MailMailIdResponse given an JSON string
+     * Create an instance of MailsResponseInner given an JSON string
      *
      * @param jsonString
      *            JSON string
-     * @return An instance of MailMailIdResponse
+     * @return An instance of MailsResponseInner
      * @throws IOException
      *             if the JSON string is invalid with respect to
-     *             MailMailIdResponse
+     *             MailsResponseInner
      */
-    public static MailMailIdResponse fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, MailMailIdResponse.class);
+    public static MailsResponseInner fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, MailsResponseInner.class);
     }
 
     /**
-     * Convert an instance of MailMailIdResponse to an JSON string
+     * Convert an instance of MailsResponseInner to an JSON string
      *
      * @return JSON string
      */

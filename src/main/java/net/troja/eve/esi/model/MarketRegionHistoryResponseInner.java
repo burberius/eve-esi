@@ -47,10 +47,10 @@ import java.util.Set;
 import net.troja.eve.esi.JSON;
 
 /**
- * MarketHistoryResponseInner
+ * MarketRegionHistoryResponseInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class MarketHistoryResponseInner implements Serializable {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+public class MarketRegionHistoryResponseInner implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_AVERAGE = "average";
@@ -83,10 +83,10 @@ public class MarketHistoryResponseInner implements Serializable {
     @javax.annotation.Nonnull
     private Long volume;
 
-    public MarketHistoryResponseInner() {
+    public MarketRegionHistoryResponseInner() {
     }
 
-    public MarketHistoryResponseInner average(@javax.annotation.Nonnull Double average) {
+    public MarketRegionHistoryResponseInner average(@javax.annotation.Nonnull Double average) {
         this.average = average;
         return this;
     }
@@ -105,7 +105,7 @@ public class MarketHistoryResponseInner implements Serializable {
         this.average = average;
     }
 
-    public MarketHistoryResponseInner date(@javax.annotation.Nonnull LocalDate date) {
+    public MarketRegionHistoryResponseInner date(@javax.annotation.Nonnull LocalDate date) {
         this.date = date;
         return this;
     }
@@ -124,7 +124,7 @@ public class MarketHistoryResponseInner implements Serializable {
         this.date = date;
     }
 
-    public MarketHistoryResponseInner highest(@javax.annotation.Nonnull Double highest) {
+    public MarketRegionHistoryResponseInner highest(@javax.annotation.Nonnull Double highest) {
         this.highest = highest;
         return this;
     }
@@ -143,7 +143,7 @@ public class MarketHistoryResponseInner implements Serializable {
         this.highest = highest;
     }
 
-    public MarketHistoryResponseInner lowest(@javax.annotation.Nonnull Double lowest) {
+    public MarketRegionHistoryResponseInner lowest(@javax.annotation.Nonnull Double lowest) {
         this.lowest = lowest;
         return this;
     }
@@ -162,7 +162,7 @@ public class MarketHistoryResponseInner implements Serializable {
         this.lowest = lowest;
     }
 
-    public MarketHistoryResponseInner orderCount(@javax.annotation.Nonnull Long orderCount) {
+    public MarketRegionHistoryResponseInner orderCount(@javax.annotation.Nonnull Long orderCount) {
         this.orderCount = orderCount;
         return this;
     }
@@ -181,7 +181,7 @@ public class MarketHistoryResponseInner implements Serializable {
         this.orderCount = orderCount;
     }
 
-    public MarketHistoryResponseInner volume(@javax.annotation.Nonnull Long volume) {
+    public MarketRegionHistoryResponseInner volume(@javax.annotation.Nonnull Long volume) {
         this.volume = volume;
         return this;
     }
@@ -208,13 +208,13 @@ public class MarketHistoryResponseInner implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        MarketHistoryResponseInner marketHistoryResponseInner = (MarketHistoryResponseInner) o;
-        return Objects.equals(this.average, marketHistoryResponseInner.average)
-                && Objects.equals(this.date, marketHistoryResponseInner.date)
-                && Objects.equals(this.highest, marketHistoryResponseInner.highest)
-                && Objects.equals(this.lowest, marketHistoryResponseInner.lowest)
-                && Objects.equals(this.orderCount, marketHistoryResponseInner.orderCount)
-                && Objects.equals(this.volume, marketHistoryResponseInner.volume);
+        MarketRegionHistoryResponseInner marketRegionHistoryResponseInner = (MarketRegionHistoryResponseInner) o;
+        return Objects.equals(this.average, marketRegionHistoryResponseInner.average)
+                && Objects.equals(this.date, marketRegionHistoryResponseInner.date)
+                && Objects.equals(this.highest, marketRegionHistoryResponseInner.highest)
+                && Objects.equals(this.lowest, marketRegionHistoryResponseInner.lowest)
+                && Objects.equals(this.orderCount, marketRegionHistoryResponseInner.orderCount)
+                && Objects.equals(this.volume, marketRegionHistoryResponseInner.volume);
     }
 
     @Override
@@ -225,7 +225,7 @@ public class MarketHistoryResponseInner implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class MarketHistoryResponseInner {\n");
+        sb.append("class MarketRegionHistoryResponseInner {\n");
         sb.append("    average: ").append(toIndentedString(average)).append("\n");
         sb.append("    date: ").append(toIndentedString(date)).append("\n");
         sb.append("    highest: ").append(toIndentedString(highest)).append("\n");
@@ -267,38 +267,39 @@ public class MarketHistoryResponseInner implements Serializable {
      *            JSON Element
      * @throws IOException
      *             if the JSON Element is invalid with respect to
-     *             MarketHistoryResponseInner
+     *             MarketRegionHistoryResponseInner
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         if (jsonElement == null) {
-            if (!MarketHistoryResponseInner.openapiRequiredFields.isEmpty()) { // has
-                                                                               // required
-                                                                               // fields
-                                                                               // but
-                                                                               // JSON
-                                                                               // element
-                                                                               // is
-                                                                               // null
-                throw new IllegalArgumentException(String.format(
-                        "The required field(s) %s in MarketHistoryResponseInner is not found in the empty JSON string",
-                        MarketHistoryResponseInner.openapiRequiredFields.toString()));
+            if (!MarketRegionHistoryResponseInner.openapiRequiredFields.isEmpty()) { // has
+                                                                                     // required
+                                                                                     // fields
+                                                                                     // but
+                                                                                     // JSON
+                                                                                     // element
+                                                                                     // is
+                                                                                     // null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in MarketRegionHistoryResponseInner is not found in the empty JSON string",
+                                MarketRegionHistoryResponseInner.openapiRequiredFields.toString()));
             }
         }
 
         Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
         for (Map.Entry<String, JsonElement> entry : entries) {
-            if (!MarketHistoryResponseInner.openapiFields.contains(entry.getKey())) {
+            if (!MarketRegionHistoryResponseInner.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
-                                "The field `%s` in the JSON string is not defined in the `MarketHistoryResponseInner` properties. JSON: %s",
+                                "The field `%s` in the JSON string is not defined in the `MarketRegionHistoryResponseInner` properties. JSON: %s",
                                 entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
-        for (String requiredField : MarketHistoryResponseInner.openapiRequiredFields) {
+        for (String requiredField : MarketRegionHistoryResponseInner.openapiRequiredFields) {
             if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
@@ -312,23 +313,24 @@ public class MarketHistoryResponseInner implements Serializable {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!MarketHistoryResponseInner.class.isAssignableFrom(type.getRawType())) {
+            if (!MarketRegionHistoryResponseInner.class.isAssignableFrom(type.getRawType())) {
                 return null; // this class only serializes
-                             // 'MarketHistoryResponseInner' and its subtypes
+                             // 'MarketRegionHistoryResponseInner' and its
+                             // subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<MarketHistoryResponseInner> thisAdapter = gson.getDelegateAdapter(this,
-                    TypeToken.get(MarketHistoryResponseInner.class));
+            final TypeAdapter<MarketRegionHistoryResponseInner> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(MarketRegionHistoryResponseInner.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<MarketHistoryResponseInner>() {
+            return (TypeAdapter<T>) new TypeAdapter<MarketRegionHistoryResponseInner>() {
                 @Override
-                public void write(JsonWriter out, MarketHistoryResponseInner value) throws IOException {
+                public void write(JsonWriter out, MarketRegionHistoryResponseInner value) throws IOException {
                     JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
                     elementAdapter.write(out, obj);
                 }
 
                 @Override
-                public MarketHistoryResponseInner read(JsonReader in) throws IOException {
+                public MarketRegionHistoryResponseInner read(JsonReader in) throws IOException {
                     JsonElement jsonElement = elementAdapter.read(in);
                     validateJsonElement(jsonElement);
                     return thisAdapter.fromJsonTree(jsonElement);
@@ -339,21 +341,22 @@ public class MarketHistoryResponseInner implements Serializable {
     }
 
     /**
-     * Create an instance of MarketHistoryResponseInner given an JSON string
+     * Create an instance of MarketRegionHistoryResponseInner given an JSON
+     * string
      *
      * @param jsonString
      *            JSON string
-     * @return An instance of MarketHistoryResponseInner
+     * @return An instance of MarketRegionHistoryResponseInner
      * @throws IOException
      *             if the JSON string is invalid with respect to
-     *             MarketHistoryResponseInner
+     *             MarketRegionHistoryResponseInner
      */
-    public static MarketHistoryResponseInner fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, MarketHistoryResponseInner.class);
+    public static MarketRegionHistoryResponseInner fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, MarketRegionHistoryResponseInner.class);
     }
 
     /**
-     * Convert an instance of MarketHistoryResponseInner to an JSON string
+     * Convert an instance of MarketRegionHistoryResponseInner to an JSON string
      *
      * @return JSON string
      */

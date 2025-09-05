@@ -143,14 +143,14 @@ public class IndustryApiTest extends GeneralApiTest {
      */
     @Test
     @Disabled("Needs corporation with read access")
-    public void getCorporationMiningObserversObserverIdTest() throws ApiException {
+    public void getCorporationMiningObserverTest() throws ApiException {
         Long corporationId = null;
         Long observerId = null;
         Integer page = null;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CorporationMiningObserverResponseInner> response = api.getCorporationMiningObserversObserverId(corporationId, observerId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CorporationMiningObserverResponseInner> response = api.getCorporationMiningObserver(corporationId, observerId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 

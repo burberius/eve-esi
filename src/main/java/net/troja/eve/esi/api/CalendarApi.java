@@ -39,7 +39,7 @@ import java.util.List;
 import java.util.Map;
 
 public class CalendarApi {
-    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2020, 1, 1);
+    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2025, 8, 26);
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
@@ -1018,6 +1018,8 @@ public class CalendarApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param putCharacterCalendarEventRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -1027,8 +1029,6 @@ public class CalendarApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param putCharacterCalendarEventRequest
-     *            (optional)
      * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
@@ -1058,10 +1058,9 @@ public class CalendarApi {
      */
     public okhttp3.Call putCharacterCalendarEventCall(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull Long eventId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PutCharacterCalendarEventRequest putCharacterCalendarEventRequest,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PutCharacterCalendarEventRequest putCharacterCalendarEventRequest,
-            final ApiCallback _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {};
@@ -1125,10 +1124,9 @@ public class CalendarApi {
     @SuppressWarnings("rawtypes")
     private okhttp3.Call putCharacterCalendarEventValidateBeforeCall(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull Long eventId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PutCharacterCalendarEventRequest putCharacterCalendarEventRequest,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PutCharacterCalendarEventRequest putCharacterCalendarEventRequest,
-            final ApiCallback _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException(
@@ -1147,8 +1145,15 @@ public class CalendarApi {
                     "Missing the required parameter 'xCompatibilityDate' when calling putCharacterCalendarEvent(Async)");
         }
 
-        return putCharacterCalendarEventCall(characterId, eventId, xCompatibilityDate, acceptLanguage, ifNoneMatch,
-                xTenant, putCharacterCalendarEventRequest, _callback);
+        // verify the required parameter 'putCharacterCalendarEventRequest' is
+        // set
+        if (putCharacterCalendarEventRequest == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'putCharacterCalendarEventRequest' when calling putCharacterCalendarEvent(Async)");
+        }
+
+        return putCharacterCalendarEventCall(characterId, eventId, xCompatibilityDate,
+                putCharacterCalendarEventRequest, acceptLanguage, ifNoneMatch, xTenant, _callback);
 
     }
 
@@ -1161,6 +1166,8 @@ public class CalendarApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param putCharacterCalendarEventRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -1170,9 +1177,6 @@ public class CalendarApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param putCharacterCalendarEventRequest
-     *            (optional)
-     * @return Object
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1198,15 +1202,13 @@ public class CalendarApi {
      *                        </tr>
      *                        </table>
      */
-    public Object putCharacterCalendarEvent(@javax.annotation.Nonnull Long characterId,
+    public void putCharacterCalendarEvent(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull Long eventId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PutCharacterCalendarEventRequest putCharacterCalendarEventRequest,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PutCharacterCalendarEventRequest putCharacterCalendarEventRequest)
-            throws ApiException {
-        ApiResponse<Object> localVarResp = putCharacterCalendarEventWithHttpInfo(characterId, eventId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, putCharacterCalendarEventRequest);
-        return localVarResp.getData();
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        putCharacterCalendarEventWithHttpInfo(characterId, eventId, xCompatibilityDate,
+                putCharacterCalendarEventRequest, acceptLanguage, ifNoneMatch, xTenant);
     }
 
     /**
@@ -1218,6 +1220,8 @@ public class CalendarApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param putCharacterCalendarEventRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -1227,9 +1231,7 @@ public class CalendarApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param putCharacterCalendarEventRequest
-     *            (optional)
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1255,17 +1257,14 @@ public class CalendarApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Object> putCharacterCalendarEventWithHttpInfo(@javax.annotation.Nonnull Long characterId,
+    public ApiResponse<Void> putCharacterCalendarEventWithHttpInfo(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull Long eventId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PutCharacterCalendarEventRequest putCharacterCalendarEventRequest,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PutCharacterCalendarEventRequest putCharacterCalendarEventRequest)
-            throws ApiException {
+            @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = putCharacterCalendarEventValidateBeforeCall(characterId, eventId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, putCharacterCalendarEventRequest, null);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+                xCompatibilityDate, putCharacterCalendarEventRequest, acceptLanguage, ifNoneMatch, xTenant, null);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -1277,6 +1276,8 @@ public class CalendarApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param putCharacterCalendarEventRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -1286,8 +1287,6 @@ public class CalendarApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param putCharacterCalendarEventRequest
-     *            (optional)
      * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
@@ -1318,16 +1317,13 @@ public class CalendarApi {
      */
     public okhttp3.Call putCharacterCalendarEventAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull Long eventId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PutCharacterCalendarEventRequest putCharacterCalendarEventRequest,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PutCharacterCalendarEventRequest putCharacterCalendarEventRequest,
-            final ApiCallback<Object> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = putCharacterCalendarEventValidateBeforeCall(characterId, eventId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, putCharacterCalendarEventRequest, _callback);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+                xCompatibilityDate, putCharacterCalendarEventRequest, acceptLanguage, ifNoneMatch, xTenant, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
 }

@@ -20,10 +20,10 @@ import net.troja.eve.esi.model.CharacterOrdersHistoryResponseInner;
 import net.troja.eve.esi.model.CharacterOrdersResponseInner;
 import net.troja.eve.esi.model.CorporationOrdersHistoryResponseInner;
 import net.troja.eve.esi.model.CorporationOrdersResponseInner;
-import net.troja.eve.esi.model.MarketGroupsMarketGroupIdResponse;
-import net.troja.eve.esi.model.MarketHistoryResponseInner;
-import net.troja.eve.esi.model.MarketOrdersResponseInner;
+import net.troja.eve.esi.model.MarketGroupResponse;
 import net.troja.eve.esi.model.MarketPricesResponseInner;
+import net.troja.eve.esi.model.MarketRegionHistoryResponseInner;
+import net.troja.eve.esi.model.MarketRegionOrdersResponseInner;
 import net.troja.eve.esi.model.MarketStructureResponseInner;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -141,12 +141,13 @@ public class MarketApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getMarketGroupsMarketGroupIdTest() throws ApiException {
+    public void getMarketGroupTest() throws ApiException {
         Long marketGroupId = 2L;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        MarketGroupsMarketGroupIdResponse response = api.getMarketGroupsMarketGroupId(marketGroupId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        MarketGroupResponse
+                response = api.getMarketGroup(marketGroupId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotNull();
         assertThat(response.getName()).isEqualTo("Blueprints & Reactions");
     }
@@ -159,11 +160,11 @@ public class MarketApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getMarketHistoryTest() throws ApiException {
+    public void getMarketRegionHistoryTest() throws ApiException {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<MarketHistoryResponseInner> response = api.getMarketHistory(REGION_ID_THE_FORGE, TYPE_ID_VELDSPAR, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<MarketRegionHistoryResponseInner> response = api.getMarketRegionHistory(REGION_ID_THE_FORGE, TYPE_ID_VELDSPAR, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
         assertThat(response.get(0).getOrderCount()).isGreaterThan(0L);
     }
@@ -183,7 +184,7 @@ public class MarketApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<MarketOrdersResponseInner> response = api.getMarketOrders(orderType, REGION_ID_THE_FORGE, CorporationApi.COMPATIBILITY_DATE, page, typeId, acceptLanguage, ifNoneMatch, xTenant);
+        List<MarketRegionOrdersResponseInner> response = api.getMarketRegionOrders(orderType, REGION_ID_THE_FORGE, CorporationApi.COMPATIBILITY_DATE, page, typeId, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
         assertThat(response.get(0).getMinVolume()).isGreaterThan(0);
     }
@@ -214,13 +215,13 @@ public class MarketApiTest extends GeneralApiTest {
      */
     @Test
     @Disabled("No static structure to use here")
-    public void getMarketStructuresStructureIdTest() throws ApiException {
+    public void getMarketStructureTest() throws ApiException {
         Long structureId = null;
         Integer page = null;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<MarketStructureResponseInner> response = api.getMarketStructuresStructureId(structureId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<MarketStructureResponseInner> response = api.getMarketStructure(structureId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -232,12 +233,12 @@ public class MarketApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getMarketTypesTest() throws ApiException {
+    public void getMarketRegionTypesTest() throws ApiException {
         Integer page = null;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<Long> response = api.getMarketTypes(REGION_ID_THE_FORGE, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<Long> response = api.getMarketRegionTypes(REGION_ID_THE_FORGE, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
     }
 
@@ -254,9 +255,9 @@ public class MarketApiTest extends GeneralApiTest {
          * Step 1: Get first page.
          */
         //Get market orders
-        ApiResponse<List<MarketOrdersResponseInner>>
-                response = api.getMarketOrdersWithHttpInfo(orderType, REGION_ID_THE_FORGE, CorporationApi.COMPATIBILITY_DATE, null, null, null, null, null);
-        final List<MarketOrdersResponseInner> result = new ArrayList<>(response.getData());
+        ApiResponse<List<MarketRegionOrdersResponseInner>>
+                response = api.getMarketRegionOrdersWithHttpInfo(orderType, REGION_ID_THE_FORGE, CorporationApi.COMPATIBILITY_DATE, null, null, null, null, null);
+        final List<MarketRegionOrdersResponseInner> result = new ArrayList<>(response.getData());
 
         /**
          * Step 2: Safely get X-Pages header.
@@ -275,7 +276,7 @@ public class MarketApiTest extends GeneralApiTest {
          */
         for (int page = 2; page <= xPages; page++) { //For each page greater than one.
             //Get market orders
-            List<MarketOrdersResponseInner> pageResponse = api.getMarketOrders(orderType, REGION_ID_THE_FORGE, CorporationApi.COMPATIBILITY_DATE, page, null, null, null, null);
+            List<MarketRegionOrdersResponseInner> pageResponse = api.getMarketRegionOrders(orderType, REGION_ID_THE_FORGE, CorporationApi.COMPATIBILITY_DATE, page, null, null, null, null);
             result.addAll(pageResponse);
         }
 

@@ -29,11 +29,11 @@ import net.troja.eve.esi.model.Error;
 import java.time.LocalDate;
 import net.troja.eve.esi.model.MailLabelsResponse;
 import net.troja.eve.esi.model.MailListsResponseInner;
-import net.troja.eve.esi.model.MailMailIdResponse;
-import net.troja.eve.esi.model.MailResponseInner;
+import net.troja.eve.esi.model.MailResponse;
+import net.troja.eve.esi.model.MailsResponseInner;
 import net.troja.eve.esi.model.PostMailLabelsRequest;
-import net.troja.eve.esi.model.PostMailRequest;
-import net.troja.eve.esi.model.PutMailMailIdRequest;
+import net.troja.eve.esi.model.PostMailsRequest;
+import net.troja.eve.esi.model.PutMailRequest;
 import java.util.Set;
 
 import java.lang.reflect.Type;
@@ -43,7 +43,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MailApi {
-    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2020, 1, 1);
+    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2025, 8, 26);
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
@@ -81,311 +81,7 @@ public class MailApi {
     }
 
     /**
-     * Build call for deleteMailLabelsLabelId
-     * 
-     * @param characterId
-     *            The ID of the character (required)
-     * @param labelId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException
-     *             If fail to serialize the request body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>204</td>
-     *                        <td>Label deleted</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call deleteMailLabelsLabelIdCall(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull Long labelId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {};
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null) {
-            basePath = localCustomBaseUrl;
-        } else if (localBasePaths.length > 0) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/characters/{character_id}/mail/labels/{label_id}".replace("{" + "character_id" + "}",
-                localVarApiClient.escapeString(characterId.toString())).replace("{" + "label_id" + "}",
-                localVarApiClient.escapeString(labelId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {};
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
-        }
-
-        if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
-        }
-
-        if (xCompatibilityDate != null) {
-            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
-        }
-
-        if (xTenant != null) {
-            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
-        }
-
-        String[] localVarAuthNames = new String[] { "OAuth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams,
-                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
-                localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteMailLabelsLabelIdValidateBeforeCall(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull Long labelId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'characterId' is set
-        if (characterId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'characterId' when calling deleteMailLabelsLabelId(Async)");
-        }
-
-        // verify the required parameter 'labelId' is set
-        if (labelId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'labelId' when calling deleteMailLabelsLabelId(Async)");
-        }
-
-        // verify the required parameter 'xCompatibilityDate' is set
-        if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling deleteMailLabelsLabelId(Async)");
-        }
-
-        return deleteMailLabelsLabelIdCall(characterId, labelId, xCompatibilityDate, acceptLanguage, ifNoneMatch,
-                xTenant, _callback);
-
-    }
-
-    /**
-     * Delete a mail label Delete a mail label
-     * 
-     * @param characterId
-     *            The ID of the character (required)
-     * @param labelId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return Object
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>204</td>
-     *                        <td>Label deleted</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public Object deleteMailLabelsLabelId(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull Long labelId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<Object> localVarResp = deleteMailLabelsLabelIdWithHttpInfo(characterId, labelId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Delete a mail label Delete a mail label
-     * 
-     * @param characterId
-     *            The ID of the character (required)
-     * @param labelId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return ApiResponse&lt;Object&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>204</td>
-     *                        <td>Label deleted</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<Object> deleteMailLabelsLabelIdWithHttpInfo(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull Long labelId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        okhttp3.Call localVarCall = deleteMailLabelsLabelIdValidateBeforeCall(characterId, labelId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Delete a mail label (asynchronously) Delete a mail label
-     * 
-     * @param characterId
-     *            The ID of the character (required)
-     * @param labelId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException
-     *             If fail to process the API call, e.g. serializing the request
-     *             body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>204</td>
-     *                        <td>Label deleted</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call deleteMailLabelsLabelIdAsync(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull Long labelId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<Object> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = deleteMailLabelsLabelIdValidateBeforeCall(characterId, labelId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    /**
-     * Build call for deleteMailMailId
+     * Build call for deleteMail
      * 
      * @param characterId
      *            The ID of the character (required)
@@ -429,7 +125,7 @@ public class MailApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call deleteMailMailIdCall(@javax.annotation.Nonnull Long characterId,
+    public okhttp3.Call deleteMailCall(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull Long mailId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
@@ -494,28 +190,26 @@ public class MailApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteMailMailIdValidateBeforeCall(@javax.annotation.Nonnull Long characterId,
+    private okhttp3.Call deleteMailValidateBeforeCall(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull Long mailId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
-            throw new ApiException("Missing the required parameter 'characterId' when calling deleteMailMailId(Async)");
+            throw new ApiException("Missing the required parameter 'characterId' when calling deleteMail(Async)");
         }
 
         // verify the required parameter 'mailId' is set
         if (mailId == null) {
-            throw new ApiException("Missing the required parameter 'mailId' when calling deleteMailMailId(Async)");
+            throw new ApiException("Missing the required parameter 'mailId' when calling deleteMail(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling deleteMailMailId(Async)");
+            throw new ApiException("Missing the required parameter 'xCompatibilityDate' when calling deleteMail(Async)");
         }
 
-        return deleteMailMailIdCall(characterId, mailId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
-                _callback);
+        return deleteMailCall(characterId, mailId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
 
     }
 
@@ -537,7 +231,6 @@ public class MailApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return Object
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -563,13 +256,11 @@ public class MailApi {
      *                        </tr>
      *                        </table>
      */
-    public Object deleteMailMailId(@javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull Long mailId,
+    public void deleteMail(@javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull Long mailId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<Object> localVarResp = deleteMailMailIdWithHttpInfo(characterId, mailId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant);
-        return localVarResp.getData();
+        deleteMailWithHttpInfo(characterId, mailId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
     }
 
     /**
@@ -590,7 +281,7 @@ public class MailApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -616,15 +307,13 @@ public class MailApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Object> deleteMailMailIdWithHttpInfo(@javax.annotation.Nonnull Long characterId,
+    public ApiResponse<Void> deleteMailWithHttpInfo(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull Long mailId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        okhttp3.Call localVarCall = deleteMailMailIdValidateBeforeCall(characterId, mailId, xCompatibilityDate,
+        okhttp3.Call localVarCall = deleteMailValidateBeforeCall(characterId, mailId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -673,16 +362,309 @@ public class MailApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call deleteMailMailIdAsync(@javax.annotation.Nonnull Long characterId,
+    public okhttp3.Call deleteMailAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull Long mailId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<Object> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteMailMailIdValidateBeforeCall(characterId, mailId, xCompatibilityDate,
+        okhttp3.Call localVarCall = deleteMailValidateBeforeCall(characterId, mailId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+
+    /**
+     * Build call for deleteMailLabel
+     * 
+     * @param characterId
+     *            The ID of the character (required)
+     * @param labelId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>Label deleted</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call deleteMailLabelCall(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull Long labelId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/characters/{character_id}/mail/labels/{label_id}".replace("{" + "character_id" + "}",
+                localVarApiClient.escapeString(characterId.toString())).replace("{" + "label_id" + "}",
+                localVarApiClient.escapeString(labelId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {};
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        if (acceptLanguage != null) {
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
+        }
+
+        if (ifNoneMatch != null) {
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
+        }
+
+        if (xCompatibilityDate != null) {
+            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
+        }
+
+        if (xTenant != null) {
+            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
+        }
+
+        String[] localVarAuthNames = new String[] { "OAuth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteMailLabelValidateBeforeCall(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull Long labelId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'characterId' is set
+        if (characterId == null) {
+            throw new ApiException("Missing the required parameter 'characterId' when calling deleteMailLabel(Async)");
+        }
+
+        // verify the required parameter 'labelId' is set
+        if (labelId == null) {
+            throw new ApiException("Missing the required parameter 'labelId' when calling deleteMailLabel(Async)");
+        }
+
+        // verify the required parameter 'xCompatibilityDate' is set
+        if (xCompatibilityDate == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'xCompatibilityDate' when calling deleteMailLabel(Async)");
+        }
+
+        return deleteMailLabelCall(characterId, labelId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
+                _callback);
+
+    }
+
+    /**
+     * Delete a mail label Delete a mail label
+     * 
+     * @param characterId
+     *            The ID of the character (required)
+     * @param labelId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>Label deleted</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public void deleteMailLabel(@javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull Long labelId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        deleteMailLabelWithHttpInfo(characterId, labelId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
+    }
+
+    /**
+     * Delete a mail label Delete a mail label
+     * 
+     * @param characterId
+     *            The ID of the character (required)
+     * @param labelId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>Label deleted</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<Void> deleteMailLabelWithHttpInfo(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull Long labelId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        okhttp3.Call localVarCall = deleteMailLabelValidateBeforeCall(characterId, labelId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Delete a mail label (asynchronously) Delete a mail label
+     * 
+     * @param characterId
+     *            The ID of the character (required)
+     * @param labelId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request
+     *             body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>Label deleted</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call deleteMailLabelAsync(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull Long labelId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteMailLabelValidateBeforeCall(characterId, labelId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
 
@@ -691,12 +673,10 @@ public class MailApi {
      * 
      * @param characterId
      *            The ID of the character (required)
+     * @param mailId
+     *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
-     * @param labels
-     *            (optional)
-     * @param lastMailId
-     *            (optional)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -733,9 +713,8 @@ public class MailApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getMailCall(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Set<Long> labels,
-            @javax.annotation.Nullable Long lastMailId, @javax.annotation.Nullable String acceptLanguage,
+    public okhttp3.Call getMailCall(@javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull Long mailId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -754,22 +733,15 @@ public class MailApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/mail".replace("{" + "character_id" + "}",
-                localVarApiClient.escapeString(characterId.toString()));
+        String localVarPath = "/characters/{character_id}/mail/{mail_id}".replace("{" + "character_id" + "}",
+                localVarApiClient.escapeString(characterId.toString())).replace("{" + "mail_id" + "}",
+                localVarApiClient.escapeString(mailId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (labels != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "labels", labels));
-        }
-
-        if (lastMailId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("last_mail_id", lastMailId));
-        }
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -807,13 +779,17 @@ public class MailApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getMailValidateBeforeCall(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Set<Long> labels,
-            @javax.annotation.Nullable Long lastMailId, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback _callback) throws ApiException {
+            @javax.annotation.Nonnull Long mailId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException("Missing the required parameter 'characterId' when calling getMail(Async)");
+        }
+
+        // verify the required parameter 'mailId' is set
+        if (mailId == null) {
+            throw new ApiException("Missing the required parameter 'mailId' when calling getMail(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
@@ -821,24 +797,19 @@ public class MailApi {
             throw new ApiException("Missing the required parameter 'xCompatibilityDate' when calling getMail(Async)");
         }
 
-        return getMailCall(characterId, xCompatibilityDate, labels, lastMailId, acceptLanguage, ifNoneMatch, xTenant,
-                _callback);
+        return getMailCall(characterId, mailId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
 
     }
 
     /**
-     * Return mail headers Return the 50 most recent mail headers belonging to
-     * the character that match the query criteria. Queries can be filtered by
-     * label, and last_mail_id can be used to paginate backwards
+     * Return a mail Return the contents of an EVE mail
      * 
      * @param characterId
      *            The ID of the character (required)
+     * @param mailId
+     *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
-     * @param labels
-     *            (optional)
-     * @param lastMailId
-     *            (optional)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -848,7 +819,7 @@ public class MailApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;MailResponseInner&gt;
+     * @return MailResponse
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -874,29 +845,24 @@ public class MailApi {
      *                        </tr>
      *                        </table>
      */
-    public List<MailResponseInner> getMail(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Set<Long> labels,
-            @javax.annotation.Nullable Long lastMailId, @javax.annotation.Nullable String acceptLanguage,
+    public MailResponse getMail(@javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull Long mailId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<MailResponseInner>> localVarResp = getMailWithHttpInfo(characterId, xCompatibilityDate,
-                labels, lastMailId, acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<MailResponse> localVarResp = getMailWithHttpInfo(characterId, mailId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
     /**
-     * Return mail headers Return the 50 most recent mail headers belonging to
-     * the character that match the query criteria. Queries can be filtered by
-     * label, and last_mail_id can be used to paginate backwards
+     * Return a mail Return the contents of an EVE mail
      * 
      * @param characterId
      *            The ID of the character (required)
+     * @param mailId
+     *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
-     * @param labels
-     *            (optional)
-     * @param lastMailId
-     *            (optional)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -906,7 +872,7 @@ public class MailApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;MailResponseInner&gt;&gt;
+     * @return ApiResponse&lt;MailResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -932,32 +898,26 @@ public class MailApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<MailResponseInner>> getMailWithHttpInfo(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Set<Long> labels,
-            @javax.annotation.Nullable Long lastMailId, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        okhttp3.Call localVarCall = getMailValidateBeforeCall(characterId, xCompatibilityDate, labels, lastMailId,
-                acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<MailResponseInner>>() {
+    public ApiResponse<MailResponse> getMailWithHttpInfo(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull Long mailId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        okhttp3.Call localVarCall = getMailValidateBeforeCall(characterId, mailId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant, null);
+        Type localVarReturnType = new TypeToken<MailResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Return mail headers (asynchronously) Return the 50 most recent mail
-     * headers belonging to the character that match the query criteria. Queries
-     * can be filtered by label, and last_mail_id can be used to paginate
-     * backwards
+     * Return a mail (asynchronously) Return the contents of an EVE mail
      * 
      * @param characterId
      *            The ID of the character (required)
+     * @param mailId
+     *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
-     * @param labels
-     *            (optional)
-     * @param lastMailId
-     *            (optional)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -995,15 +955,14 @@ public class MailApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getMailAsync(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Set<Long> labels,
-            @javax.annotation.Nullable Long lastMailId, @javax.annotation.Nullable String acceptLanguage,
+    public okhttp3.Call getMailAsync(@javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull Long mailId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<MailResponseInner>> _callback) throws ApiException {
+            final ApiCallback<MailResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getMailValidateBeforeCall(characterId, xCompatibilityDate, labels, lastMailId,
-                acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<MailResponseInner>>() {
+        okhttp3.Call localVarCall = getMailValidateBeforeCall(characterId, mailId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant, _callback);
+        Type localVarReturnType = new TypeToken<MailResponse>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1590,14 +1549,16 @@ public class MailApi {
     }
 
     /**
-     * Build call for getMailMailId
+     * Build call for getMails
      * 
      * @param characterId
      *            The ID of the character (required)
-     * @param mailId
-     *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param labels
+     *            (optional)
+     * @param lastMailId
+     *            (optional)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -1634,10 +1595,11 @@ public class MailApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getMailMailIdCall(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull Long mailId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMailsCall(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Set<Long> labels,
+            @javax.annotation.Nullable Long lastMailId, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {};
@@ -1654,15 +1616,22 @@ public class MailApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/mail/{mail_id}".replace("{" + "character_id" + "}",
-                localVarApiClient.escapeString(characterId.toString())).replace("{" + "mail_id" + "}",
-                localVarApiClient.escapeString(mailId.toString()));
+        String localVarPath = "/characters/{character_id}/mail".replace("{" + "character_id" + "}",
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (labels != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "labels", labels));
+        }
+
+        if (lastMailId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("last_mail_id", lastMailId));
+        }
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -1699,40 +1668,39 @@ public class MailApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMailMailIdValidateBeforeCall(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull Long mailId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMailsValidateBeforeCall(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Set<Long> labels,
+            @javax.annotation.Nullable Long lastMailId, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
-            throw new ApiException("Missing the required parameter 'characterId' when calling getMailMailId(Async)");
-        }
-
-        // verify the required parameter 'mailId' is set
-        if (mailId == null) {
-            throw new ApiException("Missing the required parameter 'mailId' when calling getMailMailId(Async)");
+            throw new ApiException("Missing the required parameter 'characterId' when calling getMails(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getMailMailId(Async)");
+            throw new ApiException("Missing the required parameter 'xCompatibilityDate' when calling getMails(Async)");
         }
 
-        return getMailMailIdCall(characterId, mailId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
+        return getMailsCall(characterId, xCompatibilityDate, labels, lastMailId, acceptLanguage, ifNoneMatch, xTenant,
                 _callback);
 
     }
 
     /**
-     * Return a mail Return the contents of an EVE mail
+     * Return mail headers Return the 50 most recent mail headers belonging to
+     * the character that match the query criteria. Queries can be filtered by
+     * label, and last_mail_id can be used to paginate backwards
      * 
      * @param characterId
      *            The ID of the character (required)
-     * @param mailId
-     *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param labels
+     *            (optional)
+     * @param lastMailId
+     *            (optional)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -1742,7 +1710,7 @@ public class MailApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return MailMailIdResponse
+     * @return List&lt;MailsResponseInner&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1768,24 +1736,29 @@ public class MailApi {
      *                        </tr>
      *                        </table>
      */
-    public MailMailIdResponse getMailMailId(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull Long mailId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<MailMailIdResponse> localVarResp = getMailMailIdWithHttpInfo(characterId, mailId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
+    public List<MailsResponseInner> getMails(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Set<Long> labels,
+            @javax.annotation.Nullable Long lastMailId, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        ApiResponse<List<MailsResponseInner>> localVarResp = getMailsWithHttpInfo(characterId, xCompatibilityDate,
+                labels, lastMailId, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
     /**
-     * Return a mail Return the contents of an EVE mail
+     * Return mail headers Return the 50 most recent mail headers belonging to
+     * the character that match the query criteria. Queries can be filtered by
+     * label, and last_mail_id can be used to paginate backwards
      * 
      * @param characterId
      *            The ID of the character (required)
-     * @param mailId
-     *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param labels
+     *            (optional)
+     * @param lastMailId
+     *            (optional)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -1795,7 +1768,7 @@ public class MailApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;MailMailIdResponse&gt;
+     * @return ApiResponse&lt;List&lt;MailsResponseInner&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1821,26 +1794,32 @@ public class MailApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<MailMailIdResponse> getMailMailIdWithHttpInfo(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull Long mailId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        okhttp3.Call localVarCall = getMailMailIdValidateBeforeCall(characterId, mailId, xCompatibilityDate,
+    public ApiResponse<List<MailsResponseInner>> getMailsWithHttpInfo(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Set<Long> labels,
+            @javax.annotation.Nullable Long lastMailId, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        okhttp3.Call localVarCall = getMailsValidateBeforeCall(characterId, xCompatibilityDate, labels, lastMailId,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<MailMailIdResponse>() {
+        Type localVarReturnType = new TypeToken<List<MailsResponseInner>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Return a mail (asynchronously) Return the contents of an EVE mail
+     * Return mail headers (asynchronously) Return the 50 most recent mail
+     * headers belonging to the character that match the query criteria. Queries
+     * can be filtered by label, and last_mail_id can be used to paginate
+     * backwards
      * 
      * @param characterId
      *            The ID of the character (required)
-     * @param mailId
-     *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param labels
+     *            (optional)
+     * @param lastMailId
+     *            (optional)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -1878,313 +1857,15 @@ public class MailApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getMailMailIdAsync(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull Long mailId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<MailMailIdResponse> _callback)
-            throws ApiException {
+    public okhttp3.Call getMailsAsync(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Set<Long> labels,
+            @javax.annotation.Nullable Long lastMailId, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback<List<MailsResponseInner>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getMailMailIdValidateBeforeCall(characterId, mailId, xCompatibilityDate,
+        okhttp3.Call localVarCall = getMailsValidateBeforeCall(characterId, xCompatibilityDate, labels, lastMailId,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<MailMailIdResponse>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    /**
-     * Build call for postMail
-     * 
-     * @param characterId
-     *            The ID of the character (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param postMailRequest
-     *            (optional)
-     * @param _callback
-     *            Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException
-     *             If fail to serialize the request body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>201</td>
-     *                        <td>Created</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call postMailCall(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PostMailRequest postMailRequest, final ApiCallback _callback)
-            throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {};
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null) {
-            basePath = localCustomBaseUrl;
-        } else if (localBasePaths.length > 0) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = postMailRequest;
-
-        // create path and map variables
-        String localVarPath = "/characters/{character_id}/mail".replace("{" + "character_id" + "}",
-                localVarApiClient.escapeString(characterId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = { "application/json" };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
-        }
-
-        if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
-        }
-
-        if (xCompatibilityDate != null) {
-            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
-        }
-
-        if (xTenant != null) {
-            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
-        }
-
-        String[] localVarAuthNames = new String[] { "OAuth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams,
-                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
-                localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postMailValidateBeforeCall(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PostMailRequest postMailRequest, final ApiCallback _callback)
-            throws ApiException {
-        // verify the required parameter 'characterId' is set
-        if (characterId == null) {
-            throw new ApiException("Missing the required parameter 'characterId' when calling postMail(Async)");
-        }
-
-        // verify the required parameter 'xCompatibilityDate' is set
-        if (xCompatibilityDate == null) {
-            throw new ApiException("Missing the required parameter 'xCompatibilityDate' when calling postMail(Async)");
-        }
-
-        return postMailCall(characterId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, postMailRequest,
-                _callback);
-
-    }
-
-    /**
-     * Send a new mail Create and send a new mail
-     * 
-     * @param characterId
-     *            The ID of the character (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param postMailRequest
-     *            (optional)
-     * @return Long
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>201</td>
-     *                        <td>Created</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public Long postMail(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PostMailRequest postMailRequest) throws ApiException {
-        ApiResponse<Long> localVarResp = postMailWithHttpInfo(characterId, xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, postMailRequest);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Send a new mail Create and send a new mail
-     * 
-     * @param characterId
-     *            The ID of the character (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param postMailRequest
-     *            (optional)
-     * @return ApiResponse&lt;Long&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>201</td>
-     *                        <td>Created</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<Long> postMailWithHttpInfo(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PostMailRequest postMailRequest) throws ApiException {
-        okhttp3.Call localVarCall = postMailValidateBeforeCall(characterId, xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, postMailRequest, null);
-        Type localVarReturnType = new TypeToken<Long>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Send a new mail (asynchronously) Create and send a new mail
-     * 
-     * @param characterId
-     *            The ID of the character (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param postMailRequest
-     *            (optional)
-     * @param _callback
-     *            The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException
-     *             If fail to process the API call, e.g. serializing the request
-     *             body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>201</td>
-     *                        <td>Created</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call postMailAsync(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PostMailRequest postMailRequest, final ApiCallback<Long> _callback)
-            throws ApiException {
-
-        okhttp3.Call localVarCall = postMailValidateBeforeCall(characterId, xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, postMailRequest, _callback);
-        Type localVarReturnType = new TypeToken<Long>() {
+        Type localVarReturnType = new TypeToken<List<MailsResponseInner>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2197,6 +1878,8 @@ public class MailApi {
      *            The ID of the character (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param postMailLabelsRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -2206,8 +1889,6 @@ public class MailApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param postMailLabelsRequest
-     *            (optional)
      * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
@@ -2236,10 +1917,10 @@ public class MailApi {
      *                        </table>
      */
     public okhttp3.Call postMailLabelsCall(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PostMailLabelsRequest postMailLabelsRequest, final ApiCallback _callback)
-            throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PostMailLabelsRequest postMailLabelsRequest,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {};
@@ -2301,10 +1982,10 @@ public class MailApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postMailLabelsValidateBeforeCall(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PostMailLabelsRequest postMailLabelsRequest, final ApiCallback _callback)
-            throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PostMailLabelsRequest postMailLabelsRequest,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException("Missing the required parameter 'characterId' when calling postMailLabels(Async)");
@@ -2316,8 +1997,14 @@ public class MailApi {
                     "Missing the required parameter 'xCompatibilityDate' when calling postMailLabels(Async)");
         }
 
-        return postMailLabelsCall(characterId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
-                postMailLabelsRequest, _callback);
+        // verify the required parameter 'postMailLabelsRequest' is set
+        if (postMailLabelsRequest == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'postMailLabelsRequest' when calling postMailLabels(Async)");
+        }
+
+        return postMailLabelsCall(characterId, xCompatibilityDate, postMailLabelsRequest, acceptLanguage, ifNoneMatch,
+                xTenant, _callback);
 
     }
 
@@ -2328,6 +2015,8 @@ public class MailApi {
      *            The ID of the character (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param postMailLabelsRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -2337,8 +2026,6 @@ public class MailApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param postMailLabelsRequest
-     *            (optional)
      * @return Long
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
@@ -2366,11 +2053,12 @@ public class MailApi {
      *                        </table>
      */
     public Long postMailLabels(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PostMailLabelsRequest postMailLabelsRequest) throws ApiException {
-        ApiResponse<Long> localVarResp = postMailLabelsWithHttpInfo(characterId, xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, postMailLabelsRequest);
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PostMailLabelsRequest postMailLabelsRequest,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        ApiResponse<Long> localVarResp = postMailLabelsWithHttpInfo(characterId, xCompatibilityDate,
+                postMailLabelsRequest, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -2381,6 +2069,8 @@ public class MailApi {
      *            The ID of the character (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param postMailLabelsRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -2390,8 +2080,6 @@ public class MailApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param postMailLabelsRequest
-     *            (optional)
      * @return ApiResponse&lt;Long&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
@@ -2419,11 +2107,12 @@ public class MailApi {
      *                        </table>
      */
     public ApiResponse<Long> postMailLabelsWithHttpInfo(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PostMailLabelsRequest postMailLabelsRequest) throws ApiException {
-        okhttp3.Call localVarCall = postMailLabelsValidateBeforeCall(characterId, xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, postMailLabelsRequest, null);
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PostMailLabelsRequest postMailLabelsRequest,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        okhttp3.Call localVarCall = postMailLabelsValidateBeforeCall(characterId, xCompatibilityDate,
+                postMailLabelsRequest, acceptLanguage, ifNoneMatch, xTenant, null);
         Type localVarReturnType = new TypeToken<Long>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2436,6 +2125,8 @@ public class MailApi {
      *            The ID of the character (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param postMailLabelsRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -2445,8 +2136,6 @@ public class MailApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param postMailLabelsRequest
-     *            (optional)
      * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
@@ -2476,13 +2165,13 @@ public class MailApi {
      *                        </table>
      */
     public okhttp3.Call postMailLabelsAsync(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PostMailLabelsRequest postMailLabelsRequest, final ApiCallback<Long> _callback)
-            throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PostMailLabelsRequest postMailLabelsRequest,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback<Long> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postMailLabelsValidateBeforeCall(characterId, xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, postMailLabelsRequest, _callback);
+        okhttp3.Call localVarCall = postMailLabelsValidateBeforeCall(characterId, xCompatibilityDate,
+                postMailLabelsRequest, acceptLanguage, ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<Long>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -2490,14 +2179,14 @@ public class MailApi {
     }
 
     /**
-     * Build call for putMailMailId
+     * Build call for postMails
      * 
      * @param characterId
      *            The ID of the character (required)
-     * @param mailId
-     *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param postMailsRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -2507,8 +2196,313 @@ public class MailApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param putMailMailIdRequest
-     *            (optional)
+     * @param _callback
+     *            Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call postMailsCall(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PostMailsRequest postMailsRequest,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = postMailsRequest;
+
+        // create path and map variables
+        String localVarPath = "/characters/{character_id}/mail".replace("{" + "character_id" + "}",
+                localVarApiClient.escapeString(characterId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        if (acceptLanguage != null) {
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
+        }
+
+        if (ifNoneMatch != null) {
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
+        }
+
+        if (xCompatibilityDate != null) {
+            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
+        }
+
+        if (xTenant != null) {
+            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
+        }
+
+        String[] localVarAuthNames = new String[] { "OAuth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postMailsValidateBeforeCall(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PostMailsRequest postMailsRequest,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'characterId' is set
+        if (characterId == null) {
+            throw new ApiException("Missing the required parameter 'characterId' when calling postMails(Async)");
+        }
+
+        // verify the required parameter 'xCompatibilityDate' is set
+        if (xCompatibilityDate == null) {
+            throw new ApiException("Missing the required parameter 'xCompatibilityDate' when calling postMails(Async)");
+        }
+
+        // verify the required parameter 'postMailsRequest' is set
+        if (postMailsRequest == null) {
+            throw new ApiException("Missing the required parameter 'postMailsRequest' when calling postMails(Async)");
+        }
+
+        return postMailsCall(characterId, xCompatibilityDate, postMailsRequest, acceptLanguage, ifNoneMatch, xTenant,
+                _callback);
+
+    }
+
+    /**
+     * Send a new mail Create and send a new mail
+     * 
+     * @param characterId
+     *            The ID of the character (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param postMailsRequest
+     *            (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return Long
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public Long postMails(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PostMailsRequest postMailsRequest,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        ApiResponse<Long> localVarResp = postMailsWithHttpInfo(characterId, xCompatibilityDate, postMailsRequest,
+                acceptLanguage, ifNoneMatch, xTenant);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Send a new mail Create and send a new mail
+     * 
+     * @param characterId
+     *            The ID of the character (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param postMailsRequest
+     *            (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return ApiResponse&lt;Long&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<Long> postMailsWithHttpInfo(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PostMailsRequest postMailsRequest,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        okhttp3.Call localVarCall = postMailsValidateBeforeCall(characterId, xCompatibilityDate, postMailsRequest,
+                acceptLanguage, ifNoneMatch, xTenant, null);
+        Type localVarReturnType = new TypeToken<Long>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Send a new mail (asynchronously) Create and send a new mail
+     * 
+     * @param characterId
+     *            The ID of the character (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param postMailsRequest
+     *            (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request
+     *             body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call postMailsAsync(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PostMailsRequest postMailsRequest,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback<Long> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postMailsValidateBeforeCall(characterId, xCompatibilityDate, postMailsRequest,
+                acceptLanguage, ifNoneMatch, xTenant, _callback);
+        Type localVarReturnType = new TypeToken<Long>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
+     * Build call for putMail
+     * 
+     * @param characterId
+     *            The ID of the character (required)
+     * @param mailId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param putMailRequest
+     *            (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
      * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
@@ -2536,12 +2530,11 @@ public class MailApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call putMailMailIdCall(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull Long mailId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PutMailMailIdRequest putMailMailIdRequest, final ApiCallback _callback)
-            throws ApiException {
+    public okhttp3.Call putMailCall(@javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull Long mailId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PutMailRequest putMailRequest, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {};
@@ -2555,7 +2548,7 @@ public class MailApi {
             basePath = null;
         }
 
-        Object localVarPostBody = putMailMailIdRequest;
+        Object localVarPostBody = putMailRequest;
 
         // create path and map variables
         String localVarPath = "/characters/{character_id}/mail/{mail_id}".replace("{" + "character_id" + "}",
@@ -2603,30 +2596,33 @@ public class MailApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putMailMailIdValidateBeforeCall(@javax.annotation.Nonnull Long characterId,
+    private okhttp3.Call putMailValidateBeforeCall(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull Long mailId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PutMailMailIdRequest putMailMailIdRequest, final ApiCallback _callback)
-            throws ApiException {
+            @javax.annotation.Nonnull PutMailRequest putMailRequest, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
-            throw new ApiException("Missing the required parameter 'characterId' when calling putMailMailId(Async)");
+            throw new ApiException("Missing the required parameter 'characterId' when calling putMail(Async)");
         }
 
         // verify the required parameter 'mailId' is set
         if (mailId == null) {
-            throw new ApiException("Missing the required parameter 'mailId' when calling putMailMailId(Async)");
+            throw new ApiException("Missing the required parameter 'mailId' when calling putMail(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling putMailMailId(Async)");
+            throw new ApiException("Missing the required parameter 'xCompatibilityDate' when calling putMail(Async)");
         }
 
-        return putMailMailIdCall(characterId, mailId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
-                putMailMailIdRequest, _callback);
+        // verify the required parameter 'putMailRequest' is set
+        if (putMailRequest == null) {
+            throw new ApiException("Missing the required parameter 'putMailRequest' when calling putMail(Async)");
+        }
+
+        return putMailCall(characterId, mailId, xCompatibilityDate, putMailRequest, acceptLanguage, ifNoneMatch,
+                xTenant, _callback);
 
     }
 
@@ -2639,6 +2635,8 @@ public class MailApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param putMailRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -2648,9 +2646,6 @@ public class MailApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param putMailMailIdRequest
-     *            (optional)
-     * @return Object
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2676,13 +2671,13 @@ public class MailApi {
      *                        </tr>
      *                        </table>
      */
-    public Object putMailMailId(@javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull Long mailId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PutMailMailIdRequest putMailMailIdRequest) throws ApiException {
-        ApiResponse<Object> localVarResp = putMailMailIdWithHttpInfo(characterId, mailId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, putMailMailIdRequest);
-        return localVarResp.getData();
+    public void putMail(@javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull Long mailId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PutMailRequest putMailRequest, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        putMailWithHttpInfo(characterId, mailId, xCompatibilityDate, putMailRequest, acceptLanguage, ifNoneMatch,
+                xTenant);
     }
 
     /**
@@ -2694,6 +2689,8 @@ public class MailApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param putMailRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -2703,9 +2700,7 @@ public class MailApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param putMailMailIdRequest
-     *            (optional)
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2731,16 +2726,14 @@ public class MailApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Object> putMailMailIdWithHttpInfo(@javax.annotation.Nonnull Long characterId,
+    public ApiResponse<Void> putMailWithHttpInfo(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull Long mailId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PutMailMailIdRequest putMailMailIdRequest) throws ApiException {
-        okhttp3.Call localVarCall = putMailMailIdValidateBeforeCall(characterId, mailId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, putMailMailIdRequest, null);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+            @javax.annotation.Nonnull PutMailRequest putMailRequest, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        okhttp3.Call localVarCall = putMailValidateBeforeCall(characterId, mailId, xCompatibilityDate, putMailRequest,
+                acceptLanguage, ifNoneMatch, xTenant, null);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -2753,6 +2746,8 @@ public class MailApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param putMailRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -2762,8 +2757,6 @@ public class MailApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param putMailMailIdRequest
-     *            (optional)
      * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
@@ -2792,18 +2785,15 @@ public class MailApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call putMailMailIdAsync(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull Long mailId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PutMailMailIdRequest putMailMailIdRequest, final ApiCallback<Object> _callback)
-            throws ApiException {
+    public okhttp3.Call putMailAsync(@javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull Long mailId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PutMailRequest putMailRequest, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putMailMailIdValidateBeforeCall(characterId, mailId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, putMailMailIdRequest, _callback);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        okhttp3.Call localVarCall = putMailValidateBeforeCall(characterId, mailId, xCompatibilityDate, putMailRequest,
+                acceptLanguage, ifNoneMatch, xTenant, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
 }

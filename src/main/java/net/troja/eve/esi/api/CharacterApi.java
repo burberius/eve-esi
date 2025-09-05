@@ -49,7 +49,7 @@ import java.util.List;
 import java.util.Map;
 
 public class CharacterApi {
-    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2020, 1, 1);
+    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2025, 8, 26);
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
@@ -377,306 +377,6 @@ public class CharacterApi {
     }
 
     /**
-     * Build call for getCharacterAgentsResearch
-     * 
-     * @param characterId
-     *            The ID of the character (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException
-     *             If fail to serialize the request body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getCharacterAgentsResearchCall(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {};
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null) {
-            basePath = localCustomBaseUrl;
-        } else if (localBasePaths.length > 0) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/characters/{character_id}/agents_research".replace("{" + "character_id" + "}",
-                localVarApiClient.escapeString(characterId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {};
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
-        }
-
-        if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
-        }
-
-        if (xCompatibilityDate != null) {
-            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
-        }
-
-        if (xTenant != null) {
-            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
-        }
-
-        String[] localVarAuthNames = new String[] { "OAuth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
-                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
-                localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCharacterAgentsResearchValidateBeforeCall(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'characterId' is set
-        if (characterId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'characterId' when calling getCharacterAgentsResearch(Async)");
-        }
-
-        // verify the required parameter 'xCompatibilityDate' is set
-        if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getCharacterAgentsResearch(Async)");
-        }
-
-        return getCharacterAgentsResearchCall(characterId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
-                _callback);
-
-    }
-
-    /**
-     * Get agents research Return a list of agents research information for a
-     * character. The formula for finding the current research points with an
-     * agent is: currentPoints &#x3D; remainderPoints + pointsPerDay *
-     * days(currentTime - researchStartDate)
-     * 
-     * @param characterId
-     *            The ID of the character (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return List&lt;CharacterResearchAgentsResponseInner&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public List<CharacterResearchAgentsResponseInner> getCharacterAgentsResearch(
-            @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CharacterResearchAgentsResponseInner>> localVarResp = getCharacterAgentsResearchWithHttpInfo(
-                characterId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Get agents research Return a list of agents research information for a
-     * character. The formula for finding the current research points with an
-     * agent is: currentPoints &#x3D; remainderPoints + pointsPerDay *
-     * days(currentTime - researchStartDate)
-     * 
-     * @param characterId
-     *            The ID of the character (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return 
-     *         ApiResponse&lt;List&lt;CharacterResearchAgentsResponseInner&gt;&gt
-     *         ;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<List<CharacterResearchAgentsResponseInner>> getCharacterAgentsResearchWithHttpInfo(
-            @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        okhttp3.Call localVarCall = getCharacterAgentsResearchValidateBeforeCall(characterId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterResearchAgentsResponseInner>>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Get agents research (asynchronously) Return a list of agents research
-     * information for a character. The formula for finding the current research
-     * points with an agent is: currentPoints &#x3D; remainderPoints +
-     * pointsPerDay * days(currentTime - researchStartDate)
-     * 
-     * @param characterId
-     *            The ID of the character (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException
-     *             If fail to process the API call, e.g. serializing the request
-     *             body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getCharacterAgentsResearchAsync(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CharacterResearchAgentsResponseInner>> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getCharacterAgentsResearchValidateBeforeCall(characterId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterResearchAgentsResponseInner>>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    /**
      * Build call for getCharacterBlueprints
      * 
      * @param characterId
@@ -989,7 +689,7 @@ public class CharacterApi {
     }
 
     /**
-     * Build call for getCharacterCorporationhistory
+     * Build call for getCharacterCorporationHistory
      * 
      * @param characterId
      *            The ID of the character (required)
@@ -1031,7 +731,7 @@ public class CharacterApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getCharacterCorporationhistoryCall(@javax.annotation.Nonnull Long characterId,
+    public okhttp3.Call getCharacterCorporationHistoryCall(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
@@ -1095,23 +795,23 @@ public class CharacterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCharacterCorporationhistoryValidateBeforeCall(@javax.annotation.Nonnull Long characterId,
+    private okhttp3.Call getCharacterCorporationHistoryValidateBeforeCall(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException(
-                    "Missing the required parameter 'characterId' when calling getCharacterCorporationhistory(Async)");
+                    "Missing the required parameter 'characterId' when calling getCharacterCorporationHistory(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
             throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getCharacterCorporationhistory(Async)");
+                    "Missing the required parameter 'xCompatibilityDate' when calling getCharacterCorporationHistory(Async)");
         }
 
-        return getCharacterCorporationhistoryCall(characterId, xCompatibilityDate, acceptLanguage, ifNoneMatch,
+        return getCharacterCorporationHistoryCall(characterId, xCompatibilityDate, acceptLanguage, ifNoneMatch,
                 xTenant, _callback);
 
     }
@@ -1159,11 +859,11 @@ public class CharacterApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterCorporationHistoryResponseInner> getCharacterCorporationhistory(
+    public List<CharacterCorporationHistoryResponseInner> getCharacterCorporationHistory(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CharacterCorporationHistoryResponseInner>> localVarResp = getCharacterCorporationhistoryWithHttpInfo(
+        ApiResponse<List<CharacterCorporationHistoryResponseInner>> localVarResp = getCharacterCorporationHistoryWithHttpInfo(
                 characterId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -1213,11 +913,11 @@ public class CharacterApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterCorporationHistoryResponseInner>> getCharacterCorporationhistoryWithHttpInfo(
+    public ApiResponse<List<CharacterCorporationHistoryResponseInner>> getCharacterCorporationHistoryWithHttpInfo(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        okhttp3.Call localVarCall = getCharacterCorporationhistoryValidateBeforeCall(characterId, xCompatibilityDate,
+        okhttp3.Call localVarCall = getCharacterCorporationHistoryValidateBeforeCall(characterId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
         Type localVarReturnType = new TypeToken<List<CharacterCorporationHistoryResponseInner>>() {
         }.getType();
@@ -1269,12 +969,12 @@ public class CharacterApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getCharacterCorporationhistoryAsync(@javax.annotation.Nonnull Long characterId,
+    public okhttp3.Call getCharacterCorporationHistoryAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback<List<CharacterCorporationHistoryResponseInner>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCharacterCorporationhistoryValidateBeforeCall(characterId, xCompatibilityDate,
+        okhttp3.Call localVarCall = getCharacterCorporationHistoryValidateBeforeCall(characterId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterCorporationHistoryResponseInner>>() {
         }.getType();
@@ -2739,6 +2439,306 @@ public class CharacterApi {
     }
 
     /**
+     * Build call for getCharacterResearchAgents
+     * 
+     * @param characterId
+     *            The ID of the character (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getCharacterResearchAgentsCall(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/characters/{character_id}/agents_research".replace("{" + "character_id" + "}",
+                localVarApiClient.escapeString(characterId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {};
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        if (acceptLanguage != null) {
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
+        }
+
+        if (ifNoneMatch != null) {
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
+        }
+
+        if (xCompatibilityDate != null) {
+            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
+        }
+
+        if (xTenant != null) {
+            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
+        }
+
+        String[] localVarAuthNames = new String[] { "OAuth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCharacterResearchAgentsValidateBeforeCall(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'characterId' is set
+        if (characterId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'characterId' when calling getCharacterResearchAgents(Async)");
+        }
+
+        // verify the required parameter 'xCompatibilityDate' is set
+        if (xCompatibilityDate == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'xCompatibilityDate' when calling getCharacterResearchAgents(Async)");
+        }
+
+        return getCharacterResearchAgentsCall(characterId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
+                _callback);
+
+    }
+
+    /**
+     * Get agents research Return a list of agents research information for a
+     * character. The formula for finding the current research points with an
+     * agent is: currentPoints &#x3D; remainderPoints + pointsPerDay *
+     * days(currentTime - researchStartDate)
+     * 
+     * @param characterId
+     *            The ID of the character (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return List&lt;CharacterResearchAgentsResponseInner&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public List<CharacterResearchAgentsResponseInner> getCharacterResearchAgents(
+            @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        ApiResponse<List<CharacterResearchAgentsResponseInner>> localVarResp = getCharacterResearchAgentsWithHttpInfo(
+                characterId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get agents research Return a list of agents research information for a
+     * character. The formula for finding the current research points with an
+     * agent is: currentPoints &#x3D; remainderPoints + pointsPerDay *
+     * days(currentTime - researchStartDate)
+     * 
+     * @param characterId
+     *            The ID of the character (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return 
+     *         ApiResponse&lt;List&lt;CharacterResearchAgentsResponseInner&gt;&gt
+     *         ;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<List<CharacterResearchAgentsResponseInner>> getCharacterResearchAgentsWithHttpInfo(
+            @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        okhttp3.Call localVarCall = getCharacterResearchAgentsValidateBeforeCall(characterId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant, null);
+        Type localVarReturnType = new TypeToken<List<CharacterResearchAgentsResponseInner>>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get agents research (asynchronously) Return a list of agents research
+     * information for a character. The formula for finding the current research
+     * points with an agent is: currentPoints &#x3D; remainderPoints +
+     * pointsPerDay * days(currentTime - researchStartDate)
+     * 
+     * @param characterId
+     *            The ID of the character (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request
+     *             body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getCharacterResearchAgentsAsync(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback<List<CharacterResearchAgentsResponseInner>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCharacterResearchAgentsValidateBeforeCall(characterId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant, _callback);
+        Type localVarReturnType = new TypeToken<List<CharacterResearchAgentsResponseInner>>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
      * Build call for getCharacterRoles
      * 
      * @param characterId
@@ -3616,6 +3616,8 @@ public class CharacterApi {
      *            The ID of the character (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -3625,8 +3627,6 @@ public class CharacterApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
@@ -3655,9 +3655,9 @@ public class CharacterApi {
      *                        </table>
      */
     public okhttp3.Call postCharacterCspaCall(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable Set<Long> requestBody, final ApiCallback _callback) throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {};
@@ -3719,9 +3719,9 @@ public class CharacterApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postCharacterCspaValidateBeforeCall(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable Set<Long> requestBody, final ApiCallback _callback) throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException("Missing the required parameter 'characterId' when calling postCharacterCspa(Async)");
@@ -3733,8 +3733,13 @@ public class CharacterApi {
                     "Missing the required parameter 'xCompatibilityDate' when calling postCharacterCspa(Async)");
         }
 
-        return postCharacterCspaCall(characterId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
-                requestBody, _callback);
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling postCharacterCspa(Async)");
+        }
+
+        return postCharacterCspaCall(characterId, xCompatibilityDate, requestBody, acceptLanguage, ifNoneMatch,
+                xTenant, _callback);
 
     }
 
@@ -3746,6 +3751,8 @@ public class CharacterApi {
      *            The ID of the character (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -3755,8 +3762,6 @@ public class CharacterApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @return Double
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
@@ -3784,11 +3789,11 @@ public class CharacterApi {
      *                        </table>
      */
     public Double postCharacterCspa(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable Set<Long> requestBody) throws ApiException {
-        ApiResponse<Double> localVarResp = postCharacterCspaWithHttpInfo(characterId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, requestBody);
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        ApiResponse<Double> localVarResp = postCharacterCspaWithHttpInfo(characterId, xCompatibilityDate, requestBody,
+                acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -3800,6 +3805,8 @@ public class CharacterApi {
      *            The ID of the character (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -3809,8 +3816,6 @@ public class CharacterApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @return ApiResponse&lt;Double&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
@@ -3838,11 +3843,11 @@ public class CharacterApi {
      *                        </table>
      */
     public ApiResponse<Double> postCharacterCspaWithHttpInfo(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable Set<Long> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = postCharacterCspaValidateBeforeCall(characterId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, requestBody, null);
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        okhttp3.Call localVarCall = postCharacterCspaValidateBeforeCall(characterId, xCompatibilityDate, requestBody,
+                acceptLanguage, ifNoneMatch, xTenant, null);
         Type localVarReturnType = new TypeToken<Double>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -3857,6 +3862,8 @@ public class CharacterApi {
      *            The ID of the character (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -3866,8 +3873,6 @@ public class CharacterApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
@@ -3897,12 +3902,12 @@ public class CharacterApi {
      *                        </table>
      */
     public okhttp3.Call postCharacterCspaAsync(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable Set<Long> requestBody, final ApiCallback<Double> _callback) throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback<Double> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCharacterCspaValidateBeforeCall(characterId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, requestBody, _callback);
+        okhttp3.Call localVarCall = postCharacterCspaValidateBeforeCall(characterId, xCompatibilityDate, requestBody,
+                acceptLanguage, ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<Double>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -3914,6 +3919,8 @@ public class CharacterApi {
      * 
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -3923,8 +3930,6 @@ public class CharacterApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
@@ -3953,8 +3958,8 @@ public class CharacterApi {
      *                        </table>
      */
     public okhttp3.Call postCharactersAffiliationCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, @javax.annotation.Nullable Set<Long> requestBody,
+            @javax.annotation.Nonnull Set<Long> requestBody, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -4016,16 +4021,22 @@ public class CharacterApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postCharactersAffiliationValidateBeforeCall(
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable Set<Long> requestBody, final ApiCallback _callback) throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
             throw new ApiException(
                     "Missing the required parameter 'xCompatibilityDate' when calling postCharactersAffiliation(Async)");
         }
 
-        return postCharactersAffiliationCall(xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, requestBody,
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'requestBody' when calling postCharactersAffiliation(Async)");
+        }
+
+        return postCharactersAffiliationCall(xCompatibilityDate, requestBody, acceptLanguage, ifNoneMatch, xTenant,
                 _callback);
 
     }
@@ -4036,6 +4047,8 @@ public class CharacterApi {
      * 
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -4045,8 +4058,6 @@ public class CharacterApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @return List&lt;CharacterAffiliationResponseInner&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
@@ -4074,11 +4085,11 @@ public class CharacterApi {
      *                        </table>
      */
     public List<CharacterAffiliationResponseInner> postCharactersAffiliation(
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable Set<Long> requestBody) throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
         ApiResponse<List<CharacterAffiliationResponseInner>> localVarResp = postCharactersAffiliationWithHttpInfo(
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, requestBody);
+                xCompatibilityDate, requestBody, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -4088,6 +4099,8 @@ public class CharacterApi {
      * 
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -4097,8 +4110,6 @@ public class CharacterApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @return ApiResponse&lt;List&lt;CharacterAffiliationResponseInner&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
@@ -4126,11 +4137,11 @@ public class CharacterApi {
      *                        </table>
      */
     public ApiResponse<List<CharacterAffiliationResponseInner>> postCharactersAffiliationWithHttpInfo(
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable Set<Long> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = postCharactersAffiliationValidateBeforeCall(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, requestBody, null);
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        okhttp3.Call localVarCall = postCharactersAffiliationValidateBeforeCall(xCompatibilityDate, requestBody,
+                acceptLanguage, ifNoneMatch, xTenant, null);
         Type localVarReturnType = new TypeToken<List<CharacterAffiliationResponseInner>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -4142,6 +4153,8 @@ public class CharacterApi {
      * 
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -4151,8 +4164,6 @@ public class CharacterApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
@@ -4182,12 +4193,12 @@ public class CharacterApi {
      *                        </table>
      */
     public okhttp3.Call postCharactersAffiliationAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, @javax.annotation.Nullable Set<Long> requestBody,
+            @javax.annotation.Nonnull Set<Long> requestBody, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback<List<CharacterAffiliationResponseInner>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCharactersAffiliationValidateBeforeCall(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, requestBody, _callback);
+        okhttp3.Call localVarCall = postCharactersAffiliationValidateBeforeCall(xCompatibilityDate, requestBody,
+                acceptLanguage, ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterAffiliationResponseInner>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);

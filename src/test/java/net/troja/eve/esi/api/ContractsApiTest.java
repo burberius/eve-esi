@@ -224,7 +224,7 @@ public class ContractsApiTest extends GeneralApiTest {
         String ifNoneMatch = null;
         String xTenant = null;
         List<PublicContractsResponseInner> response =
-                api.getPublicContractsRegionId(REGION_ID_THE_FORGE, CharacterApi.COMPATIBILITY_DATE, page, acceptLanguage,
+                api.getPublicContracts(REGION_ID_THE_FORGE, CharacterApi.COMPATIBILITY_DATE, page, acceptLanguage,
                         ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
     }
@@ -240,7 +240,7 @@ public class ContractsApiTest extends GeneralApiTest {
     private Long getPublicContract() throws ApiException {
         for (int page = 1; page <= 20; page++) {
             List<PublicContractsResponseInner> contractsPublicRegionId =
-                    api.getPublicContractsRegionId(REGION_ID_THE_FORGE, ContractsApi.COMPATIBILITY_DATE, page, null, null, null);
+                    api.getPublicContracts(REGION_ID_THE_FORGE, ContractsApi.COMPATIBILITY_DATE, page, null, null, null);
             Optional<Long> contractId = contractsPublicRegionId.stream()
                     .filter(contract -> contract.getType() == PublicContractsResponseInner.TypeEnum.AUCTION)
                     .findFirst().map(PublicContractsResponseInner::getContractId);

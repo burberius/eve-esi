@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.troja.eve.esi.model.CorporationStarbaseFuelsInner;
+import net.troja.eve.esi.model.CorporationStarbaseResponseFuelsInner;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -49,10 +49,10 @@ import java.util.Set;
 import net.troja.eve.esi.JSON;
 
 /**
- * CorporationStarbase
+ * CorporationStarbaseResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class CorporationStarbase implements Serializable {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+public class CorporationStarbaseResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_ALLOW_ALLIANCE_MEMBERS = "allow_alliance_members";
@@ -277,7 +277,7 @@ public class CorporationStarbase implements Serializable {
     public static final String SERIALIZED_NAME_FUELS = "fuels";
     @SerializedName(SERIALIZED_NAME_FUELS)
     @javax.annotation.Nullable
-    private List<CorporationStarbaseFuelsInner> fuels;
+    private List<CorporationStarbaseResponseFuelsInner> fuels;
 
     /**
      * Who can offline starbase (POS) and its structures
@@ -470,10 +470,10 @@ public class CorporationStarbase implements Serializable {
     @javax.annotation.Nonnull
     private Boolean useAllianceStandings;
 
-    public CorporationStarbase() {
+    public CorporationStarbaseResponse() {
     }
 
-    public CorporationStarbase allowAllianceMembers(@javax.annotation.Nonnull Boolean allowAllianceMembers) {
+    public CorporationStarbaseResponse allowAllianceMembers(@javax.annotation.Nonnull Boolean allowAllianceMembers) {
         this.allowAllianceMembers = allowAllianceMembers;
         return this;
     }
@@ -492,7 +492,7 @@ public class CorporationStarbase implements Serializable {
         this.allowAllianceMembers = allowAllianceMembers;
     }
 
-    public CorporationStarbase allowCorporationMembers(@javax.annotation.Nonnull Boolean allowCorporationMembers) {
+    public CorporationStarbaseResponse allowCorporationMembers(@javax.annotation.Nonnull Boolean allowCorporationMembers) {
         this.allowCorporationMembers = allowCorporationMembers;
         return this;
     }
@@ -511,12 +511,12 @@ public class CorporationStarbase implements Serializable {
         this.allowCorporationMembers = allowCorporationMembers;
     }
 
-    public CorporationStarbase anchor(@javax.annotation.Nonnull AnchorEnum anchor) {
+    public CorporationStarbaseResponse anchor(@javax.annotation.Nonnull AnchorEnum anchor) {
         this.anchorEnum = anchor;
         return this;
     }
 
-    public CorporationStarbase anchorString(@javax.annotation.Nonnull String anchor) {
+    public CorporationStarbaseResponse anchorString(@javax.annotation.Nonnull String anchor) {
         this.anchor = anchor;
         return this;
     }
@@ -546,7 +546,7 @@ public class CorporationStarbase implements Serializable {
         this.anchor = anchor;
     }
 
-    public CorporationStarbase attackIfAtWar(@javax.annotation.Nonnull Boolean attackIfAtWar) {
+    public CorporationStarbaseResponse attackIfAtWar(@javax.annotation.Nonnull Boolean attackIfAtWar) {
         this.attackIfAtWar = attackIfAtWar;
         return this;
     }
@@ -565,7 +565,7 @@ public class CorporationStarbase implements Serializable {
         this.attackIfAtWar = attackIfAtWar;
     }
 
-    public CorporationStarbase attackIfOtherSecurityStatusDropping(
+    public CorporationStarbaseResponse attackIfOtherSecurityStatusDropping(
             @javax.annotation.Nonnull Boolean attackIfOtherSecurityStatusDropping) {
         this.attackIfOtherSecurityStatusDropping = attackIfOtherSecurityStatusDropping;
         return this;
@@ -586,7 +586,7 @@ public class CorporationStarbase implements Serializable {
         this.attackIfOtherSecurityStatusDropping = attackIfOtherSecurityStatusDropping;
     }
 
-    public CorporationStarbase attackSecurityStatusThreshold(
+    public CorporationStarbaseResponse attackSecurityStatusThreshold(
             @javax.annotation.Nullable Double attackSecurityStatusThreshold) {
         this.attackSecurityStatusThreshold = attackSecurityStatusThreshold;
         return this;
@@ -607,7 +607,7 @@ public class CorporationStarbase implements Serializable {
         this.attackSecurityStatusThreshold = attackSecurityStatusThreshold;
     }
 
-    public CorporationStarbase attackStandingThreshold(@javax.annotation.Nullable Double attackStandingThreshold) {
+    public CorporationStarbaseResponse attackStandingThreshold(@javax.annotation.Nullable Double attackStandingThreshold) {
         this.attackStandingThreshold = attackStandingThreshold;
         return this;
     }
@@ -627,12 +627,12 @@ public class CorporationStarbase implements Serializable {
         this.attackStandingThreshold = attackStandingThreshold;
     }
 
-    public CorporationStarbase fuelBayTake(@javax.annotation.Nonnull FuelBayTakeEnum fuelBayTake) {
+    public CorporationStarbaseResponse fuelBayTake(@javax.annotation.Nonnull FuelBayTakeEnum fuelBayTake) {
         this.fuelBayTakeEnum = fuelBayTake;
         return this;
     }
 
-    public CorporationStarbase fuelBayTakeString(@javax.annotation.Nonnull String fuelBayTake) {
+    public CorporationStarbaseResponse fuelBayTakeString(@javax.annotation.Nonnull String fuelBayTake) {
         this.fuelBayTake = fuelBayTake;
         return this;
     }
@@ -662,12 +662,12 @@ public class CorporationStarbase implements Serializable {
         this.fuelBayTake = fuelBayTake;
     }
 
-    public CorporationStarbase fuelBayView(@javax.annotation.Nonnull FuelBayViewEnum fuelBayView) {
+    public CorporationStarbaseResponse fuelBayView(@javax.annotation.Nonnull FuelBayViewEnum fuelBayView) {
         this.fuelBayViewEnum = fuelBayView;
         return this;
     }
 
-    public CorporationStarbase fuelBayViewString(@javax.annotation.Nonnull String fuelBayView) {
+    public CorporationStarbaseResponse fuelBayViewString(@javax.annotation.Nonnull String fuelBayView) {
         this.fuelBayView = fuelBayView;
         return this;
     }
@@ -700,12 +700,13 @@ public class CorporationStarbase implements Serializable {
         this.fuelBayView = fuelBayView;
     }
 
-    public CorporationStarbase fuels(@javax.annotation.Nullable List<CorporationStarbaseFuelsInner> fuels) {
+    public CorporationStarbaseResponse fuels(
+            @javax.annotation.Nullable List<CorporationStarbaseResponseFuelsInner> fuels) {
         this.fuels = fuels;
         return this;
     }
 
-    public CorporationStarbase addFuelsItem(CorporationStarbaseFuelsInner fuelsItem) {
+    public CorporationStarbaseResponse addFuelsItem(CorporationStarbaseResponseFuelsInner fuelsItem) {
         if (this.fuels == null) {
             this.fuels = new ArrayList<>();
         }
@@ -721,20 +722,20 @@ public class CorporationStarbase implements Serializable {
      * @return fuels
      */
     @javax.annotation.Nullable
-    public List<CorporationStarbaseFuelsInner> getFuels() {
+    public List<CorporationStarbaseResponseFuelsInner> getFuels() {
         return fuels;
     }
 
-    public void setFuels(@javax.annotation.Nullable List<CorporationStarbaseFuelsInner> fuels) {
+    public void setFuels(@javax.annotation.Nullable List<CorporationStarbaseResponseFuelsInner> fuels) {
         this.fuels = fuels;
     }
 
-    public CorporationStarbase offline(@javax.annotation.Nonnull OfflineEnum offline) {
+    public CorporationStarbaseResponse offline(@javax.annotation.Nonnull OfflineEnum offline) {
         this.offlineEnum = offline;
         return this;
     }
 
-    public CorporationStarbase offlineString(@javax.annotation.Nonnull String offline) {
+    public CorporationStarbaseResponse offlineString(@javax.annotation.Nonnull String offline) {
         this.offline = offline;
         return this;
     }
@@ -764,12 +765,12 @@ public class CorporationStarbase implements Serializable {
         this.offline = offline;
     }
 
-    public CorporationStarbase online(@javax.annotation.Nonnull OnlineEnum online) {
+    public CorporationStarbaseResponse online(@javax.annotation.Nonnull OnlineEnum online) {
         this.onlineEnum = online;
         return this;
     }
 
-    public CorporationStarbase onlineString(@javax.annotation.Nonnull String online) {
+    public CorporationStarbaseResponse onlineString(@javax.annotation.Nonnull String online) {
         this.online = online;
         return this;
     }
@@ -799,12 +800,12 @@ public class CorporationStarbase implements Serializable {
         this.online = online;
     }
 
-    public CorporationStarbase unanchor(@javax.annotation.Nonnull UnanchorEnum unanchor) {
+    public CorporationStarbaseResponse unanchor(@javax.annotation.Nonnull UnanchorEnum unanchor) {
         this.unanchorEnum = unanchor;
         return this;
     }
 
-    public CorporationStarbase unanchorString(@javax.annotation.Nonnull String unanchor) {
+    public CorporationStarbaseResponse unanchorString(@javax.annotation.Nonnull String unanchor) {
         this.unanchor = unanchor;
         return this;
     }
@@ -834,7 +835,7 @@ public class CorporationStarbase implements Serializable {
         this.unanchor = unanchor;
     }
 
-    public CorporationStarbase useAllianceStandings(@javax.annotation.Nonnull Boolean useAllianceStandings) {
+    public CorporationStarbaseResponse useAllianceStandings(@javax.annotation.Nonnull Boolean useAllianceStandings) {
         this.useAllianceStandings = useAllianceStandings;
         return this;
     }
@@ -862,23 +863,23 @@ public class CorporationStarbase implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CorporationStarbase corporationStarbase = (CorporationStarbase) o;
-        return Objects.equals(this.allowAllianceMembers, corporationStarbase.allowAllianceMembers)
-                && Objects.equals(this.allowCorporationMembers, corporationStarbase.allowCorporationMembers)
-                && Objects.equals(this.anchor, corporationStarbase.anchor)
-                && Objects.equals(this.attackIfAtWar, corporationStarbase.attackIfAtWar)
+        CorporationStarbaseResponse corporationStarbaseResponse = (CorporationStarbaseResponse) o;
+        return Objects.equals(this.allowAllianceMembers, corporationStarbaseResponse.allowAllianceMembers)
+                && Objects.equals(this.allowCorporationMembers, corporationStarbaseResponse.allowCorporationMembers)
+                && Objects.equals(this.anchor, corporationStarbaseResponse.anchor)
+                && Objects.equals(this.attackIfAtWar, corporationStarbaseResponse.attackIfAtWar)
                 && Objects.equals(this.attackIfOtherSecurityStatusDropping,
-                        corporationStarbase.attackIfOtherSecurityStatusDropping)
-                && Objects
-                        .equals(this.attackSecurityStatusThreshold, corporationStarbase.attackSecurityStatusThreshold)
-                && Objects.equals(this.attackStandingThreshold, corporationStarbase.attackStandingThreshold)
-                && Objects.equals(this.fuelBayTake, corporationStarbase.fuelBayTake)
-                && Objects.equals(this.fuelBayView, corporationStarbase.fuelBayView)
-                && Objects.equals(this.fuels, corporationStarbase.fuels)
-                && Objects.equals(this.offline, corporationStarbase.offline)
-                && Objects.equals(this.online, corporationStarbase.online)
-                && Objects.equals(this.unanchor, corporationStarbase.unanchor)
-                && Objects.equals(this.useAllianceStandings, corporationStarbase.useAllianceStandings);
+                        corporationStarbaseResponse.attackIfOtherSecurityStatusDropping)
+                && Objects.equals(this.attackSecurityStatusThreshold,
+                        corporationStarbaseResponse.attackSecurityStatusThreshold)
+                && Objects.equals(this.attackStandingThreshold, corporationStarbaseResponse.attackStandingThreshold)
+                && Objects.equals(this.fuelBayTake, corporationStarbaseResponse.fuelBayTake)
+                && Objects.equals(this.fuelBayView, corporationStarbaseResponse.fuelBayView)
+                && Objects.equals(this.fuels, corporationStarbaseResponse.fuels)
+                && Objects.equals(this.offline, corporationStarbaseResponse.offline)
+                && Objects.equals(this.online, corporationStarbaseResponse.online)
+                && Objects.equals(this.unanchor, corporationStarbaseResponse.unanchor)
+                && Objects.equals(this.useAllianceStandings, corporationStarbaseResponse.useAllianceStandings);
     }
 
     @Override
@@ -891,7 +892,7 @@ public class CorporationStarbase implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class CorporationStarbase {\n");
+        sb.append("class CorporationStarbaseResponse {\n");
         sb.append("    allowAllianceMembers: ").append(toIndentedString(allowAllianceMembers)).append("\n");
         sb.append("    allowCorporationMembers: ").append(toIndentedString(allowCorporationMembers)).append("\n");
         sb.append("    anchor: ").append(toIndentedString(anchor)).append("\n");
@@ -946,38 +947,39 @@ public class CorporationStarbase implements Serializable {
      *            JSON Element
      * @throws IOException
      *             if the JSON Element is invalid with respect to
-     *             CorporationStarbase
+     *             CorporationStarbaseResponse
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         if (jsonElement == null) {
-            if (!CorporationStarbase.openapiRequiredFields.isEmpty()) { // has
-                                                                        // required
-                                                                        // fields
-                                                                        // but
-                                                                        // JSON
-                                                                        // element
-                                                                        // is
-                                                                        // null
-                throw new IllegalArgumentException(String.format(
-                        "The required field(s) %s in CorporationStarbase is not found in the empty JSON string",
-                        CorporationStarbase.openapiRequiredFields.toString()));
+            if (!CorporationStarbaseResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                                // required
+                                                                                // fields
+                                                                                // but
+                                                                                // JSON
+                                                                                // element
+                                                                                // is
+                                                                                // null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in CorporationStarbaseResponse is not found in the empty JSON string",
+                                CorporationStarbaseResponse.openapiRequiredFields.toString()));
             }
         }
 
         Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
         for (Map.Entry<String, JsonElement> entry : entries) {
-            if (!CorporationStarbase.openapiFields.contains(entry.getKey())) {
+            if (!CorporationStarbaseResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
-                                "The field `%s` in the JSON string is not defined in the `CorporationStarbase` properties. JSON: %s",
+                                "The field `%s` in the JSON string is not defined in the `CorporationStarbaseResponse` properties. JSON: %s",
                                 entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
-        for (String requiredField : CorporationStarbase.openapiRequiredFields) {
+        for (String requiredField : CorporationStarbaseResponse.openapiRequiredFields) {
             if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
@@ -1018,7 +1020,7 @@ public class CorporationStarbase implements Serializable {
 
                 // validate the optional field `fuels` (array)
                 for (int i = 0; i < jsonArrayfuels.size(); i++) {
-                    CorporationStarbaseFuelsInner.validateJsonElement(jsonArrayfuels.get(i));
+                    CorporationStarbaseResponseFuelsInner.validateJsonElement(jsonArrayfuels.get(i));
                 };
             }
         }
@@ -1049,23 +1051,23 @@ public class CorporationStarbase implements Serializable {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!CorporationStarbase.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'CorporationStarbase'
-                             // and its subtypes
+            if (!CorporationStarbaseResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes
+                             // 'CorporationStarbaseResponse' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<CorporationStarbase> thisAdapter = gson.getDelegateAdapter(this,
-                    TypeToken.get(CorporationStarbase.class));
+            final TypeAdapter<CorporationStarbaseResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(CorporationStarbaseResponse.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<CorporationStarbase>() {
+            return (TypeAdapter<T>) new TypeAdapter<CorporationStarbaseResponse>() {
                 @Override
-                public void write(JsonWriter out, CorporationStarbase value) throws IOException {
+                public void write(JsonWriter out, CorporationStarbaseResponse value) throws IOException {
                     JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
                     elementAdapter.write(out, obj);
                 }
 
                 @Override
-                public CorporationStarbase read(JsonReader in) throws IOException {
+                public CorporationStarbaseResponse read(JsonReader in) throws IOException {
                     JsonElement jsonElement = elementAdapter.read(in);
                     validateJsonElement(jsonElement);
                     return thisAdapter.fromJsonTree(jsonElement);
@@ -1076,21 +1078,21 @@ public class CorporationStarbase implements Serializable {
     }
 
     /**
-     * Create an instance of CorporationStarbase given an JSON string
+     * Create an instance of CorporationStarbaseResponse given an JSON string
      *
      * @param jsonString
      *            JSON string
-     * @return An instance of CorporationStarbase
+     * @return An instance of CorporationStarbaseResponse
      * @throws IOException
      *             if the JSON string is invalid with respect to
-     *             CorporationStarbase
+     *             CorporationStarbaseResponse
      */
-    public static CorporationStarbase fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, CorporationStarbase.class);
+    public static CorporationStarbaseResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CorporationStarbaseResponse.class);
     }
 
     /**
-     * Convert an instance of CorporationStarbase to an JSON string
+     * Convert an instance of CorporationStarbaseResponse to an JSON string
      *
      * @return JSON string
      */

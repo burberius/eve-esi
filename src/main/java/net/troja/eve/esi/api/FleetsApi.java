@@ -34,9 +34,9 @@ import net.troja.eve.esi.model.FleetWingsPost;
 import net.troja.eve.esi.model.FleetWingsResponseInner;
 import java.time.LocalDate;
 import net.troja.eve.esi.model.PostFleetMembersRequest;
-import net.troja.eve.esi.model.PutFleetMembersMemberIdRequest;
+import net.troja.eve.esi.model.PutFleetMemberRequest;
 import net.troja.eve.esi.model.PutFleetRequest;
-import net.troja.eve.esi.model.PutFleetSquadsSquadIdRequest;
+import net.troja.eve.esi.model.PutFleetSquadRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ import java.util.List;
 import java.util.Map;
 
 public class FleetsApi {
-    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2020, 1, 1);
+    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2025, 8, 26);
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
@@ -83,7 +83,7 @@ public class FleetsApi {
     }
 
     /**
-     * Build call for deleteFleetMembersMemberId
+     * Build call for deleteFleetMember
      * 
      * @param fleetId
      *            (required)
@@ -127,7 +127,7 @@ public class FleetsApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call deleteFleetMembersMemberIdCall(@javax.annotation.Nonnull Long fleetId,
+    public okhttp3.Call deleteFleetMemberCall(@javax.annotation.Nonnull Long fleetId,
             @javax.annotation.Nonnull Long memberId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
@@ -192,30 +192,28 @@ public class FleetsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteFleetMembersMemberIdValidateBeforeCall(@javax.annotation.Nonnull Long fleetId,
+    private okhttp3.Call deleteFleetMemberValidateBeforeCall(@javax.annotation.Nonnull Long fleetId,
             @javax.annotation.Nonnull Long memberId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'fleetId' when calling deleteFleetMembersMemberId(Async)");
+            throw new ApiException("Missing the required parameter 'fleetId' when calling deleteFleetMember(Async)");
         }
 
         // verify the required parameter 'memberId' is set
         if (memberId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'memberId' when calling deleteFleetMembersMemberId(Async)");
+            throw new ApiException("Missing the required parameter 'memberId' when calling deleteFleetMember(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
             throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling deleteFleetMembersMemberId(Async)");
+                    "Missing the required parameter 'xCompatibilityDate' when calling deleteFleetMember(Async)");
         }
 
-        return deleteFleetMembersMemberIdCall(fleetId, memberId, xCompatibilityDate, acceptLanguage, ifNoneMatch,
-                xTenant, _callback);
+        return deleteFleetMemberCall(fleetId, memberId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
+                _callback);
 
     }
 
@@ -237,7 +235,6 @@ public class FleetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return Object
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -263,13 +260,11 @@ public class FleetsApi {
      *                        </tr>
      *                        </table>
      */
-    public Object deleteFleetMembersMemberId(@javax.annotation.Nonnull Long fleetId,
-            @javax.annotation.Nonnull Long memberId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<Object> localVarResp = deleteFleetMembersMemberIdWithHttpInfo(fleetId, memberId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
-        return localVarResp.getData();
+    public void deleteFleetMember(@javax.annotation.Nonnull Long fleetId, @javax.annotation.Nonnull Long memberId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        deleteFleetMemberWithHttpInfo(fleetId, memberId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
     }
 
     /**
@@ -290,7 +285,7 @@ public class FleetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -316,15 +311,13 @@ public class FleetsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Object> deleteFleetMembersMemberIdWithHttpInfo(@javax.annotation.Nonnull Long fleetId,
+    public ApiResponse<Void> deleteFleetMemberWithHttpInfo(@javax.annotation.Nonnull Long fleetId,
             @javax.annotation.Nonnull Long memberId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        okhttp3.Call localVarCall = deleteFleetMembersMemberIdValidateBeforeCall(fleetId, memberId, xCompatibilityDate,
+        okhttp3.Call localVarCall = deleteFleetMemberValidateBeforeCall(fleetId, memberId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -373,21 +366,19 @@ public class FleetsApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call deleteFleetMembersMemberIdAsync(@javax.annotation.Nonnull Long fleetId,
+    public okhttp3.Call deleteFleetMemberAsync(@javax.annotation.Nonnull Long fleetId,
             @javax.annotation.Nonnull Long memberId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<Object> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteFleetMembersMemberIdValidateBeforeCall(fleetId, memberId, xCompatibilityDate,
+        okhttp3.Call localVarCall = deleteFleetMemberValidateBeforeCall(fleetId, memberId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
 
     /**
-     * Build call for deleteFleetSquadsSquadId
+     * Build call for deleteFleetSquad
      * 
      * @param fleetId
      *            (required)
@@ -431,7 +422,7 @@ public class FleetsApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call deleteFleetSquadsSquadIdCall(@javax.annotation.Nonnull Long fleetId,
+    public okhttp3.Call deleteFleetSquadCall(@javax.annotation.Nonnull Long fleetId,
             @javax.annotation.Nonnull Long squadId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
@@ -496,29 +487,27 @@ public class FleetsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteFleetSquadsSquadIdValidateBeforeCall(@javax.annotation.Nonnull Long fleetId,
+    private okhttp3.Call deleteFleetSquadValidateBeforeCall(@javax.annotation.Nonnull Long fleetId,
             @javax.annotation.Nonnull Long squadId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'fleetId' when calling deleteFleetSquadsSquadId(Async)");
+            throw new ApiException("Missing the required parameter 'fleetId' when calling deleteFleetSquad(Async)");
         }
 
         // verify the required parameter 'squadId' is set
         if (squadId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'squadId' when calling deleteFleetSquadsSquadId(Async)");
+            throw new ApiException("Missing the required parameter 'squadId' when calling deleteFleetSquad(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
             throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling deleteFleetSquadsSquadId(Async)");
+                    "Missing the required parameter 'xCompatibilityDate' when calling deleteFleetSquad(Async)");
         }
 
-        return deleteFleetSquadsSquadIdCall(fleetId, squadId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
+        return deleteFleetSquadCall(fleetId, squadId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
                 _callback);
 
     }
@@ -541,7 +530,6 @@ public class FleetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return Object
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -567,13 +555,11 @@ public class FleetsApi {
      *                        </tr>
      *                        </table>
      */
-    public Object deleteFleetSquadsSquadId(@javax.annotation.Nonnull Long fleetId,
-            @javax.annotation.Nonnull Long squadId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<Object> localVarResp = deleteFleetSquadsSquadIdWithHttpInfo(fleetId, squadId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant);
-        return localVarResp.getData();
+    public void deleteFleetSquad(@javax.annotation.Nonnull Long fleetId, @javax.annotation.Nonnull Long squadId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        deleteFleetSquadWithHttpInfo(fleetId, squadId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
     }
 
     /**
@@ -594,7 +580,7 @@ public class FleetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -620,15 +606,13 @@ public class FleetsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Object> deleteFleetSquadsSquadIdWithHttpInfo(@javax.annotation.Nonnull Long fleetId,
+    public ApiResponse<Void> deleteFleetSquadWithHttpInfo(@javax.annotation.Nonnull Long fleetId,
             @javax.annotation.Nonnull Long squadId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        okhttp3.Call localVarCall = deleteFleetSquadsSquadIdValidateBeforeCall(fleetId, squadId, xCompatibilityDate,
+        okhttp3.Call localVarCall = deleteFleetSquadValidateBeforeCall(fleetId, squadId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -678,21 +662,19 @@ public class FleetsApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call deleteFleetSquadsSquadIdAsync(@javax.annotation.Nonnull Long fleetId,
+    public okhttp3.Call deleteFleetSquadAsync(@javax.annotation.Nonnull Long fleetId,
             @javax.annotation.Nonnull Long squadId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<Object> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteFleetSquadsSquadIdValidateBeforeCall(fleetId, squadId, xCompatibilityDate,
+        okhttp3.Call localVarCall = deleteFleetSquadValidateBeforeCall(fleetId, squadId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
 
     /**
-     * Build call for deleteFleetWingsWingId
+     * Build call for deleteFleetWing
      * 
      * @param fleetId
      *            (required)
@@ -736,7 +718,7 @@ public class FleetsApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call deleteFleetWingsWingIdCall(@javax.annotation.Nonnull Long fleetId,
+    public okhttp3.Call deleteFleetWingCall(@javax.annotation.Nonnull Long fleetId,
             @javax.annotation.Nonnull Long wingId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
@@ -801,29 +783,27 @@ public class FleetsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteFleetWingsWingIdValidateBeforeCall(@javax.annotation.Nonnull Long fleetId,
+    private okhttp3.Call deleteFleetWingValidateBeforeCall(@javax.annotation.Nonnull Long fleetId,
             @javax.annotation.Nonnull Long wingId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'fleetId' when calling deleteFleetWingsWingId(Async)");
+            throw new ApiException("Missing the required parameter 'fleetId' when calling deleteFleetWing(Async)");
         }
 
         // verify the required parameter 'wingId' is set
         if (wingId == null) {
-            throw new ApiException("Missing the required parameter 'wingId' when calling deleteFleetWingsWingId(Async)");
+            throw new ApiException("Missing the required parameter 'wingId' when calling deleteFleetWing(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
             throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling deleteFleetWingsWingId(Async)");
+                    "Missing the required parameter 'xCompatibilityDate' when calling deleteFleetWing(Async)");
         }
 
-        return deleteFleetWingsWingIdCall(fleetId, wingId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
-                _callback);
+        return deleteFleetWingCall(fleetId, wingId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
 
     }
 
@@ -846,7 +826,6 @@ public class FleetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return Object
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -872,13 +851,11 @@ public class FleetsApi {
      *                        </tr>
      *                        </table>
      */
-    public Object deleteFleetWingsWingId(@javax.annotation.Nonnull Long fleetId, @javax.annotation.Nonnull Long wingId,
+    public void deleteFleetWing(@javax.annotation.Nonnull Long fleetId, @javax.annotation.Nonnull Long wingId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<Object> localVarResp = deleteFleetWingsWingIdWithHttpInfo(fleetId, wingId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant);
-        return localVarResp.getData();
+        deleteFleetWingWithHttpInfo(fleetId, wingId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
     }
 
     /**
@@ -900,7 +877,7 @@ public class FleetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -926,15 +903,13 @@ public class FleetsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Object> deleteFleetWingsWingIdWithHttpInfo(@javax.annotation.Nonnull Long fleetId,
+    public ApiResponse<Void> deleteFleetWingWithHttpInfo(@javax.annotation.Nonnull Long fleetId,
             @javax.annotation.Nonnull Long wingId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        okhttp3.Call localVarCall = deleteFleetWingsWingIdValidateBeforeCall(fleetId, wingId, xCompatibilityDate,
+        okhttp3.Call localVarCall = deleteFleetWingValidateBeforeCall(fleetId, wingId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -984,16 +959,14 @@ public class FleetsApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call deleteFleetWingsWingIdAsync(@javax.annotation.Nonnull Long fleetId,
+    public okhttp3.Call deleteFleetWingAsync(@javax.annotation.Nonnull Long fleetId,
             @javax.annotation.Nonnull Long wingId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<Object> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteFleetWingsWingIdValidateBeforeCall(fleetId, wingId, xCompatibilityDate,
+        okhttp3.Call localVarCall = deleteFleetWingValidateBeforeCall(fleetId, wingId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
 
@@ -2161,6 +2134,8 @@ public class FleetsApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param postFleetMembersRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -2170,8 +2145,6 @@ public class FleetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param postFleetMembersRequest
-     *            (optional)
      * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
@@ -2200,10 +2173,10 @@ public class FleetsApi {
      *                        </table>
      */
     public okhttp3.Call postFleetMembersCall(@javax.annotation.Nonnull Long fleetId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PostFleetMembersRequest postFleetMembersRequest, final ApiCallback _callback)
-            throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PostFleetMembersRequest postFleetMembersRequest,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {};
@@ -2265,10 +2238,10 @@ public class FleetsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postFleetMembersValidateBeforeCall(@javax.annotation.Nonnull Long fleetId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PostFleetMembersRequest postFleetMembersRequest, final ApiCallback _callback)
-            throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PostFleetMembersRequest postFleetMembersRequest,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
             throw new ApiException("Missing the required parameter 'fleetId' when calling postFleetMembers(Async)");
@@ -2280,8 +2253,14 @@ public class FleetsApi {
                     "Missing the required parameter 'xCompatibilityDate' when calling postFleetMembers(Async)");
         }
 
-        return postFleetMembersCall(fleetId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
-                postFleetMembersRequest, _callback);
+        // verify the required parameter 'postFleetMembersRequest' is set
+        if (postFleetMembersRequest == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'postFleetMembersRequest' when calling postFleetMembers(Async)");
+        }
+
+        return postFleetMembersCall(fleetId, xCompatibilityDate, postFleetMembersRequest, acceptLanguage, ifNoneMatch,
+                xTenant, _callback);
 
     }
 
@@ -2294,6 +2273,8 @@ public class FleetsApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param postFleetMembersRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -2303,9 +2284,6 @@ public class FleetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param postFleetMembersRequest
-     *            (optional)
-     * @return Object
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2331,13 +2309,13 @@ public class FleetsApi {
      *                        </tr>
      *                        </table>
      */
-    public Object postFleetMembers(@javax.annotation.Nonnull Long fleetId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PostFleetMembersRequest postFleetMembersRequest) throws ApiException {
-        ApiResponse<Object> localVarResp = postFleetMembersWithHttpInfo(fleetId, xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, postFleetMembersRequest);
-        return localVarResp.getData();
+    public void postFleetMembers(@javax.annotation.Nonnull Long fleetId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PostFleetMembersRequest postFleetMembersRequest,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        postFleetMembersWithHttpInfo(fleetId, xCompatibilityDate, postFleetMembersRequest, acceptLanguage, ifNoneMatch,
+                xTenant);
     }
 
     /**
@@ -2349,6 +2327,8 @@ public class FleetsApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param postFleetMembersRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -2358,9 +2338,7 @@ public class FleetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param postFleetMembersRequest
-     *            (optional)
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2386,15 +2364,14 @@ public class FleetsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Object> postFleetMembersWithHttpInfo(@javax.annotation.Nonnull Long fleetId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PostFleetMembersRequest postFleetMembersRequest) throws ApiException {
-        okhttp3.Call localVarCall = postFleetMembersValidateBeforeCall(fleetId, xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, postFleetMembersRequest, null);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    public ApiResponse<Void> postFleetMembersWithHttpInfo(@javax.annotation.Nonnull Long fleetId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PostFleetMembersRequest postFleetMembersRequest,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        okhttp3.Call localVarCall = postFleetMembersValidateBeforeCall(fleetId, xCompatibilityDate,
+                postFleetMembersRequest, acceptLanguage, ifNoneMatch, xTenant, null);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -2406,6 +2383,8 @@ public class FleetsApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param postFleetMembersRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -2415,8 +2394,6 @@ public class FleetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param postFleetMembersRequest
-     *            (optional)
      * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
@@ -2446,14 +2423,315 @@ public class FleetsApi {
      *                        </table>
      */
     public okhttp3.Call postFleetMembersAsync(@javax.annotation.Nonnull Long fleetId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PostFleetMembersRequest postFleetMembersRequest,
-            final ApiCallback<Object> _callback) throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PostFleetMembersRequest postFleetMembersRequest,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postFleetMembersValidateBeforeCall(fleetId, xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, postFleetMembersRequest, _callback);
-        Type localVarReturnType = new TypeToken<Object>() {
+        okhttp3.Call localVarCall = postFleetMembersValidateBeforeCall(fleetId, xCompatibilityDate,
+                postFleetMembersRequest, acceptLanguage, ifNoneMatch, xTenant, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+
+    /**
+     * Build call for postFleetWingSquads
+     * 
+     * @param fleetId
+     *            (required)
+     * @param wingId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call postFleetWingSquadsCall(@javax.annotation.Nonnull Long fleetId,
+            @javax.annotation.Nonnull Long wingId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/fleets/{fleet_id}/wings/{wing_id}/squads".replace("{" + "fleet_id" + "}",
+                localVarApiClient.escapeString(fleetId.toString())).replace("{" + "wing_id" + "}",
+                localVarApiClient.escapeString(wingId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {};
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        if (acceptLanguage != null) {
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
+        }
+
+        if (ifNoneMatch != null) {
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
+        }
+
+        if (xCompatibilityDate != null) {
+            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
+        }
+
+        if (xTenant != null) {
+            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
+        }
+
+        String[] localVarAuthNames = new String[] { "OAuth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postFleetWingSquadsValidateBeforeCall(@javax.annotation.Nonnull Long fleetId,
+            @javax.annotation.Nonnull Long wingId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'fleetId' is set
+        if (fleetId == null) {
+            throw new ApiException("Missing the required parameter 'fleetId' when calling postFleetWingSquads(Async)");
+        }
+
+        // verify the required parameter 'wingId' is set
+        if (wingId == null) {
+            throw new ApiException("Missing the required parameter 'wingId' when calling postFleetWingSquads(Async)");
+        }
+
+        // verify the required parameter 'xCompatibilityDate' is set
+        if (xCompatibilityDate == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'xCompatibilityDate' when calling postFleetWingSquads(Async)");
+        }
+
+        return postFleetWingSquadsCall(fleetId, wingId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
+                _callback);
+
+    }
+
+    /**
+     * Create fleet squad Create a new squad in a fleet
+     * 
+     * @param fleetId
+     *            (required)
+     * @param wingId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return FleetWingSquadsPost
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public FleetWingSquadsPost postFleetWingSquads(@javax.annotation.Nonnull Long fleetId,
+            @javax.annotation.Nonnull Long wingId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        ApiResponse<FleetWingSquadsPost> localVarResp = postFleetWingSquadsWithHttpInfo(fleetId, wingId,
+                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Create fleet squad Create a new squad in a fleet
+     * 
+     * @param fleetId
+     *            (required)
+     * @param wingId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return ApiResponse&lt;FleetWingSquadsPost&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<FleetWingSquadsPost> postFleetWingSquadsWithHttpInfo(@javax.annotation.Nonnull Long fleetId,
+            @javax.annotation.Nonnull Long wingId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        okhttp3.Call localVarCall = postFleetWingSquadsValidateBeforeCall(fleetId, wingId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant, null);
+        Type localVarReturnType = new TypeToken<FleetWingSquadsPost>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Create fleet squad (asynchronously) Create a new squad in a fleet
+     * 
+     * @param fleetId
+     *            (required)
+     * @param wingId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request
+     *             body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call postFleetWingSquadsAsync(@javax.annotation.Nonnull Long fleetId,
+            @javax.annotation.Nonnull Long wingId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback<FleetWingSquadsPost> _callback)
+            throws ApiException {
+
+        okhttp3.Call localVarCall = postFleetWingSquadsValidateBeforeCall(fleetId, wingId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant, _callback);
+        Type localVarReturnType = new TypeToken<FleetWingSquadsPost>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2747,318 +3025,14 @@ public class FleetsApi {
     }
 
     /**
-     * Build call for postFleetWingsWingIdSquads
-     * 
-     * @param fleetId
-     *            (required)
-     * @param wingId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException
-     *             If fail to serialize the request body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>201</td>
-     *                        <td>Created</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call postFleetWingsWingIdSquadsCall(@javax.annotation.Nonnull Long fleetId,
-            @javax.annotation.Nonnull Long wingId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {};
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null) {
-            basePath = localCustomBaseUrl;
-        } else if (localBasePaths.length > 0) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/fleets/{fleet_id}/wings/{wing_id}/squads".replace("{" + "fleet_id" + "}",
-                localVarApiClient.escapeString(fleetId.toString())).replace("{" + "wing_id" + "}",
-                localVarApiClient.escapeString(wingId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {};
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
-        }
-
-        if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
-        }
-
-        if (xCompatibilityDate != null) {
-            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
-        }
-
-        if (xTenant != null) {
-            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
-        }
-
-        String[] localVarAuthNames = new String[] { "OAuth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams,
-                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
-                localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postFleetWingsWingIdSquadsValidateBeforeCall(@javax.annotation.Nonnull Long fleetId,
-            @javax.annotation.Nonnull Long wingId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'fleetId' is set
-        if (fleetId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'fleetId' when calling postFleetWingsWingIdSquads(Async)");
-        }
-
-        // verify the required parameter 'wingId' is set
-        if (wingId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'wingId' when calling postFleetWingsWingIdSquads(Async)");
-        }
-
-        // verify the required parameter 'xCompatibilityDate' is set
-        if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling postFleetWingsWingIdSquads(Async)");
-        }
-
-        return postFleetWingsWingIdSquadsCall(fleetId, wingId, xCompatibilityDate, acceptLanguage, ifNoneMatch,
-                xTenant, _callback);
-
-    }
-
-    /**
-     * Create fleet squad Create a new squad in a fleet
-     * 
-     * @param fleetId
-     *            (required)
-     * @param wingId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return FleetWingSquadsPost
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>201</td>
-     *                        <td>Created</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public FleetWingSquadsPost postFleetWingsWingIdSquads(@javax.annotation.Nonnull Long fleetId,
-            @javax.annotation.Nonnull Long wingId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<FleetWingSquadsPost> localVarResp = postFleetWingsWingIdSquadsWithHttpInfo(fleetId, wingId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Create fleet squad Create a new squad in a fleet
-     * 
-     * @param fleetId
-     *            (required)
-     * @param wingId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return ApiResponse&lt;FleetWingSquadsPost&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>201</td>
-     *                        <td>Created</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<FleetWingSquadsPost> postFleetWingsWingIdSquadsWithHttpInfo(
-            @javax.annotation.Nonnull Long fleetId, @javax.annotation.Nonnull Long wingId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        okhttp3.Call localVarCall = postFleetWingsWingIdSquadsValidateBeforeCall(fleetId, wingId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<FleetWingSquadsPost>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Create fleet squad (asynchronously) Create a new squad in a fleet
-     * 
-     * @param fleetId
-     *            (required)
-     * @param wingId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException
-     *             If fail to process the API call, e.g. serializing the request
-     *             body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>201</td>
-     *                        <td>Created</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call postFleetWingsWingIdSquadsAsync(@javax.annotation.Nonnull Long fleetId,
-            @javax.annotation.Nonnull Long wingId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<FleetWingSquadsPost> _callback)
-            throws ApiException {
-
-        okhttp3.Call localVarCall = postFleetWingsWingIdSquadsValidateBeforeCall(fleetId, wingId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<FleetWingSquadsPost>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    /**
      * Build call for putFleet
      * 
      * @param fleetId
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param putFleetRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -3068,8 +3042,6 @@ public class FleetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param putFleetRequest
-     *            (optional)
      * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
@@ -3098,10 +3070,10 @@ public class FleetsApi {
      *                        </table>
      */
     public okhttp3.Call putFleetCall(@javax.annotation.Nonnull Long fleetId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PutFleetRequest putFleetRequest, final ApiCallback _callback)
-            throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PutFleetRequest putFleetRequest,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {};
@@ -3163,10 +3135,10 @@ public class FleetsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call putFleetValidateBeforeCall(@javax.annotation.Nonnull Long fleetId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PutFleetRequest putFleetRequest, final ApiCallback _callback)
-            throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PutFleetRequest putFleetRequest,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
             throw new ApiException("Missing the required parameter 'fleetId' when calling putFleet(Async)");
@@ -3177,7 +3149,12 @@ public class FleetsApi {
             throw new ApiException("Missing the required parameter 'xCompatibilityDate' when calling putFleet(Async)");
         }
 
-        return putFleetCall(fleetId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, putFleetRequest,
+        // verify the required parameter 'putFleetRequest' is set
+        if (putFleetRequest == null) {
+            throw new ApiException("Missing the required parameter 'putFleetRequest' when calling putFleet(Async)");
+        }
+
+        return putFleetCall(fleetId, xCompatibilityDate, putFleetRequest, acceptLanguage, ifNoneMatch, xTenant,
                 _callback);
 
     }
@@ -3189,6 +3166,8 @@ public class FleetsApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param putFleetRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -3198,9 +3177,6 @@ public class FleetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param putFleetRequest
-     *            (optional)
-     * @return Object
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -3226,13 +3202,12 @@ public class FleetsApi {
      *                        </tr>
      *                        </table>
      */
-    public Object putFleet(@javax.annotation.Nonnull Long fleetId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PutFleetRequest putFleetRequest) throws ApiException {
-        ApiResponse<Object> localVarResp = putFleetWithHttpInfo(fleetId, xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, putFleetRequest);
-        return localVarResp.getData();
+    public void putFleet(@javax.annotation.Nonnull Long fleetId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PutFleetRequest putFleetRequest,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        putFleetWithHttpInfo(fleetId, xCompatibilityDate, putFleetRequest, acceptLanguage, ifNoneMatch, xTenant);
     }
 
     /**
@@ -3242,6 +3217,8 @@ public class FleetsApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param putFleetRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -3251,9 +3228,7 @@ public class FleetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param putFleetRequest
-     *            (optional)
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -3279,15 +3254,14 @@ public class FleetsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Object> putFleetWithHttpInfo(@javax.annotation.Nonnull Long fleetId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PutFleetRequest putFleetRequest) throws ApiException {
-        okhttp3.Call localVarCall = putFleetValidateBeforeCall(fleetId, xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, putFleetRequest, null);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    public ApiResponse<Void> putFleetWithHttpInfo(@javax.annotation.Nonnull Long fleetId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PutFleetRequest putFleetRequest,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        okhttp3.Call localVarCall = putFleetValidateBeforeCall(fleetId, xCompatibilityDate, putFleetRequest,
+                acceptLanguage, ifNoneMatch, xTenant, null);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -3297,6 +3271,8 @@ public class FleetsApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param putFleetRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -3306,8 +3282,6 @@ public class FleetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param putFleetRequest
-     *            (optional)
      * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
@@ -3337,21 +3311,19 @@ public class FleetsApi {
      *                        </table>
      */
     public okhttp3.Call putFleetAsync(@javax.annotation.Nonnull Long fleetId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PutFleetRequest putFleetRequest, final ApiCallback<Object> _callback)
-            throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PutFleetRequest putFleetRequest,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putFleetValidateBeforeCall(fleetId, xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, putFleetRequest, _callback);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        okhttp3.Call localVarCall = putFleetValidateBeforeCall(fleetId, xCompatibilityDate, putFleetRequest,
+                acceptLanguage, ifNoneMatch, xTenant, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
 
     /**
-     * Build call for putFleetMembersMemberId
+     * Build call for putFleetMember
      * 
      * @param fleetId
      *            (required)
@@ -3359,6 +3331,8 @@ public class FleetsApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param putFleetMemberRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -3368,8 +3342,6 @@ public class FleetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param putFleetMembersMemberIdRequest
-     *            (optional)
      * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
@@ -3397,12 +3369,11 @@ public class FleetsApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call putFleetMembersMemberIdCall(@javax.annotation.Nonnull Long fleetId,
+    public okhttp3.Call putFleetMemberCall(@javax.annotation.Nonnull Long fleetId,
             @javax.annotation.Nonnull Long memberId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PutFleetMemberRequest putFleetMemberRequest,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PutFleetMembersMemberIdRequest putFleetMembersMemberIdRequest,
-            final ApiCallback _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {};
@@ -3416,7 +3387,7 @@ public class FleetsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = putFleetMembersMemberIdRequest;
+        Object localVarPostBody = putFleetMemberRequest;
 
         // create path and map variables
         String localVarPath = "/fleets/{fleet_id}/members/{member_id}".replace("{" + "fleet_id" + "}",
@@ -3464,32 +3435,35 @@ public class FleetsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putFleetMembersMemberIdValidateBeforeCall(@javax.annotation.Nonnull Long fleetId,
+    private okhttp3.Call putFleetMemberValidateBeforeCall(@javax.annotation.Nonnull Long fleetId,
             @javax.annotation.Nonnull Long memberId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PutFleetMemberRequest putFleetMemberRequest,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PutFleetMembersMemberIdRequest putFleetMembersMemberIdRequest,
-            final ApiCallback _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'fleetId' when calling putFleetMembersMemberId(Async)");
+            throw new ApiException("Missing the required parameter 'fleetId' when calling putFleetMember(Async)");
         }
 
         // verify the required parameter 'memberId' is set
         if (memberId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'memberId' when calling putFleetMembersMemberId(Async)");
+            throw new ApiException("Missing the required parameter 'memberId' when calling putFleetMember(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
             throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling putFleetMembersMemberId(Async)");
+                    "Missing the required parameter 'xCompatibilityDate' when calling putFleetMember(Async)");
         }
 
-        return putFleetMembersMemberIdCall(fleetId, memberId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
-                putFleetMembersMemberIdRequest, _callback);
+        // verify the required parameter 'putFleetMemberRequest' is set
+        if (putFleetMemberRequest == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'putFleetMemberRequest' when calling putFleetMember(Async)");
+        }
+
+        return putFleetMemberCall(fleetId, memberId, xCompatibilityDate, putFleetMemberRequest, acceptLanguage,
+                ifNoneMatch, xTenant, _callback);
 
     }
 
@@ -3502,6 +3476,8 @@ public class FleetsApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param putFleetMemberRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -3511,9 +3487,6 @@ public class FleetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param putFleetMembersMemberIdRequest
-     *            (optional)
-     * @return Object
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -3539,15 +3512,13 @@ public class FleetsApi {
      *                        </tr>
      *                        </table>
      */
-    public Object putFleetMembersMemberId(@javax.annotation.Nonnull Long fleetId,
-            @javax.annotation.Nonnull Long memberId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public void putFleetMember(@javax.annotation.Nonnull Long fleetId, @javax.annotation.Nonnull Long memberId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PutFleetMemberRequest putFleetMemberRequest,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PutFleetMembersMemberIdRequest putFleetMembersMemberIdRequest)
-            throws ApiException {
-        ApiResponse<Object> localVarResp = putFleetMembersMemberIdWithHttpInfo(fleetId, memberId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, putFleetMembersMemberIdRequest);
-        return localVarResp.getData();
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        putFleetMemberWithHttpInfo(fleetId, memberId, xCompatibilityDate, putFleetMemberRequest, acceptLanguage,
+                ifNoneMatch, xTenant);
     }
 
     /**
@@ -3559,6 +3530,8 @@ public class FleetsApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param putFleetMemberRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -3568,9 +3541,7 @@ public class FleetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param putFleetMembersMemberIdRequest
-     *            (optional)
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -3596,17 +3567,14 @@ public class FleetsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Object> putFleetMembersMemberIdWithHttpInfo(@javax.annotation.Nonnull Long fleetId,
+    public ApiResponse<Void> putFleetMemberWithHttpInfo(@javax.annotation.Nonnull Long fleetId,
             @javax.annotation.Nonnull Long memberId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PutFleetMemberRequest putFleetMemberRequest,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PutFleetMembersMemberIdRequest putFleetMembersMemberIdRequest)
-            throws ApiException {
-        okhttp3.Call localVarCall = putFleetMembersMemberIdValidateBeforeCall(fleetId, memberId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, putFleetMembersMemberIdRequest, null);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        okhttp3.Call localVarCall = putFleetMemberValidateBeforeCall(fleetId, memberId, xCompatibilityDate,
+                putFleetMemberRequest, acceptLanguage, ifNoneMatch, xTenant, null);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -3618,6 +3586,8 @@ public class FleetsApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param putFleetMemberRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -3627,8 +3597,6 @@ public class FleetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param putFleetMembersMemberIdRequest
-     *            (optional)
      * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
@@ -3657,23 +3625,20 @@ public class FleetsApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call putFleetMembersMemberIdAsync(@javax.annotation.Nonnull Long fleetId,
+    public okhttp3.Call putFleetMemberAsync(@javax.annotation.Nonnull Long fleetId,
             @javax.annotation.Nonnull Long memberId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PutFleetMemberRequest putFleetMemberRequest,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PutFleetMembersMemberIdRequest putFleetMembersMemberIdRequest,
-            final ApiCallback<Object> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putFleetMembersMemberIdValidateBeforeCall(fleetId, memberId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, putFleetMembersMemberIdRequest, _callback);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        okhttp3.Call localVarCall = putFleetMemberValidateBeforeCall(fleetId, memberId, xCompatibilityDate,
+                putFleetMemberRequest, acceptLanguage, ifNoneMatch, xTenant, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
 
     /**
-     * Build call for putFleetSquadsSquadId
+     * Build call for putFleetSquad
      * 
      * @param fleetId
      *            (required)
@@ -3681,6 +3646,8 @@ public class FleetsApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param putFleetSquadRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -3690,8 +3657,6 @@ public class FleetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param putFleetSquadsSquadIdRequest
-     *            (optional)
      * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
@@ -3719,12 +3684,11 @@ public class FleetsApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call putFleetSquadsSquadIdCall(@javax.annotation.Nonnull Long fleetId,
+    public okhttp3.Call putFleetSquadCall(@javax.annotation.Nonnull Long fleetId,
             @javax.annotation.Nonnull Long squadId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PutFleetSquadRequest putFleetSquadRequest,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PutFleetSquadsSquadIdRequest putFleetSquadsSquadIdRequest,
-            final ApiCallback _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {};
@@ -3738,7 +3702,7 @@ public class FleetsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = putFleetSquadsSquadIdRequest;
+        Object localVarPostBody = putFleetSquadRequest;
 
         // create path and map variables
         String localVarPath = "/fleets/{fleet_id}/squads/{squad_id}".replace("{" + "fleet_id" + "}",
@@ -3786,30 +3750,35 @@ public class FleetsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putFleetSquadsSquadIdValidateBeforeCall(@javax.annotation.Nonnull Long fleetId,
+    private okhttp3.Call putFleetSquadValidateBeforeCall(@javax.annotation.Nonnull Long fleetId,
             @javax.annotation.Nonnull Long squadId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PutFleetSquadRequest putFleetSquadRequest,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PutFleetSquadsSquadIdRequest putFleetSquadsSquadIdRequest,
-            final ApiCallback _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
-            throw new ApiException("Missing the required parameter 'fleetId' when calling putFleetSquadsSquadId(Async)");
+            throw new ApiException("Missing the required parameter 'fleetId' when calling putFleetSquad(Async)");
         }
 
         // verify the required parameter 'squadId' is set
         if (squadId == null) {
-            throw new ApiException("Missing the required parameter 'squadId' when calling putFleetSquadsSquadId(Async)");
+            throw new ApiException("Missing the required parameter 'squadId' when calling putFleetSquad(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
             throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling putFleetSquadsSquadId(Async)");
+                    "Missing the required parameter 'xCompatibilityDate' when calling putFleetSquad(Async)");
         }
 
-        return putFleetSquadsSquadIdCall(fleetId, squadId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
-                putFleetSquadsSquadIdRequest, _callback);
+        // verify the required parameter 'putFleetSquadRequest' is set
+        if (putFleetSquadRequest == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'putFleetSquadRequest' when calling putFleetSquad(Async)");
+        }
+
+        return putFleetSquadCall(fleetId, squadId, xCompatibilityDate, putFleetSquadRequest, acceptLanguage,
+                ifNoneMatch, xTenant, _callback);
 
     }
 
@@ -3822,6 +3791,8 @@ public class FleetsApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param putFleetSquadRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -3831,9 +3802,6 @@ public class FleetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param putFleetSquadsSquadIdRequest
-     *            (optional)
-     * @return Object
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -3859,71 +3827,69 @@ public class FleetsApi {
      *                        </tr>
      *                        </table>
      */
-    public Object putFleetSquadsSquadId(@javax.annotation.Nonnull Long fleetId, @javax.annotation.Nonnull Long squadId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PutFleetSquadsSquadIdRequest putFleetSquadsSquadIdRequest) throws ApiException {
-        ApiResponse<Object> localVarResp = putFleetSquadsSquadIdWithHttpInfo(fleetId, squadId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, putFleetSquadsSquadIdRequest);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Rename fleet squad Rename a fleet squad
-     * 
-     * @param fleetId
-     *            (required)
-     * @param squadId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param putFleetSquadsSquadIdRequest
-     *            (optional)
-     * @return ApiResponse&lt;Object&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>204</td>
-     *                        <td>Squad renamed</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<Object> putFleetSquadsSquadIdWithHttpInfo(@javax.annotation.Nonnull Long fleetId,
-            @javax.annotation.Nonnull Long squadId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public void putFleetSquad(@javax.annotation.Nonnull Long fleetId, @javax.annotation.Nonnull Long squadId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PutFleetSquadRequest putFleetSquadRequest,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PutFleetSquadsSquadIdRequest putFleetSquadsSquadIdRequest) throws ApiException {
-        okhttp3.Call localVarCall = putFleetSquadsSquadIdValidateBeforeCall(fleetId, squadId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, putFleetSquadsSquadIdRequest, null);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        putFleetSquadWithHttpInfo(fleetId, squadId, xCompatibilityDate, putFleetSquadRequest, acceptLanguage,
+                ifNoneMatch, xTenant);
+    }
+
+    /**
+     * Rename fleet squad Rename a fleet squad
+     * 
+     * @param fleetId
+     *            (required)
+     * @param squadId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param putFleetSquadRequest
+     *            (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>Squad renamed</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<Void> putFleetSquadWithHttpInfo(@javax.annotation.Nonnull Long fleetId,
+            @javax.annotation.Nonnull Long squadId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PutFleetSquadRequest putFleetSquadRequest,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        okhttp3.Call localVarCall = putFleetSquadValidateBeforeCall(fleetId, squadId, xCompatibilityDate,
+                putFleetSquadRequest, acceptLanguage, ifNoneMatch, xTenant, null);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -3935,6 +3901,8 @@ public class FleetsApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param putFleetSquadRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -3944,8 +3912,6 @@ public class FleetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param putFleetSquadsSquadIdRequest
-     *            (optional)
      * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
@@ -3974,23 +3940,20 @@ public class FleetsApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call putFleetSquadsSquadIdAsync(@javax.annotation.Nonnull Long fleetId,
+    public okhttp3.Call putFleetSquadAsync(@javax.annotation.Nonnull Long fleetId,
             @javax.annotation.Nonnull Long squadId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PutFleetSquadRequest putFleetSquadRequest,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PutFleetSquadsSquadIdRequest putFleetSquadsSquadIdRequest,
-            final ApiCallback<Object> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putFleetSquadsSquadIdValidateBeforeCall(fleetId, squadId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, putFleetSquadsSquadIdRequest, _callback);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        okhttp3.Call localVarCall = putFleetSquadValidateBeforeCall(fleetId, squadId, xCompatibilityDate,
+                putFleetSquadRequest, acceptLanguage, ifNoneMatch, xTenant, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
 
     /**
-     * Build call for putFleetWingsWingId
+     * Build call for putFleetWing
      * 
      * @param fleetId
      *            (required)
@@ -3998,6 +3961,8 @@ public class FleetsApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param putFleetSquadRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -4007,8 +3972,6 @@ public class FleetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param putFleetSquadsSquadIdRequest
-     *            (optional)
      * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
@@ -4036,12 +3999,11 @@ public class FleetsApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call putFleetWingsWingIdCall(@javax.annotation.Nonnull Long fleetId,
-            @javax.annotation.Nonnull Long wingId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public okhttp3.Call putFleetWingCall(@javax.annotation.Nonnull Long fleetId, @javax.annotation.Nonnull Long wingId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PutFleetSquadRequest putFleetSquadRequest,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PutFleetSquadsSquadIdRequest putFleetSquadsSquadIdRequest,
-            final ApiCallback _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {};
@@ -4055,7 +4017,7 @@ public class FleetsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = putFleetSquadsSquadIdRequest;
+        Object localVarPostBody = putFleetSquadRequest;
 
         // create path and map variables
         String localVarPath = "/fleets/{fleet_id}/wings/{wing_id}".replace("{" + "fleet_id" + "}",
@@ -4103,30 +4065,35 @@ public class FleetsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putFleetWingsWingIdValidateBeforeCall(@javax.annotation.Nonnull Long fleetId,
+    private okhttp3.Call putFleetWingValidateBeforeCall(@javax.annotation.Nonnull Long fleetId,
             @javax.annotation.Nonnull Long wingId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PutFleetSquadRequest putFleetSquadRequest,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PutFleetSquadsSquadIdRequest putFleetSquadsSquadIdRequest,
-            final ApiCallback _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
-            throw new ApiException("Missing the required parameter 'fleetId' when calling putFleetWingsWingId(Async)");
+            throw new ApiException("Missing the required parameter 'fleetId' when calling putFleetWing(Async)");
         }
 
         // verify the required parameter 'wingId' is set
         if (wingId == null) {
-            throw new ApiException("Missing the required parameter 'wingId' when calling putFleetWingsWingId(Async)");
+            throw new ApiException("Missing the required parameter 'wingId' when calling putFleetWing(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
             throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling putFleetWingsWingId(Async)");
+                    "Missing the required parameter 'xCompatibilityDate' when calling putFleetWing(Async)");
         }
 
-        return putFleetWingsWingIdCall(fleetId, wingId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
-                putFleetSquadsSquadIdRequest, _callback);
+        // verify the required parameter 'putFleetSquadRequest' is set
+        if (putFleetSquadRequest == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'putFleetSquadRequest' when calling putFleetWing(Async)");
+        }
+
+        return putFleetWingCall(fleetId, wingId, xCompatibilityDate, putFleetSquadRequest, acceptLanguage, ifNoneMatch,
+                xTenant, _callback);
 
     }
 
@@ -4139,6 +4106,8 @@ public class FleetsApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param putFleetSquadRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -4148,9 +4117,6 @@ public class FleetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param putFleetSquadsSquadIdRequest
-     *            (optional)
-     * @return Object
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -4176,71 +4142,69 @@ public class FleetsApi {
      *                        </tr>
      *                        </table>
      */
-    public Object putFleetWingsWingId(@javax.annotation.Nonnull Long fleetId, @javax.annotation.Nonnull Long wingId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PutFleetSquadsSquadIdRequest putFleetSquadsSquadIdRequest) throws ApiException {
-        ApiResponse<Object> localVarResp = putFleetWingsWingIdWithHttpInfo(fleetId, wingId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, putFleetSquadsSquadIdRequest);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Rename fleet wing Rename a fleet wing
-     * 
-     * @param fleetId
-     *            (required)
-     * @param wingId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param putFleetSquadsSquadIdRequest
-     *            (optional)
-     * @return ApiResponse&lt;Object&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>204</td>
-     *                        <td>Wing renamed</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<Object> putFleetWingsWingIdWithHttpInfo(@javax.annotation.Nonnull Long fleetId,
-            @javax.annotation.Nonnull Long wingId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public void putFleetWing(@javax.annotation.Nonnull Long fleetId, @javax.annotation.Nonnull Long wingId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PutFleetSquadRequest putFleetSquadRequest,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PutFleetSquadsSquadIdRequest putFleetSquadsSquadIdRequest) throws ApiException {
-        okhttp3.Call localVarCall = putFleetWingsWingIdValidateBeforeCall(fleetId, wingId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, putFleetSquadsSquadIdRequest, null);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        putFleetWingWithHttpInfo(fleetId, wingId, xCompatibilityDate, putFleetSquadRequest, acceptLanguage,
+                ifNoneMatch, xTenant);
+    }
+
+    /**
+     * Rename fleet wing Rename a fleet wing
+     * 
+     * @param fleetId
+     *            (required)
+     * @param wingId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param putFleetSquadRequest
+     *            (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>Wing renamed</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<Void> putFleetWingWithHttpInfo(@javax.annotation.Nonnull Long fleetId,
+            @javax.annotation.Nonnull Long wingId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PutFleetSquadRequest putFleetSquadRequest,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        okhttp3.Call localVarCall = putFleetWingValidateBeforeCall(fleetId, wingId, xCompatibilityDate,
+                putFleetSquadRequest, acceptLanguage, ifNoneMatch, xTenant, null);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -4252,6 +4216,8 @@ public class FleetsApi {
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param putFleetSquadRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -4261,8 +4227,6 @@ public class FleetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param putFleetSquadsSquadIdRequest
-     *            (optional)
      * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
@@ -4291,18 +4255,15 @@ public class FleetsApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call putFleetWingsWingIdAsync(@javax.annotation.Nonnull Long fleetId,
+    public okhttp3.Call putFleetWingAsync(@javax.annotation.Nonnull Long fleetId,
             @javax.annotation.Nonnull Long wingId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PutFleetSquadRequest putFleetSquadRequest,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PutFleetSquadsSquadIdRequest putFleetSquadsSquadIdRequest,
-            final ApiCallback<Object> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putFleetWingsWingIdValidateBeforeCall(fleetId, wingId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, putFleetSquadsSquadIdRequest, _callback);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        okhttp3.Call localVarCall = putFleetWingValidateBeforeCall(fleetId, wingId, xCompatibilityDate,
+                putFleetSquadRequest, acceptLanguage, ifNoneMatch, xTenant, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
 }

@@ -106,7 +106,6 @@ public class CalendarApiTest extends GeneralApiTest {
         String ifNoneMatch = null;
         String xTenant = null;
         PutCharacterCalendarEventRequest putCharacterCalendarEventRequest = null;
-        Object response = api.putCharacterCalendarEvent(characterId, eventId, CalendarApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant, putCharacterCalendarEventRequest);
-        // TODO: test validations
+        api.putCharacterCalendarEvent(characterId, eventId, CalendarApi.COMPATIBILITY_DATE, putCharacterCalendarEventRequest, acceptLanguage, ifNoneMatch, xTenant);
     }
 }

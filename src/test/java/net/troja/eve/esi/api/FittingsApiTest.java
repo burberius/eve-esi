@@ -51,8 +51,7 @@ public class FittingsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        Object response = api.deleteCharacterFittingsFittingId(characterId, fittingId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
-        // TODO: test validations
+        api.deleteCharacterFittingsFittingId(characterId, fittingId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
     }
 
     /**
@@ -86,7 +85,7 @@ public class FittingsApiTest extends GeneralApiTest {
         String ifNoneMatch = null;
         String xTenant = null;
         PostCharacterFittingsRequest postCharacterFittingsRequest = null;
-        CharacterFittingsPost response = api.postCharacterFittings(characterId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant, postCharacterFittingsRequest);
+        CharacterFittingsPost response = api.postCharacterFittings(characterId, CorporationApi.COMPATIBILITY_DATE, postCharacterFittingsRequest, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 

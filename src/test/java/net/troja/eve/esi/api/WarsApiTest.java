@@ -68,7 +68,7 @@ public class WarsApiTest extends GeneralApiTest {
         String ifNoneMatch = null;
         String xTenant = null;
         Long warId = api.getWars(CorporationApi.COMPATIBILITY_DATE, null, acceptLanguage, ifNoneMatch, xTenant).get(0);
-        WarResponse response = api.getWarsWarId(warId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        WarResponse response = api.getWar(warId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response.getAggressor()).isNotNull();
         assertThat(response.getId()).isEqualTo(warId);
     }
@@ -88,7 +88,7 @@ public class WarsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterKillmailsResponseInner> response = api.getWarsWarIdKillmails(warId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterKillmailsResponseInner> response = api.getWarKillmails(warId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 

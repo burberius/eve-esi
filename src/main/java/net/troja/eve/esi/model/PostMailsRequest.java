@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.troja.eve.esi.model.PostMailRequestRecipientsInner;
+import net.troja.eve.esi.model.PostMailsRequestRecipientsInner;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -49,10 +49,10 @@ import java.util.Set;
 import net.troja.eve.esi.JSON;
 
 /**
- * PostMailRequest
+ * PostMailsRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class PostMailRequest implements Serializable {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+public class PostMailsRequest implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_APPROVED_COST = "approved_cost";
@@ -68,17 +68,17 @@ public class PostMailRequest implements Serializable {
     public static final String SERIALIZED_NAME_RECIPIENTS = "recipients";
     @SerializedName(SERIALIZED_NAME_RECIPIENTS)
     @javax.annotation.Nonnull
-    private List<PostMailRequestRecipientsInner> recipients;
+    private List<PostMailsRequestRecipientsInner> recipients;
 
     public static final String SERIALIZED_NAME_SUBJECT = "subject";
     @SerializedName(SERIALIZED_NAME_SUBJECT)
     @javax.annotation.Nonnull
     private String subject;
 
-    public PostMailRequest() {
+    public PostMailsRequest() {
     }
 
-    public PostMailRequest approvedCost(@javax.annotation.Nullable Long approvedCost) {
+    public PostMailsRequest approvedCost(@javax.annotation.Nullable Long approvedCost) {
         this.approvedCost = approvedCost;
         return this;
     }
@@ -97,7 +97,7 @@ public class PostMailRequest implements Serializable {
         this.approvedCost = approvedCost;
     }
 
-    public PostMailRequest body(@javax.annotation.Nonnull String body) {
+    public PostMailsRequest body(@javax.annotation.Nonnull String body) {
         this.body = body;
         return this;
     }
@@ -116,12 +116,12 @@ public class PostMailRequest implements Serializable {
         this.body = body;
     }
 
-    public PostMailRequest recipients(@javax.annotation.Nonnull List<PostMailRequestRecipientsInner> recipients) {
+    public PostMailsRequest recipients(@javax.annotation.Nonnull List<PostMailsRequestRecipientsInner> recipients) {
         this.recipients = recipients;
         return this;
     }
 
-    public PostMailRequest addRecipientsItem(PostMailRequestRecipientsInner recipientsItem) {
+    public PostMailsRequest addRecipientsItem(PostMailsRequestRecipientsInner recipientsItem) {
         if (this.recipients == null) {
             this.recipients = new ArrayList<>();
         }
@@ -136,15 +136,15 @@ public class PostMailRequest implements Serializable {
      * @return recipients
      */
     @javax.annotation.Nonnull
-    public List<PostMailRequestRecipientsInner> getRecipients() {
+    public List<PostMailsRequestRecipientsInner> getRecipients() {
         return recipients;
     }
 
-    public void setRecipients(@javax.annotation.Nonnull List<PostMailRequestRecipientsInner> recipients) {
+    public void setRecipients(@javax.annotation.Nonnull List<PostMailsRequestRecipientsInner> recipients) {
         this.recipients = recipients;
     }
 
-    public PostMailRequest subject(@javax.annotation.Nonnull String subject) {
+    public PostMailsRequest subject(@javax.annotation.Nonnull String subject) {
         this.subject = subject;
         return this;
     }
@@ -171,11 +171,11 @@ public class PostMailRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        PostMailRequest postMailRequest = (PostMailRequest) o;
-        return Objects.equals(this.approvedCost, postMailRequest.approvedCost)
-                && Objects.equals(this.body, postMailRequest.body)
-                && Objects.equals(this.recipients, postMailRequest.recipients)
-                && Objects.equals(this.subject, postMailRequest.subject);
+        PostMailsRequest postMailsRequest = (PostMailsRequest) o;
+        return Objects.equals(this.approvedCost, postMailsRequest.approvedCost)
+                && Objects.equals(this.body, postMailsRequest.body)
+                && Objects.equals(this.recipients, postMailsRequest.recipients)
+                && Objects.equals(this.subject, postMailsRequest.subject);
     }
 
     @Override
@@ -186,7 +186,7 @@ public class PostMailRequest implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class PostMailRequest {\n");
+        sb.append("class PostMailsRequest {\n");
         sb.append("    approvedCost: ").append(toIndentedString(approvedCost)).append("\n");
         sb.append("    body: ").append(toIndentedString(body)).append("\n");
         sb.append("    recipients: ").append(toIndentedString(recipients)).append("\n");
@@ -224,36 +224,36 @@ public class PostMailRequest implements Serializable {
      *            JSON Element
      * @throws IOException
      *             if the JSON Element is invalid with respect to
-     *             PostMailRequest
+     *             PostMailsRequest
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         if (jsonElement == null) {
-            if (!PostMailRequest.openapiRequiredFields.isEmpty()) { // has
-                                                                    // required
-                                                                    // fields
-                                                                    // but JSON
-                                                                    // element
-                                                                    // is null
+            if (!PostMailsRequest.openapiRequiredFields.isEmpty()) { // has
+                                                                     // required
+                                                                     // fields
+                                                                     // but JSON
+                                                                     // element
+                                                                     // is null
                 throw new IllegalArgumentException(String.format(
-                        "The required field(s) %s in PostMailRequest is not found in the empty JSON string",
-                        PostMailRequest.openapiRequiredFields.toString()));
+                        "The required field(s) %s in PostMailsRequest is not found in the empty JSON string",
+                        PostMailsRequest.openapiRequiredFields.toString()));
             }
         }
 
         Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
         for (Map.Entry<String, JsonElement> entry : entries) {
-            if (!PostMailRequest.openapiFields.contains(entry.getKey())) {
+            if (!PostMailsRequest.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
-                                "The field `%s` in the JSON string is not defined in the `PostMailRequest` properties. JSON: %s",
+                                "The field `%s` in the JSON string is not defined in the `PostMailsRequest` properties. JSON: %s",
                                 entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
-        for (String requiredField : PostMailRequest.openapiRequiredFields) {
+        for (String requiredField : PostMailsRequest.openapiRequiredFields) {
             if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
@@ -276,7 +276,7 @@ public class PostMailRequest implements Serializable {
         JsonArray jsonArrayrecipients = jsonObj.getAsJsonArray("recipients");
         // validate the required field `recipients` (array)
         for (int i = 0; i < jsonArrayrecipients.size(); i++) {
-            PostMailRequestRecipientsInner.validateJsonElement(jsonArrayrecipients.get(i));
+            PostMailsRequestRecipientsInner.validateJsonElement(jsonArrayrecipients.get(i));
         };
         if (!jsonObj.get("subject").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
@@ -289,23 +289,23 @@ public class PostMailRequest implements Serializable {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!PostMailRequest.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'PostMailRequest' and
-                             // its subtypes
+            if (!PostMailsRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PostMailsRequest'
+                             // and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<PostMailRequest> thisAdapter = gson.getDelegateAdapter(this,
-                    TypeToken.get(PostMailRequest.class));
+            final TypeAdapter<PostMailsRequest> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(PostMailsRequest.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<PostMailRequest>() {
+            return (TypeAdapter<T>) new TypeAdapter<PostMailsRequest>() {
                 @Override
-                public void write(JsonWriter out, PostMailRequest value) throws IOException {
+                public void write(JsonWriter out, PostMailsRequest value) throws IOException {
                     JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
                     elementAdapter.write(out, obj);
                 }
 
                 @Override
-                public PostMailRequest read(JsonReader in) throws IOException {
+                public PostMailsRequest read(JsonReader in) throws IOException {
                     JsonElement jsonElement = elementAdapter.read(in);
                     validateJsonElement(jsonElement);
                     return thisAdapter.fromJsonTree(jsonElement);
@@ -316,20 +316,21 @@ public class PostMailRequest implements Serializable {
     }
 
     /**
-     * Create an instance of PostMailRequest given an JSON string
+     * Create an instance of PostMailsRequest given an JSON string
      *
      * @param jsonString
      *            JSON string
-     * @return An instance of PostMailRequest
+     * @return An instance of PostMailsRequest
      * @throws IOException
-     *             if the JSON string is invalid with respect to PostMailRequest
+     *             if the JSON string is invalid with respect to
+     *             PostMailsRequest
      */
-    public static PostMailRequest fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, PostMailRequest.class);
+    public static PostMailsRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PostMailsRequest.class);
     }
 
     /**
-     * Convert an instance of PostMailRequest to an JSON string
+     * Convert an instance of PostMailsRequest to an JSON string
      *
      * @return JSON string
      */

@@ -29,7 +29,7 @@ import net.troja.eve.esi.model.CorporationResponse;
 import net.troja.eve.esi.model.CorporationRolesHistoryResponseInner;
 import net.troja.eve.esi.model.CorporationRolesResponseInner;
 import net.troja.eve.esi.model.CorporationShareholdersResponseInner;
-import net.troja.eve.esi.model.CorporationStarbase;
+import net.troja.eve.esi.model.CorporationStarbaseResponse;
 import net.troja.eve.esi.model.CorporationStarbasesResponseInner;
 import net.troja.eve.esi.model.CorporationStructuresResponseInner;
 import net.troja.eve.esi.model.CorporationTitlesResponseInner;
@@ -80,11 +80,11 @@ public class CorporationApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getCorporationAlliancehistoryTest() throws ApiException {
+    public void getCorporationAllianceshistoryTest() throws ApiException {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CorporationAllianceshistoryResponseInner> response = api.getCorporationAlliancehistory(CORPORATION_ID_TBD, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<CorporationAllianceshistoryResponseInner> response = api.getCorporationAllianceshistory(CORPORATION_ID_TBD, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).hasSizeGreaterThan(0);
         // The last entry is without alliance!
         final CorporationAllianceshistoryResponseInner alliance = response.get(response.size() - 2);
@@ -276,7 +276,7 @@ public class CorporationApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CorporationMemberTrackingResponseInner> response = api.getCorporationMembertracking(corporationId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<CorporationMemberTrackingResponseInner> response = api.getCorporationMemberTracking(corporationId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -383,7 +383,8 @@ public class CorporationApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        CorporationStarbase response = api.getCorporationStarbasesStarbaseId(corporationId, starbaseId, systemId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        CorporationStarbaseResponse
+                response = api.getCorporationStarbase(corporationId, starbaseId, systemId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 

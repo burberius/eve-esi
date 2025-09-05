@@ -38,7 +38,7 @@ import java.util.List;
 import java.util.Map;
 
 public class FittingsApi {
-    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2020, 1, 1);
+    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2025, 8, 26);
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
@@ -230,7 +230,6 @@ public class FittingsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return Object
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -256,13 +255,12 @@ public class FittingsApi {
      *                        </tr>
      *                        </table>
      */
-    public Object deleteCharacterFittingsFittingId(@javax.annotation.Nonnull Long characterId,
+    public void deleteCharacterFittingsFittingId(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull Long fittingId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<Object> localVarResp = deleteCharacterFittingsFittingIdWithHttpInfo(characterId, fittingId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
-        return localVarResp.getData();
+        deleteCharacterFittingsFittingIdWithHttpInfo(characterId, fittingId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant);
     }
 
     /**
@@ -283,7 +281,7 @@ public class FittingsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -309,15 +307,13 @@ public class FittingsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Object> deleteCharacterFittingsFittingIdWithHttpInfo(@javax.annotation.Nonnull Long characterId,
+    public ApiResponse<Void> deleteCharacterFittingsFittingIdWithHttpInfo(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull Long fittingId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = deleteCharacterFittingsFittingIdValidateBeforeCall(characterId, fittingId,
                 xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -369,13 +365,11 @@ public class FittingsApi {
     public okhttp3.Call deleteCharacterFittingsFittingIdAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull Long fittingId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<Object> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteCharacterFittingsFittingIdValidateBeforeCall(characterId, fittingId,
                 xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
 
@@ -675,6 +669,8 @@ public class FittingsApi {
      *            The ID of the character (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param postCharacterFittingsRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -684,8 +680,6 @@ public class FittingsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param postCharacterFittingsRequest
-     *            (optional)
      * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
@@ -714,10 +708,10 @@ public class FittingsApi {
      *                        </table>
      */
     public okhttp3.Call postCharacterFittingsCall(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PostCharacterFittingsRequest postCharacterFittingsRequest,
-            final ApiCallback _callback) throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PostCharacterFittingsRequest postCharacterFittingsRequest,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {};
@@ -779,10 +773,10 @@ public class FittingsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postCharacterFittingsValidateBeforeCall(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PostCharacterFittingsRequest postCharacterFittingsRequest,
-            final ApiCallback _callback) throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PostCharacterFittingsRequest postCharacterFittingsRequest,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException(
@@ -795,8 +789,14 @@ public class FittingsApi {
                     "Missing the required parameter 'xCompatibilityDate' when calling postCharacterFittings(Async)");
         }
 
-        return postCharacterFittingsCall(characterId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
-                postCharacterFittingsRequest, _callback);
+        // verify the required parameter 'postCharacterFittingsRequest' is set
+        if (postCharacterFittingsRequest == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'postCharacterFittingsRequest' when calling postCharacterFittings(Async)");
+        }
+
+        return postCharacterFittingsCall(characterId, xCompatibilityDate, postCharacterFittingsRequest, acceptLanguage,
+                ifNoneMatch, xTenant, _callback);
 
     }
 
@@ -807,6 +807,8 @@ public class FittingsApi {
      *            The ID of the character (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param postCharacterFittingsRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -816,8 +818,6 @@ public class FittingsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param postCharacterFittingsRequest
-     *            (optional)
      * @return CharacterFittingsPost
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
@@ -845,11 +845,12 @@ public class FittingsApi {
      *                        </table>
      */
     public CharacterFittingsPost postCharacterFittings(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PostCharacterFittingsRequest postCharacterFittingsRequest) throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PostCharacterFittingsRequest postCharacterFittingsRequest,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
         ApiResponse<CharacterFittingsPost> localVarResp = postCharacterFittingsWithHttpInfo(characterId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, postCharacterFittingsRequest);
+                xCompatibilityDate, postCharacterFittingsRequest, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -860,6 +861,8 @@ public class FittingsApi {
      *            The ID of the character (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param postCharacterFittingsRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -869,8 +872,6 @@ public class FittingsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param postCharacterFittingsRequest
-     *            (optional)
      * @return ApiResponse&lt;CharacterFittingsPost&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
@@ -899,11 +900,11 @@ public class FittingsApi {
      */
     public ApiResponse<CharacterFittingsPost> postCharacterFittingsWithHttpInfo(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PostCharacterFittingsRequest postCharacterFittingsRequest,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PostCharacterFittingsRequest postCharacterFittingsRequest) throws ApiException {
+            @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = postCharacterFittingsValidateBeforeCall(characterId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, postCharacterFittingsRequest, null);
+                postCharacterFittingsRequest, acceptLanguage, ifNoneMatch, xTenant, null);
         Type localVarReturnType = new TypeToken<CharacterFittingsPost>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -916,6 +917,8 @@ public class FittingsApi {
      *            The ID of the character (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param postCharacterFittingsRequest
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -925,8 +928,6 @@ public class FittingsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param postCharacterFittingsRequest
-     *            (optional)
      * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
@@ -956,13 +957,14 @@ public class FittingsApi {
      *                        </table>
      */
     public okhttp3.Call postCharacterFittingsAsync(@javax.annotation.Nonnull Long characterId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable PostCharacterFittingsRequest postCharacterFittingsRequest,
-            final ApiCallback<CharacterFittingsPost> _callback) throws ApiException {
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull PostCharacterFittingsRequest postCharacterFittingsRequest,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback<CharacterFittingsPost> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = postCharacterFittingsValidateBeforeCall(characterId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, postCharacterFittingsRequest, _callback);
+                postCharacterFittingsRequest, acceptLanguage, ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<CharacterFittingsPost>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);

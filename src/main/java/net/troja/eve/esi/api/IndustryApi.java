@@ -43,7 +43,7 @@ import java.util.List;
 import java.util.Map;
 
 public class IndustryApi {
-    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2020, 1, 1);
+    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2025, 8, 26);
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
@@ -847,7 +847,6 @@ public class IndustryApi {
 
     /**
      * List corporation industry jobs List industry jobs run by a corporation
-     * Requires one of the following EVE corporation role(s): Factory_Manager
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -906,7 +905,6 @@ public class IndustryApi {
 
     /**
      * List corporation industry jobs List industry jobs run by a corporation
-     * Requires one of the following EVE corporation role(s): Factory_Manager
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -969,8 +967,7 @@ public class IndustryApi {
 
     /**
      * List corporation industry jobs (asynchronously) List industry jobs run by
-     * a corporation Requires one of the following EVE corporation role(s):
-     * Factory_Manager
+     * a corporation
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -1173,8 +1170,7 @@ public class IndustryApi {
 
     /**
      * Moon extraction timers Extraction timers for all moon chunks being
-     * extracted by refineries belonging to a corporation. Requires one of the
-     * following EVE corporation role(s): Station_Manager
+     * extracted by refineries belonging to a corporation.
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -1231,8 +1227,7 @@ public class IndustryApi {
 
     /**
      * Moon extraction timers Extraction timers for all moon chunks being
-     * extracted by refineries belonging to a corporation. Requires one of the
-     * following EVE corporation role(s): Station_Manager
+     * extracted by refineries belonging to a corporation.
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -1293,8 +1288,7 @@ public class IndustryApi {
 
     /**
      * Moon extraction timers (asynchronously) Extraction timers for all moon
-     * chunks being extracted by refineries belonging to a corporation. Requires
-     * one of the following EVE corporation role(s): Station_Manager
+     * chunks being extracted by refineries belonging to a corporation.
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -1350,6 +1344,340 @@ public class IndustryApi {
         okhttp3.Call localVarCall = getCorporationMiningExtractionsValidateBeforeCall(corporationId,
                 xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationMiningExtractionsResponseInner>>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
+     * Build call for getCorporationMiningObserver
+     * 
+     * @param corporationId
+     *            The ID of the corporation (required)
+     * @param observerId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param page
+     *            (optional)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        X-Pages - The total number of pages in the result
+     *                        set. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getCorporationMiningObserverCall(@javax.annotation.Nonnull Long corporationId,
+            @javax.annotation.Nonnull Long observerId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/corporation/{corporation_id}/mining/observers/{observer_id}".replace(
+                "{" + "corporation_id" + "}", localVarApiClient.escapeString(corporationId.toString())).replace(
+                "{" + "observer_id" + "}", localVarApiClient.escapeString(observerId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {};
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        if (acceptLanguage != null) {
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
+        }
+
+        if (ifNoneMatch != null) {
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
+        }
+
+        if (xCompatibilityDate != null) {
+            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
+        }
+
+        if (xTenant != null) {
+            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
+        }
+
+        String[] localVarAuthNames = new String[] { "OAuth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCorporationMiningObserverValidateBeforeCall(@javax.annotation.Nonnull Long corporationId,
+            @javax.annotation.Nonnull Long observerId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'corporationId' is set
+        if (corporationId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'corporationId' when calling getCorporationMiningObserver(Async)");
+        }
+
+        // verify the required parameter 'observerId' is set
+        if (observerId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'observerId' when calling getCorporationMiningObserver(Async)");
+        }
+
+        // verify the required parameter 'xCompatibilityDate' is set
+        if (xCompatibilityDate == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'xCompatibilityDate' when calling getCorporationMiningObserver(Async)");
+        }
+
+        return getCorporationMiningObserverCall(corporationId, observerId, xCompatibilityDate, page, acceptLanguage,
+                ifNoneMatch, xTenant, _callback);
+
+    }
+
+    /**
+     * Observed corporation mining Paginated record of all mining seen by an
+     * observer
+     * 
+     * @param corporationId
+     *            The ID of the corporation (required)
+     * @param observerId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param page
+     *            (optional)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return List&lt;CorporationMiningObserverResponseInner&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        X-Pages - The total number of pages in the result
+     *                        set. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public List<CorporationMiningObserverResponseInner> getCorporationMiningObserver(
+            @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull Long observerId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        ApiResponse<List<CorporationMiningObserverResponseInner>> localVarResp = getCorporationMiningObserverWithHttpInfo(
+                corporationId, observerId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Observed corporation mining Paginated record of all mining seen by an
+     * observer
+     * 
+     * @param corporationId
+     *            The ID of the corporation (required)
+     * @param observerId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param page
+     *            (optional)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return 
+     *         ApiResponse&lt;List&lt;CorporationMiningObserverResponseInner&gt;&
+     *         gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        X-Pages - The total number of pages in the result
+     *                        set. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<List<CorporationMiningObserverResponseInner>> getCorporationMiningObserverWithHttpInfo(
+            @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull Long observerId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        okhttp3.Call localVarCall = getCorporationMiningObserverValidateBeforeCall(corporationId, observerId,
+                xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant, null);
+        Type localVarReturnType = new TypeToken<List<CorporationMiningObserverResponseInner>>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Observed corporation mining (asynchronously) Paginated record of all
+     * mining seen by an observer
+     * 
+     * @param corporationId
+     *            The ID of the corporation (required)
+     * @param observerId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param page
+     *            (optional)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request
+     *             body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        X-Pages - The total number of pages in the result
+     *                        set. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getCorporationMiningObserverAsync(@javax.annotation.Nonnull Long corporationId,
+            @javax.annotation.Nonnull Long observerId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback<List<CorporationMiningObserverResponseInner>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCorporationMiningObserverValidateBeforeCall(corporationId, observerId,
+                xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant, _callback);
+        Type localVarReturnType = new TypeToken<List<CorporationMiningObserverResponseInner>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1493,8 +1821,7 @@ public class IndustryApi {
 
     /**
      * Corporation mining observers Paginated list of all entities capable of
-     * observing and recording mining for a corporation Requires one of the
-     * following EVE corporation role(s): Accountant
+     * observing and recording mining for a corporation
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -1551,8 +1878,7 @@ public class IndustryApi {
 
     /**
      * Corporation mining observers Paginated list of all entities capable of
-     * observing and recording mining for a corporation Requires one of the
-     * following EVE corporation role(s): Accountant
+     * observing and recording mining for a corporation
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -1614,7 +1940,6 @@ public class IndustryApi {
     /**
      * Corporation mining observers (asynchronously) Paginated list of all
      * entities capable of observing and recording mining for a corporation
-     * Requires one of the following EVE corporation role(s): Accountant
      * 
      * @param corporationId
      *            The ID of the corporation (required)
@@ -1670,343 +1995,6 @@ public class IndustryApi {
         okhttp3.Call localVarCall = getCorporationMiningObserversValidateBeforeCall(corporationId, xCompatibilityDate,
                 page, acceptLanguage, ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationMiningObserversResponseInner>>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    /**
-     * Build call for getCorporationMiningObserversObserverId
-     * 
-     * @param corporationId
-     *            The ID of the corporation (required)
-     * @param observerId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param page
-     *            (optional)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException
-     *             If fail to serialize the request body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        X-Pages - The total number of pages in the result
-     *                        set. <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getCorporationMiningObserversObserverIdCall(@javax.annotation.Nonnull Long corporationId,
-            @javax.annotation.Nonnull Long observerId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {};
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null) {
-            basePath = localCustomBaseUrl;
-        } else if (localBasePaths.length > 0) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/corporation/{corporation_id}/mining/observers/{observer_id}".replace(
-                "{" + "corporation_id" + "}", localVarApiClient.escapeString(corporationId.toString())).replace(
-                "{" + "observer_id" + "}", localVarApiClient.escapeString(observerId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (page != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
-        }
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {};
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
-        }
-
-        if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
-        }
-
-        if (xCompatibilityDate != null) {
-            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
-        }
-
-        if (xTenant != null) {
-            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
-        }
-
-        String[] localVarAuthNames = new String[] { "OAuth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
-                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
-                localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCorporationMiningObserversObserverIdValidateBeforeCall(
-            @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull Long observerId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'corporationId' is set
-        if (corporationId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'corporationId' when calling getCorporationMiningObserversObserverId(Async)");
-        }
-
-        // verify the required parameter 'observerId' is set
-        if (observerId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'observerId' when calling getCorporationMiningObserversObserverId(Async)");
-        }
-
-        // verify the required parameter 'xCompatibilityDate' is set
-        if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getCorporationMiningObserversObserverId(Async)");
-        }
-
-        return getCorporationMiningObserversObserverIdCall(corporationId, observerId, xCompatibilityDate, page,
-                acceptLanguage, ifNoneMatch, xTenant, _callback);
-
-    }
-
-    /**
-     * Observed corporation mining Paginated record of all mining seen by an
-     * observer Requires one of the following EVE corporation role(s):
-     * Accountant
-     * 
-     * @param corporationId
-     *            The ID of the corporation (required)
-     * @param observerId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param page
-     *            (optional)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return List&lt;CorporationMiningObserverResponseInner&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        X-Pages - The total number of pages in the result
-     *                        set. <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public List<CorporationMiningObserverResponseInner> getCorporationMiningObserversObserverId(
-            @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull Long observerId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CorporationMiningObserverResponseInner>> localVarResp = getCorporationMiningObserversObserverIdWithHttpInfo(
-                corporationId, observerId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Observed corporation mining Paginated record of all mining seen by an
-     * observer Requires one of the following EVE corporation role(s):
-     * Accountant
-     * 
-     * @param corporationId
-     *            The ID of the corporation (required)
-     * @param observerId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param page
-     *            (optional)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return 
-     *         ApiResponse&lt;List&lt;CorporationMiningObserverResponseInner&gt;&
-     *         gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        X-Pages - The total number of pages in the result
-     *                        set. <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<List<CorporationMiningObserverResponseInner>> getCorporationMiningObserversObserverIdWithHttpInfo(
-            @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull Long observerId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        okhttp3.Call localVarCall = getCorporationMiningObserversObserverIdValidateBeforeCall(corporationId,
-                observerId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CorporationMiningObserverResponseInner>>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Observed corporation mining (asynchronously) Paginated record of all
-     * mining seen by an observer Requires one of the following EVE corporation
-     * role(s): Accountant
-     * 
-     * @param corporationId
-     *            The ID of the corporation (required)
-     * @param observerId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param page
-     *            (optional)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException
-     *             If fail to process the API call, e.g. serializing the request
-     *             body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        X-Pages - The total number of pages in the result
-     *                        set. <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getCorporationMiningObserversObserverIdAsync(@javax.annotation.Nonnull Long corporationId,
-            @javax.annotation.Nonnull Long observerId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CorporationMiningObserverResponseInner>> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getCorporationMiningObserversObserverIdValidateBeforeCall(corporationId,
-                observerId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CorporationMiningObserverResponseInner>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -105,6 +105,10 @@ public class JSON {
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.AllianceIconsResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.AllianceResponse.CustomTypeAdapterFactory());
         gsonBuilder
+                .registerTypeAdapterFactory(new net.troja.eve.esi.model.AncestriesResponseInner.CustomTypeAdapterFactory());
+        gsonBuilder
+                .registerTypeAdapterFactory(new net.troja.eve.esi.model.AsteroidBeltsResponse.CustomTypeAdapterFactory());
+        gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.BloodlinesResponseInner.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.CategoryResponse.CustomTypeAdapterFactory());
         gsonBuilder
@@ -288,9 +292,9 @@ public class JSON {
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.CorporationShareholdersResponseInner.CustomTypeAdapterFactory());
         gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.CorporationStarbase.CustomTypeAdapterFactory());
+                .registerTypeAdapterFactory(new net.troja.eve.esi.model.CorporationStarbaseResponse.CustomTypeAdapterFactory());
         gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.CorporationStarbaseFuelsInner.CustomTypeAdapterFactory());
+                .registerTypeAdapterFactory(new net.troja.eve.esi.model.CorporationStarbaseResponseFuelsInner.CustomTypeAdapterFactory());
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.CorporationStarbasesResponseInner.CustomTypeAdapterFactory());
         gsonBuilder
@@ -409,17 +413,18 @@ public class JSON {
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.InsurancePricesResponseInner.CustomTypeAdapterFactory());
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.InsurancePricesResponseInnerLevelsInner.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.KillmailResponse.CustomTypeAdapterFactory());
         gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.KillmailResponseAttackersInner.CustomTypeAdapterFactory());
+                .registerTypeAdapterFactory(new net.troja.eve.esi.model.KillmailByHashResponse.CustomTypeAdapterFactory());
         gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.KillmailResponseVictim.CustomTypeAdapterFactory());
+                .registerTypeAdapterFactory(new net.troja.eve.esi.model.KillmailByHashResponseAttackersInner.CustomTypeAdapterFactory());
         gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.KillmailResponseVictimItemsInner.CustomTypeAdapterFactory());
+                .registerTypeAdapterFactory(new net.troja.eve.esi.model.KillmailByHashResponseVictim.CustomTypeAdapterFactory());
         gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.KillmailResponseVictimItemsInnerItemsInner.CustomTypeAdapterFactory());
+                .registerTypeAdapterFactory(new net.troja.eve.esi.model.KillmailByHashResponseVictimItemsInner.CustomTypeAdapterFactory());
         gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.KillmailResponseVictimPosition.CustomTypeAdapterFactory());
+                .registerTypeAdapterFactory(new net.troja.eve.esi.model.KillmailByHashResponseVictimItemsInnerItemsInner.CustomTypeAdapterFactory());
+        gsonBuilder
+                .registerTypeAdapterFactory(new net.troja.eve.esi.model.KillmailByHashResponseVictimPosition.CustomTypeAdapterFactory());
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.LoyaltyStoreOffersResponseInner.CustomTypeAdapterFactory());
         gsonBuilder
@@ -430,21 +435,22 @@ public class JSON {
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.MailLabelsResponseLabelsInner.CustomTypeAdapterFactory());
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.MailListsResponseInner.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.MailResponse.CustomTypeAdapterFactory());
         gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.MailMailIdResponse.CustomTypeAdapterFactory());
+                .registerTypeAdapterFactory(new net.troja.eve.esi.model.MailsResponseInner.CustomTypeAdapterFactory());
         gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.MailResponseInner.CustomTypeAdapterFactory());
-        gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.MarketGroupsMarketGroupIdResponse.CustomTypeAdapterFactory());
-        gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.MarketHistoryResponseInner.CustomTypeAdapterFactory());
-        gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.MarketOrdersResponseInner.CustomTypeAdapterFactory());
+                .registerTypeAdapterFactory(new net.troja.eve.esi.model.MarketGroupResponse.CustomTypeAdapterFactory());
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.MarketPricesResponseInner.CustomTypeAdapterFactory());
         gsonBuilder
+                .registerTypeAdapterFactory(new net.troja.eve.esi.model.MarketRegionHistoryResponseInner.CustomTypeAdapterFactory());
+        gsonBuilder
+                .registerTypeAdapterFactory(new net.troja.eve.esi.model.MarketRegionOrdersResponseInner.CustomTypeAdapterFactory());
+        gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.MarketStructureResponseInner.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.MoonResponse.CustomTypeAdapterFactory());
+        gsonBuilder
+                .registerTypeAdapterFactory(new net.troja.eve.esi.model.NamesResponseInner.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.PlanetResponse.CustomTypeAdapterFactory());
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.PostCharacterFittingsRequest.CustomTypeAdapterFactory());
@@ -454,9 +460,9 @@ public class JSON {
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.PostFleetMembersRequest.CustomTypeAdapterFactory());
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.PostMailLabelsRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.PostMailRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.PostMailsRequest.CustomTypeAdapterFactory());
         gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.PostMailRequestRecipientsInner.CustomTypeAdapterFactory());
+                .registerTypeAdapterFactory(new net.troja.eve.esi.model.PostMailsRequestRecipientsInner.CustomTypeAdapterFactory());
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.PostUiOpenwindowNewmailRequest.CustomTypeAdapterFactory());
         gsonBuilder
@@ -468,12 +474,11 @@ public class JSON {
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.PutCharacterCalendarEventRequest.CustomTypeAdapterFactory());
         gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.PutFleetMembersMemberIdRequest.CustomTypeAdapterFactory());
+                .registerTypeAdapterFactory(new net.troja.eve.esi.model.PutFleetMemberRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.PutFleetRequest.CustomTypeAdapterFactory());
         gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.PutFleetSquadsSquadIdRequest.CustomTypeAdapterFactory());
-        gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.PutMailMailIdRequest.CustomTypeAdapterFactory());
+                .registerTypeAdapterFactory(new net.troja.eve.esi.model.PutFleetSquadRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.PutMailRequest.CustomTypeAdapterFactory());
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.RacesResponseInner.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.RegionResponse.CustomTypeAdapterFactory());
@@ -501,10 +506,6 @@ public class JSON {
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.SystemResponsePlanetsInner.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.TypeResponse.CustomTypeAdapterFactory());
-        gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.UniverseAncestriesResponseInner.CustomTypeAdapterFactory());
-        gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.UniverseAsteroidBeltsResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.UniverseIdsPost.CustomTypeAdapterFactory());
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.UniverseIdsPostAgentsInner.CustomTypeAdapterFactory());
@@ -526,8 +527,6 @@ public class JSON {
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.UniverseIdsPostStationsInner.CustomTypeAdapterFactory());
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.UniverseIdsPostSystemsInner.CustomTypeAdapterFactory());
-        gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.UniverseNamesPostInner.CustomTypeAdapterFactory());
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.UniverseStructureResponse.CustomTypeAdapterFactory());
         gsonBuilder

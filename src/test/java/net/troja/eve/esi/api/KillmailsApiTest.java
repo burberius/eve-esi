@@ -15,8 +15,7 @@ package net.troja.eve.esi.api;
 
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.CharacterKillmailsResponseInner;
-import net.troja.eve.esi.model.KillmailResponse;
-import java.time.LocalDate;
+import net.troja.eve.esi.model.KillmailByHashResponse;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -46,12 +45,12 @@ public class KillmailsApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getCharacterKillmailsRecentTest() throws ApiException {
+    public void getCharacterKillmailsTest() throws ApiException {
         Integer page = null;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterKillmailsResponseInner> response = api.getCharacterKillmailsRecent(characterId, KillmailsApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterKillmailsResponseInner> response = api.getCharacterKillmails(characterId, KillmailsApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotNull();
     }
 
@@ -64,12 +63,12 @@ public class KillmailsApiTest extends GeneralApiTest {
      */
     @Test
     @Disabled("Needs corporation with read access")
-    public void getCorporationKillmailsRecentTest() throws ApiException {
+    public void getCorporationKillmailsTest() throws ApiException {
         Integer page = null;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterKillmailsResponseInner> response = api.getCorporationKillmailsRecent(corporationId, KillmailsApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterKillmailsResponseInner> response = api.getCorporationKillmails(corporationId, KillmailsApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -82,13 +81,13 @@ public class KillmailsApiTest extends GeneralApiTest {
      */
     @Test
     @Disabled("Needs killmails to test")
-    public void getKillmailsKillmailIdKillmailHashTest() throws ApiException {
+    public void getKillmailByHash() throws ApiException {
         String killmailHash = null;
         Long killmailId = null;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        KillmailResponse response = api.getKillmailsKillmailIdKillmailHash(killmailHash, killmailId, KillmailsApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        KillmailByHashResponse response = api.getKillmailByHash(killmailHash, killmailId, KillmailsApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 

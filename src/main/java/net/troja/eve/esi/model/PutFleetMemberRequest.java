@@ -46,10 +46,10 @@ import java.util.Set;
 import net.troja.eve.esi.JSON;
 
 /**
- * PutFleetMembersMemberIdRequest
+ * PutFleetMemberRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class PutFleetMembersMemberIdRequest implements Serializable {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+public class PutFleetMemberRequest implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -131,15 +131,15 @@ public class PutFleetMembersMemberIdRequest implements Serializable {
     @javax.annotation.Nullable
     private Long wingId;
 
-    public PutFleetMembersMemberIdRequest() {
+    public PutFleetMemberRequest() {
     }
 
-    public PutFleetMembersMemberIdRequest role(@javax.annotation.Nonnull RoleEnum role) {
+    public PutFleetMemberRequest role(@javax.annotation.Nonnull RoleEnum role) {
         this.roleEnum = role;
         return this;
     }
 
-    public PutFleetMembersMemberIdRequest roleString(@javax.annotation.Nonnull String role) {
+    public PutFleetMemberRequest roleString(@javax.annotation.Nonnull String role) {
         this.role = role;
         return this;
     }
@@ -176,7 +176,7 @@ public class PutFleetMembersMemberIdRequest implements Serializable {
         this.role = role;
     }
 
-    public PutFleetMembersMemberIdRequest squadId(@javax.annotation.Nullable Long squadId) {
+    public PutFleetMemberRequest squadId(@javax.annotation.Nullable Long squadId) {
         this.squadId = squadId;
         return this;
     }
@@ -195,7 +195,7 @@ public class PutFleetMembersMemberIdRequest implements Serializable {
         this.squadId = squadId;
     }
 
-    public PutFleetMembersMemberIdRequest wingId(@javax.annotation.Nullable Long wingId) {
+    public PutFleetMemberRequest wingId(@javax.annotation.Nullable Long wingId) {
         this.wingId = wingId;
         return this;
     }
@@ -222,10 +222,10 @@ public class PutFleetMembersMemberIdRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        PutFleetMembersMemberIdRequest putFleetMembersMemberIdRequest = (PutFleetMembersMemberIdRequest) o;
-        return Objects.equals(this.role, putFleetMembersMemberIdRequest.role)
-                && Objects.equals(this.squadId, putFleetMembersMemberIdRequest.squadId)
-                && Objects.equals(this.wingId, putFleetMembersMemberIdRequest.wingId);
+        PutFleetMemberRequest putFleetMemberRequest = (PutFleetMemberRequest) o;
+        return Objects.equals(this.role, putFleetMemberRequest.role)
+                && Objects.equals(this.squadId, putFleetMemberRequest.squadId)
+                && Objects.equals(this.wingId, putFleetMemberRequest.wingId);
     }
 
     @Override
@@ -236,7 +236,7 @@ public class PutFleetMembersMemberIdRequest implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class PutFleetMembersMemberIdRequest {\n");
+        sb.append("class PutFleetMemberRequest {\n");
         sb.append("    role: ").append(toIndentedString(role)).append("\n");
         sb.append("    squadId: ").append(toIndentedString(squadId)).append("\n");
         sb.append("    wingId: ").append(toIndentedString(wingId)).append("\n");
@@ -273,39 +273,38 @@ public class PutFleetMembersMemberIdRequest implements Serializable {
      *            JSON Element
      * @throws IOException
      *             if the JSON Element is invalid with respect to
-     *             PutFleetMembersMemberIdRequest
+     *             PutFleetMemberRequest
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         if (jsonElement == null) {
-            if (!PutFleetMembersMemberIdRequest.openapiRequiredFields.isEmpty()) { // has
-                                                                                   // required
-                                                                                   // fields
-                                                                                   // but
-                                                                                   // JSON
-                                                                                   // element
-                                                                                   // is
-                                                                                   // null
-                throw new IllegalArgumentException(
-                        String.format(
-                                "The required field(s) %s in PutFleetMembersMemberIdRequest is not found in the empty JSON string",
-                                PutFleetMembersMemberIdRequest.openapiRequiredFields.toString()));
+            if (!PutFleetMemberRequest.openapiRequiredFields.isEmpty()) { // has
+                                                                          // required
+                                                                          // fields
+                                                                          // but
+                                                                          // JSON
+                                                                          // element
+                                                                          // is
+                                                                          // null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PutFleetMemberRequest is not found in the empty JSON string",
+                        PutFleetMemberRequest.openapiRequiredFields.toString()));
             }
         }
 
         Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
         for (Map.Entry<String, JsonElement> entry : entries) {
-            if (!PutFleetMembersMemberIdRequest.openapiFields.contains(entry.getKey())) {
+            if (!PutFleetMemberRequest.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
-                                "The field `%s` in the JSON string is not defined in the `PutFleetMembersMemberIdRequest` properties. JSON: %s",
+                                "The field `%s` in the JSON string is not defined in the `PutFleetMemberRequest` properties. JSON: %s",
                                 entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
-        for (String requiredField : PutFleetMembersMemberIdRequest.openapiRequiredFields) {
+        for (String requiredField : PutFleetMemberRequest.openapiRequiredFields) {
             if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
@@ -326,24 +325,23 @@ public class PutFleetMembersMemberIdRequest implements Serializable {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!PutFleetMembersMemberIdRequest.class.isAssignableFrom(type.getRawType())) {
+            if (!PutFleetMemberRequest.class.isAssignableFrom(type.getRawType())) {
                 return null; // this class only serializes
-                             // 'PutFleetMembersMemberIdRequest' and its
-                             // subtypes
+                             // 'PutFleetMemberRequest' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<PutFleetMembersMemberIdRequest> thisAdapter = gson.getDelegateAdapter(this,
-                    TypeToken.get(PutFleetMembersMemberIdRequest.class));
+            final TypeAdapter<PutFleetMemberRequest> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(PutFleetMemberRequest.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<PutFleetMembersMemberIdRequest>() {
+            return (TypeAdapter<T>) new TypeAdapter<PutFleetMemberRequest>() {
                 @Override
-                public void write(JsonWriter out, PutFleetMembersMemberIdRequest value) throws IOException {
+                public void write(JsonWriter out, PutFleetMemberRequest value) throws IOException {
                     JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
                     elementAdapter.write(out, obj);
                 }
 
                 @Override
-                public PutFleetMembersMemberIdRequest read(JsonReader in) throws IOException {
+                public PutFleetMemberRequest read(JsonReader in) throws IOException {
                     JsonElement jsonElement = elementAdapter.read(in);
                     validateJsonElement(jsonElement);
                     return thisAdapter.fromJsonTree(jsonElement);
@@ -354,21 +352,21 @@ public class PutFleetMembersMemberIdRequest implements Serializable {
     }
 
     /**
-     * Create an instance of PutFleetMembersMemberIdRequest given an JSON string
+     * Create an instance of PutFleetMemberRequest given an JSON string
      *
      * @param jsonString
      *            JSON string
-     * @return An instance of PutFleetMembersMemberIdRequest
+     * @return An instance of PutFleetMemberRequest
      * @throws IOException
      *             if the JSON string is invalid with respect to
-     *             PutFleetMembersMemberIdRequest
+     *             PutFleetMemberRequest
      */
-    public static PutFleetMembersMemberIdRequest fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, PutFleetMembersMemberIdRequest.class);
+    public static PutFleetMemberRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PutFleetMemberRequest.class);
     }
 
     /**
-     * Convert an instance of PutFleetMembersMemberIdRequest to an JSON string
+     * Convert an instance of PutFleetMemberRequest to an JSON string
      *
      * @return JSON string
      */

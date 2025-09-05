@@ -11,11 +11,9 @@
  */
 
 
-package net.troja.eve.esi;
+package net.troja.eve.esi.api;
 
-import net.troja.eve.esi.api.CorporationApi;
-import net.troja.eve.esi.api.GeneralApiTest;
-import net.troja.eve.esi.api.PlanetaryInteractionApi;
+import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.CharacterPlanetResponse;
 import net.troja.eve.esi.model.CharacterPlanetsResponseInner;
 import net.troja.eve.esi.model.CorporationCustomsOfficesResponseInner;
@@ -71,7 +69,7 @@ public class PlanetaryInteractionApiTest extends GeneralApiTest {
         String ifNoneMatch = null;
         String xTenant = null;
         List<CharacterPlanetsResponseInner> planets = api.getCharacterPlanets(characterId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
-        CharacterPlanetResponse response = api.getCharacterPlanetsPlanetId(characterId, planets.get(0).getPlanetId(), CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        CharacterPlanetResponse response = api.getCharacterPlanet(characterId, planets.get(0).getPlanetId(), CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotNull();
         assertThat(response.getPins()).hasSizeGreaterThan(0);
     }
@@ -103,12 +101,12 @@ public class PlanetaryInteractionApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getUniverseSchematicsSchematicIdTest() throws ApiException {
+    public void getSchematicTest() throws ApiException {
         Long schematicId = 131L;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        SchematicResponse response = api.getUniverseSchematicsSchematicId(schematicId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        SchematicResponse response = api.getSchematic(schematicId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response.getCycleTime()).isEqualTo(1800);
         assertThat(response.getSchematicName()).isEqualTo("Bacteria");
     }

@@ -25,6 +25,8 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
+import net.troja.eve.esi.model.AncestriesResponseInner;
+import net.troja.eve.esi.model.AsteroidBeltsResponse;
 import net.troja.eve.esi.model.BloodlinesResponseInner;
 import net.troja.eve.esi.model.CategoryResponse;
 import net.troja.eve.esi.model.ConstellationResponse;
@@ -34,6 +36,7 @@ import net.troja.eve.esi.model.GraphicResponse;
 import net.troja.eve.esi.model.GroupResponse;
 import java.time.LocalDate;
 import net.troja.eve.esi.model.MoonResponse;
+import net.troja.eve.esi.model.NamesResponseInner;
 import net.troja.eve.esi.model.PlanetResponse;
 import net.troja.eve.esi.model.RacesResponseInner;
 import net.troja.eve.esi.model.RegionResponse;
@@ -45,10 +48,7 @@ import net.troja.eve.esi.model.SystemJumpsResponseInner;
 import net.troja.eve.esi.model.SystemKillsResponseInner;
 import net.troja.eve.esi.model.SystemResponse;
 import net.troja.eve.esi.model.TypeResponse;
-import net.troja.eve.esi.model.UniverseAncestriesResponseInner;
-import net.troja.eve.esi.model.UniverseAsteroidBeltsResponse;
 import net.troja.eve.esi.model.UniverseIdsPost;
-import net.troja.eve.esi.model.UniverseNamesPostInner;
 import net.troja.eve.esi.model.UniverseStructureResponse;
 
 import java.lang.reflect.Type;
@@ -58,7 +58,7 @@ import java.util.List;
 import java.util.Map;
 
 public class UniverseApi {
-    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2020, 1, 1);
+    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2025, 8, 26);
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
@@ -96,7 +96,7 @@ public class UniverseApi {
     }
 
     /**
-     * Build call for getUniverseAncestries
+     * Build call for getAncestries
      * 
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
@@ -137,7 +137,7 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseAncestriesCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public okhttp3.Call getAncestriesCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -199,17 +199,16 @@ public class UniverseApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUniverseAncestriesValidateBeforeCall(
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAncestriesValidateBeforeCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
             throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getUniverseAncestries(Async)");
+                    "Missing the required parameter 'xCompatibilityDate' when calling getAncestries(Async)");
         }
 
-        return getUniverseAncestriesCall(xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
+        return getAncestriesCall(xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
 
     }
 
@@ -228,7 +227,7 @@ public class UniverseApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;UniverseAncestriesResponseInner&gt;
+     * @return List&lt;AncestriesResponseInner&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -255,12 +254,11 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public List<UniverseAncestriesResponseInner> getUniverseAncestries(
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        ApiResponse<List<UniverseAncestriesResponseInner>> localVarResp = getUniverseAncestriesWithHttpInfo(
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
+    public List<AncestriesResponseInner> getAncestries(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        ApiResponse<List<AncestriesResponseInner>> localVarResp = getAncestriesWithHttpInfo(xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -279,7 +277,7 @@ public class UniverseApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;UniverseAncestriesResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;AncestriesResponseInner&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -306,13 +304,13 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<UniverseAncestriesResponseInner>> getUniverseAncestriesWithHttpInfo(
+    public ApiResponse<List<AncestriesResponseInner>> getAncestriesWithHttpInfo(
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        okhttp3.Call localVarCall = getUniverseAncestriesValidateBeforeCall(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<UniverseAncestriesResponseInner>>() {
+        okhttp3.Call localVarCall = getAncestriesValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
+                xTenant, null);
+        Type localVarReturnType = new TypeToken<List<AncestriesResponseInner>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -361,21 +359,21 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseAncestriesAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public okhttp3.Call getAncestriesAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<UniverseAncestriesResponseInner>> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<AncestriesResponseInner>> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = getUniverseAncestriesValidateBeforeCall(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<UniverseAncestriesResponseInner>>() {
+        okhttp3.Call localVarCall = getAncestriesValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
+                xTenant, _callback);
+        Type localVarReturnType = new TypeToken<List<AncestriesResponseInner>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
     /**
-     * Build call for getUniverseAsteroidBelts
+     * Build call for getAsteroidBelts
      * 
      * @param asteroidBeltId
      *            (required)
@@ -417,7 +415,7 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseAsteroidBeltsCall(@javax.annotation.Nonnull Long asteroidBeltId,
+    public okhttp3.Call getAsteroidBeltsCall(@javax.annotation.Nonnull Long asteroidBeltId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
@@ -481,24 +479,23 @@ public class UniverseApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUniverseAsteroidBeltsValidateBeforeCall(@javax.annotation.Nonnull Long asteroidBeltId,
+    private okhttp3.Call getAsteroidBeltsValidateBeforeCall(@javax.annotation.Nonnull Long asteroidBeltId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'asteroidBeltId' is set
         if (asteroidBeltId == null) {
             throw new ApiException(
-                    "Missing the required parameter 'asteroidBeltId' when calling getUniverseAsteroidBelts(Async)");
+                    "Missing the required parameter 'asteroidBeltId' when calling getAsteroidBelts(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
             throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getUniverseAsteroidBelts(Async)");
+                    "Missing the required parameter 'xCompatibilityDate' when calling getAsteroidBelts(Async)");
         }
 
-        return getUniverseAsteroidBeltsCall(asteroidBeltId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
-                _callback);
+        return getAsteroidBeltsCall(asteroidBeltId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
 
     }
 
@@ -519,7 +516,7 @@ public class UniverseApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return UniverseAsteroidBeltsResponse
+     * @return AsteroidBeltsResponse
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -545,11 +542,11 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public UniverseAsteroidBeltsResponse getUniverseAsteroidBelts(@javax.annotation.Nonnull Long asteroidBeltId,
+    public AsteroidBeltsResponse getAsteroidBelts(@javax.annotation.Nonnull Long asteroidBeltId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<UniverseAsteroidBeltsResponse> localVarResp = getUniverseAsteroidBeltsWithHttpInfo(asteroidBeltId,
+        ApiResponse<AsteroidBeltsResponse> localVarResp = getAsteroidBeltsWithHttpInfo(asteroidBeltId,
                 xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -571,7 +568,7 @@ public class UniverseApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;UniverseAsteroidBeltsResponse&gt;
+     * @return ApiResponse&lt;AsteroidBeltsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -597,13 +594,13 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<UniverseAsteroidBeltsResponse> getUniverseAsteroidBeltsWithHttpInfo(
+    public ApiResponse<AsteroidBeltsResponse> getAsteroidBeltsWithHttpInfo(
             @javax.annotation.Nonnull Long asteroidBeltId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        okhttp3.Call localVarCall = getUniverseAsteroidBeltsValidateBeforeCall(asteroidBeltId, xCompatibilityDate,
+        okhttp3.Call localVarCall = getAsteroidBeltsValidateBeforeCall(asteroidBeltId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<UniverseAsteroidBeltsResponse>() {
+        Type localVarReturnType = new TypeToken<AsteroidBeltsResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -653,21 +650,21 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseAsteroidBeltsAsync(@javax.annotation.Nonnull Long asteroidBeltId,
+    public okhttp3.Call getAsteroidBeltsAsync(@javax.annotation.Nonnull Long asteroidBeltId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<UniverseAsteroidBeltsResponse> _callback) throws ApiException {
+            final ApiCallback<AsteroidBeltsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getUniverseAsteroidBeltsValidateBeforeCall(asteroidBeltId, xCompatibilityDate,
+        okhttp3.Call localVarCall = getAsteroidBeltsValidateBeforeCall(asteroidBeltId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<UniverseAsteroidBeltsResponse>() {
+        Type localVarReturnType = new TypeToken<AsteroidBeltsResponse>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
     /**
-     * Build call for getUniverseBloodlines
+     * Build call for getBloodlines
      * 
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
@@ -708,7 +705,7 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseBloodlinesCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public okhttp3.Call getBloodlinesCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -770,17 +767,16 @@ public class UniverseApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUniverseBloodlinesValidateBeforeCall(
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getBloodlinesValidateBeforeCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
             throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getUniverseBloodlines(Async)");
+                    "Missing the required parameter 'xCompatibilityDate' when calling getBloodlines(Async)");
         }
 
-        return getUniverseBloodlinesCall(xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
+        return getBloodlinesCall(xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
 
     }
 
@@ -825,10 +821,10 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public List<BloodlinesResponseInner> getUniverseBloodlines(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public List<BloodlinesResponseInner> getBloodlines(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<BloodlinesResponseInner>> localVarResp = getUniverseBloodlinesWithHttpInfo(xCompatibilityDate,
+        ApiResponse<List<BloodlinesResponseInner>> localVarResp = getBloodlinesWithHttpInfo(xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -874,12 +870,12 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<BloodlinesResponseInner>> getUniverseBloodlinesWithHttpInfo(
+    public ApiResponse<List<BloodlinesResponseInner>> getBloodlinesWithHttpInfo(
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        okhttp3.Call localVarCall = getUniverseBloodlinesValidateBeforeCall(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, null);
+        okhttp3.Call localVarCall = getBloodlinesValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
+                xTenant, null);
         Type localVarReturnType = new TypeToken<List<BloodlinesResponseInner>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -929,13 +925,13 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseBloodlinesAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public okhttp3.Call getBloodlinesAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback<List<BloodlinesResponseInner>> _callback)
             throws ApiException {
 
-        okhttp3.Call localVarCall = getUniverseBloodlinesValidateBeforeCall(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, _callback);
+        okhttp3.Call localVarCall = getBloodlinesValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
+                xTenant, _callback);
         Type localVarReturnType = new TypeToken<List<BloodlinesResponseInner>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -943,7 +939,7 @@ public class UniverseApi {
     }
 
     /**
-     * Build call for getUniverseCategories
+     * Build call for getCategories
      * 
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
@@ -983,7 +979,7 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseCategoriesCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public okhttp3.Call getCategoriesCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1045,17 +1041,16 @@ public class UniverseApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUniverseCategoriesValidateBeforeCall(
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCategoriesValidateBeforeCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
             throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getUniverseCategories(Async)");
+                    "Missing the required parameter 'xCompatibilityDate' when calling getCategories(Async)");
         }
 
-        return getUniverseCategoriesCall(xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
+        return getCategoriesCall(xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
 
     }
 
@@ -1100,10 +1095,10 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public List<Long> getUniverseCategories(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public List<Long> getCategories(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<Long>> localVarResp = getUniverseCategoriesWithHttpInfo(xCompatibilityDate, acceptLanguage,
+        ApiResponse<List<Long>> localVarResp = getCategoriesWithHttpInfo(xCompatibilityDate, acceptLanguage,
                 ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -1149,12 +1144,11 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<Long>> getUniverseCategoriesWithHttpInfo(
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        okhttp3.Call localVarCall = getUniverseCategoriesValidateBeforeCall(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, null);
+    public ApiResponse<List<Long>> getCategoriesWithHttpInfo(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        okhttp3.Call localVarCall = getCategoriesValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
+                xTenant, null);
         Type localVarReturnType = new TypeToken<List<Long>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1203,12 +1197,12 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseCategoriesAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public okhttp3.Call getCategoriesAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback<List<Long>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getUniverseCategoriesValidateBeforeCall(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, _callback);
+        okhttp3.Call localVarCall = getCategoriesValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
+                xTenant, _callback);
         Type localVarReturnType = new TypeToken<List<Long>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -1216,7 +1210,7 @@ public class UniverseApi {
     }
 
     /**
-     * Build call for getUniverseCategoriesCategoryId
+     * Build call for getCategory
      * 
      * @param categoryId
      *            (required)
@@ -1259,7 +1253,7 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseCategoriesCategoryIdCall(@javax.annotation.Nonnull Long categoryId,
+    public okhttp3.Call getCategoryCall(@javax.annotation.Nonnull Long categoryId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
@@ -1323,24 +1317,22 @@ public class UniverseApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUniverseCategoriesCategoryIdValidateBeforeCall(@javax.annotation.Nonnull Long categoryId,
+    private okhttp3.Call getCategoryValidateBeforeCall(@javax.annotation.Nonnull Long categoryId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'categoryId' is set
         if (categoryId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'categoryId' when calling getUniverseCategoriesCategoryId(Async)");
+            throw new ApiException("Missing the required parameter 'categoryId' when calling getCategory(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
             throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getUniverseCategoriesCategoryId(Async)");
+                    "Missing the required parameter 'xCompatibilityDate' when calling getCategory(Async)");
         }
 
-        return getUniverseCategoriesCategoryIdCall(categoryId, xCompatibilityDate, acceptLanguage, ifNoneMatch,
-                xTenant, _callback);
+        return getCategoryCall(categoryId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
 
     }
 
@@ -1388,12 +1380,12 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public CategoryResponse getUniverseCategoriesCategoryId(@javax.annotation.Nonnull Long categoryId,
+    public CategoryResponse getCategory(@javax.annotation.Nonnull Long categoryId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<CategoryResponse> localVarResp = getUniverseCategoriesCategoryIdWithHttpInfo(categoryId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<CategoryResponse> localVarResp = getCategoryWithHttpInfo(categoryId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -1441,12 +1433,12 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<CategoryResponse> getUniverseCategoriesCategoryIdWithHttpInfo(
-            @javax.annotation.Nonnull Long categoryId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        okhttp3.Call localVarCall = getUniverseCategoriesCategoryIdValidateBeforeCall(categoryId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, null);
+    public ApiResponse<CategoryResponse> getCategoryWithHttpInfo(@javax.annotation.Nonnull Long categoryId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        okhttp3.Call localVarCall = getCategoryValidateBeforeCall(categoryId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant, null);
         Type localVarReturnType = new TypeToken<CategoryResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1498,13 +1490,13 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseCategoriesCategoryIdAsync(@javax.annotation.Nonnull Long categoryId,
+    public okhttp3.Call getCategoryAsync(@javax.annotation.Nonnull Long categoryId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback<CategoryResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getUniverseCategoriesCategoryIdValidateBeforeCall(categoryId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, _callback);
+        okhttp3.Call localVarCall = getCategoryValidateBeforeCall(categoryId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<CategoryResponse>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -1512,280 +1504,7 @@ public class UniverseApi {
     }
 
     /**
-     * Build call for getUniverseConstellations
-     * 
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException
-     *             If fail to serialize the request body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getUniverseConstellationsCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {};
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null) {
-            basePath = localCustomBaseUrl;
-        } else if (localBasePaths.length > 0) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/universe/constellations";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {};
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
-        }
-
-        if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
-        }
-
-        if (xCompatibilityDate != null) {
-            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
-        }
-
-        if (xTenant != null) {
-            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
-        }
-
-        String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
-                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
-                localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUniverseConstellationsValidateBeforeCall(
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'xCompatibilityDate' is set
-        if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getUniverseConstellations(Async)");
-        }
-
-        return getUniverseConstellationsCall(xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
-
-    }
-
-    /**
-     * Get constellations Get a list of constellations This route expires daily
-     * at 11:05
-     * 
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return List&lt;Long&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public List<Long> getUniverseConstellations(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<Long>> localVarResp = getUniverseConstellationsWithHttpInfo(xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Get constellations Get a list of constellations This route expires daily
-     * at 11:05
-     * 
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return ApiResponse&lt;List&lt;Long&gt;&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<List<Long>> getUniverseConstellationsWithHttpInfo(
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        okhttp3.Call localVarCall = getUniverseConstellationsValidateBeforeCall(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<Long>>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Get constellations (asynchronously) Get a list of constellations This
-     * route expires daily at 11:05
-     * 
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException
-     *             If fail to process the API call, e.g. serializing the request
-     *             body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getUniverseConstellationsAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<Long>> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getUniverseConstellationsValidateBeforeCall(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<Long>>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    /**
-     * Build call for getUniverseConstellationsConstellationId
+     * Build call for getConstellation
      * 
      * @param constellationId
      *            (required)
@@ -1828,7 +1547,7 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseConstellationsConstellationIdCall(@javax.annotation.Nonnull Long constellationId,
+    public okhttp3.Call getConstellationCall(@javax.annotation.Nonnull Long constellationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
@@ -1892,24 +1611,24 @@ public class UniverseApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUniverseConstellationsConstellationIdValidateBeforeCall(
-            @javax.annotation.Nonnull Long constellationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getConstellationValidateBeforeCall(@javax.annotation.Nonnull Long constellationId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'constellationId' is set
         if (constellationId == null) {
             throw new ApiException(
-                    "Missing the required parameter 'constellationId' when calling getUniverseConstellationsConstellationId(Async)");
+                    "Missing the required parameter 'constellationId' when calling getConstellation(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
             throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getUniverseConstellationsConstellationId(Async)");
+                    "Missing the required parameter 'xCompatibilityDate' when calling getConstellation(Async)");
         }
 
-        return getUniverseConstellationsConstellationIdCall(constellationId, xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, _callback);
+        return getConstellationCall(constellationId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
+                _callback);
 
     }
 
@@ -1957,12 +1676,12 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public ConstellationResponse getUniverseConstellationsConstellationId(
-            @javax.annotation.Nonnull Long constellationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<ConstellationResponse> localVarResp = getUniverseConstellationsConstellationIdWithHttpInfo(
-                constellationId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
+    public ConstellationResponse getConstellation(@javax.annotation.Nonnull Long constellationId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        ApiResponse<ConstellationResponse> localVarResp = getConstellationWithHttpInfo(constellationId,
+                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -2010,12 +1729,12 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<ConstellationResponse> getUniverseConstellationsConstellationIdWithHttpInfo(
+    public ApiResponse<ConstellationResponse> getConstellationWithHttpInfo(
             @javax.annotation.Nonnull Long constellationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        okhttp3.Call localVarCall = getUniverseConstellationsConstellationIdValidateBeforeCall(constellationId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, null);
+        okhttp3.Call localVarCall = getConstellationValidateBeforeCall(constellationId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant, null);
         Type localVarReturnType = new TypeToken<ConstellationResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2067,13 +1786,13 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseConstellationsConstellationIdAsync(@javax.annotation.Nonnull Long constellationId,
+    public okhttp3.Call getConstellationAsync(@javax.annotation.Nonnull Long constellationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback<ConstellationResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getUniverseConstellationsConstellationIdValidateBeforeCall(constellationId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
+        okhttp3.Call localVarCall = getConstellationValidateBeforeCall(constellationId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<ConstellationResponse>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -2081,7 +1800,279 @@ public class UniverseApi {
     }
 
     /**
-     * Build call for getUniverseFactions
+     * Build call for getConstellations
+     * 
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getConstellationsCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/universe/constellations";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {};
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        if (acceptLanguage != null) {
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
+        }
+
+        if (ifNoneMatch != null) {
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
+        }
+
+        if (xCompatibilityDate != null) {
+            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
+        }
+
+        if (xTenant != null) {
+            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getConstellationsValidateBeforeCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'xCompatibilityDate' is set
+        if (xCompatibilityDate == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'xCompatibilityDate' when calling getConstellations(Async)");
+        }
+
+        return getConstellationsCall(xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
+
+    }
+
+    /**
+     * Get constellations Get a list of constellations This route expires daily
+     * at 11:05
+     * 
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return List&lt;Long&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public List<Long> getConstellations(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        ApiResponse<List<Long>> localVarResp = getConstellationsWithHttpInfo(xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get constellations Get a list of constellations This route expires daily
+     * at 11:05
+     * 
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return ApiResponse&lt;List&lt;Long&gt;&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<List<Long>> getConstellationsWithHttpInfo(
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        okhttp3.Call localVarCall = getConstellationsValidateBeforeCall(xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant, null);
+        Type localVarReturnType = new TypeToken<List<Long>>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get constellations (asynchronously) Get a list of constellations This
+     * route expires daily at 11:05
+     * 
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request
+     *             body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getConstellationsAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<Long>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getConstellationsValidateBeforeCall(xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant, _callback);
+        Type localVarReturnType = new TypeToken<List<Long>>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
+     * Build call for getFactions
      * 
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
@@ -2122,7 +2113,7 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseFactionsCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public okhttp3.Call getFactionsCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -2184,16 +2175,16 @@ public class UniverseApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUniverseFactionsValidateBeforeCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    private okhttp3.Call getFactionsValidateBeforeCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
             throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getUniverseFactions(Async)");
+                    "Missing the required parameter 'xCompatibilityDate' when calling getFactions(Async)");
         }
 
-        return getUniverseFactionsCall(xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
+        return getFactionsCall(xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
 
     }
 
@@ -2238,10 +2229,10 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public List<FactionsResponseInner> getUniverseFactions(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public List<FactionsResponseInner> getFactions(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<FactionsResponseInner>> localVarResp = getUniverseFactionsWithHttpInfo(xCompatibilityDate,
+        ApiResponse<List<FactionsResponseInner>> localVarResp = getFactionsWithHttpInfo(xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -2287,12 +2278,12 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<FactionsResponseInner>> getUniverseFactionsWithHttpInfo(
+    public ApiResponse<List<FactionsResponseInner>> getFactionsWithHttpInfo(
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        okhttp3.Call localVarCall = getUniverseFactionsValidateBeforeCall(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, null);
+        okhttp3.Call localVarCall = getFactionsValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
+                xTenant, null);
         Type localVarReturnType = new TypeToken<List<FactionsResponseInner>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2342,13 +2333,13 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseFactionsAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public okhttp3.Call getFactionsAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback<List<FactionsResponseInner>> _callback)
             throws ApiException {
 
-        okhttp3.Call localVarCall = getUniverseFactionsValidateBeforeCall(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, _callback);
+        okhttp3.Call localVarCall = getFactionsValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
+                xTenant, _callback);
         Type localVarReturnType = new TypeToken<List<FactionsResponseInner>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -2356,277 +2347,7 @@ public class UniverseApi {
     }
 
     /**
-     * Build call for getUniverseGraphics
-     * 
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException
-     *             If fail to serialize the request body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getUniverseGraphicsCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {};
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null) {
-            basePath = localCustomBaseUrl;
-        } else if (localBasePaths.length > 0) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/universe/graphics";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {};
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
-        }
-
-        if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
-        }
-
-        if (xCompatibilityDate != null) {
-            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
-        }
-
-        if (xTenant != null) {
-            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
-        }
-
-        String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
-                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
-                localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUniverseGraphicsValidateBeforeCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'xCompatibilityDate' is set
-        if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getUniverseGraphics(Async)");
-        }
-
-        return getUniverseGraphicsCall(xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
-
-    }
-
-    /**
-     * Get graphics Get a list of graphics This route expires daily at 11:05
-     * 
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return List&lt;Long&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public List<Long> getUniverseGraphics(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<Long>> localVarResp = getUniverseGraphicsWithHttpInfo(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Get graphics Get a list of graphics This route expires daily at 11:05
-     * 
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return ApiResponse&lt;List&lt;Long&gt;&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<List<Long>> getUniverseGraphicsWithHttpInfo(
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        okhttp3.Call localVarCall = getUniverseGraphicsValidateBeforeCall(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<Long>>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Get graphics (asynchronously) Get a list of graphics This route expires
-     * daily at 11:05
-     * 
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException
-     *             If fail to process the API call, e.g. serializing the request
-     *             body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getUniverseGraphicsAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<Long>> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getUniverseGraphicsValidateBeforeCall(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<Long>>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    /**
-     * Build call for getUniverseGraphicsGraphicId
+     * Build call for getGraphic
      * 
      * @param graphicId
      *            (required)
@@ -2668,7 +2389,7 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseGraphicsGraphicIdCall(@javax.annotation.Nonnull Long graphicId,
+    public okhttp3.Call getGraphicCall(@javax.annotation.Nonnull Long graphicId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
@@ -2732,24 +2453,21 @@ public class UniverseApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUniverseGraphicsGraphicIdValidateBeforeCall(@javax.annotation.Nonnull Long graphicId,
+    private okhttp3.Call getGraphicValidateBeforeCall(@javax.annotation.Nonnull Long graphicId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'graphicId' is set
         if (graphicId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'graphicId' when calling getUniverseGraphicsGraphicId(Async)");
+            throw new ApiException("Missing the required parameter 'graphicId' when calling getGraphic(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getUniverseGraphicsGraphicId(Async)");
+            throw new ApiException("Missing the required parameter 'xCompatibilityDate' when calling getGraphic(Async)");
         }
 
-        return getUniverseGraphicsGraphicIdCall(graphicId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
-                _callback);
+        return getGraphicCall(graphicId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
 
     }
 
@@ -2796,12 +2514,12 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public GraphicResponse getUniverseGraphicsGraphicId(@javax.annotation.Nonnull Long graphicId,
+    public GraphicResponse getGraphic(@javax.annotation.Nonnull Long graphicId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<GraphicResponse> localVarResp = getUniverseGraphicsGraphicIdWithHttpInfo(graphicId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<GraphicResponse> localVarResp = getGraphicWithHttpInfo(graphicId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -2848,12 +2566,12 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<GraphicResponse> getUniverseGraphicsGraphicIdWithHttpInfo(
-            @javax.annotation.Nonnull Long graphicId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        okhttp3.Call localVarCall = getUniverseGraphicsGraphicIdValidateBeforeCall(graphicId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, null);
+    public ApiResponse<GraphicResponse> getGraphicWithHttpInfo(@javax.annotation.Nonnull Long graphicId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        okhttp3.Call localVarCall = getGraphicValidateBeforeCall(graphicId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant, null);
         Type localVarReturnType = new TypeToken<GraphicResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2904,13 +2622,13 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseGraphicsGraphicIdAsync(@javax.annotation.Nonnull Long graphicId,
+    public okhttp3.Call getGraphicAsync(@javax.annotation.Nonnull Long graphicId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback<GraphicResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getUniverseGraphicsGraphicIdValidateBeforeCall(graphicId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, _callback);
+        okhttp3.Call localVarCall = getGraphicValidateBeforeCall(graphicId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<GraphicResponse>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -2918,7 +2636,569 @@ public class UniverseApi {
     }
 
     /**
-     * Build call for getUniverseGroups
+     * Build call for getGraphics
+     * 
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getGraphicsCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/universe/graphics";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {};
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        if (acceptLanguage != null) {
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
+        }
+
+        if (ifNoneMatch != null) {
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
+        }
+
+        if (xCompatibilityDate != null) {
+            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
+        }
+
+        if (xTenant != null) {
+            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getGraphicsValidateBeforeCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'xCompatibilityDate' is set
+        if (xCompatibilityDate == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'xCompatibilityDate' when calling getGraphics(Async)");
+        }
+
+        return getGraphicsCall(xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
+
+    }
+
+    /**
+     * Get graphics Get a list of graphics This route expires daily at 11:05
+     * 
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return List&lt;Long&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public List<Long> getGraphics(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        ApiResponse<List<Long>> localVarResp = getGraphicsWithHttpInfo(xCompatibilityDate, acceptLanguage, ifNoneMatch,
+                xTenant);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get graphics Get a list of graphics This route expires daily at 11:05
+     * 
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return ApiResponse&lt;List&lt;Long&gt;&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<List<Long>> getGraphicsWithHttpInfo(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        okhttp3.Call localVarCall = getGraphicsValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
+                xTenant, null);
+        Type localVarReturnType = new TypeToken<List<Long>>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get graphics (asynchronously) Get a list of graphics This route expires
+     * daily at 11:05
+     * 
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request
+     *             body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getGraphicsAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<Long>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getGraphicsValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
+                xTenant, _callback);
+        Type localVarReturnType = new TypeToken<List<Long>>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
+     * Build call for getGroup
+     * 
+     * @param groupId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        Content-Language - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getGroupCall(@javax.annotation.Nonnull Long groupId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/universe/groups/{group_id}".replace("{" + "group_id" + "}",
+                localVarApiClient.escapeString(groupId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {};
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        if (acceptLanguage != null) {
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
+        }
+
+        if (ifNoneMatch != null) {
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
+        }
+
+        if (xCompatibilityDate != null) {
+            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
+        }
+
+        if (xTenant != null) {
+            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getGroupValidateBeforeCall(@javax.annotation.Nonnull Long groupId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'groupId' is set
+        if (groupId == null) {
+            throw new ApiException("Missing the required parameter 'groupId' when calling getGroup(Async)");
+        }
+
+        // verify the required parameter 'xCompatibilityDate' is set
+        if (xCompatibilityDate == null) {
+            throw new ApiException("Missing the required parameter 'xCompatibilityDate' when calling getGroup(Async)");
+        }
+
+        return getGroupCall(groupId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
+
+    }
+
+    /**
+     * Get item group information Get information on an item group This route
+     * expires daily at 11:05
+     * 
+     * @param groupId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return GroupResponse
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        Content-Language - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public GroupResponse getGroup(@javax.annotation.Nonnull Long groupId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        ApiResponse<GroupResponse> localVarResp = getGroupWithHttpInfo(groupId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get item group information Get information on an item group This route
+     * expires daily at 11:05
+     * 
+     * @param groupId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return ApiResponse&lt;GroupResponse&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        Content-Language - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<GroupResponse> getGroupWithHttpInfo(@javax.annotation.Nonnull Long groupId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        okhttp3.Call localVarCall = getGroupValidateBeforeCall(groupId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant, null);
+        Type localVarReturnType = new TypeToken<GroupResponse>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get item group information (asynchronously) Get information on an item
+     * group This route expires daily at 11:05
+     * 
+     * @param groupId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request
+     *             body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        Content-Language - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getGroupAsync(@javax.annotation.Nonnull Long groupId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback<GroupResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getGroupValidateBeforeCall(groupId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant, _callback);
+        Type localVarReturnType = new TypeToken<GroupResponse>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
+     * Build call for getGroups
      * 
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
@@ -2962,7 +3242,7 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseGroupsCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public okhttp3.Call getGroupsCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
@@ -3029,17 +3309,16 @@ public class UniverseApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUniverseGroupsValidateBeforeCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    private okhttp3.Call getGroupsValidateBeforeCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getUniverseGroups(Async)");
+            throw new ApiException("Missing the required parameter 'xCompatibilityDate' when calling getGroups(Async)");
         }
 
-        return getUniverseGroupsCall(xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant, _callback);
+        return getGroupsCall(xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant, _callback);
 
     }
 
@@ -3088,11 +3367,11 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public List<Long> getUniverseGroups(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public List<Long> getGroups(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<Long>> localVarResp = getUniverseGroupsWithHttpInfo(xCompatibilityDate, page, acceptLanguage,
+        ApiResponse<List<Long>> localVarResp = getGroupsWithHttpInfo(xCompatibilityDate, page, acceptLanguage,
                 ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -3142,12 +3421,12 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<Long>> getUniverseGroupsWithHttpInfo(
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        okhttp3.Call localVarCall = getUniverseGroupsValidateBeforeCall(xCompatibilityDate, page, acceptLanguage,
-                ifNoneMatch, xTenant, null);
+    public ApiResponse<List<Long>> getGroupsWithHttpInfo(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        okhttp3.Call localVarCall = getGroupsValidateBeforeCall(xCompatibilityDate, page, acceptLanguage, ifNoneMatch,
+                xTenant, null);
         Type localVarReturnType = new TypeToken<List<Long>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -3200,13 +3479,13 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseGroupsAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public okhttp3.Call getGroupsAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback<List<Long>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getUniverseGroupsValidateBeforeCall(xCompatibilityDate, page, acceptLanguage,
-                ifNoneMatch, xTenant, _callback);
+        okhttp3.Call localVarCall = getGroupsValidateBeforeCall(xCompatibilityDate, page, acceptLanguage, ifNoneMatch,
+                xTenant, _callback);
         Type localVarReturnType = new TypeToken<List<Long>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -3214,303 +3493,7 @@ public class UniverseApi {
     }
 
     /**
-     * Build call for getUniverseGroupsGroupId
-     * 
-     * @param groupId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException
-     *             If fail to serialize the request body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        Content-Language - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getUniverseGroupsGroupIdCall(@javax.annotation.Nonnull Long groupId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {};
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null) {
-            basePath = localCustomBaseUrl;
-        } else if (localBasePaths.length > 0) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/universe/groups/{group_id}".replace("{" + "group_id" + "}",
-                localVarApiClient.escapeString(groupId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {};
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
-        }
-
-        if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
-        }
-
-        if (xCompatibilityDate != null) {
-            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
-        }
-
-        if (xTenant != null) {
-            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
-        }
-
-        String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
-                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
-                localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUniverseGroupsGroupIdValidateBeforeCall(@javax.annotation.Nonnull Long groupId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'groupId' is set
-        if (groupId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'groupId' when calling getUniverseGroupsGroupId(Async)");
-        }
-
-        // verify the required parameter 'xCompatibilityDate' is set
-        if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getUniverseGroupsGroupId(Async)");
-        }
-
-        return getUniverseGroupsGroupIdCall(groupId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
-                _callback);
-
-    }
-
-    /**
-     * Get item group information Get information on an item group This route
-     * expires daily at 11:05
-     * 
-     * @param groupId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return GroupResponse
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        Content-Language - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public GroupResponse getUniverseGroupsGroupId(@javax.annotation.Nonnull Long groupId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        ApiResponse<GroupResponse> localVarResp = getUniverseGroupsGroupIdWithHttpInfo(groupId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Get item group information Get information on an item group This route
-     * expires daily at 11:05
-     * 
-     * @param groupId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return ApiResponse&lt;GroupResponse&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        Content-Language - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<GroupResponse> getUniverseGroupsGroupIdWithHttpInfo(@javax.annotation.Nonnull Long groupId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        okhttp3.Call localVarCall = getUniverseGroupsGroupIdValidateBeforeCall(groupId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<GroupResponse>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Get item group information (asynchronously) Get information on an item
-     * group This route expires daily at 11:05
-     * 
-     * @param groupId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException
-     *             If fail to process the API call, e.g. serializing the request
-     *             body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        Content-Language - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getUniverseGroupsGroupIdAsync(@javax.annotation.Nonnull Long groupId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<GroupResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getUniverseGroupsGroupIdValidateBeforeCall(groupId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<GroupResponse>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    /**
-     * Build call for getUniverseMoonsMoonId
+     * Build call for getMoon
      * 
      * @param moonId
      *            (required)
@@ -3552,7 +3535,7 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseMoonsMoonIdCall(@javax.annotation.Nonnull Long moonId,
+    public okhttp3.Call getMoonCall(@javax.annotation.Nonnull Long moonId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
@@ -3616,22 +3599,21 @@ public class UniverseApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUniverseMoonsMoonIdValidateBeforeCall(@javax.annotation.Nonnull Long moonId,
+    private okhttp3.Call getMoonValidateBeforeCall(@javax.annotation.Nonnull Long moonId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'moonId' is set
         if (moonId == null) {
-            throw new ApiException("Missing the required parameter 'moonId' when calling getUniverseMoonsMoonId(Async)");
+            throw new ApiException("Missing the required parameter 'moonId' when calling getMoon(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getUniverseMoonsMoonId(Async)");
+            throw new ApiException("Missing the required parameter 'xCompatibilityDate' when calling getMoon(Async)");
         }
 
-        return getUniverseMoonsMoonIdCall(moonId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
+        return getMoonCall(moonId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
 
     }
 
@@ -3678,12 +3660,12 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public MoonResponse getUniverseMoonsMoonId(@javax.annotation.Nonnull Long moonId,
+    public MoonResponse getMoon(@javax.annotation.Nonnull Long moonId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<MoonResponse> localVarResp = getUniverseMoonsMoonIdWithHttpInfo(moonId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<MoonResponse> localVarResp = getMoonWithHttpInfo(moonId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -3730,12 +3712,12 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<MoonResponse> getUniverseMoonsMoonIdWithHttpInfo(@javax.annotation.Nonnull Long moonId,
+    public ApiResponse<MoonResponse> getMoonWithHttpInfo(@javax.annotation.Nonnull Long moonId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        okhttp3.Call localVarCall = getUniverseMoonsMoonIdValidateBeforeCall(moonId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, null);
+        okhttp3.Call localVarCall = getMoonValidateBeforeCall(moonId, xCompatibilityDate, acceptLanguage, ifNoneMatch,
+                xTenant, null);
         Type localVarReturnType = new TypeToken<MoonResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -3786,13 +3768,13 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseMoonsMoonIdAsync(@javax.annotation.Nonnull Long moonId,
+    public okhttp3.Call getMoonAsync(@javax.annotation.Nonnull Long moonId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback<MoonResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getUniverseMoonsMoonIdValidateBeforeCall(moonId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, _callback);
+        okhttp3.Call localVarCall = getMoonValidateBeforeCall(moonId, xCompatibilityDate, acceptLanguage, ifNoneMatch,
+                xTenant, _callback);
         Type localVarReturnType = new TypeToken<MoonResponse>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -3800,7 +3782,7 @@ public class UniverseApi {
     }
 
     /**
-     * Build call for getUniversePlanetsPlanetId
+     * Build call for getPlanet
      * 
      * @param planetId
      *            (required)
@@ -3842,7 +3824,7 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniversePlanetsPlanetIdCall(@javax.annotation.Nonnull Long planetId,
+    public okhttp3.Call getPlanetCall(@javax.annotation.Nonnull Long planetId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
@@ -3906,24 +3888,21 @@ public class UniverseApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUniversePlanetsPlanetIdValidateBeforeCall(@javax.annotation.Nonnull Long planetId,
+    private okhttp3.Call getPlanetValidateBeforeCall(@javax.annotation.Nonnull Long planetId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'planetId' is set
         if (planetId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'planetId' when calling getUniversePlanetsPlanetId(Async)");
+            throw new ApiException("Missing the required parameter 'planetId' when calling getPlanet(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getUniversePlanetsPlanetId(Async)");
+            throw new ApiException("Missing the required parameter 'xCompatibilityDate' when calling getPlanet(Async)");
         }
 
-        return getUniversePlanetsPlanetIdCall(planetId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
-                _callback);
+        return getPlanetCall(planetId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
 
     }
 
@@ -3970,12 +3949,12 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public PlanetResponse getUniversePlanetsPlanetId(@javax.annotation.Nonnull Long planetId,
+    public PlanetResponse getPlanet(@javax.annotation.Nonnull Long planetId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<PlanetResponse> localVarResp = getUniversePlanetsPlanetIdWithHttpInfo(planetId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<PlanetResponse> localVarResp = getPlanetWithHttpInfo(planetId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -4022,12 +4001,12 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<PlanetResponse> getUniversePlanetsPlanetIdWithHttpInfo(@javax.annotation.Nonnull Long planetId,
+    public ApiResponse<PlanetResponse> getPlanetWithHttpInfo(@javax.annotation.Nonnull Long planetId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        okhttp3.Call localVarCall = getUniversePlanetsPlanetIdValidateBeforeCall(planetId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, null);
+        okhttp3.Call localVarCall = getPlanetValidateBeforeCall(planetId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant, null);
         Type localVarReturnType = new TypeToken<PlanetResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -4078,13 +4057,13 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniversePlanetsPlanetIdAsync(@javax.annotation.Nonnull Long planetId,
+    public okhttp3.Call getPlanetAsync(@javax.annotation.Nonnull Long planetId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback<PlanetResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getUniversePlanetsPlanetIdValidateBeforeCall(planetId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, _callback);
+        okhttp3.Call localVarCall = getPlanetValidateBeforeCall(planetId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<PlanetResponse>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -4092,7 +4071,7 @@ public class UniverseApi {
     }
 
     /**
-     * Build call for getUniverseRaces
+     * Build call for getRaces
      * 
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
@@ -4133,7 +4112,7 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseRacesCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public okhttp3.Call getRacesCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -4195,16 +4174,15 @@ public class UniverseApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUniverseRacesValidateBeforeCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    private okhttp3.Call getRacesValidateBeforeCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getUniverseRaces(Async)");
+            throw new ApiException("Missing the required parameter 'xCompatibilityDate' when calling getRaces(Async)");
         }
 
-        return getUniverseRacesCall(xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
+        return getRacesCall(xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
 
     }
 
@@ -4250,11 +4228,11 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public List<RacesResponseInner> getUniverseRaces(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public List<RacesResponseInner> getRaces(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<RacesResponseInner>> localVarResp = getUniverseRacesWithHttpInfo(xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<List<RacesResponseInner>> localVarResp = getRacesWithHttpInfo(xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -4300,11 +4278,11 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<RacesResponseInner>> getUniverseRacesWithHttpInfo(
+    public ApiResponse<List<RacesResponseInner>> getRacesWithHttpInfo(
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        okhttp3.Call localVarCall = getUniverseRacesValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
+        okhttp3.Call localVarCall = getRacesValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
                 xTenant, null);
         Type localVarReturnType = new TypeToken<List<RacesResponseInner>>() {
         }.getType();
@@ -4355,12 +4333,12 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseRacesAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public okhttp3.Call getRacesAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant, final ApiCallback<List<RacesResponseInner>> _callback)
             throws ApiException {
 
-        okhttp3.Call localVarCall = getUniverseRacesValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
+        okhttp3.Call localVarCall = getRacesValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
                 xTenant, _callback);
         Type localVarReturnType = new TypeToken<List<RacesResponseInner>>() {
         }.getType();
@@ -4369,277 +4347,7 @@ public class UniverseApi {
     }
 
     /**
-     * Build call for getUniverseRegions
-     * 
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException
-     *             If fail to serialize the request body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getUniverseRegionsCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {};
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null) {
-            basePath = localCustomBaseUrl;
-        } else if (localBasePaths.length > 0) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/universe/regions";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {};
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
-        }
-
-        if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
-        }
-
-        if (xCompatibilityDate != null) {
-            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
-        }
-
-        if (xTenant != null) {
-            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
-        }
-
-        String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
-                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
-                localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUniverseRegionsValidateBeforeCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'xCompatibilityDate' is set
-        if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getUniverseRegions(Async)");
-        }
-
-        return getUniverseRegionsCall(xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
-
-    }
-
-    /**
-     * Get regions Get a list of regions This route expires daily at 11:05
-     * 
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return List&lt;Long&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public List<Long> getUniverseRegions(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<Long>> localVarResp = getUniverseRegionsWithHttpInfo(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Get regions Get a list of regions This route expires daily at 11:05
-     * 
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return ApiResponse&lt;List&lt;Long&gt;&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<List<Long>> getUniverseRegionsWithHttpInfo(
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        okhttp3.Call localVarCall = getUniverseRegionsValidateBeforeCall(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<Long>>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Get regions (asynchronously) Get a list of regions This route expires
-     * daily at 11:05
-     * 
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException
-     *             If fail to process the API call, e.g. serializing the request
-     *             body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getUniverseRegionsAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<Long>> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getUniverseRegionsValidateBeforeCall(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<Long>>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    /**
-     * Build call for getUniverseRegionsRegionId
+     * Build call for getRegion
      * 
      * @param regionId
      *            (required)
@@ -4682,7 +4390,7 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseRegionsRegionIdCall(@javax.annotation.Nonnull Long regionId,
+    public okhttp3.Call getRegionCall(@javax.annotation.Nonnull Long regionId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
@@ -4746,24 +4454,21 @@ public class UniverseApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUniverseRegionsRegionIdValidateBeforeCall(@javax.annotation.Nonnull Long regionId,
+    private okhttp3.Call getRegionValidateBeforeCall(@javax.annotation.Nonnull Long regionId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'regionId' is set
         if (regionId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'regionId' when calling getUniverseRegionsRegionId(Async)");
+            throw new ApiException("Missing the required parameter 'regionId' when calling getRegion(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getUniverseRegionsRegionId(Async)");
+            throw new ApiException("Missing the required parameter 'xCompatibilityDate' when calling getRegion(Async)");
         }
 
-        return getUniverseRegionsRegionIdCall(regionId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
-                _callback);
+        return getRegionCall(regionId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
 
     }
 
@@ -4811,12 +4516,12 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public RegionResponse getUniverseRegionsRegionId(@javax.annotation.Nonnull Long regionId,
+    public RegionResponse getRegion(@javax.annotation.Nonnull Long regionId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<RegionResponse> localVarResp = getUniverseRegionsRegionIdWithHttpInfo(regionId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<RegionResponse> localVarResp = getRegionWithHttpInfo(regionId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -4864,12 +4569,12 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<RegionResponse> getUniverseRegionsRegionIdWithHttpInfo(@javax.annotation.Nonnull Long regionId,
+    public ApiResponse<RegionResponse> getRegionWithHttpInfo(@javax.annotation.Nonnull Long regionId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        okhttp3.Call localVarCall = getUniverseRegionsRegionIdValidateBeforeCall(regionId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, null);
+        okhttp3.Call localVarCall = getRegionValidateBeforeCall(regionId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant, null);
         Type localVarReturnType = new TypeToken<RegionResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -4921,13 +4626,13 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseRegionsRegionIdAsync(@javax.annotation.Nonnull Long regionId,
+    public okhttp3.Call getRegionAsync(@javax.annotation.Nonnull Long regionId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback<RegionResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getUniverseRegionsRegionIdValidateBeforeCall(regionId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, _callback);
+        okhttp3.Call localVarCall = getRegionValidateBeforeCall(regionId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<RegionResponse>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -4935,10 +4640,8 @@ public class UniverseApi {
     }
 
     /**
-     * Build call for getUniverseStargatesStargateId
+     * Build call for getRegions
      * 
-     * @param stargateId
-     *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
      * @param acceptLanguage
@@ -4977,10 +4680,9 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseStargatesStargateIdCall(@javax.annotation.Nonnull Long stargateId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getRegionsCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {};
@@ -4997,8 +4699,7 @@ public class UniverseApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/universe/stargates/{stargate_id}".replace("{" + "stargate_id" + "}",
-                localVarApiClient.escapeString(stargateId.toString()));
+        String localVarPath = "/universe/regions";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -5041,33 +4742,21 @@ public class UniverseApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUniverseStargatesStargateIdValidateBeforeCall(@javax.annotation.Nonnull Long stargateId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'stargateId' is set
-        if (stargateId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'stargateId' when calling getUniverseStargatesStargateId(Async)");
-        }
-
+    private okhttp3.Call getRegionsValidateBeforeCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getUniverseStargatesStargateId(Async)");
+            throw new ApiException("Missing the required parameter 'xCompatibilityDate' when calling getRegions(Async)");
         }
 
-        return getUniverseStargatesStargateIdCall(stargateId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
-                _callback);
+        return getRegionsCall(xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
 
     }
 
     /**
-     * Get stargate information Get information on a stargate This route expires
-     * daily at 11:05
+     * Get regions Get a list of regions This route expires daily at 11:05
      * 
-     * @param stargateId
-     *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
      * @param acceptLanguage
@@ -5079,7 +4768,7 @@ public class UniverseApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return StargateResponse
+     * @return List&lt;Long&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -5105,21 +4794,17 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public StargateResponse getUniverseStargatesStargateId(@javax.annotation.Nonnull Long stargateId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        ApiResponse<StargateResponse> localVarResp = getUniverseStargatesStargateIdWithHttpInfo(stargateId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
+    public List<Long> getRegions(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        ApiResponse<List<Long>> localVarResp = getRegionsWithHttpInfo(xCompatibilityDate, acceptLanguage, ifNoneMatch,
+                xTenant);
         return localVarResp.getData();
     }
 
     /**
-     * Get stargate information Get information on a stargate This route expires
-     * daily at 11:05
+     * Get regions Get a list of regions This route expires daily at 11:05
      * 
-     * @param stargateId
-     *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
      * @param acceptLanguage
@@ -5131,7 +4816,7 @@ public class UniverseApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;StargateResponse&gt;
+     * @return ApiResponse&lt;List&lt;Long&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -5157,23 +4842,20 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<StargateResponse> getUniverseStargatesStargateIdWithHttpInfo(
-            @javax.annotation.Nonnull Long stargateId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public ApiResponse<List<Long>> getRegionsWithHttpInfo(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        okhttp3.Call localVarCall = getUniverseStargatesStargateIdValidateBeforeCall(stargateId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<StargateResponse>() {
+        okhttp3.Call localVarCall = getRegionsValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
+                xTenant, null);
+        Type localVarReturnType = new TypeToken<List<Long>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Get stargate information (asynchronously) Get information on a stargate
-     * This route expires daily at 11:05
+     * Get regions (asynchronously) Get a list of regions This route expires
+     * daily at 11:05
      * 
-     * @param stargateId
-     *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
      * @param acceptLanguage
@@ -5213,21 +4895,20 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseStargatesStargateIdAsync(@javax.annotation.Nonnull Long stargateId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<StargateResponse> _callback) throws ApiException {
+    public okhttp3.Call getRegionsAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<Long>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getUniverseStargatesStargateIdValidateBeforeCall(stargateId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<StargateResponse>() {
+        okhttp3.Call localVarCall = getRegionsValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
+                xTenant, _callback);
+        Type localVarReturnType = new TypeToken<List<Long>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
     /**
-     * Build call for getUniverseStarsStarId
+     * Build call for getStar
      * 
      * @param starId
      *            (required)
@@ -5269,7 +4950,7 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseStarsStarIdCall(@javax.annotation.Nonnull Long starId,
+    public okhttp3.Call getStarCall(@javax.annotation.Nonnull Long starId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
@@ -5333,22 +5014,21 @@ public class UniverseApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUniverseStarsStarIdValidateBeforeCall(@javax.annotation.Nonnull Long starId,
+    private okhttp3.Call getStarValidateBeforeCall(@javax.annotation.Nonnull Long starId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'starId' is set
         if (starId == null) {
-            throw new ApiException("Missing the required parameter 'starId' when calling getUniverseStarsStarId(Async)");
+            throw new ApiException("Missing the required parameter 'starId' when calling getStar(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getUniverseStarsStarId(Async)");
+            throw new ApiException("Missing the required parameter 'xCompatibilityDate' when calling getStar(Async)");
         }
 
-        return getUniverseStarsStarIdCall(starId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
+        return getStarCall(starId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
 
     }
 
@@ -5395,12 +5075,12 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public StarResponse getUniverseStarsStarId(@javax.annotation.Nonnull Long starId,
+    public StarResponse getStar(@javax.annotation.Nonnull Long starId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<StarResponse> localVarResp = getUniverseStarsStarIdWithHttpInfo(starId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<StarResponse> localVarResp = getStarWithHttpInfo(starId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -5447,12 +5127,12 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<StarResponse> getUniverseStarsStarIdWithHttpInfo(@javax.annotation.Nonnull Long starId,
+    public ApiResponse<StarResponse> getStarWithHttpInfo(@javax.annotation.Nonnull Long starId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        okhttp3.Call localVarCall = getUniverseStarsStarIdValidateBeforeCall(starId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, null);
+        okhttp3.Call localVarCall = getStarValidateBeforeCall(starId, xCompatibilityDate, acceptLanguage, ifNoneMatch,
+                xTenant, null);
         Type localVarReturnType = new TypeToken<StarResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -5503,13 +5183,13 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseStarsStarIdAsync(@javax.annotation.Nonnull Long starId,
+    public okhttp3.Call getStarAsync(@javax.annotation.Nonnull Long starId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback<StarResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getUniverseStarsStarIdValidateBeforeCall(starId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, _callback);
+        okhttp3.Call localVarCall = getStarValidateBeforeCall(starId, xCompatibilityDate, acceptLanguage, ifNoneMatch,
+                xTenant, _callback);
         Type localVarReturnType = new TypeToken<StarResponse>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -5517,7 +5197,297 @@ public class UniverseApi {
     }
 
     /**
-     * Build call for getUniverseStationsStationId
+     * Build call for getStargate
+     * 
+     * @param stargateId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getStargateCall(@javax.annotation.Nonnull Long stargateId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/universe/stargates/{stargate_id}".replace("{" + "stargate_id" + "}",
+                localVarApiClient.escapeString(stargateId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {};
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        if (acceptLanguage != null) {
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
+        }
+
+        if (ifNoneMatch != null) {
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
+        }
+
+        if (xCompatibilityDate != null) {
+            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
+        }
+
+        if (xTenant != null) {
+            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getStargateValidateBeforeCall(@javax.annotation.Nonnull Long stargateId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'stargateId' is set
+        if (stargateId == null) {
+            throw new ApiException("Missing the required parameter 'stargateId' when calling getStargate(Async)");
+        }
+
+        // verify the required parameter 'xCompatibilityDate' is set
+        if (xCompatibilityDate == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'xCompatibilityDate' when calling getStargate(Async)");
+        }
+
+        return getStargateCall(stargateId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
+
+    }
+
+    /**
+     * Get stargate information Get information on a stargate This route expires
+     * daily at 11:05
+     * 
+     * @param stargateId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return StargateResponse
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public StargateResponse getStargate(@javax.annotation.Nonnull Long stargateId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        ApiResponse<StargateResponse> localVarResp = getStargateWithHttpInfo(stargateId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get stargate information Get information on a stargate This route expires
+     * daily at 11:05
+     * 
+     * @param stargateId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return ApiResponse&lt;StargateResponse&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<StargateResponse> getStargateWithHttpInfo(@javax.annotation.Nonnull Long stargateId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        okhttp3.Call localVarCall = getStargateValidateBeforeCall(stargateId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant, null);
+        Type localVarReturnType = new TypeToken<StargateResponse>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get stargate information (asynchronously) Get information on a stargate
+     * This route expires daily at 11:05
+     * 
+     * @param stargateId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request
+     *             body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getStargateAsync(@javax.annotation.Nonnull Long stargateId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback<StargateResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getStargateValidateBeforeCall(stargateId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant, _callback);
+        Type localVarReturnType = new TypeToken<StargateResponse>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
+     * Build call for getStation
      * 
      * @param stationId
      *            (required)
@@ -5559,7 +5529,7 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseStationsStationIdCall(@javax.annotation.Nonnull Long stationId,
+    public okhttp3.Call getStationCall(@javax.annotation.Nonnull Long stationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
@@ -5623,24 +5593,21 @@ public class UniverseApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUniverseStationsStationIdValidateBeforeCall(@javax.annotation.Nonnull Long stationId,
+    private okhttp3.Call getStationValidateBeforeCall(@javax.annotation.Nonnull Long stationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'stationId' is set
         if (stationId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'stationId' when calling getUniverseStationsStationId(Async)");
+            throw new ApiException("Missing the required parameter 'stationId' when calling getStation(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getUniverseStationsStationId(Async)");
+            throw new ApiException("Missing the required parameter 'xCompatibilityDate' when calling getStation(Async)");
         }
 
-        return getUniverseStationsStationIdCall(stationId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
-                _callback);
+        return getStationCall(stationId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
 
     }
 
@@ -5687,12 +5654,12 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public StationResponse getUniverseStationsStationId(@javax.annotation.Nonnull Long stationId,
+    public StationResponse getStation(@javax.annotation.Nonnull Long stationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<StationResponse> localVarResp = getUniverseStationsStationIdWithHttpInfo(stationId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<StationResponse> localVarResp = getStationWithHttpInfo(stationId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -5739,12 +5706,12 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<StationResponse> getUniverseStationsStationIdWithHttpInfo(
-            @javax.annotation.Nonnull Long stationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        okhttp3.Call localVarCall = getUniverseStationsStationIdValidateBeforeCall(stationId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, null);
+    public ApiResponse<StationResponse> getStationWithHttpInfo(@javax.annotation.Nonnull Long stationId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        okhttp3.Call localVarCall = getStationValidateBeforeCall(stationId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant, null);
         Type localVarReturnType = new TypeToken<StationResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -5795,13 +5762,13 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseStationsStationIdAsync(@javax.annotation.Nonnull Long stationId,
+    public okhttp3.Call getStationAsync(@javax.annotation.Nonnull Long stationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback<StationResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getUniverseStationsStationIdValidateBeforeCall(stationId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, _callback);
+        okhttp3.Call localVarCall = getStationValidateBeforeCall(stationId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<StationResponse>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -5809,7 +5776,7 @@ public class UniverseApi {
     }
 
     /**
-     * Build call for getUniverseStructures
+     * Build call for getStructures
      * 
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
@@ -5851,7 +5818,7 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseStructuresCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public okhttp3.Call getStructuresCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String filter, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
@@ -5918,17 +5885,17 @@ public class UniverseApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUniverseStructuresValidateBeforeCall(
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String filter,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getStructuresValidateBeforeCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String filter, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
             throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getUniverseStructures(Async)");
+                    "Missing the required parameter 'xCompatibilityDate' when calling getStructures(Async)");
         }
 
-        return getUniverseStructuresCall(xCompatibilityDate, filter, acceptLanguage, ifNoneMatch, xTenant, _callback);
+        return getStructuresCall(xCompatibilityDate, filter, acceptLanguage, ifNoneMatch, xTenant, _callback);
 
     }
 
@@ -5974,12 +5941,12 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public Set<Long> getUniverseStructures(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public Set<Long> getStructures(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String filter, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<Set<Long>> localVarResp = getUniverseStructuresWithHttpInfo(xCompatibilityDate, filter,
-                acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<Set<Long>> localVarResp = getStructuresWithHttpInfo(xCompatibilityDate, filter, acceptLanguage,
+                ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -6025,11 +5992,11 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Set<Long>> getUniverseStructuresWithHttpInfo(
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String filter,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        okhttp3.Call localVarCall = getUniverseStructuresValidateBeforeCall(xCompatibilityDate, filter, acceptLanguage,
+    public ApiResponse<Set<Long>> getStructuresWithHttpInfo(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String filter, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        okhttp3.Call localVarCall = getStructuresValidateBeforeCall(xCompatibilityDate, filter, acceptLanguage,
                 ifNoneMatch, xTenant, null);
         Type localVarReturnType = new TypeToken<Set<Long>>() {
         }.getType();
@@ -6080,12 +6047,12 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseStructuresAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public okhttp3.Call getStructuresAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String filter, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback<Set<Long>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getUniverseStructuresValidateBeforeCall(xCompatibilityDate, filter, acceptLanguage,
+        okhttp3.Call localVarCall = getStructuresValidateBeforeCall(xCompatibilityDate, filter, acceptLanguage,
                 ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<Set<Long>>() {
         }.getType();
@@ -6094,1131 +6061,7 @@ public class UniverseApi {
     }
 
     /**
-     * Build call for getUniverseStructuresStructureId
-     * 
-     * @param structureId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException
-     *             If fail to serialize the request body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getUniverseStructuresStructureIdCall(@javax.annotation.Nonnull Long structureId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {};
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null) {
-            basePath = localCustomBaseUrl;
-        } else if (localBasePaths.length > 0) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/universe/structures/{structure_id}".replace("{" + "structure_id" + "}",
-                localVarApiClient.escapeString(structureId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {};
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
-        }
-
-        if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
-        }
-
-        if (xCompatibilityDate != null) {
-            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
-        }
-
-        if (xTenant != null) {
-            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
-        }
-
-        String[] localVarAuthNames = new String[] { "OAuth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
-                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
-                localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUniverseStructuresStructureIdValidateBeforeCall(@javax.annotation.Nonnull Long structureId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'structureId' is set
-        if (structureId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'structureId' when calling getUniverseStructuresStructureId(Async)");
-        }
-
-        // verify the required parameter 'xCompatibilityDate' is set
-        if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getUniverseStructuresStructureId(Async)");
-        }
-
-        return getUniverseStructuresStructureIdCall(structureId, xCompatibilityDate, acceptLanguage, ifNoneMatch,
-                xTenant, _callback);
-
-    }
-
-    /**
-     * Get structure information Returns information on requested structure if
-     * you are on the ACL. Otherwise, returns \&quot;Forbidden\&quot; for all
-     * inputs.
-     * 
-     * @param structureId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return UniverseStructureResponse
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public UniverseStructureResponse getUniverseStructuresStructureId(@javax.annotation.Nonnull Long structureId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        ApiResponse<UniverseStructureResponse> localVarResp = getUniverseStructuresStructureIdWithHttpInfo(structureId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Get structure information Returns information on requested structure if
-     * you are on the ACL. Otherwise, returns \&quot;Forbidden\&quot; for all
-     * inputs.
-     * 
-     * @param structureId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return ApiResponse&lt;UniverseStructureResponse&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<UniverseStructureResponse> getUniverseStructuresStructureIdWithHttpInfo(
-            @javax.annotation.Nonnull Long structureId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        okhttp3.Call localVarCall = getUniverseStructuresStructureIdValidateBeforeCall(structureId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<UniverseStructureResponse>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Get structure information (asynchronously) Returns information on
-     * requested structure if you are on the ACL. Otherwise, returns
-     * \&quot;Forbidden\&quot; for all inputs.
-     * 
-     * @param structureId
-     *            (required)
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException
-     *             If fail to process the API call, e.g. serializing the request
-     *             body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getUniverseStructuresStructureIdAsync(@javax.annotation.Nonnull Long structureId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<UniverseStructureResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getUniverseStructuresStructureIdValidateBeforeCall(structureId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<UniverseStructureResponse>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    /**
-     * Build call for getUniverseSystemJumps
-     * 
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException
-     *             If fail to serialize the request body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getUniverseSystemJumpsCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {};
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null) {
-            basePath = localCustomBaseUrl;
-        } else if (localBasePaths.length > 0) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/universe/system_jumps";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {};
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
-        }
-
-        if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
-        }
-
-        if (xCompatibilityDate != null) {
-            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
-        }
-
-        if (xTenant != null) {
-            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
-        }
-
-        String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
-                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
-                localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUniverseSystemJumpsValidateBeforeCall(
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'xCompatibilityDate' is set
-        if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getUniverseSystemJumps(Async)");
-        }
-
-        return getUniverseSystemJumpsCall(xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
-
-    }
-
-    /**
-     * Get system jumps Get the number of jumps in solar systems within the last
-     * hour ending at the timestamp of the Last-Modified header, excluding
-     * wormhole space. Only systems with jumps will be listed
-     * 
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return List&lt;SystemJumpsResponseInner&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public List<SystemJumpsResponseInner> getUniverseSystemJumps(
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        ApiResponse<List<SystemJumpsResponseInner>> localVarResp = getUniverseSystemJumpsWithHttpInfo(
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Get system jumps Get the number of jumps in solar systems within the last
-     * hour ending at the timestamp of the Last-Modified header, excluding
-     * wormhole space. Only systems with jumps will be listed
-     * 
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return ApiResponse&lt;List&lt;SystemJumpsResponseInner&gt;&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<List<SystemJumpsResponseInner>> getUniverseSystemJumpsWithHttpInfo(
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        okhttp3.Call localVarCall = getUniverseSystemJumpsValidateBeforeCall(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<SystemJumpsResponseInner>>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Get system jumps (asynchronously) Get the number of jumps in solar
-     * systems within the last hour ending at the timestamp of the Last-Modified
-     * header, excluding wormhole space. Only systems with jumps will be listed
-     * 
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException
-     *             If fail to process the API call, e.g. serializing the request
-     *             body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getUniverseSystemJumpsAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<SystemJumpsResponseInner>> _callback)
-            throws ApiException {
-
-        okhttp3.Call localVarCall = getUniverseSystemJumpsValidateBeforeCall(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<SystemJumpsResponseInner>>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    /**
-     * Build call for getUniverseSystemKills
-     * 
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException
-     *             If fail to serialize the request body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getUniverseSystemKillsCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {};
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null) {
-            basePath = localCustomBaseUrl;
-        } else if (localBasePaths.length > 0) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/universe/system_kills";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {};
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
-        }
-
-        if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
-        }
-
-        if (xCompatibilityDate != null) {
-            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
-        }
-
-        if (xTenant != null) {
-            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
-        }
-
-        String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
-                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
-                localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUniverseSystemKillsValidateBeforeCall(
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'xCompatibilityDate' is set
-        if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getUniverseSystemKills(Async)");
-        }
-
-        return getUniverseSystemKillsCall(xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
-
-    }
-
-    /**
-     * Get system kills Get the number of ship, pod and NPC kills per solar
-     * system within the last hour ending at the timestamp of the Last-Modified
-     * header, excluding wormhole space. Only systems with kills will be listed
-     * 
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return List&lt;SystemKillsResponseInner&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public List<SystemKillsResponseInner> getUniverseSystemKills(
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        ApiResponse<List<SystemKillsResponseInner>> localVarResp = getUniverseSystemKillsWithHttpInfo(
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Get system kills Get the number of ship, pod and NPC kills per solar
-     * system within the last hour ending at the timestamp of the Last-Modified
-     * header, excluding wormhole space. Only systems with kills will be listed
-     * 
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return ApiResponse&lt;List&lt;SystemKillsResponseInner&gt;&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<List<SystemKillsResponseInner>> getUniverseSystemKillsWithHttpInfo(
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        okhttp3.Call localVarCall = getUniverseSystemKillsValidateBeforeCall(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<SystemKillsResponseInner>>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Get system kills (asynchronously) Get the number of ship, pod and NPC
-     * kills per solar system within the last hour ending at the timestamp of
-     * the Last-Modified header, excluding wormhole space. Only systems with
-     * kills will be listed
-     * 
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException
-     *             If fail to process the API call, e.g. serializing the request
-     *             body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getUniverseSystemKillsAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<SystemKillsResponseInner>> _callback)
-            throws ApiException {
-
-        okhttp3.Call localVarCall = getUniverseSystemKillsValidateBeforeCall(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<SystemKillsResponseInner>>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    /**
-     * Build call for getUniverseSystems
-     * 
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException
-     *             If fail to serialize the request body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getUniverseSystemsCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {};
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null) {
-            basePath = localCustomBaseUrl;
-        } else if (localBasePaths.length > 0) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/universe/systems";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {};
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
-        }
-
-        if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
-        }
-
-        if (xCompatibilityDate != null) {
-            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
-        }
-
-        if (xTenant != null) {
-            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
-        }
-
-        String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
-                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
-                localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUniverseSystemsValidateBeforeCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'xCompatibilityDate' is set
-        if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getUniverseSystems(Async)");
-        }
-
-        return getUniverseSystemsCall(xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
-
-    }
-
-    /**
-     * Get solar systems Get a list of solar systems This route expires daily at
-     * 11:05
-     * 
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return List&lt;Long&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public List<Long> getUniverseSystems(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<Long>> localVarResp = getUniverseSystemsWithHttpInfo(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Get solar systems Get a list of solar systems This route expires daily at
-     * 11:05
-     * 
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @return ApiResponse&lt;List&lt;Long&gt;&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<List<Long>> getUniverseSystemsWithHttpInfo(
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        okhttp3.Call localVarCall = getUniverseSystemsValidateBeforeCall(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<Long>>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Get solar systems (asynchronously) Get a list of solar systems This route
-     * expires daily at 11:05
-     * 
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param _callback
-     *            The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException
-     *             If fail to process the API call, e.g. serializing the request
-     *             body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call getUniverseSystemsAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<Long>> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getUniverseSystemsValidateBeforeCall(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<Long>>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    /**
-     * Build call for getUniverseSystemsSystemId
+     * Build call for getSystem
      * 
      * @param systemId
      *            (required)
@@ -7261,7 +6104,7 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseSystemsSystemIdCall(@javax.annotation.Nonnull Long systemId,
+    public okhttp3.Call getSystemCall(@javax.annotation.Nonnull Long systemId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
@@ -7325,24 +6168,21 @@ public class UniverseApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUniverseSystemsSystemIdValidateBeforeCall(@javax.annotation.Nonnull Long systemId,
+    private okhttp3.Call getSystemValidateBeforeCall(@javax.annotation.Nonnull Long systemId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'systemId' is set
         if (systemId == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'systemId' when calling getUniverseSystemsSystemId(Async)");
+            throw new ApiException("Missing the required parameter 'systemId' when calling getSystem(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getUniverseSystemsSystemId(Async)");
+            throw new ApiException("Missing the required parameter 'xCompatibilityDate' when calling getSystem(Async)");
         }
 
-        return getUniverseSystemsSystemIdCall(systemId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
-                _callback);
+        return getSystemCall(systemId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
 
     }
 
@@ -7390,12 +6230,12 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public SystemResponse getUniverseSystemsSystemId(@javax.annotation.Nonnull Long systemId,
+    public SystemResponse getSystem(@javax.annotation.Nonnull Long systemId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<SystemResponse> localVarResp = getUniverseSystemsSystemIdWithHttpInfo(systemId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<SystemResponse> localVarResp = getSystemWithHttpInfo(systemId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -7443,12 +6283,12 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<SystemResponse> getUniverseSystemsSystemIdWithHttpInfo(@javax.annotation.Nonnull Long systemId,
+    public ApiResponse<SystemResponse> getSystemWithHttpInfo(@javax.annotation.Nonnull Long systemId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        okhttp3.Call localVarCall = getUniverseSystemsSystemIdValidateBeforeCall(systemId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, null);
+        okhttp3.Call localVarCall = getSystemValidateBeforeCall(systemId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant, null);
         Type localVarReturnType = new TypeToken<SystemResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -7500,13 +6340,13 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseSystemsSystemIdAsync(@javax.annotation.Nonnull Long systemId,
+    public okhttp3.Call getSystemAsync(@javax.annotation.Nonnull Long systemId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback<SystemResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getUniverseSystemsSystemIdValidateBeforeCall(systemId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, _callback);
+        okhttp3.Call localVarCall = getSystemValidateBeforeCall(systemId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<SystemResponse>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -7514,7 +6354,1123 @@ public class UniverseApi {
     }
 
     /**
-     * Build call for getUniverseTypes
+     * Build call for getSystemJumps
+     * 
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getSystemJumpsCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/universe/system_jumps";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {};
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        if (acceptLanguage != null) {
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
+        }
+
+        if (ifNoneMatch != null) {
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
+        }
+
+        if (xCompatibilityDate != null) {
+            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
+        }
+
+        if (xTenant != null) {
+            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSystemJumpsValidateBeforeCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'xCompatibilityDate' is set
+        if (xCompatibilityDate == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'xCompatibilityDate' when calling getSystemJumps(Async)");
+        }
+
+        return getSystemJumpsCall(xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
+
+    }
+
+    /**
+     * Get system jumps Get the number of jumps in solar systems within the last
+     * hour ending at the timestamp of the Last-Modified header, excluding
+     * wormhole space. Only systems with jumps will be listed
+     * 
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return List&lt;SystemJumpsResponseInner&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public List<SystemJumpsResponseInner> getSystemJumps(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        ApiResponse<List<SystemJumpsResponseInner>> localVarResp = getSystemJumpsWithHttpInfo(xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get system jumps Get the number of jumps in solar systems within the last
+     * hour ending at the timestamp of the Last-Modified header, excluding
+     * wormhole space. Only systems with jumps will be listed
+     * 
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return ApiResponse&lt;List&lt;SystemJumpsResponseInner&gt;&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<List<SystemJumpsResponseInner>> getSystemJumpsWithHttpInfo(
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        okhttp3.Call localVarCall = getSystemJumpsValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
+                xTenant, null);
+        Type localVarReturnType = new TypeToken<List<SystemJumpsResponseInner>>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get system jumps (asynchronously) Get the number of jumps in solar
+     * systems within the last hour ending at the timestamp of the Last-Modified
+     * header, excluding wormhole space. Only systems with jumps will be listed
+     * 
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request
+     *             body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getSystemJumpsAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<SystemJumpsResponseInner>> _callback)
+            throws ApiException {
+
+        okhttp3.Call localVarCall = getSystemJumpsValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
+                xTenant, _callback);
+        Type localVarReturnType = new TypeToken<List<SystemJumpsResponseInner>>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
+     * Build call for getSystemKills
+     * 
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getSystemKillsCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/universe/system_kills";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {};
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        if (acceptLanguage != null) {
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
+        }
+
+        if (ifNoneMatch != null) {
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
+        }
+
+        if (xCompatibilityDate != null) {
+            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
+        }
+
+        if (xTenant != null) {
+            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSystemKillsValidateBeforeCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'xCompatibilityDate' is set
+        if (xCompatibilityDate == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'xCompatibilityDate' when calling getSystemKills(Async)");
+        }
+
+        return getSystemKillsCall(xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
+
+    }
+
+    /**
+     * Get system kills Get the number of ship, pod and NPC kills per solar
+     * system within the last hour ending at the timestamp of the Last-Modified
+     * header, excluding wormhole space. Only systems with kills will be listed
+     * 
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return List&lt;SystemKillsResponseInner&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public List<SystemKillsResponseInner> getSystemKills(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        ApiResponse<List<SystemKillsResponseInner>> localVarResp = getSystemKillsWithHttpInfo(xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get system kills Get the number of ship, pod and NPC kills per solar
+     * system within the last hour ending at the timestamp of the Last-Modified
+     * header, excluding wormhole space. Only systems with kills will be listed
+     * 
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return ApiResponse&lt;List&lt;SystemKillsResponseInner&gt;&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<List<SystemKillsResponseInner>> getSystemKillsWithHttpInfo(
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        okhttp3.Call localVarCall = getSystemKillsValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
+                xTenant, null);
+        Type localVarReturnType = new TypeToken<List<SystemKillsResponseInner>>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get system kills (asynchronously) Get the number of ship, pod and NPC
+     * kills per solar system within the last hour ending at the timestamp of
+     * the Last-Modified header, excluding wormhole space. Only systems with
+     * kills will be listed
+     * 
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request
+     *             body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getSystemKillsAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<SystemKillsResponseInner>> _callback)
+            throws ApiException {
+
+        okhttp3.Call localVarCall = getSystemKillsValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
+                xTenant, _callback);
+        Type localVarReturnType = new TypeToken<List<SystemKillsResponseInner>>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
+     * Build call for getSystems
+     * 
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getSystemsCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/universe/systems";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {};
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        if (acceptLanguage != null) {
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
+        }
+
+        if (ifNoneMatch != null) {
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
+        }
+
+        if (xCompatibilityDate != null) {
+            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
+        }
+
+        if (xTenant != null) {
+            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSystemsValidateBeforeCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'xCompatibilityDate' is set
+        if (xCompatibilityDate == null) {
+            throw new ApiException("Missing the required parameter 'xCompatibilityDate' when calling getSystems(Async)");
+        }
+
+        return getSystemsCall(xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
+
+    }
+
+    /**
+     * Get solar systems Get a list of solar systems This route expires daily at
+     * 11:05
+     * 
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return List&lt;Long&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public List<Long> getSystems(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        ApiResponse<List<Long>> localVarResp = getSystemsWithHttpInfo(xCompatibilityDate, acceptLanguage, ifNoneMatch,
+                xTenant);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get solar systems Get a list of solar systems This route expires daily at
+     * 11:05
+     * 
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return ApiResponse&lt;List&lt;Long&gt;&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<List<Long>> getSystemsWithHttpInfo(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        okhttp3.Call localVarCall = getSystemsValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
+                xTenant, null);
+        Type localVarReturnType = new TypeToken<List<Long>>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get solar systems (asynchronously) Get a list of solar systems This route
+     * expires daily at 11:05
+     * 
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request
+     *             body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getSystemsAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<Long>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getSystemsValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
+                xTenant, _callback);
+        Type localVarReturnType = new TypeToken<List<Long>>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
+     * Build call for getType
+     * 
+     * @param typeId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        Content-Language - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getTypeCall(@javax.annotation.Nonnull Long typeId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/universe/types/{type_id}".replace("{" + "type_id" + "}",
+                localVarApiClient.escapeString(typeId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {};
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        if (acceptLanguage != null) {
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
+        }
+
+        if (ifNoneMatch != null) {
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
+        }
+
+        if (xCompatibilityDate != null) {
+            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
+        }
+
+        if (xTenant != null) {
+            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getTypeValidateBeforeCall(@javax.annotation.Nonnull Long typeId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'typeId' is set
+        if (typeId == null) {
+            throw new ApiException("Missing the required parameter 'typeId' when calling getType(Async)");
+        }
+
+        // verify the required parameter 'xCompatibilityDate' is set
+        if (xCompatibilityDate == null) {
+            throw new ApiException("Missing the required parameter 'xCompatibilityDate' when calling getType(Async)");
+        }
+
+        return getTypeCall(typeId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
+
+    }
+
+    /**
+     * Get type information Get information on a type This route expires daily
+     * at 11:05
+     * 
+     * @param typeId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return TypeResponse
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        Content-Language - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public TypeResponse getType(@javax.annotation.Nonnull Long typeId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        ApiResponse<TypeResponse> localVarResp = getTypeWithHttpInfo(typeId, xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get type information Get information on a type This route expires daily
+     * at 11:05
+     * 
+     * @param typeId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return ApiResponse&lt;TypeResponse&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        Content-Language - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<TypeResponse> getTypeWithHttpInfo(@javax.annotation.Nonnull Long typeId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        okhttp3.Call localVarCall = getTypeValidateBeforeCall(typeId, xCompatibilityDate, acceptLanguage, ifNoneMatch,
+                xTenant, null);
+        Type localVarReturnType = new TypeToken<TypeResponse>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get type information (asynchronously) Get information on a type This
+     * route expires daily at 11:05
+     * 
+     * @param typeId
+     *            (required)
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request
+     *             body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        Content-Language - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getTypeAsync(@javax.annotation.Nonnull Long typeId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback<TypeResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getTypeValidateBeforeCall(typeId, xCompatibilityDate, acceptLanguage, ifNoneMatch,
+                xTenant, _callback);
+        Type localVarReturnType = new TypeToken<TypeResponse>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
+     * Build call for getTypes
      * 
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
@@ -7558,7 +7514,7 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseTypesCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public okhttp3.Call getTypesCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
@@ -7625,17 +7581,16 @@ public class UniverseApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUniverseTypesValidateBeforeCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    private okhttp3.Call getTypesValidateBeforeCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getUniverseTypes(Async)");
+            throw new ApiException("Missing the required parameter 'xCompatibilityDate' when calling getTypes(Async)");
         }
 
-        return getUniverseTypesCall(xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant, _callback);
+        return getTypesCall(xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant, _callback);
 
     }
 
@@ -7683,11 +7638,11 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public List<Long> getUniverseTypes(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public List<Long> getTypes(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<Long>> localVarResp = getUniverseTypesWithHttpInfo(xCompatibilityDate, page, acceptLanguage,
+        ApiResponse<List<Long>> localVarResp = getTypesWithHttpInfo(xCompatibilityDate, page, acceptLanguage,
                 ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -7736,12 +7691,12 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<Long>> getUniverseTypesWithHttpInfo(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public ApiResponse<List<Long>> getTypesWithHttpInfo(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        okhttp3.Call localVarCall = getUniverseTypesValidateBeforeCall(xCompatibilityDate, page, acceptLanguage,
-                ifNoneMatch, xTenant, null);
+        okhttp3.Call localVarCall = getTypesValidateBeforeCall(xCompatibilityDate, page, acceptLanguage, ifNoneMatch,
+                xTenant, null);
         Type localVarReturnType = new TypeToken<List<Long>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -7794,13 +7749,13 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseTypesAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public okhttp3.Call getTypesAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback<List<Long>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getUniverseTypesValidateBeforeCall(xCompatibilityDate, page, acceptLanguage,
-                ifNoneMatch, xTenant, _callback);
+        okhttp3.Call localVarCall = getTypesValidateBeforeCall(xCompatibilityDate, page, acceptLanguage, ifNoneMatch,
+                xTenant, _callback);
         Type localVarReturnType = new TypeToken<List<Long>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -7808,9 +7763,9 @@ public class UniverseApi {
     }
 
     /**
-     * Build call for getUniverseTypesTypeId
+     * Build call for getUniverseStructure
      * 
-     * @param typeId
+     * @param structureId
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
@@ -7839,7 +7794,6 @@ public class UniverseApi {
      *                        <td>200</td>
      *                        <td>OK</td>
      *                        <td>Cache-Control - <br>
-     *                        Content-Language - <br>
      *                        ETag - <br>
      *                        Last-Modified - <br>
      *                        </td>
@@ -7851,7 +7805,7 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseTypesTypeIdCall(@javax.annotation.Nonnull Long typeId,
+    public okhttp3.Call getUniverseStructureCall(@javax.annotation.Nonnull Long structureId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
@@ -7871,8 +7825,8 @@ public class UniverseApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/universe/types/{type_id}".replace("{" + "type_id" + "}",
-                localVarApiClient.escapeString(typeId.toString()));
+        String localVarPath = "/universe/structures/{structure_id}".replace("{" + "structure_id" + "}",
+                localVarApiClient.escapeString(structureId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -7908,37 +7862,40 @@ public class UniverseApi {
             localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
         }
 
-        String[] localVarAuthNames = new String[] {};
+        String[] localVarAuthNames = new String[] { "OAuth2" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
                 localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
                 localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUniverseTypesTypeIdValidateBeforeCall(@javax.annotation.Nonnull Long typeId,
+    private okhttp3.Call getUniverseStructureValidateBeforeCall(@javax.annotation.Nonnull Long structureId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'typeId' is set
-        if (typeId == null) {
-            throw new ApiException("Missing the required parameter 'typeId' when calling getUniverseTypesTypeId(Async)");
+        // verify the required parameter 'structureId' is set
+        if (structureId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'structureId' when calling getUniverseStructure(Async)");
         }
 
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
             throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling getUniverseTypesTypeId(Async)");
+                    "Missing the required parameter 'xCompatibilityDate' when calling getUniverseStructure(Async)");
         }
 
-        return getUniverseTypesTypeIdCall(typeId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
+        return getUniverseStructureCall(structureId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant,
+                _callback);
 
     }
 
     /**
-     * Get type information Get information on a type This route expires daily
-     * at 11:05
+     * Get structure information Returns information on requested structure if
+     * you are on the ACL. Otherwise, returns \&quot;Forbidden\&quot; for all
+     * inputs.
      * 
-     * @param typeId
+     * @param structureId
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
@@ -7951,7 +7908,7 @@ public class UniverseApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return TypeResponse
+     * @return UniverseStructureResponse
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -7966,7 +7923,6 @@ public class UniverseApi {
      *                        <td>200</td>
      *                        <td>OK</td>
      *                        <td>Cache-Control - <br>
-     *                        Content-Language - <br>
      *                        ETag - <br>
      *                        Last-Modified - <br>
      *                        </td>
@@ -7978,20 +7934,21 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public TypeResponse getUniverseTypesTypeId(@javax.annotation.Nonnull Long typeId,
+    public UniverseStructureResponse getUniverseStructure(@javax.annotation.Nonnull Long structureId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<TypeResponse> localVarResp = getUniverseTypesTypeIdWithHttpInfo(typeId, xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<UniverseStructureResponse> localVarResp = getUniverseStructureWithHttpInfo(structureId,
+                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
     /**
-     * Get type information Get information on a type This route expires daily
-     * at 11:05
+     * Get structure information Returns information on requested structure if
+     * you are on the ACL. Otherwise, returns \&quot;Forbidden\&quot; for all
+     * inputs.
      * 
-     * @param typeId
+     * @param structureId
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
@@ -8004,7 +7961,7 @@ public class UniverseApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;TypeResponse&gt;
+     * @return ApiResponse&lt;UniverseStructureResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -8019,7 +7976,6 @@ public class UniverseApi {
      *                        <td>200</td>
      *                        <td>OK</td>
      *                        <td>Cache-Control - <br>
-     *                        Content-Language - <br>
      *                        ETag - <br>
      *                        Last-Modified - <br>
      *                        </td>
@@ -8031,22 +7987,23 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<TypeResponse> getUniverseTypesTypeIdWithHttpInfo(@javax.annotation.Nonnull Long typeId,
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        okhttp3.Call localVarCall = getUniverseTypesTypeIdValidateBeforeCall(typeId, xCompatibilityDate,
+    public ApiResponse<UniverseStructureResponse> getUniverseStructureWithHttpInfo(
+            @javax.annotation.Nonnull Long structureId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        okhttp3.Call localVarCall = getUniverseStructureValidateBeforeCall(structureId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<TypeResponse>() {
+        Type localVarReturnType = new TypeToken<UniverseStructureResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Get type information (asynchronously) Get information on a type This
-     * route expires daily at 11:05
+     * Get structure information (asynchronously) Returns information on
+     * requested structure if you are on the ACL. Otherwise, returns
+     * \&quot;Forbidden\&quot; for all inputs.
      * 
-     * @param typeId
+     * @param structureId
      *            (required)
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
@@ -8076,7 +8033,6 @@ public class UniverseApi {
      *                        <td>200</td>
      *                        <td>OK</td>
      *                        <td>Cache-Control - <br>
-     *                        Content-Language - <br>
      *                        ETag - <br>
      *                        Last-Modified - <br>
      *                        </td>
@@ -8088,14 +8044,308 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getUniverseTypesTypeIdAsync(@javax.annotation.Nonnull Long typeId,
+    public okhttp3.Call getUniverseStructureAsync(@javax.annotation.Nonnull Long structureId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<TypeResponse> _callback) throws ApiException {
+            final ApiCallback<UniverseStructureResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getUniverseTypesTypeIdValidateBeforeCall(typeId, xCompatibilityDate,
+        okhttp3.Call localVarCall = getUniverseStructureValidateBeforeCall(structureId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<TypeResponse>() {
+        Type localVarReturnType = new TypeToken<UniverseStructureResponse>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
+     * Build call for postNames
+     * 
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call postNamesCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull Set<Long> requestBody, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = requestBody;
+
+        // create path and map variables
+        String localVarPath = "/universe/names";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        if (acceptLanguage != null) {
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
+        }
+
+        if (ifNoneMatch != null) {
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
+        }
+
+        if (xCompatibilityDate != null) {
+            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
+        }
+
+        if (xTenant != null) {
+            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postNamesValidateBeforeCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull Set<Long> requestBody, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'xCompatibilityDate' is set
+        if (xCompatibilityDate == null) {
+            throw new ApiException("Missing the required parameter 'xCompatibilityDate' when calling postNames(Async)");
+        }
+
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling postNames(Async)");
+        }
+
+        return postNamesCall(xCompatibilityDate, requestBody, acceptLanguage, ifNoneMatch, xTenant, _callback);
+
+    }
+
+    /**
+     * Get names and categories for a set of IDs Resolve a set of IDs to names
+     * and categories. Supported ID&#39;s for resolving are: Characters,
+     * Corporations, Alliances, Stations, Solar Systems, Constellations,
+     * Regions, Types, Factions
+     * 
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return List&lt;NamesResponseInner&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public List<NamesResponseInner> postNames(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull Set<Long> requestBody, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        ApiResponse<List<NamesResponseInner>> localVarResp = postNamesWithHttpInfo(xCompatibilityDate, requestBody,
+                acceptLanguage, ifNoneMatch, xTenant);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get names and categories for a set of IDs Resolve a set of IDs to names
+     * and categories. Supported ID&#39;s for resolving are: Characters,
+     * Corporations, Alliances, Stations, Solar Systems, Constellations,
+     * Regions, Types, Factions
+     * 
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @return ApiResponse&lt;List&lt;NamesResponseInner&gt;&gt;
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot
+     *             deserialize the response body
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<List<NamesResponseInner>> postNamesWithHttpInfo(
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        okhttp3.Call localVarCall = postNamesValidateBeforeCall(xCompatibilityDate, requestBody, acceptLanguage,
+                ifNoneMatch, xTenant, null);
+        Type localVarReturnType = new TypeToken<List<NamesResponseInner>>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get names and categories for a set of IDs (asynchronously) Resolve a set
+     * of IDs to names and categories. Supported ID&#39;s for resolving are:
+     * Characters, Corporations, Alliances, Stations, Solar Systems,
+     * Constellations, Regions, Types, Factions
+     * 
+     * @param xCompatibilityDate
+     *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
+     * @param acceptLanguage
+     *            The language to use for the response. (optional, default to
+     *            en)
+     * @param ifNoneMatch
+     *            The ETag of the previous request. A 304 will be returned if
+     *            this matches the current ETag. (optional)
+     * @param xTenant
+     *            The tenant ID for the request. (optional, default to
+     *            tranquility)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request
+     *             body object
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>Cache-Control - <br>
+     *                        ETag - <br>
+     *                        Last-Modified - <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>0</td>
+     *                        <td>Error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call postNamesAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nonnull Set<Long> requestBody, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
+            final ApiCallback<List<NamesResponseInner>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postNamesValidateBeforeCall(xCompatibilityDate, requestBody, acceptLanguage,
+                ifNoneMatch, xTenant, _callback);
+        Type localVarReturnType = new TypeToken<List<NamesResponseInner>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -8106,6 +8356,8 @@ public class UniverseApi {
      * 
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -8115,8 +8367,6 @@ public class UniverseApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
@@ -8146,8 +8396,8 @@ public class UniverseApi {
      *                        </table>
      */
     public okhttp3.Call postUniverseIdsCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, @javax.annotation.Nullable Set<String> requestBody,
+            @javax.annotation.Nonnull Set<String> requestBody, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -8209,8 +8459,8 @@ public class UniverseApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postUniverseIdsValidateBeforeCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, @javax.annotation.Nullable Set<String> requestBody,
+            @javax.annotation.Nonnull Set<String> requestBody, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'xCompatibilityDate' is set
         if (xCompatibilityDate == null) {
@@ -8218,7 +8468,12 @@ public class UniverseApi {
                     "Missing the required parameter 'xCompatibilityDate' when calling postUniverseIds(Async)");
         }
 
-        return postUniverseIdsCall(xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, requestBody, _callback);
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling postUniverseIds(Async)");
+        }
+
+        return postUniverseIdsCall(xCompatibilityDate, requestBody, acceptLanguage, ifNoneMatch, xTenant, _callback);
 
     }
 
@@ -8230,6 +8485,8 @@ public class UniverseApi {
      * 
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -8239,8 +8496,6 @@ public class UniverseApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @return UniverseIdsPost
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
@@ -8269,11 +8524,11 @@ public class UniverseApi {
      *                        </table>
      */
     public UniverseIdsPost postUniverseIds(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, @javax.annotation.Nullable Set<String> requestBody)
+            @javax.annotation.Nonnull Set<String> requestBody, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<UniverseIdsPost> localVarResp = postUniverseIdsWithHttpInfo(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, requestBody);
+        ApiResponse<UniverseIdsPost> localVarResp = postUniverseIdsWithHttpInfo(xCompatibilityDate, requestBody,
+                acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -8285,6 +8540,8 @@ public class UniverseApi {
      * 
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -8294,8 +8551,6 @@ public class UniverseApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @return ApiResponse&lt;UniverseIdsPost&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
@@ -8324,11 +8579,11 @@ public class UniverseApi {
      *                        </table>
      */
     public ApiResponse<UniverseIdsPost> postUniverseIdsWithHttpInfo(
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable Set<String> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = postUniverseIdsValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
-                xTenant, requestBody, null);
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<String> requestBody,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        okhttp3.Call localVarCall = postUniverseIdsValidateBeforeCall(xCompatibilityDate, requestBody, acceptLanguage,
+                ifNoneMatch, xTenant, null);
         Type localVarReturnType = new TypeToken<UniverseIdsPost>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -8343,6 +8598,8 @@ public class UniverseApi {
      * 
      * @param xCompatibilityDate
      *            The compatibility date for the request. (required)
+     * @param requestBody
+     *            (required)
      * @param acceptLanguage
      *            The language to use for the response. (optional, default to
      *            en)
@@ -8352,8 +8609,6 @@ public class UniverseApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @param requestBody
-     *            (optional)
      * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
@@ -8384,303 +8639,13 @@ public class UniverseApi {
      *                        </table>
      */
     public okhttp3.Call postUniverseIdsAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, @javax.annotation.Nullable Set<String> requestBody,
+            @javax.annotation.Nonnull Set<String> requestBody, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
             final ApiCallback<UniverseIdsPost> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postUniverseIdsValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
-                xTenant, requestBody, _callback);
+        okhttp3.Call localVarCall = postUniverseIdsValidateBeforeCall(xCompatibilityDate, requestBody, acceptLanguage,
+                ifNoneMatch, xTenant, _callback);
         Type localVarReturnType = new TypeToken<UniverseIdsPost>() {
-        }.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    /**
-     * Build call for postUniverseNames
-     * 
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param requestBody
-     *            (optional)
-     * @param _callback
-     *            Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException
-     *             If fail to serialize the request body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call postUniverseNamesCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, @javax.annotation.Nullable Set<Long> requestBody,
-            final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {};
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null) {
-            basePath = localCustomBaseUrl;
-        } else if (localBasePaths.length > 0) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = requestBody;
-
-        // create path and map variables
-        String localVarPath = "/universe/names";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = { "application/json" };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
-        }
-
-        if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
-        }
-
-        if (xCompatibilityDate != null) {
-            localVarHeaderParams.put("X-Compatibility-Date", localVarApiClient.parameterToString(xCompatibilityDate));
-        }
-
-        if (xTenant != null) {
-            localVarHeaderParams.put("X-Tenant", localVarApiClient.parameterToString(xTenant));
-        }
-
-        String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams,
-                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
-                localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postUniverseNamesValidateBeforeCall(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, @javax.annotation.Nullable Set<Long> requestBody,
-            final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'xCompatibilityDate' is set
-        if (xCompatibilityDate == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'xCompatibilityDate' when calling postUniverseNames(Async)");
-        }
-
-        return postUniverseNamesCall(xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, requestBody, _callback);
-
-    }
-
-    /**
-     * Get names and categories for a set of IDs Resolve a set of IDs to names
-     * and categories. Supported ID&#39;s for resolving are: Characters,
-     * Corporations, Alliances, Stations, Solar Systems, Constellations,
-     * Regions, Types, Factions
-     * 
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param requestBody
-     *            (optional)
-     * @return List&lt;UniverseNamesPostInner&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public List<UniverseNamesPostInner> postUniverseNames(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, @javax.annotation.Nullable Set<Long> requestBody)
-            throws ApiException {
-        ApiResponse<List<UniverseNamesPostInner>> localVarResp = postUniverseNamesWithHttpInfo(xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant, requestBody);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Get names and categories for a set of IDs Resolve a set of IDs to names
-     * and categories. Supported ID&#39;s for resolving are: Characters,
-     * Corporations, Alliances, Stations, Solar Systems, Constellations,
-     * Regions, Types, Factions
-     * 
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param requestBody
-     *            (optional)
-     * @return ApiResponse&lt;List&lt;UniverseNamesPostInner&gt;&gt;
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot
-     *             deserialize the response body
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<List<UniverseNamesPostInner>> postUniverseNamesWithHttpInfo(
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            @javax.annotation.Nullable Set<Long> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = postUniverseNamesValidateBeforeCall(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, requestBody, null);
-        Type localVarReturnType = new TypeToken<List<UniverseNamesPostInner>>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Get names and categories for a set of IDs (asynchronously) Resolve a set
-     * of IDs to names and categories. Supported ID&#39;s for resolving are:
-     * Characters, Corporations, Alliances, Stations, Solar Systems,
-     * Constellations, Regions, Types, Factions
-     * 
-     * @param xCompatibilityDate
-     *            The compatibility date for the request. (required)
-     * @param acceptLanguage
-     *            The language to use for the response. (optional, default to
-     *            en)
-     * @param ifNoneMatch
-     *            The ETag of the previous request. A 304 will be returned if
-     *            this matches the current ETag. (optional)
-     * @param xTenant
-     *            The tenant ID for the request. (optional, default to
-     *            tranquility)
-     * @param requestBody
-     *            (optional)
-     * @param _callback
-     *            The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException
-     *             If fail to process the API call, e.g. serializing the request
-     *             body object
-     * @http.response.details <table border="1">
-     *                        <caption>Response Details</caption>
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>OK</td>
-     *                        <td>Cache-Control - <br>
-     *                        ETag - <br>
-     *                        Last-Modified - <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>0</td>
-     *                        <td>Error</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public okhttp3.Call postUniverseNamesAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, @javax.annotation.Nullable Set<Long> requestBody,
-            final ApiCallback<List<UniverseNamesPostInner>> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postUniverseNamesValidateBeforeCall(xCompatibilityDate, acceptLanguage,
-                ifNoneMatch, xTenant, requestBody, _callback);
-        Type localVarReturnType = new TypeToken<List<UniverseNamesPostInner>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
