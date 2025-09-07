@@ -10,7 +10,7 @@ rm -f esi.json
 #
 # esi _latest
 #
-wget -O esi.json https://esi.evetech.net/meta/openapi.json || exit 1
+wget -O esi.json https://esi.evetech.net/meta/openapi.json?compatibility_date=2025-08-26 || exit 1
 
 #
 # Get swagger code generator

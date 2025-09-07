@@ -377,7 +377,7 @@ public class CorporationApiTest extends GeneralApiTest {
      */
     @Test
     @Disabled("Needs corporation with read access")
-    public void getCorporationStarbasesStarbaseIdTest() throws ApiException {
+    public void getCorporationStarbaseTest() throws ApiException {
         Long starbaseId = null;
         Long systemId = null;
         String acceptLanguage = null;

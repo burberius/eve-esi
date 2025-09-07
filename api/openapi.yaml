@@ -8,7 +8,7 @@ info:
     url: https://developers.eveonline.com/license-agreement
   termsOfService: https://support.eveonline.com/hc/en-us/articles/8414770561948-EVE-Online-Terms-of-Service
   title: EVE Stable Infrastructure (ESI) - tranquility
-  version: 2020-01-01
+  version: 2025-08-26
 servers:
 - url: https://esi.evetech.net
 tags:
@@ -20,6 +20,7 @@ tags:
 - name: Contacts
 - name: Contracts
 - name: Corporation
+- name: Corporation Projects
 - name: Dogma
 - name: Faction Warfare
 - name: Fittings
@@ -5795,6 +5796,346 @@ paths:
       - Trader
       x-accepts:
       - application/json
+  /corporations/{corporation_id}/projects:
+    get:
+      description: Listing of all (active) corporation projects.
+      operationId: GetCorporationsProjectsListing
+      parameters:
+      - description: Return records from after this cursor (mutual exclusive with
+          'before'). '0' to start from the beginning.
+        explode: false
+        in: query
+        name: after
+        required: false
+        schema:
+          description: Return records from after this cursor (mutual exclusive with
+            'before'). '0' to start from the beginning.
+          type: string
+        style: form
+      - description: Return records from before this cursor (mutual exclusive with
+          'after'). '0' to start from the end.
+        explode: false
+        in: query
+        name: before
+        required: false
+        schema:
+          description: Return records from before this cursor (mutual exclusive with
+            'after'). '0' to start from the end.
+          type: string
+        style: form
+      - description: The amount of records to retrieve per request.
+        explode: false
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 10
+          description: The amount of records to retrieve per request.
+          format: int64
+          maximum: 100
+          minimum: 10
+          type: integer
+        style: form
+      - description: The ID of the corporation
+        explode: false
+        in: path
+        name: corporation_id
+        required: true
+        schema:
+          $ref: "#/components/schemas/CorporationID"
+        style: simple
+      - description: Filter by state
+        explode: false
+        in: query
+        name: state
+        required: false
+        schema:
+          default: Active
+          description: Filter by state
+          enum:
+          - All
+          - Active
+          type: string
+          x-enum-descriptions:
+          - All states
+          - Active projects only
+        style: form
+      - $ref: "#/components/parameters/AcceptLanguage"
+      - $ref: "#/components/parameters/IfNoneMatch"
+      - $ref: "#/components/parameters/CompatibilityDate"
+      - $ref: "#/components/parameters/Tenant"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CorporationsProjectsListing"
+          description: OK
+          headers:
+            Cache-Control:
+              $ref: "#/components/headers/CacheControl"
+            ETag:
+              $ref: "#/components/headers/ETag"
+            Last-Modified:
+              $ref: "#/components/headers/LastModified"
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Error
+          headers:
+            Cache-Control:
+              $ref: "#/components/headers/CacheControl"
+            ETag:
+              $ref: "#/components/headers/ETag"
+            Last-Modified:
+              $ref: "#/components/headers/LastModified"
+      security:
+      - OAuth2:
+        - esi-corporations.read_projects.v1
+      summary: List corporation projects
+      tags:
+      - Corporation Projects
+      x-cache-age: 31536000
+      x-compatibility-date: 2025-08-26
+      x-pagination: cursor
+      x-accepts:
+      - application/json
+  /corporations/{corporation_id}/projects/{project_id}:
+    get:
+      description: Get the details of a corporation project.
+      operationId: GetCorporationsProjectsDetail
+      parameters:
+      - $ref: "#/components/parameters/IfModifiedSince"
+      - description: The ID of the corporation
+        explode: false
+        in: path
+        name: corporation_id
+        required: true
+        schema:
+          $ref: "#/components/schemas/CorporationID"
+        style: simple
+      - description: The ID of the project
+        explode: false
+        in: path
+        name: project_id
+        required: true
+        schema:
+          $ref: "#/components/schemas/UUID"
+        style: simple
+      - $ref: "#/components/parameters/AcceptLanguage"
+      - $ref: "#/components/parameters/IfNoneMatch"
+      - $ref: "#/components/parameters/CompatibilityDate"
+      - $ref: "#/components/parameters/Tenant"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CorporationsProjectsDetail"
+          description: OK
+          headers:
+            Cache-Control:
+              $ref: "#/components/headers/CacheControl"
+            ETag:
+              $ref: "#/components/headers/ETag"
+            Last-Modified:
+              $ref: "#/components/headers/LastModified"
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Error
+          headers:
+            Cache-Control:
+              $ref: "#/components/headers/CacheControl"
+            ETag:
+              $ref: "#/components/headers/ETag"
+            Last-Modified:
+              $ref: "#/components/headers/LastModified"
+      security:
+      - OAuth2:
+        - esi-corporations.read_projects.v1
+      summary: Get project details
+      tags:
+      - Corporation Projects
+      x-cache-age: 600
+      x-compatibility-date: 2025-08-26
+      x-accepts:
+      - application/json
+  /corporations/{corporation_id}/projects/{project_id}/contribution/{character_id}:
+    get:
+      description: Show your contribution to a corporation project.
+      operationId: GetCorporationsProjectsContribution
+      parameters:
+      - $ref: "#/components/parameters/IfModifiedSince"
+      - description: The ID of the corporation
+        explode: false
+        in: path
+        name: corporation_id
+        required: true
+        schema:
+          $ref: "#/components/schemas/CorporationID"
+        style: simple
+      - description: The ID of the project
+        explode: false
+        in: path
+        name: project_id
+        required: true
+        schema:
+          $ref: "#/components/schemas/UUID"
+        style: simple
+      - description: The ID of the character
+        explode: false
+        in: path
+        name: character_id
+        required: true
+        schema:
+          $ref: "#/components/schemas/CharacterID"
+        style: simple
+      - $ref: "#/components/parameters/AcceptLanguage"
+      - $ref: "#/components/parameters/IfNoneMatch"
+      - $ref: "#/components/parameters/CompatibilityDate"
+      - $ref: "#/components/parameters/Tenant"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CorporationsProjectsContribution"
+          description: OK
+          headers:
+            Cache-Control:
+              $ref: "#/components/headers/CacheControl"
+            ETag:
+              $ref: "#/components/headers/ETag"
+            Last-Modified:
+              $ref: "#/components/headers/LastModified"
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Error
+          headers:
+            Cache-Control:
+              $ref: "#/components/headers/CacheControl"
+            ETag:
+              $ref: "#/components/headers/ETag"
+            Last-Modified:
+              $ref: "#/components/headers/LastModified"
+      security:
+      - OAuth2:
+        - esi-corporations.read_projects.v1
+      summary: Get your project contribution
+      tags:
+      - Corporation Projects
+      x-cache-age: 600
+      x-compatibility-date: 2025-08-26
+      x-accepts:
+      - application/json
+  /corporations/{corporation_id}/projects/{project_id}/contributors:
+    get:
+      description: Listing of all contributors to a corporation project.
+      operationId: GetCorporationsProjectsContributors
+      parameters:
+      - description: Return records from after this cursor (mutual exclusive with
+          'before'). '0' to start from the beginning.
+        explode: false
+        in: query
+        name: after
+        required: false
+        schema:
+          description: Return records from after this cursor (mutual exclusive with
+            'before'). '0' to start from the beginning.
+          type: string
+        style: form
+      - description: Return records from before this cursor (mutual exclusive with
+          'after'). '0' to start from the end.
+        explode: false
+        in: query
+        name: before
+        required: false
+        schema:
+          description: Return records from before this cursor (mutual exclusive with
+            'after'). '0' to start from the end.
+          type: string
+        style: form
+      - description: The amount of records to retrieve per request.
+        explode: false
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 10
+          description: The amount of records to retrieve per request.
+          format: int64
+          maximum: 100
+          minimum: 10
+          type: integer
+        style: form
+      - description: The ID of the corporation
+        explode: false
+        in: path
+        name: corporation_id
+        required: true
+        schema:
+          $ref: "#/components/schemas/CorporationID"
+        style: simple
+      - description: The ID of the project
+        explode: false
+        in: path
+        name: project_id
+        required: true
+        schema:
+          $ref: "#/components/schemas/UUID"
+        style: simple
+      - $ref: "#/components/parameters/AcceptLanguage"
+      - $ref: "#/components/parameters/IfNoneMatch"
+      - $ref: "#/components/parameters/CompatibilityDate"
+      - $ref: "#/components/parameters/Tenant"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CorporationsProjectsContributors"
+          description: OK
+          headers:
+            Cache-Control:
+              $ref: "#/components/headers/CacheControl"
+            ETag:
+              $ref: "#/components/headers/ETag"
+            Last-Modified:
+              $ref: "#/components/headers/LastModified"
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Error
+          headers:
+            Cache-Control:
+              $ref: "#/components/headers/CacheControl"
+            ETag:
+              $ref: "#/components/headers/ETag"
+            Last-Modified:
+              $ref: "#/components/headers/LastModified"
+      security:
+      - OAuth2:
+        - esi-corporations.read_projects.v1
+      summary: List project contributors
+      tags:
+      - Corporation Projects
+      x-cache-age: 31536000
+      x-compatibility-date: 2025-08-26
+      x-pagination: cursor
+      x-required-roles:
+      - Project_Manager
+      x-accepts:
+      - application/json
   /corporations/{corporation_id}/roles:
     get:
       description: Return the roles of all members if the character has the personnel
@@ -10342,7 +10683,7 @@ components:
       required: true
       schema:
         enum:
-        - 2020-01-01
+        - 2025-08-26
         format: date
         type: string
       style: simple
@@ -10353,7 +10694,8 @@ components:
       in: header
       name: If-Modified-Since
       required: false
-      schema: {}
+      schema:
+        type: string
       style: simple
     IfNoneMatch:
       description: The ETag of the previous request. A 304 will be returned if this
@@ -11979,6 +12321,655 @@ components:
         format: int64
         type: integer
       type: array
+    CorporationsProjectsContribution:
+      example:
+        last_modified: 2000-01-23T04:56:07.000+00:00
+        contributed: 0
+      properties:
+        contributed:
+          description: Your contribution
+          format: int64
+          type: integer
+        last_modified:
+          description: Moment this information was last modified
+          format: date-time
+          type: string
+      required:
+      - contributed
+    CorporationsProjectsContributors:
+      example:
+        cursor:
+          before: before
+          after: after
+        contributors:
+        - name: name
+          id: 6
+          contributed: 0
+        - name: name
+          id: 6
+          contributed: 0
+      properties:
+        contributors:
+          description: List of contributors
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsContributorsContributor"
+          nullable: true
+          type: array
+        cursor:
+          $ref: "#/components/schemas/Cursor"
+      required:
+      - contributors
+    CorporationsProjectsContributorsContributor:
+      example:
+        name: name
+        id: 6
+        contributed: 0
+      properties:
+        contributed:
+          description: Contributor's contributed progress
+          format: int64
+          type: integer
+        id:
+          format: int64
+          type: integer
+          x-common-model: "true"
+        name:
+          description: Contributor's name
+          type: string
+      required:
+      - contributed
+      - id
+      - name
+    CorporationsProjectsDetail:
+      example:
+        reward:
+          initial: 1.4658129805029452
+          remaining: 5.962133916683182
+        creator:
+          name: name
+          id: 9
+        contribution:
+          reward_per_contribution: 5.637376656633329
+          participation_limit: 5
+          submission_multiplier: 7.061401241503109
+          submission_limit: 2
+        configuration:
+          capture_fw_complex:
+            archetypes:
+            - archetype_id: 0
+            - archetype_id: 0
+            locations:
+            - solar_system_id: 1
+            - solar_system_id: 1
+            factions:
+            - faction_id: 6
+            - faction_id: 6
+        name: name
+        progress:
+          current: 0
+          desired: 6
+        details:
+          career: Unspecified
+          expires: 2000-01-23T04:56:07.000+00:00
+          created: 2000-01-23T04:56:07.000+00:00
+          description: description
+          finished: 2000-01-23T04:56:07.000+00:00
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        state: Unspecified
+        last_modified: 2000-01-23T04:56:07.000+00:00
+      properties:
+        configuration:
+          $ref: "#/components/schemas/CorporationsProjectsDetail_configuration"
+        contribution:
+          $ref: "#/components/schemas/CorporationsProjectsDetailContribution"
+        creator:
+          $ref: "#/components/schemas/CorporationsProjectsDetailCreator"
+        details:
+          $ref: "#/components/schemas/CorporationsProjectsDetailDetails"
+        id:
+          format: uuid
+          type: string
+          x-common-model: "true"
+        last_modified:
+          description: Moment this project was last modified. Project contributions
+            also count as a modification
+          format: date-time
+          type: string
+        name:
+          description: Project's name
+          type: string
+        progress:
+          $ref: "#/components/schemas/CorporationsProjectsDetailProgress"
+        reward:
+          $ref: "#/components/schemas/CorporationsProjectsDetailReward"
+        state:
+          description: Project's current state
+          enum:
+          - Unspecified
+          - Active
+          - Closed
+          - Completed
+          - Expired
+          - Deleted
+          type: string
+          x-enum-descriptions:
+          - An unspecified state
+          - Active and accepting contributions
+          - Closed by the corporation
+          - Completed
+          - Expired
+          - Deleted and the details are no longer available
+      required:
+      - configuration
+      - creator
+      - details
+      - id
+      - last_modified
+      - name
+      - progress
+      - state
+    CorporationsProjectsDetailConfigurationcapturefwcomplex:
+      example:
+        archetypes:
+        - archetype_id: 0
+        - archetype_id: 0
+        locations:
+        - solar_system_id: 1
+        - solar_system_id: 1
+        factions:
+        - faction_id: 6
+        - faction_id: 6
+      properties:
+        archetypes:
+          description: Archetype of complex
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationmatcherarchetype"
+          type: array
+        factions:
+          description: Faction to capture for
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationmatcherfaction"
+          type: array
+        locations:
+          description: Location of complex
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationcapturefwcomplex_locations_inner"
+          type: array
+    CorporationsProjectsDetailConfigurationdamageship:
+      properties:
+        identities:
+          description: Identity of capsuleer
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationdamageship_identities_inner"
+          type: array
+        locations:
+          description: Location of capsuleer's ship
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationcapturefwcomplex_locations_inner"
+          type: array
+        ships:
+          description: Ship-type of capsuleer's ship
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationdamageship_ships_inner"
+          type: array
+    CorporationsProjectsDetailConfigurationdefendfwcomplex:
+      properties:
+        archetypes:
+          description: Archetype of complex
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationmatcherarchetype"
+          type: array
+        factions:
+          description: Faction to defend for
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationmatcherfaction"
+          type: array
+        locations:
+          description: Location of complex
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationcapturefwcomplex_locations_inner"
+          type: array
+    CorporationsProjectsDetailConfigurationdeliveritem:
+      properties:
+        docking_locations:
+          description: Docking location to deliver to
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationdeliveritem_docking_locations_inner"
+          type: array
+        items:
+          description: Item to deliver
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationdeliveritem_items_inner"
+          type: array
+        office_id:
+          format: int64
+          type: integer
+          x-common-model: "true"
+    CorporationsProjectsDetailConfigurationdestroynpc:
+      properties:
+        locations:
+          description: Location of non-capsuleer
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationcapturefwcomplex_locations_inner"
+          type: array
+    CorporationsProjectsDetailConfigurationdestroyship:
+      properties:
+        identities:
+          description: Identity of capsuleer
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationdamageship_identities_inner"
+          type: array
+        locations:
+          description: Location of capsuleer's ship
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationcapturefwcomplex_locations_inner"
+          type: array
+        ships:
+          description: Ship-type of capsuleer's ship
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationdamageship_ships_inner"
+          type: array
+    CorporationsProjectsDetailConfigurationearnloyaltypoints:
+      properties:
+        corporations:
+          description: Corporation issuing loyalty points
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationmatchercorporation"
+          type: array
+    CorporationsProjectsDetailConfigurationlostship:
+      properties:
+        identities:
+          description: Identity of killer
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationdamageship_identities_inner"
+          type: array
+        locations:
+          description: Location of lost ship
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationcapturefwcomplex_locations_inner"
+          type: array
+        ships:
+          description: Ship-type of lost ship
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationdamageship_ships_inner"
+          type: array
+    CorporationsProjectsDetailConfigurationmanual:
+      type: object
+    CorporationsProjectsDetailConfigurationmanufactureitem:
+      properties:
+        docking_locations:
+          description: Station / structure to manufacture in
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationdeliveritem_docking_locations_inner"
+          type: array
+        items:
+          description: Item to manufacture
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationdeliveritem_items_inner"
+          type: array
+        owner:
+          description: Manufacture for
+          enum:
+          - Any
+          - Corporation
+          - Character
+          type: string
+          x-enum-descriptions:
+          - Either a corporation or a character
+          - A corporation
+          - A character
+      required:
+      - owner
+    CorporationsProjectsDetailConfigurationmatcherarchetype:
+      example:
+        archetype_id: 0
+      properties:
+        archetype_id:
+          format: int64
+          type: integer
+          x-common-model: "true"
+    CorporationsProjectsDetailConfigurationmatchercorporation:
+      properties:
+        corporation_id:
+          format: int64
+          type: integer
+          x-common-model: "true"
+    CorporationsProjectsDetailConfigurationmatcherfaction:
+      example:
+        faction_id: 6
+      properties:
+        faction_id:
+          format: int64
+          type: integer
+          x-common-model: "true"
+    CorporationsProjectsDetailConfigurationmatchersignature:
+      properties:
+        signature_type_id:
+          format: int64
+          type: integer
+          x-common-model: "true"
+    CorporationsProjectsDetailConfigurationminematerial:
+      properties:
+        locations:
+          description: Location to mine
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationcapturefwcomplex_locations_inner"
+          type: array
+        materials:
+          description: Materials to mine
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationdeliveritem_items_inner"
+          type: array
+    CorporationsProjectsDetailConfigurationremoteboostshield:
+      properties:
+        identities:
+          description: Identity of capsuleer to boost
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationdamageship_identities_inner"
+          type: array
+        locations:
+          description: Location of capsuleer's ship to boost
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationcapturefwcomplex_locations_inner"
+          type: array
+        ships:
+          description: Ship-type of capsuleer's ship to boost
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationdamageship_ships_inner"
+          type: array
+    CorporationsProjectsDetailConfigurationremoterepairarmor:
+      properties:
+        identities:
+          description: Identity of capsuleer to repair
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationdamageship_identities_inner"
+          type: array
+        locations:
+          description: Location of capsuleer's ship to repair
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationcapturefwcomplex_locations_inner"
+          type: array
+        ships:
+          description: Ship-type of capsuleer's ship to repair
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationdamageship_ships_inner"
+          type: array
+    CorporationsProjectsDetailConfigurationsalvagewreck:
+      properties:
+        locations:
+          description: Location of wreck
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationcapturefwcomplex_locations_inner"
+          type: array
+    CorporationsProjectsDetailConfigurationscansignature:
+      properties:
+        locations:
+          description: Locations of signatures
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationcapturefwcomplex_locations_inner"
+          type: array
+        signatures:
+          description: Signatures to scan
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationmatchersignature"
+          type: array
+    CorporationsProjectsDetailConfigurationshipinsurance:
+      properties:
+        conflict_type:
+          description: Conflict type
+          enum:
+          - Any
+          - Pvp
+          - Pve
+          type: string
+          x-enum-descriptions:
+          - Either PvP or PvE
+          - Player vs Player
+          - Player vs Environment
+        identities:
+          description: Identity of killer
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationdamageship_identities_inner"
+          type: array
+        locations:
+          description: Location of lost ship
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationcapturefwcomplex_locations_inner"
+          type: array
+        reimburse_implants:
+          description: Reimburse implants
+          type: boolean
+        ships:
+          description: Ship-type of lost ship
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationdamageship_ships_inner"
+          type: array
+      required:
+      - conflict_type
+      - reimburse_implants
+    CorporationsProjectsDetailConfigurationunknown:
+      properties:
+        data: {}
+        type:
+          description: Configuration type
+          type: string
+      required:
+      - data
+      - type
+    CorporationsProjectsDetailContribution:
+      example:
+        reward_per_contribution: 5.637376656633329
+        participation_limit: 5
+        submission_multiplier: 7.061401241503109
+        submission_limit: 2
+      properties:
+        participation_limit:
+          description: Limit on the contribution of the individual participant
+          format: int64
+          type: integer
+        reward_per_contribution:
+          description: ISK reward per contribution
+          format: double
+          type: number
+        submission_limit:
+          description: Limit on amount of contribution per submission
+          format: int64
+          type: integer
+        submission_multiplier:
+          description: Multiplier towards progress per contribution
+          format: double
+          type: number
+    CorporationsProjectsDetailCreator:
+      example:
+        name: name
+        id: 9
+      properties:
+        id:
+          format: int64
+          type: integer
+          x-common-model: "true"
+        name:
+          description: Creator's name
+          type: string
+      required:
+      - id
+      - name
+    CorporationsProjectsDetailDetails:
+      example:
+        career: Unspecified
+        expires: 2000-01-23T04:56:07.000+00:00
+        created: 2000-01-23T04:56:07.000+00:00
+        description: description
+        finished: 2000-01-23T04:56:07.000+00:00
+      properties:
+        career:
+          description: Assigned career path
+          enum:
+          - Unspecified
+          - Explorer
+          - Industrialist
+          - Enforcer
+          - Soldier of Fortune
+          type: string
+          x-enum-descriptions:
+          - An unspecified career
+          - Explorer career
+          - Industrialist career
+          - Enforcer career
+          - Soldier of Fortune career
+        created:
+          description: Moment this project was created
+          format: date-time
+          type: string
+        description:
+          description: Description
+          type: string
+        expires:
+          description: Moment this project expires
+          format: date-time
+          type: string
+        finished:
+          description: Moment this project transitioned to a non-active state.
+          format: date-time
+          type: string
+      required:
+      - career
+      - created
+      - description
+    CorporationsProjectsDetailProgress:
+      example:
+        current: 0
+        desired: 6
+      properties:
+        current:
+          description: Current progress
+          format: int64
+          type: integer
+        desired:
+          description: Desired progress
+          format: int64
+          type: integer
+      required:
+      - current
+      - desired
+    CorporationsProjectsDetailProject:
+      example:
+        reward:
+          initial: 1.4658129805029452
+          remaining: 5.962133916683182
+        name: name
+        progress:
+          current: 0
+          desired: 6
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        state: Unspecified
+        last_modified: 2000-01-23T04:56:07.000+00:00
+      properties:
+        id:
+          format: uuid
+          type: string
+          x-common-model: "true"
+        last_modified:
+          description: Moment this project was last modified. Project contributions
+            also count as a modification
+          format: date-time
+          type: string
+        name:
+          description: Project's name
+          type: string
+        progress:
+          $ref: "#/components/schemas/CorporationsProjectsDetailProgress"
+        reward:
+          $ref: "#/components/schemas/CorporationsProjectsDetailReward"
+        state:
+          description: Project's current state
+          enum:
+          - Unspecified
+          - Active
+          - Closed
+          - Completed
+          - Expired
+          - Deleted
+          type: string
+          x-enum-descriptions:
+          - An unspecified state
+          - Active and accepting contributions
+          - Closed by the corporation
+          - Completed
+          - Expired
+          - Deleted and the details are no longer available
+      required:
+      - id
+      - last_modified
+      - name
+      - progress
+      - state
+    CorporationsProjectsDetailReward:
+      example:
+        initial: 1.4658129805029452
+        remaining: 5.962133916683182
+      properties:
+        initial:
+          description: Original amount of ISK that was reserved for this project
+          format: double
+          type: number
+        remaining:
+          description: Remaining ISK to be awarded
+          format: double
+          type: number
+      required:
+      - initial
+      - remaining
+    CorporationsProjectsListing:
+      example:
+        cursor:
+          before: before
+          after: after
+        projects:
+        - reward:
+            initial: 1.4658129805029452
+            remaining: 5.962133916683182
+          name: name
+          progress:
+            current: 0
+            desired: 6
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: Unspecified
+          last_modified: 2000-01-23T04:56:07.000+00:00
+        - reward:
+            initial: 1.4658129805029452
+            remaining: 5.962133916683182
+          name: name
+          progress:
+            current: 0
+            desired: 6
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: Unspecified
+          last_modified: 2000-01-23T04:56:07.000+00:00
+      properties:
+        cursor:
+          $ref: "#/components/schemas/Cursor"
+        projects:
+          description: List of projects
+          items:
+            $ref: "#/components/schemas/CorporationsProjectsDetailProject"
+          nullable: true
+          type: array
+      required:
+      - projects
+    Cursor:
+      example:
+        before: before
+        after: after
+      properties:
+        after:
+          description: "Cursor to use as 'after' in your next request, to continue\
+            \ walking forwards in time."
+          type: string
+        before:
+          description: "Cursor to use as 'before' in your next request, to continue\
+            \ walking backwards in time."
+          type: string
     DogmaAttributeResponse:
       example:
         stackable: true
@@ -19753,6 +20744,232 @@ components:
       required:
       - balance
       - division
+    capture_fw_complex:
+      example:
+        capture_fw_complex:
+          archetypes:
+          - archetype_id: 0
+          - archetype_id: 0
+          locations:
+          - solar_system_id: 1
+          - solar_system_id: 1
+          factions:
+          - faction_id: 6
+          - faction_id: 6
+      properties:
+        capture_fw_complex:
+          $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationcapturefwcomplex"
+      title: capture_fw_complex
+    damage_ship:
+      properties:
+        damage_ship:
+          $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationdamageship"
+      title: damage_ship
+    defend_fw_complex:
+      properties:
+        defend_fw_complex:
+          $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationdefendfwcomplex"
+      title: defend_fw_complex
+    deliver_item:
+      properties:
+        deliver_item:
+          $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationdeliveritem"
+      title: deliver_item
+    destroy_npc:
+      properties:
+        destroy_npc:
+          $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationdestroynpc"
+      title: destroy_npc
+    destroy_ship:
+      properties:
+        destroy_ship:
+          $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationdestroyship"
+      title: destroy_ship
+    earn_loyalty_point:
+      properties:
+        earn_loyalty_point:
+          $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationearnloyaltypoints"
+      title: earn_loyalty_point
+    lost_ship:
+      properties:
+        lost_ship:
+          $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationlostship"
+      title: lost_ship
+    manual:
+      properties:
+        manual:
+          type: object
+      title: manual
+    manufacture_item:
+      properties:
+        manufacture_item:
+          $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationmanufactureitem"
+      title: manufacture_item
+    mine_material:
+      properties:
+        mine_material:
+          $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationminematerial"
+      title: mine_material
+    remote_boost_shield:
+      properties:
+        remote_boost_shield:
+          $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationremoteboostshield"
+      title: remote_boost_shield
+    remote_repair_armor:
+      properties:
+        remote_repair_armor:
+          $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationremoterepairarmor"
+      title: remote_repair_armor
+    salvage_wreck:
+      properties:
+        salvage_wreck:
+          $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationsalvagewreck"
+      title: salvage_wreck
+    scan_signature:
+      properties:
+        scan_signature:
+          $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationscansignature"
+      title: scan_signature
+    ship_insurance:
+      properties:
+        ship_insurance:
+          $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationshipinsurance"
+      title: ship_insurance
+    unknown:
+      properties:
+        unknown:
+          $ref: "#/components/schemas/CorporationsProjectsDetailConfigurationunknown"
+      title: unknown
+    CorporationsProjectsDetail_configuration:
+      description: Project's configuration
+      oneOf:
+      - $ref: "#/components/schemas/capture_fw_complex"
+      - $ref: "#/components/schemas/damage_ship"
+      - $ref: "#/components/schemas/defend_fw_complex"
+      - $ref: "#/components/schemas/deliver_item"
+      - $ref: "#/components/schemas/destroy_npc"
+      - $ref: "#/components/schemas/destroy_ship"
+      - $ref: "#/components/schemas/earn_loyalty_point"
+      - $ref: "#/components/schemas/lost_ship"
+      - $ref: "#/components/schemas/manual"
+      - $ref: "#/components/schemas/manufacture_item"
+      - $ref: "#/components/schemas/mine_material"
+      - $ref: "#/components/schemas/remote_boost_shield"
+      - $ref: "#/components/schemas/remote_repair_armor"
+      - $ref: "#/components/schemas/salvage_wreck"
+      - $ref: "#/components/schemas/scan_signature"
+      - $ref: "#/components/schemas/ship_insurance"
+      - $ref: "#/components/schemas/unknown"
+    solar_system_id:
+      example:
+        solar_system_id: 1
+      properties:
+        solar_system_id:
+          format: int64
+          type: integer
+          x-common-model: "true"
+      title: solar_system_id
+    constellation_id:
+      properties:
+        constellation_id:
+          format: int64
+          type: integer
+          x-common-model: "true"
+      title: constellation_id
+    region_id:
+      properties:
+        region_id:
+          format: int64
+          type: integer
+          x-common-model: "true"
+      title: region_id
+    CorporationsProjectsDetailConfigurationcapturefwcomplex_locations_inner:
+      oneOf:
+      - $ref: "#/components/schemas/solar_system_id"
+      - $ref: "#/components/schemas/constellation_id"
+      - $ref: "#/components/schemas/region_id"
+    character_id:
+      properties:
+        character_id:
+          format: int64
+          type: integer
+          x-common-model: "true"
+      title: character_id
+    corporation_id:
+      properties:
+        corporation_id:
+          format: int64
+          type: integer
+          x-common-model: "true"
+      title: corporation_id
+    alliance_id:
+      properties:
+        alliance_id:
+          format: int64
+          type: integer
+          x-common-model: "true"
+      title: alliance_id
+    faction_id:
+      properties:
+        faction_id:
+          format: int64
+          type: integer
+          x-common-model: "true"
+      title: faction_id
+    CorporationsProjectsDetailConfigurationdamageship_identities_inner:
+      oneOf:
+      - $ref: "#/components/schemas/character_id"
+      - $ref: "#/components/schemas/corporation_id"
+      - $ref: "#/components/schemas/alliance_id"
+      - $ref: "#/components/schemas/faction_id"
+    type_id:
+      properties:
+        type_id:
+          format: int64
+          type: integer
+          x-common-model: "true"
+      title: type_id
+    group_id:
+      properties:
+        group_id:
+          description: Ship tree group identifier.
+          format: int64
+          type: integer
+          x-common-model: "true"
+      title: group_id
+    CorporationsProjectsDetailConfigurationdamageship_ships_inner:
+      oneOf:
+      - $ref: "#/components/schemas/type_id"
+      - $ref: "#/components/schemas/group_id"
+    structure_id:
+      properties:
+        structure_id:
+          format: int64
+          type: integer
+          x-common-model: "true"
+      title: structure_id
+    station_id:
+      properties:
+        station_id:
+          format: int64
+          type: integer
+          x-common-model: "true"
+      title: station_id
+    CorporationsProjectsDetailConfigurationdeliveritem_docking_locations_inner:
+      oneOf:
+      - $ref: "#/components/schemas/structure_id"
+      - $ref: "#/components/schemas/station_id"
+    group_id_1:
+      properties:
+        group_id:
+          format: int64
+          type: integer
+          x-common-model: "true"
+      title: group_id
+    CorporationsProjectsDetailConfigurationdeliveritem_items_inner:
+      oneOf:
+      - $ref: "#/components/schemas/type_id"
+      - $ref: "#/components/schemas/group_id_1"
     DogmaDynamicItemsResponse_dogma_attributes_inner:
       description: dogma_attribute object
       example:
