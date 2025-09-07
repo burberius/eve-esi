@@ -58,7 +58,7 @@ import java.util.List;
 import java.util.Map;
 
 public class UniverseApi {
-    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2025, 8, 26);
+    public static final LocalDate COMPATIBILITY_DATE = LocalDate.parse("2025-08-26");
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;

@@ -10,8 +10,8 @@ rm -f esi.json
 #
 # esi _latest
 #
-wget -O esi.json https://esi.evetech.net/meta/openapi.json?compatibility_date=2025-08-26 || exit 1
-
+wget -O esi.json https://esi.evetech.net/meta/openapi.json?compatibility_date=$(date +%F) || exit 1
+ESIVERSION=$(jq -r ".components.parameters.CompatibilityDate.schema.enum | first" esi.json)
 #
 # Get swagger code generator
 #
@@ -25,6 +25,11 @@ if [ ! -e openapi-generator-cli-$VERSION.jar ]; then
     exit 1
   fi
 fi
+
+#
+# Update template of api classes with latest api compatibily version
+#
+sed -i -e "s#LocalDate.parse(.*#LocalDate.parse(\"${ESIVERSION}\");#" templates/api.mustache
 
 #
 # Remove old model files in case something was removed
@@ -96,10 +101,3 @@ if (( $SECONDS >= 60 ))
    else
        echo "Generated in $(($SECONDS % 60))sec"
 fi
-
-echo
-echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-echo "! Did you update the date in templates/api.mustache?                              !"
-echo "! The current version is visible at https://developers.eveonline.com/api-explorer !"
-echo "! After a change you have to regenerate it!                                       !"
-echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"

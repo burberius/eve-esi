@@ -4,7 +4,7 @@
  
  {{#operations}}
  public class {{classname}} {
-+    public static final LocalDate COMPATIBILITY_DATE = LocalDate.of(2020, 1,1);
++    public static final LocalDate COMPATIBILITY_DATE = LocalDate.parse("2020-01-01");
      private ApiClient localVarApiClient;
      private int localHostIndex;
      private String localCustomBaseUrl;
