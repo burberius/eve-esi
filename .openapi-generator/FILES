@@ -32,6 +32,7 @@ src/main/java/net/troja/eve/esi/api/LocationApi.java
 src/main/java/net/troja/eve/esi/api/LoyaltyApi.java
 src/main/java/net/troja/eve/esi/api/MailApi.java
 src/main/java/net/troja/eve/esi/api/MarketApi.java
+src/main/java/net/troja/eve/esi/api/MetaApi.java
 src/main/java/net/troja/eve/esi/api/PlanetaryInteractionApi.java
 src/main/java/net/troja/eve/esi/api/RoutesApi.java
 src/main/java/net/troja/eve/esi/api/SearchApi.java
@@ -285,6 +286,9 @@ src/main/java/net/troja/eve/esi/model/MarketPricesResponseInner.java
 src/main/java/net/troja/eve/esi/model/MarketRegionHistoryResponseInner.java
 src/main/java/net/troja/eve/esi/model/MarketRegionOrdersResponseInner.java
 src/main/java/net/troja/eve/esi/model/MarketStructureResponseInner.java
+src/main/java/net/troja/eve/esi/model/MetaChangelog.java
+src/main/java/net/troja/eve/esi/model/MetaChangelogEntry.java
+src/main/java/net/troja/eve/esi/model/MetaCompatibilityDates.java
 src/main/java/net/troja/eve/esi/model/MineMaterial.java
 src/main/java/net/troja/eve/esi/model/MoonResponse.java
 src/main/java/net/troja/eve/esi/model/NamesResponseInner.java
@@ -370,6 +374,7 @@ src/test/java/net/troja/eve/esi/api/LocationApiTest.java
 src/test/java/net/troja/eve/esi/api/LoyaltyApiTest.java
 src/test/java/net/troja/eve/esi/api/MailApiTest.java
 src/test/java/net/troja/eve/esi/api/MarketApiTest.java
+src/test/java/net/troja/eve/esi/api/MetaApiTest.java
 src/test/java/net/troja/eve/esi/api/PlanetaryInteractionApiTest.java
 src/test/java/net/troja/eve/esi/api/RoutesApiTest.java
 src/test/java/net/troja/eve/esi/api/SearchApiTest.java
@@ -615,6 +620,9 @@ src/test/java/net/troja/eve/esi/model/MarketPricesResponseInnerTest.java
 src/test/java/net/troja/eve/esi/model/MarketRegionHistoryResponseInnerTest.java
 src/test/java/net/troja/eve/esi/model/MarketRegionOrdersResponseInnerTest.java
 src/test/java/net/troja/eve/esi/model/MarketStructureResponseInnerTest.java
+src/test/java/net/troja/eve/esi/model/MetaChangelogEntryTest.java
+src/test/java/net/troja/eve/esi/model/MetaChangelogTest.java
+src/test/java/net/troja/eve/esi/model/MetaCompatibilityDatesTest.java
 src/test/java/net/troja/eve/esi/model/MineMaterialTest.java
 src/test/java/net/troja/eve/esi/model/MoonResponseTest.java
 src/test/java/net/troja/eve/esi/model/NamesResponseInnerTest.java

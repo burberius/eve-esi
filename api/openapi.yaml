@@ -33,6 +33,7 @@ tags:
 - name: Loyalty
 - name: Mail
 - name: Market
+- name: Meta
 - name: Planetary Interaction
 - name: Routes
 - name: Search
@@ -3176,6 +3177,7 @@ paths:
       summary: Get colony layout
       tags:
       - Planetary Interaction
+      x-cache-age: 600
       x-compatibility-date: 2020-01-01
       x-accepts:
       - application/json
@@ -8154,7 +8156,7 @@ paths:
       summary: Get a single killmail
       tags:
       - Killmails
-      x-cache-age: 30758400
+      x-cache-age: 2592000
       x-compatibility-date: 2020-01-01
       x-accepts:
       - application/json
@@ -8593,6 +8595,92 @@ paths:
       tags:
       - Market
       x-cache-age: 600
+      x-compatibility-date: 2020-01-01
+      x-accepts:
+      - application/json
+  /meta/changelog:
+    get:
+      description: Get the changelog of this API.
+      operationId: GetMetaChangelog
+      parameters:
+      - $ref: "#/components/parameters/AcceptLanguage"
+      - $ref: "#/components/parameters/IfNoneMatch"
+      - $ref: "#/components/parameters/CompatibilityDate"
+      - $ref: "#/components/parameters/Tenant"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetaChangelog"
+          description: OK
+          headers:
+            Cache-Control:
+              $ref: "#/components/headers/CacheControl"
+            ETag:
+              $ref: "#/components/headers/ETag"
+            Last-Modified:
+              $ref: "#/components/headers/LastModified"
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Error
+          headers:
+            Cache-Control:
+              $ref: "#/components/headers/CacheControl"
+            ETag:
+              $ref: "#/components/headers/ETag"
+            Last-Modified:
+              $ref: "#/components/headers/LastModified"
+      summary: Get changelog
+      tags:
+      - Meta
+      x-cache-age: 0
+      x-compatibility-date: 2020-01-01
+      x-accepts:
+      - application/json
+  /meta/compatibility-dates:
+    get:
+      description: Get a list of compatibility dates.
+      operationId: GetMetaCompatibilityDates
+      parameters:
+      - $ref: "#/components/parameters/AcceptLanguage"
+      - $ref: "#/components/parameters/IfNoneMatch"
+      - $ref: "#/components/parameters/CompatibilityDate"
+      - $ref: "#/components/parameters/Tenant"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetaCompatibilityDates"
+          description: OK
+          headers:
+            Cache-Control:
+              $ref: "#/components/headers/CacheControl"
+            ETag:
+              $ref: "#/components/headers/ETag"
+            Last-Modified:
+              $ref: "#/components/headers/LastModified"
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Error
+          headers:
+            Cache-Control:
+              $ref: "#/components/headers/CacheControl"
+            ETag:
+              $ref: "#/components/headers/ETag"
+            Last-Modified:
+              $ref: "#/components/headers/LastModified"
+      summary: Get compatibility dates
+      tags:
+      - Meta
+      x-cache-age: 0
       x-compatibility-date: 2020-01-01
       x-accepts:
       - application/json
@@ -11903,6 +11991,10 @@ components:
       items:
         $ref: "#/components/schemas/CharacterWalletTransactionsResponse_inner"
       type: array
+    CompatibilityDate:
+      format: date
+      type: string
+      x-common-model: "true"
     ConstellationID:
       format: int64
       type: integer
@@ -13579,6 +13671,77 @@ components:
       items:
         $ref: "#/components/schemas/MarketStructureResponse_inner"
       type: array
+    MetaChangelog:
+      example:
+        changelog:
+          key:
+          - compatibility_date: 2000-01-23
+            path: path
+            is_breaking: true
+            method: GET
+            description: description
+          - compatibility_date: 2000-01-23
+            path: path
+            is_breaking: true
+            method: GET
+            description: description
+      properties:
+        changelog:
+          additionalProperties:
+            items:
+              $ref: "#/components/schemas/MetaChangelogEntry"
+            nullable: true
+          description: "Per date, list changes for that date"
+      required:
+      - changelog
+    MetaChangelogEntry:
+      example:
+        compatibility_date: 2000-01-23
+        path: path
+        is_breaking: true
+        method: GET
+        description: description
+      properties:
+        compatibility_date:
+          format: date
+          type: string
+          x-common-model: "true"
+        description:
+          description: Description
+          type: string
+        is_breaking:
+          description: Whether this is a breaking change
+          type: boolean
+        method:
+          description: HTTP method of the route
+          enum:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          type: string
+        path:
+          description: Path of the route
+          type: string
+      required:
+      - compatibility_date
+      - description
+      - is_breaking
+      - method
+      - path
+    MetaCompatibilityDates:
+      example:
+        compatibility_dates:
+        - null
+        - null
+      properties:
+        compatibility_dates:
+          description: List of compatibility dates.
+          items:
+            $ref: "#/components/schemas/CompatibilityDate"
+          type: array
+      required:
+      - compatibility_dates
     RegionID:
       format: int64
       type: integer
@@ -16327,6 +16490,7 @@ components:
           - FacWarCorpJoinWithdrawMsg
           - FacWarCorpLeaveRequestMsg
           - FacWarCorpLeaveWithdrawMsg
+          - FacWarDirectEnlistmentRevoked
           - FacWarLPDisqualifiedEvent
           - FacWarLPDisqualifiedKill
           - FacWarLPPayoutEvent

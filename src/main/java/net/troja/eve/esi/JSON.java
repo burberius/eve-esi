@@ -540,6 +540,11 @@ public class JSON {
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.MarketRegionOrdersResponseInner.CustomTypeAdapterFactory());
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.MarketStructureResponseInner.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.MetaChangelog.CustomTypeAdapterFactory());
+        gsonBuilder
+                .registerTypeAdapterFactory(new net.troja.eve.esi.model.MetaChangelogEntry.CustomTypeAdapterFactory());
+        gsonBuilder
+                .registerTypeAdapterFactory(new net.troja.eve.esi.model.MetaCompatibilityDates.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.MineMaterial.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.MoonResponse.CustomTypeAdapterFactory());
         gsonBuilder

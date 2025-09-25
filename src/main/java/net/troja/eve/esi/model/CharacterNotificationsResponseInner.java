@@ -353,6 +353,8 @@ public class CharacterNotificationsResponseInner implements Serializable {
 
         FACWARCORPLEAVEWITHDRAWMSG("FacWarCorpLeaveWithdrawMsg"),
 
+        FACWARDIRECTENLISTMENTREVOKED("FacWarDirectEnlistmentRevoked"),
+
         FACWARLPDISQUALIFIEDEVENT("FacWarLPDisqualifiedEvent"),
 
         FACWARLPDISQUALIFIEDKILL("FacWarLPDisqualifiedKill"),
