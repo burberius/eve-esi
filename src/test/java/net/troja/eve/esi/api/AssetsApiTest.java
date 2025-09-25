@@ -14,10 +14,10 @@
 package net.troja.eve.esi.api;
 
 import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.model.CharacterAssetsLocationsPostInner;
-import net.troja.eve.esi.model.CharacterAssetsNamesPostInner;
-import net.troja.eve.esi.model.CharacterAssetsResponseInner;
-import net.troja.eve.esi.model.CorporationAssetsResponseInner;
+import net.troja.eve.esi.model.CharacterAssetsLocationsPost;
+import net.troja.eve.esi.model.CharacterAssetsNamesPost;
+import net.troja.eve.esi.model.CharacterAssetsResponse;
+import net.troja.eve.esi.model.CorporationAssetsResponse;
 
 import java.util.Set;
 
@@ -54,7 +54,7 @@ public class AssetsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterAssetsResponseInner> response = api.getCharacterAssets(characterId, AssetsApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterAssetsResponse> response = api.getCharacterAssets(characterId, AssetsApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotNull();
         assertThat(response).hasSizeGreaterThan(0);
         assertThat(response.get(0).getLocationFlag()).isNotNull();
@@ -76,7 +76,7 @@ public class AssetsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CorporationAssetsResponseInner> response = api.getCorporationAssets(corporationId, AssetsApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CorporationAssetsResponse> response = api.getCorporationAssets(corporationId, AssetsApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotNull();
         assertThat(response).hasSizeGreaterThan(0);
     }
@@ -94,7 +94,7 @@ public class AssetsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterAssetsLocationsPostInner> response = api.postCharacterAssetsLocations(characterId, AssetsApi.COMPATIBILITY_DATE, itemIds, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterAssetsLocationsPost> response = api.postCharacterAssetsLocations(characterId, AssetsApi.COMPATIBILITY_DATE, itemIds, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotNull();
         assertThat(response).hasSize(5);
     }
@@ -112,7 +112,7 @@ public class AssetsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterAssetsNamesPostInner> response = api.postCharacterAssetsNames(characterId, AssetsApi.COMPATIBILITY_DATE, itemIds, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterAssetsNamesPost> response = api.postCharacterAssetsNames(characterId, AssetsApi.COMPATIBILITY_DATE, itemIds, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotNull();
         assertThat(response).hasSize(5);
     }
@@ -130,9 +130,9 @@ public class AssetsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterAssetsLocationsPostInner> response = api.postCorporationAssetsLocations(corporationId, AssetsApi.COMPATIBILITY_DATE, itemIds, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterAssetsLocationsPost> response = api.postCorporationAssetsLocations(corporationId, AssetsApi.COMPATIBILITY_DATE, itemIds, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).hasSize(5);
-        assertThat(response.stream().map(CharacterAssetsLocationsPostInner::getItemId).collect(Collectors.toSet()))
+        assertThat(response.stream().map(CharacterAssetsLocationsPost::getItemId).collect(Collectors.toSet()))
                 .containsExactlyElementsOf(itemIds);
     }
 
@@ -149,25 +149,25 @@ public class AssetsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterAssetsNamesPostInner> response = api.postCorporationAssetsNames(corporationId, AssetsApi.COMPATIBILITY_DATE, itemIds, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterAssetsNamesPost> response = api.postCorporationAssetsNames(corporationId, AssetsApi.COMPATIBILITY_DATE, itemIds, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).hasSize(5);
-        assertThat(response.stream().map(CharacterAssetsNamesPostInner::getItemId).collect(Collectors.toSet()))
+        assertThat(response.stream().map(CharacterAssetsNamesPost::getItemId).collect(Collectors.toSet()))
                 .containsExactlyElementsOf(itemIds);
     }
 
 
     private Set<Long> get5AssetIds() throws ApiException {
-        final List<CharacterAssetsResponseInner> response = api.getCharacterAssets(characterId, AssetsApi.COMPATIBILITY_DATE, null, null, null, null);
-        return response.stream().limit(5).map(CharacterAssetsResponseInner::getItemId).collect(Collectors.toSet());
+        final List<CharacterAssetsResponse> response = api.getCharacterAssets(characterId, AssetsApi.COMPATIBILITY_DATE, null, null, null, null);
+        return response.stream().limit(5).map(CharacterAssetsResponse::getItemId).collect(Collectors.toSet());
     }
 
     private Set<Long> get5CorpItemIds() throws ApiException {
-        List<CorporationAssetsResponseInner> response = api.getCorporationAssets(corporationId, AssetsApi.COMPATIBILITY_DATE, null, null, null, null);
-        return response.stream().map(CorporationAssetsResponseInner::getItemId).limit(5).collect(Collectors.toSet());
+        List<CorporationAssetsResponse> response = api.getCorporationAssets(corporationId, AssetsApi.COMPATIBILITY_DATE, null, null, null, null);
+        return response.stream().map(CorporationAssetsResponse::getItemId).limit(5).collect(Collectors.toSet());
     }
 
     private Set<Long> get5CorpItemsWithName() throws ApiException {
-        List<CorporationAssetsResponseInner> response = api.getCorporationAssets(corporationId, AssetsApi.COMPATIBILITY_DATE, null, null, null, null);
-        return response.stream().filter(item -> item.getTypeId() == 17366).map(CorporationAssetsResponseInner::getItemId).limit(5).collect(Collectors.toSet());
+        List<CorporationAssetsResponse> response = api.getCorporationAssets(corporationId, AssetsApi.COMPATIBILITY_DATE, null, null, null, null);
+        return response.stream().filter(item -> item.getTypeId() == 17366).map(CorporationAssetsResponse::getItemId).limit(5).collect(Collectors.toSet());
     }
 }

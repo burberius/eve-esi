@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.troja.eve.esi.model.KillmailByHashResponseVictimItemsInner;
+import net.troja.eve.esi.model.KillmailByHashResponseVictimItems;
 import net.troja.eve.esi.model.KillmailByHashResponseVictimPosition;
 import java.io.Serializable;
 
@@ -84,7 +84,7 @@ public class KillmailByHashResponseVictim implements Serializable {
     public static final String SERIALIZED_NAME_ITEMS = "items";
     @SerializedName(SERIALIZED_NAME_ITEMS)
     @javax.annotation.Nullable
-    private List<KillmailByHashResponseVictimItemsInner> items;
+    private List<KillmailByHashResponseVictimItems> items;
 
     public static final String SERIALIZED_NAME_POSITION = "position";
     @SerializedName(SERIALIZED_NAME_POSITION)
@@ -194,13 +194,12 @@ public class KillmailByHashResponseVictim implements Serializable {
         this.factionId = factionId;
     }
 
-    public KillmailByHashResponseVictim items(
-            @javax.annotation.Nullable List<KillmailByHashResponseVictimItemsInner> items) {
+    public KillmailByHashResponseVictim items(@javax.annotation.Nullable List<KillmailByHashResponseVictimItems> items) {
         this.items = items;
         return this;
     }
 
-    public KillmailByHashResponseVictim addItemsItem(KillmailByHashResponseVictimItemsInner itemsItem) {
+    public KillmailByHashResponseVictim addItemsItem(KillmailByHashResponseVictimItems itemsItem) {
         if (this.items == null) {
             this.items = new ArrayList<>();
         }
@@ -215,11 +214,11 @@ public class KillmailByHashResponseVictim implements Serializable {
      * @return items
      */
     @javax.annotation.Nullable
-    public List<KillmailByHashResponseVictimItemsInner> getItems() {
+    public List<KillmailByHashResponseVictimItems> getItems() {
         return items;
     }
 
-    public void setItems(@javax.annotation.Nullable List<KillmailByHashResponseVictimItemsInner> items) {
+    public void setItems(@javax.annotation.Nullable List<KillmailByHashResponseVictimItems> items) {
         this.items = items;
     }
 
@@ -385,7 +384,7 @@ public class KillmailByHashResponseVictim implements Serializable {
 
                 // validate the optional field `items` (array)
                 for (int i = 0; i < jsonArrayitems.size(); i++) {
-                    KillmailByHashResponseVictimItemsInner.validateJsonElement(jsonArrayitems.get(i));
+                    KillmailByHashResponseVictimItems.validateJsonElement(jsonArrayitems.get(i));
                 };
             }
         }

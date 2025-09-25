@@ -22,8 +22,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.troja.eve.esi.model.CorporationsProjectsDetailConfigurationcapturefwcomplexLocationsInner;
-import net.troja.eve.esi.model.CorporationsProjectsDetailConfigurationdeliveritemItemsInner;
+import net.troja.eve.esi.model.CorporationsProjectsDetailConfigurationcapturefwcomplexLocations;
+import net.troja.eve.esi.model.CorporationsProjectsDetailConfigurationdeliveritemItems;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -59,24 +59,24 @@ public class CorporationsProjectsDetailConfigurationminematerial implements Seri
     public static final String SERIALIZED_NAME_LOCATIONS = "locations";
     @SerializedName(SERIALIZED_NAME_LOCATIONS)
     @javax.annotation.Nullable
-    private List<CorporationsProjectsDetailConfigurationcapturefwcomplexLocationsInner> locations;
+    private List<CorporationsProjectsDetailConfigurationcapturefwcomplexLocations> locations;
 
     public static final String SERIALIZED_NAME_MATERIALS = "materials";
     @SerializedName(SERIALIZED_NAME_MATERIALS)
     @javax.annotation.Nullable
-    private List<CorporationsProjectsDetailConfigurationdeliveritemItemsInner> materials;
+    private List<CorporationsProjectsDetailConfigurationdeliveritemItems> materials;
 
     public CorporationsProjectsDetailConfigurationminematerial() {
     }
 
     public CorporationsProjectsDetailConfigurationminematerial locations(
-            @javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationcapturefwcomplexLocationsInner> locations) {
+            @javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationcapturefwcomplexLocations> locations) {
         this.locations = locations;
         return this;
     }
 
     public CorporationsProjectsDetailConfigurationminematerial addLocationsItem(
-            CorporationsProjectsDetailConfigurationcapturefwcomplexLocationsInner locationsItem) {
+            CorporationsProjectsDetailConfigurationcapturefwcomplexLocations locationsItem) {
         if (this.locations == null) {
             this.locations = new ArrayList<>();
         }
@@ -91,23 +91,23 @@ public class CorporationsProjectsDetailConfigurationminematerial implements Seri
      * @return locations
      */
     @javax.annotation.Nullable
-    public List<CorporationsProjectsDetailConfigurationcapturefwcomplexLocationsInner> getLocations() {
+    public List<CorporationsProjectsDetailConfigurationcapturefwcomplexLocations> getLocations() {
         return locations;
     }
 
     public void setLocations(
-            @javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationcapturefwcomplexLocationsInner> locations) {
+            @javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationcapturefwcomplexLocations> locations) {
         this.locations = locations;
     }
 
     public CorporationsProjectsDetailConfigurationminematerial materials(
-            @javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationdeliveritemItemsInner> materials) {
+            @javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationdeliveritemItems> materials) {
         this.materials = materials;
         return this;
     }
 
     public CorporationsProjectsDetailConfigurationminematerial addMaterialsItem(
-            CorporationsProjectsDetailConfigurationdeliveritemItemsInner materialsItem) {
+            CorporationsProjectsDetailConfigurationdeliveritemItems materialsItem) {
         if (this.materials == null) {
             this.materials = new ArrayList<>();
         }
@@ -122,12 +122,12 @@ public class CorporationsProjectsDetailConfigurationminematerial implements Seri
      * @return materials
      */
     @javax.annotation.Nullable
-    public List<CorporationsProjectsDetailConfigurationdeliveritemItemsInner> getMaterials() {
+    public List<CorporationsProjectsDetailConfigurationdeliveritemItems> getMaterials() {
         return materials;
     }
 
     public void setMaterials(
-            @javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationdeliveritemItemsInner> materials) {
+            @javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationdeliveritemItems> materials) {
         this.materials = materials;
     }
 
@@ -230,7 +230,7 @@ public class CorporationsProjectsDetailConfigurationminematerial implements Seri
 
                 // validate the optional field `locations` (array)
                 for (int i = 0; i < jsonArraylocations.size(); i++) {
-                    CorporationsProjectsDetailConfigurationcapturefwcomplexLocationsInner
+                    CorporationsProjectsDetailConfigurationcapturefwcomplexLocations
                             .validateJsonElement(jsonArraylocations.get(i));
                 };
             }
@@ -247,7 +247,7 @@ public class CorporationsProjectsDetailConfigurationminematerial implements Seri
 
                 // validate the optional field `materials` (array)
                 for (int i = 0; i < jsonArraymaterials.size(); i++) {
-                    CorporationsProjectsDetailConfigurationdeliveritemItemsInner.validateJsonElement(jsonArraymaterials
+                    CorporationsProjectsDetailConfigurationdeliveritemItems.validateJsonElement(jsonArraymaterials
                             .get(i));
                 };
             }

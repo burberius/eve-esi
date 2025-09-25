@@ -15,11 +15,11 @@ package net.troja.eve.esi.api;
 
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.CharacterFleetResponse;
-import net.troja.eve.esi.model.FleetMembersResponseInner;
+import net.troja.eve.esi.model.FleetMembersResponse;
 import net.troja.eve.esi.model.FleetResponse;
 import net.troja.eve.esi.model.FleetWingSquadsPost;
 import net.troja.eve.esi.model.FleetWingsPost;
-import net.troja.eve.esi.model.FleetWingsResponseInner;
+import net.troja.eve.esi.model.FleetWingsResponse;
 import net.troja.eve.esi.model.PostFleetMembersRequest;
 import net.troja.eve.esi.model.PutFleetMemberRequest;
 import net.troja.eve.esi.model.PutFleetRequest;
@@ -146,7 +146,7 @@ public class FleetsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<FleetMembersResponseInner> response = api.getFleetMembers(fleetId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<FleetMembersResponse> response = api.getFleetMembers(fleetId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -164,7 +164,7 @@ public class FleetsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<FleetWingsResponseInner> response = api.getFleetWings(fleetId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<FleetWingsResponse> response = api.getFleetWings(fleetId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 

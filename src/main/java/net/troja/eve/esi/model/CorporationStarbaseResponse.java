@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.troja.eve.esi.model.CorporationStarbaseResponseFuelsInner;
+import net.troja.eve.esi.model.CorporationStarbaseResponseFuels;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -277,7 +277,7 @@ public class CorporationStarbaseResponse implements Serializable {
     public static final String SERIALIZED_NAME_FUELS = "fuels";
     @SerializedName(SERIALIZED_NAME_FUELS)
     @javax.annotation.Nullable
-    private List<CorporationStarbaseResponseFuelsInner> fuels;
+    private List<CorporationStarbaseResponseFuels> fuels;
 
     /**
      * Who can offline starbase (POS) and its structures
@@ -700,13 +700,12 @@ public class CorporationStarbaseResponse implements Serializable {
         this.fuelBayView = fuelBayView;
     }
 
-    public CorporationStarbaseResponse fuels(
-            @javax.annotation.Nullable List<CorporationStarbaseResponseFuelsInner> fuels) {
+    public CorporationStarbaseResponse fuels(@javax.annotation.Nullable List<CorporationStarbaseResponseFuels> fuels) {
         this.fuels = fuels;
         return this;
     }
 
-    public CorporationStarbaseResponse addFuelsItem(CorporationStarbaseResponseFuelsInner fuelsItem) {
+    public CorporationStarbaseResponse addFuelsItem(CorporationStarbaseResponseFuels fuelsItem) {
         if (this.fuels == null) {
             this.fuels = new ArrayList<>();
         }
@@ -722,11 +721,11 @@ public class CorporationStarbaseResponse implements Serializable {
      * @return fuels
      */
     @javax.annotation.Nullable
-    public List<CorporationStarbaseResponseFuelsInner> getFuels() {
+    public List<CorporationStarbaseResponseFuels> getFuels() {
         return fuels;
     }
 
-    public void setFuels(@javax.annotation.Nullable List<CorporationStarbaseResponseFuelsInner> fuels) {
+    public void setFuels(@javax.annotation.Nullable List<CorporationStarbaseResponseFuels> fuels) {
         this.fuels = fuels;
     }
 
@@ -1020,7 +1019,7 @@ public class CorporationStarbaseResponse implements Serializable {
 
                 // validate the optional field `fuels` (array)
                 for (int i = 0; i < jsonArrayfuels.size(); i++) {
-                    CorporationStarbaseResponseFuelsInner.validateJsonElement(jsonArrayfuels.get(i));
+                    CorporationStarbaseResponseFuels.validateJsonElement(jsonArrayfuels.get(i));
                 };
             }
         }

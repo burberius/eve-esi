@@ -25,10 +25,10 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
-import net.troja.eve.esi.model.AllianceContactsLabelsResponseInner;
-import net.troja.eve.esi.model.AllianceContactsResponseInner;
-import net.troja.eve.esi.model.ContactsResponseInner;
-import net.troja.eve.esi.model.CorporationContactsResponseInner;
+import net.troja.eve.esi.model.AllianceContactsLabelsResponse;
+import net.troja.eve.esi.model.AllianceContactsResponse;
+import net.troja.eve.esi.model.ContactsResponse;
+import net.troja.eve.esi.model.CorporationContactsResponse;
 import net.troja.eve.esi.model.Error;
 import java.time.LocalDate;
 
@@ -529,7 +529,7 @@ public class ContactsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;AllianceContactsResponseInner&gt;
+     * @return List&lt;AllianceContactsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -557,11 +557,11 @@ public class ContactsApi {
      *                        </tr>
      *                        </table>
      */
-    public List<AllianceContactsResponseInner> getAllianceContacts(@javax.annotation.Nonnull Long allianceId,
+    public List<AllianceContactsResponse> getAllianceContacts(@javax.annotation.Nonnull Long allianceId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<AllianceContactsResponseInner>> localVarResp = getAllianceContactsWithHttpInfo(allianceId,
+        ApiResponse<List<AllianceContactsResponse>> localVarResp = getAllianceContactsWithHttpInfo(allianceId,
                 xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -584,7 +584,7 @@ public class ContactsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;AllianceContactsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;AllianceContactsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -612,14 +612,14 @@ public class ContactsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<AllianceContactsResponseInner>> getAllianceContactsWithHttpInfo(
+    public ApiResponse<List<AllianceContactsResponse>> getAllianceContactsWithHttpInfo(
             @javax.annotation.Nonnull Long allianceId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getAllianceContactsValidateBeforeCall(allianceId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<AllianceContactsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<AllianceContactsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -675,12 +675,12 @@ public class ContactsApi {
     public okhttp3.Call getAllianceContactsAsync(@javax.annotation.Nonnull Long allianceId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<AllianceContactsResponseInner>> _callback)
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<AllianceContactsResponse>> _callback)
             throws ApiException {
 
         okhttp3.Call localVarCall = getAllianceContactsValidateBeforeCall(allianceId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<AllianceContactsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<AllianceContactsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -831,7 +831,7 @@ public class ContactsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;AllianceContactsLabelsResponseInner&gt;
+     * @return List&lt;AllianceContactsLabelsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -857,11 +857,11 @@ public class ContactsApi {
      *                        </tr>
      *                        </table>
      */
-    public List<AllianceContactsLabelsResponseInner> getAllianceContactsLabels(
-            @javax.annotation.Nonnull Long allianceId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<AllianceContactsLabelsResponseInner>> localVarResp = getAllianceContactsLabelsWithHttpInfo(
+    public List<AllianceContactsLabelsResponse> getAllianceContactsLabels(@javax.annotation.Nonnull Long allianceId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        ApiResponse<List<AllianceContactsLabelsResponse>> localVarResp = getAllianceContactsLabelsWithHttpInfo(
                 allianceId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -883,8 +883,7 @@ public class ContactsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return 
-     *         ApiResponse&lt;List&lt;AllianceContactsLabelsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;AllianceContactsLabelsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -910,13 +909,13 @@ public class ContactsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<AllianceContactsLabelsResponseInner>> getAllianceContactsLabelsWithHttpInfo(
+    public ApiResponse<List<AllianceContactsLabelsResponse>> getAllianceContactsLabelsWithHttpInfo(
             @javax.annotation.Nonnull Long allianceId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = getAllianceContactsLabelsValidateBeforeCall(allianceId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<AllianceContactsLabelsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<AllianceContactsLabelsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -969,11 +968,11 @@ public class ContactsApi {
     public okhttp3.Call getAllianceContactsLabelsAsync(@javax.annotation.Nonnull Long allianceId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<AllianceContactsLabelsResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<AllianceContactsLabelsResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAllianceContactsLabelsValidateBeforeCall(allianceId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<AllianceContactsLabelsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<AllianceContactsLabelsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1131,7 +1130,7 @@ public class ContactsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;ContactsResponseInner&gt;
+     * @return List&lt;ContactsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1159,12 +1158,12 @@ public class ContactsApi {
      *                        </tr>
      *                        </table>
      */
-    public List<ContactsResponseInner> getContacts(@javax.annotation.Nonnull Long characterId,
+    public List<ContactsResponse> getContacts(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<ContactsResponseInner>> localVarResp = getContactsWithHttpInfo(characterId,
-                xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<List<ContactsResponse>> localVarResp = getContactsWithHttpInfo(characterId, xCompatibilityDate,
+                page, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -1186,7 +1185,7 @@ public class ContactsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;ContactsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;ContactsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1214,13 +1213,13 @@ public class ContactsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<ContactsResponseInner>> getContactsWithHttpInfo(@javax.annotation.Nonnull Long characterId,
+    public ApiResponse<List<ContactsResponse>> getContactsWithHttpInfo(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = getContactsValidateBeforeCall(characterId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<ContactsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<ContactsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1276,12 +1275,12 @@ public class ContactsApi {
     public okhttp3.Call getContactsAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<ContactsResponseInner>> _callback)
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<ContactsResponse>> _callback)
             throws ApiException {
 
         okhttp3.Call localVarCall = getContactsValidateBeforeCall(characterId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<ContactsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<ContactsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1429,7 +1428,7 @@ public class ContactsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;AllianceContactsLabelsResponseInner&gt;
+     * @return List&lt;AllianceContactsLabelsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1455,12 +1454,12 @@ public class ContactsApi {
      *                        </tr>
      *                        </table>
      */
-    public List<AllianceContactsLabelsResponseInner> getContactsLabels(@javax.annotation.Nonnull Long characterId,
+    public List<AllianceContactsLabelsResponse> getContactsLabels(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<AllianceContactsLabelsResponseInner>> localVarResp = getContactsLabelsWithHttpInfo(
-                characterId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<List<AllianceContactsLabelsResponse>> localVarResp = getContactsLabelsWithHttpInfo(characterId,
+                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -1480,8 +1479,7 @@ public class ContactsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return 
-     *         ApiResponse&lt;List&lt;AllianceContactsLabelsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;AllianceContactsLabelsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1507,13 +1505,13 @@ public class ContactsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<AllianceContactsLabelsResponseInner>> getContactsLabelsWithHttpInfo(
+    public ApiResponse<List<AllianceContactsLabelsResponse>> getContactsLabelsWithHttpInfo(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = getContactsLabelsValidateBeforeCall(characterId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<AllianceContactsLabelsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<AllianceContactsLabelsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1566,11 +1564,11 @@ public class ContactsApi {
     public okhttp3.Call getContactsLabelsAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<AllianceContactsLabelsResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<AllianceContactsLabelsResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getContactsLabelsValidateBeforeCall(characterId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<AllianceContactsLabelsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<AllianceContactsLabelsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1730,7 +1728,7 @@ public class ContactsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CorporationContactsResponseInner&gt;
+     * @return List&lt;CorporationContactsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1758,12 +1756,12 @@ public class ContactsApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CorporationContactsResponseInner> getCorporationContacts(@javax.annotation.Nonnull Long corporationId,
+    public List<CorporationContactsResponse> getCorporationContacts(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CorporationContactsResponseInner>> localVarResp = getCorporationContactsWithHttpInfo(
-                corporationId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<List<CorporationContactsResponse>> localVarResp = getCorporationContactsWithHttpInfo(corporationId,
+                xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -1785,7 +1783,7 @@ public class ContactsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CorporationContactsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CorporationContactsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1813,14 +1811,14 @@ public class ContactsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CorporationContactsResponseInner>> getCorporationContactsWithHttpInfo(
+    public ApiResponse<List<CorporationContactsResponse>> getCorporationContactsWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getCorporationContactsValidateBeforeCall(corporationId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CorporationContactsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationContactsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1877,12 +1875,12 @@ public class ContactsApi {
     public okhttp3.Call getCorporationContactsAsync(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CorporationContactsResponseInner>> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CorporationContactsResponse>> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = getCorporationContactsValidateBeforeCall(corporationId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CorporationContactsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationContactsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2033,7 +2031,7 @@ public class ContactsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;AllianceContactsLabelsResponseInner&gt;
+     * @return List&lt;AllianceContactsLabelsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2059,11 +2057,11 @@ public class ContactsApi {
      *                        </tr>
      *                        </table>
      */
-    public List<AllianceContactsLabelsResponseInner> getCorporationContactsLabels(
+    public List<AllianceContactsLabelsResponse> getCorporationContactsLabels(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<AllianceContactsLabelsResponseInner>> localVarResp = getCorporationContactsLabelsWithHttpInfo(
+        ApiResponse<List<AllianceContactsLabelsResponse>> localVarResp = getCorporationContactsLabelsWithHttpInfo(
                 corporationId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -2085,8 +2083,7 @@ public class ContactsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return 
-     *         ApiResponse&lt;List&lt;AllianceContactsLabelsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;AllianceContactsLabelsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2112,13 +2109,13 @@ public class ContactsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<AllianceContactsLabelsResponseInner>> getCorporationContactsLabelsWithHttpInfo(
+    public ApiResponse<List<AllianceContactsLabelsResponse>> getCorporationContactsLabelsWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = getCorporationContactsLabelsValidateBeforeCall(corporationId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<AllianceContactsLabelsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<AllianceContactsLabelsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2171,11 +2168,11 @@ public class ContactsApi {
     public okhttp3.Call getCorporationContactsLabelsAsync(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<AllianceContactsLabelsResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<AllianceContactsLabelsResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCorporationContactsLabelsValidateBeforeCall(corporationId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<AllianceContactsLabelsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<AllianceContactsLabelsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

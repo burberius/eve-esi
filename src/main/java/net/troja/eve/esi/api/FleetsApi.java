@@ -27,11 +27,11 @@ import java.io.IOException;
 
 import net.troja.eve.esi.model.CharacterFleetResponse;
 import net.troja.eve.esi.model.Error;
-import net.troja.eve.esi.model.FleetMembersResponseInner;
+import net.troja.eve.esi.model.FleetMembersResponse;
 import net.troja.eve.esi.model.FleetResponse;
 import net.troja.eve.esi.model.FleetWingSquadsPost;
 import net.troja.eve.esi.model.FleetWingsPost;
-import net.troja.eve.esi.model.FleetWingsResponseInner;
+import net.troja.eve.esi.model.FleetWingsResponse;
 import java.time.LocalDate;
 import net.troja.eve.esi.model.PostFleetMembersRequest;
 import net.troja.eve.esi.model.PutFleetMemberRequest;
@@ -1687,7 +1687,7 @@ public class FleetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;FleetMembersResponseInner&gt;
+     * @return List&lt;FleetMembersResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1714,12 +1714,12 @@ public class FleetsApi {
      *                        </tr>
      *                        </table>
      */
-    public List<FleetMembersResponseInner> getFleetMembers(@javax.annotation.Nonnull Long fleetId,
+    public List<FleetMembersResponse> getFleetMembers(@javax.annotation.Nonnull Long fleetId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<FleetMembersResponseInner>> localVarResp = getFleetMembersWithHttpInfo(fleetId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<List<FleetMembersResponse>> localVarResp = getFleetMembersWithHttpInfo(fleetId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -1739,7 +1739,7 @@ public class FleetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;FleetMembersResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;FleetMembersResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1766,13 +1766,13 @@ public class FleetsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<FleetMembersResponseInner>> getFleetMembersWithHttpInfo(
-            @javax.annotation.Nonnull Long fleetId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
+    public ApiResponse<List<FleetMembersResponse>> getFleetMembersWithHttpInfo(@javax.annotation.Nonnull Long fleetId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
         okhttp3.Call localVarCall = getFleetMembersValidateBeforeCall(fleetId, xCompatibilityDate, acceptLanguage,
                 ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<FleetMembersResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<FleetMembersResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1825,11 +1825,11 @@ public class FleetsApi {
     public okhttp3.Call getFleetMembersAsync(@javax.annotation.Nonnull Long fleetId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<FleetMembersResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<FleetMembersResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getFleetMembersValidateBeforeCall(fleetId, xCompatibilityDate, acceptLanguage,
                 ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<FleetMembersResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<FleetMembersResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1978,7 +1978,7 @@ public class FleetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;FleetWingsResponseInner&gt;
+     * @return List&lt;FleetWingsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2005,12 +2005,12 @@ public class FleetsApi {
      *                        </tr>
      *                        </table>
      */
-    public List<FleetWingsResponseInner> getFleetWings(@javax.annotation.Nonnull Long fleetId,
+    public List<FleetWingsResponse> getFleetWings(@javax.annotation.Nonnull Long fleetId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<FleetWingsResponseInner>> localVarResp = getFleetWingsWithHttpInfo(fleetId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<List<FleetWingsResponse>> localVarResp = getFleetWingsWithHttpInfo(fleetId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -2030,7 +2030,7 @@ public class FleetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;FleetWingsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;FleetWingsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2057,13 +2057,13 @@ public class FleetsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<FleetWingsResponseInner>> getFleetWingsWithHttpInfo(@javax.annotation.Nonnull Long fleetId,
+    public ApiResponse<List<FleetWingsResponse>> getFleetWingsWithHttpInfo(@javax.annotation.Nonnull Long fleetId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getFleetWingsValidateBeforeCall(fleetId, xCompatibilityDate, acceptLanguage,
                 ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<FleetWingsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<FleetWingsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2117,11 +2117,11 @@ public class FleetsApi {
     public okhttp3.Call getFleetWingsAsync(@javax.annotation.Nonnull Long fleetId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<FleetWingsResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<FleetWingsResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getFleetWingsValidateBeforeCall(fleetId, xCompatibilityDate, acceptLanguage,
                 ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<FleetWingsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<FleetWingsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

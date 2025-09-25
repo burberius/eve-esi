@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.troja.eve.esi.model.CharacterAssetsLocationsPostInnerPosition;
+import net.troja.eve.esi.model.CharacterAssetsLocationsPostPosition;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -68,7 +68,7 @@ public class ConstellationResponse implements Serializable {
     public static final String SERIALIZED_NAME_POSITION = "position";
     @SerializedName(SERIALIZED_NAME_POSITION)
     @javax.annotation.Nonnull
-    private CharacterAssetsLocationsPostInnerPosition position;
+    private CharacterAssetsLocationsPostPosition position;
 
     public static final String SERIALIZED_NAME_REGION_ID = "region_id";
     @SerializedName(SERIALIZED_NAME_REGION_ID)
@@ -121,7 +121,7 @@ public class ConstellationResponse implements Serializable {
         this.name = name;
     }
 
-    public ConstellationResponse position(@javax.annotation.Nonnull CharacterAssetsLocationsPostInnerPosition position) {
+    public ConstellationResponse position(@javax.annotation.Nonnull CharacterAssetsLocationsPostPosition position) {
         this.position = position;
         return this;
     }
@@ -132,11 +132,11 @@ public class ConstellationResponse implements Serializable {
      * @return position
      */
     @javax.annotation.Nonnull
-    public CharacterAssetsLocationsPostInnerPosition getPosition() {
+    public CharacterAssetsLocationsPostPosition getPosition() {
         return position;
     }
 
-    public void setPosition(@javax.annotation.Nonnull CharacterAssetsLocationsPostInnerPosition position) {
+    public void setPosition(@javax.annotation.Nonnull CharacterAssetsLocationsPostPosition position) {
         this.position = position;
     }
 
@@ -297,7 +297,7 @@ public class ConstellationResponse implements Serializable {
                     jsonObj.get("name").toString()));
         }
         // validate the required field `position`
-        CharacterAssetsLocationsPostInnerPosition.validateJsonElement(jsonObj.get("position"));
+        CharacterAssetsLocationsPostPosition.validateJsonElement(jsonObj.get("position"));
         // ensure the required json array is present
         if (jsonObj.get("systems") == null) {
             throw new IllegalArgumentException(

@@ -14,25 +14,25 @@
 package net.troja.eve.esi.api;
 
 import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.model.CharacterStandingsResponseInner;
-import net.troja.eve.esi.model.CorporationAllianceshistoryResponseInner;
-import net.troja.eve.esi.model.CorporationBlueprintsResponseInner;
-import net.troja.eve.esi.model.CorporationContainersLogsResponseInner;
+import net.troja.eve.esi.model.CharacterStandingsResponse;
+import net.troja.eve.esi.model.CorporationAllianceshistoryResponse;
+import net.troja.eve.esi.model.CorporationBlueprintsResponse;
+import net.troja.eve.esi.model.CorporationContainersLogsResponse;
 import net.troja.eve.esi.model.CorporationDivisionsResponse;
-import net.troja.eve.esi.model.CorporationFacilitiesResponseInner;
+import net.troja.eve.esi.model.CorporationFacilitiesResponse;
 import net.troja.eve.esi.model.CorporationIconsResponse;
-import net.troja.eve.esi.model.CorporationMedalsIssuedResponseInner;
-import net.troja.eve.esi.model.CorporationMedalsResponseInner;
-import net.troja.eve.esi.model.CorporationMemberTrackingResponseInner;
-import net.troja.eve.esi.model.CorporationMembersTitlesResponseInner;
+import net.troja.eve.esi.model.CorporationMedalsIssuedResponse;
+import net.troja.eve.esi.model.CorporationMedalsResponse;
+import net.troja.eve.esi.model.CorporationMemberTrackingResponse;
+import net.troja.eve.esi.model.CorporationMembersTitlesResponse;
 import net.troja.eve.esi.model.CorporationResponse;
-import net.troja.eve.esi.model.CorporationRolesHistoryResponseInner;
-import net.troja.eve.esi.model.CorporationRolesResponseInner;
-import net.troja.eve.esi.model.CorporationShareholdersResponseInner;
+import net.troja.eve.esi.model.CorporationRolesHistoryResponse;
+import net.troja.eve.esi.model.CorporationRolesResponse;
+import net.troja.eve.esi.model.CorporationShareholdersResponse;
 import net.troja.eve.esi.model.CorporationStarbaseResponse;
-import net.troja.eve.esi.model.CorporationStarbasesResponseInner;
-import net.troja.eve.esi.model.CorporationStructuresResponseInner;
-import net.troja.eve.esi.model.CorporationTitlesResponseInner;
+import net.troja.eve.esi.model.CorporationStarbasesResponse;
+import net.troja.eve.esi.model.CorporationStructuresResponse;
+import net.troja.eve.esi.model.CorporationTitlesResponse;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -84,10 +84,10 @@ public class CorporationApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CorporationAllianceshistoryResponseInner> response = api.getCorporationAllianceshistory(CORPORATION_ID_TBD, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<CorporationAllianceshistoryResponse> response = api.getCorporationAllianceshistory(CORPORATION_ID_TBD, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).hasSizeGreaterThan(0);
         // The last entry is without alliance!
-        final CorporationAllianceshistoryResponseInner alliance = response.get(response.size() - 2);
+        final CorporationAllianceshistoryResponse alliance = response.get(response.size() - 2);
         assertThat(alliance.getAllianceId()).isEqualTo(ALLIANCE_ID_TRI);
     }
 
@@ -105,7 +105,7 @@ public class CorporationApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CorporationBlueprintsResponseInner> response = api.getCorporationBlueprints(corporationId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CorporationBlueprintsResponse> response = api.getCorporationBlueprints(corporationId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -123,7 +123,7 @@ public class CorporationApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CorporationContainersLogsResponseInner> response = api.getCorporationContainersLogs(corporationId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CorporationContainersLogsResponse> response = api.getCorporationContainersLogs(corporationId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -157,7 +157,7 @@ public class CorporationApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CorporationFacilitiesResponseInner> response = api.getCorporationFacilities(corporationId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<CorporationFacilitiesResponse> response = api.getCorporationFacilities(corporationId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -191,7 +191,7 @@ public class CorporationApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CorporationMedalsResponseInner> response = api.getCorporationMedals(corporationId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CorporationMedalsResponse> response = api.getCorporationMedals(corporationId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -209,7 +209,7 @@ public class CorporationApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CorporationMedalsIssuedResponseInner> response = api.getCorporationMedalsIssued(corporationId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CorporationMedalsIssuedResponse> response = api.getCorporationMedalsIssued(corporationId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -259,7 +259,7 @@ public class CorporationApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CorporationMembersTitlesResponseInner> response = api.getCorporationMembersTitles(corporationId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<CorporationMembersTitlesResponse> response = api.getCorporationMembersTitles(corporationId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -276,7 +276,7 @@ public class CorporationApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CorporationMemberTrackingResponseInner> response = api.getCorporationMemberTracking(corporationId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<CorporationMemberTrackingResponse> response = api.getCorporationMemberTracking(corporationId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -292,7 +292,7 @@ public class CorporationApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CorporationRolesResponseInner> response = api.getCorporationRoles(corporationId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<CorporationRolesResponse> response = api.getCorporationRoles(corporationId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
     }
 
@@ -310,7 +310,7 @@ public class CorporationApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CorporationRolesHistoryResponseInner> response = api.getCorporationRolesHistory(corporationId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CorporationRolesHistoryResponse> response = api.getCorporationRolesHistory(corporationId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
     }
 
@@ -328,7 +328,7 @@ public class CorporationApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CorporationShareholdersResponseInner> response = api.getCorporationShareholders(corporationId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CorporationShareholdersResponse> response = api.getCorporationShareholders(corporationId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -346,7 +346,7 @@ public class CorporationApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterStandingsResponseInner> response = api.getCorporationStandings(corporationId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterStandingsResponse> response = api.getCorporationStandings(corporationId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -364,7 +364,7 @@ public class CorporationApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CorporationStarbasesResponseInner> response = api.getCorporationStarbases(corporationId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CorporationStarbasesResponse> response = api.getCorporationStarbases(corporationId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -402,7 +402,7 @@ public class CorporationApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CorporationStructuresResponseInner> response = api.getCorporationStructures(corporationId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CorporationStructuresResponse> response = api.getCorporationStructures(corporationId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -419,7 +419,7 @@ public class CorporationApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CorporationTitlesResponseInner> response = api.getCorporationTitles(corporationId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<CorporationTitlesResponse> response = api.getCorporationTitles(corporationId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 

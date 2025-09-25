@@ -26,7 +26,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 import net.troja.eve.esi.model.Error;
-import net.troja.eve.esi.model.InsurancePricesResponseInner;
+import net.troja.eve.esi.model.InsurancePricesResponse;
 import java.time.LocalDate;
 
 import java.lang.reflect.Type;
@@ -205,7 +205,7 @@ public class InsuranceApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;InsurancePricesResponseInner&gt;
+     * @return List&lt;InsurancePricesResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -232,12 +232,11 @@ public class InsuranceApi {
      *                        </tr>
      *                        </table>
      */
-    public List<InsurancePricesResponseInner> getInsurancePrices(
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        ApiResponse<List<InsurancePricesResponseInner>> localVarResp = getInsurancePricesWithHttpInfo(
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
+    public List<InsurancePricesResponse> getInsurancePrices(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        ApiResponse<List<InsurancePricesResponse>> localVarResp = getInsurancePricesWithHttpInfo(xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -256,7 +255,7 @@ public class InsuranceApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;InsurancePricesResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;InsurancePricesResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -283,13 +282,13 @@ public class InsuranceApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<InsurancePricesResponseInner>> getInsurancePricesWithHttpInfo(
+    public ApiResponse<List<InsurancePricesResponse>> getInsurancePricesWithHttpInfo(
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getInsurancePricesValidateBeforeCall(xCompatibilityDate, acceptLanguage,
                 ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<InsurancePricesResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<InsurancePricesResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -340,12 +339,12 @@ public class InsuranceApi {
      */
     public okhttp3.Call getInsurancePricesAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<InsurancePricesResponseInner>> _callback)
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<InsurancePricesResponse>> _callback)
             throws ApiException {
 
         okhttp3.Call localVarCall = getInsurancePricesValidateBeforeCall(xCompatibilityDate, acceptLanguage,
                 ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<InsurancePricesResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<InsurancePricesResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

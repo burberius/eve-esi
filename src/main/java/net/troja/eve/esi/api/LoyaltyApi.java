@@ -25,10 +25,10 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
-import net.troja.eve.esi.model.CharacterLoyaltyPointsResponseInner;
+import net.troja.eve.esi.model.CharacterLoyaltyPointsResponse;
 import net.troja.eve.esi.model.Error;
 import java.time.LocalDate;
-import net.troja.eve.esi.model.LoyaltyStoreOffersResponseInner;
+import net.troja.eve.esi.model.LoyaltyStoreOffersResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -219,7 +219,7 @@ public class LoyaltyApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CharacterLoyaltyPointsResponseInner&gt;
+     * @return List&lt;CharacterLoyaltyPointsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -245,11 +245,11 @@ public class LoyaltyApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterLoyaltyPointsResponseInner> getCharacterLoyaltyPoints(
-            @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CharacterLoyaltyPointsResponseInner>> localVarResp = getCharacterLoyaltyPointsWithHttpInfo(
+    public List<CharacterLoyaltyPointsResponse> getCharacterLoyaltyPoints(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        ApiResponse<List<CharacterLoyaltyPointsResponse>> localVarResp = getCharacterLoyaltyPointsWithHttpInfo(
                 characterId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -271,8 +271,7 @@ public class LoyaltyApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return 
-     *         ApiResponse&lt;List&lt;CharacterLoyaltyPointsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CharacterLoyaltyPointsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -298,13 +297,13 @@ public class LoyaltyApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterLoyaltyPointsResponseInner>> getCharacterLoyaltyPointsWithHttpInfo(
+    public ApiResponse<List<CharacterLoyaltyPointsResponse>> getCharacterLoyaltyPointsWithHttpInfo(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = getCharacterLoyaltyPointsValidateBeforeCall(characterId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterLoyaltyPointsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterLoyaltyPointsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -357,11 +356,11 @@ public class LoyaltyApi {
     public okhttp3.Call getCharacterLoyaltyPointsAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CharacterLoyaltyPointsResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CharacterLoyaltyPointsResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCharacterLoyaltyPointsValidateBeforeCall(characterId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterLoyaltyPointsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterLoyaltyPointsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -512,7 +511,7 @@ public class LoyaltyApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;LoyaltyStoreOffersResponseInner&gt;
+     * @return List&lt;LoyaltyStoreOffersResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -538,12 +537,12 @@ public class LoyaltyApi {
      *                        </tr>
      *                        </table>
      */
-    public List<LoyaltyStoreOffersResponseInner> getLoyaltyStoreOffers(@javax.annotation.Nonnull Long corporationId,
+    public List<LoyaltyStoreOffersResponse> getLoyaltyStoreOffers(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<LoyaltyStoreOffersResponseInner>> localVarResp = getLoyaltyStoreOffersWithHttpInfo(
-                corporationId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<List<LoyaltyStoreOffersResponse>> localVarResp = getLoyaltyStoreOffersWithHttpInfo(corporationId,
+                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -564,7 +563,7 @@ public class LoyaltyApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;LoyaltyStoreOffersResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;LoyaltyStoreOffersResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -590,13 +589,13 @@ public class LoyaltyApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<LoyaltyStoreOffersResponseInner>> getLoyaltyStoreOffersWithHttpInfo(
+    public ApiResponse<List<LoyaltyStoreOffersResponse>> getLoyaltyStoreOffersWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = getLoyaltyStoreOffersValidateBeforeCall(corporationId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<LoyaltyStoreOffersResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<LoyaltyStoreOffersResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -650,11 +649,11 @@ public class LoyaltyApi {
     public okhttp3.Call getLoyaltyStoreOffersAsync(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<LoyaltyStoreOffersResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<LoyaltyStoreOffersResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLoyaltyStoreOffersValidateBeforeCall(corporationId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<LoyaltyStoreOffersResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<LoyaltyStoreOffersResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

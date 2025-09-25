@@ -14,14 +14,14 @@
 package net.troja.eve.esi.api;
 
 import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.model.CharacterIndustryJobsResponseInner;
-import net.troja.eve.esi.model.CharacterMiningResponseInner;
-import net.troja.eve.esi.model.CorporationIndustryJobsResponseInner;
-import net.troja.eve.esi.model.CorporationMiningExtractionsResponseInner;
-import net.troja.eve.esi.model.CorporationMiningObserverResponseInner;
-import net.troja.eve.esi.model.CorporationMiningObserversResponseInner;
-import net.troja.eve.esi.model.IndustryFacilitiesResponseInner;
-import net.troja.eve.esi.model.IndustrySystemsResponseInner;
+import net.troja.eve.esi.model.CharacterIndustryJobsResponse;
+import net.troja.eve.esi.model.CharacterMiningResponse;
+import net.troja.eve.esi.model.CorporationIndustryJobsResponse;
+import net.troja.eve.esi.model.CorporationMiningExtractionsResponse;
+import net.troja.eve.esi.model.CorporationMiningObserverResponse;
+import net.troja.eve.esi.model.CorporationMiningObserversResponse;
+import net.troja.eve.esi.model.IndustryFacilitiesResponse;
+import net.troja.eve.esi.model.IndustrySystemsResponse;
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -57,7 +57,7 @@ public class IndustryApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterIndustryJobsResponseInner> response = api.getCharacterIndustryJobs(characterId, CorporationApi.COMPATIBILITY_DATE, includeCompleted, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterIndustryJobsResponse> response = api.getCharacterIndustryJobs(characterId, CorporationApi.COMPATIBILITY_DATE, includeCompleted, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotNull();
     }
 
@@ -75,7 +75,7 @@ public class IndustryApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterMiningResponseInner> response = api.getCharacterMining(characterId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterMiningResponse> response = api.getCharacterMining(characterId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -94,7 +94,7 @@ public class IndustryApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CorporationIndustryJobsResponseInner> response = api.getCorporationIndustryJobs(corporationId, CorporationApi.COMPATIBILITY_DATE, includeCompleted, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CorporationIndustryJobsResponse> response = api.getCorporationIndustryJobs(corporationId, CorporationApi.COMPATIBILITY_DATE, includeCompleted, page, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -112,7 +112,7 @@ public class IndustryApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CorporationMiningExtractionsResponseInner> response = api.getCorporationMiningExtractions(corporationId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CorporationMiningExtractionsResponse> response = api.getCorporationMiningExtractions(corporationId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -130,7 +130,7 @@ public class IndustryApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CorporationMiningObserversResponseInner> response = api.getCorporationMiningObservers(corporationId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CorporationMiningObserversResponse> response = api.getCorporationMiningObservers(corporationId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -150,7 +150,7 @@ public class IndustryApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CorporationMiningObserverResponseInner> response = api.getCorporationMiningObserver(corporationId, observerId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CorporationMiningObserverResponse> response = api.getCorporationMiningObserver(corporationId, observerId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -166,7 +166,7 @@ public class IndustryApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<IndustryFacilitiesResponseInner> response = api.getIndustryFacilities(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<IndustryFacilitiesResponse> response = api.getIndustryFacilities(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
         assertThat(response.get(0).getFacilityId()).isGreaterThan(0);
     }
@@ -183,7 +183,7 @@ public class IndustryApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<IndustrySystemsResponseInner> response = api.getIndustrySystems(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<IndustrySystemsResponse> response = api.getIndustrySystems(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
         assertThat(response.get(0).getCostIndices()).isNotEmpty();
     }

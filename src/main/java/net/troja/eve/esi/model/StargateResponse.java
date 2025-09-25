@@ -20,7 +20,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import net.troja.eve.esi.model.CharacterAssetsLocationsPostInnerPosition;
+import net.troja.eve.esi.model.CharacterAssetsLocationsPostPosition;
 import net.troja.eve.esi.model.StargateResponseDestination;
 import java.io.Serializable;
 
@@ -67,7 +67,7 @@ public class StargateResponse implements Serializable {
     public static final String SERIALIZED_NAME_POSITION = "position";
     @SerializedName(SERIALIZED_NAME_POSITION)
     @javax.annotation.Nonnull
-    private CharacterAssetsLocationsPostInnerPosition position;
+    private CharacterAssetsLocationsPostPosition position;
 
     public static final String SERIALIZED_NAME_STARGATE_ID = "stargate_id";
     @SerializedName(SERIALIZED_NAME_STARGATE_ID)
@@ -125,7 +125,7 @@ public class StargateResponse implements Serializable {
         this.name = name;
     }
 
-    public StargateResponse position(@javax.annotation.Nonnull CharacterAssetsLocationsPostInnerPosition position) {
+    public StargateResponse position(@javax.annotation.Nonnull CharacterAssetsLocationsPostPosition position) {
         this.position = position;
         return this;
     }
@@ -136,11 +136,11 @@ public class StargateResponse implements Serializable {
      * @return position
      */
     @javax.annotation.Nonnull
-    public CharacterAssetsLocationsPostInnerPosition getPosition() {
+    public CharacterAssetsLocationsPostPosition getPosition() {
         return position;
     }
 
-    public void setPosition(@javax.annotation.Nonnull CharacterAssetsLocationsPostInnerPosition position) {
+    public void setPosition(@javax.annotation.Nonnull CharacterAssetsLocationsPostPosition position) {
         this.position = position;
     }
 
@@ -313,7 +313,7 @@ public class StargateResponse implements Serializable {
                     jsonObj.get("name").toString()));
         }
         // validate the required field `position`
-        CharacterAssetsLocationsPostInnerPosition.validateJsonElement(jsonObj.get("position"));
+        CharacterAssetsLocationsPostPosition.validateJsonElement(jsonObj.get("position"));
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

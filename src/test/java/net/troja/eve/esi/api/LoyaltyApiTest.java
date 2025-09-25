@@ -14,8 +14,8 @@
 package net.troja.eve.esi.api;
 
 import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.model.CharacterLoyaltyPointsResponseInner;
-import net.troja.eve.esi.model.LoyaltyStoreOffersResponseInner;
+import net.troja.eve.esi.model.CharacterLoyaltyPointsResponse;
+import net.troja.eve.esi.model.LoyaltyStoreOffersResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -48,7 +48,7 @@ public class LoyaltyApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterLoyaltyPointsResponseInner> response = api.getCharacterLoyaltyPoints(characterId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterLoyaltyPointsResponse> response = api.getCharacterLoyaltyPoints(characterId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
         assertThat(response.get(0).getLoyaltyPoints()).isGreaterThan(0);
     }
@@ -66,7 +66,7 @@ public class LoyaltyApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<LoyaltyStoreOffersResponseInner> response = api.getLoyaltyStoreOffers(corporationId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<LoyaltyStoreOffersResponse> response = api.getLoyaltyStoreOffers(corporationId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
         assertThat(response.get(0).getLpCost()).isGreaterThan(0);
     }

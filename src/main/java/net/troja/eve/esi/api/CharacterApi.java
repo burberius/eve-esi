@@ -25,19 +25,19 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
-import net.troja.eve.esi.model.CharacterAffiliationResponseInner;
-import net.troja.eve.esi.model.CharacterBlueprintsResponseInner;
-import net.troja.eve.esi.model.CharacterCorporationHistoryResponseInner;
+import net.troja.eve.esi.model.CharacterAffiliationResponse;
+import net.troja.eve.esi.model.CharacterBlueprintsResponse;
+import net.troja.eve.esi.model.CharacterCorporationHistoryResponse;
 import net.troja.eve.esi.model.CharacterFatigueResponse;
-import net.troja.eve.esi.model.CharacterMedalsResponseInner;
-import net.troja.eve.esi.model.CharacterNotificationsContactsResponseInner;
-import net.troja.eve.esi.model.CharacterNotificationsResponseInner;
+import net.troja.eve.esi.model.CharacterMedalsResponse;
+import net.troja.eve.esi.model.CharacterNotificationsContactsResponse;
+import net.troja.eve.esi.model.CharacterNotificationsResponse;
 import net.troja.eve.esi.model.CharacterPortraitResponse;
-import net.troja.eve.esi.model.CharacterResearchAgentsResponseInner;
+import net.troja.eve.esi.model.CharacterResearchAgentsResponse;
 import net.troja.eve.esi.model.CharacterResponse;
 import net.troja.eve.esi.model.CharacterRolesResponse;
-import net.troja.eve.esi.model.CharacterStandingsResponseInner;
-import net.troja.eve.esi.model.CharacterTitlesResponseInner;
+import net.troja.eve.esi.model.CharacterStandingsResponse;
+import net.troja.eve.esi.model.CharacterTitlesResponse;
 import net.troja.eve.esi.model.Error;
 import java.time.LocalDate;
 import java.util.Set;
@@ -530,7 +530,7 @@ public class CharacterApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CharacterBlueprintsResponseInner&gt;
+     * @return List&lt;CharacterBlueprintsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -558,12 +558,12 @@ public class CharacterApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterBlueprintsResponseInner> getCharacterBlueprints(@javax.annotation.Nonnull Long characterId,
+    public List<CharacterBlueprintsResponse> getCharacterBlueprints(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CharacterBlueprintsResponseInner>> localVarResp = getCharacterBlueprintsWithHttpInfo(
-                characterId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<List<CharacterBlueprintsResponse>> localVarResp = getCharacterBlueprintsWithHttpInfo(characterId,
+                xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -585,7 +585,7 @@ public class CharacterApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CharacterBlueprintsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CharacterBlueprintsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -613,14 +613,14 @@ public class CharacterApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterBlueprintsResponseInner>> getCharacterBlueprintsWithHttpInfo(
+    public ApiResponse<List<CharacterBlueprintsResponse>> getCharacterBlueprintsWithHttpInfo(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getCharacterBlueprintsValidateBeforeCall(characterId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterBlueprintsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterBlueprintsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -677,12 +677,12 @@ public class CharacterApi {
     public okhttp3.Call getCharacterBlueprintsAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CharacterBlueprintsResponseInner>> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CharacterBlueprintsResponse>> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = getCharacterBlueprintsValidateBeforeCall(characterId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterBlueprintsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterBlueprintsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -833,7 +833,7 @@ public class CharacterApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CharacterCorporationHistoryResponseInner&gt;
+     * @return List&lt;CharacterCorporationHistoryResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -859,11 +859,11 @@ public class CharacterApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterCorporationHistoryResponseInner> getCharacterCorporationHistory(
+    public List<CharacterCorporationHistoryResponse> getCharacterCorporationHistory(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CharacterCorporationHistoryResponseInner>> localVarResp = getCharacterCorporationHistoryWithHttpInfo(
+        ApiResponse<List<CharacterCorporationHistoryResponse>> localVarResp = getCharacterCorporationHistoryWithHttpInfo(
                 characterId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -886,8 +886,7 @@ public class CharacterApi {
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
      * @return 
-     *         ApiResponse&lt;List&lt;CharacterCorporationHistoryResponseInner&gt
-     *         ;&gt;
+     *         ApiResponse&lt;List&lt;CharacterCorporationHistoryResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -913,13 +912,13 @@ public class CharacterApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterCorporationHistoryResponseInner>> getCharacterCorporationHistoryWithHttpInfo(
+    public ApiResponse<List<CharacterCorporationHistoryResponse>> getCharacterCorporationHistoryWithHttpInfo(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = getCharacterCorporationHistoryValidateBeforeCall(characterId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterCorporationHistoryResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterCorporationHistoryResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -972,11 +971,11 @@ public class CharacterApi {
     public okhttp3.Call getCharacterCorporationHistoryAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CharacterCorporationHistoryResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CharacterCorporationHistoryResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCharacterCorporationHistoryValidateBeforeCall(characterId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterCorporationHistoryResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterCorporationHistoryResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1416,7 +1415,7 @@ public class CharacterApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CharacterMedalsResponseInner&gt;
+     * @return List&lt;CharacterMedalsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1442,11 +1441,11 @@ public class CharacterApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterMedalsResponseInner> getCharacterMedals(@javax.annotation.Nonnull Long characterId,
+    public List<CharacterMedalsResponse> getCharacterMedals(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<CharacterMedalsResponseInner>> localVarResp = getCharacterMedalsWithHttpInfo(characterId,
+        ApiResponse<List<CharacterMedalsResponse>> localVarResp = getCharacterMedalsWithHttpInfo(characterId,
                 xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -1467,7 +1466,7 @@ public class CharacterApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CharacterMedalsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CharacterMedalsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1493,13 +1492,13 @@ public class CharacterApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterMedalsResponseInner>> getCharacterMedalsWithHttpInfo(
+    public ApiResponse<List<CharacterMedalsResponse>> getCharacterMedalsWithHttpInfo(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = getCharacterMedalsValidateBeforeCall(characterId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterMedalsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterMedalsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1551,11 +1550,11 @@ public class CharacterApi {
     public okhttp3.Call getCharacterMedalsAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CharacterMedalsResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CharacterMedalsResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCharacterMedalsValidateBeforeCall(characterId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterMedalsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterMedalsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1705,7 +1704,7 @@ public class CharacterApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CharacterNotificationsResponseInner&gt;
+     * @return List&lt;CharacterNotificationsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1731,11 +1730,11 @@ public class CharacterApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterNotificationsResponseInner> getCharacterNotifications(
-            @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CharacterNotificationsResponseInner>> localVarResp = getCharacterNotificationsWithHttpInfo(
+    public List<CharacterNotificationsResponse> getCharacterNotifications(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        ApiResponse<List<CharacterNotificationsResponse>> localVarResp = getCharacterNotificationsWithHttpInfo(
                 characterId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -1756,8 +1755,7 @@ public class CharacterApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return 
-     *         ApiResponse&lt;List&lt;CharacterNotificationsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CharacterNotificationsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1783,13 +1781,13 @@ public class CharacterApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterNotificationsResponseInner>> getCharacterNotificationsWithHttpInfo(
+    public ApiResponse<List<CharacterNotificationsResponse>> getCharacterNotificationsWithHttpInfo(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = getCharacterNotificationsValidateBeforeCall(characterId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterNotificationsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterNotificationsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1842,11 +1840,11 @@ public class CharacterApi {
     public okhttp3.Call getCharacterNotificationsAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CharacterNotificationsResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CharacterNotificationsResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCharacterNotificationsValidateBeforeCall(characterId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterNotificationsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterNotificationsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1997,7 +1995,7 @@ public class CharacterApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CharacterNotificationsContactsResponseInner&gt;
+     * @return List&lt;CharacterNotificationsContactsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2023,11 +2021,11 @@ public class CharacterApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterNotificationsContactsResponseInner> getCharacterNotificationsContacts(
+    public List<CharacterNotificationsContactsResponse> getCharacterNotificationsContacts(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CharacterNotificationsContactsResponseInner>> localVarResp = getCharacterNotificationsContactsWithHttpInfo(
+        ApiResponse<List<CharacterNotificationsContactsResponse>> localVarResp = getCharacterNotificationsContactsWithHttpInfo(
                 characterId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -2050,8 +2048,8 @@ public class CharacterApi {
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
      * @return 
-     *         ApiResponse&lt;List&lt;CharacterNotificationsContactsResponseInner
-     *         &gt;&gt;
+     *         ApiResponse&lt;List&lt;CharacterNotificationsContactsResponse&gt;&
+     *         gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2077,13 +2075,13 @@ public class CharacterApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterNotificationsContactsResponseInner>> getCharacterNotificationsContactsWithHttpInfo(
+    public ApiResponse<List<CharacterNotificationsContactsResponse>> getCharacterNotificationsContactsWithHttpInfo(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = getCharacterNotificationsContactsValidateBeforeCall(characterId,
                 xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterNotificationsContactsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterNotificationsContactsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2136,11 +2134,11 @@ public class CharacterApi {
     public okhttp3.Call getCharacterNotificationsContactsAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CharacterNotificationsContactsResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CharacterNotificationsContactsResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCharacterNotificationsContactsValidateBeforeCall(characterId,
                 xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterNotificationsContactsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterNotificationsContactsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2585,7 +2583,7 @@ public class CharacterApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CharacterResearchAgentsResponseInner&gt;
+     * @return List&lt;CharacterResearchAgentsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2611,11 +2609,11 @@ public class CharacterApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterResearchAgentsResponseInner> getCharacterResearchAgents(
-            @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CharacterResearchAgentsResponseInner>> localVarResp = getCharacterResearchAgentsWithHttpInfo(
+    public List<CharacterResearchAgentsResponse> getCharacterResearchAgents(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        ApiResponse<List<CharacterResearchAgentsResponse>> localVarResp = getCharacterResearchAgentsWithHttpInfo(
                 characterId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -2639,9 +2637,7 @@ public class CharacterApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return 
-     *         ApiResponse&lt;List&lt;CharacterResearchAgentsResponseInner&gt;&gt
-     *         ;
+     * @return ApiResponse&lt;List&lt;CharacterResearchAgentsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2667,13 +2663,13 @@ public class CharacterApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterResearchAgentsResponseInner>> getCharacterResearchAgentsWithHttpInfo(
+    public ApiResponse<List<CharacterResearchAgentsResponse>> getCharacterResearchAgentsWithHttpInfo(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = getCharacterResearchAgentsValidateBeforeCall(characterId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterResearchAgentsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterResearchAgentsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2728,11 +2724,11 @@ public class CharacterApi {
     public okhttp3.Call getCharacterResearchAgentsAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CharacterResearchAgentsResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CharacterResearchAgentsResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCharacterResearchAgentsValidateBeforeCall(characterId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterResearchAgentsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterResearchAgentsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3173,7 +3169,7 @@ public class CharacterApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CharacterStandingsResponseInner&gt;
+     * @return List&lt;CharacterStandingsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -3199,12 +3195,12 @@ public class CharacterApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterStandingsResponseInner> getCharacterStandings(@javax.annotation.Nonnull Long characterId,
+    public List<CharacterStandingsResponse> getCharacterStandings(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<CharacterStandingsResponseInner>> localVarResp = getCharacterStandingsWithHttpInfo(
-                characterId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<List<CharacterStandingsResponse>> localVarResp = getCharacterStandingsWithHttpInfo(characterId,
+                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -3225,7 +3221,7 @@ public class CharacterApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CharacterStandingsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CharacterStandingsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -3251,13 +3247,13 @@ public class CharacterApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterStandingsResponseInner>> getCharacterStandingsWithHttpInfo(
+    public ApiResponse<List<CharacterStandingsResponse>> getCharacterStandingsWithHttpInfo(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = getCharacterStandingsValidateBeforeCall(characterId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterStandingsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterStandingsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3310,11 +3306,11 @@ public class CharacterApi {
     public okhttp3.Call getCharacterStandingsAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CharacterStandingsResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CharacterStandingsResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCharacterStandingsValidateBeforeCall(characterId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterStandingsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterStandingsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3463,7 +3459,7 @@ public class CharacterApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CharacterTitlesResponseInner&gt;
+     * @return List&lt;CharacterTitlesResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -3489,11 +3485,11 @@ public class CharacterApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterTitlesResponseInner> getCharacterTitles(@javax.annotation.Nonnull Long characterId,
+    public List<CharacterTitlesResponse> getCharacterTitles(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<CharacterTitlesResponseInner>> localVarResp = getCharacterTitlesWithHttpInfo(characterId,
+        ApiResponse<List<CharacterTitlesResponse>> localVarResp = getCharacterTitlesWithHttpInfo(characterId,
                 xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -3514,7 +3510,7 @@ public class CharacterApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CharacterTitlesResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CharacterTitlesResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -3540,13 +3536,13 @@ public class CharacterApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterTitlesResponseInner>> getCharacterTitlesWithHttpInfo(
+    public ApiResponse<List<CharacterTitlesResponse>> getCharacterTitlesWithHttpInfo(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = getCharacterTitlesValidateBeforeCall(characterId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterTitlesResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterTitlesResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3599,11 +3595,11 @@ public class CharacterApi {
     public okhttp3.Call getCharacterTitlesAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CharacterTitlesResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CharacterTitlesResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCharacterTitlesValidateBeforeCall(characterId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterTitlesResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterTitlesResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4058,7 +4054,7 @@ public class CharacterApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CharacterAffiliationResponseInner&gt;
+     * @return List&lt;CharacterAffiliationResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -4084,11 +4080,11 @@ public class CharacterApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterAffiliationResponseInner> postCharactersAffiliation(
+    public List<CharacterAffiliationResponse> postCharactersAffiliation(
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CharacterAffiliationResponseInner>> localVarResp = postCharactersAffiliationWithHttpInfo(
+        ApiResponse<List<CharacterAffiliationResponse>> localVarResp = postCharactersAffiliationWithHttpInfo(
                 xCompatibilityDate, requestBody, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -4110,7 +4106,7 @@ public class CharacterApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CharacterAffiliationResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CharacterAffiliationResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -4136,13 +4132,13 @@ public class CharacterApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterAffiliationResponseInner>> postCharactersAffiliationWithHttpInfo(
+    public ApiResponse<List<CharacterAffiliationResponse>> postCharactersAffiliationWithHttpInfo(
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = postCharactersAffiliationValidateBeforeCall(xCompatibilityDate, requestBody,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterAffiliationResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterAffiliationResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4195,11 +4191,11 @@ public class CharacterApi {
     public okhttp3.Call postCharactersAffiliationAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nonnull Set<Long> requestBody, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CharacterAffiliationResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CharacterAffiliationResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postCharactersAffiliationValidateBeforeCall(xCompatibilityDate, requestBody,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterAffiliationResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterAffiliationResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -26,8 +26,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 import net.troja.eve.esi.model.CharacterPlanetResponse;
-import net.troja.eve.esi.model.CharacterPlanetsResponseInner;
-import net.troja.eve.esi.model.CorporationCustomsOfficesResponseInner;
+import net.troja.eve.esi.model.CharacterPlanetsResponse;
+import net.troja.eve.esi.model.CorporationCustomsOfficesResponse;
 import net.troja.eve.esi.model.Error;
 import java.time.LocalDate;
 import net.troja.eve.esi.model.SchematicResponse;
@@ -535,7 +535,7 @@ public class PlanetaryInteractionApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CharacterPlanetsResponseInner&gt;
+     * @return List&lt;CharacterPlanetsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -561,11 +561,11 @@ public class PlanetaryInteractionApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterPlanetsResponseInner> getCharacterPlanets(@javax.annotation.Nonnull Long characterId,
+    public List<CharacterPlanetsResponse> getCharacterPlanets(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<CharacterPlanetsResponseInner>> localVarResp = getCharacterPlanetsWithHttpInfo(characterId,
+        ApiResponse<List<CharacterPlanetsResponse>> localVarResp = getCharacterPlanetsWithHttpInfo(characterId,
                 xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -587,7 +587,7 @@ public class PlanetaryInteractionApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CharacterPlanetsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CharacterPlanetsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -613,13 +613,13 @@ public class PlanetaryInteractionApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterPlanetsResponseInner>> getCharacterPlanetsWithHttpInfo(
+    public ApiResponse<List<CharacterPlanetsResponse>> getCharacterPlanetsWithHttpInfo(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = getCharacterPlanetsValidateBeforeCall(characterId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterPlanetsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterPlanetsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -672,11 +672,11 @@ public class PlanetaryInteractionApi {
     public okhttp3.Call getCharacterPlanetsAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CharacterPlanetsResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CharacterPlanetsResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCharacterPlanetsValidateBeforeCall(characterId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterPlanetsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterPlanetsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -837,7 +837,7 @@ public class PlanetaryInteractionApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CorporationCustomsOfficesResponseInner&gt;
+     * @return List&lt;CorporationCustomsOfficesResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -865,12 +865,12 @@ public class PlanetaryInteractionApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CorporationCustomsOfficesResponseInner> getCorporationCustomsOffices(
+    public List<CorporationCustomsOfficesResponse> getCorporationCustomsOffices(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<CorporationCustomsOfficesResponseInner>> localVarResp = getCorporationCustomsOfficesWithHttpInfo(
+        ApiResponse<List<CorporationCustomsOfficesResponse>> localVarResp = getCorporationCustomsOfficesWithHttpInfo(
                 corporationId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -894,9 +894,7 @@ public class PlanetaryInteractionApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return 
-     *         ApiResponse&lt;List&lt;CorporationCustomsOfficesResponseInner&gt;&
-     *         gt;
+     * @return ApiResponse&lt;List&lt;CorporationCustomsOfficesResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -924,14 +922,14 @@ public class PlanetaryInteractionApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CorporationCustomsOfficesResponseInner>> getCorporationCustomsOfficesWithHttpInfo(
+    public ApiResponse<List<CorporationCustomsOfficesResponse>> getCorporationCustomsOfficesWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getCorporationCustomsOfficesValidateBeforeCall(corporationId, xCompatibilityDate,
                 page, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CorporationCustomsOfficesResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationCustomsOfficesResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -989,11 +987,11 @@ public class PlanetaryInteractionApi {
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CorporationCustomsOfficesResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CorporationCustomsOfficesResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCorporationCustomsOfficesValidateBeforeCall(corporationId, xCompatibilityDate,
                 page, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CorporationCustomsOfficesResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationCustomsOfficesResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

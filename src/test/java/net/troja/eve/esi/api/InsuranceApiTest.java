@@ -14,7 +14,7 @@
 package net.troja.eve.esi.api;
 
 import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.model.InsurancePricesResponseInner;
+import net.troja.eve.esi.model.InsurancePricesResponse;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -48,7 +48,7 @@ public class InsuranceApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<InsurancePricesResponseInner> response = api.getInsurancePrices(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<InsurancePricesResponse> response = api.getInsurancePrices(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
         assertThat(response.get(0).getLevels()).isNotEmpty();
         assertThat(response.get(0).getTypeId()).isGreaterThan(0);

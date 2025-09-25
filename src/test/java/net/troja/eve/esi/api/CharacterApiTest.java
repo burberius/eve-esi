@@ -14,19 +14,19 @@
 package net.troja.eve.esi.api;
 
 import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.model.CharacterAffiliationResponseInner;
-import net.troja.eve.esi.model.CharacterBlueprintsResponseInner;
-import net.troja.eve.esi.model.CharacterCorporationHistoryResponseInner;
+import net.troja.eve.esi.model.CharacterAffiliationResponse;
+import net.troja.eve.esi.model.CharacterBlueprintsResponse;
+import net.troja.eve.esi.model.CharacterCorporationHistoryResponse;
 import net.troja.eve.esi.model.CharacterFatigueResponse;
-import net.troja.eve.esi.model.CharacterMedalsResponseInner;
-import net.troja.eve.esi.model.CharacterNotificationsContactsResponseInner;
-import net.troja.eve.esi.model.CharacterNotificationsResponseInner;
+import net.troja.eve.esi.model.CharacterMedalsResponse;
+import net.troja.eve.esi.model.CharacterNotificationsContactsResponse;
+import net.troja.eve.esi.model.CharacterNotificationsResponse;
 import net.troja.eve.esi.model.CharacterPortraitResponse;
-import net.troja.eve.esi.model.CharacterResearchAgentsResponseInner;
+import net.troja.eve.esi.model.CharacterResearchAgentsResponse;
 import net.troja.eve.esi.model.CharacterResponse;
 import net.troja.eve.esi.model.CharacterRolesResponse;
-import net.troja.eve.esi.model.CharacterStandingsResponseInner;
-import net.troja.eve.esi.model.CharacterTitlesResponseInner;
+import net.troja.eve.esi.model.CharacterStandingsResponse;
+import net.troja.eve.esi.model.CharacterTitlesResponse;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -80,7 +80,7 @@ public class CharacterApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterResearchAgentsResponseInner> response = api.getCharacterResearchAgents(characterId, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterResearchAgentsResponse> response = api.getCharacterResearchAgents(characterId, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotNull().isNotEmpty();
     }
 
@@ -97,7 +97,7 @@ public class CharacterApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterBlueprintsResponseInner> response = api.getCharacterBlueprints(characterId, CharacterApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterBlueprintsResponse> response = api.getCharacterBlueprints(characterId, CharacterApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotNull().isNotEmpty();
     }
 
@@ -113,7 +113,7 @@ public class CharacterApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterCorporationHistoryResponseInner> response = api.getCharacterCorporationHistory(characterId, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterCorporationHistoryResponse> response = api.getCharacterCorporationHistory(characterId, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotNull().isNotEmpty();
     }
 
@@ -145,7 +145,7 @@ public class CharacterApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterMedalsResponseInner> response = api.getCharacterMedals(characterId, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterMedalsResponse> response = api.getCharacterMedals(characterId, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotNull().isNotEmpty();
     }
 
@@ -161,7 +161,7 @@ public class CharacterApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterNotificationsResponseInner> response = api.getCharacterNotifications(characterId, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterNotificationsResponse> response = api.getCharacterNotifications(characterId, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotNull().isNotEmpty();
     }
 
@@ -177,7 +177,7 @@ public class CharacterApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterNotificationsContactsResponseInner> response = api.getCharacterNotificationsContacts(characterId, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterNotificationsContactsResponse> response = api.getCharacterNotificationsContacts(characterId, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotNull();
     }
 
@@ -228,7 +228,7 @@ public class CharacterApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterStandingsResponseInner> response = api.getCharacterStandings(characterId, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterStandingsResponse> response = api.getCharacterStandings(characterId, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotNull().isNotEmpty();
     }
 
@@ -244,7 +244,7 @@ public class CharacterApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterTitlesResponseInner> response = api.getCharacterTitles(characterId, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterTitlesResponse> response = api.getCharacterTitles(characterId, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotNull();
     }
 
@@ -280,7 +280,7 @@ public class CharacterApiTest extends GeneralApiTest {
         String xTenant = null;
         Set<Long> requestBody = new HashSet<>();
         requestBody.add(characterId);
-        List<CharacterAffiliationResponseInner> response = api.postCharactersAffiliation(CharacterApi.COMPATIBILITY_DATE, requestBody, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterAffiliationResponse> response = api.postCharactersAffiliation(CharacterApi.COMPATIBILITY_DATE, requestBody, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotNull().isNotEmpty();
     }
 

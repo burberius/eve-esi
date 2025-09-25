@@ -15,7 +15,7 @@ package net.troja.eve.esi.api;
 
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.CharacterFittingsPost;
-import net.troja.eve.esi.model.CharacterFittingsResponseInner;
+import net.troja.eve.esi.model.CharacterFittingsResponse;
 import net.troja.eve.esi.model.PostCharacterFittingsRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -66,7 +66,7 @@ public class FittingsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterFittingsResponseInner> response = api.getCharacterFittings(characterId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterFittingsResponse> response = api.getCharacterFittings(characterId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
         assertThat(response.get(0).getItems()).isNotEmpty();
     }

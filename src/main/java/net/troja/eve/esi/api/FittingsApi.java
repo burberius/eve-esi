@@ -26,7 +26,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 import net.troja.eve.esi.model.CharacterFittingsPost;
-import net.troja.eve.esi.model.CharacterFittingsResponseInner;
+import net.troja.eve.esi.model.CharacterFittingsResponse;
 import net.troja.eve.esi.model.Error;
 import java.time.LocalDate;
 import net.troja.eve.esi.model.PostCharacterFittingsRequest;
@@ -517,7 +517,7 @@ public class FittingsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CharacterFittingsResponseInner&gt;
+     * @return List&lt;CharacterFittingsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -543,11 +543,11 @@ public class FittingsApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterFittingsResponseInner> getCharacterFittings(@javax.annotation.Nonnull Long characterId,
+    public List<CharacterFittingsResponse> getCharacterFittings(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<CharacterFittingsResponseInner>> localVarResp = getCharacterFittingsWithHttpInfo(characterId,
+        ApiResponse<List<CharacterFittingsResponse>> localVarResp = getCharacterFittingsWithHttpInfo(characterId,
                 xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -568,7 +568,7 @@ public class FittingsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CharacterFittingsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CharacterFittingsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -594,13 +594,13 @@ public class FittingsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterFittingsResponseInner>> getCharacterFittingsWithHttpInfo(
+    public ApiResponse<List<CharacterFittingsResponse>> getCharacterFittingsWithHttpInfo(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = getCharacterFittingsValidateBeforeCall(characterId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterFittingsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterFittingsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -652,11 +652,11 @@ public class FittingsApi {
     public okhttp3.Call getCharacterFittingsAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CharacterFittingsResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CharacterFittingsResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCharacterFittingsValidateBeforeCall(characterId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterFittingsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterFittingsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

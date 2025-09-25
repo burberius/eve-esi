@@ -14,24 +14,24 @@
 package net.troja.eve.esi.api;
 
 import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.model.AncestriesResponseInner;
+import net.troja.eve.esi.model.AncestriesResponse;
 import net.troja.eve.esi.model.AsteroidBeltsResponse;
-import net.troja.eve.esi.model.BloodlinesResponseInner;
+import net.troja.eve.esi.model.BloodlinesResponse;
 import net.troja.eve.esi.model.CategoryResponse;
 import net.troja.eve.esi.model.ConstellationResponse;
-import net.troja.eve.esi.model.FactionsResponseInner;
+import net.troja.eve.esi.model.FactionsResponse;
 import net.troja.eve.esi.model.GraphicResponse;
 import net.troja.eve.esi.model.GroupResponse;
 import net.troja.eve.esi.model.MoonResponse;
-import net.troja.eve.esi.model.NamesResponseInner;
+import net.troja.eve.esi.model.NamesResponse;
 import net.troja.eve.esi.model.PlanetResponse;
-import net.troja.eve.esi.model.RacesResponseInner;
+import net.troja.eve.esi.model.RacesResponse;
 import net.troja.eve.esi.model.RegionResponse;
 import net.troja.eve.esi.model.StarResponse;
 import net.troja.eve.esi.model.StargateResponse;
 import net.troja.eve.esi.model.StationResponse;
-import net.troja.eve.esi.model.SystemJumpsResponseInner;
-import net.troja.eve.esi.model.SystemKillsResponseInner;
+import net.troja.eve.esi.model.SystemJumpsResponse;
+import net.troja.eve.esi.model.SystemKillsResponse;
 import net.troja.eve.esi.model.SystemResponse;
 import net.troja.eve.esi.model.TypeResponse;
 import net.troja.eve.esi.model.UniverseIdsPost;
@@ -70,9 +70,9 @@ public class UniverseApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<AncestriesResponseInner> response = api.getAncestries(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<AncestriesResponse> response = api.getAncestries(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).hasSize(43);
-        final AncestriesResponseInner ancestriesResponse = response.get(0);
+        final AncestriesResponse ancestriesResponse = response.get(0);
         assertThat(ancestriesResponse.getBloodlineId()).isGreaterThan(0);
     }
 
@@ -107,9 +107,9 @@ public class UniverseApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<BloodlinesResponseInner> response = api.getBloodlines(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<BloodlinesResponse> response = api.getBloodlines(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).hasSize(18);
-        final BloodlinesResponseInner bloodlinesResponse = response.get(0);
+        final BloodlinesResponse bloodlinesResponse = response.get(0);
         assertThat(bloodlinesResponse.getBloodlineId()).isGreaterThan(0);
     }
 
@@ -191,9 +191,9 @@ public class UniverseApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<FactionsResponseInner> response = api.getFactions(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<FactionsResponse> response = api.getFactions(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).hasSize(27);
-        final FactionsResponseInner factionsResponse = response.get(0);
+        final FactionsResponse factionsResponse = response.get(0);
         assertThat(factionsResponse.getName()).isEqualTo("Amarr Empire");
     }
 
@@ -311,9 +311,9 @@ public class UniverseApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<RacesResponseInner> response = api.getRaces(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<RacesResponse> response = api.getRaces(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).hasSize(6);
-        final RacesResponseInner racesResponse = response.get(0);
+        final RacesResponse racesResponse = response.get(0);
         assertThat(racesResponse.getName()).isEqualTo("Caldari");
     }
 
@@ -447,7 +447,7 @@ public class UniverseApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<SystemJumpsResponseInner> response = api.getSystemJumps(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<SystemJumpsResponse> response = api.getSystemJumps(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
         assertThat(response.get(0).getSystemId()).isGreaterThan(30000);
     }
@@ -464,7 +464,7 @@ public class UniverseApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<SystemKillsResponseInner> response = api.getSystemKills(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<SystemKillsResponse> response = api.getSystemKills(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
         assertThat(response.get(0).getSystemId()).isGreaterThan(30000);
     }
@@ -582,9 +582,9 @@ public class UniverseApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<NamesResponseInner> response = api.postNames(CorporationApi.COMPATIBILITY_DATE, ids, acceptLanguage, ifNoneMatch, xTenant);
+        List<NamesResponse> response = api.postNames(CorporationApi.COMPATIBILITY_DATE, ids, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).hasSize(1);
-        final NamesResponseInner result = response.get(0);
+        final NamesResponse result = response.get(0);
         assertThat(result.getName()).isEqualTo(CHARACTER_NAME_CHRIBBA);
     }
 

@@ -14,7 +14,7 @@
 package net.troja.eve.esi.api;
 
 import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.model.CharacterKillmailsResponseInner;
+import net.troja.eve.esi.model.CharacterKillmailsResponse;
 
 import java.time.LocalDate;
 import net.troja.eve.esi.model.WarResponse;
@@ -88,7 +88,7 @@ public class WarsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterKillmailsResponseInner> response = api.getWarKillmails(warId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterKillmailsResponse> response = api.getWarKillmails(warId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 

@@ -25,9 +25,9 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
-import net.troja.eve.esi.model.CharacterCalendarEventAttendeesResponseInner;
+import net.troja.eve.esi.model.CharacterCalendarEventAttendeesResponse;
 import net.troja.eve.esi.model.CharacterCalendarEventResponse;
-import net.troja.eve.esi.model.CharacterCalendarResponseInner;
+import net.troja.eve.esi.model.CharacterCalendarResponse;
 import net.troja.eve.esi.model.Error;
 import java.time.LocalDate;
 import net.troja.eve.esi.model.PutCharacterCalendarEventRequest;
@@ -232,7 +232,7 @@ public class CalendarApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CharacterCalendarResponseInner&gt;
+     * @return List&lt;CharacterCalendarResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -258,11 +258,11 @@ public class CalendarApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterCalendarResponseInner> getCharacterCalendar(@javax.annotation.Nonnull Long characterId,
+    public List<CharacterCalendarResponse> getCharacterCalendar(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Long fromEvent,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CharacterCalendarResponseInner>> localVarResp = getCharacterCalendarWithHttpInfo(characterId,
+        ApiResponse<List<CharacterCalendarResponse>> localVarResp = getCharacterCalendarWithHttpInfo(characterId,
                 xCompatibilityDate, fromEvent, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -289,7 +289,7 @@ public class CalendarApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CharacterCalendarResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CharacterCalendarResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -315,14 +315,14 @@ public class CalendarApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterCalendarResponseInner>> getCharacterCalendarWithHttpInfo(
+    public ApiResponse<List<CharacterCalendarResponse>> getCharacterCalendarWithHttpInfo(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Long fromEvent, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getCharacterCalendarValidateBeforeCall(characterId, xCompatibilityDate, fromEvent,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterCalendarResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterCalendarResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -380,12 +380,12 @@ public class CalendarApi {
     public okhttp3.Call getCharacterCalendarAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Long fromEvent,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CharacterCalendarResponseInner>> _callback)
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CharacterCalendarResponse>> _callback)
             throws ApiException {
 
         okhttp3.Call localVarCall = getCharacterCalendarValidateBeforeCall(characterId, xCompatibilityDate, fromEvent,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterCalendarResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterCalendarResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -854,7 +854,7 @@ public class CalendarApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CharacterCalendarEventAttendeesResponseInner&gt;
+     * @return List&lt;CharacterCalendarEventAttendeesResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -880,12 +880,12 @@ public class CalendarApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterCalendarEventAttendeesResponseInner> getCharacterCalendarEventAttendees(
+    public List<CharacterCalendarEventAttendeesResponse> getCharacterCalendarEventAttendees(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull Long eventId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<CharacterCalendarEventAttendeesResponseInner>> localVarResp = getCharacterCalendarEventAttendeesWithHttpInfo(
+        ApiResponse<List<CharacterCalendarEventAttendeesResponse>> localVarResp = getCharacterCalendarEventAttendeesWithHttpInfo(
                 characterId, eventId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -909,8 +909,8 @@ public class CalendarApi {
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
      * @return 
-     *         ApiResponse&lt;List&lt;CharacterCalendarEventAttendeesResponseInner
-     *         &gt;&gt;
+     *         ApiResponse&lt;List&lt;CharacterCalendarEventAttendeesResponse&gt;
+     *         &gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -936,14 +936,14 @@ public class CalendarApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterCalendarEventAttendeesResponseInner>> getCharacterCalendarEventAttendeesWithHttpInfo(
+    public ApiResponse<List<CharacterCalendarEventAttendeesResponse>> getCharacterCalendarEventAttendeesWithHttpInfo(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull Long eventId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getCharacterCalendarEventAttendeesValidateBeforeCall(characterId, eventId,
                 xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterCalendarEventAttendeesResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterCalendarEventAttendeesResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -999,11 +999,11 @@ public class CalendarApi {
             @javax.annotation.Nonnull Long eventId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CharacterCalendarEventAttendeesResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CharacterCalendarEventAttendeesResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCharacterCalendarEventAttendeesValidateBeforeCall(characterId, eventId,
                 xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterCalendarEventAttendeesResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterCalendarEventAttendeesResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.troja.eve.esi.model.PostMailsRequestRecipientsInner;
+import net.troja.eve.esi.model.PostMailsRequestRecipients;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -68,7 +68,7 @@ public class PostMailsRequest implements Serializable {
     public static final String SERIALIZED_NAME_RECIPIENTS = "recipients";
     @SerializedName(SERIALIZED_NAME_RECIPIENTS)
     @javax.annotation.Nonnull
-    private List<PostMailsRequestRecipientsInner> recipients;
+    private List<PostMailsRequestRecipients> recipients;
 
     public static final String SERIALIZED_NAME_SUBJECT = "subject";
     @SerializedName(SERIALIZED_NAME_SUBJECT)
@@ -116,12 +116,12 @@ public class PostMailsRequest implements Serializable {
         this.body = body;
     }
 
-    public PostMailsRequest recipients(@javax.annotation.Nonnull List<PostMailsRequestRecipientsInner> recipients) {
+    public PostMailsRequest recipients(@javax.annotation.Nonnull List<PostMailsRequestRecipients> recipients) {
         this.recipients = recipients;
         return this;
     }
 
-    public PostMailsRequest addRecipientsItem(PostMailsRequestRecipientsInner recipientsItem) {
+    public PostMailsRequest addRecipientsItem(PostMailsRequestRecipients recipientsItem) {
         if (this.recipients == null) {
             this.recipients = new ArrayList<>();
         }
@@ -136,11 +136,11 @@ public class PostMailsRequest implements Serializable {
      * @return recipients
      */
     @javax.annotation.Nonnull
-    public List<PostMailsRequestRecipientsInner> getRecipients() {
+    public List<PostMailsRequestRecipients> getRecipients() {
         return recipients;
     }
 
-    public void setRecipients(@javax.annotation.Nonnull List<PostMailsRequestRecipientsInner> recipients) {
+    public void setRecipients(@javax.annotation.Nonnull List<PostMailsRequestRecipients> recipients) {
         this.recipients = recipients;
     }
 
@@ -276,7 +276,7 @@ public class PostMailsRequest implements Serializable {
         JsonArray jsonArrayrecipients = jsonObj.getAsJsonArray("recipients");
         // validate the required field `recipients` (array)
         for (int i = 0; i < jsonArrayrecipients.size(); i++) {
-            PostMailsRequestRecipientsInner.validateJsonElement(jsonArrayrecipients.get(i));
+            PostMailsRequestRecipients.validateJsonElement(jsonArrayrecipients.get(i));
         };
         if (!jsonObj.get("subject").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(

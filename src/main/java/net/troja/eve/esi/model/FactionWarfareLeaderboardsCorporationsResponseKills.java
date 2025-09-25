@@ -22,9 +22,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.troja.eve.esi.model.FactionWarfareLeaderboardsCorporationsResponseKillsActiveTotalInner;
-import net.troja.eve.esi.model.FactionWarfareLeaderboardsCorporationsResponseKillsLastWeekInner;
-import net.troja.eve.esi.model.FactionWarfareLeaderboardsCorporationsResponseKillsYesterdayInner;
+import net.troja.eve.esi.model.FactionWarfareLeaderboardsCorporationsResponseKillsActiveTotal;
+import net.troja.eve.esi.model.FactionWarfareLeaderboardsCorporationsResponseKillsLastWeek;
+import net.troja.eve.esi.model.FactionWarfareLeaderboardsCorporationsResponseKillsYesterday;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -61,29 +61,29 @@ public class FactionWarfareLeaderboardsCorporationsResponseKills implements Seri
     public static final String SERIALIZED_NAME_ACTIVE_TOTAL = "active_total";
     @SerializedName(SERIALIZED_NAME_ACTIVE_TOTAL)
     @javax.annotation.Nonnull
-    private List<FactionWarfareLeaderboardsCorporationsResponseKillsActiveTotalInner> activeTotal;
+    private List<FactionWarfareLeaderboardsCorporationsResponseKillsActiveTotal> activeTotal;
 
     public static final String SERIALIZED_NAME_LAST_WEEK = "last_week";
     @SerializedName(SERIALIZED_NAME_LAST_WEEK)
     @javax.annotation.Nonnull
-    private List<FactionWarfareLeaderboardsCorporationsResponseKillsLastWeekInner> lastWeek;
+    private List<FactionWarfareLeaderboardsCorporationsResponseKillsLastWeek> lastWeek;
 
     public static final String SERIALIZED_NAME_YESTERDAY = "yesterday";
     @SerializedName(SERIALIZED_NAME_YESTERDAY)
     @javax.annotation.Nonnull
-    private List<FactionWarfareLeaderboardsCorporationsResponseKillsYesterdayInner> yesterday;
+    private List<FactionWarfareLeaderboardsCorporationsResponseKillsYesterday> yesterday;
 
     public FactionWarfareLeaderboardsCorporationsResponseKills() {
     }
 
     public FactionWarfareLeaderboardsCorporationsResponseKills activeTotal(
-            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCorporationsResponseKillsActiveTotalInner> activeTotal) {
+            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCorporationsResponseKillsActiveTotal> activeTotal) {
         this.activeTotal = activeTotal;
         return this;
     }
 
     public FactionWarfareLeaderboardsCorporationsResponseKills addActiveTotalItem(
-            FactionWarfareLeaderboardsCorporationsResponseKillsActiveTotalInner activeTotalItem) {
+            FactionWarfareLeaderboardsCorporationsResponseKillsActiveTotal activeTotalItem) {
         if (this.activeTotal == null) {
             this.activeTotal = new ArrayList<>();
         }
@@ -100,23 +100,23 @@ public class FactionWarfareLeaderboardsCorporationsResponseKills implements Seri
      * @return activeTotal
      */
     @javax.annotation.Nonnull
-    public List<FactionWarfareLeaderboardsCorporationsResponseKillsActiveTotalInner> getActiveTotal() {
+    public List<FactionWarfareLeaderboardsCorporationsResponseKillsActiveTotal> getActiveTotal() {
         return activeTotal;
     }
 
     public void setActiveTotal(
-            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCorporationsResponseKillsActiveTotalInner> activeTotal) {
+            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCorporationsResponseKillsActiveTotal> activeTotal) {
         this.activeTotal = activeTotal;
     }
 
     public FactionWarfareLeaderboardsCorporationsResponseKills lastWeek(
-            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCorporationsResponseKillsLastWeekInner> lastWeek) {
+            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCorporationsResponseKillsLastWeek> lastWeek) {
         this.lastWeek = lastWeek;
         return this;
     }
 
     public FactionWarfareLeaderboardsCorporationsResponseKills addLastWeekItem(
-            FactionWarfareLeaderboardsCorporationsResponseKillsLastWeekInner lastWeekItem) {
+            FactionWarfareLeaderboardsCorporationsResponseKillsLastWeek lastWeekItem) {
         if (this.lastWeek == null) {
             this.lastWeek = new ArrayList<>();
         }
@@ -131,23 +131,23 @@ public class FactionWarfareLeaderboardsCorporationsResponseKills implements Seri
      * @return lastWeek
      */
     @javax.annotation.Nonnull
-    public List<FactionWarfareLeaderboardsCorporationsResponseKillsLastWeekInner> getLastWeek() {
+    public List<FactionWarfareLeaderboardsCorporationsResponseKillsLastWeek> getLastWeek() {
         return lastWeek;
     }
 
     public void setLastWeek(
-            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCorporationsResponseKillsLastWeekInner> lastWeek) {
+            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCorporationsResponseKillsLastWeek> lastWeek) {
         this.lastWeek = lastWeek;
     }
 
     public FactionWarfareLeaderboardsCorporationsResponseKills yesterday(
-            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCorporationsResponseKillsYesterdayInner> yesterday) {
+            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCorporationsResponseKillsYesterday> yesterday) {
         this.yesterday = yesterday;
         return this;
     }
 
     public FactionWarfareLeaderboardsCorporationsResponseKills addYesterdayItem(
-            FactionWarfareLeaderboardsCorporationsResponseKillsYesterdayInner yesterdayItem) {
+            FactionWarfareLeaderboardsCorporationsResponseKillsYesterday yesterdayItem) {
         if (this.yesterday == null) {
             this.yesterday = new ArrayList<>();
         }
@@ -162,12 +162,12 @@ public class FactionWarfareLeaderboardsCorporationsResponseKills implements Seri
      * @return yesterday
      */
     @javax.annotation.Nonnull
-    public List<FactionWarfareLeaderboardsCorporationsResponseKillsYesterdayInner> getYesterday() {
+    public List<FactionWarfareLeaderboardsCorporationsResponseKillsYesterday> getYesterday() {
         return yesterday;
     }
 
     public void setYesterday(
-            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCorporationsResponseKillsYesterdayInner> yesterday) {
+            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCorporationsResponseKillsYesterday> yesterday) {
         this.yesterday = yesterday;
     }
 
@@ -280,8 +280,8 @@ public class FactionWarfareLeaderboardsCorporationsResponseKills implements Seri
         JsonArray jsonArrayactiveTotal = jsonObj.getAsJsonArray("active_total");
         // validate the required field `active_total` (array)
         for (int i = 0; i < jsonArrayactiveTotal.size(); i++) {
-            FactionWarfareLeaderboardsCorporationsResponseKillsActiveTotalInner
-                    .validateJsonElement(jsonArrayactiveTotal.get(i));
+            FactionWarfareLeaderboardsCorporationsResponseKillsActiveTotal.validateJsonElement(jsonArrayactiveTotal
+                    .get(i));
         };
         // ensure the json data is an array
         if (!jsonObj.get("last_week").isJsonArray()) {
@@ -293,8 +293,7 @@ public class FactionWarfareLeaderboardsCorporationsResponseKills implements Seri
         JsonArray jsonArraylastWeek = jsonObj.getAsJsonArray("last_week");
         // validate the required field `last_week` (array)
         for (int i = 0; i < jsonArraylastWeek.size(); i++) {
-            FactionWarfareLeaderboardsCorporationsResponseKillsLastWeekInner.validateJsonElement(jsonArraylastWeek
-                    .get(i));
+            FactionWarfareLeaderboardsCorporationsResponseKillsLastWeek.validateJsonElement(jsonArraylastWeek.get(i));
         };
         // ensure the json data is an array
         if (!jsonObj.get("yesterday").isJsonArray()) {
@@ -306,8 +305,7 @@ public class FactionWarfareLeaderboardsCorporationsResponseKills implements Seri
         JsonArray jsonArrayyesterday = jsonObj.getAsJsonArray("yesterday");
         // validate the required field `yesterday` (array)
         for (int i = 0; i < jsonArrayyesterday.size(); i++) {
-            FactionWarfareLeaderboardsCorporationsResponseKillsYesterdayInner.validateJsonElement(jsonArrayyesterday
-                    .get(i));
+            FactionWarfareLeaderboardsCorporationsResponseKillsYesterday.validateJsonElement(jsonArrayyesterday.get(i));
         };
     }
 

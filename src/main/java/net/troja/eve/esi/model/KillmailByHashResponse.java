@@ -23,7 +23,7 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.troja.eve.esi.model.KillmailByHashResponseAttackersInner;
+import net.troja.eve.esi.model.KillmailByHashResponseAttackers;
 import net.troja.eve.esi.model.KillmailByHashResponseVictim;
 import java.io.Serializable;
 
@@ -60,7 +60,7 @@ public class KillmailByHashResponse implements Serializable {
     public static final String SERIALIZED_NAME_ATTACKERS = "attackers";
     @SerializedName(SERIALIZED_NAME_ATTACKERS)
     @javax.annotation.Nonnull
-    private List<KillmailByHashResponseAttackersInner> attackers;
+    private List<KillmailByHashResponseAttackers> attackers;
 
     public static final String SERIALIZED_NAME_KILLMAIL_ID = "killmail_id";
     @SerializedName(SERIALIZED_NAME_KILLMAIL_ID)
@@ -95,13 +95,12 @@ public class KillmailByHashResponse implements Serializable {
     public KillmailByHashResponse() {
     }
 
-    public KillmailByHashResponse attackers(
-            @javax.annotation.Nonnull List<KillmailByHashResponseAttackersInner> attackers) {
+    public KillmailByHashResponse attackers(@javax.annotation.Nonnull List<KillmailByHashResponseAttackers> attackers) {
         this.attackers = attackers;
         return this;
     }
 
-    public KillmailByHashResponse addAttackersItem(KillmailByHashResponseAttackersInner attackersItem) {
+    public KillmailByHashResponse addAttackersItem(KillmailByHashResponseAttackers attackersItem) {
         if (this.attackers == null) {
             this.attackers = new ArrayList<>();
         }
@@ -116,11 +115,11 @@ public class KillmailByHashResponse implements Serializable {
      * @return attackers
      */
     @javax.annotation.Nonnull
-    public List<KillmailByHashResponseAttackersInner> getAttackers() {
+    public List<KillmailByHashResponseAttackers> getAttackers() {
         return attackers;
     }
 
-    public void setAttackers(@javax.annotation.Nonnull List<KillmailByHashResponseAttackersInner> attackers) {
+    public void setAttackers(@javax.annotation.Nonnull List<KillmailByHashResponseAttackers> attackers) {
         this.attackers = attackers;
     }
 
@@ -356,7 +355,7 @@ public class KillmailByHashResponse implements Serializable {
         JsonArray jsonArrayattackers = jsonObj.getAsJsonArray("attackers");
         // validate the required field `attackers` (array)
         for (int i = 0; i < jsonArrayattackers.size(); i++) {
-            KillmailByHashResponseAttackersInner.validateJsonElement(jsonArrayattackers.get(i));
+            KillmailByHashResponseAttackers.validateJsonElement(jsonArrayattackers.get(i));
         };
         // validate the required field `victim`
         KillmailByHashResponseVictim.validateJsonElement(jsonObj.get("victim"));

@@ -22,8 +22,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.troja.eve.esi.model.CorporationDivisionsResponseHangarInner;
-import net.troja.eve.esi.model.CorporationDivisionsResponseWalletInner;
+import net.troja.eve.esi.model.CorporationDivisionsResponseHangar;
+import net.troja.eve.esi.model.CorporationDivisionsResponseWallet;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -59,23 +59,23 @@ public class CorporationDivisionsResponse implements Serializable {
     public static final String SERIALIZED_NAME_HANGAR = "hangar";
     @SerializedName(SERIALIZED_NAME_HANGAR)
     @javax.annotation.Nullable
-    private List<CorporationDivisionsResponseHangarInner> hangar;
+    private List<CorporationDivisionsResponseHangar> hangar;
 
     public static final String SERIALIZED_NAME_WALLET = "wallet";
     @SerializedName(SERIALIZED_NAME_WALLET)
     @javax.annotation.Nullable
-    private List<CorporationDivisionsResponseWalletInner> wallet;
+    private List<CorporationDivisionsResponseWallet> wallet;
 
     public CorporationDivisionsResponse() {
     }
 
     public CorporationDivisionsResponse hangar(
-            @javax.annotation.Nullable List<CorporationDivisionsResponseHangarInner> hangar) {
+            @javax.annotation.Nullable List<CorporationDivisionsResponseHangar> hangar) {
         this.hangar = hangar;
         return this;
     }
 
-    public CorporationDivisionsResponse addHangarItem(CorporationDivisionsResponseHangarInner hangarItem) {
+    public CorporationDivisionsResponse addHangarItem(CorporationDivisionsResponseHangar hangarItem) {
         if (this.hangar == null) {
             this.hangar = new ArrayList<>();
         }
@@ -90,21 +90,21 @@ public class CorporationDivisionsResponse implements Serializable {
      * @return hangar
      */
     @javax.annotation.Nullable
-    public List<CorporationDivisionsResponseHangarInner> getHangar() {
+    public List<CorporationDivisionsResponseHangar> getHangar() {
         return hangar;
     }
 
-    public void setHangar(@javax.annotation.Nullable List<CorporationDivisionsResponseHangarInner> hangar) {
+    public void setHangar(@javax.annotation.Nullable List<CorporationDivisionsResponseHangar> hangar) {
         this.hangar = hangar;
     }
 
     public CorporationDivisionsResponse wallet(
-            @javax.annotation.Nullable List<CorporationDivisionsResponseWalletInner> wallet) {
+            @javax.annotation.Nullable List<CorporationDivisionsResponseWallet> wallet) {
         this.wallet = wallet;
         return this;
     }
 
-    public CorporationDivisionsResponse addWalletItem(CorporationDivisionsResponseWalletInner walletItem) {
+    public CorporationDivisionsResponse addWalletItem(CorporationDivisionsResponseWallet walletItem) {
         if (this.wallet == null) {
             this.wallet = new ArrayList<>();
         }
@@ -119,11 +119,11 @@ public class CorporationDivisionsResponse implements Serializable {
      * @return wallet
      */
     @javax.annotation.Nullable
-    public List<CorporationDivisionsResponseWalletInner> getWallet() {
+    public List<CorporationDivisionsResponseWallet> getWallet() {
         return wallet;
     }
 
-    public void setWallet(@javax.annotation.Nullable List<CorporationDivisionsResponseWalletInner> wallet) {
+    public void setWallet(@javax.annotation.Nullable List<CorporationDivisionsResponseWallet> wallet) {
         this.wallet = wallet;
     }
 
@@ -226,7 +226,7 @@ public class CorporationDivisionsResponse implements Serializable {
 
                 // validate the optional field `hangar` (array)
                 for (int i = 0; i < jsonArrayhangar.size(); i++) {
-                    CorporationDivisionsResponseHangarInner.validateJsonElement(jsonArrayhangar.get(i));
+                    CorporationDivisionsResponseHangar.validateJsonElement(jsonArrayhangar.get(i));
                 };
             }
         }
@@ -242,7 +242,7 @@ public class CorporationDivisionsResponse implements Serializable {
 
                 // validate the optional field `wallet` (array)
                 for (int i = 0; i < jsonArraywallet.size(); i++) {
-                    CorporationDivisionsResponseWalletInner.validateJsonElement(jsonArraywallet.get(i));
+                    CorporationDivisionsResponseWallet.validateJsonElement(jsonArraywallet.get(i));
                 };
             }
         }

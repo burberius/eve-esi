@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import net.troja.eve.esi.model.WarResponseAggressor;
-import net.troja.eve.esi.model.WarResponseAlliesInner;
+import net.troja.eve.esi.model.WarResponseAllies;
 import net.troja.eve.esi.model.WarResponseDefender;
 import java.io.Serializable;
 
@@ -66,7 +66,7 @@ public class WarResponse implements Serializable {
     public static final String SERIALIZED_NAME_ALLIES = "allies";
     @SerializedName(SERIALIZED_NAME_ALLIES)
     @javax.annotation.Nullable
-    private List<WarResponseAlliesInner> allies;
+    private List<WarResponseAllies> allies;
 
     public static final String SERIALIZED_NAME_DECLARED = "declared";
     @SerializedName(SERIALIZED_NAME_DECLARED)
@@ -130,12 +130,12 @@ public class WarResponse implements Serializable {
         this.aggressor = aggressor;
     }
 
-    public WarResponse allies(@javax.annotation.Nullable List<WarResponseAlliesInner> allies) {
+    public WarResponse allies(@javax.annotation.Nullable List<WarResponseAllies> allies) {
         this.allies = allies;
         return this;
     }
 
-    public WarResponse addAlliesItem(WarResponseAlliesInner alliesItem) {
+    public WarResponse addAlliesItem(WarResponseAllies alliesItem) {
         if (this.allies == null) {
             this.allies = new ArrayList<>();
         }
@@ -151,11 +151,11 @@ public class WarResponse implements Serializable {
      * @return allies
      */
     @javax.annotation.Nullable
-    public List<WarResponseAlliesInner> getAllies() {
+    public List<WarResponseAllies> getAllies() {
         return allies;
     }
 
-    public void setAllies(@javax.annotation.Nullable List<WarResponseAlliesInner> allies) {
+    public void setAllies(@javax.annotation.Nullable List<WarResponseAllies> allies) {
         this.allies = allies;
     }
 
@@ -432,7 +432,7 @@ public class WarResponse implements Serializable {
 
                 // validate the optional field `allies` (array)
                 for (int i = 0; i < jsonArrayallies.size(); i++) {
-                    WarResponseAlliesInner.validateJsonElement(jsonArrayallies.get(i));
+                    WarResponseAllies.validateJsonElement(jsonArrayallies.get(i));
                 };
             }
         }

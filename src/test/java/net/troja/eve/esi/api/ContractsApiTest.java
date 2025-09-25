@@ -14,14 +14,14 @@
 package net.troja.eve.esi.api;
 
 import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.model.CharacterContractBidsResponseInner;
-import net.troja.eve.esi.model.CharacterContractItemsResponseInner;
-import net.troja.eve.esi.model.CharacterContractsResponseInner;
-import net.troja.eve.esi.model.CorporationContractsResponseInner;
+import net.troja.eve.esi.model.CharacterContractBidsResponse;
+import net.troja.eve.esi.model.CharacterContractItemsResponse;
+import net.troja.eve.esi.model.CharacterContractsResponse;
+import net.troja.eve.esi.model.CorporationContractsResponse;
 
-import net.troja.eve.esi.model.PublicContractsBidsResponseInner;
-import net.troja.eve.esi.model.PublicContractsItemsResponseInner;
-import net.troja.eve.esi.model.PublicContractsResponseInner;
+import net.troja.eve.esi.model.PublicContractsBidsResponse;
+import net.troja.eve.esi.model.PublicContractsItemsResponse;
+import net.troja.eve.esi.model.PublicContractsResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -52,12 +52,12 @@ public class ContractsApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharacterContractBidsTest() throws ApiException {
-        Long contractId = getContractForType(CharacterContractsResponseInner.TypeEnum.AUCTION);
+        Long contractId = getContractForType(CharacterContractsResponse.TypeEnum.AUCTION);
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
         if (contractId > 0) {
-            List<CharacterContractBidsResponseInner> response =
+            List<CharacterContractBidsResponse> response =
                     api.getCharacterContractBids(characterId, contractId, CharacterApi.COMPATIBILITY_DATE,
                             acceptLanguage,
                             ifNoneMatch, xTenant);
@@ -75,12 +75,12 @@ public class ContractsApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharacterContractItemsTest() throws ApiException {
-        Long contractId = getContractForType(CharacterContractsResponseInner.TypeEnum.ITEM_EXCHANGE);
+        Long contractId = getContractForType(CharacterContractsResponse.TypeEnum.ITEM_EXCHANGE);
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
         if (contractId != -1) {
-            List<CharacterContractItemsResponseInner> response =
+            List<CharacterContractItemsResponse> response =
                     api.getCharacterContractItems(characterId, contractId, CharacterApi.COMPATIBILITY_DATE,
                             acceptLanguage, ifNoneMatch, xTenant);
             assertThat(response).hasSizeGreaterThan(0);
@@ -100,11 +100,11 @@ public class ContractsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterContractsResponseInner> response =
+        List<CharacterContractsResponse> response =
                 api.getCharacterContracts(characterId, CharacterApi.COMPATIBILITY_DATE, page, acceptLanguage,
                         ifNoneMatch, xTenant);
         assertThat(response).hasSizeGreaterThan(0);
-        final CharacterContractsResponseInner characterContractsResponse = response.get(0);
+        final CharacterContractsResponse characterContractsResponse = response.get(0);
         assertThat(characterContractsResponse.getContractId()).isGreaterThan(0);
     }
 
@@ -123,7 +123,7 @@ public class ContractsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterContractBidsResponseInner> response =
+        List<CharacterContractBidsResponse> response =
                 api.getCorporationContractBids(contractId, corporationId, CharacterApi.COMPATIBILITY_DATE, page,
                         acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
@@ -143,7 +143,7 @@ public class ContractsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterContractItemsResponseInner> response =
+        List<CharacterContractItemsResponse> response =
                 api.getCorporationContractItems(contractId, corporationId, CharacterApi.COMPATIBILITY_DATE,
                         acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
@@ -163,7 +163,7 @@ public class ContractsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CorporationContractsResponseInner> response =
+        List<CorporationContractsResponse> response =
                 api.getCorporationContracts(corporationId, CharacterApi.COMPATIBILITY_DATE, page, acceptLanguage,
                         ifNoneMatch, xTenant);
         // TODO: test validations
@@ -184,7 +184,7 @@ public class ContractsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<PublicContractsBidsResponseInner> response =
+        List<PublicContractsBidsResponse> response =
                 api.getPublicContractsBidsContractId(contractId, CharacterApi.COMPATIBILITY_DATE, page, acceptLanguage,
                         ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
@@ -204,7 +204,7 @@ public class ContractsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<PublicContractsItemsResponseInner> response =
+        List<PublicContractsItemsResponse> response =
                 api.getPublicContractsItemsContractId(contractId, CharacterApi.COMPATIBILITY_DATE, page, acceptLanguage,
                         ifNoneMatch, xTenant);
         assertThat(response).isNotNull();
@@ -223,27 +223,27 @@ public class ContractsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<PublicContractsResponseInner> response =
+        List<PublicContractsResponse> response =
                 api.getPublicContracts(REGION_ID_THE_FORGE, CharacterApi.COMPATIBILITY_DATE, page, acceptLanguage,
                         ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
     }
 
-    private Long getContractForType(CharacterContractsResponseInner.TypeEnum type) throws ApiException {
-        List<CharacterContractsResponseInner> response =
+    private Long getContractForType(CharacterContractsResponse.TypeEnum type) throws ApiException {
+        List<CharacterContractsResponse> response =
                 api.getCharacterContracts(characterId, ContractsApi.COMPATIBILITY_DATE, null, null, null, null);
         return response.stream()
                 .filter(resp -> resp.getType() == type)
-                .findFirst().map(CharacterContractsResponseInner::getContractId).orElse(-1L);
+                .findFirst().map(CharacterContractsResponse::getContractId).orElse(-1L);
     }
 
     private Long getPublicContract() throws ApiException {
         for (int page = 1; page <= 20; page++) {
-            List<PublicContractsResponseInner> contractsPublicRegionId =
+            List<PublicContractsResponse> contractsPublicRegionId =
                     api.getPublicContracts(REGION_ID_THE_FORGE, ContractsApi.COMPATIBILITY_DATE, page, null, null, null);
             Optional<Long> contractId = contractsPublicRegionId.stream()
-                    .filter(contract -> contract.getType() == PublicContractsResponseInner.TypeEnum.AUCTION)
-                    .findFirst().map(PublicContractsResponseInner::getContractId);
+                    .filter(contract -> contract.getType() == PublicContractsResponse.TypeEnum.AUCTION)
+                    .findFirst().map(PublicContractsResponse::getContractId);
             if (contractId.isPresent()) {
                 return contractId.get();
             }

@@ -22,9 +22,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.troja.eve.esi.model.FactionWarfareLeaderboardsCharactersResponseKillsActiveTotalInner;
-import net.troja.eve.esi.model.FactionWarfareLeaderboardsCharactersResponseKillsLastWeekInner;
-import net.troja.eve.esi.model.FactionWarfareLeaderboardsCharactersResponseKillsYesterdayInner;
+import net.troja.eve.esi.model.FactionWarfareLeaderboardsCharactersResponseKillsActiveTotal;
+import net.troja.eve.esi.model.FactionWarfareLeaderboardsCharactersResponseKillsLastWeek;
+import net.troja.eve.esi.model.FactionWarfareLeaderboardsCharactersResponseKillsYesterday;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -61,29 +61,29 @@ public class FactionWarfareLeaderboardsCharactersResponseKills implements Serial
     public static final String SERIALIZED_NAME_ACTIVE_TOTAL = "active_total";
     @SerializedName(SERIALIZED_NAME_ACTIVE_TOTAL)
     @javax.annotation.Nonnull
-    private List<FactionWarfareLeaderboardsCharactersResponseKillsActiveTotalInner> activeTotal;
+    private List<FactionWarfareLeaderboardsCharactersResponseKillsActiveTotal> activeTotal;
 
     public static final String SERIALIZED_NAME_LAST_WEEK = "last_week";
     @SerializedName(SERIALIZED_NAME_LAST_WEEK)
     @javax.annotation.Nonnull
-    private List<FactionWarfareLeaderboardsCharactersResponseKillsLastWeekInner> lastWeek;
+    private List<FactionWarfareLeaderboardsCharactersResponseKillsLastWeek> lastWeek;
 
     public static final String SERIALIZED_NAME_YESTERDAY = "yesterday";
     @SerializedName(SERIALIZED_NAME_YESTERDAY)
     @javax.annotation.Nonnull
-    private List<FactionWarfareLeaderboardsCharactersResponseKillsYesterdayInner> yesterday;
+    private List<FactionWarfareLeaderboardsCharactersResponseKillsYesterday> yesterday;
 
     public FactionWarfareLeaderboardsCharactersResponseKills() {
     }
 
     public FactionWarfareLeaderboardsCharactersResponseKills activeTotal(
-            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCharactersResponseKillsActiveTotalInner> activeTotal) {
+            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCharactersResponseKillsActiveTotal> activeTotal) {
         this.activeTotal = activeTotal;
         return this;
     }
 
     public FactionWarfareLeaderboardsCharactersResponseKills addActiveTotalItem(
-            FactionWarfareLeaderboardsCharactersResponseKillsActiveTotalInner activeTotalItem) {
+            FactionWarfareLeaderboardsCharactersResponseKillsActiveTotal activeTotalItem) {
         if (this.activeTotal == null) {
             this.activeTotal = new ArrayList<>();
         }
@@ -100,23 +100,23 @@ public class FactionWarfareLeaderboardsCharactersResponseKills implements Serial
      * @return activeTotal
      */
     @javax.annotation.Nonnull
-    public List<FactionWarfareLeaderboardsCharactersResponseKillsActiveTotalInner> getActiveTotal() {
+    public List<FactionWarfareLeaderboardsCharactersResponseKillsActiveTotal> getActiveTotal() {
         return activeTotal;
     }
 
     public void setActiveTotal(
-            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCharactersResponseKillsActiveTotalInner> activeTotal) {
+            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCharactersResponseKillsActiveTotal> activeTotal) {
         this.activeTotal = activeTotal;
     }
 
     public FactionWarfareLeaderboardsCharactersResponseKills lastWeek(
-            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCharactersResponseKillsLastWeekInner> lastWeek) {
+            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCharactersResponseKillsLastWeek> lastWeek) {
         this.lastWeek = lastWeek;
         return this;
     }
 
     public FactionWarfareLeaderboardsCharactersResponseKills addLastWeekItem(
-            FactionWarfareLeaderboardsCharactersResponseKillsLastWeekInner lastWeekItem) {
+            FactionWarfareLeaderboardsCharactersResponseKillsLastWeek lastWeekItem) {
         if (this.lastWeek == null) {
             this.lastWeek = new ArrayList<>();
         }
@@ -131,23 +131,23 @@ public class FactionWarfareLeaderboardsCharactersResponseKills implements Serial
      * @return lastWeek
      */
     @javax.annotation.Nonnull
-    public List<FactionWarfareLeaderboardsCharactersResponseKillsLastWeekInner> getLastWeek() {
+    public List<FactionWarfareLeaderboardsCharactersResponseKillsLastWeek> getLastWeek() {
         return lastWeek;
     }
 
     public void setLastWeek(
-            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCharactersResponseKillsLastWeekInner> lastWeek) {
+            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCharactersResponseKillsLastWeek> lastWeek) {
         this.lastWeek = lastWeek;
     }
 
     public FactionWarfareLeaderboardsCharactersResponseKills yesterday(
-            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCharactersResponseKillsYesterdayInner> yesterday) {
+            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCharactersResponseKillsYesterday> yesterday) {
         this.yesterday = yesterday;
         return this;
     }
 
     public FactionWarfareLeaderboardsCharactersResponseKills addYesterdayItem(
-            FactionWarfareLeaderboardsCharactersResponseKillsYesterdayInner yesterdayItem) {
+            FactionWarfareLeaderboardsCharactersResponseKillsYesterday yesterdayItem) {
         if (this.yesterday == null) {
             this.yesterday = new ArrayList<>();
         }
@@ -162,12 +162,12 @@ public class FactionWarfareLeaderboardsCharactersResponseKills implements Serial
      * @return yesterday
      */
     @javax.annotation.Nonnull
-    public List<FactionWarfareLeaderboardsCharactersResponseKillsYesterdayInner> getYesterday() {
+    public List<FactionWarfareLeaderboardsCharactersResponseKillsYesterday> getYesterday() {
         return yesterday;
     }
 
     public void setYesterday(
-            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCharactersResponseKillsYesterdayInner> yesterday) {
+            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCharactersResponseKillsYesterday> yesterday) {
         this.yesterday = yesterday;
     }
 
@@ -280,7 +280,7 @@ public class FactionWarfareLeaderboardsCharactersResponseKills implements Serial
         JsonArray jsonArrayactiveTotal = jsonObj.getAsJsonArray("active_total");
         // validate the required field `active_total` (array)
         for (int i = 0; i < jsonArrayactiveTotal.size(); i++) {
-            FactionWarfareLeaderboardsCharactersResponseKillsActiveTotalInner.validateJsonElement(jsonArrayactiveTotal
+            FactionWarfareLeaderboardsCharactersResponseKillsActiveTotal.validateJsonElement(jsonArrayactiveTotal
                     .get(i));
         };
         // ensure the json data is an array
@@ -293,8 +293,7 @@ public class FactionWarfareLeaderboardsCharactersResponseKills implements Serial
         JsonArray jsonArraylastWeek = jsonObj.getAsJsonArray("last_week");
         // validate the required field `last_week` (array)
         for (int i = 0; i < jsonArraylastWeek.size(); i++) {
-            FactionWarfareLeaderboardsCharactersResponseKillsLastWeekInner
-                    .validateJsonElement(jsonArraylastWeek.get(i));
+            FactionWarfareLeaderboardsCharactersResponseKillsLastWeek.validateJsonElement(jsonArraylastWeek.get(i));
         };
         // ensure the json data is an array
         if (!jsonObj.get("yesterday").isJsonArray()) {
@@ -306,8 +305,7 @@ public class FactionWarfareLeaderboardsCharactersResponseKills implements Serial
         JsonArray jsonArrayyesterday = jsonObj.getAsJsonArray("yesterday");
         // validate the required field `yesterday` (array)
         for (int i = 0; i < jsonArrayyesterday.size(); i++) {
-            FactionWarfareLeaderboardsCharactersResponseKillsYesterdayInner.validateJsonElement(jsonArrayyesterday
-                    .get(i));
+            FactionWarfareLeaderboardsCharactersResponseKillsYesterday.validateJsonElement(jsonArrayyesterday.get(i));
         };
     }
 

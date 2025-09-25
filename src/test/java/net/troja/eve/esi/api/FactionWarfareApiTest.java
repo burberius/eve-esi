@@ -19,9 +19,9 @@ import net.troja.eve.esi.model.CorporationFactionWarfareStatsResponse;
 import net.troja.eve.esi.model.FactionWarfareLeaderboardsCharactersResponse;
 import net.troja.eve.esi.model.FactionWarfareLeaderboardsCorporationsResponse;
 import net.troja.eve.esi.model.FactionWarfareLeaderboardsResponse;
-import net.troja.eve.esi.model.FactionWarfareStatsResponseInner;
-import net.troja.eve.esi.model.FactionWarfareSystemsResponseInner;
-import net.troja.eve.esi.model.FactionWarfareWarsResponseInner;
+import net.troja.eve.esi.model.FactionWarfareStatsResponse;
+import net.troja.eve.esi.model.FactionWarfareSystemsResponse;
+import net.troja.eve.esi.model.FactionWarfareWarsResponse;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -139,7 +139,7 @@ public class FactionWarfareApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<FactionWarfareStatsResponseInner> response = api.getFactionWarfareStats(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<FactionWarfareStatsResponse> response = api.getFactionWarfareStats(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
     }
 
@@ -155,7 +155,7 @@ public class FactionWarfareApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<FactionWarfareSystemsResponseInner> response = api.getFactionWarfareSystems(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<FactionWarfareSystemsResponse> response = api.getFactionWarfareSystems(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
     }
 
@@ -171,7 +171,7 @@ public class FactionWarfareApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<FactionWarfareWarsResponseInner> response = api.getFactionWarfareWars(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<FactionWarfareWarsResponse> response = api.getFactionWarfareWars(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
     }
 

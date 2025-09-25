@@ -14,11 +14,11 @@
 package net.troja.eve.esi.api;
 
 import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.model.CharacterWalletJournalResponseInner;
-import net.troja.eve.esi.model.CharacterWalletTransactionsResponseInner;
-import net.troja.eve.esi.model.CorporationWalletJournalResponseInner;
-import net.troja.eve.esi.model.CorporationWalletTransactionsResponseInner;
-import net.troja.eve.esi.model.CorporationWalletsResponseInner;
+import net.troja.eve.esi.model.CharacterWalletJournalResponse;
+import net.troja.eve.esi.model.CharacterWalletTransactionsResponse;
+import net.troja.eve.esi.model.CorporationWalletJournalResponse;
+import net.troja.eve.esi.model.CorporationWalletTransactionsResponse;
+import net.troja.eve.esi.model.CorporationWalletsResponse;
 
 import java.time.LocalDate;
 
@@ -71,9 +71,9 @@ public class WalletApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterWalletJournalResponseInner> response = api.getCharacterWalletJournal(characterId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterWalletJournalResponse> response = api.getCharacterWalletJournal(characterId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
-        final CharacterWalletJournalResponseInner characterWalletJournalResponse = response.get(0);
+        final CharacterWalletJournalResponse characterWalletJournalResponse = response.get(0);
         assertThat(characterWalletJournalResponse.getBalance()).isGreaterThan(0d);
     }
 
@@ -90,7 +90,7 @@ public class WalletApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterWalletTransactionsResponseInner> response = api.getCharacterWalletTransactions(characterId, CorporationApi.COMPATIBILITY_DATE, fromId, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterWalletTransactionsResponse> response = api.getCharacterWalletTransactions(characterId, CorporationApi.COMPATIBILITY_DATE, fromId, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
     }
 
@@ -110,7 +110,7 @@ public class WalletApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CorporationWalletJournalResponseInner> response = api.getCorporationWalletJournal(corporationId, division, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CorporationWalletJournalResponse> response = api.getCorporationWalletJournal(corporationId, division, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -130,7 +130,7 @@ public class WalletApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CorporationWalletTransactionsResponseInner> response = api.getCorporationWalletTransactions(corporationId, division, CorporationApi.COMPATIBILITY_DATE, fromId, acceptLanguage, ifNoneMatch, xTenant);
+        List<CorporationWalletTransactionsResponse> response = api.getCorporationWalletTransactions(corporationId, division, CorporationApi.COMPATIBILITY_DATE, fromId, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -148,7 +148,7 @@ public class WalletApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CorporationWalletsResponseInner> response = api.getCorporationWallets(corporationId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<CorporationWalletsResponse> response = api.getCorporationWallets(corporationId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 

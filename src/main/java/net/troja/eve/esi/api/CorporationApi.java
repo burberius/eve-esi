@@ -25,25 +25,25 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
-import net.troja.eve.esi.model.CharacterStandingsResponseInner;
-import net.troja.eve.esi.model.CorporationAllianceshistoryResponseInner;
-import net.troja.eve.esi.model.CorporationBlueprintsResponseInner;
-import net.troja.eve.esi.model.CorporationContainersLogsResponseInner;
+import net.troja.eve.esi.model.CharacterStandingsResponse;
+import net.troja.eve.esi.model.CorporationAllianceshistoryResponse;
+import net.troja.eve.esi.model.CorporationBlueprintsResponse;
+import net.troja.eve.esi.model.CorporationContainersLogsResponse;
 import net.troja.eve.esi.model.CorporationDivisionsResponse;
-import net.troja.eve.esi.model.CorporationFacilitiesResponseInner;
+import net.troja.eve.esi.model.CorporationFacilitiesResponse;
 import net.troja.eve.esi.model.CorporationIconsResponse;
-import net.troja.eve.esi.model.CorporationMedalsIssuedResponseInner;
-import net.troja.eve.esi.model.CorporationMedalsResponseInner;
-import net.troja.eve.esi.model.CorporationMemberTrackingResponseInner;
-import net.troja.eve.esi.model.CorporationMembersTitlesResponseInner;
+import net.troja.eve.esi.model.CorporationMedalsIssuedResponse;
+import net.troja.eve.esi.model.CorporationMedalsResponse;
+import net.troja.eve.esi.model.CorporationMemberTrackingResponse;
+import net.troja.eve.esi.model.CorporationMembersTitlesResponse;
 import net.troja.eve.esi.model.CorporationResponse;
-import net.troja.eve.esi.model.CorporationRolesHistoryResponseInner;
-import net.troja.eve.esi.model.CorporationRolesResponseInner;
-import net.troja.eve.esi.model.CorporationShareholdersResponseInner;
+import net.troja.eve.esi.model.CorporationRolesHistoryResponse;
+import net.troja.eve.esi.model.CorporationRolesResponse;
+import net.troja.eve.esi.model.CorporationShareholdersResponse;
 import net.troja.eve.esi.model.CorporationStarbaseResponse;
-import net.troja.eve.esi.model.CorporationStarbasesResponseInner;
-import net.troja.eve.esi.model.CorporationStructuresResponseInner;
-import net.troja.eve.esi.model.CorporationTitlesResponseInner;
+import net.troja.eve.esi.model.CorporationStarbasesResponse;
+import net.troja.eve.esi.model.CorporationStructuresResponse;
+import net.troja.eve.esi.model.CorporationTitlesResponse;
 import net.troja.eve.esi.model.Error;
 import java.time.LocalDate;
 
@@ -524,7 +524,7 @@ public class CorporationApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CorporationAllianceshistoryResponseInner&gt;
+     * @return List&lt;CorporationAllianceshistoryResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -550,11 +550,11 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CorporationAllianceshistoryResponseInner> getCorporationAllianceshistory(
+    public List<CorporationAllianceshistoryResponse> getCorporationAllianceshistory(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CorporationAllianceshistoryResponseInner>> localVarResp = getCorporationAllianceshistoryWithHttpInfo(
+        ApiResponse<List<CorporationAllianceshistoryResponse>> localVarResp = getCorporationAllianceshistoryWithHttpInfo(
                 corporationId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -577,8 +577,7 @@ public class CorporationApi {
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
      * @return 
-     *         ApiResponse&lt;List&lt;CorporationAllianceshistoryResponseInner&gt
-     *         ;&gt;
+     *         ApiResponse&lt;List&lt;CorporationAllianceshistoryResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -604,13 +603,13 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CorporationAllianceshistoryResponseInner>> getCorporationAllianceshistoryWithHttpInfo(
+    public ApiResponse<List<CorporationAllianceshistoryResponse>> getCorporationAllianceshistoryWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = getCorporationAllianceshistoryValidateBeforeCall(corporationId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CorporationAllianceshistoryResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationAllianceshistoryResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -663,11 +662,11 @@ public class CorporationApi {
     public okhttp3.Call getCorporationAllianceshistoryAsync(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CorporationAllianceshistoryResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CorporationAllianceshistoryResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCorporationAllianceshistoryValidateBeforeCall(corporationId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CorporationAllianceshistoryResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationAllianceshistoryResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -828,7 +827,7 @@ public class CorporationApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CorporationBlueprintsResponseInner&gt;
+     * @return List&lt;CorporationBlueprintsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -856,12 +855,11 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CorporationBlueprintsResponseInner> getCorporationBlueprints(
-            @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        ApiResponse<List<CorporationBlueprintsResponseInner>> localVarResp = getCorporationBlueprintsWithHttpInfo(
+    public List<CorporationBlueprintsResponse> getCorporationBlueprints(@javax.annotation.Nonnull Long corporationId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        ApiResponse<List<CorporationBlueprintsResponse>> localVarResp = getCorporationBlueprintsWithHttpInfo(
                 corporationId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -885,7 +883,7 @@ public class CorporationApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CorporationBlueprintsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CorporationBlueprintsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -913,14 +911,14 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CorporationBlueprintsResponseInner>> getCorporationBlueprintsWithHttpInfo(
+    public ApiResponse<List<CorporationBlueprintsResponse>> getCorporationBlueprintsWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getCorporationBlueprintsValidateBeforeCall(corporationId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CorporationBlueprintsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationBlueprintsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -977,12 +975,12 @@ public class CorporationApi {
     public okhttp3.Call getCorporationBlueprintsAsync(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CorporationBlueprintsResponseInner>> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CorporationBlueprintsResponse>> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = getCorporationBlueprintsValidateBeforeCall(corporationId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CorporationBlueprintsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationBlueprintsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1144,7 +1142,7 @@ public class CorporationApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CorporationContainersLogsResponseInner&gt;
+     * @return List&lt;CorporationContainersLogsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1172,12 +1170,12 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CorporationContainersLogsResponseInner> getCorporationContainersLogs(
+    public List<CorporationContainersLogsResponse> getCorporationContainersLogs(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<CorporationContainersLogsResponseInner>> localVarResp = getCorporationContainersLogsWithHttpInfo(
+        ApiResponse<List<CorporationContainersLogsResponse>> localVarResp = getCorporationContainersLogsWithHttpInfo(
                 corporationId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -1202,9 +1200,7 @@ public class CorporationApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return 
-     *         ApiResponse&lt;List&lt;CorporationContainersLogsResponseInner&gt;&
-     *         gt;
+     * @return ApiResponse&lt;List&lt;CorporationContainersLogsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1232,14 +1228,14 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CorporationContainersLogsResponseInner>> getCorporationContainersLogsWithHttpInfo(
+    public ApiResponse<List<CorporationContainersLogsResponse>> getCorporationContainersLogsWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getCorporationContainersLogsValidateBeforeCall(corporationId, xCompatibilityDate,
                 page, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CorporationContainersLogsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationContainersLogsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1298,11 +1294,11 @@ public class CorporationApi {
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CorporationContainersLogsResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CorporationContainersLogsResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCorporationContainersLogsValidateBeforeCall(corporationId, xCompatibilityDate,
                 page, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CorporationContainersLogsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationContainersLogsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1745,7 +1741,7 @@ public class CorporationApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CorporationFacilitiesResponseInner&gt;
+     * @return List&lt;CorporationFacilitiesResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1771,11 +1767,11 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CorporationFacilitiesResponseInner> getCorporationFacilities(
-            @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CorporationFacilitiesResponseInner>> localVarResp = getCorporationFacilitiesWithHttpInfo(
+    public List<CorporationFacilitiesResponse> getCorporationFacilities(@javax.annotation.Nonnull Long corporationId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
+        ApiResponse<List<CorporationFacilitiesResponse>> localVarResp = getCorporationFacilitiesWithHttpInfo(
                 corporationId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -1796,7 +1792,7 @@ public class CorporationApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CorporationFacilitiesResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CorporationFacilitiesResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1822,13 +1818,13 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CorporationFacilitiesResponseInner>> getCorporationFacilitiesWithHttpInfo(
+    public ApiResponse<List<CorporationFacilitiesResponse>> getCorporationFacilitiesWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = getCorporationFacilitiesValidateBeforeCall(corporationId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CorporationFacilitiesResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationFacilitiesResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1881,11 +1877,11 @@ public class CorporationApi {
     public okhttp3.Call getCorporationFacilitiesAsync(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CorporationFacilitiesResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CorporationFacilitiesResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCorporationFacilitiesValidateBeforeCall(corporationId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CorporationFacilitiesResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationFacilitiesResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2334,7 +2330,7 @@ public class CorporationApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CorporationMedalsResponseInner&gt;
+     * @return List&lt;CorporationMedalsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2362,12 +2358,12 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CorporationMedalsResponseInner> getCorporationMedals(@javax.annotation.Nonnull Long corporationId,
+    public List<CorporationMedalsResponse> getCorporationMedals(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CorporationMedalsResponseInner>> localVarResp = getCorporationMedalsWithHttpInfo(
-                corporationId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<List<CorporationMedalsResponse>> localVarResp = getCorporationMedalsWithHttpInfo(corporationId,
+                xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -2389,7 +2385,7 @@ public class CorporationApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CorporationMedalsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CorporationMedalsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2417,14 +2413,14 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CorporationMedalsResponseInner>> getCorporationMedalsWithHttpInfo(
+    public ApiResponse<List<CorporationMedalsResponse>> getCorporationMedalsWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getCorporationMedalsValidateBeforeCall(corporationId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CorporationMedalsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationMedalsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2481,12 +2477,12 @@ public class CorporationApi {
     public okhttp3.Call getCorporationMedalsAsync(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CorporationMedalsResponseInner>> _callback)
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CorporationMedalsResponse>> _callback)
             throws ApiException {
 
         okhttp3.Call localVarCall = getCorporationMedalsValidateBeforeCall(corporationId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CorporationMedalsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationMedalsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2646,7 +2642,7 @@ public class CorporationApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CorporationMedalsIssuedResponseInner&gt;
+     * @return List&lt;CorporationMedalsIssuedResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2674,12 +2670,12 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CorporationMedalsIssuedResponseInner> getCorporationMedalsIssued(
+    public List<CorporationMedalsIssuedResponse> getCorporationMedalsIssued(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<CorporationMedalsIssuedResponseInner>> localVarResp = getCorporationMedalsIssuedWithHttpInfo(
+        ApiResponse<List<CorporationMedalsIssuedResponse>> localVarResp = getCorporationMedalsIssuedWithHttpInfo(
                 corporationId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -2702,9 +2698,7 @@ public class CorporationApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return 
-     *         ApiResponse&lt;List&lt;CorporationMedalsIssuedResponseInner&gt;&gt
-     *         ;
+     * @return ApiResponse&lt;List&lt;CorporationMedalsIssuedResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2732,14 +2726,14 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CorporationMedalsIssuedResponseInner>> getCorporationMedalsIssuedWithHttpInfo(
+    public ApiResponse<List<CorporationMedalsIssuedResponse>> getCorporationMedalsIssuedWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getCorporationMedalsIssuedValidateBeforeCall(corporationId, xCompatibilityDate,
                 page, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CorporationMedalsIssuedResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationMedalsIssuedResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2797,11 +2791,11 @@ public class CorporationApi {
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CorporationMedalsIssuedResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CorporationMedalsIssuedResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCorporationMedalsIssuedValidateBeforeCall(corporationId, xCompatibilityDate,
                 page, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CorporationMedalsIssuedResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationMedalsIssuedResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2952,7 +2946,7 @@ public class CorporationApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CorporationMemberTrackingResponseInner&gt;
+     * @return List&lt;CorporationMemberTrackingResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2978,11 +2972,11 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CorporationMemberTrackingResponseInner> getCorporationMemberTracking(
+    public List<CorporationMemberTrackingResponse> getCorporationMemberTracking(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CorporationMemberTrackingResponseInner>> localVarResp = getCorporationMemberTrackingWithHttpInfo(
+        ApiResponse<List<CorporationMemberTrackingResponse>> localVarResp = getCorporationMemberTrackingWithHttpInfo(
                 corporationId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -3004,9 +2998,7 @@ public class CorporationApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return 
-     *         ApiResponse&lt;List&lt;CorporationMemberTrackingResponseInner&gt;&
-     *         gt;
+     * @return ApiResponse&lt;List&lt;CorporationMemberTrackingResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -3032,13 +3024,13 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CorporationMemberTrackingResponseInner>> getCorporationMemberTrackingWithHttpInfo(
+    public ApiResponse<List<CorporationMemberTrackingResponse>> getCorporationMemberTrackingWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = getCorporationMemberTrackingValidateBeforeCall(corporationId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CorporationMemberTrackingResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationMemberTrackingResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3091,11 +3083,11 @@ public class CorporationApi {
     public okhttp3.Call getCorporationMemberTrackingAsync(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CorporationMemberTrackingResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CorporationMemberTrackingResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCorporationMemberTrackingValidateBeforeCall(corporationId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CorporationMemberTrackingResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationMemberTrackingResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3831,7 +3823,7 @@ public class CorporationApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CorporationMembersTitlesResponseInner&gt;
+     * @return List&lt;CorporationMembersTitlesResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -3857,11 +3849,11 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CorporationMembersTitlesResponseInner> getCorporationMembersTitles(
+    public List<CorporationMembersTitlesResponse> getCorporationMembersTitles(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CorporationMembersTitlesResponseInner>> localVarResp = getCorporationMembersTitlesWithHttpInfo(
+        ApiResponse<List<CorporationMembersTitlesResponse>> localVarResp = getCorporationMembersTitlesWithHttpInfo(
                 corporationId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -3883,9 +3875,7 @@ public class CorporationApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return 
-     *         ApiResponse&lt;List&lt;CorporationMembersTitlesResponseInner&gt;&gt
-     *         ;
+     * @return ApiResponse&lt;List&lt;CorporationMembersTitlesResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -3911,13 +3901,13 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CorporationMembersTitlesResponseInner>> getCorporationMembersTitlesWithHttpInfo(
+    public ApiResponse<List<CorporationMembersTitlesResponse>> getCorporationMembersTitlesWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = getCorporationMembersTitlesValidateBeforeCall(corporationId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CorporationMembersTitlesResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationMembersTitlesResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3970,11 +3960,11 @@ public class CorporationApi {
     public okhttp3.Call getCorporationMembersTitlesAsync(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CorporationMembersTitlesResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CorporationMembersTitlesResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCorporationMembersTitlesValidateBeforeCall(corporationId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CorporationMembersTitlesResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationMembersTitlesResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4125,7 +4115,7 @@ public class CorporationApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CorporationRolesResponseInner&gt;
+     * @return List&lt;CorporationRolesResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -4151,11 +4141,11 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CorporationRolesResponseInner> getCorporationRoles(@javax.annotation.Nonnull Long corporationId,
+    public List<CorporationRolesResponse> getCorporationRoles(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<CorporationRolesResponseInner>> localVarResp = getCorporationRolesWithHttpInfo(corporationId,
+        ApiResponse<List<CorporationRolesResponse>> localVarResp = getCorporationRolesWithHttpInfo(corporationId,
                 xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -4177,7 +4167,7 @@ public class CorporationApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CorporationRolesResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CorporationRolesResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -4203,13 +4193,13 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CorporationRolesResponseInner>> getCorporationRolesWithHttpInfo(
+    public ApiResponse<List<CorporationRolesResponse>> getCorporationRolesWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = getCorporationRolesValidateBeforeCall(corporationId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CorporationRolesResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationRolesResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4263,11 +4253,11 @@ public class CorporationApi {
     public okhttp3.Call getCorporationRolesAsync(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CorporationRolesResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CorporationRolesResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCorporationRolesValidateBeforeCall(corporationId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CorporationRolesResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationRolesResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4428,7 +4418,7 @@ public class CorporationApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CorporationRolesHistoryResponseInner&gt;
+     * @return List&lt;CorporationRolesHistoryResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -4456,12 +4446,12 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CorporationRolesHistoryResponseInner> getCorporationRolesHistory(
+    public List<CorporationRolesHistoryResponse> getCorporationRolesHistory(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<CorporationRolesHistoryResponseInner>> localVarResp = getCorporationRolesHistoryWithHttpInfo(
+        ApiResponse<List<CorporationRolesHistoryResponse>> localVarResp = getCorporationRolesHistoryWithHttpInfo(
                 corporationId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -4485,9 +4475,7 @@ public class CorporationApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return 
-     *         ApiResponse&lt;List&lt;CorporationRolesHistoryResponseInner&gt;&gt
-     *         ;
+     * @return ApiResponse&lt;List&lt;CorporationRolesHistoryResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -4515,14 +4503,14 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CorporationRolesHistoryResponseInner>> getCorporationRolesHistoryWithHttpInfo(
+    public ApiResponse<List<CorporationRolesHistoryResponse>> getCorporationRolesHistoryWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getCorporationRolesHistoryValidateBeforeCall(corporationId, xCompatibilityDate,
                 page, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CorporationRolesHistoryResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationRolesHistoryResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4580,11 +4568,11 @@ public class CorporationApi {
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CorporationRolesHistoryResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CorporationRolesHistoryResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCorporationRolesHistoryValidateBeforeCall(corporationId, xCompatibilityDate,
                 page, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CorporationRolesHistoryResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationRolesHistoryResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4745,7 +4733,7 @@ public class CorporationApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CorporationShareholdersResponseInner&gt;
+     * @return List&lt;CorporationShareholdersResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -4773,12 +4761,12 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CorporationShareholdersResponseInner> getCorporationShareholders(
+    public List<CorporationShareholdersResponse> getCorporationShareholders(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<CorporationShareholdersResponseInner>> localVarResp = getCorporationShareholdersWithHttpInfo(
+        ApiResponse<List<CorporationShareholdersResponse>> localVarResp = getCorporationShareholdersWithHttpInfo(
                 corporationId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -4802,9 +4790,7 @@ public class CorporationApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return 
-     *         ApiResponse&lt;List&lt;CorporationShareholdersResponseInner&gt;&gt
-     *         ;
+     * @return ApiResponse&lt;List&lt;CorporationShareholdersResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -4832,14 +4818,14 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CorporationShareholdersResponseInner>> getCorporationShareholdersWithHttpInfo(
+    public ApiResponse<List<CorporationShareholdersResponse>> getCorporationShareholdersWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getCorporationShareholdersValidateBeforeCall(corporationId, xCompatibilityDate,
                 page, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CorporationShareholdersResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationShareholdersResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4897,11 +4883,11 @@ public class CorporationApi {
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CorporationShareholdersResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CorporationShareholdersResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCorporationShareholdersValidateBeforeCall(corporationId, xCompatibilityDate,
                 page, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CorporationShareholdersResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationShareholdersResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -5062,7 +5048,7 @@ public class CorporationApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CharacterStandingsResponseInner&gt;
+     * @return List&lt;CharacterStandingsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -5090,12 +5076,12 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterStandingsResponseInner> getCorporationStandings(@javax.annotation.Nonnull Long corporationId,
+    public List<CharacterStandingsResponse> getCorporationStandings(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CharacterStandingsResponseInner>> localVarResp = getCorporationStandingsWithHttpInfo(
-                corporationId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<List<CharacterStandingsResponse>> localVarResp = getCorporationStandingsWithHttpInfo(corporationId,
+                xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -5118,7 +5104,7 @@ public class CorporationApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CharacterStandingsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CharacterStandingsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -5146,14 +5132,14 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterStandingsResponseInner>> getCorporationStandingsWithHttpInfo(
+    public ApiResponse<List<CharacterStandingsResponse>> getCorporationStandingsWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getCorporationStandingsValidateBeforeCall(corporationId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterStandingsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterStandingsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -5210,12 +5196,12 @@ public class CorporationApi {
     public okhttp3.Call getCorporationStandingsAsync(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CharacterStandingsResponseInner>> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CharacterStandingsResponse>> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = getCorporationStandingsValidateBeforeCall(corporationId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterStandingsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterStandingsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -5706,7 +5692,7 @@ public class CorporationApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CorporationStarbasesResponseInner&gt;
+     * @return List&lt;CorporationStarbasesResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -5734,12 +5720,11 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CorporationStarbasesResponseInner> getCorporationStarbases(
-            @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        ApiResponse<List<CorporationStarbasesResponseInner>> localVarResp = getCorporationStarbasesWithHttpInfo(
+    public List<CorporationStarbasesResponse> getCorporationStarbases(@javax.annotation.Nonnull Long corporationId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        ApiResponse<List<CorporationStarbasesResponse>> localVarResp = getCorporationStarbasesWithHttpInfo(
                 corporationId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -5763,7 +5748,7 @@ public class CorporationApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CorporationStarbasesResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CorporationStarbasesResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -5791,14 +5776,14 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CorporationStarbasesResponseInner>> getCorporationStarbasesWithHttpInfo(
+    public ApiResponse<List<CorporationStarbasesResponse>> getCorporationStarbasesWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getCorporationStarbasesValidateBeforeCall(corporationId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CorporationStarbasesResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationStarbasesResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -5855,12 +5840,12 @@ public class CorporationApi {
     public okhttp3.Call getCorporationStarbasesAsync(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CorporationStarbasesResponseInner>> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CorporationStarbasesResponse>> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = getCorporationStarbasesValidateBeforeCall(corporationId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CorporationStarbasesResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationStarbasesResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -6025,7 +6010,7 @@ public class CorporationApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CorporationStructuresResponseInner&gt;
+     * @return List&lt;CorporationStructuresResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -6054,12 +6039,11 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CorporationStructuresResponseInner> getCorporationStructures(
-            @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        ApiResponse<List<CorporationStructuresResponseInner>> localVarResp = getCorporationStructuresWithHttpInfo(
+    public List<CorporationStructuresResponse> getCorporationStructures(@javax.annotation.Nonnull Long corporationId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        ApiResponse<List<CorporationStructuresResponse>> localVarResp = getCorporationStructuresWithHttpInfo(
                 corporationId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -6086,7 +6070,7 @@ public class CorporationApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CorporationStructuresResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CorporationStructuresResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -6115,14 +6099,14 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CorporationStructuresResponseInner>> getCorporationStructuresWithHttpInfo(
+    public ApiResponse<List<CorporationStructuresResponse>> getCorporationStructuresWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getCorporationStructuresValidateBeforeCall(corporationId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CorporationStructuresResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationStructuresResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -6183,12 +6167,12 @@ public class CorporationApi {
     public okhttp3.Call getCorporationStructuresAsync(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CorporationStructuresResponseInner>> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CorporationStructuresResponse>> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = getCorporationStructuresValidateBeforeCall(corporationId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CorporationStructuresResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationStructuresResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -6338,7 +6322,7 @@ public class CorporationApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CorporationTitlesResponseInner&gt;
+     * @return List&lt;CorporationTitlesResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -6364,12 +6348,12 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CorporationTitlesResponseInner> getCorporationTitles(@javax.annotation.Nonnull Long corporationId,
+    public List<CorporationTitlesResponse> getCorporationTitles(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<CorporationTitlesResponseInner>> localVarResp = getCorporationTitlesWithHttpInfo(
-                corporationId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<List<CorporationTitlesResponse>> localVarResp = getCorporationTitlesWithHttpInfo(corporationId,
+                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -6389,7 +6373,7 @@ public class CorporationApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CorporationTitlesResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CorporationTitlesResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -6415,13 +6399,13 @@ public class CorporationApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CorporationTitlesResponseInner>> getCorporationTitlesWithHttpInfo(
+    public ApiResponse<List<CorporationTitlesResponse>> getCorporationTitlesWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = getCorporationTitlesValidateBeforeCall(corporationId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CorporationTitlesResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationTitlesResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -6474,11 +6458,11 @@ public class CorporationApi {
     public okhttp3.Call getCorporationTitlesAsync(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CorporationTitlesResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CorporationTitlesResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCorporationTitlesValidateBeforeCall(corporationId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CorporationTitlesResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationTitlesResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

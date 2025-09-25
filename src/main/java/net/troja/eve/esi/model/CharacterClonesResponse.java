@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import net.troja.eve.esi.model.CharacterClonesResponseHomeLocation;
-import net.troja.eve.esi.model.CharacterClonesResponseJumpClonesInner;
+import net.troja.eve.esi.model.CharacterClonesResponseJumpClones;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -65,7 +65,7 @@ public class CharacterClonesResponse implements Serializable {
     public static final String SERIALIZED_NAME_JUMP_CLONES = "jump_clones";
     @SerializedName(SERIALIZED_NAME_JUMP_CLONES)
     @javax.annotation.Nonnull
-    private List<CharacterClonesResponseJumpClonesInner> jumpClones;
+    private List<CharacterClonesResponseJumpClones> jumpClones;
 
     public static final String SERIALIZED_NAME_LAST_CLONE_JUMP_DATE = "last_clone_jump_date";
     @SerializedName(SERIALIZED_NAME_LAST_CLONE_JUMP_DATE)
@@ -101,12 +101,12 @@ public class CharacterClonesResponse implements Serializable {
     }
 
     public CharacterClonesResponse jumpClones(
-            @javax.annotation.Nonnull List<CharacterClonesResponseJumpClonesInner> jumpClones) {
+            @javax.annotation.Nonnull List<CharacterClonesResponseJumpClones> jumpClones) {
         this.jumpClones = jumpClones;
         return this;
     }
 
-    public CharacterClonesResponse addJumpClonesItem(CharacterClonesResponseJumpClonesInner jumpClonesItem) {
+    public CharacterClonesResponse addJumpClonesItem(CharacterClonesResponseJumpClones jumpClonesItem) {
         if (this.jumpClones == null) {
             this.jumpClones = new ArrayList<>();
         }
@@ -121,11 +121,11 @@ public class CharacterClonesResponse implements Serializable {
      * @return jumpClones
      */
     @javax.annotation.Nonnull
-    public List<CharacterClonesResponseJumpClonesInner> getJumpClones() {
+    public List<CharacterClonesResponseJumpClones> getJumpClones() {
         return jumpClones;
     }
 
-    public void setJumpClones(@javax.annotation.Nonnull List<CharacterClonesResponseJumpClonesInner> jumpClones) {
+    public void setJumpClones(@javax.annotation.Nonnull List<CharacterClonesResponseJumpClones> jumpClones) {
         this.jumpClones = jumpClones;
     }
 
@@ -282,7 +282,7 @@ public class CharacterClonesResponse implements Serializable {
         JsonArray jsonArrayjumpClones = jsonObj.getAsJsonArray("jump_clones");
         // validate the required field `jump_clones` (array)
         for (int i = 0; i < jsonArrayjumpClones.size(); i++) {
-            CharacterClonesResponseJumpClonesInner.validateJsonElement(jsonArrayjumpClones.get(i));
+            CharacterClonesResponseJumpClones.validateJsonElement(jsonArrayjumpClones.get(i));
         };
     }
 

@@ -31,9 +31,9 @@ import net.troja.eve.esi.model.Error;
 import net.troja.eve.esi.model.FactionWarfareLeaderboardsCharactersResponse;
 import net.troja.eve.esi.model.FactionWarfareLeaderboardsCorporationsResponse;
 import net.troja.eve.esi.model.FactionWarfareLeaderboardsResponse;
-import net.troja.eve.esi.model.FactionWarfareStatsResponseInner;
-import net.troja.eve.esi.model.FactionWarfareSystemsResponseInner;
-import net.troja.eve.esi.model.FactionWarfareWarsResponseInner;
+import net.troja.eve.esi.model.FactionWarfareStatsResponse;
+import net.troja.eve.esi.model.FactionWarfareSystemsResponse;
+import net.troja.eve.esi.model.FactionWarfareWarsResponse;
 import java.time.LocalDate;
 
 import java.lang.reflect.Type;
@@ -1639,7 +1639,7 @@ public class FactionWarfareApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;FactionWarfareStatsResponseInner&gt;
+     * @return List&lt;FactionWarfareStatsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1665,11 +1665,11 @@ public class FactionWarfareApi {
      *                        </tr>
      *                        </table>
      */
-    public List<FactionWarfareStatsResponseInner> getFactionWarfareStats(
+    public List<FactionWarfareStatsResponse> getFactionWarfareStats(
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<FactionWarfareStatsResponseInner>> localVarResp = getFactionWarfareStatsWithHttpInfo(
+        ApiResponse<List<FactionWarfareStatsResponse>> localVarResp = getFactionWarfareStatsWithHttpInfo(
                 xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -1690,7 +1690,7 @@ public class FactionWarfareApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;FactionWarfareStatsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;FactionWarfareStatsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1716,13 +1716,13 @@ public class FactionWarfareApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<FactionWarfareStatsResponseInner>> getFactionWarfareStatsWithHttpInfo(
+    public ApiResponse<List<FactionWarfareStatsResponse>> getFactionWarfareStatsWithHttpInfo(
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getFactionWarfareStatsValidateBeforeCall(xCompatibilityDate, acceptLanguage,
                 ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<FactionWarfareStatsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<FactionWarfareStatsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1773,12 +1773,12 @@ public class FactionWarfareApi {
      */
     public okhttp3.Call getFactionWarfareStatsAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<FactionWarfareStatsResponseInner>> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<FactionWarfareStatsResponse>> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = getFactionWarfareStatsValidateBeforeCall(xCompatibilityDate, acceptLanguage,
                 ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<FactionWarfareStatsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<FactionWarfareStatsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1916,7 +1916,7 @@ public class FactionWarfareApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;FactionWarfareSystemsResponseInner&gt;
+     * @return List&lt;FactionWarfareSystemsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1942,11 +1942,11 @@ public class FactionWarfareApi {
      *                        </tr>
      *                        </table>
      */
-    public List<FactionWarfareSystemsResponseInner> getFactionWarfareSystems(
+    public List<FactionWarfareSystemsResponse> getFactionWarfareSystems(
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<FactionWarfareSystemsResponseInner>> localVarResp = getFactionWarfareSystemsWithHttpInfo(
+        ApiResponse<List<FactionWarfareSystemsResponse>> localVarResp = getFactionWarfareSystemsWithHttpInfo(
                 xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -1966,7 +1966,7 @@ public class FactionWarfareApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;FactionWarfareSystemsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;FactionWarfareSystemsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1992,13 +1992,13 @@ public class FactionWarfareApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<FactionWarfareSystemsResponseInner>> getFactionWarfareSystemsWithHttpInfo(
+    public ApiResponse<List<FactionWarfareSystemsResponse>> getFactionWarfareSystemsWithHttpInfo(
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getFactionWarfareSystemsValidateBeforeCall(xCompatibilityDate, acceptLanguage,
                 ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<FactionWarfareSystemsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<FactionWarfareSystemsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2048,12 +2048,12 @@ public class FactionWarfareApi {
      */
     public okhttp3.Call getFactionWarfareSystemsAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<FactionWarfareSystemsResponseInner>> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<FactionWarfareSystemsResponse>> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = getFactionWarfareSystemsValidateBeforeCall(xCompatibilityDate, acceptLanguage,
                 ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<FactionWarfareSystemsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<FactionWarfareSystemsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2191,7 +2191,7 @@ public class FactionWarfareApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;FactionWarfareWarsResponseInner&gt;
+     * @return List&lt;FactionWarfareWarsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2217,11 +2217,11 @@ public class FactionWarfareApi {
      *                        </tr>
      *                        </table>
      */
-    public List<FactionWarfareWarsResponseInner> getFactionWarfareWars(
+    public List<FactionWarfareWarsResponse> getFactionWarfareWars(
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<FactionWarfareWarsResponseInner>> localVarResp = getFactionWarfareWarsWithHttpInfo(
+        ApiResponse<List<FactionWarfareWarsResponse>> localVarResp = getFactionWarfareWarsWithHttpInfo(
                 xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -2241,7 +2241,7 @@ public class FactionWarfareApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;FactionWarfareWarsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;FactionWarfareWarsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2267,13 +2267,13 @@ public class FactionWarfareApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<FactionWarfareWarsResponseInner>> getFactionWarfareWarsWithHttpInfo(
+    public ApiResponse<List<FactionWarfareWarsResponse>> getFactionWarfareWarsWithHttpInfo(
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getFactionWarfareWarsValidateBeforeCall(xCompatibilityDate, acceptLanguage,
                 ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<FactionWarfareWarsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<FactionWarfareWarsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2323,12 +2323,12 @@ public class FactionWarfareApi {
      */
     public okhttp3.Call getFactionWarfareWarsAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<FactionWarfareWarsResponseInner>> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<FactionWarfareWarsResponse>> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = getFactionWarfareWarsValidateBeforeCall(xCompatibilityDate, acceptLanguage,
                 ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<FactionWarfareWarsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<FactionWarfareWarsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

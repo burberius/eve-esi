@@ -29,7 +29,7 @@ import net.troja.eve.esi.api.AssetsApi;
 import net.troja.eve.esi.auth.JWT;
 import net.troja.eve.esi.auth.OAuth;
 import net.troja.eve.esi.auth.SsoScopes;
-import net.troja.eve.esi.model.CharacterAssetsResponseInner;
+import net.troja.eve.esi.model.CharacterAssetsResponse;
 import org.junit.jupiter.api.Test;
 
 import static net.troja.eve.esi.api.SsoApi.EVESSO;
@@ -225,7 +225,7 @@ public class SsoApiTest extends GeneralApiTest {
         @Override
         public Void call() throws Exception {
             Integer page = null;
-            final List<CharacterAssetsResponseInner> response = api.getCharacterAssets(characterId, AssetsApi.COMPATIBILITY_DATE, page, null, null, null);
+            final List<CharacterAssetsResponse> response = api.getCharacterAssets(characterId, AssetsApi.COMPATIBILITY_DATE, page, null, null, null);
             assertThat(response).isNotNull();
             assertThat(response.size()).isGreaterThan(0);
             return null;

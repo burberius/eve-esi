@@ -7,7 +7,7 @@ import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.ApiResponse;
 import net.troja.eve.esi.auth.JWT;
 import net.troja.eve.esi.auth.OAuth;
-import net.troja.eve.esi.model.CharacterAffiliationResponseInner;
+import net.troja.eve.esi.model.CharacterAffiliationResponse;
 import okhttp3.Call;
 import org.junit.jupiter.api.BeforeAll;
 
@@ -80,7 +80,7 @@ public class GeneralApiTest {
 
         HashSet<Long> ids = new HashSet<>();
         ids.add(characterId);
-        List<CharacterAffiliationResponseInner> affiliation =
+        List<CharacterAffiliationResponse> affiliation =
                 new CharacterApi(apiClient).postCharactersAffiliation(CharacterApi.COMPATIBILITY_DATE, ids,
                         null, null, null);
         corporationId = affiliation.get(0).getCorporationId();

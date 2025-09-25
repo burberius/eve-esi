@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.troja.eve.esi.model.CorporationsProjectsDetailConfigurationcapturefwcomplexLocationsInner;
+import net.troja.eve.esi.model.CorporationsProjectsDetailConfigurationcapturefwcomplexLocations;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -58,19 +58,19 @@ public class CorporationsProjectsDetailConfigurationdestroynpc implements Serial
     public static final String SERIALIZED_NAME_LOCATIONS = "locations";
     @SerializedName(SERIALIZED_NAME_LOCATIONS)
     @javax.annotation.Nullable
-    private List<CorporationsProjectsDetailConfigurationcapturefwcomplexLocationsInner> locations;
+    private List<CorporationsProjectsDetailConfigurationcapturefwcomplexLocations> locations;
 
     public CorporationsProjectsDetailConfigurationdestroynpc() {
     }
 
     public CorporationsProjectsDetailConfigurationdestroynpc locations(
-            @javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationcapturefwcomplexLocationsInner> locations) {
+            @javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationcapturefwcomplexLocations> locations) {
         this.locations = locations;
         return this;
     }
 
     public CorporationsProjectsDetailConfigurationdestroynpc addLocationsItem(
-            CorporationsProjectsDetailConfigurationcapturefwcomplexLocationsInner locationsItem) {
+            CorporationsProjectsDetailConfigurationcapturefwcomplexLocations locationsItem) {
         if (this.locations == null) {
             this.locations = new ArrayList<>();
         }
@@ -85,12 +85,12 @@ public class CorporationsProjectsDetailConfigurationdestroynpc implements Serial
      * @return locations
      */
     @javax.annotation.Nullable
-    public List<CorporationsProjectsDetailConfigurationcapturefwcomplexLocationsInner> getLocations() {
+    public List<CorporationsProjectsDetailConfigurationcapturefwcomplexLocations> getLocations() {
         return locations;
     }
 
     public void setLocations(
-            @javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationcapturefwcomplexLocationsInner> locations) {
+            @javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationcapturefwcomplexLocations> locations) {
         this.locations = locations;
     }
 
@@ -191,7 +191,7 @@ public class CorporationsProjectsDetailConfigurationdestroynpc implements Serial
 
                 // validate the optional field `locations` (array)
                 for (int i = 0; i < jsonArraylocations.size(); i++) {
-                    CorporationsProjectsDetailConfigurationcapturefwcomplexLocationsInner
+                    CorporationsProjectsDetailConfigurationcapturefwcomplexLocations
                             .validateJsonElement(jsonArraylocations.get(i));
                 };
             }

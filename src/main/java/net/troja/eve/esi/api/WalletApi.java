@@ -25,11 +25,11 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
-import net.troja.eve.esi.model.CharacterWalletJournalResponseInner;
-import net.troja.eve.esi.model.CharacterWalletTransactionsResponseInner;
-import net.troja.eve.esi.model.CorporationWalletJournalResponseInner;
-import net.troja.eve.esi.model.CorporationWalletTransactionsResponseInner;
-import net.troja.eve.esi.model.CorporationWalletsResponseInner;
+import net.troja.eve.esi.model.CharacterWalletJournalResponse;
+import net.troja.eve.esi.model.CharacterWalletTransactionsResponse;
+import net.troja.eve.esi.model.CorporationWalletJournalResponse;
+import net.troja.eve.esi.model.CorporationWalletTransactionsResponse;
+import net.troja.eve.esi.model.CorporationWalletsResponse;
 import net.troja.eve.esi.model.Error;
 import java.time.LocalDate;
 
@@ -523,7 +523,7 @@ public class WalletApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CharacterWalletJournalResponseInner&gt;
+     * @return List&lt;CharacterWalletJournalResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -551,12 +551,11 @@ public class WalletApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterWalletJournalResponseInner> getCharacterWalletJournal(
-            @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        ApiResponse<List<CharacterWalletJournalResponseInner>> localVarResp = getCharacterWalletJournalWithHttpInfo(
+    public List<CharacterWalletJournalResponse> getCharacterWalletJournal(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        ApiResponse<List<CharacterWalletJournalResponse>> localVarResp = getCharacterWalletJournalWithHttpInfo(
                 characterId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -580,8 +579,7 @@ public class WalletApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return 
-     *         ApiResponse&lt;List&lt;CharacterWalletJournalResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CharacterWalletJournalResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -609,14 +607,14 @@ public class WalletApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterWalletJournalResponseInner>> getCharacterWalletJournalWithHttpInfo(
+    public ApiResponse<List<CharacterWalletJournalResponse>> getCharacterWalletJournalWithHttpInfo(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getCharacterWalletJournalValidateBeforeCall(characterId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterWalletJournalResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterWalletJournalResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -673,12 +671,12 @@ public class WalletApi {
     public okhttp3.Call getCharacterWalletJournalAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CharacterWalletJournalResponseInner>> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CharacterWalletJournalResponse>> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = getCharacterWalletJournalValidateBeforeCall(characterId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterWalletJournalResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterWalletJournalResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -836,7 +834,7 @@ public class WalletApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CharacterWalletTransactionsResponseInner&gt;
+     * @return List&lt;CharacterWalletTransactionsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -862,12 +860,12 @@ public class WalletApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterWalletTransactionsResponseInner> getCharacterWalletTransactions(
+    public List<CharacterWalletTransactionsResponse> getCharacterWalletTransactions(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Long fromId, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<CharacterWalletTransactionsResponseInner>> localVarResp = getCharacterWalletTransactionsWithHttpInfo(
+        ApiResponse<List<CharacterWalletTransactionsResponse>> localVarResp = getCharacterWalletTransactionsWithHttpInfo(
                 characterId, xCompatibilityDate, fromId, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -891,8 +889,7 @@ public class WalletApi {
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
      * @return 
-     *         ApiResponse&lt;List&lt;CharacterWalletTransactionsResponseInner&gt
-     *         ;&gt;
+     *         ApiResponse&lt;List&lt;CharacterWalletTransactionsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -918,14 +915,14 @@ public class WalletApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterWalletTransactionsResponseInner>> getCharacterWalletTransactionsWithHttpInfo(
+    public ApiResponse<List<CharacterWalletTransactionsResponse>> getCharacterWalletTransactionsWithHttpInfo(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Long fromId, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getCharacterWalletTransactionsValidateBeforeCall(characterId, xCompatibilityDate,
                 fromId, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterWalletTransactionsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterWalletTransactionsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -981,11 +978,11 @@ public class WalletApi {
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Long fromId,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CharacterWalletTransactionsResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CharacterWalletTransactionsResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCharacterWalletTransactionsValidateBeforeCall(characterId, xCompatibilityDate,
                 fromId, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterWalletTransactionsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterWalletTransactionsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1159,7 +1156,7 @@ public class WalletApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CorporationWalletJournalResponseInner&gt;
+     * @return List&lt;CorporationWalletJournalResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1187,12 +1184,12 @@ public class WalletApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CorporationWalletJournalResponseInner> getCorporationWalletJournal(
+    public List<CorporationWalletJournalResponse> getCorporationWalletJournal(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull Long division,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CorporationWalletJournalResponseInner>> localVarResp = getCorporationWalletJournalWithHttpInfo(
+        ApiResponse<List<CorporationWalletJournalResponse>> localVarResp = getCorporationWalletJournalWithHttpInfo(
                 corporationId, division, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -1218,9 +1215,7 @@ public class WalletApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return 
-     *         ApiResponse&lt;List&lt;CorporationWalletJournalResponseInner&gt;&gt
-     *         ;
+     * @return ApiResponse&lt;List&lt;CorporationWalletJournalResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1248,14 +1243,14 @@ public class WalletApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CorporationWalletJournalResponseInner>> getCorporationWalletJournalWithHttpInfo(
+    public ApiResponse<List<CorporationWalletJournalResponse>> getCorporationWalletJournalWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull Long division,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = getCorporationWalletJournalValidateBeforeCall(corporationId, division,
                 xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CorporationWalletJournalResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationWalletJournalResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1316,11 +1311,11 @@ public class WalletApi {
             @javax.annotation.Nonnull Long division, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CorporationWalletJournalResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CorporationWalletJournalResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCorporationWalletJournalValidateBeforeCall(corporationId, division,
                 xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CorporationWalletJournalResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationWalletJournalResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1492,7 +1487,7 @@ public class WalletApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CorporationWalletTransactionsResponseInner&gt;
+     * @return List&lt;CorporationWalletTransactionsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1518,12 +1513,12 @@ public class WalletApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CorporationWalletTransactionsResponseInner> getCorporationWalletTransactions(
+    public List<CorporationWalletTransactionsResponse> getCorporationWalletTransactions(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull Long division,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Long fromId,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CorporationWalletTransactionsResponseInner>> localVarResp = getCorporationWalletTransactionsWithHttpInfo(
+        ApiResponse<List<CorporationWalletTransactionsResponse>> localVarResp = getCorporationWalletTransactionsWithHttpInfo(
                 corporationId, division, xCompatibilityDate, fromId, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -1550,8 +1545,8 @@ public class WalletApi {
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
      * @return 
-     *         ApiResponse&lt;List&lt;CorporationWalletTransactionsResponseInner&
-     *         gt;&gt;
+     *         ApiResponse&lt;List&lt;CorporationWalletTransactionsResponse&gt;&gt
+     *         ;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1577,14 +1572,14 @@ public class WalletApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CorporationWalletTransactionsResponseInner>> getCorporationWalletTransactionsWithHttpInfo(
+    public ApiResponse<List<CorporationWalletTransactionsResponse>> getCorporationWalletTransactionsWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull Long division,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Long fromId,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = getCorporationWalletTransactionsValidateBeforeCall(corporationId, division,
                 xCompatibilityDate, fromId, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CorporationWalletTransactionsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationWalletTransactionsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1642,11 +1637,11 @@ public class WalletApi {
             @javax.annotation.Nonnull Long division, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Long fromId, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CorporationWalletTransactionsResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CorporationWalletTransactionsResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCorporationWalletTransactionsValidateBeforeCall(corporationId, division,
                 xCompatibilityDate, fromId, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CorporationWalletTransactionsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationWalletTransactionsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1797,7 +1792,7 @@ public class WalletApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CorporationWalletsResponseInner&gt;
+     * @return List&lt;CorporationWalletsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1823,12 +1818,12 @@ public class WalletApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CorporationWalletsResponseInner> getCorporationWallets(@javax.annotation.Nonnull Long corporationId,
+    public List<CorporationWalletsResponse> getCorporationWallets(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<CorporationWalletsResponseInner>> localVarResp = getCorporationWalletsWithHttpInfo(
-                corporationId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<List<CorporationWalletsResponse>> localVarResp = getCorporationWalletsWithHttpInfo(corporationId,
+                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -1849,7 +1844,7 @@ public class WalletApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CorporationWalletsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CorporationWalletsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1875,13 +1870,13 @@ public class WalletApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CorporationWalletsResponseInner>> getCorporationWalletsWithHttpInfo(
+    public ApiResponse<List<CorporationWalletsResponse>> getCorporationWalletsWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = getCorporationWalletsValidateBeforeCall(corporationId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CorporationWalletsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationWalletsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1934,11 +1929,11 @@ public class WalletApi {
     public okhttp3.Call getCorporationWalletsAsync(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CorporationWalletsResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CorporationWalletsResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCorporationWalletsValidateBeforeCall(corporationId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CorporationWalletsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationWalletsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

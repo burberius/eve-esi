@@ -23,7 +23,7 @@ import java.time.OffsetDateTime;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
-import net.troja.eve.esi.model.PostMailsRequestRecipientsInner;
+import net.troja.eve.esi.model.PostMailsRequestRecipients;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -79,7 +79,7 @@ public class MailResponse implements Serializable {
     public static final String SERIALIZED_NAME_RECIPIENTS = "recipients";
     @SerializedName(SERIALIZED_NAME_RECIPIENTS)
     @javax.annotation.Nullable
-    private Set<PostMailsRequestRecipientsInner> recipients;
+    private Set<PostMailsRequestRecipients> recipients;
 
     public static final String SERIALIZED_NAME_SUBJECT = "subject";
     @SerializedName(SERIALIZED_NAME_SUBJECT)
@@ -179,12 +179,12 @@ public class MailResponse implements Serializable {
         this.read = read;
     }
 
-    public MailResponse recipients(@javax.annotation.Nullable Set<PostMailsRequestRecipientsInner> recipients) {
+    public MailResponse recipients(@javax.annotation.Nullable Set<PostMailsRequestRecipients> recipients) {
         this.recipients = recipients;
         return this;
     }
 
-    public MailResponse addRecipientsItem(PostMailsRequestRecipientsInner recipientsItem) {
+    public MailResponse addRecipientsItem(PostMailsRequestRecipients recipientsItem) {
         if (this.recipients == null) {
             this.recipients = new LinkedHashSet<>();
         }
@@ -199,11 +199,11 @@ public class MailResponse implements Serializable {
      * @return recipients
      */
     @javax.annotation.Nullable
-    public Set<PostMailsRequestRecipientsInner> getRecipients() {
+    public Set<PostMailsRequestRecipients> getRecipients() {
         return recipients;
     }
 
-    public void setRecipients(@javax.annotation.Nullable Set<PostMailsRequestRecipientsInner> recipients) {
+    public void setRecipients(@javax.annotation.Nullable Set<PostMailsRequestRecipients> recipients) {
         this.recipients = recipients;
     }
 
@@ -359,7 +359,7 @@ public class MailResponse implements Serializable {
 
                 // validate the optional field `recipients` (array)
                 for (int i = 0; i < jsonArrayrecipients.size(); i++) {
-                    PostMailsRequestRecipientsInner.validateJsonElement(jsonArrayrecipients.get(i));
+                    PostMailsRequestRecipients.validateJsonElement(jsonArrayrecipients.get(i));
                 };
             }
         }

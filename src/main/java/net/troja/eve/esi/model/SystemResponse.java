@@ -22,8 +22,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.troja.eve.esi.model.CharacterAssetsLocationsPostInnerPosition;
-import net.troja.eve.esi.model.SystemResponsePlanetsInner;
+import net.troja.eve.esi.model.CharacterAssetsLocationsPostPosition;
+import net.troja.eve.esi.model.SystemResponsePlanets;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -69,12 +69,12 @@ public class SystemResponse implements Serializable {
     public static final String SERIALIZED_NAME_PLANETS = "planets";
     @SerializedName(SERIALIZED_NAME_PLANETS)
     @javax.annotation.Nullable
-    private List<SystemResponsePlanetsInner> planets;
+    private List<SystemResponsePlanets> planets;
 
     public static final String SERIALIZED_NAME_POSITION = "position";
     @SerializedName(SERIALIZED_NAME_POSITION)
     @javax.annotation.Nonnull
-    private CharacterAssetsLocationsPostInnerPosition position;
+    private CharacterAssetsLocationsPostPosition position;
 
     public static final String SERIALIZED_NAME_SECURITY_CLASS = "security_class";
     @SerializedName(SERIALIZED_NAME_SECURITY_CLASS)
@@ -147,12 +147,12 @@ public class SystemResponse implements Serializable {
         this.name = name;
     }
 
-    public SystemResponse planets(@javax.annotation.Nullable List<SystemResponsePlanetsInner> planets) {
+    public SystemResponse planets(@javax.annotation.Nullable List<SystemResponsePlanets> planets) {
         this.planets = planets;
         return this;
     }
 
-    public SystemResponse addPlanetsItem(SystemResponsePlanetsInner planetsItem) {
+    public SystemResponse addPlanetsItem(SystemResponsePlanets planetsItem) {
         if (this.planets == null) {
             this.planets = new ArrayList<>();
         }
@@ -167,15 +167,15 @@ public class SystemResponse implements Serializable {
      * @return planets
      */
     @javax.annotation.Nullable
-    public List<SystemResponsePlanetsInner> getPlanets() {
+    public List<SystemResponsePlanets> getPlanets() {
         return planets;
     }
 
-    public void setPlanets(@javax.annotation.Nullable List<SystemResponsePlanetsInner> planets) {
+    public void setPlanets(@javax.annotation.Nullable List<SystemResponsePlanets> planets) {
         this.planets = planets;
     }
 
-    public SystemResponse position(@javax.annotation.Nonnull CharacterAssetsLocationsPostInnerPosition position) {
+    public SystemResponse position(@javax.annotation.Nonnull CharacterAssetsLocationsPostPosition position) {
         this.position = position;
         return this;
     }
@@ -186,11 +186,11 @@ public class SystemResponse implements Serializable {
      * @return position
      */
     @javax.annotation.Nonnull
-    public CharacterAssetsLocationsPostInnerPosition getPosition() {
+    public CharacterAssetsLocationsPostPosition getPosition() {
         return position;
     }
 
-    public void setPosition(@javax.annotation.Nonnull CharacterAssetsLocationsPostInnerPosition position) {
+    public void setPosition(@javax.annotation.Nonnull CharacterAssetsLocationsPostPosition position) {
         this.position = position;
     }
 
@@ -455,12 +455,12 @@ public class SystemResponse implements Serializable {
 
                 // validate the optional field `planets` (array)
                 for (int i = 0; i < jsonArrayplanets.size(); i++) {
-                    SystemResponsePlanetsInner.validateJsonElement(jsonArrayplanets.get(i));
+                    SystemResponsePlanets.validateJsonElement(jsonArrayplanets.get(i));
                 };
             }
         }
         // validate the required field `position`
-        CharacterAssetsLocationsPostInnerPosition.validateJsonElement(jsonObj.get("position"));
+        CharacterAssetsLocationsPostPosition.validateJsonElement(jsonObj.get("position"));
         if ((jsonObj.get("security_class") != null && !jsonObj.get("security_class").isJsonNull())
                 && !jsonObj.get("security_class").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(

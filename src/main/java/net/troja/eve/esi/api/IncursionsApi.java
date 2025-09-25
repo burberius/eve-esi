@@ -26,7 +26,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 import net.troja.eve.esi.model.Error;
-import net.troja.eve.esi.model.IncursionsResponseInner;
+import net.troja.eve.esi.model.IncursionsResponse;
 import java.time.LocalDate;
 
 import java.lang.reflect.Type;
@@ -203,7 +203,7 @@ public class IncursionsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;IncursionsResponseInner&gt;
+     * @return List&lt;IncursionsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -229,10 +229,10 @@ public class IncursionsApi {
      *                        </tr>
      *                        </table>
      */
-    public List<IncursionsResponseInner> getIncursions(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public List<IncursionsResponse> getIncursions(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<IncursionsResponseInner>> localVarResp = getIncursionsWithHttpInfo(xCompatibilityDate,
+        ApiResponse<List<IncursionsResponse>> localVarResp = getIncursionsWithHttpInfo(xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -251,7 +251,7 @@ public class IncursionsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;IncursionsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;IncursionsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -277,13 +277,13 @@ public class IncursionsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<IncursionsResponseInner>> getIncursionsWithHttpInfo(
+    public ApiResponse<List<IncursionsResponse>> getIncursionsWithHttpInfo(
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getIncursionsValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
                 xTenant, null);
-        Type localVarReturnType = new TypeToken<List<IncursionsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<IncursionsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -332,12 +332,12 @@ public class IncursionsApi {
      */
     public okhttp3.Call getIncursionsAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<IncursionsResponseInner>> _callback)
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<IncursionsResponse>> _callback)
             throws ApiException {
 
         okhttp3.Call localVarCall = getIncursionsValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
                 xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<IncursionsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<IncursionsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

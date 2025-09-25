@@ -14,9 +14,9 @@
 package net.troja.eve.esi.api;
 
 import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.model.SovereigntyCampaignsResponseInner;
-import net.troja.eve.esi.model.SovereigntyMapResponseInner;
-import net.troja.eve.esi.model.SovereigntyStructuresResponseInner;
+import net.troja.eve.esi.model.SovereigntyCampaignsResponse;
+import net.troja.eve.esi.model.SovereigntyMapResponse;
+import net.troja.eve.esi.model.SovereigntyStructuresResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -49,9 +49,9 @@ public class SovereigntyApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<SovereigntyCampaignsResponseInner> response = api.getSovereigntyCampaigns(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<SovereigntyCampaignsResponse> response = api.getSovereigntyCampaigns(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
-        final SovereigntyCampaignsResponseInner sovereigntyResponse = response.get(0);
+        final SovereigntyCampaignsResponse sovereigntyResponse = response.get(0);
         assertThat(sovereigntyResponse.getSolarSystemId()).isGreaterThan(0);
     }
 
@@ -67,7 +67,7 @@ public class SovereigntyApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<SovereigntyMapResponseInner> response = api.getSovereigntyMap(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<SovereigntyMapResponse> response = api.getSovereigntyMap(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
     }
 
@@ -83,9 +83,9 @@ public class SovereigntyApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<SovereigntyStructuresResponseInner> response = api.getSovereigntyStructures(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<SovereigntyStructuresResponse> response = api.getSovereigntyStructures(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
-        final SovereigntyStructuresResponseInner structuresResponse = response.get(0);
+        final SovereigntyStructuresResponse structuresResponse = response.get(0);
         assertThat(structuresResponse.getSolarSystemId()).isGreaterThan(0);
     }
 }

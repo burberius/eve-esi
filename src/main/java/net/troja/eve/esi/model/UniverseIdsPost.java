@@ -22,16 +22,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.troja.eve.esi.model.UniverseIdsPostAgentsInner;
-import net.troja.eve.esi.model.UniverseIdsPostAlliancesInner;
-import net.troja.eve.esi.model.UniverseIdsPostCharactersInner;
-import net.troja.eve.esi.model.UniverseIdsPostConstellationsInner;
-import net.troja.eve.esi.model.UniverseIdsPostCorporationsInner;
-import net.troja.eve.esi.model.UniverseIdsPostFactionsInner;
-import net.troja.eve.esi.model.UniverseIdsPostInventoryTypesInner;
-import net.troja.eve.esi.model.UniverseIdsPostRegionsInner;
-import net.troja.eve.esi.model.UniverseIdsPostStationsInner;
-import net.troja.eve.esi.model.UniverseIdsPostSystemsInner;
+import net.troja.eve.esi.model.UniverseIdsPostAgents;
+import net.troja.eve.esi.model.UniverseIdsPostAlliances;
+import net.troja.eve.esi.model.UniverseIdsPostCharacters;
+import net.troja.eve.esi.model.UniverseIdsPostConstellations;
+import net.troja.eve.esi.model.UniverseIdsPostCorporations;
+import net.troja.eve.esi.model.UniverseIdsPostFactions;
+import net.troja.eve.esi.model.UniverseIdsPostInventoryTypes;
+import net.troja.eve.esi.model.UniverseIdsPostRegions;
+import net.troja.eve.esi.model.UniverseIdsPostStations;
+import net.troja.eve.esi.model.UniverseIdsPostSystems;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -67,62 +67,62 @@ public class UniverseIdsPost implements Serializable {
     public static final String SERIALIZED_NAME_AGENTS = "agents";
     @SerializedName(SERIALIZED_NAME_AGENTS)
     @javax.annotation.Nullable
-    private List<UniverseIdsPostAgentsInner> agents;
+    private List<UniverseIdsPostAgents> agents;
 
     public static final String SERIALIZED_NAME_ALLIANCES = "alliances";
     @SerializedName(SERIALIZED_NAME_ALLIANCES)
     @javax.annotation.Nullable
-    private List<UniverseIdsPostAlliancesInner> alliances;
+    private List<UniverseIdsPostAlliances> alliances;
 
     public static final String SERIALIZED_NAME_CHARACTERS = "characters";
     @SerializedName(SERIALIZED_NAME_CHARACTERS)
     @javax.annotation.Nullable
-    private List<UniverseIdsPostCharactersInner> characters;
+    private List<UniverseIdsPostCharacters> characters;
 
     public static final String SERIALIZED_NAME_CONSTELLATIONS = "constellations";
     @SerializedName(SERIALIZED_NAME_CONSTELLATIONS)
     @javax.annotation.Nullable
-    private List<UniverseIdsPostConstellationsInner> constellations;
+    private List<UniverseIdsPostConstellations> constellations;
 
     public static final String SERIALIZED_NAME_CORPORATIONS = "corporations";
     @SerializedName(SERIALIZED_NAME_CORPORATIONS)
     @javax.annotation.Nullable
-    private List<UniverseIdsPostCorporationsInner> corporations;
+    private List<UniverseIdsPostCorporations> corporations;
 
     public static final String SERIALIZED_NAME_FACTIONS = "factions";
     @SerializedName(SERIALIZED_NAME_FACTIONS)
     @javax.annotation.Nullable
-    private List<UniverseIdsPostFactionsInner> factions;
+    private List<UniverseIdsPostFactions> factions;
 
     public static final String SERIALIZED_NAME_INVENTORY_TYPES = "inventory_types";
     @SerializedName(SERIALIZED_NAME_INVENTORY_TYPES)
     @javax.annotation.Nullable
-    private List<UniverseIdsPostInventoryTypesInner> inventoryTypes;
+    private List<UniverseIdsPostInventoryTypes> inventoryTypes;
 
     public static final String SERIALIZED_NAME_REGIONS = "regions";
     @SerializedName(SERIALIZED_NAME_REGIONS)
     @javax.annotation.Nullable
-    private List<UniverseIdsPostRegionsInner> regions;
+    private List<UniverseIdsPostRegions> regions;
 
     public static final String SERIALIZED_NAME_STATIONS = "stations";
     @SerializedName(SERIALIZED_NAME_STATIONS)
     @javax.annotation.Nullable
-    private List<UniverseIdsPostStationsInner> stations;
+    private List<UniverseIdsPostStations> stations;
 
     public static final String SERIALIZED_NAME_SYSTEMS = "systems";
     @SerializedName(SERIALIZED_NAME_SYSTEMS)
     @javax.annotation.Nullable
-    private List<UniverseIdsPostSystemsInner> systems;
+    private List<UniverseIdsPostSystems> systems;
 
     public UniverseIdsPost() {
     }
 
-    public UniverseIdsPost agents(@javax.annotation.Nullable List<UniverseIdsPostAgentsInner> agents) {
+    public UniverseIdsPost agents(@javax.annotation.Nullable List<UniverseIdsPostAgents> agents) {
         this.agents = agents;
         return this;
     }
 
-    public UniverseIdsPost addAgentsItem(UniverseIdsPostAgentsInner agentsItem) {
+    public UniverseIdsPost addAgentsItem(UniverseIdsPostAgents agentsItem) {
         if (this.agents == null) {
             this.agents = new ArrayList<>();
         }
@@ -137,20 +137,20 @@ public class UniverseIdsPost implements Serializable {
      * @return agents
      */
     @javax.annotation.Nullable
-    public List<UniverseIdsPostAgentsInner> getAgents() {
+    public List<UniverseIdsPostAgents> getAgents() {
         return agents;
     }
 
-    public void setAgents(@javax.annotation.Nullable List<UniverseIdsPostAgentsInner> agents) {
+    public void setAgents(@javax.annotation.Nullable List<UniverseIdsPostAgents> agents) {
         this.agents = agents;
     }
 
-    public UniverseIdsPost alliances(@javax.annotation.Nullable List<UniverseIdsPostAlliancesInner> alliances) {
+    public UniverseIdsPost alliances(@javax.annotation.Nullable List<UniverseIdsPostAlliances> alliances) {
         this.alliances = alliances;
         return this;
     }
 
-    public UniverseIdsPost addAlliancesItem(UniverseIdsPostAlliancesInner alliancesItem) {
+    public UniverseIdsPost addAlliancesItem(UniverseIdsPostAlliances alliancesItem) {
         if (this.alliances == null) {
             this.alliances = new ArrayList<>();
         }
@@ -165,20 +165,20 @@ public class UniverseIdsPost implements Serializable {
      * @return alliances
      */
     @javax.annotation.Nullable
-    public List<UniverseIdsPostAlliancesInner> getAlliances() {
+    public List<UniverseIdsPostAlliances> getAlliances() {
         return alliances;
     }
 
-    public void setAlliances(@javax.annotation.Nullable List<UniverseIdsPostAlliancesInner> alliances) {
+    public void setAlliances(@javax.annotation.Nullable List<UniverseIdsPostAlliances> alliances) {
         this.alliances = alliances;
     }
 
-    public UniverseIdsPost characters(@javax.annotation.Nullable List<UniverseIdsPostCharactersInner> characters) {
+    public UniverseIdsPost characters(@javax.annotation.Nullable List<UniverseIdsPostCharacters> characters) {
         this.characters = characters;
         return this;
     }
 
-    public UniverseIdsPost addCharactersItem(UniverseIdsPostCharactersInner charactersItem) {
+    public UniverseIdsPost addCharactersItem(UniverseIdsPostCharacters charactersItem) {
         if (this.characters == null) {
             this.characters = new ArrayList<>();
         }
@@ -193,21 +193,20 @@ public class UniverseIdsPost implements Serializable {
      * @return characters
      */
     @javax.annotation.Nullable
-    public List<UniverseIdsPostCharactersInner> getCharacters() {
+    public List<UniverseIdsPostCharacters> getCharacters() {
         return characters;
     }
 
-    public void setCharacters(@javax.annotation.Nullable List<UniverseIdsPostCharactersInner> characters) {
+    public void setCharacters(@javax.annotation.Nullable List<UniverseIdsPostCharacters> characters) {
         this.characters = characters;
     }
 
-    public UniverseIdsPost constellations(
-            @javax.annotation.Nullable List<UniverseIdsPostConstellationsInner> constellations) {
+    public UniverseIdsPost constellations(@javax.annotation.Nullable List<UniverseIdsPostConstellations> constellations) {
         this.constellations = constellations;
         return this;
     }
 
-    public UniverseIdsPost addConstellationsItem(UniverseIdsPostConstellationsInner constellationsItem) {
+    public UniverseIdsPost addConstellationsItem(UniverseIdsPostConstellations constellationsItem) {
         if (this.constellations == null) {
             this.constellations = new ArrayList<>();
         }
@@ -222,20 +221,20 @@ public class UniverseIdsPost implements Serializable {
      * @return constellations
      */
     @javax.annotation.Nullable
-    public List<UniverseIdsPostConstellationsInner> getConstellations() {
+    public List<UniverseIdsPostConstellations> getConstellations() {
         return constellations;
     }
 
-    public void setConstellations(@javax.annotation.Nullable List<UniverseIdsPostConstellationsInner> constellations) {
+    public void setConstellations(@javax.annotation.Nullable List<UniverseIdsPostConstellations> constellations) {
         this.constellations = constellations;
     }
 
-    public UniverseIdsPost corporations(@javax.annotation.Nullable List<UniverseIdsPostCorporationsInner> corporations) {
+    public UniverseIdsPost corporations(@javax.annotation.Nullable List<UniverseIdsPostCorporations> corporations) {
         this.corporations = corporations;
         return this;
     }
 
-    public UniverseIdsPost addCorporationsItem(UniverseIdsPostCorporationsInner corporationsItem) {
+    public UniverseIdsPost addCorporationsItem(UniverseIdsPostCorporations corporationsItem) {
         if (this.corporations == null) {
             this.corporations = new ArrayList<>();
         }
@@ -250,20 +249,20 @@ public class UniverseIdsPost implements Serializable {
      * @return corporations
      */
     @javax.annotation.Nullable
-    public List<UniverseIdsPostCorporationsInner> getCorporations() {
+    public List<UniverseIdsPostCorporations> getCorporations() {
         return corporations;
     }
 
-    public void setCorporations(@javax.annotation.Nullable List<UniverseIdsPostCorporationsInner> corporations) {
+    public void setCorporations(@javax.annotation.Nullable List<UniverseIdsPostCorporations> corporations) {
         this.corporations = corporations;
     }
 
-    public UniverseIdsPost factions(@javax.annotation.Nullable List<UniverseIdsPostFactionsInner> factions) {
+    public UniverseIdsPost factions(@javax.annotation.Nullable List<UniverseIdsPostFactions> factions) {
         this.factions = factions;
         return this;
     }
 
-    public UniverseIdsPost addFactionsItem(UniverseIdsPostFactionsInner factionsItem) {
+    public UniverseIdsPost addFactionsItem(UniverseIdsPostFactions factionsItem) {
         if (this.factions == null) {
             this.factions = new ArrayList<>();
         }
@@ -278,21 +277,20 @@ public class UniverseIdsPost implements Serializable {
      * @return factions
      */
     @javax.annotation.Nullable
-    public List<UniverseIdsPostFactionsInner> getFactions() {
+    public List<UniverseIdsPostFactions> getFactions() {
         return factions;
     }
 
-    public void setFactions(@javax.annotation.Nullable List<UniverseIdsPostFactionsInner> factions) {
+    public void setFactions(@javax.annotation.Nullable List<UniverseIdsPostFactions> factions) {
         this.factions = factions;
     }
 
-    public UniverseIdsPost inventoryTypes(
-            @javax.annotation.Nullable List<UniverseIdsPostInventoryTypesInner> inventoryTypes) {
+    public UniverseIdsPost inventoryTypes(@javax.annotation.Nullable List<UniverseIdsPostInventoryTypes> inventoryTypes) {
         this.inventoryTypes = inventoryTypes;
         return this;
     }
 
-    public UniverseIdsPost addInventoryTypesItem(UniverseIdsPostInventoryTypesInner inventoryTypesItem) {
+    public UniverseIdsPost addInventoryTypesItem(UniverseIdsPostInventoryTypes inventoryTypesItem) {
         if (this.inventoryTypes == null) {
             this.inventoryTypes = new ArrayList<>();
         }
@@ -307,20 +305,20 @@ public class UniverseIdsPost implements Serializable {
      * @return inventoryTypes
      */
     @javax.annotation.Nullable
-    public List<UniverseIdsPostInventoryTypesInner> getInventoryTypes() {
+    public List<UniverseIdsPostInventoryTypes> getInventoryTypes() {
         return inventoryTypes;
     }
 
-    public void setInventoryTypes(@javax.annotation.Nullable List<UniverseIdsPostInventoryTypesInner> inventoryTypes) {
+    public void setInventoryTypes(@javax.annotation.Nullable List<UniverseIdsPostInventoryTypes> inventoryTypes) {
         this.inventoryTypes = inventoryTypes;
     }
 
-    public UniverseIdsPost regions(@javax.annotation.Nullable List<UniverseIdsPostRegionsInner> regions) {
+    public UniverseIdsPost regions(@javax.annotation.Nullable List<UniverseIdsPostRegions> regions) {
         this.regions = regions;
         return this;
     }
 
-    public UniverseIdsPost addRegionsItem(UniverseIdsPostRegionsInner regionsItem) {
+    public UniverseIdsPost addRegionsItem(UniverseIdsPostRegions regionsItem) {
         if (this.regions == null) {
             this.regions = new ArrayList<>();
         }
@@ -335,20 +333,20 @@ public class UniverseIdsPost implements Serializable {
      * @return regions
      */
     @javax.annotation.Nullable
-    public List<UniverseIdsPostRegionsInner> getRegions() {
+    public List<UniverseIdsPostRegions> getRegions() {
         return regions;
     }
 
-    public void setRegions(@javax.annotation.Nullable List<UniverseIdsPostRegionsInner> regions) {
+    public void setRegions(@javax.annotation.Nullable List<UniverseIdsPostRegions> regions) {
         this.regions = regions;
     }
 
-    public UniverseIdsPost stations(@javax.annotation.Nullable List<UniverseIdsPostStationsInner> stations) {
+    public UniverseIdsPost stations(@javax.annotation.Nullable List<UniverseIdsPostStations> stations) {
         this.stations = stations;
         return this;
     }
 
-    public UniverseIdsPost addStationsItem(UniverseIdsPostStationsInner stationsItem) {
+    public UniverseIdsPost addStationsItem(UniverseIdsPostStations stationsItem) {
         if (this.stations == null) {
             this.stations = new ArrayList<>();
         }
@@ -363,20 +361,20 @@ public class UniverseIdsPost implements Serializable {
      * @return stations
      */
     @javax.annotation.Nullable
-    public List<UniverseIdsPostStationsInner> getStations() {
+    public List<UniverseIdsPostStations> getStations() {
         return stations;
     }
 
-    public void setStations(@javax.annotation.Nullable List<UniverseIdsPostStationsInner> stations) {
+    public void setStations(@javax.annotation.Nullable List<UniverseIdsPostStations> stations) {
         this.stations = stations;
     }
 
-    public UniverseIdsPost systems(@javax.annotation.Nullable List<UniverseIdsPostSystemsInner> systems) {
+    public UniverseIdsPost systems(@javax.annotation.Nullable List<UniverseIdsPostSystems> systems) {
         this.systems = systems;
         return this;
     }
 
-    public UniverseIdsPost addSystemsItem(UniverseIdsPostSystemsInner systemsItem) {
+    public UniverseIdsPost addSystemsItem(UniverseIdsPostSystems systemsItem) {
         if (this.systems == null) {
             this.systems = new ArrayList<>();
         }
@@ -391,11 +389,11 @@ public class UniverseIdsPost implements Serializable {
      * @return systems
      */
     @javax.annotation.Nullable
-    public List<UniverseIdsPostSystemsInner> getSystems() {
+    public List<UniverseIdsPostSystems> getSystems() {
         return systems;
     }
 
-    public void setSystems(@javax.annotation.Nullable List<UniverseIdsPostSystemsInner> systems) {
+    public void setSystems(@javax.annotation.Nullable List<UniverseIdsPostSystems> systems) {
         this.systems = systems;
     }
 
@@ -513,7 +511,7 @@ public class UniverseIdsPost implements Serializable {
 
                 // validate the optional field `agents` (array)
                 for (int i = 0; i < jsonArrayagents.size(); i++) {
-                    UniverseIdsPostAgentsInner.validateJsonElement(jsonArrayagents.get(i));
+                    UniverseIdsPostAgents.validateJsonElement(jsonArrayagents.get(i));
                 };
             }
         }
@@ -529,7 +527,7 @@ public class UniverseIdsPost implements Serializable {
 
                 // validate the optional field `alliances` (array)
                 for (int i = 0; i < jsonArrayalliances.size(); i++) {
-                    UniverseIdsPostAlliancesInner.validateJsonElement(jsonArrayalliances.get(i));
+                    UniverseIdsPostAlliances.validateJsonElement(jsonArrayalliances.get(i));
                 };
             }
         }
@@ -545,7 +543,7 @@ public class UniverseIdsPost implements Serializable {
 
                 // validate the optional field `characters` (array)
                 for (int i = 0; i < jsonArraycharacters.size(); i++) {
-                    UniverseIdsPostCharactersInner.validateJsonElement(jsonArraycharacters.get(i));
+                    UniverseIdsPostCharacters.validateJsonElement(jsonArraycharacters.get(i));
                 };
             }
         }
@@ -561,7 +559,7 @@ public class UniverseIdsPost implements Serializable {
 
                 // validate the optional field `constellations` (array)
                 for (int i = 0; i < jsonArrayconstellations.size(); i++) {
-                    UniverseIdsPostConstellationsInner.validateJsonElement(jsonArrayconstellations.get(i));
+                    UniverseIdsPostConstellations.validateJsonElement(jsonArrayconstellations.get(i));
                 };
             }
         }
@@ -577,7 +575,7 @@ public class UniverseIdsPost implements Serializable {
 
                 // validate the optional field `corporations` (array)
                 for (int i = 0; i < jsonArraycorporations.size(); i++) {
-                    UniverseIdsPostCorporationsInner.validateJsonElement(jsonArraycorporations.get(i));
+                    UniverseIdsPostCorporations.validateJsonElement(jsonArraycorporations.get(i));
                 };
             }
         }
@@ -593,7 +591,7 @@ public class UniverseIdsPost implements Serializable {
 
                 // validate the optional field `factions` (array)
                 for (int i = 0; i < jsonArrayfactions.size(); i++) {
-                    UniverseIdsPostFactionsInner.validateJsonElement(jsonArrayfactions.get(i));
+                    UniverseIdsPostFactions.validateJsonElement(jsonArrayfactions.get(i));
                 };
             }
         }
@@ -609,7 +607,7 @@ public class UniverseIdsPost implements Serializable {
 
                 // validate the optional field `inventory_types` (array)
                 for (int i = 0; i < jsonArrayinventoryTypes.size(); i++) {
-                    UniverseIdsPostInventoryTypesInner.validateJsonElement(jsonArrayinventoryTypes.get(i));
+                    UniverseIdsPostInventoryTypes.validateJsonElement(jsonArrayinventoryTypes.get(i));
                 };
             }
         }
@@ -625,7 +623,7 @@ public class UniverseIdsPost implements Serializable {
 
                 // validate the optional field `regions` (array)
                 for (int i = 0; i < jsonArrayregions.size(); i++) {
-                    UniverseIdsPostRegionsInner.validateJsonElement(jsonArrayregions.get(i));
+                    UniverseIdsPostRegions.validateJsonElement(jsonArrayregions.get(i));
                 };
             }
         }
@@ -641,7 +639,7 @@ public class UniverseIdsPost implements Serializable {
 
                 // validate the optional field `stations` (array)
                 for (int i = 0; i < jsonArraystations.size(); i++) {
-                    UniverseIdsPostStationsInner.validateJsonElement(jsonArraystations.get(i));
+                    UniverseIdsPostStations.validateJsonElement(jsonArraystations.get(i));
                 };
             }
         }
@@ -657,7 +655,7 @@ public class UniverseIdsPost implements Serializable {
 
                 // validate the optional field `systems` (array)
                 for (int i = 0; i < jsonArraysystems.size(); i++) {
-                    UniverseIdsPostSystemsInner.validateJsonElement(jsonArraysystems.get(i));
+                    UniverseIdsPostSystems.validateJsonElement(jsonArraysystems.get(i));
                 };
             }
         }

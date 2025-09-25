@@ -22,8 +22,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.troja.eve.esi.model.DogmaDynamicItemsResponseDogmaAttributesInner;
-import net.troja.eve.esi.model.DogmaDynamicItemsResponseDogmaEffectsInner;
+import net.troja.eve.esi.model.DogmaDynamicItemsResponseDogmaAttributes;
+import net.troja.eve.esi.model.DogmaDynamicItemsResponseDogmaEffects;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -64,12 +64,12 @@ public class DogmaDynamicItemsResponse implements Serializable {
     public static final String SERIALIZED_NAME_DOGMA_ATTRIBUTES = "dogma_attributes";
     @SerializedName(SERIALIZED_NAME_DOGMA_ATTRIBUTES)
     @javax.annotation.Nonnull
-    private List<DogmaDynamicItemsResponseDogmaAttributesInner> dogmaAttributes;
+    private List<DogmaDynamicItemsResponseDogmaAttributes> dogmaAttributes;
 
     public static final String SERIALIZED_NAME_DOGMA_EFFECTS = "dogma_effects";
     @SerializedName(SERIALIZED_NAME_DOGMA_EFFECTS)
     @javax.annotation.Nonnull
-    private List<DogmaDynamicItemsResponseDogmaEffectsInner> dogmaEffects;
+    private List<DogmaDynamicItemsResponseDogmaEffects> dogmaEffects;
 
     public static final String SERIALIZED_NAME_MUTATOR_TYPE_ID = "mutator_type_id";
     @SerializedName(SERIALIZED_NAME_MUTATOR_TYPE_ID)
@@ -104,13 +104,12 @@ public class DogmaDynamicItemsResponse implements Serializable {
     }
 
     public DogmaDynamicItemsResponse dogmaAttributes(
-            @javax.annotation.Nonnull List<DogmaDynamicItemsResponseDogmaAttributesInner> dogmaAttributes) {
+            @javax.annotation.Nonnull List<DogmaDynamicItemsResponseDogmaAttributes> dogmaAttributes) {
         this.dogmaAttributes = dogmaAttributes;
         return this;
     }
 
-    public DogmaDynamicItemsResponse addDogmaAttributesItem(
-            DogmaDynamicItemsResponseDogmaAttributesInner dogmaAttributesItem) {
+    public DogmaDynamicItemsResponse addDogmaAttributesItem(DogmaDynamicItemsResponseDogmaAttributes dogmaAttributesItem) {
         if (this.dogmaAttributes == null) {
             this.dogmaAttributes = new ArrayList<>();
         }
@@ -125,22 +124,22 @@ public class DogmaDynamicItemsResponse implements Serializable {
      * @return dogmaAttributes
      */
     @javax.annotation.Nonnull
-    public List<DogmaDynamicItemsResponseDogmaAttributesInner> getDogmaAttributes() {
+    public List<DogmaDynamicItemsResponseDogmaAttributes> getDogmaAttributes() {
         return dogmaAttributes;
     }
 
     public void setDogmaAttributes(
-            @javax.annotation.Nonnull List<DogmaDynamicItemsResponseDogmaAttributesInner> dogmaAttributes) {
+            @javax.annotation.Nonnull List<DogmaDynamicItemsResponseDogmaAttributes> dogmaAttributes) {
         this.dogmaAttributes = dogmaAttributes;
     }
 
     public DogmaDynamicItemsResponse dogmaEffects(
-            @javax.annotation.Nonnull List<DogmaDynamicItemsResponseDogmaEffectsInner> dogmaEffects) {
+            @javax.annotation.Nonnull List<DogmaDynamicItemsResponseDogmaEffects> dogmaEffects) {
         this.dogmaEffects = dogmaEffects;
         return this;
     }
 
-    public DogmaDynamicItemsResponse addDogmaEffectsItem(DogmaDynamicItemsResponseDogmaEffectsInner dogmaEffectsItem) {
+    public DogmaDynamicItemsResponse addDogmaEffectsItem(DogmaDynamicItemsResponseDogmaEffects dogmaEffectsItem) {
         if (this.dogmaEffects == null) {
             this.dogmaEffects = new ArrayList<>();
         }
@@ -155,11 +154,11 @@ public class DogmaDynamicItemsResponse implements Serializable {
      * @return dogmaEffects
      */
     @javax.annotation.Nonnull
-    public List<DogmaDynamicItemsResponseDogmaEffectsInner> getDogmaEffects() {
+    public List<DogmaDynamicItemsResponseDogmaEffects> getDogmaEffects() {
         return dogmaEffects;
     }
 
-    public void setDogmaEffects(@javax.annotation.Nonnull List<DogmaDynamicItemsResponseDogmaEffectsInner> dogmaEffects) {
+    public void setDogmaEffects(@javax.annotation.Nonnull List<DogmaDynamicItemsResponseDogmaEffects> dogmaEffects) {
         this.dogmaEffects = dogmaEffects;
     }
 
@@ -316,7 +315,7 @@ public class DogmaDynamicItemsResponse implements Serializable {
         JsonArray jsonArraydogmaAttributes = jsonObj.getAsJsonArray("dogma_attributes");
         // validate the required field `dogma_attributes` (array)
         for (int i = 0; i < jsonArraydogmaAttributes.size(); i++) {
-            DogmaDynamicItemsResponseDogmaAttributesInner.validateJsonElement(jsonArraydogmaAttributes.get(i));
+            DogmaDynamicItemsResponseDogmaAttributes.validateJsonElement(jsonArraydogmaAttributes.get(i));
         };
         // ensure the json data is an array
         if (!jsonObj.get("dogma_effects").isJsonArray()) {
@@ -328,7 +327,7 @@ public class DogmaDynamicItemsResponse implements Serializable {
         JsonArray jsonArraydogmaEffects = jsonObj.getAsJsonArray("dogma_effects");
         // validate the required field `dogma_effects` (array)
         for (int i = 0; i < jsonArraydogmaEffects.size(); i++) {
-            DogmaDynamicItemsResponseDogmaEffectsInner.validateJsonElement(jsonArraydogmaEffects.get(i));
+            DogmaDynamicItemsResponseDogmaEffects.validateJsonElement(jsonArraydogmaEffects.get(i));
         };
     }
 

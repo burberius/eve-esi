@@ -15,8 +15,8 @@ package net.troja.eve.esi.api;
 
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.CharacterPlanetResponse;
-import net.troja.eve.esi.model.CharacterPlanetsResponseInner;
-import net.troja.eve.esi.model.CorporationCustomsOfficesResponseInner;
+import net.troja.eve.esi.model.CharacterPlanetsResponse;
+import net.troja.eve.esi.model.CorporationCustomsOfficesResponse;
 import net.troja.eve.esi.model.SchematicResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -50,9 +50,9 @@ public class PlanetaryInteractionApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterPlanetsResponseInner> response = api.getCharacterPlanets(characterId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterPlanetsResponse> response = api.getCharacterPlanets(characterId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
-        final CharacterPlanetsResponseInner planetsResponse = response.get(0);
+        final CharacterPlanetsResponse planetsResponse = response.get(0);
         assertThat(planetsResponse.getSolarSystemId()).isGreaterThan(0);
     }
 
@@ -68,7 +68,7 @@ public class PlanetaryInteractionApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterPlanetsResponseInner> planets = api.getCharacterPlanets(characterId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterPlanetsResponse> planets = api.getCharacterPlanets(characterId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         CharacterPlanetResponse response = api.getCharacterPlanet(characterId, planets.get(0).getPlanetId(), CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotNull();
         assertThat(response.getPins()).hasSizeGreaterThan(0);
@@ -89,7 +89,7 @@ public class PlanetaryInteractionApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CorporationCustomsOfficesResponseInner> response = api.getCorporationCustomsOffices(corporationId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CorporationCustomsOfficesResponse> response = api.getCorporationCustomsOffices(corporationId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 

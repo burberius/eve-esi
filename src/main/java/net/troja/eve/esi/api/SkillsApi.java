@@ -26,7 +26,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 import net.troja.eve.esi.model.CharacterAttributesResponse;
-import net.troja.eve.esi.model.CharacterSkillqueueResponseInner;
+import net.troja.eve.esi.model.CharacterSkillqueueResponse;
 import net.troja.eve.esi.model.CharacterSkillsResponse;
 import net.troja.eve.esi.model.Error;
 import java.time.LocalDate;
@@ -510,7 +510,7 @@ public class SkillsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CharacterSkillqueueResponseInner&gt;
+     * @return List&lt;CharacterSkillqueueResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -536,12 +536,12 @@ public class SkillsApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterSkillqueueResponseInner> getCharacterSkillqueue(@javax.annotation.Nonnull Long characterId,
+    public List<CharacterSkillqueueResponse> getCharacterSkillqueue(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<CharacterSkillqueueResponseInner>> localVarResp = getCharacterSkillqueueWithHttpInfo(
-                characterId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<List<CharacterSkillqueueResponse>> localVarResp = getCharacterSkillqueueWithHttpInfo(characterId,
+                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -562,7 +562,7 @@ public class SkillsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CharacterSkillqueueResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CharacterSkillqueueResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -588,13 +588,13 @@ public class SkillsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterSkillqueueResponseInner>> getCharacterSkillqueueWithHttpInfo(
+    public ApiResponse<List<CharacterSkillqueueResponse>> getCharacterSkillqueueWithHttpInfo(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = getCharacterSkillqueueValidateBeforeCall(characterId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterSkillqueueResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterSkillqueueResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -647,11 +647,11 @@ public class SkillsApi {
     public okhttp3.Call getCharacterSkillqueueAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CharacterSkillqueueResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CharacterSkillqueueResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCharacterSkillqueueValidateBeforeCall(characterId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterSkillqueueResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterSkillqueueResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

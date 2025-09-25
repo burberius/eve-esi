@@ -15,9 +15,9 @@ package net.troja.eve.esi.api;
 
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.MailLabelsResponse;
-import net.troja.eve.esi.model.MailListsResponseInner;
+import net.troja.eve.esi.model.MailListsResponse;
 import net.troja.eve.esi.model.MailResponse;
-import net.troja.eve.esi.model.MailsResponseInner;
+import net.troja.eve.esi.model.MailsResponse;
 import net.troja.eve.esi.model.PostMailLabelsRequest;
 import net.troja.eve.esi.model.PostMailsRequest;
 import net.troja.eve.esi.model.PutMailRequest;
@@ -92,9 +92,9 @@ public class MailApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<MailsResponseInner> response = api.getMails(characterId, CorporationApi.COMPATIBILITY_DATE, labels, lastMailId, acceptLanguage, ifNoneMatch, xTenant);
+        List<MailsResponse> response = api.getMails(characterId, CorporationApi.COMPATIBILITY_DATE, labels, lastMailId, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).hasSize(50);
-        MailsResponseInner mail = response.get(0);
+        MailsResponse mail = response.get(0);
         assertThat(mail.getFrom()).isGreaterThan(0);
         assertThat(mail.getSubject()).isNotBlank();
     }
@@ -128,7 +128,7 @@ public class MailApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<MailListsResponseInner> response = api.getMailLists(characterId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<MailListsResponse> response = api.getMailLists(characterId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 

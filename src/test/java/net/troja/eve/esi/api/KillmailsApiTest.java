@@ -14,7 +14,7 @@
 package net.troja.eve.esi.api;
 
 import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.model.CharacterKillmailsResponseInner;
+import net.troja.eve.esi.model.CharacterKillmailsResponse;
 import net.troja.eve.esi.model.KillmailByHashResponse;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -50,7 +50,7 @@ public class KillmailsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterKillmailsResponseInner> response = api.getCharacterKillmails(characterId, KillmailsApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterKillmailsResponse> response = api.getCharacterKillmails(characterId, KillmailsApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotNull();
     }
 
@@ -68,7 +68,7 @@ public class KillmailsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterKillmailsResponseInner> response = api.getCorporationKillmails(corporationId, KillmailsApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterKillmailsResponse> response = api.getCorporationKillmails(corporationId, KillmailsApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 

@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.troja.eve.esi.model.PostCharacterFittingsRequestItemsInner;
+import net.troja.eve.esi.model.PostCharacterFittingsRequestItems;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -63,7 +63,7 @@ public class PostCharacterFittingsRequest implements Serializable {
     public static final String SERIALIZED_NAME_ITEMS = "items";
     @SerializedName(SERIALIZED_NAME_ITEMS)
     @javax.annotation.Nonnull
-    private List<PostCharacterFittingsRequestItemsInner> items;
+    private List<PostCharacterFittingsRequestItems> items;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
@@ -97,13 +97,12 @@ public class PostCharacterFittingsRequest implements Serializable {
         this.description = description;
     }
 
-    public PostCharacterFittingsRequest items(
-            @javax.annotation.Nonnull List<PostCharacterFittingsRequestItemsInner> items) {
+    public PostCharacterFittingsRequest items(@javax.annotation.Nonnull List<PostCharacterFittingsRequestItems> items) {
         this.items = items;
         return this;
     }
 
-    public PostCharacterFittingsRequest addItemsItem(PostCharacterFittingsRequestItemsInner itemsItem) {
+    public PostCharacterFittingsRequest addItemsItem(PostCharacterFittingsRequestItems itemsItem) {
         if (this.items == null) {
             this.items = new ArrayList<>();
         }
@@ -118,11 +117,11 @@ public class PostCharacterFittingsRequest implements Serializable {
      * @return items
      */
     @javax.annotation.Nonnull
-    public List<PostCharacterFittingsRequestItemsInner> getItems() {
+    public List<PostCharacterFittingsRequestItems> getItems() {
         return items;
     }
 
-    public void setItems(@javax.annotation.Nonnull List<PostCharacterFittingsRequestItemsInner> items) {
+    public void setItems(@javax.annotation.Nonnull List<PostCharacterFittingsRequestItems> items) {
         this.items = items;
     }
 
@@ -280,7 +279,7 @@ public class PostCharacterFittingsRequest implements Serializable {
         JsonArray jsonArrayitems = jsonObj.getAsJsonArray("items");
         // validate the required field `items` (array)
         for (int i = 0; i < jsonArrayitems.size(); i++) {
-            PostCharacterFittingsRequestItemsInner.validateJsonElement(jsonArrayitems.get(i));
+            PostCharacterFittingsRequestItems.validateJsonElement(jsonArrayitems.get(i));
         };
         if (!jsonObj.get("name").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(

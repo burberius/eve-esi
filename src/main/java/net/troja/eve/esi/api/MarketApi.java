@@ -25,17 +25,17 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
-import net.troja.eve.esi.model.CharacterOrdersHistoryResponseInner;
-import net.troja.eve.esi.model.CharacterOrdersResponseInner;
-import net.troja.eve.esi.model.CorporationOrdersHistoryResponseInner;
-import net.troja.eve.esi.model.CorporationOrdersResponseInner;
+import net.troja.eve.esi.model.CharacterOrdersHistoryResponse;
+import net.troja.eve.esi.model.CharacterOrdersResponse;
+import net.troja.eve.esi.model.CorporationOrdersHistoryResponse;
+import net.troja.eve.esi.model.CorporationOrdersResponse;
 import net.troja.eve.esi.model.Error;
 import java.time.LocalDate;
 import net.troja.eve.esi.model.MarketGroupResponse;
-import net.troja.eve.esi.model.MarketPricesResponseInner;
-import net.troja.eve.esi.model.MarketRegionHistoryResponseInner;
-import net.troja.eve.esi.model.MarketRegionOrdersResponseInner;
-import net.troja.eve.esi.model.MarketStructureResponseInner;
+import net.troja.eve.esi.model.MarketPricesResponse;
+import net.troja.eve.esi.model.MarketRegionHistoryResponse;
+import net.troja.eve.esi.model.MarketRegionOrdersResponse;
+import net.troja.eve.esi.model.MarketStructureResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -225,7 +225,7 @@ public class MarketApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CharacterOrdersResponseInner&gt;
+     * @return List&lt;CharacterOrdersResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -251,11 +251,11 @@ public class MarketApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterOrdersResponseInner> getCharacterOrders(@javax.annotation.Nonnull Long characterId,
+    public List<CharacterOrdersResponse> getCharacterOrders(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<CharacterOrdersResponseInner>> localVarResp = getCharacterOrdersWithHttpInfo(characterId,
+        ApiResponse<List<CharacterOrdersResponse>> localVarResp = getCharacterOrdersWithHttpInfo(characterId,
                 xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -277,7 +277,7 @@ public class MarketApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CharacterOrdersResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CharacterOrdersResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -303,13 +303,13 @@ public class MarketApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterOrdersResponseInner>> getCharacterOrdersWithHttpInfo(
+    public ApiResponse<List<CharacterOrdersResponse>> getCharacterOrdersWithHttpInfo(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = getCharacterOrdersValidateBeforeCall(characterId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterOrdersResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterOrdersResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -362,11 +362,11 @@ public class MarketApi {
     public okhttp3.Call getCharacterOrdersAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CharacterOrdersResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CharacterOrdersResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCharacterOrdersValidateBeforeCall(characterId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterOrdersResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterOrdersResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -527,7 +527,7 @@ public class MarketApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CharacterOrdersHistoryResponseInner&gt;
+     * @return List&lt;CharacterOrdersHistoryResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -555,12 +555,11 @@ public class MarketApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterOrdersHistoryResponseInner> getCharacterOrdersHistory(
-            @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        ApiResponse<List<CharacterOrdersHistoryResponseInner>> localVarResp = getCharacterOrdersHistoryWithHttpInfo(
+    public List<CharacterOrdersHistoryResponse> getCharacterOrdersHistory(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        ApiResponse<List<CharacterOrdersHistoryResponse>> localVarResp = getCharacterOrdersHistoryWithHttpInfo(
                 characterId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -584,8 +583,7 @@ public class MarketApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return 
-     *         ApiResponse&lt;List&lt;CharacterOrdersHistoryResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CharacterOrdersHistoryResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -613,14 +611,14 @@ public class MarketApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterOrdersHistoryResponseInner>> getCharacterOrdersHistoryWithHttpInfo(
+    public ApiResponse<List<CharacterOrdersHistoryResponse>> getCharacterOrdersHistoryWithHttpInfo(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getCharacterOrdersHistoryValidateBeforeCall(characterId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterOrdersHistoryResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterOrdersHistoryResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -677,12 +675,12 @@ public class MarketApi {
     public okhttp3.Call getCharacterOrdersHistoryAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CharacterOrdersHistoryResponseInner>> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CharacterOrdersHistoryResponse>> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = getCharacterOrdersHistoryValidateBeforeCall(characterId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterOrdersHistoryResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterOrdersHistoryResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -843,7 +841,7 @@ public class MarketApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CorporationOrdersResponseInner&gt;
+     * @return List&lt;CorporationOrdersResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -871,12 +869,12 @@ public class MarketApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CorporationOrdersResponseInner> getCorporationOrders(@javax.annotation.Nonnull Long corporationId,
+    public List<CorporationOrdersResponse> getCorporationOrders(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CorporationOrdersResponseInner>> localVarResp = getCorporationOrdersWithHttpInfo(
-                corporationId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<List<CorporationOrdersResponse>> localVarResp = getCorporationOrdersWithHttpInfo(corporationId,
+                xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -899,7 +897,7 @@ public class MarketApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CorporationOrdersResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CorporationOrdersResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -927,14 +925,14 @@ public class MarketApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CorporationOrdersResponseInner>> getCorporationOrdersWithHttpInfo(
+    public ApiResponse<List<CorporationOrdersResponse>> getCorporationOrdersWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getCorporationOrdersValidateBeforeCall(corporationId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CorporationOrdersResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationOrdersResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -991,12 +989,12 @@ public class MarketApi {
     public okhttp3.Call getCorporationOrdersAsync(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CorporationOrdersResponseInner>> _callback)
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CorporationOrdersResponse>> _callback)
             throws ApiException {
 
         okhttp3.Call localVarCall = getCorporationOrdersValidateBeforeCall(corporationId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CorporationOrdersResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationOrdersResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1158,7 +1156,7 @@ public class MarketApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CorporationOrdersHistoryResponseInner&gt;
+     * @return List&lt;CorporationOrdersHistoryResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1186,12 +1184,12 @@ public class MarketApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CorporationOrdersHistoryResponseInner> getCorporationOrdersHistory(
+    public List<CorporationOrdersHistoryResponse> getCorporationOrdersHistory(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<CorporationOrdersHistoryResponseInner>> localVarResp = getCorporationOrdersHistoryWithHttpInfo(
+        ApiResponse<List<CorporationOrdersHistoryResponse>> localVarResp = getCorporationOrdersHistoryWithHttpInfo(
                 corporationId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -1216,9 +1214,7 @@ public class MarketApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return 
-     *         ApiResponse&lt;List&lt;CorporationOrdersHistoryResponseInner&gt;&gt
-     *         ;
+     * @return ApiResponse&lt;List&lt;CorporationOrdersHistoryResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1246,14 +1242,14 @@ public class MarketApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CorporationOrdersHistoryResponseInner>> getCorporationOrdersHistoryWithHttpInfo(
+    public ApiResponse<List<CorporationOrdersHistoryResponse>> getCorporationOrdersHistoryWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getCorporationOrdersHistoryValidateBeforeCall(corporationId, xCompatibilityDate,
                 page, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CorporationOrdersHistoryResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationOrdersHistoryResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1312,11 +1308,11 @@ public class MarketApi {
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CorporationOrdersHistoryResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CorporationOrdersHistoryResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCorporationOrdersHistoryValidateBeforeCall(corporationId, xCompatibilityDate,
                 page, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CorporationOrdersHistoryResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationOrdersHistoryResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2017,7 +2013,7 @@ public class MarketApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;MarketPricesResponseInner&gt;
+     * @return List&lt;MarketPricesResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2043,10 +2039,10 @@ public class MarketApi {
      *                        </tr>
      *                        </table>
      */
-    public List<MarketPricesResponseInner> getMarketPrices(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public List<MarketPricesResponse> getMarketPrices(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<MarketPricesResponseInner>> localVarResp = getMarketPricesWithHttpInfo(xCompatibilityDate,
+        ApiResponse<List<MarketPricesResponse>> localVarResp = getMarketPricesWithHttpInfo(xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -2065,7 +2061,7 @@ public class MarketApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;MarketPricesResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;MarketPricesResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2091,13 +2087,13 @@ public class MarketApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<MarketPricesResponseInner>> getMarketPricesWithHttpInfo(
+    public ApiResponse<List<MarketPricesResponse>> getMarketPricesWithHttpInfo(
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getMarketPricesValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
                 xTenant, null);
-        Type localVarReturnType = new TypeToken<List<MarketPricesResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<MarketPricesResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2146,12 +2142,12 @@ public class MarketApi {
      */
     public okhttp3.Call getMarketPricesAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<MarketPricesResponseInner>> _callback)
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<MarketPricesResponse>> _callback)
             throws ApiException {
 
         okhttp3.Call localVarCall = getMarketPricesValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
                 xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<MarketPricesResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<MarketPricesResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2316,7 +2312,7 @@ public class MarketApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;MarketRegionHistoryResponseInner&gt;
+     * @return List&lt;MarketRegionHistoryResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2342,11 +2338,11 @@ public class MarketApi {
      *                        </tr>
      *                        </table>
      */
-    public List<MarketRegionHistoryResponseInner> getMarketRegionHistory(@javax.annotation.Nonnull Long regionId,
+    public List<MarketRegionHistoryResponse> getMarketRegionHistory(@javax.annotation.Nonnull Long regionId,
             @javax.annotation.Nonnull Long typeId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<MarketRegionHistoryResponseInner>> localVarResp = getMarketRegionHistoryWithHttpInfo(regionId,
+        ApiResponse<List<MarketRegionHistoryResponse>> localVarResp = getMarketRegionHistoryWithHttpInfo(regionId,
                 typeId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -2371,7 +2367,7 @@ public class MarketApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;MarketRegionHistoryResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;MarketRegionHistoryResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2397,14 +2393,14 @@ public class MarketApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<MarketRegionHistoryResponseInner>> getMarketRegionHistoryWithHttpInfo(
+    public ApiResponse<List<MarketRegionHistoryResponse>> getMarketRegionHistoryWithHttpInfo(
             @javax.annotation.Nonnull Long regionId, @javax.annotation.Nonnull Long typeId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getMarketRegionHistoryValidateBeforeCall(regionId, typeId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<MarketRegionHistoryResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<MarketRegionHistoryResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2460,12 +2456,12 @@ public class MarketApi {
     public okhttp3.Call getMarketRegionHistoryAsync(@javax.annotation.Nonnull Long regionId,
             @javax.annotation.Nonnull Long typeId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<MarketRegionHistoryResponseInner>> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<MarketRegionHistoryResponse>> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = getMarketRegionHistoryValidateBeforeCall(regionId, typeId, xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<MarketRegionHistoryResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<MarketRegionHistoryResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2649,7 +2645,7 @@ public class MarketApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;MarketRegionOrdersResponseInner&gt;
+     * @return List&lt;MarketRegionOrdersResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2677,12 +2673,12 @@ public class MarketApi {
      *                        </tr>
      *                        </table>
      */
-    public List<MarketRegionOrdersResponseInner> getMarketRegionOrders(@javax.annotation.Nonnull String orderType,
+    public List<MarketRegionOrdersResponse> getMarketRegionOrders(@javax.annotation.Nonnull String orderType,
             @javax.annotation.Nonnull Long regionId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Long typeId,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<MarketRegionOrdersResponseInner>> localVarResp = getMarketRegionOrdersWithHttpInfo(orderType,
+        ApiResponse<List<MarketRegionOrdersResponse>> localVarResp = getMarketRegionOrdersWithHttpInfo(orderType,
                 regionId, xCompatibilityDate, page, typeId, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -2709,7 +2705,7 @@ public class MarketApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;MarketRegionOrdersResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;MarketRegionOrdersResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2737,7 +2733,7 @@ public class MarketApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<MarketRegionOrdersResponseInner>> getMarketRegionOrdersWithHttpInfo(
+    public ApiResponse<List<MarketRegionOrdersResponse>> getMarketRegionOrdersWithHttpInfo(
             @javax.annotation.Nonnull String orderType, @javax.annotation.Nonnull Long regionId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable Long typeId, @javax.annotation.Nullable String acceptLanguage,
@@ -2745,7 +2741,7 @@ public class MarketApi {
             throws ApiException {
         okhttp3.Call localVarCall = getMarketRegionOrdersValidateBeforeCall(orderType, regionId, xCompatibilityDate,
                 page, typeId, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<MarketRegionOrdersResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<MarketRegionOrdersResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2807,12 +2803,12 @@ public class MarketApi {
             @javax.annotation.Nonnull Long regionId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Long typeId,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<MarketRegionOrdersResponseInner>> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<MarketRegionOrdersResponse>> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = getMarketRegionOrdersValidateBeforeCall(orderType, regionId, xCompatibilityDate,
                 page, typeId, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<MarketRegionOrdersResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<MarketRegionOrdersResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3283,7 +3279,7 @@ public class MarketApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;MarketStructureResponseInner&gt;
+     * @return List&lt;MarketStructureResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -3311,11 +3307,11 @@ public class MarketApi {
      *                        </tr>
      *                        </table>
      */
-    public List<MarketStructureResponseInner> getMarketStructure(@javax.annotation.Nonnull Long structureId,
+    public List<MarketStructureResponse> getMarketStructure(@javax.annotation.Nonnull Long structureId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<MarketStructureResponseInner>> localVarResp = getMarketStructureWithHttpInfo(structureId,
+        ApiResponse<List<MarketStructureResponse>> localVarResp = getMarketStructureWithHttpInfo(structureId,
                 xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -3338,7 +3334,7 @@ public class MarketApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;MarketStructureResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;MarketStructureResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -3366,14 +3362,14 @@ public class MarketApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<MarketStructureResponseInner>> getMarketStructureWithHttpInfo(
+    public ApiResponse<List<MarketStructureResponse>> getMarketStructureWithHttpInfo(
             @javax.annotation.Nonnull Long structureId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getMarketStructureValidateBeforeCall(structureId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<MarketStructureResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<MarketStructureResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3430,12 +3426,12 @@ public class MarketApi {
     public okhttp3.Call getMarketStructureAsync(@javax.annotation.Nonnull Long structureId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<MarketStructureResponseInner>> _callback)
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<MarketStructureResponse>> _callback)
             throws ApiException {
 
         okhttp3.Call localVarCall = getMarketStructureValidateBeforeCall(structureId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<MarketStructureResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<MarketStructureResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

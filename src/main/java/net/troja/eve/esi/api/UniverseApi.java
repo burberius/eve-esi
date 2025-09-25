@@ -25,27 +25,27 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
-import net.troja.eve.esi.model.AncestriesResponseInner;
+import net.troja.eve.esi.model.AncestriesResponse;
 import net.troja.eve.esi.model.AsteroidBeltsResponse;
-import net.troja.eve.esi.model.BloodlinesResponseInner;
+import net.troja.eve.esi.model.BloodlinesResponse;
 import net.troja.eve.esi.model.CategoryResponse;
 import net.troja.eve.esi.model.ConstellationResponse;
 import net.troja.eve.esi.model.Error;
-import net.troja.eve.esi.model.FactionsResponseInner;
+import net.troja.eve.esi.model.FactionsResponse;
 import net.troja.eve.esi.model.GraphicResponse;
 import net.troja.eve.esi.model.GroupResponse;
 import java.time.LocalDate;
 import net.troja.eve.esi.model.MoonResponse;
-import net.troja.eve.esi.model.NamesResponseInner;
+import net.troja.eve.esi.model.NamesResponse;
 import net.troja.eve.esi.model.PlanetResponse;
-import net.troja.eve.esi.model.RacesResponseInner;
+import net.troja.eve.esi.model.RacesResponse;
 import net.troja.eve.esi.model.RegionResponse;
 import java.util.Set;
 import net.troja.eve.esi.model.StarResponse;
 import net.troja.eve.esi.model.StargateResponse;
 import net.troja.eve.esi.model.StationResponse;
-import net.troja.eve.esi.model.SystemJumpsResponseInner;
-import net.troja.eve.esi.model.SystemKillsResponseInner;
+import net.troja.eve.esi.model.SystemJumpsResponse;
+import net.troja.eve.esi.model.SystemKillsResponse;
 import net.troja.eve.esi.model.SystemResponse;
 import net.troja.eve.esi.model.TypeResponse;
 import net.troja.eve.esi.model.UniverseIdsPost;
@@ -227,7 +227,7 @@ public class UniverseApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;AncestriesResponseInner&gt;
+     * @return List&lt;AncestriesResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -254,10 +254,10 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public List<AncestriesResponseInner> getAncestries(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public List<AncestriesResponse> getAncestries(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<AncestriesResponseInner>> localVarResp = getAncestriesWithHttpInfo(xCompatibilityDate,
+        ApiResponse<List<AncestriesResponse>> localVarResp = getAncestriesWithHttpInfo(xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -277,7 +277,7 @@ public class UniverseApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;AncestriesResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;AncestriesResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -304,13 +304,13 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<AncestriesResponseInner>> getAncestriesWithHttpInfo(
+    public ApiResponse<List<AncestriesResponse>> getAncestriesWithHttpInfo(
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getAncestriesValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
                 xTenant, null);
-        Type localVarReturnType = new TypeToken<List<AncestriesResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<AncestriesResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -361,12 +361,12 @@ public class UniverseApi {
      */
     public okhttp3.Call getAncestriesAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<AncestriesResponseInner>> _callback)
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<AncestriesResponse>> _callback)
             throws ApiException {
 
         okhttp3.Call localVarCall = getAncestriesValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
                 xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<AncestriesResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<AncestriesResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -794,7 +794,7 @@ public class UniverseApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;BloodlinesResponseInner&gt;
+     * @return List&lt;BloodlinesResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -821,10 +821,10 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public List<BloodlinesResponseInner> getBloodlines(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public List<BloodlinesResponse> getBloodlines(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<BloodlinesResponseInner>> localVarResp = getBloodlinesWithHttpInfo(xCompatibilityDate,
+        ApiResponse<List<BloodlinesResponse>> localVarResp = getBloodlinesWithHttpInfo(xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -843,7 +843,7 @@ public class UniverseApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;BloodlinesResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;BloodlinesResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -870,13 +870,13 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<BloodlinesResponseInner>> getBloodlinesWithHttpInfo(
+    public ApiResponse<List<BloodlinesResponse>> getBloodlinesWithHttpInfo(
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getBloodlinesValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
                 xTenant, null);
-        Type localVarReturnType = new TypeToken<List<BloodlinesResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<BloodlinesResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -927,12 +927,12 @@ public class UniverseApi {
      */
     public okhttp3.Call getBloodlinesAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<BloodlinesResponseInner>> _callback)
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<BloodlinesResponse>> _callback)
             throws ApiException {
 
         okhttp3.Call localVarCall = getBloodlinesValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
                 xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<BloodlinesResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<BloodlinesResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2202,7 +2202,7 @@ public class UniverseApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;FactionsResponseInner&gt;
+     * @return List&lt;FactionsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2229,11 +2229,11 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public List<FactionsResponseInner> getFactions(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public List<FactionsResponse> getFactions(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<FactionsResponseInner>> localVarResp = getFactionsWithHttpInfo(xCompatibilityDate,
-                acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<List<FactionsResponse>> localVarResp = getFactionsWithHttpInfo(xCompatibilityDate, acceptLanguage,
+                ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -2251,7 +2251,7 @@ public class UniverseApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;FactionsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;FactionsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2278,13 +2278,13 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<FactionsResponseInner>> getFactionsWithHttpInfo(
+    public ApiResponse<List<FactionsResponse>> getFactionsWithHttpInfo(
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getFactionsValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
                 xTenant, null);
-        Type localVarReturnType = new TypeToken<List<FactionsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<FactionsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2335,12 +2335,12 @@ public class UniverseApi {
      */
     public okhttp3.Call getFactionsAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<FactionsResponseInner>> _callback)
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<FactionsResponse>> _callback)
             throws ApiException {
 
         okhttp3.Call localVarCall = getFactionsValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
                 xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<FactionsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<FactionsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4201,7 +4201,7 @@ public class UniverseApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;RacesResponseInner&gt;
+     * @return List&lt;RacesResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -4228,10 +4228,10 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public List<RacesResponseInner> getRaces(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public List<RacesResponse> getRaces(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<RacesResponseInner>> localVarResp = getRacesWithHttpInfo(xCompatibilityDate, acceptLanguage,
+        ApiResponse<List<RacesResponse>> localVarResp = getRacesWithHttpInfo(xCompatibilityDate, acceptLanguage,
                 ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -4251,7 +4251,7 @@ public class UniverseApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;RacesResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;RacesResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -4278,13 +4278,13 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<RacesResponseInner>> getRacesWithHttpInfo(
+    public ApiResponse<List<RacesResponse>> getRacesWithHttpInfo(
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getRacesValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
                 xTenant, null);
-        Type localVarReturnType = new TypeToken<List<RacesResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<RacesResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4335,12 +4335,12 @@ public class UniverseApi {
      */
     public okhttp3.Call getRacesAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<RacesResponseInner>> _callback)
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<RacesResponse>> _callback)
             throws ApiException {
 
         okhttp3.Call localVarCall = getRacesValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
                 xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<RacesResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<RacesResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -6485,7 +6485,7 @@ public class UniverseApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;SystemJumpsResponseInner&gt;
+     * @return List&lt;SystemJumpsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -6511,10 +6511,10 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public List<SystemJumpsResponseInner> getSystemJumps(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public List<SystemJumpsResponse> getSystemJumps(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<SystemJumpsResponseInner>> localVarResp = getSystemJumpsWithHttpInfo(xCompatibilityDate,
+        ApiResponse<List<SystemJumpsResponse>> localVarResp = getSystemJumpsWithHttpInfo(xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -6535,7 +6535,7 @@ public class UniverseApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;SystemJumpsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;SystemJumpsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -6561,13 +6561,13 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<SystemJumpsResponseInner>> getSystemJumpsWithHttpInfo(
+    public ApiResponse<List<SystemJumpsResponse>> getSystemJumpsWithHttpInfo(
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getSystemJumpsValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
                 xTenant, null);
-        Type localVarReturnType = new TypeToken<List<SystemJumpsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<SystemJumpsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -6618,12 +6618,12 @@ public class UniverseApi {
      */
     public okhttp3.Call getSystemJumpsAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<SystemJumpsResponseInner>> _callback)
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<SystemJumpsResponse>> _callback)
             throws ApiException {
 
         okhttp3.Call localVarCall = getSystemJumpsValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
                 xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<SystemJumpsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<SystemJumpsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -6761,7 +6761,7 @@ public class UniverseApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;SystemKillsResponseInner&gt;
+     * @return List&lt;SystemKillsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -6787,10 +6787,10 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public List<SystemKillsResponseInner> getSystemKills(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public List<SystemKillsResponse> getSystemKills(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<SystemKillsResponseInner>> localVarResp = getSystemKillsWithHttpInfo(xCompatibilityDate,
+        ApiResponse<List<SystemKillsResponse>> localVarResp = getSystemKillsWithHttpInfo(xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -6811,7 +6811,7 @@ public class UniverseApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;SystemKillsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;SystemKillsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -6837,13 +6837,13 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<SystemKillsResponseInner>> getSystemKillsWithHttpInfo(
+    public ApiResponse<List<SystemKillsResponse>> getSystemKillsWithHttpInfo(
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getSystemKillsValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
                 xTenant, null);
-        Type localVarReturnType = new TypeToken<List<SystemKillsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<SystemKillsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -6895,12 +6895,12 @@ public class UniverseApi {
      */
     public okhttp3.Call getSystemKillsAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<SystemKillsResponseInner>> _callback)
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<SystemKillsResponse>> _callback)
             throws ApiException {
 
         okhttp3.Call localVarCall = getSystemKillsValidateBeforeCall(xCompatibilityDate, acceptLanguage, ifNoneMatch,
                 xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<SystemKillsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<SystemKillsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -8200,7 +8200,7 @@ public class UniverseApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;NamesResponseInner&gt;
+     * @return List&lt;NamesResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -8226,11 +8226,11 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public List<NamesResponseInner> postNames(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public List<NamesResponse> postNames(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nonnull Set<Long> requestBody, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<NamesResponseInner>> localVarResp = postNamesWithHttpInfo(xCompatibilityDate, requestBody,
+        ApiResponse<List<NamesResponse>> localVarResp = postNamesWithHttpInfo(xCompatibilityDate, requestBody,
                 acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -8254,7 +8254,7 @@ public class UniverseApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;NamesResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;NamesResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -8280,13 +8280,13 @@ public class UniverseApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<NamesResponseInner>> postNamesWithHttpInfo(
+    public ApiResponse<List<NamesResponse>> postNamesWithHttpInfo(
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = postNamesValidateBeforeCall(xCompatibilityDate, requestBody, acceptLanguage,
                 ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<NamesResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<NamesResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -8341,11 +8341,11 @@ public class UniverseApi {
     public okhttp3.Call postNamesAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nonnull Set<Long> requestBody, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<NamesResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<NamesResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postNamesValidateBeforeCall(xCompatibilityDate, requestBody, acceptLanguage,
                 ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<NamesResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<NamesResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

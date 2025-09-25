@@ -22,8 +22,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.troja.eve.esi.model.CorporationsProjectsDetailConfigurationdeliveritemDockingLocationsInner;
-import net.troja.eve.esi.model.CorporationsProjectsDetailConfigurationdeliveritemItemsInner;
+import net.troja.eve.esi.model.CorporationsProjectsDetailConfigurationdeliveritemDockingLocations;
+import net.troja.eve.esi.model.CorporationsProjectsDetailConfigurationdeliveritemItems;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -59,12 +59,12 @@ public class CorporationsProjectsDetailConfigurationdeliveritem implements Seria
     public static final String SERIALIZED_NAME_DOCKING_LOCATIONS = "docking_locations";
     @SerializedName(SERIALIZED_NAME_DOCKING_LOCATIONS)
     @javax.annotation.Nullable
-    private List<CorporationsProjectsDetailConfigurationdeliveritemDockingLocationsInner> dockingLocations;
+    private List<CorporationsProjectsDetailConfigurationdeliveritemDockingLocations> dockingLocations;
 
     public static final String SERIALIZED_NAME_ITEMS = "items";
     @SerializedName(SERIALIZED_NAME_ITEMS)
     @javax.annotation.Nullable
-    private List<CorporationsProjectsDetailConfigurationdeliveritemItemsInner> items;
+    private List<CorporationsProjectsDetailConfigurationdeliveritemItems> items;
 
     public static final String SERIALIZED_NAME_OFFICE_ID = "office_id";
     @SerializedName(SERIALIZED_NAME_OFFICE_ID)
@@ -75,13 +75,13 @@ public class CorporationsProjectsDetailConfigurationdeliveritem implements Seria
     }
 
     public CorporationsProjectsDetailConfigurationdeliveritem dockingLocations(
-            @javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationdeliveritemDockingLocationsInner> dockingLocations) {
+            @javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationdeliveritemDockingLocations> dockingLocations) {
         this.dockingLocations = dockingLocations;
         return this;
     }
 
     public CorporationsProjectsDetailConfigurationdeliveritem addDockingLocationsItem(
-            CorporationsProjectsDetailConfigurationdeliveritemDockingLocationsInner dockingLocationsItem) {
+            CorporationsProjectsDetailConfigurationdeliveritemDockingLocations dockingLocationsItem) {
         if (this.dockingLocations == null) {
             this.dockingLocations = new ArrayList<>();
         }
@@ -96,23 +96,23 @@ public class CorporationsProjectsDetailConfigurationdeliveritem implements Seria
      * @return dockingLocations
      */
     @javax.annotation.Nullable
-    public List<CorporationsProjectsDetailConfigurationdeliveritemDockingLocationsInner> getDockingLocations() {
+    public List<CorporationsProjectsDetailConfigurationdeliveritemDockingLocations> getDockingLocations() {
         return dockingLocations;
     }
 
     public void setDockingLocations(
-            @javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationdeliveritemDockingLocationsInner> dockingLocations) {
+            @javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationdeliveritemDockingLocations> dockingLocations) {
         this.dockingLocations = dockingLocations;
     }
 
     public CorporationsProjectsDetailConfigurationdeliveritem items(
-            @javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationdeliveritemItemsInner> items) {
+            @javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationdeliveritemItems> items) {
         this.items = items;
         return this;
     }
 
     public CorporationsProjectsDetailConfigurationdeliveritem addItemsItem(
-            CorporationsProjectsDetailConfigurationdeliveritemItemsInner itemsItem) {
+            CorporationsProjectsDetailConfigurationdeliveritemItems itemsItem) {
         if (this.items == null) {
             this.items = new ArrayList<>();
         }
@@ -127,12 +127,11 @@ public class CorporationsProjectsDetailConfigurationdeliveritem implements Seria
      * @return items
      */
     @javax.annotation.Nullable
-    public List<CorporationsProjectsDetailConfigurationdeliveritemItemsInner> getItems() {
+    public List<CorporationsProjectsDetailConfigurationdeliveritemItems> getItems() {
         return items;
     }
 
-    public void setItems(
-            @javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationdeliveritemItemsInner> items) {
+    public void setItems(@javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationdeliveritemItems> items) {
         this.items = items;
     }
 
@@ -257,7 +256,7 @@ public class CorporationsProjectsDetailConfigurationdeliveritem implements Seria
 
                 // validate the optional field `docking_locations` (array)
                 for (int i = 0; i < jsonArraydockingLocations.size(); i++) {
-                    CorporationsProjectsDetailConfigurationdeliveritemDockingLocationsInner
+                    CorporationsProjectsDetailConfigurationdeliveritemDockingLocations
                             .validateJsonElement(jsonArraydockingLocations.get(i));
                 };
             }
@@ -274,8 +273,7 @@ public class CorporationsProjectsDetailConfigurationdeliveritem implements Seria
 
                 // validate the optional field `items` (array)
                 for (int i = 0; i < jsonArrayitems.size(); i++) {
-                    CorporationsProjectsDetailConfigurationdeliveritemItemsInner.validateJsonElement(jsonArrayitems
-                            .get(i));
+                    CorporationsProjectsDetailConfigurationdeliveritemItems.validateJsonElement(jsonArrayitems.get(i));
                 };
             }
         }

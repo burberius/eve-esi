@@ -14,9 +14,9 @@
 package net.troja.eve.esi.api;
 
 import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.model.CharacterCalendarEventAttendeesResponseInner;
+import net.troja.eve.esi.model.CharacterCalendarEventAttendeesResponse;
 import net.troja.eve.esi.model.CharacterCalendarEventResponse;
-import net.troja.eve.esi.model.CharacterCalendarResponseInner;
+import net.troja.eve.esi.model.CharacterCalendarResponse;
 import net.troja.eve.esi.model.PutCharacterCalendarEventRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -51,7 +51,7 @@ public class CalendarApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterCalendarResponseInner> response = api.getCharacterCalendar(characterId, CalendarApi.COMPATIBILITY_DATE, fromEvent, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterCalendarResponse> response = api.getCharacterCalendar(characterId, CalendarApi.COMPATIBILITY_DATE, fromEvent, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotNull();
     }
 
@@ -87,7 +87,7 @@ public class CalendarApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterCalendarEventAttendeesResponseInner> response = api.getCharacterCalendarEventAttendees(characterId, eventId, CalendarApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterCalendarEventAttendeesResponse> response = api.getCharacterCalendarEventAttendees(characterId, eventId, CalendarApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotNull();
     }
 

@@ -25,10 +25,10 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
-import net.troja.eve.esi.model.CharacterAssetsLocationsPostInner;
-import net.troja.eve.esi.model.CharacterAssetsNamesPostInner;
-import net.troja.eve.esi.model.CharacterAssetsResponseInner;
-import net.troja.eve.esi.model.CorporationAssetsResponseInner;
+import net.troja.eve.esi.model.CharacterAssetsLocationsPost;
+import net.troja.eve.esi.model.CharacterAssetsNamesPost;
+import net.troja.eve.esi.model.CharacterAssetsResponse;
+import net.troja.eve.esi.model.CorporationAssetsResponse;
 import net.troja.eve.esi.model.Error;
 import java.time.LocalDate;
 import java.util.Set;
@@ -231,7 +231,7 @@ public class AssetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CharacterAssetsResponseInner&gt;
+     * @return List&lt;CharacterAssetsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -259,11 +259,11 @@ public class AssetsApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterAssetsResponseInner> getCharacterAssets(@javax.annotation.Nonnull Long characterId,
+    public List<CharacterAssetsResponse> getCharacterAssets(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CharacterAssetsResponseInner>> localVarResp = getCharacterAssetsWithHttpInfo(characterId,
+        ApiResponse<List<CharacterAssetsResponse>> localVarResp = getCharacterAssetsWithHttpInfo(characterId,
                 xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -286,7 +286,7 @@ public class AssetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CharacterAssetsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CharacterAssetsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -314,14 +314,14 @@ public class AssetsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterAssetsResponseInner>> getCharacterAssetsWithHttpInfo(
+    public ApiResponse<List<CharacterAssetsResponse>> getCharacterAssetsWithHttpInfo(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getCharacterAssetsValidateBeforeCall(characterId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterAssetsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterAssetsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -378,12 +378,12 @@ public class AssetsApi {
     public okhttp3.Call getCharacterAssetsAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CharacterAssetsResponseInner>> _callback)
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CharacterAssetsResponse>> _callback)
             throws ApiException {
 
         okhttp3.Call localVarCall = getCharacterAssetsValidateBeforeCall(characterId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterAssetsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterAssetsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -543,7 +543,7 @@ public class AssetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CorporationAssetsResponseInner&gt;
+     * @return List&lt;CorporationAssetsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -571,12 +571,12 @@ public class AssetsApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CorporationAssetsResponseInner> getCorporationAssets(@javax.annotation.Nonnull Long corporationId,
+    public List<CorporationAssetsResponse> getCorporationAssets(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CorporationAssetsResponseInner>> localVarResp = getCorporationAssetsWithHttpInfo(
-                corporationId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<List<CorporationAssetsResponse>> localVarResp = getCorporationAssetsWithHttpInfo(corporationId,
+                xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -598,7 +598,7 @@ public class AssetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CorporationAssetsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CorporationAssetsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -626,14 +626,14 @@ public class AssetsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CorporationAssetsResponseInner>> getCorporationAssetsWithHttpInfo(
+    public ApiResponse<List<CorporationAssetsResponse>> getCorporationAssetsWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getCorporationAssetsValidateBeforeCall(corporationId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CorporationAssetsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationAssetsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -690,12 +690,12 @@ public class AssetsApi {
     public okhttp3.Call getCorporationAssetsAsync(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CorporationAssetsResponseInner>> _callback)
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CorporationAssetsResponse>> _callback)
             throws ApiException {
 
         okhttp3.Call localVarCall = getCorporationAssetsValidateBeforeCall(corporationId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CorporationAssetsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationAssetsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -857,7 +857,7 @@ public class AssetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CharacterAssetsLocationsPostInner&gt;
+     * @return List&lt;CharacterAssetsLocationsPost&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -883,12 +883,11 @@ public class AssetsApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterAssetsLocationsPostInner> postCharacterAssetsLocations(
-            @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nonnull Set<Long> requestBody, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        ApiResponse<List<CharacterAssetsLocationsPostInner>> localVarResp = postCharacterAssetsLocationsWithHttpInfo(
+    public List<CharacterAssetsLocationsPost> postCharacterAssetsLocations(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        ApiResponse<List<CharacterAssetsLocationsPost>> localVarResp = postCharacterAssetsLocationsWithHttpInfo(
                 characterId, xCompatibilityDate, requestBody, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -913,7 +912,7 @@ public class AssetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CharacterAssetsLocationsPostInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CharacterAssetsLocationsPost&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -939,14 +938,14 @@ public class AssetsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterAssetsLocationsPostInner>> postCharacterAssetsLocationsWithHttpInfo(
+    public ApiResponse<List<CharacterAssetsLocationsPost>> postCharacterAssetsLocationsWithHttpInfo(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nonnull Set<Long> requestBody, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = postCharacterAssetsLocationsValidateBeforeCall(characterId, xCompatibilityDate,
                 requestBody, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterAssetsLocationsPostInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterAssetsLocationsPost>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1002,12 +1001,12 @@ public class AssetsApi {
     public okhttp3.Call postCharacterAssetsLocationsAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CharacterAssetsLocationsPostInner>> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CharacterAssetsLocationsPost>> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = postCharacterAssetsLocationsValidateBeforeCall(characterId, xCompatibilityDate,
                 requestBody, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterAssetsLocationsPostInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterAssetsLocationsPost>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1169,7 +1168,7 @@ public class AssetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CharacterAssetsNamesPostInner&gt;
+     * @return List&lt;CharacterAssetsNamesPost&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1195,12 +1194,12 @@ public class AssetsApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterAssetsNamesPostInner> postCharacterAssetsNames(@javax.annotation.Nonnull Long characterId,
+    public List<CharacterAssetsNamesPost> postCharacterAssetsNames(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CharacterAssetsNamesPostInner>> localVarResp = postCharacterAssetsNamesWithHttpInfo(
-                characterId, xCompatibilityDate, requestBody, acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<List<CharacterAssetsNamesPost>> localVarResp = postCharacterAssetsNamesWithHttpInfo(characterId,
+                xCompatibilityDate, requestBody, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -1224,7 +1223,7 @@ public class AssetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CharacterAssetsNamesPostInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CharacterAssetsNamesPost&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1250,14 +1249,14 @@ public class AssetsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterAssetsNamesPostInner>> postCharacterAssetsNamesWithHttpInfo(
+    public ApiResponse<List<CharacterAssetsNamesPost>> postCharacterAssetsNamesWithHttpInfo(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nonnull Set<Long> requestBody, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = postCharacterAssetsNamesValidateBeforeCall(characterId, xCompatibilityDate,
                 requestBody, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterAssetsNamesPostInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterAssetsNamesPost>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1313,12 +1312,12 @@ public class AssetsApi {
     public okhttp3.Call postCharacterAssetsNamesAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CharacterAssetsNamesPostInner>> _callback)
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CharacterAssetsNamesPost>> _callback)
             throws ApiException {
 
         okhttp3.Call localVarCall = postCharacterAssetsNamesValidateBeforeCall(characterId, xCompatibilityDate,
                 requestBody, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterAssetsNamesPostInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterAssetsNamesPost>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1480,7 +1479,7 @@ public class AssetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CharacterAssetsLocationsPostInner&gt;
+     * @return List&lt;CharacterAssetsLocationsPost&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1506,12 +1505,12 @@ public class AssetsApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterAssetsLocationsPostInner> postCorporationAssetsLocations(
+    public List<CharacterAssetsLocationsPost> postCorporationAssetsLocations(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nonnull Set<Long> requestBody, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<CharacterAssetsLocationsPostInner>> localVarResp = postCorporationAssetsLocationsWithHttpInfo(
+        ApiResponse<List<CharacterAssetsLocationsPost>> localVarResp = postCorporationAssetsLocationsWithHttpInfo(
                 corporationId, xCompatibilityDate, requestBody, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -1536,7 +1535,7 @@ public class AssetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CharacterAssetsLocationsPostInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CharacterAssetsLocationsPost&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1562,14 +1561,14 @@ public class AssetsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterAssetsLocationsPostInner>> postCorporationAssetsLocationsWithHttpInfo(
+    public ApiResponse<List<CharacterAssetsLocationsPost>> postCorporationAssetsLocationsWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nonnull Set<Long> requestBody, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = postCorporationAssetsLocationsValidateBeforeCall(corporationId, xCompatibilityDate,
                 requestBody, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterAssetsLocationsPostInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterAssetsLocationsPost>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1625,12 +1624,12 @@ public class AssetsApi {
     public okhttp3.Call postCorporationAssetsLocationsAsync(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CharacterAssetsLocationsPostInner>> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CharacterAssetsLocationsPost>> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = postCorporationAssetsLocationsValidateBeforeCall(corporationId, xCompatibilityDate,
                 requestBody, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterAssetsLocationsPostInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterAssetsLocationsPost>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1792,7 +1791,7 @@ public class AssetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CharacterAssetsNamesPostInner&gt;
+     * @return List&lt;CharacterAssetsNamesPost&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1818,11 +1817,11 @@ public class AssetsApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterAssetsNamesPostInner> postCorporationAssetsNames(@javax.annotation.Nonnull Long corporationId,
+    public List<CharacterAssetsNamesPost> postCorporationAssetsNames(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CharacterAssetsNamesPostInner>> localVarResp = postCorporationAssetsNamesWithHttpInfo(
+        ApiResponse<List<CharacterAssetsNamesPost>> localVarResp = postCorporationAssetsNamesWithHttpInfo(
                 corporationId, xCompatibilityDate, requestBody, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -1847,7 +1846,7 @@ public class AssetsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CharacterAssetsNamesPostInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CharacterAssetsNamesPost&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1873,14 +1872,14 @@ public class AssetsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterAssetsNamesPostInner>> postCorporationAssetsNamesWithHttpInfo(
+    public ApiResponse<List<CharacterAssetsNamesPost>> postCorporationAssetsNamesWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nonnull Set<Long> requestBody, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = postCorporationAssetsNamesValidateBeforeCall(corporationId, xCompatibilityDate,
                 requestBody, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterAssetsNamesPostInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterAssetsNamesPost>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1936,12 +1935,12 @@ public class AssetsApi {
     public okhttp3.Call postCorporationAssetsNamesAsync(@javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nonnull Set<Long> requestBody,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CharacterAssetsNamesPostInner>> _callback)
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CharacterAssetsNamesPost>> _callback)
             throws ApiException {
 
         okhttp3.Call localVarCall = postCorporationAssetsNamesValidateBeforeCall(corporationId, xCompatibilityDate,
                 requestBody, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterAssetsNamesPostInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterAssetsNamesPost>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

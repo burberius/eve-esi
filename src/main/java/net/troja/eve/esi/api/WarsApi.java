@@ -25,7 +25,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
-import net.troja.eve.esi.model.CharacterKillmailsResponseInner;
+import net.troja.eve.esi.model.CharacterKillmailsResponse;
 import net.troja.eve.esi.model.Error;
 import java.time.LocalDate;
 import net.troja.eve.esi.model.WarResponse;
@@ -512,7 +512,7 @@ public class WarsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CharacterKillmailsResponseInner&gt;
+     * @return List&lt;CharacterKillmailsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -540,11 +540,11 @@ public class WarsApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterKillmailsResponseInner> getWarKillmails(@javax.annotation.Nonnull Long warId,
+    public List<CharacterKillmailsResponse> getWarKillmails(@javax.annotation.Nonnull Long warId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CharacterKillmailsResponseInner>> localVarResp = getWarKillmailsWithHttpInfo(warId,
+        ApiResponse<List<CharacterKillmailsResponse>> localVarResp = getWarKillmailsWithHttpInfo(warId,
                 xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -567,7 +567,7 @@ public class WarsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CharacterKillmailsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CharacterKillmailsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -595,14 +595,14 @@ public class WarsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterKillmailsResponseInner>> getWarKillmailsWithHttpInfo(
+    public ApiResponse<List<CharacterKillmailsResponse>> getWarKillmailsWithHttpInfo(
             @javax.annotation.Nonnull Long warId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getWarKillmailsValidateBeforeCall(warId, xCompatibilityDate, page, acceptLanguage,
                 ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterKillmailsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterKillmailsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -659,12 +659,12 @@ public class WarsApi {
     public okhttp3.Call getWarKillmailsAsync(@javax.annotation.Nonnull Long warId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CharacterKillmailsResponseInner>> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CharacterKillmailsResponse>> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = getWarKillmailsValidateBeforeCall(warId, xCompatibilityDate, page, acceptLanguage,
                 ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterKillmailsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterKillmailsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -22,9 +22,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.troja.eve.esi.model.FactionWarfareLeaderboardsCorporationsResponseVictoryPointsActiveTotalInner;
-import net.troja.eve.esi.model.FactionWarfareLeaderboardsCorporationsResponseVictoryPointsLastWeekInner;
-import net.troja.eve.esi.model.FactionWarfareLeaderboardsCorporationsResponseVictoryPointsYesterdayInner;
+import net.troja.eve.esi.model.FactionWarfareLeaderboardsCorporationsResponseVictoryPointsActiveTotal;
+import net.troja.eve.esi.model.FactionWarfareLeaderboardsCorporationsResponseVictoryPointsLastWeek;
+import net.troja.eve.esi.model.FactionWarfareLeaderboardsCorporationsResponseVictoryPointsYesterday;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -61,29 +61,29 @@ public class FactionWarfareLeaderboardsCorporationsResponseVictoryPoints impleme
     public static final String SERIALIZED_NAME_ACTIVE_TOTAL = "active_total";
     @SerializedName(SERIALIZED_NAME_ACTIVE_TOTAL)
     @javax.annotation.Nonnull
-    private List<FactionWarfareLeaderboardsCorporationsResponseVictoryPointsActiveTotalInner> activeTotal;
+    private List<FactionWarfareLeaderboardsCorporationsResponseVictoryPointsActiveTotal> activeTotal;
 
     public static final String SERIALIZED_NAME_LAST_WEEK = "last_week";
     @SerializedName(SERIALIZED_NAME_LAST_WEEK)
     @javax.annotation.Nonnull
-    private List<FactionWarfareLeaderboardsCorporationsResponseVictoryPointsLastWeekInner> lastWeek;
+    private List<FactionWarfareLeaderboardsCorporationsResponseVictoryPointsLastWeek> lastWeek;
 
     public static final String SERIALIZED_NAME_YESTERDAY = "yesterday";
     @SerializedName(SERIALIZED_NAME_YESTERDAY)
     @javax.annotation.Nonnull
-    private List<FactionWarfareLeaderboardsCorporationsResponseVictoryPointsYesterdayInner> yesterday;
+    private List<FactionWarfareLeaderboardsCorporationsResponseVictoryPointsYesterday> yesterday;
 
     public FactionWarfareLeaderboardsCorporationsResponseVictoryPoints() {
     }
 
     public FactionWarfareLeaderboardsCorporationsResponseVictoryPoints activeTotal(
-            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCorporationsResponseVictoryPointsActiveTotalInner> activeTotal) {
+            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCorporationsResponseVictoryPointsActiveTotal> activeTotal) {
         this.activeTotal = activeTotal;
         return this;
     }
 
     public FactionWarfareLeaderboardsCorporationsResponseVictoryPoints addActiveTotalItem(
-            FactionWarfareLeaderboardsCorporationsResponseVictoryPointsActiveTotalInner activeTotalItem) {
+            FactionWarfareLeaderboardsCorporationsResponseVictoryPointsActiveTotal activeTotalItem) {
         if (this.activeTotal == null) {
             this.activeTotal = new ArrayList<>();
         }
@@ -100,23 +100,23 @@ public class FactionWarfareLeaderboardsCorporationsResponseVictoryPoints impleme
      * @return activeTotal
      */
     @javax.annotation.Nonnull
-    public List<FactionWarfareLeaderboardsCorporationsResponseVictoryPointsActiveTotalInner> getActiveTotal() {
+    public List<FactionWarfareLeaderboardsCorporationsResponseVictoryPointsActiveTotal> getActiveTotal() {
         return activeTotal;
     }
 
     public void setActiveTotal(
-            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCorporationsResponseVictoryPointsActiveTotalInner> activeTotal) {
+            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCorporationsResponseVictoryPointsActiveTotal> activeTotal) {
         this.activeTotal = activeTotal;
     }
 
     public FactionWarfareLeaderboardsCorporationsResponseVictoryPoints lastWeek(
-            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCorporationsResponseVictoryPointsLastWeekInner> lastWeek) {
+            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCorporationsResponseVictoryPointsLastWeek> lastWeek) {
         this.lastWeek = lastWeek;
         return this;
     }
 
     public FactionWarfareLeaderboardsCorporationsResponseVictoryPoints addLastWeekItem(
-            FactionWarfareLeaderboardsCorporationsResponseVictoryPointsLastWeekInner lastWeekItem) {
+            FactionWarfareLeaderboardsCorporationsResponseVictoryPointsLastWeek lastWeekItem) {
         if (this.lastWeek == null) {
             this.lastWeek = new ArrayList<>();
         }
@@ -131,23 +131,23 @@ public class FactionWarfareLeaderboardsCorporationsResponseVictoryPoints impleme
      * @return lastWeek
      */
     @javax.annotation.Nonnull
-    public List<FactionWarfareLeaderboardsCorporationsResponseVictoryPointsLastWeekInner> getLastWeek() {
+    public List<FactionWarfareLeaderboardsCorporationsResponseVictoryPointsLastWeek> getLastWeek() {
         return lastWeek;
     }
 
     public void setLastWeek(
-            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCorporationsResponseVictoryPointsLastWeekInner> lastWeek) {
+            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCorporationsResponseVictoryPointsLastWeek> lastWeek) {
         this.lastWeek = lastWeek;
     }
 
     public FactionWarfareLeaderboardsCorporationsResponseVictoryPoints yesterday(
-            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCorporationsResponseVictoryPointsYesterdayInner> yesterday) {
+            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCorporationsResponseVictoryPointsYesterday> yesterday) {
         this.yesterday = yesterday;
         return this;
     }
 
     public FactionWarfareLeaderboardsCorporationsResponseVictoryPoints addYesterdayItem(
-            FactionWarfareLeaderboardsCorporationsResponseVictoryPointsYesterdayInner yesterdayItem) {
+            FactionWarfareLeaderboardsCorporationsResponseVictoryPointsYesterday yesterdayItem) {
         if (this.yesterday == null) {
             this.yesterday = new ArrayList<>();
         }
@@ -162,12 +162,12 @@ public class FactionWarfareLeaderboardsCorporationsResponseVictoryPoints impleme
      * @return yesterday
      */
     @javax.annotation.Nonnull
-    public List<FactionWarfareLeaderboardsCorporationsResponseVictoryPointsYesterdayInner> getYesterday() {
+    public List<FactionWarfareLeaderboardsCorporationsResponseVictoryPointsYesterday> getYesterday() {
         return yesterday;
     }
 
     public void setYesterday(
-            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCorporationsResponseVictoryPointsYesterdayInner> yesterday) {
+            @javax.annotation.Nonnull List<FactionWarfareLeaderboardsCorporationsResponseVictoryPointsYesterday> yesterday) {
         this.yesterday = yesterday;
     }
 
@@ -283,7 +283,7 @@ public class FactionWarfareLeaderboardsCorporationsResponseVictoryPoints impleme
         JsonArray jsonArrayactiveTotal = jsonObj.getAsJsonArray("active_total");
         // validate the required field `active_total` (array)
         for (int i = 0; i < jsonArrayactiveTotal.size(); i++) {
-            FactionWarfareLeaderboardsCorporationsResponseVictoryPointsActiveTotalInner
+            FactionWarfareLeaderboardsCorporationsResponseVictoryPointsActiveTotal
                     .validateJsonElement(jsonArrayactiveTotal.get(i));
         };
         // ensure the json data is an array
@@ -296,8 +296,8 @@ public class FactionWarfareLeaderboardsCorporationsResponseVictoryPoints impleme
         JsonArray jsonArraylastWeek = jsonObj.getAsJsonArray("last_week");
         // validate the required field `last_week` (array)
         for (int i = 0; i < jsonArraylastWeek.size(); i++) {
-            FactionWarfareLeaderboardsCorporationsResponseVictoryPointsLastWeekInner
-                    .validateJsonElement(jsonArraylastWeek.get(i));
+            FactionWarfareLeaderboardsCorporationsResponseVictoryPointsLastWeek.validateJsonElement(jsonArraylastWeek
+                    .get(i));
         };
         // ensure the json data is an array
         if (!jsonObj.get("yesterday").isJsonArray()) {
@@ -309,8 +309,8 @@ public class FactionWarfareLeaderboardsCorporationsResponseVictoryPoints impleme
         JsonArray jsonArrayyesterday = jsonObj.getAsJsonArray("yesterday");
         // validate the required field `yesterday` (array)
         for (int i = 0; i < jsonArrayyesterday.size(); i++) {
-            FactionWarfareLeaderboardsCorporationsResponseVictoryPointsYesterdayInner
-                    .validateJsonElement(jsonArrayyesterday.get(i));
+            FactionWarfareLeaderboardsCorporationsResponseVictoryPointsYesterday.validateJsonElement(jsonArrayyesterday
+                    .get(i));
         };
     }
 

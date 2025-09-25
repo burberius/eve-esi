@@ -22,9 +22,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.troja.eve.esi.model.CorporationsProjectsDetailConfigurationcapturefwcomplexLocationsInner;
-import net.troja.eve.esi.model.CorporationsProjectsDetailConfigurationdamageshipIdentitiesInner;
-import net.troja.eve.esi.model.CorporationsProjectsDetailConfigurationdamageshipShipsInner;
+import net.troja.eve.esi.model.CorporationsProjectsDetailConfigurationcapturefwcomplexLocations;
+import net.troja.eve.esi.model.CorporationsProjectsDetailConfigurationdamageshipIdentities;
+import net.troja.eve.esi.model.CorporationsProjectsDetailConfigurationdamageshipShips;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -60,29 +60,29 @@ public class CorporationsProjectsDetailConfigurationlostship implements Serializ
     public static final String SERIALIZED_NAME_IDENTITIES = "identities";
     @SerializedName(SERIALIZED_NAME_IDENTITIES)
     @javax.annotation.Nullable
-    private List<CorporationsProjectsDetailConfigurationdamageshipIdentitiesInner> identities;
+    private List<CorporationsProjectsDetailConfigurationdamageshipIdentities> identities;
 
     public static final String SERIALIZED_NAME_LOCATIONS = "locations";
     @SerializedName(SERIALIZED_NAME_LOCATIONS)
     @javax.annotation.Nullable
-    private List<CorporationsProjectsDetailConfigurationcapturefwcomplexLocationsInner> locations;
+    private List<CorporationsProjectsDetailConfigurationcapturefwcomplexLocations> locations;
 
     public static final String SERIALIZED_NAME_SHIPS = "ships";
     @SerializedName(SERIALIZED_NAME_SHIPS)
     @javax.annotation.Nullable
-    private List<CorporationsProjectsDetailConfigurationdamageshipShipsInner> ships;
+    private List<CorporationsProjectsDetailConfigurationdamageshipShips> ships;
 
     public CorporationsProjectsDetailConfigurationlostship() {
     }
 
     public CorporationsProjectsDetailConfigurationlostship identities(
-            @javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationdamageshipIdentitiesInner> identities) {
+            @javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationdamageshipIdentities> identities) {
         this.identities = identities;
         return this;
     }
 
     public CorporationsProjectsDetailConfigurationlostship addIdentitiesItem(
-            CorporationsProjectsDetailConfigurationdamageshipIdentitiesInner identitiesItem) {
+            CorporationsProjectsDetailConfigurationdamageshipIdentities identitiesItem) {
         if (this.identities == null) {
             this.identities = new ArrayList<>();
         }
@@ -97,23 +97,23 @@ public class CorporationsProjectsDetailConfigurationlostship implements Serializ
      * @return identities
      */
     @javax.annotation.Nullable
-    public List<CorporationsProjectsDetailConfigurationdamageshipIdentitiesInner> getIdentities() {
+    public List<CorporationsProjectsDetailConfigurationdamageshipIdentities> getIdentities() {
         return identities;
     }
 
     public void setIdentities(
-            @javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationdamageshipIdentitiesInner> identities) {
+            @javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationdamageshipIdentities> identities) {
         this.identities = identities;
     }
 
     public CorporationsProjectsDetailConfigurationlostship locations(
-            @javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationcapturefwcomplexLocationsInner> locations) {
+            @javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationcapturefwcomplexLocations> locations) {
         this.locations = locations;
         return this;
     }
 
     public CorporationsProjectsDetailConfigurationlostship addLocationsItem(
-            CorporationsProjectsDetailConfigurationcapturefwcomplexLocationsInner locationsItem) {
+            CorporationsProjectsDetailConfigurationcapturefwcomplexLocations locationsItem) {
         if (this.locations == null) {
             this.locations = new ArrayList<>();
         }
@@ -128,23 +128,23 @@ public class CorporationsProjectsDetailConfigurationlostship implements Serializ
      * @return locations
      */
     @javax.annotation.Nullable
-    public List<CorporationsProjectsDetailConfigurationcapturefwcomplexLocationsInner> getLocations() {
+    public List<CorporationsProjectsDetailConfigurationcapturefwcomplexLocations> getLocations() {
         return locations;
     }
 
     public void setLocations(
-            @javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationcapturefwcomplexLocationsInner> locations) {
+            @javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationcapturefwcomplexLocations> locations) {
         this.locations = locations;
     }
 
     public CorporationsProjectsDetailConfigurationlostship ships(
-            @javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationdamageshipShipsInner> ships) {
+            @javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationdamageshipShips> ships) {
         this.ships = ships;
         return this;
     }
 
     public CorporationsProjectsDetailConfigurationlostship addShipsItem(
-            CorporationsProjectsDetailConfigurationdamageshipShipsInner shipsItem) {
+            CorporationsProjectsDetailConfigurationdamageshipShips shipsItem) {
         if (this.ships == null) {
             this.ships = new ArrayList<>();
         }
@@ -159,12 +159,11 @@ public class CorporationsProjectsDetailConfigurationlostship implements Serializ
      * @return ships
      */
     @javax.annotation.Nullable
-    public List<CorporationsProjectsDetailConfigurationdamageshipShipsInner> getShips() {
+    public List<CorporationsProjectsDetailConfigurationdamageshipShips> getShips() {
         return ships;
     }
 
-    public void setShips(
-            @javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationdamageshipShipsInner> ships) {
+    public void setShips(@javax.annotation.Nullable List<CorporationsProjectsDetailConfigurationdamageshipShips> ships) {
         this.ships = ships;
     }
 
@@ -269,8 +268,8 @@ public class CorporationsProjectsDetailConfigurationlostship implements Serializ
 
                 // validate the optional field `identities` (array)
                 for (int i = 0; i < jsonArrayidentities.size(); i++) {
-                    CorporationsProjectsDetailConfigurationdamageshipIdentitiesInner
-                            .validateJsonElement(jsonArrayidentities.get(i));
+                    CorporationsProjectsDetailConfigurationdamageshipIdentities.validateJsonElement(jsonArrayidentities
+                            .get(i));
                 };
             }
         }
@@ -286,7 +285,7 @@ public class CorporationsProjectsDetailConfigurationlostship implements Serializ
 
                 // validate the optional field `locations` (array)
                 for (int i = 0; i < jsonArraylocations.size(); i++) {
-                    CorporationsProjectsDetailConfigurationcapturefwcomplexLocationsInner
+                    CorporationsProjectsDetailConfigurationcapturefwcomplexLocations
                             .validateJsonElement(jsonArraylocations.get(i));
                 };
             }
@@ -303,8 +302,7 @@ public class CorporationsProjectsDetailConfigurationlostship implements Serializ
 
                 // validate the optional field `ships` (array)
                 for (int i = 0; i < jsonArrayships.size(); i++) {
-                    CorporationsProjectsDetailConfigurationdamageshipShipsInner.validateJsonElement(jsonArrayships
-                            .get(i));
+                    CorporationsProjectsDetailConfigurationdamageshipShips.validateJsonElement(jsonArrayships.get(i));
                 };
             }
         }

@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.troja.eve.esi.model.CharacterSkillsResponseSkillsInner;
+import net.troja.eve.esi.model.CharacterSkillsResponseSkills;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -58,7 +58,7 @@ public class CharacterSkillsResponse implements Serializable {
     public static final String SERIALIZED_NAME_SKILLS = "skills";
     @SerializedName(SERIALIZED_NAME_SKILLS)
     @javax.annotation.Nonnull
-    private List<CharacterSkillsResponseSkillsInner> skills;
+    private List<CharacterSkillsResponseSkills> skills;
 
     public static final String SERIALIZED_NAME_TOTAL_SP = "total_sp";
     @SerializedName(SERIALIZED_NAME_TOTAL_SP)
@@ -73,12 +73,12 @@ public class CharacterSkillsResponse implements Serializable {
     public CharacterSkillsResponse() {
     }
 
-    public CharacterSkillsResponse skills(@javax.annotation.Nonnull List<CharacterSkillsResponseSkillsInner> skills) {
+    public CharacterSkillsResponse skills(@javax.annotation.Nonnull List<CharacterSkillsResponseSkills> skills) {
         this.skills = skills;
         return this;
     }
 
-    public CharacterSkillsResponse addSkillsItem(CharacterSkillsResponseSkillsInner skillsItem) {
+    public CharacterSkillsResponse addSkillsItem(CharacterSkillsResponseSkills skillsItem) {
         if (this.skills == null) {
             this.skills = new ArrayList<>();
         }
@@ -93,11 +93,11 @@ public class CharacterSkillsResponse implements Serializable {
      * @return skills
      */
     @javax.annotation.Nonnull
-    public List<CharacterSkillsResponseSkillsInner> getSkills() {
+    public List<CharacterSkillsResponseSkills> getSkills() {
         return skills;
     }
 
-    public void setSkills(@javax.annotation.Nonnull List<CharacterSkillsResponseSkillsInner> skills) {
+    public void setSkills(@javax.annotation.Nonnull List<CharacterSkillsResponseSkills> skills) {
         this.skills = skills;
     }
 
@@ -247,7 +247,7 @@ public class CharacterSkillsResponse implements Serializable {
         JsonArray jsonArrayskills = jsonObj.getAsJsonArray("skills");
         // validate the required field `skills` (array)
         for (int i = 0; i < jsonArrayskills.size(); i++) {
-            CharacterSkillsResponseSkillsInner.validateJsonElement(jsonArrayskills.get(i));
+            CharacterSkillsResponseSkills.validateJsonElement(jsonArrayskills.get(i));
         };
     }
 

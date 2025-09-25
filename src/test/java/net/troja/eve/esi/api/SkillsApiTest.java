@@ -15,7 +15,7 @@ package net.troja.eve.esi.api;
 
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.CharacterAttributesResponse;
-import net.troja.eve.esi.model.CharacterSkillqueueResponseInner;
+import net.troja.eve.esi.model.CharacterSkillqueueResponse;
 import net.troja.eve.esi.model.CharacterSkillsResponse;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -67,9 +67,9 @@ public class SkillsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterSkillqueueResponseInner> response = api.getCharacterSkillqueue(characterId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterSkillqueueResponse> response = api.getCharacterSkillqueue(characterId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
-        final CharacterSkillqueueResponseInner skillqueue = response.get(0);
+        final CharacterSkillqueueResponse skillqueue = response.get(0);
         assertThat(skillqueue.getSkillId()).isGreaterThan(0);
     }
 

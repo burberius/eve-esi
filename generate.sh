@@ -61,6 +61,11 @@ rm -rf src/test/java/net/troja/eve/esi/model
 mv src/main/java/net/troja/eve/esi/SsoApi.java src/main/java/net/troja/eve/esi/api/SsoApi.java
 
 #
+# Replace "Inner" classes
+#
+./replaceInner.sh
+
+#
 # Generate SSO scopes
 #
 BAD_SCOPES=""

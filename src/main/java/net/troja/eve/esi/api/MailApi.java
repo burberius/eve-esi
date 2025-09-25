@@ -28,9 +28,9 @@ import java.io.IOException;
 import net.troja.eve.esi.model.Error;
 import java.time.LocalDate;
 import net.troja.eve.esi.model.MailLabelsResponse;
-import net.troja.eve.esi.model.MailListsResponseInner;
+import net.troja.eve.esi.model.MailListsResponse;
 import net.troja.eve.esi.model.MailResponse;
-import net.troja.eve.esi.model.MailsResponseInner;
+import net.troja.eve.esi.model.MailsResponse;
 import net.troja.eve.esi.model.PostMailLabelsRequest;
 import net.troja.eve.esi.model.PostMailsRequest;
 import net.troja.eve.esi.model.PutMailRequest;
@@ -1401,7 +1401,7 @@ public class MailApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;MailListsResponseInner&gt;
+     * @return List&lt;MailListsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1427,12 +1427,12 @@ public class MailApi {
      *                        </tr>
      *                        </table>
      */
-    public List<MailListsResponseInner> getMailLists(@javax.annotation.Nonnull Long characterId,
+    public List<MailListsResponse> getMailLists(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<MailListsResponseInner>> localVarResp = getMailListsWithHttpInfo(characterId,
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<List<MailListsResponse>> localVarResp = getMailListsWithHttpInfo(characterId, xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -1453,7 +1453,7 @@ public class MailApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;MailListsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;MailListsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1479,13 +1479,13 @@ public class MailApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<MailListsResponseInner>> getMailListsWithHttpInfo(
-            @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
-            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant) throws ApiException {
+    public ApiResponse<List<MailListsResponse>> getMailListsWithHttpInfo(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
+            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
+            throws ApiException {
         okhttp3.Call localVarCall = getMailListsValidateBeforeCall(characterId, xCompatibilityDate, acceptLanguage,
                 ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<MailListsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<MailListsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1538,11 +1538,11 @@ public class MailApi {
     public okhttp3.Call getMailListsAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<MailListsResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<MailListsResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMailListsValidateBeforeCall(characterId, xCompatibilityDate, acceptLanguage,
                 ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<MailListsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<MailListsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1710,7 +1710,7 @@ public class MailApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;MailsResponseInner&gt;
+     * @return List&lt;MailsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1736,13 +1736,13 @@ public class MailApi {
      *                        </tr>
      *                        </table>
      */
-    public List<MailsResponseInner> getMails(@javax.annotation.Nonnull Long characterId,
+    public List<MailsResponse> getMails(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Set<Long> labels,
             @javax.annotation.Nullable Long lastMailId, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<MailsResponseInner>> localVarResp = getMailsWithHttpInfo(characterId, xCompatibilityDate,
-                labels, lastMailId, acceptLanguage, ifNoneMatch, xTenant);
+        ApiResponse<List<MailsResponse>> localVarResp = getMailsWithHttpInfo(characterId, xCompatibilityDate, labels,
+                lastMailId, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -1768,7 +1768,7 @@ public class MailApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;MailsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;MailsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1794,14 +1794,14 @@ public class MailApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<MailsResponseInner>> getMailsWithHttpInfo(@javax.annotation.Nonnull Long characterId,
+    public ApiResponse<List<MailsResponse>> getMailsWithHttpInfo(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Set<Long> labels,
             @javax.annotation.Nullable Long lastMailId, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getMailsValidateBeforeCall(characterId, xCompatibilityDate, labels, lastMailId,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<MailsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<MailsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1861,11 +1861,11 @@ public class MailApi {
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Set<Long> labels,
             @javax.annotation.Nullable Long lastMailId, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<MailsResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<MailsResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMailsValidateBeforeCall(characterId, xCompatibilityDate, labels, lastMailId,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<MailsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<MailsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

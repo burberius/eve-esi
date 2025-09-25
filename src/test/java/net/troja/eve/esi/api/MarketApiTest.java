@@ -16,15 +16,15 @@ package net.troja.eve.esi.api;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.ApiResponse;
 import net.troja.eve.esi.HeaderUtil;
-import net.troja.eve.esi.model.CharacterOrdersHistoryResponseInner;
-import net.troja.eve.esi.model.CharacterOrdersResponseInner;
-import net.troja.eve.esi.model.CorporationOrdersHistoryResponseInner;
-import net.troja.eve.esi.model.CorporationOrdersResponseInner;
+import net.troja.eve.esi.model.CharacterOrdersHistoryResponse;
+import net.troja.eve.esi.model.CharacterOrdersResponse;
+import net.troja.eve.esi.model.CorporationOrdersHistoryResponse;
+import net.troja.eve.esi.model.CorporationOrdersResponse;
 import net.troja.eve.esi.model.MarketGroupResponse;
-import net.troja.eve.esi.model.MarketPricesResponseInner;
-import net.troja.eve.esi.model.MarketRegionHistoryResponseInner;
-import net.troja.eve.esi.model.MarketRegionOrdersResponseInner;
-import net.troja.eve.esi.model.MarketStructureResponseInner;
+import net.troja.eve.esi.model.MarketPricesResponse;
+import net.troja.eve.esi.model.MarketRegionHistoryResponse;
+import net.troja.eve.esi.model.MarketRegionOrdersResponse;
+import net.troja.eve.esi.model.MarketStructureResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -58,7 +58,7 @@ public class MarketApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterOrdersResponseInner> response = api.getCharacterOrders(characterId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterOrdersResponse> response = api.getCharacterOrders(characterId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
     }
 
@@ -75,7 +75,7 @@ public class MarketApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterOrdersHistoryResponseInner> response = api.getCharacterOrdersHistory(characterId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterOrdersHistoryResponse> response = api.getCharacterOrdersHistory(characterId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
     }
 
@@ -94,7 +94,7 @@ public class MarketApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CorporationOrdersResponseInner> response = api.getCorporationOrders(corporationId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CorporationOrdersResponse> response = api.getCorporationOrders(corporationId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -113,7 +113,7 @@ public class MarketApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CorporationOrdersHistoryResponseInner> response = api.getCorporationOrdersHistory(corporationId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CorporationOrdersHistoryResponse> response = api.getCorporationOrdersHistory(corporationId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -164,7 +164,7 @@ public class MarketApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<MarketRegionHistoryResponseInner> response = api.getMarketRegionHistory(REGION_ID_THE_FORGE, TYPE_ID_VELDSPAR, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<MarketRegionHistoryResponse> response = api.getMarketRegionHistory(REGION_ID_THE_FORGE, TYPE_ID_VELDSPAR, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
         assertThat(response.get(0).getOrderCount()).isGreaterThan(0L);
     }
@@ -184,7 +184,7 @@ public class MarketApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<MarketRegionOrdersResponseInner> response = api.getMarketRegionOrders(orderType, REGION_ID_THE_FORGE, CorporationApi.COMPATIBILITY_DATE, page, typeId, acceptLanguage, ifNoneMatch, xTenant);
+        List<MarketRegionOrdersResponse> response = api.getMarketRegionOrders(orderType, REGION_ID_THE_FORGE, CorporationApi.COMPATIBILITY_DATE, page, typeId, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
         assertThat(response.get(0).getMinVolume()).isGreaterThan(0);
     }
@@ -201,7 +201,7 @@ public class MarketApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<MarketPricesResponseInner> response = api.getMarketPrices(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<MarketPricesResponse> response = api.getMarketPrices(CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).hasSizeGreaterThan(0);
         assertThat(response.get(0).getTypeId()).isGreaterThan(0);
     }
@@ -221,7 +221,7 @@ public class MarketApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<MarketStructureResponseInner> response = api.getMarketStructure(structureId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<MarketStructureResponse> response = api.getMarketStructure(structureId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -255,9 +255,9 @@ public class MarketApiTest extends GeneralApiTest {
          * Step 1: Get first page.
          */
         //Get market orders
-        ApiResponse<List<MarketRegionOrdersResponseInner>>
+        ApiResponse<List<MarketRegionOrdersResponse>>
                 response = api.getMarketRegionOrdersWithHttpInfo(orderType, REGION_ID_THE_FORGE, CorporationApi.COMPATIBILITY_DATE, null, null, null, null, null);
-        final List<MarketRegionOrdersResponseInner> result = new ArrayList<>(response.getData());
+        final List<MarketRegionOrdersResponse> result = new ArrayList<>(response.getData());
 
         /**
          * Step 2: Safely get X-Pages header.
@@ -276,7 +276,7 @@ public class MarketApiTest extends GeneralApiTest {
          */
         for (int page = 2; page <= xPages; page++) { //For each page greater than one.
             //Get market orders
-            List<MarketRegionOrdersResponseInner> pageResponse = api.getMarketRegionOrders(orderType, REGION_ID_THE_FORGE, CorporationApi.COMPATIBILITY_DATE, page, null, null, null, null);
+            List<MarketRegionOrdersResponse> pageResponse = api.getMarketRegionOrders(orderType, REGION_ID_THE_FORGE, CorporationApi.COMPATIBILITY_DATE, page, null, null, null, null);
             result.addAll(pageResponse);
         }
 

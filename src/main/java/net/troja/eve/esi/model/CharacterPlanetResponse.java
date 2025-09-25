@@ -22,9 +22,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.troja.eve.esi.model.CharacterPlanetResponseLinksInner;
-import net.troja.eve.esi.model.CharacterPlanetResponsePinsInner;
-import net.troja.eve.esi.model.CharacterPlanetResponseRoutesInner;
+import net.troja.eve.esi.model.CharacterPlanetResponseLinks;
+import net.troja.eve.esi.model.CharacterPlanetResponsePins;
+import net.troja.eve.esi.model.CharacterPlanetResponseRoutes;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -60,27 +60,27 @@ public class CharacterPlanetResponse implements Serializable {
     public static final String SERIALIZED_NAME_LINKS = "links";
     @SerializedName(SERIALIZED_NAME_LINKS)
     @javax.annotation.Nonnull
-    private List<CharacterPlanetResponseLinksInner> links;
+    private List<CharacterPlanetResponseLinks> links;
 
     public static final String SERIALIZED_NAME_PINS = "pins";
     @SerializedName(SERIALIZED_NAME_PINS)
     @javax.annotation.Nonnull
-    private List<CharacterPlanetResponsePinsInner> pins;
+    private List<CharacterPlanetResponsePins> pins;
 
     public static final String SERIALIZED_NAME_ROUTES = "routes";
     @SerializedName(SERIALIZED_NAME_ROUTES)
     @javax.annotation.Nonnull
-    private List<CharacterPlanetResponseRoutesInner> routes;
+    private List<CharacterPlanetResponseRoutes> routes;
 
     public CharacterPlanetResponse() {
     }
 
-    public CharacterPlanetResponse links(@javax.annotation.Nonnull List<CharacterPlanetResponseLinksInner> links) {
+    public CharacterPlanetResponse links(@javax.annotation.Nonnull List<CharacterPlanetResponseLinks> links) {
         this.links = links;
         return this;
     }
 
-    public CharacterPlanetResponse addLinksItem(CharacterPlanetResponseLinksInner linksItem) {
+    public CharacterPlanetResponse addLinksItem(CharacterPlanetResponseLinks linksItem) {
         if (this.links == null) {
             this.links = new ArrayList<>();
         }
@@ -95,20 +95,20 @@ public class CharacterPlanetResponse implements Serializable {
      * @return links
      */
     @javax.annotation.Nonnull
-    public List<CharacterPlanetResponseLinksInner> getLinks() {
+    public List<CharacterPlanetResponseLinks> getLinks() {
         return links;
     }
 
-    public void setLinks(@javax.annotation.Nonnull List<CharacterPlanetResponseLinksInner> links) {
+    public void setLinks(@javax.annotation.Nonnull List<CharacterPlanetResponseLinks> links) {
         this.links = links;
     }
 
-    public CharacterPlanetResponse pins(@javax.annotation.Nonnull List<CharacterPlanetResponsePinsInner> pins) {
+    public CharacterPlanetResponse pins(@javax.annotation.Nonnull List<CharacterPlanetResponsePins> pins) {
         this.pins = pins;
         return this;
     }
 
-    public CharacterPlanetResponse addPinsItem(CharacterPlanetResponsePinsInner pinsItem) {
+    public CharacterPlanetResponse addPinsItem(CharacterPlanetResponsePins pinsItem) {
         if (this.pins == null) {
             this.pins = new ArrayList<>();
         }
@@ -123,20 +123,20 @@ public class CharacterPlanetResponse implements Serializable {
      * @return pins
      */
     @javax.annotation.Nonnull
-    public List<CharacterPlanetResponsePinsInner> getPins() {
+    public List<CharacterPlanetResponsePins> getPins() {
         return pins;
     }
 
-    public void setPins(@javax.annotation.Nonnull List<CharacterPlanetResponsePinsInner> pins) {
+    public void setPins(@javax.annotation.Nonnull List<CharacterPlanetResponsePins> pins) {
         this.pins = pins;
     }
 
-    public CharacterPlanetResponse routes(@javax.annotation.Nonnull List<CharacterPlanetResponseRoutesInner> routes) {
+    public CharacterPlanetResponse routes(@javax.annotation.Nonnull List<CharacterPlanetResponseRoutes> routes) {
         this.routes = routes;
         return this;
     }
 
-    public CharacterPlanetResponse addRoutesItem(CharacterPlanetResponseRoutesInner routesItem) {
+    public CharacterPlanetResponse addRoutesItem(CharacterPlanetResponseRoutes routesItem) {
         if (this.routes == null) {
             this.routes = new ArrayList<>();
         }
@@ -151,11 +151,11 @@ public class CharacterPlanetResponse implements Serializable {
      * @return routes
      */
     @javax.annotation.Nonnull
-    public List<CharacterPlanetResponseRoutesInner> getRoutes() {
+    public List<CharacterPlanetResponseRoutes> getRoutes() {
         return routes;
     }
 
-    public void setRoutes(@javax.annotation.Nonnull List<CharacterPlanetResponseRoutesInner> routes) {
+    public void setRoutes(@javax.annotation.Nonnull List<CharacterPlanetResponseRoutes> routes) {
         this.routes = routes;
     }
 
@@ -267,7 +267,7 @@ public class CharacterPlanetResponse implements Serializable {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
         // validate the required field `links` (array)
         for (int i = 0; i < jsonArraylinks.size(); i++) {
-            CharacterPlanetResponseLinksInner.validateJsonElement(jsonArraylinks.get(i));
+            CharacterPlanetResponseLinks.validateJsonElement(jsonArraylinks.get(i));
         };
         // ensure the json data is an array
         if (!jsonObj.get("pins").isJsonArray()) {
@@ -279,7 +279,7 @@ public class CharacterPlanetResponse implements Serializable {
         JsonArray jsonArraypins = jsonObj.getAsJsonArray("pins");
         // validate the required field `pins` (array)
         for (int i = 0; i < jsonArraypins.size(); i++) {
-            CharacterPlanetResponsePinsInner.validateJsonElement(jsonArraypins.get(i));
+            CharacterPlanetResponsePins.validateJsonElement(jsonArraypins.get(i));
         };
         // ensure the json data is an array
         if (!jsonObj.get("routes").isJsonArray()) {
@@ -291,7 +291,7 @@ public class CharacterPlanetResponse implements Serializable {
         JsonArray jsonArrayroutes = jsonObj.getAsJsonArray("routes");
         // validate the required field `routes` (array)
         for (int i = 0; i < jsonArrayroutes.size(); i++) {
-            CharacterPlanetResponseRoutesInner.validateJsonElement(jsonArrayroutes.get(i));
+            CharacterPlanetResponseRoutes.validateJsonElement(jsonArrayroutes.get(i));
         };
     }
 

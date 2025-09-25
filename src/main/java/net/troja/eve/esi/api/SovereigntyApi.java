@@ -27,9 +27,9 @@ import java.io.IOException;
 
 import net.troja.eve.esi.model.Error;
 import java.time.LocalDate;
-import net.troja.eve.esi.model.SovereigntyCampaignsResponseInner;
-import net.troja.eve.esi.model.SovereigntyMapResponseInner;
-import net.troja.eve.esi.model.SovereigntyStructuresResponseInner;
+import net.troja.eve.esi.model.SovereigntyCampaignsResponse;
+import net.troja.eve.esi.model.SovereigntyMapResponse;
+import net.troja.eve.esi.model.SovereigntyStructuresResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -206,7 +206,7 @@ public class SovereigntyApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;SovereigntyCampaignsResponseInner&gt;
+     * @return List&lt;SovereigntyCampaignsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -232,11 +232,11 @@ public class SovereigntyApi {
      *                        </tr>
      *                        </table>
      */
-    public List<SovereigntyCampaignsResponseInner> getSovereigntyCampaigns(
+    public List<SovereigntyCampaignsResponse> getSovereigntyCampaigns(
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<SovereigntyCampaignsResponseInner>> localVarResp = getSovereigntyCampaignsWithHttpInfo(
+        ApiResponse<List<SovereigntyCampaignsResponse>> localVarResp = getSovereigntyCampaignsWithHttpInfo(
                 xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -255,7 +255,7 @@ public class SovereigntyApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;SovereigntyCampaignsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;SovereigntyCampaignsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -281,13 +281,13 @@ public class SovereigntyApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<SovereigntyCampaignsResponseInner>> getSovereigntyCampaignsWithHttpInfo(
+    public ApiResponse<List<SovereigntyCampaignsResponse>> getSovereigntyCampaignsWithHttpInfo(
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getSovereigntyCampaignsValidateBeforeCall(xCompatibilityDate, acceptLanguage,
                 ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<SovereigntyCampaignsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<SovereigntyCampaignsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -337,12 +337,12 @@ public class SovereigntyApi {
      */
     public okhttp3.Call getSovereigntyCampaignsAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<SovereigntyCampaignsResponseInner>> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<SovereigntyCampaignsResponse>> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = getSovereigntyCampaignsValidateBeforeCall(xCompatibilityDate, acceptLanguage,
                 ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<SovereigntyCampaignsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<SovereigntyCampaignsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -479,7 +479,7 @@ public class SovereigntyApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;SovereigntyMapResponseInner&gt;
+     * @return List&lt;SovereigntyMapResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -505,10 +505,10 @@ public class SovereigntyApi {
      *                        </tr>
      *                        </table>
      */
-    public List<SovereigntyMapResponseInner> getSovereigntyMap(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public List<SovereigntyMapResponse> getSovereigntyMap(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<SovereigntyMapResponseInner>> localVarResp = getSovereigntyMapWithHttpInfo(xCompatibilityDate,
+        ApiResponse<List<SovereigntyMapResponse>> localVarResp = getSovereigntyMapWithHttpInfo(xCompatibilityDate,
                 acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -528,7 +528,7 @@ public class SovereigntyApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;SovereigntyMapResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;SovereigntyMapResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -554,13 +554,13 @@ public class SovereigntyApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<SovereigntyMapResponseInner>> getSovereigntyMapWithHttpInfo(
+    public ApiResponse<List<SovereigntyMapResponse>> getSovereigntyMapWithHttpInfo(
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getSovereigntyMapValidateBeforeCall(xCompatibilityDate, acceptLanguage,
                 ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<SovereigntyMapResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<SovereigntyMapResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -610,12 +610,12 @@ public class SovereigntyApi {
      */
     public okhttp3.Call getSovereigntyMapAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<SovereigntyMapResponseInner>> _callback)
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<SovereigntyMapResponse>> _callback)
             throws ApiException {
 
         okhttp3.Call localVarCall = getSovereigntyMapValidateBeforeCall(xCompatibilityDate, acceptLanguage,
                 ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<SovereigntyMapResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<SovereigntyMapResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -752,7 +752,7 @@ public class SovereigntyApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;SovereigntyStructuresResponseInner&gt;
+     * @return List&lt;SovereigntyStructuresResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -778,11 +778,11 @@ public class SovereigntyApi {
      *                        </tr>
      *                        </table>
      */
-    public List<SovereigntyStructuresResponseInner> getSovereigntyStructures(
+    public List<SovereigntyStructuresResponse> getSovereigntyStructures(
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<SovereigntyStructuresResponseInner>> localVarResp = getSovereigntyStructuresWithHttpInfo(
+        ApiResponse<List<SovereigntyStructuresResponse>> localVarResp = getSovereigntyStructuresWithHttpInfo(
                 xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -801,7 +801,7 @@ public class SovereigntyApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;SovereigntyStructuresResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;SovereigntyStructuresResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -827,13 +827,13 @@ public class SovereigntyApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<SovereigntyStructuresResponseInner>> getSovereigntyStructuresWithHttpInfo(
+    public ApiResponse<List<SovereigntyStructuresResponse>> getSovereigntyStructuresWithHttpInfo(
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getSovereigntyStructuresValidateBeforeCall(xCompatibilityDate, acceptLanguage,
                 ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<SovereigntyStructuresResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<SovereigntyStructuresResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -883,12 +883,12 @@ public class SovereigntyApi {
      */
     public okhttp3.Call getSovereigntyStructuresAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<SovereigntyStructuresResponseInner>> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<SovereigntyStructuresResponse>> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = getSovereigntyStructuresValidateBeforeCall(xCompatibilityDate, acceptLanguage,
                 ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<SovereigntyStructuresResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<SovereigntyStructuresResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

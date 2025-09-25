@@ -14,10 +14,10 @@
 package net.troja.eve.esi.api;
 
 import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.model.AllianceContactsLabelsResponseInner;
-import net.troja.eve.esi.model.AllianceContactsResponseInner;
-import net.troja.eve.esi.model.ContactsResponseInner;
-import net.troja.eve.esi.model.CorporationContactsResponseInner;
+import net.troja.eve.esi.model.AllianceContactsLabelsResponse;
+import net.troja.eve.esi.model.AllianceContactsResponse;
+import net.troja.eve.esi.model.ContactsResponse;
+import net.troja.eve.esi.model.CorporationContactsResponse;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -70,7 +70,7 @@ public class ContactsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<AllianceContactsResponseInner> response = api.getAllianceContacts(null, CharacterApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<AllianceContactsResponse> response = api.getAllianceContacts(null, CharacterApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -87,7 +87,7 @@ public class ContactsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<AllianceContactsLabelsResponseInner> response = api.getAllianceContactsLabels(null, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<AllianceContactsLabelsResponse> response = api.getAllianceContactsLabels(null, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -104,7 +104,7 @@ public class ContactsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<ContactsResponseInner> response = api.getContacts(characterId, CharacterApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<ContactsResponse> response = api.getContacts(characterId, CharacterApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
     }
 
@@ -120,7 +120,7 @@ public class ContactsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<AllianceContactsLabelsResponseInner> response = api.getContactsLabels(characterId, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<AllianceContactsLabelsResponse> response = api.getContactsLabels(characterId, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
     }
 
@@ -138,7 +138,7 @@ public class ContactsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CorporationContactsResponseInner> response = api.getCorporationContacts(corporationId, CharacterApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<CorporationContactsResponse> response = api.getCorporationContacts(corporationId, CharacterApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
     }
 
@@ -155,7 +155,7 @@ public class ContactsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<AllianceContactsLabelsResponseInner> response = api.getCorporationContactsLabels(corporationId, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<AllianceContactsLabelsResponse> response = api.getCorporationContactsLabels(corporationId, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotEmpty();
     }
 

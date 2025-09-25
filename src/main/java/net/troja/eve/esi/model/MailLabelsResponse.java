@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.troja.eve.esi.model.MailLabelsResponseLabelsInner;
+import net.troja.eve.esi.model.MailLabelsResponseLabels;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -58,7 +58,7 @@ public class MailLabelsResponse implements Serializable {
     public static final String SERIALIZED_NAME_LABELS = "labels";
     @SerializedName(SERIALIZED_NAME_LABELS)
     @javax.annotation.Nullable
-    private List<MailLabelsResponseLabelsInner> labels;
+    private List<MailLabelsResponseLabels> labels;
 
     public static final String SERIALIZED_NAME_TOTAL_UNREAD_COUNT = "total_unread_count";
     @SerializedName(SERIALIZED_NAME_TOTAL_UNREAD_COUNT)
@@ -68,12 +68,12 @@ public class MailLabelsResponse implements Serializable {
     public MailLabelsResponse() {
     }
 
-    public MailLabelsResponse labels(@javax.annotation.Nullable List<MailLabelsResponseLabelsInner> labels) {
+    public MailLabelsResponse labels(@javax.annotation.Nullable List<MailLabelsResponseLabels> labels) {
         this.labels = labels;
         return this;
     }
 
-    public MailLabelsResponse addLabelsItem(MailLabelsResponseLabelsInner labelsItem) {
+    public MailLabelsResponse addLabelsItem(MailLabelsResponseLabels labelsItem) {
         if (this.labels == null) {
             this.labels = new ArrayList<>();
         }
@@ -88,11 +88,11 @@ public class MailLabelsResponse implements Serializable {
      * @return labels
      */
     @javax.annotation.Nullable
-    public List<MailLabelsResponseLabelsInner> getLabels() {
+    public List<MailLabelsResponseLabels> getLabels() {
         return labels;
     }
 
-    public void setLabels(@javax.annotation.Nullable List<MailLabelsResponseLabelsInner> labels) {
+    public void setLabels(@javax.annotation.Nullable List<MailLabelsResponseLabels> labels) {
         this.labels = labels;
     }
 
@@ -213,7 +213,7 @@ public class MailLabelsResponse implements Serializable {
 
                 // validate the optional field `labels` (array)
                 for (int i = 0; i < jsonArraylabels.size(); i++) {
-                    MailLabelsResponseLabelsInner.validateJsonElement(jsonArraylabels.get(i));
+                    MailLabelsResponseLabels.validateJsonElement(jsonArraylabels.get(i));
                 };
             }
         }

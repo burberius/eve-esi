@@ -25,15 +25,15 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
-import net.troja.eve.esi.model.CharacterIndustryJobsResponseInner;
-import net.troja.eve.esi.model.CharacterMiningResponseInner;
-import net.troja.eve.esi.model.CorporationIndustryJobsResponseInner;
-import net.troja.eve.esi.model.CorporationMiningExtractionsResponseInner;
-import net.troja.eve.esi.model.CorporationMiningObserverResponseInner;
-import net.troja.eve.esi.model.CorporationMiningObserversResponseInner;
+import net.troja.eve.esi.model.CharacterIndustryJobsResponse;
+import net.troja.eve.esi.model.CharacterMiningResponse;
+import net.troja.eve.esi.model.CorporationIndustryJobsResponse;
+import net.troja.eve.esi.model.CorporationMiningExtractionsResponse;
+import net.troja.eve.esi.model.CorporationMiningObserverResponse;
+import net.troja.eve.esi.model.CorporationMiningObserversResponse;
 import net.troja.eve.esi.model.Error;
-import net.troja.eve.esi.model.IndustryFacilitiesResponseInner;
-import net.troja.eve.esi.model.IndustrySystemsResponseInner;
+import net.troja.eve.esi.model.IndustryFacilitiesResponse;
+import net.troja.eve.esi.model.IndustrySystemsResponse;
 import java.time.LocalDate;
 
 import java.lang.reflect.Type;
@@ -234,7 +234,7 @@ public class IndustryApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CharacterIndustryJobsResponseInner&gt;
+     * @return List&lt;CharacterIndustryJobsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -260,12 +260,12 @@ public class IndustryApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterIndustryJobsResponseInner> getCharacterIndustryJobs(
-            @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
+    public List<CharacterIndustryJobsResponse> getCharacterIndustryJobs(@javax.annotation.Nonnull Long characterId,
+            @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Boolean includeCompleted, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<CharacterIndustryJobsResponseInner>> localVarResp = getCharacterIndustryJobsWithHttpInfo(
+        ApiResponse<List<CharacterIndustryJobsResponse>> localVarResp = getCharacterIndustryJobsWithHttpInfo(
                 characterId, xCompatibilityDate, includeCompleted, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -288,7 +288,7 @@ public class IndustryApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CharacterIndustryJobsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CharacterIndustryJobsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -314,14 +314,14 @@ public class IndustryApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterIndustryJobsResponseInner>> getCharacterIndustryJobsWithHttpInfo(
+    public ApiResponse<List<CharacterIndustryJobsResponse>> getCharacterIndustryJobsWithHttpInfo(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Boolean includeCompleted, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getCharacterIndustryJobsValidateBeforeCall(characterId, xCompatibilityDate,
                 includeCompleted, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterIndustryJobsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterIndustryJobsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -377,11 +377,11 @@ public class IndustryApi {
             @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Boolean includeCompleted, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CharacterIndustryJobsResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CharacterIndustryJobsResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCharacterIndustryJobsValidateBeforeCall(characterId, xCompatibilityDate,
                 includeCompleted, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterIndustryJobsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterIndustryJobsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -542,7 +542,7 @@ public class IndustryApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CharacterMiningResponseInner&gt;
+     * @return List&lt;CharacterMiningResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -570,11 +570,11 @@ public class IndustryApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterMiningResponseInner> getCharacterMining(@javax.annotation.Nonnull Long characterId,
+    public List<CharacterMiningResponse> getCharacterMining(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CharacterMiningResponseInner>> localVarResp = getCharacterMiningWithHttpInfo(characterId,
+        ApiResponse<List<CharacterMiningResponse>> localVarResp = getCharacterMiningWithHttpInfo(characterId,
                 xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -598,7 +598,7 @@ public class IndustryApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CharacterMiningResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CharacterMiningResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -626,14 +626,14 @@ public class IndustryApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterMiningResponseInner>> getCharacterMiningWithHttpInfo(
+    public ApiResponse<List<CharacterMiningResponse>> getCharacterMiningWithHttpInfo(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getCharacterMiningValidateBeforeCall(characterId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterMiningResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterMiningResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -690,12 +690,12 @@ public class IndustryApi {
     public okhttp3.Call getCharacterMiningAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CharacterMiningResponseInner>> _callback)
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CharacterMiningResponse>> _callback)
             throws ApiException {
 
         okhttp3.Call localVarCall = getCharacterMiningValidateBeforeCall(characterId, xCompatibilityDate, page,
                 acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterMiningResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CharacterMiningResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -865,7 +865,7 @@ public class IndustryApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CorporationIndustryJobsResponseInner&gt;
+     * @return List&lt;CorporationIndustryJobsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -893,12 +893,12 @@ public class IndustryApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CorporationIndustryJobsResponseInner> getCorporationIndustryJobs(
+    public List<CorporationIndustryJobsResponse> getCorporationIndustryJobs(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Boolean includeCompleted, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CorporationIndustryJobsResponseInner>> localVarResp = getCorporationIndustryJobsWithHttpInfo(
+        ApiResponse<List<CorporationIndustryJobsResponse>> localVarResp = getCorporationIndustryJobsWithHttpInfo(
                 corporationId, xCompatibilityDate, includeCompleted, page, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -923,9 +923,7 @@ public class IndustryApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return 
-     *         ApiResponse&lt;List&lt;CorporationIndustryJobsResponseInner&gt;&gt
-     *         ;
+     * @return ApiResponse&lt;List&lt;CorporationIndustryJobsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -953,14 +951,14 @@ public class IndustryApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CorporationIndustryJobsResponseInner>> getCorporationIndustryJobsWithHttpInfo(
+    public ApiResponse<List<CorporationIndustryJobsResponse>> getCorporationIndustryJobsWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Boolean includeCompleted, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = getCorporationIndustryJobsValidateBeforeCall(corporationId, xCompatibilityDate,
                 includeCompleted, page, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CorporationIndustryJobsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationIndustryJobsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1021,11 +1019,11 @@ public class IndustryApi {
             @javax.annotation.Nullable Boolean includeCompleted, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CorporationIndustryJobsResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CorporationIndustryJobsResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCorporationIndustryJobsValidateBeforeCall(corporationId, xCompatibilityDate,
                 includeCompleted, page, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CorporationIndustryJobsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationIndustryJobsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1187,7 +1185,7 @@ public class IndustryApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CorporationMiningExtractionsResponseInner&gt;
+     * @return List&lt;CorporationMiningExtractionsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1215,12 +1213,12 @@ public class IndustryApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CorporationMiningExtractionsResponseInner> getCorporationMiningExtractions(
+    public List<CorporationMiningExtractionsResponse> getCorporationMiningExtractions(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<CorporationMiningExtractionsResponseInner>> localVarResp = getCorporationMiningExtractionsWithHttpInfo(
+        ApiResponse<List<CorporationMiningExtractionsResponse>> localVarResp = getCorporationMiningExtractionsWithHttpInfo(
                 corporationId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -1245,8 +1243,8 @@ public class IndustryApi {
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
      * @return 
-     *         ApiResponse&lt;List&lt;CorporationMiningExtractionsResponseInner&gt
-     *         ;&gt;
+     *         ApiResponse&lt;List&lt;CorporationMiningExtractionsResponse&gt;&gt
+     *         ;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1274,14 +1272,14 @@ public class IndustryApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CorporationMiningExtractionsResponseInner>> getCorporationMiningExtractionsWithHttpInfo(
+    public ApiResponse<List<CorporationMiningExtractionsResponse>> getCorporationMiningExtractionsWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getCorporationMiningExtractionsValidateBeforeCall(corporationId,
                 xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CorporationMiningExtractionsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationMiningExtractionsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1339,11 +1337,11 @@ public class IndustryApi {
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CorporationMiningExtractionsResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CorporationMiningExtractionsResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCorporationMiningExtractionsValidateBeforeCall(corporationId,
                 xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CorporationMiningExtractionsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationMiningExtractionsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1517,7 +1515,7 @@ public class IndustryApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CorporationMiningObserverResponseInner&gt;
+     * @return List&lt;CorporationMiningObserverResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1545,12 +1543,12 @@ public class IndustryApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CorporationMiningObserverResponseInner> getCorporationMiningObserver(
+    public List<CorporationMiningObserverResponse> getCorporationMiningObserver(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull Long observerId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CorporationMiningObserverResponseInner>> localVarResp = getCorporationMiningObserverWithHttpInfo(
+        ApiResponse<List<CorporationMiningObserverResponse>> localVarResp = getCorporationMiningObserverWithHttpInfo(
                 corporationId, observerId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -1576,9 +1574,7 @@ public class IndustryApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return 
-     *         ApiResponse&lt;List&lt;CorporationMiningObserverResponseInner&gt;&
-     *         gt;
+     * @return ApiResponse&lt;List&lt;CorporationMiningObserverResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1606,14 +1602,14 @@ public class IndustryApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CorporationMiningObserverResponseInner>> getCorporationMiningObserverWithHttpInfo(
+    public ApiResponse<List<CorporationMiningObserverResponse>> getCorporationMiningObserverWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull Long observerId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
         okhttp3.Call localVarCall = getCorporationMiningObserverValidateBeforeCall(corporationId, observerId,
                 xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CorporationMiningObserverResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationMiningObserverResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1673,11 +1669,11 @@ public class IndustryApi {
             @javax.annotation.Nonnull Long observerId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CorporationMiningObserverResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CorporationMiningObserverResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCorporationMiningObserverValidateBeforeCall(corporationId, observerId,
                 xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CorporationMiningObserverResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationMiningObserverResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1838,7 +1834,7 @@ public class IndustryApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CorporationMiningObserversResponseInner&gt;
+     * @return List&lt;CorporationMiningObserversResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1866,12 +1862,12 @@ public class IndustryApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CorporationMiningObserversResponseInner> getCorporationMiningObservers(
+    public List<CorporationMiningObserversResponse> getCorporationMiningObservers(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<CorporationMiningObserversResponseInner>> localVarResp = getCorporationMiningObserversWithHttpInfo(
+        ApiResponse<List<CorporationMiningObserversResponse>> localVarResp = getCorporationMiningObserversWithHttpInfo(
                 corporationId, xCompatibilityDate, page, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -1895,9 +1891,7 @@ public class IndustryApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return 
-     *         ApiResponse&lt;List&lt;CorporationMiningObserversResponseInner&gt;
-     *         &gt;
+     * @return ApiResponse&lt;List&lt;CorporationMiningObserversResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1925,14 +1919,14 @@ public class IndustryApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CorporationMiningObserversResponseInner>> getCorporationMiningObserversWithHttpInfo(
+    public ApiResponse<List<CorporationMiningObserversResponse>> getCorporationMiningObserversWithHttpInfo(
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable Integer page, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getCorporationMiningObserversValidateBeforeCall(corporationId, xCompatibilityDate,
                 page, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CorporationMiningObserversResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationMiningObserversResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1990,11 +1984,11 @@ public class IndustryApi {
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable Integer page,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<CorporationMiningObserversResponseInner>> _callback) throws ApiException {
+            final ApiCallback<List<CorporationMiningObserversResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCorporationMiningObserversValidateBeforeCall(corporationId, xCompatibilityDate,
                 page, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CorporationMiningObserversResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<CorporationMiningObserversResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2131,7 +2125,7 @@ public class IndustryApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;IndustryFacilitiesResponseInner&gt;
+     * @return List&lt;IndustryFacilitiesResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2157,11 +2151,11 @@ public class IndustryApi {
      *                        </tr>
      *                        </table>
      */
-    public List<IndustryFacilitiesResponseInner> getIndustryFacilities(
+    public List<IndustryFacilitiesResponse> getIndustryFacilities(
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
-        ApiResponse<List<IndustryFacilitiesResponseInner>> localVarResp = getIndustryFacilitiesWithHttpInfo(
+        ApiResponse<List<IndustryFacilitiesResponse>> localVarResp = getIndustryFacilitiesWithHttpInfo(
                 xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -2180,7 +2174,7 @@ public class IndustryApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;IndustryFacilitiesResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;IndustryFacilitiesResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2206,13 +2200,13 @@ public class IndustryApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<IndustryFacilitiesResponseInner>> getIndustryFacilitiesWithHttpInfo(
+    public ApiResponse<List<IndustryFacilitiesResponse>> getIndustryFacilitiesWithHttpInfo(
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getIndustryFacilitiesValidateBeforeCall(xCompatibilityDate, acceptLanguage,
                 ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<IndustryFacilitiesResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<IndustryFacilitiesResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2262,12 +2256,12 @@ public class IndustryApi {
      */
     public okhttp3.Call getIndustryFacilitiesAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant,
-            final ApiCallback<List<IndustryFacilitiesResponseInner>> _callback) throws ApiException {
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<IndustryFacilitiesResponse>> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = getIndustryFacilitiesValidateBeforeCall(xCompatibilityDate, acceptLanguage,
                 ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<IndustryFacilitiesResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<IndustryFacilitiesResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2403,7 +2397,7 @@ public class IndustryApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;IndustrySystemsResponseInner&gt;
+     * @return List&lt;IndustrySystemsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2429,12 +2423,11 @@ public class IndustryApi {
      *                        </tr>
      *                        </table>
      */
-    public List<IndustrySystemsResponseInner> getIndustrySystems(
-            @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
-            @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
-            throws ApiException {
-        ApiResponse<List<IndustrySystemsResponseInner>> localVarResp = getIndustrySystemsWithHttpInfo(
-                xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
+    public List<IndustrySystemsResponse> getIndustrySystems(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
+            @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
+            @javax.annotation.Nullable String xTenant) throws ApiException {
+        ApiResponse<List<IndustrySystemsResponse>> localVarResp = getIndustrySystemsWithHttpInfo(xCompatibilityDate,
+                acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
 
@@ -2452,7 +2445,7 @@ public class IndustryApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;IndustrySystemsResponseInner&gt;&gt;
+     * @return ApiResponse&lt;List&lt;IndustrySystemsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -2478,13 +2471,13 @@ public class IndustryApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<IndustrySystemsResponseInner>> getIndustrySystemsWithHttpInfo(
+    public ApiResponse<List<IndustrySystemsResponse>> getIndustrySystemsWithHttpInfo(
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getIndustrySystemsValidateBeforeCall(xCompatibilityDate, acceptLanguage,
                 ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<IndustrySystemsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<IndustrySystemsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2534,12 +2527,12 @@ public class IndustryApi {
      */
     public okhttp3.Call getIndustrySystemsAsync(@javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<IndustrySystemsResponseInner>> _callback)
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<IndustrySystemsResponse>> _callback)
             throws ApiException {
 
         okhttp3.Call localVarCall = getIndustrySystemsValidateBeforeCall(xCompatibilityDate, acceptLanguage,
                 ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<IndustrySystemsResponseInner>>() {
+        Type localVarReturnType = new TypeToken<List<IndustrySystemsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
