@@ -26,7 +26,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 import net.troja.eve.esi.model.CharacterContractBidsResponse;
-import net.troja.eve.esi.model.CharacterContractItemsResponse;
+import net.troja.eve.esi.model.ContractItemsResponse;
 import net.troja.eve.esi.model.CharacterContractsResponse;
 import net.troja.eve.esi.model.CorporationContractsResponse;
 import net.troja.eve.esi.model.Error;
@@ -541,7 +541,7 @@ public class ContractsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CharacterContractItemsResponse&gt;
+     * @return List&lt;ContractItemsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -567,11 +567,11 @@ public class ContractsApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterContractItemsResponse> getCharacterContractItems(@javax.annotation.Nonnull Long characterId,
+    public List<ContractItemsResponse> getCharacterContractItems(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull Long contractId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CharacterContractItemsResponse>> localVarResp = getCharacterContractItemsWithHttpInfo(
+        ApiResponse<List<ContractItemsResponse>> localVarResp = getCharacterContractItemsWithHttpInfo(
                 characterId, contractId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -594,7 +594,7 @@ public class ContractsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CharacterContractItemsResponse&gt;&gt;
+     * @return ApiResponse&lt;List&lt;ContractItemsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -620,14 +620,14 @@ public class ContractsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterContractItemsResponse>> getCharacterContractItemsWithHttpInfo(
+    public ApiResponse<List<ContractItemsResponse>> getCharacterContractItemsWithHttpInfo(
             @javax.annotation.Nonnull Long characterId, @javax.annotation.Nonnull Long contractId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getCharacterContractItemsValidateBeforeCall(characterId, contractId,
                 xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterContractItemsResponse>>() {
+        Type localVarReturnType = new TypeToken<List<ContractItemsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -681,12 +681,12 @@ public class ContractsApi {
     public okhttp3.Call getCharacterContractItemsAsync(@javax.annotation.Nonnull Long characterId,
             @javax.annotation.Nonnull Long contractId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CharacterContractItemsResponse>> _callback)
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<ContractItemsResponse>> _callback)
             throws ApiException {
 
         okhttp3.Call localVarCall = getCharacterContractItemsValidateBeforeCall(characterId, contractId,
                 xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterContractItemsResponse>>() {
+        Type localVarReturnType = new TypeToken<List<ContractItemsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1495,7 +1495,7 @@ public class ContractsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return List&lt;CharacterContractItemsResponse&gt;
+     * @return List&lt;ContractItemsResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1521,11 +1521,11 @@ public class ContractsApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterContractItemsResponse> getCorporationContractItems(@javax.annotation.Nonnull Long contractId,
+    public List<ContractItemsResponse> getCorporationContractItems(@javax.annotation.Nonnull Long contractId,
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
             @javax.annotation.Nullable String xTenant) throws ApiException {
-        ApiResponse<List<CharacterContractItemsResponse>> localVarResp = getCorporationContractItemsWithHttpInfo(
+        ApiResponse<List<ContractItemsResponse>> localVarResp = getCorporationContractItemsWithHttpInfo(
                 contractId, corporationId, xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant);
         return localVarResp.getData();
     }
@@ -1548,7 +1548,7 @@ public class ContractsApi {
      * @param xTenant
      *            The tenant ID for the request. (optional, default to
      *            tranquility)
-     * @return ApiResponse&lt;List&lt;CharacterContractItemsResponse&gt;&gt;
+     * @return ApiResponse&lt;List&lt;ContractItemsResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
@@ -1574,14 +1574,14 @@ public class ContractsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<List<CharacterContractItemsResponse>> getCorporationContractItemsWithHttpInfo(
+    public ApiResponse<List<ContractItemsResponse>> getCorporationContractItemsWithHttpInfo(
             @javax.annotation.Nonnull Long contractId, @javax.annotation.Nonnull Long corporationId,
             @javax.annotation.Nonnull LocalDate xCompatibilityDate, @javax.annotation.Nullable String acceptLanguage,
             @javax.annotation.Nullable String ifNoneMatch, @javax.annotation.Nullable String xTenant)
             throws ApiException {
         okhttp3.Call localVarCall = getCorporationContractItemsValidateBeforeCall(contractId, corporationId,
                 xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, null);
-        Type localVarReturnType = new TypeToken<List<CharacterContractItemsResponse>>() {
+        Type localVarReturnType = new TypeToken<List<ContractItemsResponse>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1636,12 +1636,12 @@ public class ContractsApi {
     public okhttp3.Call getCorporationContractItemsAsync(@javax.annotation.Nonnull Long contractId,
             @javax.annotation.Nonnull Long corporationId, @javax.annotation.Nonnull LocalDate xCompatibilityDate,
             @javax.annotation.Nullable String acceptLanguage, @javax.annotation.Nullable String ifNoneMatch,
-            @javax.annotation.Nullable String xTenant, final ApiCallback<List<CharacterContractItemsResponse>> _callback)
+            @javax.annotation.Nullable String xTenant, final ApiCallback<List<ContractItemsResponse>> _callback)
             throws ApiException {
 
         okhttp3.Call localVarCall = getCorporationContractItemsValidateBeforeCall(contractId, corporationId,
                 xCompatibilityDate, acceptLanguage, ifNoneMatch, xTenant, _callback);
-        Type localVarReturnType = new TypeToken<List<CharacterContractItemsResponse>>() {
+        Type localVarReturnType = new TypeToken<List<ContractItemsResponse>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

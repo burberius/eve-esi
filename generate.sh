@@ -61,9 +61,9 @@ rm -rf src/test/java/net/troja/eve/esi/model
 mv src/main/java/net/troja/eve/esi/SsoApi.java src/main/java/net/troja/eve/esi/api/SsoApi.java
 
 #
-# Replace "Inner" classes
+# Rename "Inner" classes and CharacterContractItemsResponse
 #
-./replaceInner.sh
+./renameClasses.sh
 
 #
 # Generate SSO scopes

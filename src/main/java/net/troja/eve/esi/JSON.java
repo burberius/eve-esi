@@ -142,7 +142,7 @@ public class JSON {
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.CharacterContractBidsResponse.CustomTypeAdapterFactory());
         gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.CharacterContractItemsResponse.CustomTypeAdapterFactory());
+                .registerTypeAdapterFactory(new net.troja.eve.esi.model.ContractItemsResponse.CustomTypeAdapterFactory());
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.CharacterContractsResponse.CustomTypeAdapterFactory());
         gsonBuilder

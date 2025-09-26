@@ -15,7 +15,7 @@ package net.troja.eve.esi.api;
 
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.CharacterContractBidsResponse;
-import net.troja.eve.esi.model.CharacterContractItemsResponse;
+import net.troja.eve.esi.model.ContractItemsResponse;
 import net.troja.eve.esi.model.CharacterContractsResponse;
 import net.troja.eve.esi.model.CorporationContractsResponse;
 
@@ -80,7 +80,7 @@ public class ContractsApiTest extends GeneralApiTest {
         String ifNoneMatch = null;
         String xTenant = null;
         if (contractId != -1) {
-            List<CharacterContractItemsResponse> response =
+            List<ContractItemsResponse> response =
                     api.getCharacterContractItems(characterId, contractId, CharacterApi.COMPATIBILITY_DATE,
                             acceptLanguage, ifNoneMatch, xTenant);
             assertThat(response).hasSizeGreaterThan(0);
@@ -143,7 +143,7 @@ public class ContractsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterContractItemsResponse> response =
+        List<ContractItemsResponse> response =
                 api.getCorporationContractItems(contractId, corporationId, CharacterApi.COMPATIBILITY_DATE,
                         acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations

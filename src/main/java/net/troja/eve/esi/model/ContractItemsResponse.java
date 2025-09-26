@@ -46,10 +46,10 @@ import java.util.Set;
 import net.troja.eve.esi.JSON;
 
 /**
- * CharacterContractItemsResponse
+ * ContractItemsResponse
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
-public class CharacterContractItemsResponse implements Serializable {
+public class ContractItemsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_IS_INCLUDED = "is_included";
@@ -82,10 +82,10 @@ public class CharacterContractItemsResponse implements Serializable {
     @javax.annotation.Nonnull
     private Long typeId;
 
-    public CharacterContractItemsResponse() {
+    public ContractItemsResponse() {
     }
 
-    public CharacterContractItemsResponse isIncluded(@javax.annotation.Nonnull Boolean isIncluded) {
+    public ContractItemsResponse isIncluded(@javax.annotation.Nonnull Boolean isIncluded) {
         this.isIncluded = isIncluded;
         return this;
     }
@@ -105,7 +105,7 @@ public class CharacterContractItemsResponse implements Serializable {
         this.isIncluded = isIncluded;
     }
 
-    public CharacterContractItemsResponse isSingleton(@javax.annotation.Nonnull Boolean isSingleton) {
+    public ContractItemsResponse isSingleton(@javax.annotation.Nonnull Boolean isSingleton) {
         this.isSingleton = isSingleton;
         return this;
     }
@@ -124,7 +124,7 @@ public class CharacterContractItemsResponse implements Serializable {
         this.isSingleton = isSingleton;
     }
 
-    public CharacterContractItemsResponse quantity(@javax.annotation.Nonnull Long quantity) {
+    public ContractItemsResponse quantity(@javax.annotation.Nonnull Long quantity) {
         this.quantity = quantity;
         return this;
     }
@@ -143,7 +143,7 @@ public class CharacterContractItemsResponse implements Serializable {
         this.quantity = quantity;
     }
 
-    public CharacterContractItemsResponse rawQuantity(@javax.annotation.Nullable Long rawQuantity) {
+    public ContractItemsResponse rawQuantity(@javax.annotation.Nullable Long rawQuantity) {
         this.rawQuantity = rawQuantity;
         return this;
     }
@@ -163,7 +163,7 @@ public class CharacterContractItemsResponse implements Serializable {
         this.rawQuantity = rawQuantity;
     }
 
-    public CharacterContractItemsResponse recordId(@javax.annotation.Nonnull Long recordId) {
+    public ContractItemsResponse recordId(@javax.annotation.Nonnull Long recordId) {
         this.recordId = recordId;
         return this;
     }
@@ -182,7 +182,7 @@ public class CharacterContractItemsResponse implements Serializable {
         this.recordId = recordId;
     }
 
-    public CharacterContractItemsResponse typeId(@javax.annotation.Nonnull Long typeId) {
+    public ContractItemsResponse typeId(@javax.annotation.Nonnull Long typeId) {
         this.typeId = typeId;
         return this;
     }
@@ -209,7 +209,7 @@ public class CharacterContractItemsResponse implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CharacterContractItemsResponse characterContractItemsResponse = (CharacterContractItemsResponse) o;
+        ContractItemsResponse characterContractItemsResponse = (ContractItemsResponse) o;
         return Objects.equals(this.isIncluded, characterContractItemsResponse.isIncluded)
                 && Objects.equals(this.isSingleton, characterContractItemsResponse.isSingleton)
                 && Objects.equals(this.quantity, characterContractItemsResponse.quantity)
@@ -226,7 +226,7 @@ public class CharacterContractItemsResponse implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class CharacterContractItemsResponse {\n");
+        sb.append("class ContractItemsResponse {\n");
         sb.append("    isIncluded: ").append(toIndentedString(isIncluded)).append("\n");
         sb.append("    isSingleton: ").append(toIndentedString(isSingleton)).append("\n");
         sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
@@ -268,11 +268,11 @@ public class CharacterContractItemsResponse implements Serializable {
      *            JSON Element
      * @throws IOException
      *             if the JSON Element is invalid with respect to
-     *             CharacterContractItemsResponse
+     *             ContractItemsResponse
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         if (jsonElement == null) {
-            if (!CharacterContractItemsResponse.openapiRequiredFields.isEmpty()) { // has
+            if (!ContractItemsResponse.openapiRequiredFields.isEmpty()) { // has
                                                                                    // required
                                                                                    // fields
                                                                                    // but
@@ -282,25 +282,25 @@ public class CharacterContractItemsResponse implements Serializable {
                                                                                    // null
                 throw new IllegalArgumentException(
                         String.format(
-                                "The required field(s) %s in CharacterContractItemsResponse is not found in the empty JSON string",
-                                CharacterContractItemsResponse.openapiRequiredFields.toString()));
+                                "The required field(s) %s in ContractItemsResponse is not found in the empty JSON string",
+                                ContractItemsResponse.openapiRequiredFields.toString()));
             }
         }
 
         Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
         for (Map.Entry<String, JsonElement> entry : entries) {
-            if (!CharacterContractItemsResponse.openapiFields.contains(entry.getKey())) {
+            if (!ContractItemsResponse.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
-                                "The field `%s` in the JSON string is not defined in the `CharacterContractItemsResponse` properties. JSON: %s",
+                                "The field `%s` in the JSON string is not defined in the `ContractItemsResponse` properties. JSON: %s",
                                 entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
-        for (String requiredField : CharacterContractItemsResponse.openapiRequiredFields) {
+        for (String requiredField : ContractItemsResponse.openapiRequiredFields) {
             if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
@@ -314,24 +314,24 @@ public class CharacterContractItemsResponse implements Serializable {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!CharacterContractItemsResponse.class.isAssignableFrom(type.getRawType())) {
+            if (!ContractItemsResponse.class.isAssignableFrom(type.getRawType())) {
                 return null; // this class only serializes
-                             // 'CharacterContractItemsResponse' and its
+                             // 'ContractItemsResponse' and its
                              // subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<CharacterContractItemsResponse> thisAdapter = gson.getDelegateAdapter(this,
-                    TypeToken.get(CharacterContractItemsResponse.class));
+            final TypeAdapter<ContractItemsResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(ContractItemsResponse.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<CharacterContractItemsResponse>() {
+            return (TypeAdapter<T>) new TypeAdapter<ContractItemsResponse>() {
                 @Override
-                public void write(JsonWriter out, CharacterContractItemsResponse value) throws IOException {
+                public void write(JsonWriter out, ContractItemsResponse value) throws IOException {
                     JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
                     elementAdapter.write(out, obj);
                 }
 
                 @Override
-                public CharacterContractItemsResponse read(JsonReader in) throws IOException {
+                public ContractItemsResponse read(JsonReader in) throws IOException {
                     JsonElement jsonElement = elementAdapter.read(in);
                     validateJsonElement(jsonElement);
                     return thisAdapter.fromJsonTree(jsonElement);
@@ -342,21 +342,21 @@ public class CharacterContractItemsResponse implements Serializable {
     }
 
     /**
-     * Create an instance of CharacterContractItemsResponse given an JSON string
+     * Create an instance of ContractItemsResponse given an JSON string
      *
      * @param jsonString
      *            JSON string
-     * @return An instance of CharacterContractItemsResponse
+     * @return An instance of ContractItemsResponse
      * @throws IOException
      *             if the JSON string is invalid with respect to
-     *             CharacterContractItemsResponse
+     *             ContractItemsResponse
      */
-    public static CharacterContractItemsResponse fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, CharacterContractItemsResponse.class);
+    public static ContractItemsResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ContractItemsResponse.class);
     }
 
     /**
-     * Convert an instance of CharacterContractItemsResponse to an JSON string
+     * Convert an instance of ContractItemsResponse to an JSON string
      *
      * @return JSON string
      */
