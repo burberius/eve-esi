@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.troja.eve.esi.model.CharacterFittingsResponseItems;
+import net.troja.eve.esi.model.FittingsItem;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -69,7 +69,7 @@ public class CharacterFittingsResponse implements Serializable {
     public static final String SERIALIZED_NAME_ITEMS = "items";
     @SerializedName(SERIALIZED_NAME_ITEMS)
     @javax.annotation.Nonnull
-    private List<CharacterFittingsResponseItems> items;
+    private List<FittingsItem> items;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
@@ -122,12 +122,12 @@ public class CharacterFittingsResponse implements Serializable {
         this.fittingId = fittingId;
     }
 
-    public CharacterFittingsResponse items(@javax.annotation.Nonnull List<CharacterFittingsResponseItems> items) {
+    public CharacterFittingsResponse items(@javax.annotation.Nonnull List<FittingsItem> items) {
         this.items = items;
         return this;
     }
 
-    public CharacterFittingsResponse addItemsItem(CharacterFittingsResponseItems itemsItem) {
+    public CharacterFittingsResponse addItemsItem(FittingsItem itemsItem) {
         if (this.items == null) {
             this.items = new ArrayList<>();
         }
@@ -142,11 +142,11 @@ public class CharacterFittingsResponse implements Serializable {
      * @return items
      */
     @javax.annotation.Nonnull
-    public List<CharacterFittingsResponseItems> getItems() {
+    public List<FittingsItem> getItems() {
         return items;
     }
 
-    public void setItems(@javax.annotation.Nonnull List<CharacterFittingsResponseItems> items) {
+    public void setItems(@javax.annotation.Nonnull List<FittingsItem> items) {
         this.items = items;
     }
 
@@ -306,7 +306,7 @@ public class CharacterFittingsResponse implements Serializable {
         JsonArray jsonArrayitems = jsonObj.getAsJsonArray("items");
         // validate the required field `items` (array)
         for (int i = 0; i < jsonArrayitems.size(); i++) {
-            CharacterFittingsResponseItems.validateJsonElement(jsonArrayitems.get(i));
+            FittingsItem.validateJsonElement(jsonArrayitems.get(i));
         };
         if (!jsonObj.get("name").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(

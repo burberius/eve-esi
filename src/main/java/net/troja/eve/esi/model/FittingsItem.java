@@ -50,7 +50,7 @@ import net.troja.eve.esi.JSON;
  * item object
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
-public class CharacterFittingsResponseItems implements Serializable {
+public class FittingsItem implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -203,15 +203,15 @@ public class CharacterFittingsResponseItems implements Serializable {
     @javax.annotation.Nonnull
     private Long typeId;
 
-    public CharacterFittingsResponseItems() {
+    public FittingsItem() {
     }
 
-    public CharacterFittingsResponseItems flag(@javax.annotation.Nonnull FlagEnum flag) {
+    public FittingsItem flag(@javax.annotation.Nonnull FlagEnum flag) {
         this.flagEnum = flag;
         return this;
     }
 
-    public CharacterFittingsResponseItems flagString(@javax.annotation.Nonnull String flag) {
+    public FittingsItem flagString(@javax.annotation.Nonnull String flag) {
         this.flag = flag;
         return this;
     }
@@ -241,7 +241,7 @@ public class CharacterFittingsResponseItems implements Serializable {
         this.flag = flag;
     }
 
-    public CharacterFittingsResponseItems quantity(@javax.annotation.Nonnull Long quantity) {
+    public FittingsItem quantity(@javax.annotation.Nonnull Long quantity) {
         this.quantity = quantity;
         return this;
     }
@@ -260,7 +260,7 @@ public class CharacterFittingsResponseItems implements Serializable {
         this.quantity = quantity;
     }
 
-    public CharacterFittingsResponseItems typeId(@javax.annotation.Nonnull Long typeId) {
+    public FittingsItem typeId(@javax.annotation.Nonnull Long typeId) {
         this.typeId = typeId;
         return this;
     }
@@ -287,7 +287,7 @@ public class CharacterFittingsResponseItems implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CharacterFittingsResponseItems characterFittingsResponseItems = (CharacterFittingsResponseItems) o;
+        FittingsItem characterFittingsResponseItems = (FittingsItem) o;
         return Objects.equals(this.flag, characterFittingsResponseItems.flag)
                 && Objects.equals(this.quantity, characterFittingsResponseItems.quantity)
                 && Objects.equals(this.typeId, characterFittingsResponseItems.typeId);
@@ -301,7 +301,7 @@ public class CharacterFittingsResponseItems implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class CharacterFittingsResponseItems {\n");
+        sb.append("class FittingsItem {\n");
         sb.append("    flag: ").append(toIndentedString(flag)).append("\n");
         sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
@@ -337,40 +337,33 @@ public class CharacterFittingsResponseItems implements Serializable {
      * @param jsonElement
      *            JSON Element
      * @throws IOException
-     *             if the JSON Element is invalid with respect to
-     *             CharacterFittingsResponseItems
+     *             if the JSON Element is invalid with respect to FittingsItem
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         if (jsonElement == null) {
-            if (!CharacterFittingsResponseItems.openapiRequiredFields.isEmpty()) { // has
-                                                                                   // required
-                                                                                   // fields
-                                                                                   // but
-                                                                                   // JSON
-                                                                                   // element
-                                                                                   // is
-                                                                                   // null
-                throw new IllegalArgumentException(
-                        String.format(
-                                "The required field(s) %s in CharacterFittingsResponseItems is not found in the empty JSON string",
-                                CharacterFittingsResponseItems.openapiRequiredFields.toString()));
+            if (!FittingsItem.openapiRequiredFields.isEmpty()) { // has required
+                                                                 // fields but
+                                                                 // JSON element
+                                                                 // is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in FittingsItem is not found in the empty JSON string",
+                        FittingsItem.openapiRequiredFields.toString()));
             }
         }
 
         Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
         for (Map.Entry<String, JsonElement> entry : entries) {
-            if (!CharacterFittingsResponseItems.openapiFields.contains(entry.getKey())) {
-                throw new IllegalArgumentException(
-                        String.format(
-                                "The field `%s` in the JSON string is not defined in the `CharacterFittingsResponseItems` properties. JSON: %s",
-                                entry.getKey(), jsonElement.toString()));
+            if (!FittingsItem.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `FittingsItem` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
-        for (String requiredField : CharacterFittingsResponseItems.openapiRequiredFields) {
+        for (String requiredField : FittingsItem.openapiRequiredFields) {
             if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
@@ -391,24 +384,23 @@ public class CharacterFittingsResponseItems implements Serializable {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!CharacterFittingsResponseItems.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes
-                             // 'CharacterFittingsResponseItems' and its
-                             // subtypes
+            if (!FittingsItem.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'FittingsItem' and
+                             // its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<CharacterFittingsResponseItems> thisAdapter = gson.getDelegateAdapter(this,
-                    TypeToken.get(CharacterFittingsResponseItems.class));
+            final TypeAdapter<FittingsItem> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(FittingsItem.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<CharacterFittingsResponseItems>() {
+            return (TypeAdapter<T>) new TypeAdapter<FittingsItem>() {
                 @Override
-                public void write(JsonWriter out, CharacterFittingsResponseItems value) throws IOException {
+                public void write(JsonWriter out, FittingsItem value) throws IOException {
                     JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
                     elementAdapter.write(out, obj);
                 }
 
                 @Override
-                public CharacterFittingsResponseItems read(JsonReader in) throws IOException {
+                public FittingsItem read(JsonReader in) throws IOException {
                     JsonElement jsonElement = elementAdapter.read(in);
                     validateJsonElement(jsonElement);
                     return thisAdapter.fromJsonTree(jsonElement);
@@ -419,21 +411,20 @@ public class CharacterFittingsResponseItems implements Serializable {
     }
 
     /**
-     * Create an instance of CharacterFittingsResponseItems given an JSON string
+     * Create an instance of FittingsItem given an JSON string
      *
      * @param jsonString
      *            JSON string
-     * @return An instance of CharacterFittingsResponseItems
+     * @return An instance of FittingsItem
      * @throws IOException
-     *             if the JSON string is invalid with respect to
-     *             CharacterFittingsResponseItems
+     *             if the JSON string is invalid with respect to FittingsItem
      */
-    public static CharacterFittingsResponseItems fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, CharacterFittingsResponseItems.class);
+    public static FittingsItem fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FittingsItem.class);
     }
 
     /**
-     * Convert an instance of CharacterFittingsResponseItems to an JSON string
+     * Convert an instance of FittingsItem to an JSON string
      *
      * @return JSON string
      */

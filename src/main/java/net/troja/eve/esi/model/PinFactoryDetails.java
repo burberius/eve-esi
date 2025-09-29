@@ -47,10 +47,10 @@ import java.util.Set;
 import net.troja.eve.esi.JSON;
 
 /**
- * PlanetPinFactoryDetails
+ * PinFactoryDetails
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
-public class PlanetPinFactoryDetails implements Serializable {
+public class PinFactoryDetails implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_SCHEMATIC_ID = "schematic_id";
@@ -58,10 +58,10 @@ public class PlanetPinFactoryDetails implements Serializable {
     @javax.annotation.Nonnull
     private Long schematicId;
 
-    public PlanetPinFactoryDetails() {
+    public PinFactoryDetails() {
     }
 
-    public PlanetPinFactoryDetails schematicId(@javax.annotation.Nonnull Long schematicId) {
+    public PinFactoryDetails schematicId(@javax.annotation.Nonnull Long schematicId) {
         this.schematicId = schematicId;
         return this;
     }
@@ -88,7 +88,7 @@ public class PlanetPinFactoryDetails implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        PlanetPinFactoryDetails characterPlanetResponsePinsFactoryDetails = (PlanetPinFactoryDetails) o;
+        PinFactoryDetails characterPlanetResponsePinsFactoryDetails = (PinFactoryDetails) o;
         return Objects.equals(this.schematicId, characterPlanetResponsePinsFactoryDetails.schematicId);
     }
 
@@ -100,7 +100,7 @@ public class PlanetPinFactoryDetails implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class PlanetPinFactoryDetails {\n");
+        sb.append("class PinFactoryDetails {\n");
         sb.append("    schematicId: ").append(toIndentedString(schematicId)).append("\n");
         sb.append("}");
         return sb.toString();
@@ -135,38 +135,37 @@ public class PlanetPinFactoryDetails implements Serializable {
      *            JSON Element
      * @throws IOException
      *             if the JSON Element is invalid with respect to
-     *             PlanetPinFactoryDetails
+     *             PinFactoryDetails
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         if (jsonElement == null) {
-            if (!PlanetPinFactoryDetails.openapiRequiredFields.isEmpty()) { // has
-                                                                            // required
-                                                                            // fields
-                                                                            // but
-                                                                            // JSON
-                                                                            // element
-                                                                            // is
-                                                                            // null
+            if (!PinFactoryDetails.openapiRequiredFields.isEmpty()) { // has
+                                                                      // required
+                                                                      // fields
+                                                                      // but
+                                                                      // JSON
+                                                                      // element
+                                                                      // is null
                 throw new IllegalArgumentException(String.format(
-                        "The required field(s) %s in PlanetPinFactoryDetails is not found in the empty JSON string",
-                        PlanetPinFactoryDetails.openapiRequiredFields.toString()));
+                        "The required field(s) %s in PinFactoryDetails is not found in the empty JSON string",
+                        PinFactoryDetails.openapiRequiredFields.toString()));
             }
         }
 
         Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
         for (Map.Entry<String, JsonElement> entry : entries) {
-            if (!PlanetPinFactoryDetails.openapiFields.contains(entry.getKey())) {
+            if (!PinFactoryDetails.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
-                                "The field `%s` in the JSON string is not defined in the `PlanetPinFactoryDetails` properties. JSON: %s",
+                                "The field `%s` in the JSON string is not defined in the `PinFactoryDetails` properties. JSON: %s",
                                 entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
-        for (String requiredField : PlanetPinFactoryDetails.openapiRequiredFields) {
+        for (String requiredField : PinFactoryDetails.openapiRequiredFields) {
             if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
@@ -180,23 +179,23 @@ public class PlanetPinFactoryDetails implements Serializable {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!PlanetPinFactoryDetails.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes
-                             // 'PlanetPinFactoryDetails' and its subtypes
+            if (!PinFactoryDetails.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PinFactoryDetails'
+                             // and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<PlanetPinFactoryDetails> thisAdapter = gson.getDelegateAdapter(this,
-                    TypeToken.get(PlanetPinFactoryDetails.class));
+            final TypeAdapter<PinFactoryDetails> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(PinFactoryDetails.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<PlanetPinFactoryDetails>() {
+            return (TypeAdapter<T>) new TypeAdapter<PinFactoryDetails>() {
                 @Override
-                public void write(JsonWriter out, PlanetPinFactoryDetails value) throws IOException {
+                public void write(JsonWriter out, PinFactoryDetails value) throws IOException {
                     JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
                     elementAdapter.write(out, obj);
                 }
 
                 @Override
-                public PlanetPinFactoryDetails read(JsonReader in) throws IOException {
+                public PinFactoryDetails read(JsonReader in) throws IOException {
                     JsonElement jsonElement = elementAdapter.read(in);
                     validateJsonElement(jsonElement);
                     return thisAdapter.fromJsonTree(jsonElement);
@@ -207,21 +206,21 @@ public class PlanetPinFactoryDetails implements Serializable {
     }
 
     /**
-     * Create an instance of PlanetPinFactoryDetails given an JSON string
+     * Create an instance of PinFactoryDetails given an JSON string
      *
      * @param jsonString
      *            JSON string
-     * @return An instance of PlanetPinFactoryDetails
+     * @return An instance of PinFactoryDetails
      * @throws IOException
      *             if the JSON string is invalid with respect to
-     *             PlanetPinFactoryDetails
+     *             PinFactoryDetails
      */
-    public static PlanetPinFactoryDetails fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, PlanetPinFactoryDetails.class);
+    public static PinFactoryDetails fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PinFactoryDetails.class);
     }
 
     /**
-     * Convert an instance of PlanetPinFactoryDetails to an JSON string
+     * Convert an instance of PinFactoryDetails to an JSON string
      *
      * @return JSON string
      */

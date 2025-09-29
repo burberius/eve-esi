@@ -70,6 +70,7 @@ public class SsoScopes {
     public static final String ESI_UI_WRITE_WAYPOINT_V1 = "esi-ui.write_waypoint.v1";
     public static final String ESI_UNIVERSE_READ_STRUCTURES_V1 = "esi-universe.read_structures.v1";
     public static final String ESI_WALLET_READ_CHARACTER_WALLET_V1 = "esi-wallet.read_character_wallet.v1";
+    public static final String ESI_WALLET_READ_CORPORATION_WALLETS_V1 = "esi-wallet.read_corporation_wallets.v1";
 
     private static final String[] ALL_VALUES = { ESI_ALLIANCES_READ_CONTACTS_V1, ESI_ASSETS_READ_ASSETS_V1,
             ESI_ASSETS_READ_CORPORATION_ASSETS_V1, ESI_CALENDAR_READ_CALENDAR_EVENTS_V1,
@@ -95,7 +96,7 @@ public class SsoScopes {
             ESI_MARKETS_STRUCTURE_MARKETS_V1, ESI_PLANETS_MANAGE_PLANETS_V1, ESI_PLANETS_READ_CUSTOMS_OFFICES_V1,
             ESI_SEARCH_SEARCH_STRUCTURES_V1, ESI_SKILLS_READ_SKILLQUEUE_V1, ESI_SKILLS_READ_SKILLS_V1,
             ESI_UI_OPEN_WINDOW_V1, ESI_UI_WRITE_WAYPOINT_V1, ESI_UNIVERSE_READ_STRUCTURES_V1,
-            ESI_WALLET_READ_CHARACTER_WALLET_V1 };
+            ESI_WALLET_READ_CHARACTER_WALLET_V1, ESI_WALLET_READ_CORPORATION_WALLETS_V1 };
 
     public static Set<String> ALL = Collections.unmodifiableSet(new HashSet<>(Arrays.asList(ALL_VALUES)));
 

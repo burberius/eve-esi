@@ -50,7 +50,7 @@ import net.troja.eve.esi.JSON;
  * head object
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
-public class PlanetPinExtractorDetailsHeads implements Serializable {
+public class ExtractorDetailsHead implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_HEAD_ID = "head_id";
@@ -68,10 +68,10 @@ public class PlanetPinExtractorDetailsHeads implements Serializable {
     @javax.annotation.Nonnull
     private Double longitude;
 
-    public PlanetPinExtractorDetailsHeads() {
+    public ExtractorDetailsHead() {
     }
 
-    public PlanetPinExtractorDetailsHeads headId(@javax.annotation.Nonnull Long headId) {
+    public ExtractorDetailsHead headId(@javax.annotation.Nonnull Long headId) {
         this.headId = headId;
         return this;
     }
@@ -90,7 +90,7 @@ public class PlanetPinExtractorDetailsHeads implements Serializable {
         this.headId = headId;
     }
 
-    public PlanetPinExtractorDetailsHeads latitude(@javax.annotation.Nonnull Double latitude) {
+    public ExtractorDetailsHead latitude(@javax.annotation.Nonnull Double latitude) {
         this.latitude = latitude;
         return this;
     }
@@ -109,7 +109,7 @@ public class PlanetPinExtractorDetailsHeads implements Serializable {
         this.latitude = latitude;
     }
 
-    public PlanetPinExtractorDetailsHeads longitude(@javax.annotation.Nonnull Double longitude) {
+    public ExtractorDetailsHead longitude(@javax.annotation.Nonnull Double longitude) {
         this.longitude = longitude;
         return this;
     }
@@ -136,7 +136,7 @@ public class PlanetPinExtractorDetailsHeads implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        PlanetPinExtractorDetailsHeads characterPlanetResponsePinsExtractorDetailsHeads = (PlanetPinExtractorDetailsHeads) o;
+        ExtractorDetailsHead characterPlanetResponsePinsExtractorDetailsHeads = (ExtractorDetailsHead) o;
         return Objects.equals(this.headId, characterPlanetResponsePinsExtractorDetailsHeads.headId)
                 && Objects.equals(this.latitude, characterPlanetResponsePinsExtractorDetailsHeads.latitude)
                 && Objects.equals(this.longitude, characterPlanetResponsePinsExtractorDetailsHeads.longitude);
@@ -150,7 +150,7 @@ public class PlanetPinExtractorDetailsHeads implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class PlanetPinExtractorDetailsHeads {\n");
+        sb.append("class ExtractorDetailsHead {\n");
         sb.append("    headId: ").append(toIndentedString(headId)).append("\n");
         sb.append("    latitude: ").append(toIndentedString(latitude)).append("\n");
         sb.append("    longitude: ").append(toIndentedString(longitude)).append("\n");
@@ -187,39 +187,38 @@ public class PlanetPinExtractorDetailsHeads implements Serializable {
      *            JSON Element
      * @throws IOException
      *             if the JSON Element is invalid with respect to
-     *             PlanetPinExtractorDetailsHeads
+     *             ExtractorDetailsHead
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         if (jsonElement == null) {
-            if (!PlanetPinExtractorDetailsHeads.openapiRequiredFields.isEmpty()) { // has
-                                                                                   // required
-                                                                                   // fields
-                                                                                   // but
-                                                                                   // JSON
-                                                                                   // element
-                                                                                   // is
-                                                                                   // null
-                throw new IllegalArgumentException(
-                        String.format(
-                                "The required field(s) %s in PlanetPinExtractorDetailsHeads is not found in the empty JSON string",
-                                PlanetPinExtractorDetailsHeads.openapiRequiredFields.toString()));
+            if (!ExtractorDetailsHead.openapiRequiredFields.isEmpty()) { // has
+                                                                         // required
+                                                                         // fields
+                                                                         // but
+                                                                         // JSON
+                                                                         // element
+                                                                         // is
+                                                                         // null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ExtractorDetailsHead is not found in the empty JSON string",
+                        ExtractorDetailsHead.openapiRequiredFields.toString()));
             }
         }
 
         Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
         for (Map.Entry<String, JsonElement> entry : entries) {
-            if (!PlanetPinExtractorDetailsHeads.openapiFields.contains(entry.getKey())) {
+            if (!ExtractorDetailsHead.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
-                                "The field `%s` in the JSON string is not defined in the `PlanetPinExtractorDetailsHeads` properties. JSON: %s",
+                                "The field `%s` in the JSON string is not defined in the `ExtractorDetailsHead` properties. JSON: %s",
                                 entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
-        for (String requiredField : PlanetPinExtractorDetailsHeads.openapiRequiredFields) {
+        for (String requiredField : ExtractorDetailsHead.openapiRequiredFields) {
             if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
@@ -233,24 +232,23 @@ public class PlanetPinExtractorDetailsHeads implements Serializable {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!PlanetPinExtractorDetailsHeads.class.isAssignableFrom(type.getRawType())) {
+            if (!ExtractorDetailsHead.class.isAssignableFrom(type.getRawType())) {
                 return null; // this class only serializes
-                             // 'PlanetPinExtractorDetailsHeads' and its
-                             // subtypes
+                             // 'ExtractorDetailsHead' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<PlanetPinExtractorDetailsHeads> thisAdapter = gson.getDelegateAdapter(this,
-                    TypeToken.get(PlanetPinExtractorDetailsHeads.class));
+            final TypeAdapter<ExtractorDetailsHead> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(ExtractorDetailsHead.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<PlanetPinExtractorDetailsHeads>() {
+            return (TypeAdapter<T>) new TypeAdapter<ExtractorDetailsHead>() {
                 @Override
-                public void write(JsonWriter out, PlanetPinExtractorDetailsHeads value) throws IOException {
+                public void write(JsonWriter out, ExtractorDetailsHead value) throws IOException {
                     JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
                     elementAdapter.write(out, obj);
                 }
 
                 @Override
-                public PlanetPinExtractorDetailsHeads read(JsonReader in) throws IOException {
+                public ExtractorDetailsHead read(JsonReader in) throws IOException {
                     JsonElement jsonElement = elementAdapter.read(in);
                     validateJsonElement(jsonElement);
                     return thisAdapter.fromJsonTree(jsonElement);
@@ -261,21 +259,21 @@ public class PlanetPinExtractorDetailsHeads implements Serializable {
     }
 
     /**
-     * Create an instance of PlanetPinExtractorDetailsHeads given an JSON string
+     * Create an instance of ExtractorDetailsHead given an JSON string
      *
      * @param jsonString
      *            JSON string
-     * @return An instance of PlanetPinExtractorDetailsHeads
+     * @return An instance of ExtractorDetailsHead
      * @throws IOException
      *             if the JSON string is invalid with respect to
-     *             PlanetPinExtractorDetailsHeads
+     *             ExtractorDetailsHead
      */
-    public static PlanetPinExtractorDetailsHeads fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, PlanetPinExtractorDetailsHeads.class);
+    public static ExtractorDetailsHead fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ExtractorDetailsHead.class);
     }
 
     /**
-     * Convert an instance of PlanetPinExtractorDetailsHeads to an JSON string
+     * Convert an instance of ExtractorDetailsHead to an JSON string
      *
      * @return JSON string
      */

@@ -50,7 +50,7 @@ import net.troja.eve.esi.JSON;
  * wallet object
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
-public class CorporationDivisionsResponseWallet implements Serializable {
+public class DivisionsWallet implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_DIVISION = "division";
@@ -63,10 +63,10 @@ public class CorporationDivisionsResponseWallet implements Serializable {
     @javax.annotation.Nullable
     private String name;
 
-    public CorporationDivisionsResponseWallet() {
+    public DivisionsWallet() {
     }
 
-    public CorporationDivisionsResponseWallet division(@javax.annotation.Nullable Long division) {
+    public DivisionsWallet division(@javax.annotation.Nullable Long division) {
         this.division = division;
         return this;
     }
@@ -85,7 +85,7 @@ public class CorporationDivisionsResponseWallet implements Serializable {
         this.division = division;
     }
 
-    public CorporationDivisionsResponseWallet name(@javax.annotation.Nullable String name) {
+    public DivisionsWallet name(@javax.annotation.Nullable String name) {
         this.name = name;
         return this;
     }
@@ -112,7 +112,7 @@ public class CorporationDivisionsResponseWallet implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CorporationDivisionsResponseWallet corporationDivisionsResponseWallet = (CorporationDivisionsResponseWallet) o;
+        DivisionsWallet corporationDivisionsResponseWallet = (DivisionsWallet) o;
         return Objects.equals(this.division, corporationDivisionsResponseWallet.division)
                 && Objects.equals(this.name, corporationDivisionsResponseWallet.name);
     }
@@ -125,7 +125,7 @@ public class CorporationDivisionsResponseWallet implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class CorporationDivisionsResponseWallet {\n");
+        sb.append("class DivisionsWallet {\n");
         sb.append("    division: ").append(toIndentedString(division)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("}");
@@ -161,32 +161,29 @@ public class CorporationDivisionsResponseWallet implements Serializable {
      *            JSON Element
      * @throws IOException
      *             if the JSON Element is invalid with respect to
-     *             CorporationDivisionsResponseWallet
+     *             DivisionsWallet
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         if (jsonElement == null) {
-            if (!CorporationDivisionsResponseWallet.openapiRequiredFields.isEmpty()) { // has
-                                                                                       // required
-                                                                                       // fields
-                                                                                       // but
-                                                                                       // JSON
-                                                                                       // element
-                                                                                       // is
-                                                                                       // null
-                throw new IllegalArgumentException(
-                        String.format(
-                                "The required field(s) %s in CorporationDivisionsResponseWallet is not found in the empty JSON string",
-                                CorporationDivisionsResponseWallet.openapiRequiredFields.toString()));
+            if (!DivisionsWallet.openapiRequiredFields.isEmpty()) { // has
+                                                                    // required
+                                                                    // fields
+                                                                    // but JSON
+                                                                    // element
+                                                                    // is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in DivisionsWallet is not found in the empty JSON string",
+                        DivisionsWallet.openapiRequiredFields.toString()));
             }
         }
 
         Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
         for (Map.Entry<String, JsonElement> entry : entries) {
-            if (!CorporationDivisionsResponseWallet.openapiFields.contains(entry.getKey())) {
+            if (!DivisionsWallet.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
-                                "The field `%s` in the JSON string is not defined in the `CorporationDivisionsResponseWallet` properties. JSON: %s",
+                                "The field `%s` in the JSON string is not defined in the `DivisionsWallet` properties. JSON: %s",
                                 entry.getKey(), jsonElement.toString()));
             }
         }
@@ -203,24 +200,23 @@ public class CorporationDivisionsResponseWallet implements Serializable {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!CorporationDivisionsResponseWallet.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes
-                             // 'CorporationDivisionsResponseWallet' and its
-                             // subtypes
+            if (!DivisionsWallet.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'DivisionsWallet' and
+                             // its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<CorporationDivisionsResponseWallet> thisAdapter = gson.getDelegateAdapter(this,
-                    TypeToken.get(CorporationDivisionsResponseWallet.class));
+            final TypeAdapter<DivisionsWallet> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(DivisionsWallet.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<CorporationDivisionsResponseWallet>() {
+            return (TypeAdapter<T>) new TypeAdapter<DivisionsWallet>() {
                 @Override
-                public void write(JsonWriter out, CorporationDivisionsResponseWallet value) throws IOException {
+                public void write(JsonWriter out, DivisionsWallet value) throws IOException {
                     JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
                     elementAdapter.write(out, obj);
                 }
 
                 @Override
-                public CorporationDivisionsResponseWallet read(JsonReader in) throws IOException {
+                public DivisionsWallet read(JsonReader in) throws IOException {
                     JsonElement jsonElement = elementAdapter.read(in);
                     validateJsonElement(jsonElement);
                     return thisAdapter.fromJsonTree(jsonElement);
@@ -231,23 +227,20 @@ public class CorporationDivisionsResponseWallet implements Serializable {
     }
 
     /**
-     * Create an instance of CorporationDivisionsResponseWallet given an JSON
-     * string
+     * Create an instance of DivisionsWallet given an JSON string
      *
      * @param jsonString
      *            JSON string
-     * @return An instance of CorporationDivisionsResponseWallet
+     * @return An instance of DivisionsWallet
      * @throws IOException
-     *             if the JSON string is invalid with respect to
-     *             CorporationDivisionsResponseWallet
+     *             if the JSON string is invalid with respect to DivisionsWallet
      */
-    public static CorporationDivisionsResponseWallet fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, CorporationDivisionsResponseWallet.class);
+    public static DivisionsWallet fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, DivisionsWallet.class);
     }
 
     /**
-     * Convert an instance of CorporationDivisionsResponseWallet to an JSON
-     * string
+     * Convert an instance of DivisionsWallet to an JSON string
      *
      * @return JSON string
      */

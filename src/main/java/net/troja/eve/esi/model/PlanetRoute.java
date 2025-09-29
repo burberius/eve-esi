@@ -52,7 +52,7 @@ import net.troja.eve.esi.JSON;
  * route object
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
-public class CharacterPlanetResponseRoutes implements Serializable {
+public class PlanetRoute implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_CONTENT_TYPE_ID = "content_type_id";
@@ -85,10 +85,10 @@ public class CharacterPlanetResponseRoutes implements Serializable {
     @javax.annotation.Nullable
     private List<Long> waypoints;
 
-    public CharacterPlanetResponseRoutes() {
+    public PlanetRoute() {
     }
 
-    public CharacterPlanetResponseRoutes contentTypeId(@javax.annotation.Nonnull Long contentTypeId) {
+    public PlanetRoute contentTypeId(@javax.annotation.Nonnull Long contentTypeId) {
         this.contentTypeId = contentTypeId;
         return this;
     }
@@ -107,7 +107,7 @@ public class CharacterPlanetResponseRoutes implements Serializable {
         this.contentTypeId = contentTypeId;
     }
 
-    public CharacterPlanetResponseRoutes destinationPinId(@javax.annotation.Nonnull Long destinationPinId) {
+    public PlanetRoute destinationPinId(@javax.annotation.Nonnull Long destinationPinId) {
         this.destinationPinId = destinationPinId;
         return this;
     }
@@ -126,7 +126,7 @@ public class CharacterPlanetResponseRoutes implements Serializable {
         this.destinationPinId = destinationPinId;
     }
 
-    public CharacterPlanetResponseRoutes quantity(@javax.annotation.Nonnull Double quantity) {
+    public PlanetRoute quantity(@javax.annotation.Nonnull Double quantity) {
         this.quantity = quantity;
         return this;
     }
@@ -145,7 +145,7 @@ public class CharacterPlanetResponseRoutes implements Serializable {
         this.quantity = quantity;
     }
 
-    public CharacterPlanetResponseRoutes routeId(@javax.annotation.Nonnull Long routeId) {
+    public PlanetRoute routeId(@javax.annotation.Nonnull Long routeId) {
         this.routeId = routeId;
         return this;
     }
@@ -164,7 +164,7 @@ public class CharacterPlanetResponseRoutes implements Serializable {
         this.routeId = routeId;
     }
 
-    public CharacterPlanetResponseRoutes sourcePinId(@javax.annotation.Nonnull Long sourcePinId) {
+    public PlanetRoute sourcePinId(@javax.annotation.Nonnull Long sourcePinId) {
         this.sourcePinId = sourcePinId;
         return this;
     }
@@ -183,12 +183,12 @@ public class CharacterPlanetResponseRoutes implements Serializable {
         this.sourcePinId = sourcePinId;
     }
 
-    public CharacterPlanetResponseRoutes waypoints(@javax.annotation.Nullable List<Long> waypoints) {
+    public PlanetRoute waypoints(@javax.annotation.Nullable List<Long> waypoints) {
         this.waypoints = waypoints;
         return this;
     }
 
-    public CharacterPlanetResponseRoutes addWaypointsItem(Long waypointsItem) {
+    public PlanetRoute addWaypointsItem(Long waypointsItem) {
         if (this.waypoints == null) {
             this.waypoints = new ArrayList<>();
         }
@@ -219,7 +219,7 @@ public class CharacterPlanetResponseRoutes implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CharacterPlanetResponseRoutes characterPlanetResponseRoutes = (CharacterPlanetResponseRoutes) o;
+        PlanetRoute characterPlanetResponseRoutes = (PlanetRoute) o;
         return Objects.equals(this.contentTypeId, characterPlanetResponseRoutes.contentTypeId)
                 && Objects.equals(this.destinationPinId, characterPlanetResponseRoutes.destinationPinId)
                 && Objects.equals(this.quantity, characterPlanetResponseRoutes.quantity)
@@ -236,7 +236,7 @@ public class CharacterPlanetResponseRoutes implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class CharacterPlanetResponseRoutes {\n");
+        sb.append("class PlanetRoute {\n");
         sb.append("    contentTypeId: ").append(toIndentedString(contentTypeId)).append("\n");
         sb.append("    destinationPinId: ").append(toIndentedString(destinationPinId)).append("\n");
         sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
@@ -277,40 +277,33 @@ public class CharacterPlanetResponseRoutes implements Serializable {
      * @param jsonElement
      *            JSON Element
      * @throws IOException
-     *             if the JSON Element is invalid with respect to
-     *             CharacterPlanetResponseRoutes
+     *             if the JSON Element is invalid with respect to PlanetRoute
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         if (jsonElement == null) {
-            if (!CharacterPlanetResponseRoutes.openapiRequiredFields.isEmpty()) { // has
-                                                                                  // required
-                                                                                  // fields
-                                                                                  // but
-                                                                                  // JSON
-                                                                                  // element
-                                                                                  // is
-                                                                                  // null
-                throw new IllegalArgumentException(
-                        String.format(
-                                "The required field(s) %s in CharacterPlanetResponseRoutes is not found in the empty JSON string",
-                                CharacterPlanetResponseRoutes.openapiRequiredFields.toString()));
+            if (!PlanetRoute.openapiRequiredFields.isEmpty()) { // has required
+                                                                // fields but
+                                                                // JSON element
+                                                                // is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PlanetRoute is not found in the empty JSON string",
+                        PlanetRoute.openapiRequiredFields.toString()));
             }
         }
 
         Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
         for (Map.Entry<String, JsonElement> entry : entries) {
-            if (!CharacterPlanetResponseRoutes.openapiFields.contains(entry.getKey())) {
-                throw new IllegalArgumentException(
-                        String.format(
-                                "The field `%s` in the JSON string is not defined in the `CharacterPlanetResponseRoutes` properties. JSON: %s",
-                                entry.getKey(), jsonElement.toString()));
+            if (!PlanetRoute.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PlanetRoute` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
-        for (String requiredField : CharacterPlanetResponseRoutes.openapiRequiredFields) {
+        for (String requiredField : PlanetRoute.openapiRequiredFields) {
             if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
@@ -331,23 +324,23 @@ public class CharacterPlanetResponseRoutes implements Serializable {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!CharacterPlanetResponseRoutes.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes
-                             // 'CharacterPlanetResponseRoutes' and its subtypes
+            if (!PlanetRoute.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PlanetRoute' and its
+                             // subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<CharacterPlanetResponseRoutes> thisAdapter = gson.getDelegateAdapter(this,
-                    TypeToken.get(CharacterPlanetResponseRoutes.class));
+            final TypeAdapter<PlanetRoute> thisAdapter = gson
+                    .getDelegateAdapter(this, TypeToken.get(PlanetRoute.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<CharacterPlanetResponseRoutes>() {
+            return (TypeAdapter<T>) new TypeAdapter<PlanetRoute>() {
                 @Override
-                public void write(JsonWriter out, CharacterPlanetResponseRoutes value) throws IOException {
+                public void write(JsonWriter out, PlanetRoute value) throws IOException {
                     JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
                     elementAdapter.write(out, obj);
                 }
 
                 @Override
-                public CharacterPlanetResponseRoutes read(JsonReader in) throws IOException {
+                public PlanetRoute read(JsonReader in) throws IOException {
                     JsonElement jsonElement = elementAdapter.read(in);
                     validateJsonElement(jsonElement);
                     return thisAdapter.fromJsonTree(jsonElement);
@@ -358,21 +351,20 @@ public class CharacterPlanetResponseRoutes implements Serializable {
     }
 
     /**
-     * Create an instance of CharacterPlanetResponseRoutes given an JSON string
+     * Create an instance of PlanetRoute given an JSON string
      *
      * @param jsonString
      *            JSON string
-     * @return An instance of CharacterPlanetResponseRoutes
+     * @return An instance of PlanetRoute
      * @throws IOException
-     *             if the JSON string is invalid with respect to
-     *             CharacterPlanetResponseRoutes
+     *             if the JSON string is invalid with respect to PlanetRoute
      */
-    public static CharacterPlanetResponseRoutes fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, CharacterPlanetResponseRoutes.class);
+    public static PlanetRoute fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PlanetRoute.class);
     }
 
     /**
-     * Convert an instance of CharacterPlanetResponseRoutes to an JSON string
+     * Convert an instance of PlanetRoute to an JSON string
      *
      * @return JSON string
      */

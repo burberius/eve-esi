@@ -47,61 +47,61 @@ import java.util.Set;
 import net.troja.eve.esi.JSON;
 
 /**
- * content object
+ * hangar object
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
-public class PlanetPinContent implements Serializable {
+public class DivisionsHangar implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_AMOUNT = "amount";
-    @SerializedName(SERIALIZED_NAME_AMOUNT)
-    @javax.annotation.Nonnull
-    private Long amount;
+    public static final String SERIALIZED_NAME_DIVISION = "division";
+    @SerializedName(SERIALIZED_NAME_DIVISION)
+    @javax.annotation.Nullable
+    private Long division;
 
-    public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
-    @SerializedName(SERIALIZED_NAME_TYPE_ID)
-    @javax.annotation.Nonnull
-    private Long typeId;
+    public static final String SERIALIZED_NAME_NAME = "name";
+    @SerializedName(SERIALIZED_NAME_NAME)
+    @javax.annotation.Nullable
+    private String name;
 
-    public PlanetPinContent() {
+    public DivisionsHangar() {
     }
 
-    public PlanetPinContent amount(@javax.annotation.Nonnull Long amount) {
-        this.amount = amount;
+    public DivisionsHangar division(@javax.annotation.Nullable Long division) {
+        this.division = division;
         return this;
     }
 
     /**
-     * Get amount
+     * Get division
      * 
-     * @return amount
+     * @return division
      */
-    @javax.annotation.Nonnull
-    public Long getAmount() {
-        return amount;
+    @javax.annotation.Nullable
+    public Long getDivision() {
+        return division;
     }
 
-    public void setAmount(@javax.annotation.Nonnull Long amount) {
-        this.amount = amount;
+    public void setDivision(@javax.annotation.Nullable Long division) {
+        this.division = division;
     }
 
-    public PlanetPinContent typeId(@javax.annotation.Nonnull Long typeId) {
-        this.typeId = typeId;
+    public DivisionsHangar name(@javax.annotation.Nullable String name) {
+        this.name = name;
         return this;
     }
 
     /**
-     * Get typeId
+     * Get name
      * 
-     * @return typeId
+     * @return name
      */
-    @javax.annotation.Nonnull
-    public Long getTypeId() {
-        return typeId;
+    @javax.annotation.Nullable
+    public String getName() {
+        return name;
     }
 
-    public void setTypeId(@javax.annotation.Nonnull Long typeId) {
-        this.typeId = typeId;
+    public void setName(@javax.annotation.Nullable String name) {
+        this.name = name;
     }
 
     @Override
@@ -112,22 +112,22 @@ public class PlanetPinContent implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        PlanetPinContent characterPlanetResponsePinsContents = (PlanetPinContent) o;
-        return Objects.equals(this.amount, characterPlanetResponsePinsContents.amount)
-                && Objects.equals(this.typeId, characterPlanetResponsePinsContents.typeId);
+        DivisionsHangar corporationDivisionsResponseHangar = (DivisionsHangar) o;
+        return Objects.equals(this.division, corporationDivisionsResponseHangar.division)
+                && Objects.equals(this.name, corporationDivisionsResponseHangar.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(amount, typeId);
+        return Objects.hash(division, name);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class PlanetPinContent {\n");
-        sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
-        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
+        sb.append("class DivisionsHangar {\n");
+        sb.append("    division: ").append(toIndentedString(division)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("}");
         return sb.toString();
     }
@@ -148,10 +148,10 @@ public class PlanetPinContent implements Serializable {
 
     static {
         // a set of all properties/fields (JSON key names)
-        openapiFields = new HashSet<String>(Arrays.asList("amount", "type_id"));
+        openapiFields = new HashSet<String>(Arrays.asList("division", "name"));
 
         // a set of required properties/fields (JSON key names)
-        openapiRequiredFields = new HashSet<String>(Arrays.asList("amount", "type_id"));
+        openapiRequiredFields = new HashSet<String>(0);
     }
 
     /**
@@ -161,66 +161,62 @@ public class PlanetPinContent implements Serializable {
      *            JSON Element
      * @throws IOException
      *             if the JSON Element is invalid with respect to
-     *             PlanetPinContent
+     *             DivisionsHangar
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         if (jsonElement == null) {
-            if (!PlanetPinContent.openapiRequiredFields.isEmpty()) { // has
-                                                                     // required
-                                                                     // fields
-                                                                     // but JSON
-                                                                     // element
-                                                                     // is null
+            if (!DivisionsHangar.openapiRequiredFields.isEmpty()) { // has
+                                                                    // required
+                                                                    // fields
+                                                                    // but JSON
+                                                                    // element
+                                                                    // is null
                 throw new IllegalArgumentException(String.format(
-                        "The required field(s) %s in PlanetPinContent is not found in the empty JSON string",
-                        PlanetPinContent.openapiRequiredFields.toString()));
+                        "The required field(s) %s in DivisionsHangar is not found in the empty JSON string",
+                        DivisionsHangar.openapiRequiredFields.toString()));
             }
         }
 
         Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
         for (Map.Entry<String, JsonElement> entry : entries) {
-            if (!PlanetPinContent.openapiFields.contains(entry.getKey())) {
+            if (!DivisionsHangar.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
-                                "The field `%s` in the JSON string is not defined in the `PlanetPinContent` properties. JSON: %s",
+                                "The field `%s` in the JSON string is not defined in the `DivisionsHangar` properties. JSON: %s",
                                 entry.getKey(), jsonElement.toString()));
             }
         }
-
-        // check to make sure all required properties/fields are present in the
-        // JSON string
-        for (String requiredField : PlanetPinContent.openapiRequiredFields) {
-            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-                throw new IllegalArgumentException(String.format(
-                        "The required field `%s` is not found in the JSON string: %s", requiredField,
-                        jsonElement.toString()));
-            }
-        }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull())
+                && !jsonObj.get("name").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `name` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("name").toString()));
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!PlanetPinContent.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'PlanetPinContent'
-                             // and its subtypes
+            if (!DivisionsHangar.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'DivisionsHangar' and
+                             // its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<PlanetPinContent> thisAdapter = gson.getDelegateAdapter(this,
-                    TypeToken.get(PlanetPinContent.class));
+            final TypeAdapter<DivisionsHangar> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(DivisionsHangar.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<PlanetPinContent>() {
+            return (TypeAdapter<T>) new TypeAdapter<DivisionsHangar>() {
                 @Override
-                public void write(JsonWriter out, PlanetPinContent value) throws IOException {
+                public void write(JsonWriter out, DivisionsHangar value) throws IOException {
                     JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
                     elementAdapter.write(out, obj);
                 }
 
                 @Override
-                public PlanetPinContent read(JsonReader in) throws IOException {
+                public DivisionsHangar read(JsonReader in) throws IOException {
                     JsonElement jsonElement = elementAdapter.read(in);
                     validateJsonElement(jsonElement);
                     return thisAdapter.fromJsonTree(jsonElement);
@@ -231,21 +227,20 @@ public class PlanetPinContent implements Serializable {
     }
 
     /**
-     * Create an instance of PlanetPinContent given an JSON string
+     * Create an instance of DivisionsHangar given an JSON string
      *
      * @param jsonString
      *            JSON string
-     * @return An instance of PlanetPinContent
+     * @return An instance of DivisionsHangar
      * @throws IOException
-     *             if the JSON string is invalid with respect to
-     *             PlanetPinContent
+     *             if the JSON string is invalid with respect to DivisionsHangar
      */
-    public static PlanetPinContent fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, PlanetPinContent.class);
+    public static DivisionsHangar fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, DivisionsHangar.class);
     }
 
     /**
-     * Convert an instance of PlanetPinContent to an JSON string
+     * Convert an instance of DivisionsHangar to an JSON string
      *
      * @return JSON string
      */

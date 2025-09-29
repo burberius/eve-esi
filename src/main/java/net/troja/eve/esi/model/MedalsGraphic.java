@@ -50,7 +50,7 @@ import net.troja.eve.esi.JSON;
  * graphic object
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
-public class CharacterMedalsResponseGraphics implements Serializable {
+public class MedalsGraphic implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_COLOR = "color";
@@ -73,10 +73,10 @@ public class CharacterMedalsResponseGraphics implements Serializable {
     @javax.annotation.Nonnull
     private Long part;
 
-    public CharacterMedalsResponseGraphics() {
+    public MedalsGraphic() {
     }
 
-    public CharacterMedalsResponseGraphics color(@javax.annotation.Nullable Long color) {
+    public MedalsGraphic color(@javax.annotation.Nullable Long color) {
         this.color = color;
         return this;
     }
@@ -95,7 +95,7 @@ public class CharacterMedalsResponseGraphics implements Serializable {
         this.color = color;
     }
 
-    public CharacterMedalsResponseGraphics graphic(@javax.annotation.Nonnull String graphic) {
+    public MedalsGraphic graphic(@javax.annotation.Nonnull String graphic) {
         this.graphic = graphic;
         return this;
     }
@@ -114,7 +114,7 @@ public class CharacterMedalsResponseGraphics implements Serializable {
         this.graphic = graphic;
     }
 
-    public CharacterMedalsResponseGraphics layer(@javax.annotation.Nonnull Long layer) {
+    public MedalsGraphic layer(@javax.annotation.Nonnull Long layer) {
         this.layer = layer;
         return this;
     }
@@ -133,7 +133,7 @@ public class CharacterMedalsResponseGraphics implements Serializable {
         this.layer = layer;
     }
 
-    public CharacterMedalsResponseGraphics part(@javax.annotation.Nonnull Long part) {
+    public MedalsGraphic part(@javax.annotation.Nonnull Long part) {
         this.part = part;
         return this;
     }
@@ -160,7 +160,7 @@ public class CharacterMedalsResponseGraphics implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CharacterMedalsResponseGraphics characterMedalsResponseGraphics = (CharacterMedalsResponseGraphics) o;
+        MedalsGraphic characterMedalsResponseGraphics = (MedalsGraphic) o;
         return Objects.equals(this.color, characterMedalsResponseGraphics.color)
                 && Objects.equals(this.graphic, characterMedalsResponseGraphics.graphic)
                 && Objects.equals(this.layer, characterMedalsResponseGraphics.layer)
@@ -175,7 +175,7 @@ public class CharacterMedalsResponseGraphics implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class CharacterMedalsResponseGraphics {\n");
+        sb.append("class MedalsGraphic {\n");
         sb.append("    color: ").append(toIndentedString(color)).append("\n");
         sb.append("    graphic: ").append(toIndentedString(graphic)).append("\n");
         sb.append("    layer: ").append(toIndentedString(layer)).append("\n");
@@ -212,40 +212,35 @@ public class CharacterMedalsResponseGraphics implements Serializable {
      * @param jsonElement
      *            JSON Element
      * @throws IOException
-     *             if the JSON Element is invalid with respect to
-     *             CharacterMedalsResponseGraphics
+     *             if the JSON Element is invalid with respect to MedalsGraphic
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         if (jsonElement == null) {
-            if (!CharacterMedalsResponseGraphics.openapiRequiredFields.isEmpty()) { // has
-                                                                                    // required
-                                                                                    // fields
-                                                                                    // but
-                                                                                    // JSON
-                                                                                    // element
-                                                                                    // is
-                                                                                    // null
-                throw new IllegalArgumentException(
-                        String.format(
-                                "The required field(s) %s in CharacterMedalsResponseGraphics is not found in the empty JSON string",
-                                CharacterMedalsResponseGraphics.openapiRequiredFields.toString()));
+            if (!MedalsGraphic.openapiRequiredFields.isEmpty()) { // has
+                                                                  // required
+                                                                  // fields but
+                                                                  // JSON
+                                                                  // element is
+                                                                  // null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in MedalsGraphic is not found in the empty JSON string",
+                        MedalsGraphic.openapiRequiredFields.toString()));
             }
         }
 
         Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
         for (Map.Entry<String, JsonElement> entry : entries) {
-            if (!CharacterMedalsResponseGraphics.openapiFields.contains(entry.getKey())) {
-                throw new IllegalArgumentException(
-                        String.format(
-                                "The field `%s` in the JSON string is not defined in the `CharacterMedalsResponseGraphics` properties. JSON: %s",
-                                entry.getKey(), jsonElement.toString()));
+            if (!MedalsGraphic.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `MedalsGraphic` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
-        for (String requiredField : CharacterMedalsResponseGraphics.openapiRequiredFields) {
+        for (String requiredField : MedalsGraphic.openapiRequiredFields) {
             if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
@@ -264,24 +259,23 @@ public class CharacterMedalsResponseGraphics implements Serializable {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!CharacterMedalsResponseGraphics.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes
-                             // 'CharacterMedalsResponseGraphics' and its
-                             // subtypes
+            if (!MedalsGraphic.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'MedalsGraphic' and
+                             // its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<CharacterMedalsResponseGraphics> thisAdapter = gson.getDelegateAdapter(this,
-                    TypeToken.get(CharacterMedalsResponseGraphics.class));
+            final TypeAdapter<MedalsGraphic> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(MedalsGraphic.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<CharacterMedalsResponseGraphics>() {
+            return (TypeAdapter<T>) new TypeAdapter<MedalsGraphic>() {
                 @Override
-                public void write(JsonWriter out, CharacterMedalsResponseGraphics value) throws IOException {
+                public void write(JsonWriter out, MedalsGraphic value) throws IOException {
                     JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
                     elementAdapter.write(out, obj);
                 }
 
                 @Override
-                public CharacterMedalsResponseGraphics read(JsonReader in) throws IOException {
+                public MedalsGraphic read(JsonReader in) throws IOException {
                     JsonElement jsonElement = elementAdapter.read(in);
                     validateJsonElement(jsonElement);
                     return thisAdapter.fromJsonTree(jsonElement);
@@ -292,22 +286,20 @@ public class CharacterMedalsResponseGraphics implements Serializable {
     }
 
     /**
-     * Create an instance of CharacterMedalsResponseGraphics given an JSON
-     * string
+     * Create an instance of MedalsGraphic given an JSON string
      *
      * @param jsonString
      *            JSON string
-     * @return An instance of CharacterMedalsResponseGraphics
+     * @return An instance of MedalsGraphic
      * @throws IOException
-     *             if the JSON string is invalid with respect to
-     *             CharacterMedalsResponseGraphics
+     *             if the JSON string is invalid with respect to MedalsGraphic
      */
-    public static CharacterMedalsResponseGraphics fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, CharacterMedalsResponseGraphics.class);
+    public static MedalsGraphic fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, MedalsGraphic.class);
     }
 
     /**
-     * Convert an instance of CharacterMedalsResponseGraphics to an JSON string
+     * Convert an instance of MedalsGraphic to an JSON string
      *
      * @return JSON string
      */

@@ -80,7 +80,7 @@ echo "import java.util.Set;" >> $FILE
 echo "" >> $FILE
 echo "public class SsoScopes {" >> $FILE
 echo "public static final String PUBLIC_DATA = \"publicData\";" >> $FILE
-for VAL in $(jq ".components.securitySchemes.OAuth2.flows.authorizationCode.scopes" esi.json | sed -n -e 's#.*: "\(.*\)",#\1#p'); do
+for VAL in $(jq ".components.securitySchemes.OAuth2.flows.authorizationCode.scopes" esi.json | sed -n -e 's#.*: "\(.*\)".*#\1#p'); do
   echo $BAD_SCOPES | grep $VAL > /dev/null && continue
   UPPER=$(echo $VAL | tr [.a-z-] [_A-Z_])
   if [ "a$ALL" = "a" ]; then

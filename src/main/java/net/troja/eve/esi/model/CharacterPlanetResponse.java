@@ -24,8 +24,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import net.troja.eve.esi.model.CharacterPlanetResponseLinks;
-import net.troja.eve.esi.model.PlanetPins;
-import net.troja.eve.esi.model.CharacterPlanetResponseRoutes;
+import net.troja.eve.esi.model.PlanetPin;
+import net.troja.eve.esi.model.PlanetRoute;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -66,12 +66,12 @@ public class CharacterPlanetResponse implements Serializable {
     public static final String SERIALIZED_NAME_PINS = "pins";
     @SerializedName(SERIALIZED_NAME_PINS)
     @javax.annotation.Nonnull
-    private List<PlanetPins> pins;
+    private List<PlanetPin> pins;
 
     public static final String SERIALIZED_NAME_ROUTES = "routes";
     @SerializedName(SERIALIZED_NAME_ROUTES)
     @javax.annotation.Nonnull
-    private List<CharacterPlanetResponseRoutes> routes;
+    private List<PlanetRoute> routes;
 
     public CharacterPlanetResponse() {
     }
@@ -104,12 +104,12 @@ public class CharacterPlanetResponse implements Serializable {
         this.links = links;
     }
 
-    public CharacterPlanetResponse pins(@javax.annotation.Nonnull List<PlanetPins> pins) {
+    public CharacterPlanetResponse pins(@javax.annotation.Nonnull List<PlanetPin> pins) {
         this.pins = pins;
         return this;
     }
 
-    public CharacterPlanetResponse addPinsItem(PlanetPins pinsItem) {
+    public CharacterPlanetResponse addPinsItem(PlanetPin pinsItem) {
         if (this.pins == null) {
             this.pins = new ArrayList<>();
         }
@@ -124,20 +124,20 @@ public class CharacterPlanetResponse implements Serializable {
      * @return pins
      */
     @javax.annotation.Nonnull
-    public List<PlanetPins> getPins() {
+    public List<PlanetPin> getPins() {
         return pins;
     }
 
-    public void setPins(@javax.annotation.Nonnull List<PlanetPins> pins) {
+    public void setPins(@javax.annotation.Nonnull List<PlanetPin> pins) {
         this.pins = pins;
     }
 
-    public CharacterPlanetResponse routes(@javax.annotation.Nonnull List<CharacterPlanetResponseRoutes> routes) {
+    public CharacterPlanetResponse routes(@javax.annotation.Nonnull List<PlanetRoute> routes) {
         this.routes = routes;
         return this;
     }
 
-    public CharacterPlanetResponse addRoutesItem(CharacterPlanetResponseRoutes routesItem) {
+    public CharacterPlanetResponse addRoutesItem(PlanetRoute routesItem) {
         if (this.routes == null) {
             this.routes = new ArrayList<>();
         }
@@ -152,11 +152,11 @@ public class CharacterPlanetResponse implements Serializable {
      * @return routes
      */
     @javax.annotation.Nonnull
-    public List<CharacterPlanetResponseRoutes> getRoutes() {
+    public List<PlanetRoute> getRoutes() {
         return routes;
     }
 
-    public void setRoutes(@javax.annotation.Nonnull List<CharacterPlanetResponseRoutes> routes) {
+    public void setRoutes(@javax.annotation.Nonnull List<PlanetRoute> routes) {
         this.routes = routes;
     }
 
@@ -280,7 +280,7 @@ public class CharacterPlanetResponse implements Serializable {
         JsonArray jsonArraypins = jsonObj.getAsJsonArray("pins");
         // validate the required field `pins` (array)
         for (int i = 0; i < jsonArraypins.size(); i++) {
-            PlanetPins.validateJsonElement(jsonArraypins.get(i));
+            PlanetPin.validateJsonElement(jsonArraypins.get(i));
         };
         // ensure the json data is an array
         if (!jsonObj.get("routes").isJsonArray()) {
@@ -292,7 +292,7 @@ public class CharacterPlanetResponse implements Serializable {
         JsonArray jsonArrayroutes = jsonObj.getAsJsonArray("routes");
         // validate the required field `routes` (array)
         for (int i = 0; i < jsonArrayroutes.size(); i++) {
-            CharacterPlanetResponseRoutes.validateJsonElement(jsonArrayroutes.get(i));
+            PlanetRoute.validateJsonElement(jsonArrayroutes.get(i));
         };
     }
 

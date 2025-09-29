@@ -24,7 +24,7 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.troja.eve.esi.model.CharacterMedalsResponseGraphics;
+import net.troja.eve.esi.model.MedalsGraphic;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -75,7 +75,7 @@ public class CharacterMedalsResponse implements Serializable {
     public static final String SERIALIZED_NAME_GRAPHICS = "graphics";
     @SerializedName(SERIALIZED_NAME_GRAPHICS)
     @javax.annotation.Nonnull
-    private List<CharacterMedalsResponseGraphics> graphics;
+    private List<MedalsGraphic> graphics;
 
     public static final String SERIALIZED_NAME_ISSUER_ID = "issuer_id";
     @SerializedName(SERIALIZED_NAME_ISSUER_ID)
@@ -215,12 +215,12 @@ public class CharacterMedalsResponse implements Serializable {
         this.description = description;
     }
 
-    public CharacterMedalsResponse graphics(@javax.annotation.Nonnull List<CharacterMedalsResponseGraphics> graphics) {
+    public CharacterMedalsResponse graphics(@javax.annotation.Nonnull List<MedalsGraphic> graphics) {
         this.graphics = graphics;
         return this;
     }
 
-    public CharacterMedalsResponse addGraphicsItem(CharacterMedalsResponseGraphics graphicsItem) {
+    public CharacterMedalsResponse addGraphicsItem(MedalsGraphic graphicsItem) {
         if (this.graphics == null) {
             this.graphics = new ArrayList<>();
         }
@@ -235,11 +235,11 @@ public class CharacterMedalsResponse implements Serializable {
      * @return graphics
      */
     @javax.annotation.Nonnull
-    public List<CharacterMedalsResponseGraphics> getGraphics() {
+    public List<MedalsGraphic> getGraphics() {
         return graphics;
     }
 
-    public void setGraphics(@javax.annotation.Nonnull List<CharacterMedalsResponseGraphics> graphics) {
+    public void setGraphics(@javax.annotation.Nonnull List<MedalsGraphic> graphics) {
         this.graphics = graphics;
     }
 
@@ -481,7 +481,7 @@ public class CharacterMedalsResponse implements Serializable {
         JsonArray jsonArraygraphics = jsonObj.getAsJsonArray("graphics");
         // validate the required field `graphics` (array)
         for (int i = 0; i < jsonArraygraphics.size(); i++) {
-            CharacterMedalsResponseGraphics.validateJsonElement(jsonArraygraphics.get(i));
+            MedalsGraphic.validateJsonElement(jsonArraygraphics.get(i));
         };
         if (!jsonObj.get("reason").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
