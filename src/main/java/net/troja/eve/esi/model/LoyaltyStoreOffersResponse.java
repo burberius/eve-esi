@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.troja.eve.esi.model.LoyaltyStoreOffersResponseRequiredItems;
+import net.troja.eve.esi.model.LoyaltyStoreRequiredItems;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -84,7 +84,7 @@ public class LoyaltyStoreOffersResponse implements Serializable {
     public static final String SERIALIZED_NAME_REQUIRED_ITEMS = "required_items";
     @SerializedName(SERIALIZED_NAME_REQUIRED_ITEMS)
     @javax.annotation.Nonnull
-    private List<LoyaltyStoreOffersResponseRequiredItems> requiredItems;
+    private List<LoyaltyStoreRequiredItems> requiredItems;
 
     public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
@@ -190,12 +190,12 @@ public class LoyaltyStoreOffersResponse implements Serializable {
     }
 
     public LoyaltyStoreOffersResponse requiredItems(
-            @javax.annotation.Nonnull List<LoyaltyStoreOffersResponseRequiredItems> requiredItems) {
+            @javax.annotation.Nonnull List<LoyaltyStoreRequiredItems> requiredItems) {
         this.requiredItems = requiredItems;
         return this;
     }
 
-    public LoyaltyStoreOffersResponse addRequiredItemsItem(LoyaltyStoreOffersResponseRequiredItems requiredItemsItem) {
+    public LoyaltyStoreOffersResponse addRequiredItemsItem(LoyaltyStoreRequiredItems requiredItemsItem) {
         if (this.requiredItems == null) {
             this.requiredItems = new ArrayList<>();
         }
@@ -210,11 +210,11 @@ public class LoyaltyStoreOffersResponse implements Serializable {
      * @return requiredItems
      */
     @javax.annotation.Nonnull
-    public List<LoyaltyStoreOffersResponseRequiredItems> getRequiredItems() {
+    public List<LoyaltyStoreRequiredItems> getRequiredItems() {
         return requiredItems;
     }
 
-    public void setRequiredItems(@javax.annotation.Nonnull List<LoyaltyStoreOffersResponseRequiredItems> requiredItems) {
+    public void setRequiredItems(@javax.annotation.Nonnull List<LoyaltyStoreRequiredItems> requiredItems) {
         this.requiredItems = requiredItems;
     }
 
@@ -355,7 +355,7 @@ public class LoyaltyStoreOffersResponse implements Serializable {
         JsonArray jsonArrayrequiredItems = jsonObj.getAsJsonArray("required_items");
         // validate the required field `required_items` (array)
         for (int i = 0; i < jsonArrayrequiredItems.size(); i++) {
-            LoyaltyStoreOffersResponseRequiredItems.validateJsonElement(jsonArrayrequiredItems.get(i));
+            LoyaltyStoreRequiredItems.validateJsonElement(jsonArrayrequiredItems.get(i));
         };
     }
 

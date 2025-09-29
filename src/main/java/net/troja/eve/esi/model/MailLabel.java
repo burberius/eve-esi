@@ -50,7 +50,7 @@ import net.troja.eve.esi.JSON;
  * label object
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
-public class MailLabelsResponseLabels implements Serializable {
+public class MailLabel implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -158,15 +158,15 @@ public class MailLabelsResponseLabels implements Serializable {
     @javax.annotation.Nullable
     private Long unreadCount;
 
-    public MailLabelsResponseLabels() {
+    public MailLabel() {
     }
 
-    public MailLabelsResponseLabels color(@javax.annotation.Nullable ColorEnum color) {
+    public MailLabel color(@javax.annotation.Nullable ColorEnum color) {
         this.colorEnum = color;
         return this;
     }
 
-    public MailLabelsResponseLabels colorString(@javax.annotation.Nullable String color) {
+    public MailLabel colorString(@javax.annotation.Nullable String color) {
         this.color = color;
         return this;
     }
@@ -196,7 +196,7 @@ public class MailLabelsResponseLabels implements Serializable {
         this.color = color;
     }
 
-    public MailLabelsResponseLabels labelId(@javax.annotation.Nullable Long labelId) {
+    public MailLabel labelId(@javax.annotation.Nullable Long labelId) {
         this.labelId = labelId;
         return this;
     }
@@ -215,7 +215,7 @@ public class MailLabelsResponseLabels implements Serializable {
         this.labelId = labelId;
     }
 
-    public MailLabelsResponseLabels name(@javax.annotation.Nullable String name) {
+    public MailLabel name(@javax.annotation.Nullable String name) {
         this.name = name;
         return this;
     }
@@ -234,7 +234,7 @@ public class MailLabelsResponseLabels implements Serializable {
         this.name = name;
     }
 
-    public MailLabelsResponseLabels unreadCount(@javax.annotation.Nullable Long unreadCount) {
+    public MailLabel unreadCount(@javax.annotation.Nullable Long unreadCount) {
         this.unreadCount = unreadCount;
         return this;
     }
@@ -261,7 +261,7 @@ public class MailLabelsResponseLabels implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        MailLabelsResponseLabels mailLabelsResponseLabels = (MailLabelsResponseLabels) o;
+        MailLabel mailLabelsResponseLabels = (MailLabel) o;
         return Objects.equals(this.color, mailLabelsResponseLabels.color)
                 && Objects.equals(this.labelId, mailLabelsResponseLabels.labelId)
                 && Objects.equals(this.name, mailLabelsResponseLabels.name)
@@ -276,7 +276,7 @@ public class MailLabelsResponseLabels implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class MailLabelsResponseLabels {\n");
+        sb.append("class MailLabel {\n");
         sb.append("    color: ").append(toIndentedString(color)).append("\n");
         sb.append("    labelId: ").append(toIndentedString(labelId)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
@@ -313,33 +313,26 @@ public class MailLabelsResponseLabels implements Serializable {
      * @param jsonElement
      *            JSON Element
      * @throws IOException
-     *             if the JSON Element is invalid with respect to
-     *             MailLabelsResponseLabels
+     *             if the JSON Element is invalid with respect to MailLabel
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         if (jsonElement == null) {
-            if (!MailLabelsResponseLabels.openapiRequiredFields.isEmpty()) { // has
-                                                                             // required
-                                                                             // fields
-                                                                             // but
-                                                                             // JSON
-                                                                             // element
-                                                                             // is
-                                                                             // null
+            if (!MailLabel.openapiRequiredFields.isEmpty()) { // has required
+                                                              // fields but JSON
+                                                              // element is null
                 throw new IllegalArgumentException(String.format(
-                        "The required field(s) %s in MailLabelsResponseLabels is not found in the empty JSON string",
-                        MailLabelsResponseLabels.openapiRequiredFields.toString()));
+                        "The required field(s) %s in MailLabel is not found in the empty JSON string",
+                        MailLabel.openapiRequiredFields.toString()));
             }
         }
 
         Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
         for (Map.Entry<String, JsonElement> entry : entries) {
-            if (!MailLabelsResponseLabels.openapiFields.contains(entry.getKey())) {
-                throw new IllegalArgumentException(
-                        String.format(
-                                "The field `%s` in the JSON string is not defined in the `MailLabelsResponseLabels` properties. JSON: %s",
-                                entry.getKey(), jsonElement.toString()));
+            if (!MailLabel.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `MailLabel` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -365,23 +358,22 @@ public class MailLabelsResponseLabels implements Serializable {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!MailLabelsResponseLabels.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes
-                             // 'MailLabelsResponseLabels' and its subtypes
+            if (!MailLabel.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'MailLabel' and its
+                             // subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<MailLabelsResponseLabels> thisAdapter = gson.getDelegateAdapter(this,
-                    TypeToken.get(MailLabelsResponseLabels.class));
+            final TypeAdapter<MailLabel> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(MailLabel.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<MailLabelsResponseLabels>() {
+            return (TypeAdapter<T>) new TypeAdapter<MailLabel>() {
                 @Override
-                public void write(JsonWriter out, MailLabelsResponseLabels value) throws IOException {
+                public void write(JsonWriter out, MailLabel value) throws IOException {
                     JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
                     elementAdapter.write(out, obj);
                 }
 
                 @Override
-                public MailLabelsResponseLabels read(JsonReader in) throws IOException {
+                public MailLabel read(JsonReader in) throws IOException {
                     JsonElement jsonElement = elementAdapter.read(in);
                     validateJsonElement(jsonElement);
                     return thisAdapter.fromJsonTree(jsonElement);
@@ -392,21 +384,20 @@ public class MailLabelsResponseLabels implements Serializable {
     }
 
     /**
-     * Create an instance of MailLabelsResponseLabels given an JSON string
+     * Create an instance of MailLabel given an JSON string
      *
      * @param jsonString
      *            JSON string
-     * @return An instance of MailLabelsResponseLabels
+     * @return An instance of MailLabel
      * @throws IOException
-     *             if the JSON string is invalid with respect to
-     *             MailLabelsResponseLabels
+     *             if the JSON string is invalid with respect to MailLabel
      */
-    public static MailLabelsResponseLabels fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, MailLabelsResponseLabels.class);
+    public static MailLabel fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, MailLabel.class);
     }
 
     /**
-     * Convert an instance of MailLabelsResponseLabels to an JSON string
+     * Convert an instance of MailLabel to an JSON string
      *
      * @return JSON string
      */

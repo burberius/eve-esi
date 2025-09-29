@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.troja.eve.esi.model.DogmaEffectResponseModifiers;
+import net.troja.eve.esi.model.DogmaEffectModifier;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -124,7 +124,7 @@ public class DogmaEffectResponse implements Serializable {
     public static final String SERIALIZED_NAME_MODIFIERS = "modifiers";
     @SerializedName(SERIALIZED_NAME_MODIFIERS)
     @javax.annotation.Nullable
-    private List<DogmaEffectResponseModifiers> modifiers;
+    private List<DogmaEffectModifier> modifiers;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
@@ -411,12 +411,12 @@ public class DogmaEffectResponse implements Serializable {
         this.isWarpSafe = isWarpSafe;
     }
 
-    public DogmaEffectResponse modifiers(@javax.annotation.Nullable List<DogmaEffectResponseModifiers> modifiers) {
+    public DogmaEffectResponse modifiers(@javax.annotation.Nullable List<DogmaEffectModifier> modifiers) {
         this.modifiers = modifiers;
         return this;
     }
 
-    public DogmaEffectResponse addModifiersItem(DogmaEffectResponseModifiers modifiersItem) {
+    public DogmaEffectResponse addModifiersItem(DogmaEffectModifier modifiersItem) {
         if (this.modifiers == null) {
             this.modifiers = new ArrayList<>();
         }
@@ -431,11 +431,11 @@ public class DogmaEffectResponse implements Serializable {
      * @return modifiers
      */
     @javax.annotation.Nullable
-    public List<DogmaEffectResponseModifiers> getModifiers() {
+    public List<DogmaEffectModifier> getModifiers() {
         return modifiers;
     }
 
-    public void setModifiers(@javax.annotation.Nullable List<DogmaEffectResponseModifiers> modifiers) {
+    public void setModifiers(@javax.annotation.Nullable List<DogmaEffectModifier> modifiers) {
         this.modifiers = modifiers;
     }
 
@@ -737,7 +737,7 @@ public class DogmaEffectResponse implements Serializable {
 
                 // validate the optional field `modifiers` (array)
                 for (int i = 0; i < jsonArraymodifiers.size(); i++) {
-                    DogmaEffectResponseModifiers.validateJsonElement(jsonArraymodifiers.get(i));
+                    DogmaEffectModifier.validateJsonElement(jsonArraymodifiers.get(i));
                 };
             }
         }

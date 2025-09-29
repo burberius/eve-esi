@@ -50,7 +50,7 @@ import net.troja.eve.esi.JSON;
  * required_item object
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
-public class LoyaltyStoreOffersResponseRequiredItems implements Serializable {
+public class LoyaltyStoreRequiredItems implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_QUANTITY = "quantity";
@@ -63,10 +63,10 @@ public class LoyaltyStoreOffersResponseRequiredItems implements Serializable {
     @javax.annotation.Nonnull
     private Long typeId;
 
-    public LoyaltyStoreOffersResponseRequiredItems() {
+    public LoyaltyStoreRequiredItems() {
     }
 
-    public LoyaltyStoreOffersResponseRequiredItems quantity(@javax.annotation.Nonnull Long quantity) {
+    public LoyaltyStoreRequiredItems quantity(@javax.annotation.Nonnull Long quantity) {
         this.quantity = quantity;
         return this;
     }
@@ -85,7 +85,7 @@ public class LoyaltyStoreOffersResponseRequiredItems implements Serializable {
         this.quantity = quantity;
     }
 
-    public LoyaltyStoreOffersResponseRequiredItems typeId(@javax.annotation.Nonnull Long typeId) {
+    public LoyaltyStoreRequiredItems typeId(@javax.annotation.Nonnull Long typeId) {
         this.typeId = typeId;
         return this;
     }
@@ -112,7 +112,7 @@ public class LoyaltyStoreOffersResponseRequiredItems implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        LoyaltyStoreOffersResponseRequiredItems loyaltyStoreOffersResponseRequiredItems = (LoyaltyStoreOffersResponseRequiredItems) o;
+        LoyaltyStoreRequiredItems loyaltyStoreOffersResponseRequiredItems = (LoyaltyStoreRequiredItems) o;
         return Objects.equals(this.quantity, loyaltyStoreOffersResponseRequiredItems.quantity)
                 && Objects.equals(this.typeId, loyaltyStoreOffersResponseRequiredItems.typeId);
     }
@@ -125,7 +125,7 @@ public class LoyaltyStoreOffersResponseRequiredItems implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class LoyaltyStoreOffersResponseRequiredItems {\n");
+        sb.append("class LoyaltyStoreRequiredItems {\n");
         sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("}");
@@ -161,39 +161,38 @@ public class LoyaltyStoreOffersResponseRequiredItems implements Serializable {
      *            JSON Element
      * @throws IOException
      *             if the JSON Element is invalid with respect to
-     *             LoyaltyStoreOffersResponseRequiredItems
+     *             LoyaltyStoreRequiredItems
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         if (jsonElement == null) {
-            if (!LoyaltyStoreOffersResponseRequiredItems.openapiRequiredFields.isEmpty()) { // has
-                                                                                            // required
-                                                                                            // fields
-                                                                                            // but
-                                                                                            // JSON
-                                                                                            // element
-                                                                                            // is
-                                                                                            // null
-                throw new IllegalArgumentException(
-                        String.format(
-                                "The required field(s) %s in LoyaltyStoreOffersResponseRequiredItems is not found in the empty JSON string",
-                                LoyaltyStoreOffersResponseRequiredItems.openapiRequiredFields.toString()));
+            if (!LoyaltyStoreRequiredItems.openapiRequiredFields.isEmpty()) { // has
+                                                                              // required
+                                                                              // fields
+                                                                              // but
+                                                                              // JSON
+                                                                              // element
+                                                                              // is
+                                                                              // null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in LoyaltyStoreRequiredItems is not found in the empty JSON string",
+                        LoyaltyStoreRequiredItems.openapiRequiredFields.toString()));
             }
         }
 
         Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
         for (Map.Entry<String, JsonElement> entry : entries) {
-            if (!LoyaltyStoreOffersResponseRequiredItems.openapiFields.contains(entry.getKey())) {
+            if (!LoyaltyStoreRequiredItems.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
-                                "The field `%s` in the JSON string is not defined in the `LoyaltyStoreOffersResponseRequiredItems` properties. JSON: %s",
+                                "The field `%s` in the JSON string is not defined in the `LoyaltyStoreRequiredItems` properties. JSON: %s",
                                 entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
-        for (String requiredField : LoyaltyStoreOffersResponseRequiredItems.openapiRequiredFields) {
+        for (String requiredField : LoyaltyStoreRequiredItems.openapiRequiredFields) {
             if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
@@ -207,24 +206,23 @@ public class LoyaltyStoreOffersResponseRequiredItems implements Serializable {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!LoyaltyStoreOffersResponseRequiredItems.class.isAssignableFrom(type.getRawType())) {
+            if (!LoyaltyStoreRequiredItems.class.isAssignableFrom(type.getRawType())) {
                 return null; // this class only serializes
-                             // 'LoyaltyStoreOffersResponseRequiredItems' and
-                             // its subtypes
+                             // 'LoyaltyStoreRequiredItems' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<LoyaltyStoreOffersResponseRequiredItems> thisAdapter = gson.getDelegateAdapter(this,
-                    TypeToken.get(LoyaltyStoreOffersResponseRequiredItems.class));
+            final TypeAdapter<LoyaltyStoreRequiredItems> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(LoyaltyStoreRequiredItems.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<LoyaltyStoreOffersResponseRequiredItems>() {
+            return (TypeAdapter<T>) new TypeAdapter<LoyaltyStoreRequiredItems>() {
                 @Override
-                public void write(JsonWriter out, LoyaltyStoreOffersResponseRequiredItems value) throws IOException {
+                public void write(JsonWriter out, LoyaltyStoreRequiredItems value) throws IOException {
                     JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
                     elementAdapter.write(out, obj);
                 }
 
                 @Override
-                public LoyaltyStoreOffersResponseRequiredItems read(JsonReader in) throws IOException {
+                public LoyaltyStoreRequiredItems read(JsonReader in) throws IOException {
                     JsonElement jsonElement = elementAdapter.read(in);
                     validateJsonElement(jsonElement);
                     return thisAdapter.fromJsonTree(jsonElement);
@@ -235,23 +233,21 @@ public class LoyaltyStoreOffersResponseRequiredItems implements Serializable {
     }
 
     /**
-     * Create an instance of LoyaltyStoreOffersResponseRequiredItems given an
-     * JSON string
+     * Create an instance of LoyaltyStoreRequiredItems given an JSON string
      *
      * @param jsonString
      *            JSON string
-     * @return An instance of LoyaltyStoreOffersResponseRequiredItems
+     * @return An instance of LoyaltyStoreRequiredItems
      * @throws IOException
      *             if the JSON string is invalid with respect to
-     *             LoyaltyStoreOffersResponseRequiredItems
+     *             LoyaltyStoreRequiredItems
      */
-    public static LoyaltyStoreOffersResponseRequiredItems fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, LoyaltyStoreOffersResponseRequiredItems.class);
+    public static LoyaltyStoreRequiredItems fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, LoyaltyStoreRequiredItems.class);
     }
 
     /**
-     * Convert an instance of LoyaltyStoreOffersResponseRequiredItems to an JSON
-     * string
+     * Convert an instance of LoyaltyStoreRequiredItems to an JSON string
      *
      * @return JSON string
      */

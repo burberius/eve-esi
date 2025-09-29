@@ -32,6 +32,10 @@ mv src/main/java/net/troja/eve/esi/model/CharacterFittingsResponseItems.java src
 mv src/main/java/net/troja/eve/esi/model/CharacterMedalsResponseGraphics.java src/main/java/net/troja/eve/esi/model/MedalsGraphic.java
 mv src/main/java/net/troja/eve/esi/model/CorporationDivisionsResponseHangar.java src/main/java/net/troja/eve/esi/model/DivisionsHangar.java
 mv src/main/java/net/troja/eve/esi/model/CorporationDivisionsResponseWallet.java src/main/java/net/troja/eve/esi/model/DivisionsWallet.java
+mv src/main/java/net/troja/eve/esi/model/CorporationStructuresResponseServices.java src/main/java/net/troja/eve/esi/model/StructuresService.java
+mv src/main/java/net/troja/eve/esi/model/DogmaEffectResponseModifiers.java src/main/java/net/troja/eve/esi/model/DogmaEffectModifier.java
+mv src/main/java/net/troja/eve/esi/model/LoyaltyStoreOffersResponseRequiredItems.java src/main/java/net/troja/eve/esi/model/LoyaltyStoreRequiredItems.java
+mv src/main/java/net/troja/eve/esi/model/MailLabelsResponseLabels.java src/main/java/net/troja/eve/esi/model/MailLabel.java
 
 for DIR in `for F in $(find src -name \*.java); do dirname $F; done | sort -u`; do
   sed -i \
@@ -61,6 +65,10 @@ for DIR in `for F in $(find src -name \*.java); do dirname $F; done | sort -u`; 
     -e 's#CorporationDivisionsResponseWallet#DivisionsWallet#g' \
     -e 's#CorporationFactionWarfareStatsResponseKills#CorporationFactionWarfareKills#g' \
     -e 's#CorporationFactionWarfareStatsResponseVictoryPoints#CorporationFactionWarfareVictoryPoints#g' \
+    -e 's#CorporationStructuresResponseServices#StructuresService#g' \
+    -e 's#DogmaEffectResponseModifiers#DogmaEffectModifier#g' \
+    -e 's#LoyaltyStoreOffersResponseRequiredItems#LoyaltyStoreRequiredItems#g' \
+    -e 's#MailLabelsResponseLabels#MailLabel#g' \
     -e 's#getUniverseStructure#getStructure#g' \
       $DIR/*.java
 

@@ -24,7 +24,7 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.troja.eve.esi.model.CorporationStructuresResponseServices;
+import net.troja.eve.esi.model.StructuresService;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -95,7 +95,7 @@ public class CorporationStructuresResponse implements Serializable {
     public static final String SERIALIZED_NAME_SERVICES = "services";
     @SerializedName(SERIALIZED_NAME_SERVICES)
     @javax.annotation.Nullable
-    private List<CorporationStructuresResponseServices> services;
+    private List<StructuresService> services;
 
     /**
      * Gets or Sets state
@@ -349,13 +349,12 @@ public class CorporationStructuresResponse implements Serializable {
         this.reinforceHour = reinforceHour;
     }
 
-    public CorporationStructuresResponse services(
-            @javax.annotation.Nullable List<CorporationStructuresResponseServices> services) {
+    public CorporationStructuresResponse services(@javax.annotation.Nullable List<StructuresService> services) {
         this.services = services;
         return this;
     }
 
-    public CorporationStructuresResponse addServicesItem(CorporationStructuresResponseServices servicesItem) {
+    public CorporationStructuresResponse addServicesItem(StructuresService servicesItem) {
         if (this.services == null) {
             this.services = new ArrayList<>();
         }
@@ -370,11 +369,11 @@ public class CorporationStructuresResponse implements Serializable {
      * @return services
      */
     @javax.annotation.Nullable
-    public List<CorporationStructuresResponseServices> getServices() {
+    public List<StructuresService> getServices() {
         return services;
     }
 
-    public void setServices(@javax.annotation.Nullable List<CorporationStructuresResponseServices> services) {
+    public void setServices(@javax.annotation.Nullable List<StructuresService> services) {
         this.services = services;
     }
 
@@ -673,7 +672,7 @@ public class CorporationStructuresResponse implements Serializable {
 
                 // validate the optional field `services` (array)
                 for (int i = 0; i < jsonArrayservices.size(); i++) {
-                    CorporationStructuresResponseServices.validateJsonElement(jsonArrayservices.get(i));
+                    StructuresService.validateJsonElement(jsonArrayservices.get(i));
                 };
             }
         }

@@ -50,7 +50,7 @@ import net.troja.eve.esi.JSON;
  * service object
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
-public class CorporationStructuresResponseServices implements Serializable {
+public class StructuresService implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_NAME = "name";
@@ -118,10 +118,10 @@ public class CorporationStructuresResponseServices implements Serializable {
     private String state;
     private StateEnum stateEnum;
 
-    public CorporationStructuresResponseServices() {
+    public StructuresService() {
     }
 
-    public CorporationStructuresResponseServices name(@javax.annotation.Nonnull String name) {
+    public StructuresService name(@javax.annotation.Nonnull String name) {
         this.name = name;
         return this;
     }
@@ -140,12 +140,12 @@ public class CorporationStructuresResponseServices implements Serializable {
         this.name = name;
     }
 
-    public CorporationStructuresResponseServices state(@javax.annotation.Nonnull StateEnum state) {
+    public StructuresService state(@javax.annotation.Nonnull StateEnum state) {
         this.stateEnum = state;
         return this;
     }
 
-    public CorporationStructuresResponseServices stateString(@javax.annotation.Nonnull String state) {
+    public StructuresService stateString(@javax.annotation.Nonnull String state) {
         this.state = state;
         return this;
     }
@@ -183,7 +183,7 @@ public class CorporationStructuresResponseServices implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CorporationStructuresResponseServices corporationStructuresResponseServices = (CorporationStructuresResponseServices) o;
+        StructuresService corporationStructuresResponseServices = (StructuresService) o;
         return Objects.equals(this.name, corporationStructuresResponseServices.name)
                 && Objects.equals(this.state, corporationStructuresResponseServices.state);
     }
@@ -196,7 +196,7 @@ public class CorporationStructuresResponseServices implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class CorporationStructuresResponseServices {\n");
+        sb.append("class StructuresService {\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    state: ").append(toIndentedString(state)).append("\n");
         sb.append("}");
@@ -232,39 +232,37 @@ public class CorporationStructuresResponseServices implements Serializable {
      *            JSON Element
      * @throws IOException
      *             if the JSON Element is invalid with respect to
-     *             CorporationStructuresResponseServices
+     *             StructuresService
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         if (jsonElement == null) {
-            if (!CorporationStructuresResponseServices.openapiRequiredFields.isEmpty()) { // has
-                                                                                          // required
-                                                                                          // fields
-                                                                                          // but
-                                                                                          // JSON
-                                                                                          // element
-                                                                                          // is
-                                                                                          // null
-                throw new IllegalArgumentException(
-                        String.format(
-                                "The required field(s) %s in CorporationStructuresResponseServices is not found in the empty JSON string",
-                                CorporationStructuresResponseServices.openapiRequiredFields.toString()));
+            if (!StructuresService.openapiRequiredFields.isEmpty()) { // has
+                                                                      // required
+                                                                      // fields
+                                                                      // but
+                                                                      // JSON
+                                                                      // element
+                                                                      // is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in StructuresService is not found in the empty JSON string",
+                        StructuresService.openapiRequiredFields.toString()));
             }
         }
 
         Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
         for (Map.Entry<String, JsonElement> entry : entries) {
-            if (!CorporationStructuresResponseServices.openapiFields.contains(entry.getKey())) {
+            if (!StructuresService.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
-                                "The field `%s` in the JSON string is not defined in the `CorporationStructuresResponseServices` properties. JSON: %s",
+                                "The field `%s` in the JSON string is not defined in the `StructuresService` properties. JSON: %s",
                                 entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
-        for (String requiredField : CorporationStructuresResponseServices.openapiRequiredFields) {
+        for (String requiredField : StructuresService.openapiRequiredFields) {
             if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
@@ -290,24 +288,23 @@ public class CorporationStructuresResponseServices implements Serializable {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!CorporationStructuresResponseServices.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes
-                             // 'CorporationStructuresResponseServices' and its
-                             // subtypes
+            if (!StructuresService.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'StructuresService'
+                             // and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<CorporationStructuresResponseServices> thisAdapter = gson.getDelegateAdapter(this,
-                    TypeToken.get(CorporationStructuresResponseServices.class));
+            final TypeAdapter<StructuresService> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(StructuresService.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<CorporationStructuresResponseServices>() {
+            return (TypeAdapter<T>) new TypeAdapter<StructuresService>() {
                 @Override
-                public void write(JsonWriter out, CorporationStructuresResponseServices value) throws IOException {
+                public void write(JsonWriter out, StructuresService value) throws IOException {
                     JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
                     elementAdapter.write(out, obj);
                 }
 
                 @Override
-                public CorporationStructuresResponseServices read(JsonReader in) throws IOException {
+                public StructuresService read(JsonReader in) throws IOException {
                     JsonElement jsonElement = elementAdapter.read(in);
                     validateJsonElement(jsonElement);
                     return thisAdapter.fromJsonTree(jsonElement);
@@ -318,23 +315,21 @@ public class CorporationStructuresResponseServices implements Serializable {
     }
 
     /**
-     * Create an instance of CorporationStructuresResponseServices given an JSON
-     * string
+     * Create an instance of StructuresService given an JSON string
      *
      * @param jsonString
      *            JSON string
-     * @return An instance of CorporationStructuresResponseServices
+     * @return An instance of StructuresService
      * @throws IOException
      *             if the JSON string is invalid with respect to
-     *             CorporationStructuresResponseServices
+     *             StructuresService
      */
-    public static CorporationStructuresResponseServices fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, CorporationStructuresResponseServices.class);
+    public static StructuresService fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, StructuresService.class);
     }
 
     /**
-     * Convert an instance of CorporationStructuresResponseServices to an JSON
-     * string
+     * Convert an instance of StructuresService to an JSON string
      *
      * @return JSON string
      */

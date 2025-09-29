@@ -295,7 +295,7 @@ public class JSON {
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.CorporationStructuresResponse.CustomTypeAdapterFactory());
         gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.CorporationStructuresResponseServices.CustomTypeAdapterFactory());
+                .registerTypeAdapterFactory(new net.troja.eve.esi.model.StructuresService.CustomTypeAdapterFactory());
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.CorporationTitlesResponse.CustomTypeAdapterFactory());
         gsonBuilder
@@ -393,7 +393,7 @@ public class JSON {
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.DogmaEffectResponse.CustomTypeAdapterFactory());
         gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.DogmaEffectResponseModifiers.CustomTypeAdapterFactory());
+                .registerTypeAdapterFactory(new net.troja.eve.esi.model.DogmaEffectModifier.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.EarnLoyaltyPoint.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.Error.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.ErrorDetail.CustomTypeAdapterFactory());
@@ -504,11 +504,10 @@ public class JSON {
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.LoyaltyStoreOffersResponse.CustomTypeAdapterFactory());
         gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.LoyaltyStoreOffersResponseRequiredItems.CustomTypeAdapterFactory());
+                .registerTypeAdapterFactory(new net.troja.eve.esi.model.LoyaltyStoreRequiredItems.CustomTypeAdapterFactory());
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.MailLabelsResponse.CustomTypeAdapterFactory());
-        gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.MailLabelsResponseLabels.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.MailLabel.CustomTypeAdapterFactory());
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.MailListsResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.MailResponse.CustomTypeAdapterFactory());

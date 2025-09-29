@@ -50,7 +50,7 @@ import net.troja.eve.esi.JSON;
  * modifier object
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
-public class DogmaEffectResponseModifiers implements Serializable {
+public class DogmaEffectModifier implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_DOMAIN = "domain";
@@ -83,10 +83,10 @@ public class DogmaEffectResponseModifiers implements Serializable {
     @javax.annotation.Nullable
     private Long operator;
 
-    public DogmaEffectResponseModifiers() {
+    public DogmaEffectModifier() {
     }
 
-    public DogmaEffectResponseModifiers domain(@javax.annotation.Nullable String domain) {
+    public DogmaEffectModifier domain(@javax.annotation.Nullable String domain) {
         this.domain = domain;
         return this;
     }
@@ -105,7 +105,7 @@ public class DogmaEffectResponseModifiers implements Serializable {
         this.domain = domain;
     }
 
-    public DogmaEffectResponseModifiers effectId(@javax.annotation.Nullable Long effectId) {
+    public DogmaEffectModifier effectId(@javax.annotation.Nullable Long effectId) {
         this.effectId = effectId;
         return this;
     }
@@ -124,7 +124,7 @@ public class DogmaEffectResponseModifiers implements Serializable {
         this.effectId = effectId;
     }
 
-    public DogmaEffectResponseModifiers func(@javax.annotation.Nonnull String func) {
+    public DogmaEffectModifier func(@javax.annotation.Nonnull String func) {
         this.func = func;
         return this;
     }
@@ -143,7 +143,7 @@ public class DogmaEffectResponseModifiers implements Serializable {
         this.func = func;
     }
 
-    public DogmaEffectResponseModifiers modifiedAttributeId(@javax.annotation.Nullable Long modifiedAttributeId) {
+    public DogmaEffectModifier modifiedAttributeId(@javax.annotation.Nullable Long modifiedAttributeId) {
         this.modifiedAttributeId = modifiedAttributeId;
         return this;
     }
@@ -162,7 +162,7 @@ public class DogmaEffectResponseModifiers implements Serializable {
         this.modifiedAttributeId = modifiedAttributeId;
     }
 
-    public DogmaEffectResponseModifiers modifyingAttributeId(@javax.annotation.Nullable Long modifyingAttributeId) {
+    public DogmaEffectModifier modifyingAttributeId(@javax.annotation.Nullable Long modifyingAttributeId) {
         this.modifyingAttributeId = modifyingAttributeId;
         return this;
     }
@@ -181,7 +181,7 @@ public class DogmaEffectResponseModifiers implements Serializable {
         this.modifyingAttributeId = modifyingAttributeId;
     }
 
-    public DogmaEffectResponseModifiers operator(@javax.annotation.Nullable Long operator) {
+    public DogmaEffectModifier operator(@javax.annotation.Nullable Long operator) {
         this.operator = operator;
         return this;
     }
@@ -208,7 +208,7 @@ public class DogmaEffectResponseModifiers implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        DogmaEffectResponseModifiers dogmaEffectResponseModifiers = (DogmaEffectResponseModifiers) o;
+        DogmaEffectModifier dogmaEffectResponseModifiers = (DogmaEffectModifier) o;
         return Objects.equals(this.domain, dogmaEffectResponseModifiers.domain)
                 && Objects.equals(this.effectId, dogmaEffectResponseModifiers.effectId)
                 && Objects.equals(this.func, dogmaEffectResponseModifiers.func)
@@ -225,7 +225,7 @@ public class DogmaEffectResponseModifiers implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class DogmaEffectResponseModifiers {\n");
+        sb.append("class DogmaEffectModifier {\n");
         sb.append("    domain: ").append(toIndentedString(domain)).append("\n");
         sb.append("    effectId: ").append(toIndentedString(effectId)).append("\n");
         sb.append("    func: ").append(toIndentedString(func)).append("\n");
@@ -266,39 +266,38 @@ public class DogmaEffectResponseModifiers implements Serializable {
      *            JSON Element
      * @throws IOException
      *             if the JSON Element is invalid with respect to
-     *             DogmaEffectResponseModifiers
+     *             DogmaEffectModifier
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         if (jsonElement == null) {
-            if (!DogmaEffectResponseModifiers.openapiRequiredFields.isEmpty()) { // has
-                                                                                 // required
-                                                                                 // fields
-                                                                                 // but
-                                                                                 // JSON
-                                                                                 // element
-                                                                                 // is
-                                                                                 // null
-                throw new IllegalArgumentException(
-                        String.format(
-                                "The required field(s) %s in DogmaEffectResponseModifiers is not found in the empty JSON string",
-                                DogmaEffectResponseModifiers.openapiRequiredFields.toString()));
+            if (!DogmaEffectModifier.openapiRequiredFields.isEmpty()) { // has
+                                                                        // required
+                                                                        // fields
+                                                                        // but
+                                                                        // JSON
+                                                                        // element
+                                                                        // is
+                                                                        // null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in DogmaEffectModifier is not found in the empty JSON string",
+                        DogmaEffectModifier.openapiRequiredFields.toString()));
             }
         }
 
         Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
         for (Map.Entry<String, JsonElement> entry : entries) {
-            if (!DogmaEffectResponseModifiers.openapiFields.contains(entry.getKey())) {
+            if (!DogmaEffectModifier.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
-                                "The field `%s` in the JSON string is not defined in the `DogmaEffectResponseModifiers` properties. JSON: %s",
+                                "The field `%s` in the JSON string is not defined in the `DogmaEffectModifier` properties. JSON: %s",
                                 entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
-        for (String requiredField : DogmaEffectResponseModifiers.openapiRequiredFields) {
+        for (String requiredField : DogmaEffectModifier.openapiRequiredFields) {
             if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
@@ -323,23 +322,23 @@ public class DogmaEffectResponseModifiers implements Serializable {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!DogmaEffectResponseModifiers.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes
-                             // 'DogmaEffectResponseModifiers' and its subtypes
+            if (!DogmaEffectModifier.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'DogmaEffectModifier'
+                             // and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<DogmaEffectResponseModifiers> thisAdapter = gson.getDelegateAdapter(this,
-                    TypeToken.get(DogmaEffectResponseModifiers.class));
+            final TypeAdapter<DogmaEffectModifier> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(DogmaEffectModifier.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<DogmaEffectResponseModifiers>() {
+            return (TypeAdapter<T>) new TypeAdapter<DogmaEffectModifier>() {
                 @Override
-                public void write(JsonWriter out, DogmaEffectResponseModifiers value) throws IOException {
+                public void write(JsonWriter out, DogmaEffectModifier value) throws IOException {
                     JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
                     elementAdapter.write(out, obj);
                 }
 
                 @Override
-                public DogmaEffectResponseModifiers read(JsonReader in) throws IOException {
+                public DogmaEffectModifier read(JsonReader in) throws IOException {
                     JsonElement jsonElement = elementAdapter.read(in);
                     validateJsonElement(jsonElement);
                     return thisAdapter.fromJsonTree(jsonElement);
@@ -350,21 +349,21 @@ public class DogmaEffectResponseModifiers implements Serializable {
     }
 
     /**
-     * Create an instance of DogmaEffectResponseModifiers given an JSON string
+     * Create an instance of DogmaEffectModifier given an JSON string
      *
      * @param jsonString
      *            JSON string
-     * @return An instance of DogmaEffectResponseModifiers
+     * @return An instance of DogmaEffectModifier
      * @throws IOException
      *             if the JSON string is invalid with respect to
-     *             DogmaEffectResponseModifiers
+     *             DogmaEffectModifier
      */
-    public static DogmaEffectResponseModifiers fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, DogmaEffectResponseModifiers.class);
+    public static DogmaEffectModifier fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, DogmaEffectModifier.class);
     }
 
     /**
-     * Convert an instance of DogmaEffectResponseModifiers to an JSON string
+     * Convert an instance of DogmaEffectModifier to an JSON string
      *
      * @return JSON string
      */
