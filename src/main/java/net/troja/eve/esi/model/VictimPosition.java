@@ -50,7 +50,7 @@ import net.troja.eve.esi.JSON;
  * Coordinates of the victim in Cartesian space relative to the Sun
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
-public class KillmailByHashResponseVictimPosition implements Serializable {
+public class VictimPosition implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_X = "x";
@@ -68,10 +68,10 @@ public class KillmailByHashResponseVictimPosition implements Serializable {
     @javax.annotation.Nonnull
     private Double z;
 
-    public KillmailByHashResponseVictimPosition() {
+    public VictimPosition() {
     }
 
-    public KillmailByHashResponseVictimPosition x(@javax.annotation.Nonnull Double x) {
+    public VictimPosition x(@javax.annotation.Nonnull Double x) {
         this.x = x;
         return this;
     }
@@ -90,7 +90,7 @@ public class KillmailByHashResponseVictimPosition implements Serializable {
         this.x = x;
     }
 
-    public KillmailByHashResponseVictimPosition y(@javax.annotation.Nonnull Double y) {
+    public VictimPosition y(@javax.annotation.Nonnull Double y) {
         this.y = y;
         return this;
     }
@@ -109,7 +109,7 @@ public class KillmailByHashResponseVictimPosition implements Serializable {
         this.y = y;
     }
 
-    public KillmailByHashResponseVictimPosition z(@javax.annotation.Nonnull Double z) {
+    public VictimPosition z(@javax.annotation.Nonnull Double z) {
         this.z = z;
         return this;
     }
@@ -136,7 +136,7 @@ public class KillmailByHashResponseVictimPosition implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        KillmailByHashResponseVictimPosition killmailByHashResponseVictimPosition = (KillmailByHashResponseVictimPosition) o;
+        VictimPosition killmailByHashResponseVictimPosition = (VictimPosition) o;
         return Objects.equals(this.x, killmailByHashResponseVictimPosition.x)
                 && Objects.equals(this.y, killmailByHashResponseVictimPosition.y)
                 && Objects.equals(this.z, killmailByHashResponseVictimPosition.z);
@@ -150,7 +150,7 @@ public class KillmailByHashResponseVictimPosition implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class KillmailByHashResponseVictimPosition {\n");
+        sb.append("class VictimPosition {\n");
         sb.append("    x: ").append(toIndentedString(x)).append("\n");
         sb.append("    y: ").append(toIndentedString(y)).append("\n");
         sb.append("    z: ").append(toIndentedString(z)).append("\n");
@@ -186,40 +186,36 @@ public class KillmailByHashResponseVictimPosition implements Serializable {
      * @param jsonElement
      *            JSON Element
      * @throws IOException
-     *             if the JSON Element is invalid with respect to
-     *             KillmailByHashResponseVictimPosition
+     *             if the JSON Element is invalid with respect to VictimPosition
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         if (jsonElement == null) {
-            if (!KillmailByHashResponseVictimPosition.openapiRequiredFields.isEmpty()) { // has
-                                                                                         // required
-                                                                                         // fields
-                                                                                         // but
-                                                                                         // JSON
-                                                                                         // element
-                                                                                         // is
-                                                                                         // null
-                throw new IllegalArgumentException(
-                        String.format(
-                                "The required field(s) %s in KillmailByHashResponseVictimPosition is not found in the empty JSON string",
-                                KillmailByHashResponseVictimPosition.openapiRequiredFields.toString()));
+            if (!VictimPosition.openapiRequiredFields.isEmpty()) { // has
+                                                                   // required
+                                                                   // fields but
+                                                                   // JSON
+                                                                   // element is
+                                                                   // null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in VictimPosition is not found in the empty JSON string",
+                        VictimPosition.openapiRequiredFields.toString()));
             }
         }
 
         Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
         for (Map.Entry<String, JsonElement> entry : entries) {
-            if (!KillmailByHashResponseVictimPosition.openapiFields.contains(entry.getKey())) {
+            if (!VictimPosition.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
-                                "The field `%s` in the JSON string is not defined in the `KillmailByHashResponseVictimPosition` properties. JSON: %s",
+                                "The field `%s` in the JSON string is not defined in the `VictimPosition` properties. JSON: %s",
                                 entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
-        for (String requiredField : KillmailByHashResponseVictimPosition.openapiRequiredFields) {
+        for (String requiredField : VictimPosition.openapiRequiredFields) {
             if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
@@ -233,24 +229,23 @@ public class KillmailByHashResponseVictimPosition implements Serializable {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!KillmailByHashResponseVictimPosition.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes
-                             // 'KillmailByHashResponseVictimPosition' and its
-                             // subtypes
+            if (!VictimPosition.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'VictimPosition' and
+                             // its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<KillmailByHashResponseVictimPosition> thisAdapter = gson.getDelegateAdapter(this,
-                    TypeToken.get(KillmailByHashResponseVictimPosition.class));
+            final TypeAdapter<VictimPosition> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(VictimPosition.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<KillmailByHashResponseVictimPosition>() {
+            return (TypeAdapter<T>) new TypeAdapter<VictimPosition>() {
                 @Override
-                public void write(JsonWriter out, KillmailByHashResponseVictimPosition value) throws IOException {
+                public void write(JsonWriter out, VictimPosition value) throws IOException {
                     JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
                     elementAdapter.write(out, obj);
                 }
 
                 @Override
-                public KillmailByHashResponseVictimPosition read(JsonReader in) throws IOException {
+                public VictimPosition read(JsonReader in) throws IOException {
                     JsonElement jsonElement = elementAdapter.read(in);
                     validateJsonElement(jsonElement);
                     return thisAdapter.fromJsonTree(jsonElement);
@@ -261,23 +256,20 @@ public class KillmailByHashResponseVictimPosition implements Serializable {
     }
 
     /**
-     * Create an instance of KillmailByHashResponseVictimPosition given an JSON
-     * string
+     * Create an instance of VictimPosition given an JSON string
      *
      * @param jsonString
      *            JSON string
-     * @return An instance of KillmailByHashResponseVictimPosition
+     * @return An instance of VictimPosition
      * @throws IOException
-     *             if the JSON string is invalid with respect to
-     *             KillmailByHashResponseVictimPosition
+     *             if the JSON string is invalid with respect to VictimPosition
      */
-    public static KillmailByHashResponseVictimPosition fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, KillmailByHashResponseVictimPosition.class);
+    public static VictimPosition fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, VictimPosition.class);
     }
 
     /**
-     * Convert an instance of KillmailByHashResponseVictimPosition to an JSON
-     * string
+     * Convert an instance of VictimPosition to an JSON string
      *
      * @return JSON string
      */

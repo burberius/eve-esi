@@ -24,8 +24,8 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.troja.eve.esi.model.KillmailByHashResponseAttackers;
-import net.troja.eve.esi.model.KillmailByHashResponseVictim;
+import net.troja.eve.esi.model.Attacker;
+import net.troja.eve.esi.model.Victim;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -61,7 +61,7 @@ public class KillmailByHashResponse implements Serializable {
     public static final String SERIALIZED_NAME_ATTACKERS = "attackers";
     @SerializedName(SERIALIZED_NAME_ATTACKERS)
     @javax.annotation.Nonnull
-    private List<KillmailByHashResponseAttackers> attackers;
+    private List<Attacker> attackers;
 
     public static final String SERIALIZED_NAME_KILLMAIL_ID = "killmail_id";
     @SerializedName(SERIALIZED_NAME_KILLMAIL_ID)
@@ -86,7 +86,7 @@ public class KillmailByHashResponse implements Serializable {
     public static final String SERIALIZED_NAME_VICTIM = "victim";
     @SerializedName(SERIALIZED_NAME_VICTIM)
     @javax.annotation.Nonnull
-    private KillmailByHashResponseVictim victim;
+    private Victim victim;
 
     public static final String SERIALIZED_NAME_WAR_ID = "war_id";
     @SerializedName(SERIALIZED_NAME_WAR_ID)
@@ -96,12 +96,12 @@ public class KillmailByHashResponse implements Serializable {
     public KillmailByHashResponse() {
     }
 
-    public KillmailByHashResponse attackers(@javax.annotation.Nonnull List<KillmailByHashResponseAttackers> attackers) {
+    public KillmailByHashResponse attackers(@javax.annotation.Nonnull List<Attacker> attackers) {
         this.attackers = attackers;
         return this;
     }
 
-    public KillmailByHashResponse addAttackersItem(KillmailByHashResponseAttackers attackersItem) {
+    public KillmailByHashResponse addAttackersItem(Attacker attackersItem) {
         if (this.attackers == null) {
             this.attackers = new ArrayList<>();
         }
@@ -116,11 +116,11 @@ public class KillmailByHashResponse implements Serializable {
      * @return attackers
      */
     @javax.annotation.Nonnull
-    public List<KillmailByHashResponseAttackers> getAttackers() {
+    public List<Attacker> getAttackers() {
         return attackers;
     }
 
-    public void setAttackers(@javax.annotation.Nonnull List<KillmailByHashResponseAttackers> attackers) {
+    public void setAttackers(@javax.annotation.Nonnull List<Attacker> attackers) {
         this.attackers = attackers;
     }
 
@@ -200,7 +200,7 @@ public class KillmailByHashResponse implements Serializable {
         this.solarSystemId = solarSystemId;
     }
 
-    public KillmailByHashResponse victim(@javax.annotation.Nonnull KillmailByHashResponseVictim victim) {
+    public KillmailByHashResponse victim(@javax.annotation.Nonnull Victim victim) {
         this.victim = victim;
         return this;
     }
@@ -211,11 +211,11 @@ public class KillmailByHashResponse implements Serializable {
      * @return victim
      */
     @javax.annotation.Nonnull
-    public KillmailByHashResponseVictim getVictim() {
+    public Victim getVictim() {
         return victim;
     }
 
-    public void setVictim(@javax.annotation.Nonnull KillmailByHashResponseVictim victim) {
+    public void setVictim(@javax.annotation.Nonnull Victim victim) {
         this.victim = victim;
     }
 
@@ -356,10 +356,10 @@ public class KillmailByHashResponse implements Serializable {
         JsonArray jsonArrayattackers = jsonObj.getAsJsonArray("attackers");
         // validate the required field `attackers` (array)
         for (int i = 0; i < jsonArrayattackers.size(); i++) {
-            KillmailByHashResponseAttackers.validateJsonElement(jsonArrayattackers.get(i));
+            Attacker.validateJsonElement(jsonArrayattackers.get(i));
         };
         // validate the required field `victim`
-        KillmailByHashResponseVictim.validateJsonElement(jsonObj.get("victim"));
+        Victim.validateJsonElement(jsonObj.get("victim"));
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

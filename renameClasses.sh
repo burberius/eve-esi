@@ -36,6 +36,12 @@ mv src/main/java/net/troja/eve/esi/model/CorporationStructuresResponseServices.j
 mv src/main/java/net/troja/eve/esi/model/DogmaEffectResponseModifiers.java src/main/java/net/troja/eve/esi/model/DogmaEffectModifier.java
 mv src/main/java/net/troja/eve/esi/model/LoyaltyStoreOffersResponseRequiredItems.java src/main/java/net/troja/eve/esi/model/LoyaltyStoreRequiredItems.java
 mv src/main/java/net/troja/eve/esi/model/MailLabelsResponseLabels.java src/main/java/net/troja/eve/esi/model/MailLabel.java
+mv src/main/java/net/troja/eve/esi/model/InsurancePricesResponseLevels.java src/main/java/net/troja/eve/esi/model/InsuranceLevel.java
+mv src/main/java/net/troja/eve/esi/model/KillmailByHashResponseAttackers.java src/main/java/net/troja/eve/esi/model/Attacker.java
+mv src/main/java/net/troja/eve/esi/model/KillmailByHashResponseVictim.java src/main/java/net/troja/eve/esi/model/Victim.java
+mv src/main/java/net/troja/eve/esi/model/KillmailByHashResponseVictimItems.java src/main/java/net/troja/eve/esi/model/VictimItem.java
+mv src/main/java/net/troja/eve/esi/model/KillmailByHashResponseVictimItemsItems.java src/main/java/net/troja/eve/esi/model/ItemContained.java
+mv src/main/java/net/troja/eve/esi/model/KillmailByHashResponseVictimPosition.java src/main/java/net/troja/eve/esi/model/VictimPosition.java
 
 for DIR in `for F in $(find src -name \*.java); do dirname $F; done | sort -u`; do
   sed -i \
@@ -69,6 +75,11 @@ for DIR in `for F in $(find src -name \*.java); do dirname $F; done | sort -u`; 
     -e 's#DogmaEffectResponseModifiers#DogmaEffectModifier#g' \
     -e 's#LoyaltyStoreOffersResponseRequiredItems#LoyaltyStoreRequiredItems#g' \
     -e 's#MailLabelsResponseLabels#MailLabel#g' \
+    -e 's#InsurancePricesResponseLevels#InsuranceLevel#g' \
+    -e 's#KillmailByHashResponseAttackers#Attacker#g' \
+    -e 's#KillmailByHashResponseVictimItemsItems#ItemContained#g' \
+    -e 's#KillmailByHashResponseVictimItems#VictimItem#g' \
+    -e 's#KillmailByHashResponseVictim#Victim#g' \
     -e 's#getUniverseStructure#getStructure#g' \
       $DIR/*.java
 

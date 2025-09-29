@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.troja.eve.esi.model.InsurancePricesResponseLevels;
+import net.troja.eve.esi.model.InsuranceLevel;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -59,7 +59,7 @@ public class InsurancePricesResponse implements Serializable {
     public static final String SERIALIZED_NAME_LEVELS = "levels";
     @SerializedName(SERIALIZED_NAME_LEVELS)
     @javax.annotation.Nonnull
-    private List<InsurancePricesResponseLevels> levels;
+    private List<InsuranceLevel> levels;
 
     public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
@@ -69,12 +69,12 @@ public class InsurancePricesResponse implements Serializable {
     public InsurancePricesResponse() {
     }
 
-    public InsurancePricesResponse levels(@javax.annotation.Nonnull List<InsurancePricesResponseLevels> levels) {
+    public InsurancePricesResponse levels(@javax.annotation.Nonnull List<InsuranceLevel> levels) {
         this.levels = levels;
         return this;
     }
 
-    public InsurancePricesResponse addLevelsItem(InsurancePricesResponseLevels levelsItem) {
+    public InsurancePricesResponse addLevelsItem(InsuranceLevel levelsItem) {
         if (this.levels == null) {
             this.levels = new ArrayList<>();
         }
@@ -89,11 +89,11 @@ public class InsurancePricesResponse implements Serializable {
      * @return levels
      */
     @javax.annotation.Nonnull
-    public List<InsurancePricesResponseLevels> getLevels() {
+    public List<InsuranceLevel> getLevels() {
         return levels;
     }
 
-    public void setLevels(@javax.annotation.Nonnull List<InsurancePricesResponseLevels> levels) {
+    public void setLevels(@javax.annotation.Nonnull List<InsuranceLevel> levels) {
         this.levels = levels;
     }
 
@@ -222,7 +222,7 @@ public class InsurancePricesResponse implements Serializable {
         JsonArray jsonArraylevels = jsonObj.getAsJsonArray("levels");
         // validate the required field `levels` (array)
         for (int i = 0; i < jsonArraylevels.size(); i++) {
-            InsurancePricesResponseLevels.validateJsonElement(jsonArraylevels.get(i));
+            InsuranceLevel.validateJsonElement(jsonArraylevels.get(i));
         };
     }
 

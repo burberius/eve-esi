@@ -486,20 +486,14 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.SystemCostIndice.CustomTypeAdapterFactory());
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.InsurancePricesResponse.CustomTypeAdapterFactory());
-        gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.InsurancePricesResponseLevels.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.InsuranceLevel.CustomTypeAdapterFactory());
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.KillmailByHashResponse.CustomTypeAdapterFactory());
-        gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.KillmailByHashResponseAttackers.CustomTypeAdapterFactory());
-        gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.KillmailByHashResponseVictim.CustomTypeAdapterFactory());
-        gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.KillmailByHashResponseVictimItems.CustomTypeAdapterFactory());
-        gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.KillmailByHashResponseVictimItemsItems.CustomTypeAdapterFactory());
-        gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.KillmailByHashResponseVictimPosition.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.Attacker.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.Victim.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.VictimItem.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.ItemContained.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.VictimPosition.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.LostShip.CustomTypeAdapterFactory());
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.LoyaltyStoreOffersResponse.CustomTypeAdapterFactory());

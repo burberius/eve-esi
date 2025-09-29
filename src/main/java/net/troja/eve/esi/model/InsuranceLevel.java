@@ -50,7 +50,7 @@ import net.troja.eve.esi.JSON;
  * level object
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
-public class InsurancePricesResponseLevels implements Serializable {
+public class InsuranceLevel implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_COST = "cost";
@@ -68,10 +68,10 @@ public class InsurancePricesResponseLevels implements Serializable {
     @javax.annotation.Nonnull
     private Double payout;
 
-    public InsurancePricesResponseLevels() {
+    public InsuranceLevel() {
     }
 
-    public InsurancePricesResponseLevels cost(@javax.annotation.Nonnull Double cost) {
+    public InsuranceLevel cost(@javax.annotation.Nonnull Double cost) {
         this.cost = cost;
         return this;
     }
@@ -90,7 +90,7 @@ public class InsurancePricesResponseLevels implements Serializable {
         this.cost = cost;
     }
 
-    public InsurancePricesResponseLevels name(@javax.annotation.Nonnull String name) {
+    public InsuranceLevel name(@javax.annotation.Nonnull String name) {
         this.name = name;
         return this;
     }
@@ -109,7 +109,7 @@ public class InsurancePricesResponseLevels implements Serializable {
         this.name = name;
     }
 
-    public InsurancePricesResponseLevels payout(@javax.annotation.Nonnull Double payout) {
+    public InsuranceLevel payout(@javax.annotation.Nonnull Double payout) {
         this.payout = payout;
         return this;
     }
@@ -136,7 +136,7 @@ public class InsurancePricesResponseLevels implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        InsurancePricesResponseLevels insurancePricesResponseLevels = (InsurancePricesResponseLevels) o;
+        InsuranceLevel insurancePricesResponseLevels = (InsuranceLevel) o;
         return Objects.equals(this.cost, insurancePricesResponseLevels.cost)
                 && Objects.equals(this.name, insurancePricesResponseLevels.name)
                 && Objects.equals(this.payout, insurancePricesResponseLevels.payout);
@@ -150,7 +150,7 @@ public class InsurancePricesResponseLevels implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class InsurancePricesResponseLevels {\n");
+        sb.append("class InsuranceLevel {\n");
         sb.append("    cost: ").append(toIndentedString(cost)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    payout: ").append(toIndentedString(payout)).append("\n");
@@ -186,40 +186,36 @@ public class InsurancePricesResponseLevels implements Serializable {
      * @param jsonElement
      *            JSON Element
      * @throws IOException
-     *             if the JSON Element is invalid with respect to
-     *             InsurancePricesResponseLevels
+     *             if the JSON Element is invalid with respect to InsuranceLevel
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         if (jsonElement == null) {
-            if (!InsurancePricesResponseLevels.openapiRequiredFields.isEmpty()) { // has
-                                                                                  // required
-                                                                                  // fields
-                                                                                  // but
-                                                                                  // JSON
-                                                                                  // element
-                                                                                  // is
-                                                                                  // null
-                throw new IllegalArgumentException(
-                        String.format(
-                                "The required field(s) %s in InsurancePricesResponseLevels is not found in the empty JSON string",
-                                InsurancePricesResponseLevels.openapiRequiredFields.toString()));
+            if (!InsuranceLevel.openapiRequiredFields.isEmpty()) { // has
+                                                                   // required
+                                                                   // fields but
+                                                                   // JSON
+                                                                   // element is
+                                                                   // null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in InsuranceLevel is not found in the empty JSON string",
+                        InsuranceLevel.openapiRequiredFields.toString()));
             }
         }
 
         Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
         for (Map.Entry<String, JsonElement> entry : entries) {
-            if (!InsurancePricesResponseLevels.openapiFields.contains(entry.getKey())) {
+            if (!InsuranceLevel.openapiFields.contains(entry.getKey())) {
                 throw new IllegalArgumentException(
                         String.format(
-                                "The field `%s` in the JSON string is not defined in the `InsurancePricesResponseLevels` properties. JSON: %s",
+                                "The field `%s` in the JSON string is not defined in the `InsuranceLevel` properties. JSON: %s",
                                 entry.getKey(), jsonElement.toString()));
             }
         }
 
         // check to make sure all required properties/fields are present in the
         // JSON string
-        for (String requiredField : InsurancePricesResponseLevels.openapiRequiredFields) {
+        for (String requiredField : InsuranceLevel.openapiRequiredFields) {
             if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
                         "The required field `%s` is not found in the JSON string: %s", requiredField,
@@ -238,23 +234,23 @@ public class InsurancePricesResponseLevels implements Serializable {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!InsurancePricesResponseLevels.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes
-                             // 'InsurancePricesResponseLevels' and its subtypes
+            if (!InsuranceLevel.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'InsuranceLevel' and
+                             // its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<InsurancePricesResponseLevels> thisAdapter = gson.getDelegateAdapter(this,
-                    TypeToken.get(InsurancePricesResponseLevels.class));
+            final TypeAdapter<InsuranceLevel> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(InsuranceLevel.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<InsurancePricesResponseLevels>() {
+            return (TypeAdapter<T>) new TypeAdapter<InsuranceLevel>() {
                 @Override
-                public void write(JsonWriter out, InsurancePricesResponseLevels value) throws IOException {
+                public void write(JsonWriter out, InsuranceLevel value) throws IOException {
                     JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
                     elementAdapter.write(out, obj);
                 }
 
                 @Override
-                public InsurancePricesResponseLevels read(JsonReader in) throws IOException {
+                public InsuranceLevel read(JsonReader in) throws IOException {
                     JsonElement jsonElement = elementAdapter.read(in);
                     validateJsonElement(jsonElement);
                     return thisAdapter.fromJsonTree(jsonElement);
@@ -265,21 +261,20 @@ public class InsurancePricesResponseLevels implements Serializable {
     }
 
     /**
-     * Create an instance of InsurancePricesResponseLevels given an JSON string
+     * Create an instance of InsuranceLevel given an JSON string
      *
      * @param jsonString
      *            JSON string
-     * @return An instance of InsurancePricesResponseLevels
+     * @return An instance of InsuranceLevel
      * @throws IOException
-     *             if the JSON string is invalid with respect to
-     *             InsurancePricesResponseLevels
+     *             if the JSON string is invalid with respect to InsuranceLevel
      */
-    public static InsurancePricesResponseLevels fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, InsurancePricesResponseLevels.class);
+    public static InsuranceLevel fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, InsuranceLevel.class);
     }
 
     /**
-     * Convert an instance of InsurancePricesResponseLevels to an JSON string
+     * Convert an instance of InsuranceLevel to an JSON string
      *
      * @return JSON string
      */
