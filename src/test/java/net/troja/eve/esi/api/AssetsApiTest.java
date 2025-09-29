@@ -14,8 +14,8 @@
 package net.troja.eve.esi.api;
 
 import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.model.CharacterAssetsLocationsPost;
-import net.troja.eve.esi.model.CharacterAssetsNamesPost;
+import net.troja.eve.esi.model.CharacterAssetsLocationsResponse;
+import net.troja.eve.esi.model.AssetsNamesResponse;
 import net.troja.eve.esi.model.CharacterAssetsResponse;
 import net.troja.eve.esi.model.CorporationAssetsResponse;
 
@@ -94,7 +94,7 @@ public class AssetsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterAssetsLocationsPost> response = api.postCharacterAssetsLocations(characterId, AssetsApi.COMPATIBILITY_DATE, itemIds, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterAssetsLocationsResponse> response = api.postCharacterAssetsLocations(characterId, AssetsApi.COMPATIBILITY_DATE, itemIds, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotNull();
         assertThat(response).hasSize(5);
     }
@@ -112,7 +112,7 @@ public class AssetsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterAssetsNamesPost> response = api.postCharacterAssetsNames(characterId, AssetsApi.COMPATIBILITY_DATE, itemIds, acceptLanguage, ifNoneMatch, xTenant);
+        List<AssetsNamesResponse> response = api.postCharacterAssetsNames(characterId, AssetsApi.COMPATIBILITY_DATE, itemIds, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotNull();
         assertThat(response).hasSize(5);
     }
@@ -130,9 +130,9 @@ public class AssetsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterAssetsLocationsPost> response = api.postCorporationAssetsLocations(corporationId, AssetsApi.COMPATIBILITY_DATE, itemIds, acceptLanguage, ifNoneMatch, xTenant);
+        List<CharacterAssetsLocationsResponse> response = api.postCorporationAssetsLocations(corporationId, AssetsApi.COMPATIBILITY_DATE, itemIds, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).hasSize(5);
-        assertThat(response.stream().map(CharacterAssetsLocationsPost::getItemId).collect(Collectors.toSet()))
+        assertThat(response.stream().map(CharacterAssetsLocationsResponse::getItemId).collect(Collectors.toSet()))
                 .containsExactlyElementsOf(itemIds);
     }
 
@@ -149,9 +149,9 @@ public class AssetsApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterAssetsNamesPost> response = api.postCorporationAssetsNames(corporationId, AssetsApi.COMPATIBILITY_DATE, itemIds, acceptLanguage, ifNoneMatch, xTenant);
+        List<AssetsNamesResponse> response = api.postCorporationAssetsNames(corporationId, AssetsApi.COMPATIBILITY_DATE, itemIds, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).hasSize(5);
-        assertThat(response.stream().map(CharacterAssetsNamesPost::getItemId).collect(Collectors.toSet()))
+        assertThat(response.stream().map(AssetsNamesResponse::getItemId).collect(Collectors.toSet()))
                 .containsExactlyElementsOf(itemIds);
     }
 

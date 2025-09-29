@@ -14,7 +14,7 @@
 package net.troja.eve.esi.api;
 
 import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.model.CharacterStandingsResponse;
+import net.troja.eve.esi.model.StandingsResponse;
 import net.troja.eve.esi.model.CorporationAllianceshistoryResponse;
 import net.troja.eve.esi.model.CorporationBlueprintsResponse;
 import net.troja.eve.esi.model.CorporationContainersLogsResponse;
@@ -346,7 +346,7 @@ public class CorporationApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterStandingsResponse> response = api.getCorporationStandings(corporationId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
+        List<StandingsResponse> response = api.getCorporationStandings(corporationId, CorporationApi.COMPATIBILITY_DATE, page, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 

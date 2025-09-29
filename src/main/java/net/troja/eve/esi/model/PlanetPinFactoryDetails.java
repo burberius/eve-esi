@@ -21,7 +21,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import net.troja.eve.esi.model.CorporationsProjectsDetailConfigurationdestroyship;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -48,38 +47,37 @@ import java.util.Set;
 import net.troja.eve.esi.JSON;
 
 /**
- * DestroyShip
+ * PlanetPinFactoryDetails
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
-public class DestroyShip implements Serializable {
+public class PlanetPinFactoryDetails implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_DESTROY_SHIP = "destroy_ship";
-    @SerializedName(SERIALIZED_NAME_DESTROY_SHIP)
-    @javax.annotation.Nullable
-    private CorporationsProjectsDetailConfigurationdestroyship destroyShip;
+    public static final String SERIALIZED_NAME_SCHEMATIC_ID = "schematic_id";
+    @SerializedName(SERIALIZED_NAME_SCHEMATIC_ID)
+    @javax.annotation.Nonnull
+    private Long schematicId;
 
-    public DestroyShip() {
+    public PlanetPinFactoryDetails() {
     }
 
-    public DestroyShip destroyShip(
-            @javax.annotation.Nullable CorporationsProjectsDetailConfigurationdestroyship destroyShip) {
-        this.destroyShip = destroyShip;
+    public PlanetPinFactoryDetails schematicId(@javax.annotation.Nonnull Long schematicId) {
+        this.schematicId = schematicId;
         return this;
     }
 
     /**
-     * Destroy ship
+     * Get schematicId
      * 
-     * @return destroyShip
+     * @return schematicId
      */
-    @javax.annotation.Nullable
-    public CorporationsProjectsDetailConfigurationdestroyship getDestroyShip() {
-        return destroyShip;
+    @javax.annotation.Nonnull
+    public Long getSchematicId() {
+        return schematicId;
     }
 
-    public void setDestroyShip(@javax.annotation.Nullable CorporationsProjectsDetailConfigurationdestroyship destroyShip) {
-        this.destroyShip = destroyShip;
+    public void setSchematicId(@javax.annotation.Nonnull Long schematicId) {
+        this.schematicId = schematicId;
     }
 
     @Override
@@ -90,20 +88,20 @@ public class DestroyShip implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        DestroyShip destroyShip = (DestroyShip) o;
-        return Objects.equals(this.destroyShip, destroyShip.destroyShip);
+        PlanetPinFactoryDetails characterPlanetResponsePinsFactoryDetails = (PlanetPinFactoryDetails) o;
+        return Objects.equals(this.schematicId, characterPlanetResponsePinsFactoryDetails.schematicId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(destroyShip);
+        return Objects.hash(schematicId);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class DestroyShip {\n");
-        sb.append("    destroyShip: ").append(toIndentedString(destroyShip)).append("\n");
+        sb.append("class PlanetPinFactoryDetails {\n");
+        sb.append("    schematicId: ").append(toIndentedString(schematicId)).append("\n");
         sb.append("}");
         return sb.toString();
     }
@@ -124,10 +122,10 @@ public class DestroyShip implements Serializable {
 
     static {
         // a set of all properties/fields (JSON key names)
-        openapiFields = new HashSet<String>(Arrays.asList("destroy_ship"));
+        openapiFields = new HashSet<String>(Arrays.asList("schematic_id"));
 
         // a set of required properties/fields (JSON key names)
-        openapiRequiredFields = new HashSet<String>(0);
+        openapiRequiredFields = new HashSet<String>(Arrays.asList("schematic_id"));
     }
 
     /**
@@ -136,57 +134,69 @@ public class DestroyShip implements Serializable {
      * @param jsonElement
      *            JSON Element
      * @throws IOException
-     *             if the JSON Element is invalid with respect to DestroyShip
+     *             if the JSON Element is invalid with respect to
+     *             PlanetPinFactoryDetails
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         if (jsonElement == null) {
-            if (!DestroyShip.openapiRequiredFields.isEmpty()) { // has required
-                                                                // fields but
-                                                                // JSON element
-                                                                // is null
+            if (!PlanetPinFactoryDetails.openapiRequiredFields.isEmpty()) { // has
+                                                                            // required
+                                                                            // fields
+                                                                            // but
+                                                                            // JSON
+                                                                            // element
+                                                                            // is
+                                                                            // null
                 throw new IllegalArgumentException(String.format(
-                        "The required field(s) %s in DestroyShip is not found in the empty JSON string",
-                        DestroyShip.openapiRequiredFields.toString()));
+                        "The required field(s) %s in PlanetPinFactoryDetails is not found in the empty JSON string",
+                        PlanetPinFactoryDetails.openapiRequiredFields.toString()));
             }
         }
 
         Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
         // check to see if the JSON string contains additional fields
         for (Map.Entry<String, JsonElement> entry : entries) {
-            if (!DestroyShip.openapiFields.contains(entry.getKey())) {
+            if (!PlanetPinFactoryDetails.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `PlanetPinFactoryDetails` properties. JSON: %s",
+                                entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the
+        // JSON string
+        for (String requiredField : PlanetPinFactoryDetails.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
                 throw new IllegalArgumentException(String.format(
-                        "The field `%s` in the JSON string is not defined in the `DestroyShip` properties. JSON: %s",
-                        entry.getKey(), jsonElement.toString()));
+                        "The required field `%s` is not found in the JSON string: %s", requiredField,
+                        jsonElement.toString()));
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-        // validate the optional field `destroy_ship`
-        if (jsonObj.get("destroy_ship") != null && !jsonObj.get("destroy_ship").isJsonNull()) {
-            CorporationsProjectsDetailConfigurationdestroyship.validateJsonElement(jsonObj.get("destroy_ship"));
-        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!DestroyShip.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'DestroyShip' and its
-                             // subtypes
+            if (!PlanetPinFactoryDetails.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes
+                             // 'PlanetPinFactoryDetails' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<DestroyShip> thisAdapter = gson
-                    .getDelegateAdapter(this, TypeToken.get(DestroyShip.class));
+            final TypeAdapter<PlanetPinFactoryDetails> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(PlanetPinFactoryDetails.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<DestroyShip>() {
+            return (TypeAdapter<T>) new TypeAdapter<PlanetPinFactoryDetails>() {
                 @Override
-                public void write(JsonWriter out, DestroyShip value) throws IOException {
+                public void write(JsonWriter out, PlanetPinFactoryDetails value) throws IOException {
                     JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
                     elementAdapter.write(out, obj);
                 }
 
                 @Override
-                public DestroyShip read(JsonReader in) throws IOException {
+                public PlanetPinFactoryDetails read(JsonReader in) throws IOException {
                     JsonElement jsonElement = elementAdapter.read(in);
                     validateJsonElement(jsonElement);
                     return thisAdapter.fromJsonTree(jsonElement);
@@ -197,20 +207,21 @@ public class DestroyShip implements Serializable {
     }
 
     /**
-     * Create an instance of DestroyShip given an JSON string
+     * Create an instance of PlanetPinFactoryDetails given an JSON string
      *
      * @param jsonString
      *            JSON string
-     * @return An instance of DestroyShip
+     * @return An instance of PlanetPinFactoryDetails
      * @throws IOException
-     *             if the JSON string is invalid with respect to DestroyShip
+     *             if the JSON string is invalid with respect to
+     *             PlanetPinFactoryDetails
      */
-    public static DestroyShip fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, DestroyShip.class);
+    public static PlanetPinFactoryDetails fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PlanetPinFactoryDetails.class);
     }
 
     /**
-     * Convert an instance of DestroyShip to an JSON string
+     * Convert an instance of PlanetPinFactoryDetails to an JSON string
      *
      * @return JSON string
      */

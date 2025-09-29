@@ -10,7 +10,8 @@ rm -f esi.json
 #
 # esi _latest
 #
-wget -O esi.json https://esi.evetech.net/meta/openapi.json?compatibility_date=$(date +%F) || exit 1
+COMP_DATE=$(curl -s --request GET --url https://esi.evetech.net/meta/compatibility-dates | jq -r ".compatibility_dates[0]")
+wget -O esi.json https://esi.evetech.net/meta/openapi.json?compatibility_date=$COMP_DATE || exit 1
 ESIVERSION=$(jq -r ".components.parameters.CompatibilityDate.schema.enum | first" esi.json)
 #
 # Get swagger code generator

@@ -426,12 +426,12 @@ public class UniverseApiTest extends GeneralApiTest {
      */
     @Test
     @Disabled("Can't be tested")
-    public void getUniverseStructureTest() throws ApiException {
+    public void getStructureTest() throws ApiException {
         Long structureId = null;
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        UniverseStructureResponse response = api.getUniverseStructure(structureId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        UniverseStructureResponse response = api.getStructure(structureId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 

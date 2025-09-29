@@ -8,7 +8,7 @@ info:
     url: https://developers.eveonline.com/license-agreement
   termsOfService: https://support.eveonline.com/hc/en-us/articles/8414770561948-EVE-Online-Terms-of-Service
   title: EVE Stable Infrastructure (ESI) - tranquility
-  version: 2025-08-26
+  version: 2025-09-26
 servers:
 - url: https://esi.evetech.net
 tags:
@@ -8637,8 +8637,7 @@ paths:
       summary: Get changelog
       tags:
       - Meta
-      x-cache-age: 0
-      x-compatibility-date: 2020-01-01
+      x-compatibility-date: 2025-09-26
       x-accepts:
       - application/json
   /meta/compatibility-dates:
@@ -8680,7 +8679,6 @@ paths:
       summary: Get compatibility dates
       tags:
       - Meta
-      x-cache-age: 0
       x-compatibility-date: 2020-01-01
       x-accepts:
       - application/json
@@ -10771,7 +10769,7 @@ components:
       required: true
       schema:
         enum:
-        - 2025-08-26
+        - 2025-09-26
         format: date
         type: string
       style: simple
@@ -13247,7 +13245,6 @@ components:
         type: integer
       type: array
     Error:
-      additionalProperties: false
       example:
         details:
         - location: location
@@ -13270,7 +13267,6 @@ components:
       required:
       - error
     ErrorDetail:
-      additionalProperties: false
       example:
         location: location
         message: message
@@ -13677,14 +13673,14 @@ components:
           key:
           - compatibility_date: 2000-01-23
             path: path
-            is_breaking: true
             method: GET
             description: description
+            type: breaking
           - compatibility_date: 2000-01-23
             path: path
-            is_breaking: true
             method: GET
             description: description
+            type: breaking
       properties:
         changelog:
           additionalProperties:
@@ -13698,9 +13694,9 @@ components:
       example:
         compatibility_date: 2000-01-23
         path: path
-        is_breaking: true
         method: GET
         description: description
+        type: breaking
       properties:
         compatibility_date:
           format: date
@@ -13709,9 +13705,6 @@ components:
         description:
           description: Description
           type: string
-        is_breaking:
-          description: Whether this is a breaking change
-          type: boolean
         method:
           description: HTTP method of the route
           enum:
@@ -13720,15 +13713,33 @@ components:
           - PUT
           - DELETE
           type: string
+          x-enum-descriptions:
+          - ""
+          - ""
+          - ""
+          - ""
         path:
           description: Path of the route
           type: string
+        type:
+          description: Type of the change
+          enum:
+          - breaking
+          - changed
+          - new
+          - removed
+          type: string
+          x-enum-descriptions:
+          - Breaking change
+          - Non-breaking change
+          - New route
+          - Removed route
       required:
       - compatibility_date
       - description
-      - is_breaking
       - method
       - path
+      - type
     MetaCompatibilityDates:
       example:
         compatibility_dates:

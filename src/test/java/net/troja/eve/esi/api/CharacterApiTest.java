@@ -25,7 +25,7 @@ import net.troja.eve.esi.model.CharacterPortraitResponse;
 import net.troja.eve.esi.model.CharacterResearchAgentsResponse;
 import net.troja.eve.esi.model.CharacterResponse;
 import net.troja.eve.esi.model.CharacterRolesResponse;
-import net.troja.eve.esi.model.CharacterStandingsResponse;
+import net.troja.eve.esi.model.StandingsResponse;
 import net.troja.eve.esi.model.CharacterTitlesResponse;
 
 import java.util.HashSet;
@@ -228,7 +228,7 @@ public class CharacterApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<CharacterStandingsResponse> response = api.getCharacterStandings(characterId, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        List<StandingsResponse> response = api.getCharacterStandings(characterId, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response).isNotNull().isNotEmpty();
     }
 
