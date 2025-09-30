@@ -6,7 +6,7 @@ for OLD in $(find . -name \*Inner\*.java); do
 done
 
 mv src/main/java/net/troja/eve/esi/model/CharacterContractItemsResponse.java src/main/java/net/troja/eve/esi/model/ContractItemsResponse.java
-mv src/main/java/net/troja/eve/esi/model/CharacterSkillsResponseSkills.java src/main/java/net/troja/eve/esi/model/Skills.java
+mv src/main/java/net/troja/eve/esi/model/CharacterSkillsResponseSkills.java src/main/java/net/troja/eve/esi/model/Skill.java
 mv src/main/java/net/troja/eve/esi/model/CharacterPlanetResponsePins.java src/main/java/net/troja/eve/esi/model/PlanetPin.java;
 mv src/main/java/net/troja/eve/esi/model/CharacterPlanetResponsePinsContents.java src/main/java/net/troja/eve/esi/model/PinContent.java
 mv src/main/java/net/troja/eve/esi/model/CharacterPlanetResponsePinsExtractorDetails.java src/main/java/net/troja/eve/esi/model/PinExtractorDetails.java
@@ -34,7 +34,7 @@ mv src/main/java/net/troja/eve/esi/model/CorporationDivisionsResponseHangar.java
 mv src/main/java/net/troja/eve/esi/model/CorporationDivisionsResponseWallet.java src/main/java/net/troja/eve/esi/model/DivisionsWallet.java
 mv src/main/java/net/troja/eve/esi/model/CorporationStructuresResponseServices.java src/main/java/net/troja/eve/esi/model/StructuresService.java
 mv src/main/java/net/troja/eve/esi/model/DogmaEffectResponseModifiers.java src/main/java/net/troja/eve/esi/model/DogmaEffectModifier.java
-mv src/main/java/net/troja/eve/esi/model/LoyaltyStoreOffersResponseRequiredItems.java src/main/java/net/troja/eve/esi/model/LoyaltyStoreRequiredItems.java
+mv src/main/java/net/troja/eve/esi/model/LoyaltyStoreOffersResponseRequiredItems.java src/main/java/net/troja/eve/esi/model/LoyaltyStoreRequiredItem.java
 mv src/main/java/net/troja/eve/esi/model/MailLabelsResponseLabels.java src/main/java/net/troja/eve/esi/model/MailLabel.java
 mv src/main/java/net/troja/eve/esi/model/InsurancePricesResponseLevels.java src/main/java/net/troja/eve/esi/model/InsuranceLevel.java
 mv src/main/java/net/troja/eve/esi/model/KillmailByHashResponseAttackers.java src/main/java/net/troja/eve/esi/model/Attacker.java
@@ -42,12 +42,19 @@ mv src/main/java/net/troja/eve/esi/model/KillmailByHashResponseVictim.java src/m
 mv src/main/java/net/troja/eve/esi/model/KillmailByHashResponseVictimItems.java src/main/java/net/troja/eve/esi/model/VictimItem.java
 mv src/main/java/net/troja/eve/esi/model/KillmailByHashResponseVictimItemsItems.java src/main/java/net/troja/eve/esi/model/ItemContained.java
 mv src/main/java/net/troja/eve/esi/model/KillmailByHashResponseVictimPosition.java src/main/java/net/troja/eve/esi/model/VictimPosition.java
+mv src/main/java/net/troja/eve/esi/model/UniverseStructureResponse.java src/main/java/net/troja/eve/esi/model/StructureResponse.java
+mv src/main/java/net/troja/eve/esi/model/UniverseStructureResponsePosition.java src/main/java/net/troja/eve/esi/model/StructurePosition.java
+mv src/main/java/net/troja/eve/esi/model/SystemResponsePlanets.java src/main/java/net/troja/eve/esi/model/SystemPlanet.java
+
+for FILE in $(ls -1 src/main/java/net/troja/eve/esi/model/UniverseIdsPost*); do
+  mv $FILE $(echo $FILE | sed -e 's#Post##')
+done
 
 for DIR in `for F in $(find src -name \*.java); do dirname $F; done | sort -u`; do
   sed -i \
     -e 's#Inner##g' \
     -e 's#CharacterContractItemsResponse#ContractItemsResponse#g' \
-    -e 's#CharacterSkillsResponseSkills#Skills#g' \
+    -e 's#CharacterSkillsResponseSkills#Skill#g' \
     -e 's#CharacterPlanetResponsePinsContents#PinContent#g' \
     -e 's#CharacterPlanetResponsePinsExtractorDetailsHeads#ExtractorDetailsHead#g' \
     -e 's#CharacterPlanetResponsePinsExtractorDetails#PinExtractorDetails#g' \
@@ -73,13 +80,17 @@ for DIR in `for F in $(find src -name \*.java); do dirname $F; done | sort -u`; 
     -e 's#CorporationFactionWarfareStatsResponseVictoryPoints#CorporationFactionWarfareVictoryPoints#g' \
     -e 's#CorporationStructuresResponseServices#StructuresService#g' \
     -e 's#DogmaEffectResponseModifiers#DogmaEffectModifier#g' \
-    -e 's#LoyaltyStoreOffersResponseRequiredItems#LoyaltyStoreRequiredItems#g' \
+    -e 's#LoyaltyStoreOffersResponseRequiredItems#LoyaltyStoreRequiredItem#g' \
     -e 's#MailLabelsResponseLabels#MailLabel#g' \
     -e 's#InsurancePricesResponseLevels#InsuranceLevel#g' \
     -e 's#KillmailByHashResponseAttackers#Attacker#g' \
     -e 's#KillmailByHashResponseVictimItemsItems#ItemContained#g' \
     -e 's#KillmailByHashResponseVictimItems#VictimItem#g' \
     -e 's#KillmailByHashResponseVictim#Victim#g' \
+    -e 's#UniverseStructureResponsePosition#StructurePosition#g' \
+    -e 's#UniverseStructureResponse#StructureResponse#g' \
+    -e 's#SystemResponsePlanets#SystemPlanet#g' \
+    -e 's#UniverseIdsPost#UniverseIds#g' \
     -e 's#getUniverseStructure#getStructure#g' \
       $DIR/*.java
 

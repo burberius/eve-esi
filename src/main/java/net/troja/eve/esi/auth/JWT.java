@@ -73,7 +73,7 @@ public class JWT {
         private String owner;
         private String exp;
         private String iss;
-        private Integer characterID;
+        private Long characterID;
 
         public Set<String> getScopes() {
             return scopes;
@@ -100,7 +100,7 @@ public class JWT {
 
         }
 
-        public Integer getCharacterID() {
+        public Long getCharacterID() {
             return characterID;
         }
 
@@ -147,7 +147,7 @@ public class JWT {
             payload.kid = jsonObject.get("kid").getAsString();
             payload.sub = jsonObject.get("sub").getAsString();
             try {
-                payload.characterID = Integer.valueOf(payload.sub.substring("CHARACTER:EVE:".length()));
+                payload.characterID = Long.valueOf(payload.sub.substring("CHARACTER:EVE:".length()));
             } catch (NumberFormatException ex) {
                 payload.characterID = null;
             }

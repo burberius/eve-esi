@@ -8,7 +8,7 @@ info:
     url: https://developers.eveonline.com/license-agreement
   termsOfService: https://support.eveonline.com/hc/en-us/articles/8414770561948-EVE-Online-Terms-of-Service
   title: EVE Stable Infrastructure (ESI) - tranquility
-  version: 2025-09-26
+  version: 2025-09-30
 servers:
 - url: https://esi.evetech.net
 tags:
@@ -8682,82 +8682,43 @@ paths:
       x-compatibility-date: 2020-01-01
       x-accepts:
       - application/json
-  /route/{origin}/{destination}:
-    get:
-      description: Get the systems between origin and destination
-      operationId: GetRouteOriginDestination
+  /route/{origin_system_id}/{destination_system_id}:
+    post:
+      description: Calculate the systems between the given origin and destination.
+      operationId: PostRoute
       parameters:
-      - explode: true
-        in: query
-        name: avoid
-        required: false
-        schema:
-          description: avoid solar system ID(s)
-          items:
-            format: int64
-            type: integer
-          maxItems: 100
-          type: array
-          uniqueItems: true
-        style: form
-      - explode: true
-        in: query
-        name: connections
-        required: false
-        schema:
-          description: connected solar system pairs
-          items:
-            items:
-              format: int64
-              type: integer
-            maxItems: 2
-            minItems: 2
-            type: array
-          maxItems: 100
-          type: array
-          uniqueItems: true
-        style: form
-      - explode: false
+      - description: Origin system
+        explode: false
         in: path
-        name: destination
+        name: origin_system_id
         required: true
         schema:
-          description: destination solar system ID
-          format: int64
-          type: integer
+          $ref: "#/components/schemas/SolarSystemID"
         style: simple
-      - explode: true
-        in: query
-        name: flag
-        required: false
-        schema:
-          default: shortest
-          description: route security preference
-          enum:
-          - shortest
-          - secure
-          - insecure
-          type: string
-        style: form
-      - explode: false
+      - description: Destination system
+        explode: false
         in: path
-        name: origin
+        name: destination_system_id
         required: true
         schema:
-          description: origin solar system ID
-          format: int64
-          type: integer
+          $ref: "#/components/schemas/SolarSystemID"
         style: simple
       - $ref: "#/components/parameters/AcceptLanguage"
       - $ref: "#/components/parameters/IfNoneMatch"
       - $ref: "#/components/parameters/CompatibilityDate"
       - $ref: "#/components/parameters/Tenant"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RouteRequestBody"
+        required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/RouteOriginDestinationResponse"
+                $ref: "#/components/schemas/Route"
           description: OK
           headers:
             Cache-Control:
@@ -8772,11 +8733,18 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
           description: Error
-      summary: Get route
+          headers:
+            Cache-Control:
+              $ref: "#/components/headers/CacheControl"
+            ETag:
+              $ref: "#/components/headers/ETag"
+            Last-Modified:
+              $ref: "#/components/headers/LastModified"
+      summary: Get route between two systems
       tags:
       - Routes
-      x-cache-age: 86400
-      x-compatibility-date: 2020-01-01
+      x-compatibility-date: 2025-09-30
+      x-content-type: application/json
       x-accepts:
       - application/json
   /sovereignty/campaigns:
@@ -10769,7 +10737,7 @@ components:
       required: true
       schema:
         enum:
-        - 2025-09-26
+        - 2025-09-30
         format: date
         type: string
       style: simple
@@ -12443,7 +12411,6 @@ components:
           description: List of contributors
           items:
             $ref: "#/components/schemas/CorporationsProjectsContributorsContributor"
-          nullable: true
           type: array
         cursor:
           $ref: "#/components/schemas/Cursor"
@@ -13043,7 +13010,6 @@ components:
           description: List of projects
           items:
             $ref: "#/components/schemas/CorporationsProjectsDetailProject"
-          nullable: true
           type: array
       required:
       - projects
@@ -13259,7 +13225,6 @@ components:
           description: List of individual error details.
           items:
             $ref: "#/components/schemas/ErrorDetail"
-          nullable: true
           type: array
         error:
           description: Error message.
@@ -13686,7 +13651,6 @@ components:
           additionalProperties:
             items:
               $ref: "#/components/schemas/MetaChangelogEntry"
-            nullable: true
           description: "Per date, list changes for that date"
       required:
       - changelog
@@ -13757,13 +13721,90 @@ components:
       format: int64
       type: integer
       x-common-model: "true"
-    RouteOriginDestinationResponse:
-      description: Solar systems in route
-      items:
-        description: Solar system in route
-        format: int64
-        type: integer
-      type: array
+    Route:
+      example:
+        route:
+        - null
+        - null
+      properties:
+        route:
+          description: The route between the origin and destination systems
+          items:
+            $ref: "#/components/schemas/SolarSystemID"
+          type: array
+      required:
+      - route
+    RouteConnection:
+      example:
+        from: 0
+        to: 6
+      properties:
+        from:
+          format: int64
+          type: integer
+          x-common-model: "true"
+        to:
+          format: int64
+          type: integer
+          x-common-model: "true"
+      required:
+      - from
+      - to
+    RouteRequestBody:
+      example:
+        avoid_systems:
+        - null
+        - null
+        - null
+        - null
+        - null
+        preference: Shorter
+        security_penalty: 14
+        connections:
+        - from: 0
+          to: 6
+        - from: 0
+          to: 6
+        - from: 0
+          to: 6
+        - from: 0
+          to: 6
+        - from: 0
+          to: 6
+      properties:
+        avoid_systems:
+          description: Systems to avoid
+          items:
+            $ref: "#/components/schemas/SolarSystemID"
+          maxItems: 1000
+          type: array
+          uniqueItems: true
+        connections:
+          description: Additional one-way connections (like Jump Bridges) between
+            systems
+          items:
+            $ref: "#/components/schemas/RouteConnection"
+          maxItems: 1000
+          type: array
+        preference:
+          default: Shorter
+          description: Preference for the route
+          enum:
+          - Shorter
+          - Safer
+          - LessSecure
+          type: string
+          x-enum-descriptions:
+          - Shorter routes
+          - Safer routes
+          - Less secure routes
+        security_penalty:
+          default: 50
+          description: Strictness of the path preference
+          format: int64
+          maximum: 100
+          minimum: 0
+          type: integer
     ShipTreeGroupID:
       description: Ship tree group identifier.
       format: int64

@@ -15,8 +15,13 @@ package net.troja.eve.esi.api;
 
 import net.troja.eve.esi.ApiException;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 
+import net.troja.eve.esi.model.Route;
+import net.troja.eve.esi.model.RouteRequestBody;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -36,24 +41,21 @@ public class RoutesApiTest extends GeneralApiTest {
     public void setUp() {
         api.setApiClient(apiClient);
     }
-    
+
     /**
-     * Get route
+     * Get route between two systems
      *
-     * Get the systems between origin and destination
+     * Calculate the systems between the given origin and destination.
      *
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getRouteOriginDestinationTest() throws ApiException {
-        Set<Long> avoid = null;
-        Set<List<Long>> connections = null;
-        String flag = null;
+    public void postRouteTest() throws ApiException {
+        RouteRequestBody routeRequestBody = new RouteRequestBody();
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        List<Long> response = api.getRouteOriginDestination(SOLARSYSTEM_ID_ALIKARA, SOLARSYSTEM_ID_JITA, CorporationApi.COMPATIBILITY_DATE, avoid, connections, flag, acceptLanguage, ifNoneMatch, xTenant);
-        assertThat(response).hasSize(3);
+        Route response = api.postRoute(SOLARSYSTEM_ID_ALIKARA, SOLARSYSTEM_ID_JITA, RoutesApi.COMPATIBILITY_DATE, routeRequestBody, acceptLanguage, ifNoneMatch, xTenant);
+        assertThat(response.getRoute()).hasSize(3);
     }
-
 }

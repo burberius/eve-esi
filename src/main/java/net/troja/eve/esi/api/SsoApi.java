@@ -50,7 +50,7 @@ public class SsoApi {
         return evesso.getJWT().getPayload().getName();
     }
 
-    public Integer getCharacterId() {
+    public Long getCharacterId() {
         OAuth evesso = (OAuth) apiClient.getAuthentication(EVESSO);
         return evesso.getJWT().getPayload().getCharacterID();
     }

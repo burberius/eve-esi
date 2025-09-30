@@ -313,6 +313,9 @@ src/main/java/net/troja/eve/esi/model/RegionId.java
 src/main/java/net/troja/eve/esi/model/RegionResponse.java
 src/main/java/net/troja/eve/esi/model/RemoteBoostShield.java
 src/main/java/net/troja/eve/esi/model/RemoteRepairArmor.java
+src/main/java/net/troja/eve/esi/model/Route.java
+src/main/java/net/troja/eve/esi/model/RouteConnection.java
+src/main/java/net/troja/eve/esi/model/RouteRequestBody.java
 src/main/java/net/troja/eve/esi/model/SalvageWreck.java
 src/main/java/net/troja/eve/esi/model/ScanSignature.java
 src/main/java/net/troja/eve/esi/model/SchematicResponse.java
@@ -647,6 +650,9 @@ src/test/java/net/troja/eve/esi/model/RegionIdTest.java
 src/test/java/net/troja/eve/esi/model/RegionResponseTest.java
 src/test/java/net/troja/eve/esi/model/RemoteBoostShieldTest.java
 src/test/java/net/troja/eve/esi/model/RemoteRepairArmorTest.java
+src/test/java/net/troja/eve/esi/model/RouteConnectionTest.java
+src/test/java/net/troja/eve/esi/model/RouteRequestBodyTest.java
+src/test/java/net/troja/eve/esi/model/RouteTest.java
 src/test/java/net/troja/eve/esi/model/SalvageWreckTest.java
 src/test/java/net/troja/eve/esi/model/ScanSignatureTest.java
 src/test/java/net/troja/eve/esi/model/SchematicResponseTest.java

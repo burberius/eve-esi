@@ -34,8 +34,8 @@ import net.troja.eve.esi.model.SystemJumpsResponse;
 import net.troja.eve.esi.model.SystemKillsResponse;
 import net.troja.eve.esi.model.SystemResponse;
 import net.troja.eve.esi.model.TypeResponse;
-import net.troja.eve.esi.model.UniverseIdsPost;
-import net.troja.eve.esi.model.UniverseStructureResponse;
+import net.troja.eve.esi.model.UniverseIds;
+import net.troja.eve.esi.model.StructureResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -431,7 +431,7 @@ public class UniverseApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        UniverseStructureResponse response = api.getStructure(structureId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
+        StructureResponse response = api.getStructure(structureId, CorporationApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant);
         // TODO: test validations
     }
 
@@ -557,7 +557,7 @@ public class UniverseApiTest extends GeneralApiTest {
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
-        UniverseIdsPost response = api.postUniverseIds(CorporationApi.COMPATIBILITY_DATE, names, acceptLanguage, ifNoneMatch, xTenant);
+        UniverseIds response = api.postUniverseIds(CorporationApi.COMPATIBILITY_DATE, names, acceptLanguage, ifNoneMatch, xTenant);
         assertThat(response.getAgents()).hasSizeGreaterThan(0);
         assertThat(response.getAlliances()).hasSizeGreaterThan(0);
         assertThat(response.getCharacters()).hasSizeGreaterThan(0);

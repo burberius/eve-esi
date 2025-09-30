@@ -73,11 +73,11 @@ public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{{#vendorExtens
   {{>nullable_var_annotations}}
   {{#isContainer}}
   {{#isEnum}}{{#isDiscriminator}}protected{{/isDiscriminator}}{{^isDiscriminator}}private{{/isDiscriminator}} {{#uniqueItems}}Set{{/uniqueItems}}{{^uniqueItems}}List{{/uniqueItems}}<String> {{name}}{{#defaultValue}} = {{{.}}}{{/defaultValue}};{{/isEnum}}
-  {{#isDiscriminator}}protected{{/isDiscriminator}}{{^isDiscriminator}}private{{/isDiscriminator}} {{{datatypeWithEnum}}} {{name}}{{#isEnum}}Enum{{/isEnum}}{{#defaultValue}} = {{{.}}}{{/defaultValue}};
+  {{#isDiscriminator}}protected{{/isDiscriminator}}{{^isDiscriminator}}private{{/isDiscriminator}} {{#isEnum}}transient {{/isEnum}}{{{datatypeWithEnum}}} {{name}}{{#isEnum}}Enum{{/isEnum}}{{#defaultValue}} = {{{.}}}{{/defaultValue}};
   {{/isContainer}}
   {{^isContainer}}
   {{#isEnum}}{{#isDiscriminator}}protected{{/isDiscriminator}}{{^isDiscriminator}}private{{/isDiscriminator}} String {{name}};{{/isEnum}}
-  {{#isDiscriminator}}protected{{/isDiscriminator}}{{^isDiscriminator}}private{{/isDiscriminator}} {{{datatypeWithEnum}}} {{name}}{{#isEnum}}Enum{{/isEnum}}{{#defaultValue}} = {{{.}}}{{/defaultValue}};
+  {{#isDiscriminator}}protected{{/isDiscriminator}}{{^isDiscriminator}}private{{/isDiscriminator}} {{#isEnum}}transient {{/isEnum}}{{{datatypeWithEnum}}} {{name}}{{#isEnum}}Enum{{/isEnum}}{{#defaultValue}} = {{{.}}}{{/defaultValue}};
   {{/isContainer}}
 
   {{/vars}}
