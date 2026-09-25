@@ -76,7 +76,7 @@ public class SsoApiTest extends GeneralApiTest {
         final ApiClient client = new ApiClientBuilder().clientID(clientId).accessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2").build();
         AssetsApi api = new AssetsApi(client);
         try {
-            api.getCharacterAssets(characterId, AssetsApi.COMPATIBILITY_DATE, null, null, null, null);
+            api.getCharacterAssets(characterId, AssetsApi.COMPATIBILITY_DATE, null, null, null, null, null);
             fail("Must fail with ApiException");
         } catch (ApiException ex) {
             assertThat(ex).isNotNull();
@@ -142,7 +142,7 @@ public class SsoApiTest extends GeneralApiTest {
         final ApiClient client = new ApiClientBuilder().clientID(clientId).accessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2").build();
         CharacterApi api = new CharacterApi(client);
         try {
-            api.getCharacterBlueprints(characterId, CharacterApi.COMPATIBILITY_DATE, null, null, null, null);
+            api.getCharacterBlueprints(characterId, CharacterApi.COMPATIBILITY_DATE, null, null, null, null, null);
             fail("Must fail with ApiException");
         } catch (ApiException ex) {
             assertThat(ex).isNotNull();
@@ -225,7 +225,7 @@ public class SsoApiTest extends GeneralApiTest {
         @Override
         public Void call() throws Exception {
             Integer page = null;
-            final List<CharacterAssetsResponse> response = api.getCharacterAssets(characterId, AssetsApi.COMPATIBILITY_DATE, page, null, null, null);
+            final List<CharacterAssetsResponse> response = api.getCharacterAssets(characterId, AssetsApi.COMPATIBILITY_DATE, page, null, null, null, null);
             assertThat(response).isNotNull();
             assertThat(response.size()).isGreaterThan(0);
             return null;

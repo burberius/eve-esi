@@ -82,7 +82,7 @@ public class GeneralApiTest {
         ids.add(characterId);
         List<CharacterAffiliationResponse> affiliation =
                 new CharacterApi(apiClient).postCharactersAffiliation(CharacterApi.COMPATIBILITY_DATE, ids,
-                        null, null, null);
+                        null, null, null, null);
         corporationId = affiliation.get(0).getCorporationId();
     }
 
