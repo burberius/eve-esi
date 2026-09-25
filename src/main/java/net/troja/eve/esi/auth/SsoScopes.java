@@ -7,6 +7,8 @@ import java.util.Set;
 
 public class SsoScopes {
     public static final String PUBLIC_DATA = "publicData";
+    public static final String ESI_ACCESS_READ_LISTS_V1 = "esi-access.read_lists.v1";
+    public static final String ESI_ACTIVITIES_READ_CHARACTER_V1 = "esi-activities.read_character.v1";
     public static final String ESI_ALLIANCES_READ_CONTACTS_V1 = "esi-alliances.read_contacts.v1";
     public static final String ESI_ASSETS_READ_ASSETS_V1 = "esi-assets.read_assets.v1";
     public static final String ESI_ASSETS_READ_CORPORATION_ASSETS_V1 = "esi-assets.read_corporation_assets.v1";
@@ -17,6 +19,7 @@ public class SsoScopes {
     public static final String ESI_CHARACTERS_READ_CONTACTS_V1 = "esi-characters.read_contacts.v1";
     public static final String ESI_CHARACTERS_READ_CORPORATION_ROLES_V1 = "esi-characters.read_corporation_roles.v1";
     public static final String ESI_CHARACTERS_READ_FATIGUE_V1 = "esi-characters.read_fatigue.v1";
+    public static final String ESI_CHARACTERS_READ_FREELANCE_JOBS_V1 = "esi-characters.read_freelance_jobs.v1";
     public static final String ESI_CHARACTERS_READ_FW_STATS_V1 = "esi-characters.read_fw_stats.v1";
     public static final String ESI_CHARACTERS_READ_LOYALTY_V1 = "esi-characters.read_loyalty.v1";
     public static final String ESI_CHARACTERS_READ_MEDALS_V1 = "esi-characters.read_medals.v1";
@@ -27,13 +30,16 @@ public class SsoScopes {
     public static final String ESI_CLONES_READ_CLONES_V1 = "esi-clones.read_clones.v1";
     public static final String ESI_CLONES_READ_IMPLANTS_V1 = "esi-clones.read_implants.v1";
     public static final String ESI_CONTRACTS_READ_CHARACTER_CONTRACTS_V1 = "esi-contracts.read_character_contracts.v1";
-    public static final String ESI_CONTRACTS_READ_CORPORATION_CONTRACTS_V1 = "esi-contracts.read_corporation_contracts.v1";
+    public static final String ESI_CONTRACTS_READ_CORPORATION_CONTRACTS_V1 =
+            "esi-contracts.read_corporation_contracts.v1";
     public static final String ESI_CORPORATIONS_READ_BLUEPRINTS_V1 = "esi-corporations.read_blueprints.v1";
     public static final String ESI_CORPORATIONS_READ_CONTACTS_V1 = "esi-corporations.read_contacts.v1";
     public static final String ESI_CORPORATIONS_READ_CONTAINER_LOGS_V1 = "esi-corporations.read_container_logs.v1";
-    public static final String ESI_CORPORATIONS_READ_CORPORATION_MEMBERSHIP_V1 = "esi-corporations.read_corporation_membership.v1";
+    public static final String ESI_CORPORATIONS_READ_CORPORATION_MEMBERSHIP_V1 =
+            "esi-corporations.read_corporation_membership.v1";
     public static final String ESI_CORPORATIONS_READ_DIVISIONS_V1 = "esi-corporations.read_divisions.v1";
     public static final String ESI_CORPORATIONS_READ_FACILITIES_V1 = "esi-corporations.read_facilities.v1";
+    public static final String ESI_CORPORATIONS_READ_FREELANCE_JOBS_V1 = "esi-corporations.read_freelance_jobs.v1";
     public static final String ESI_CORPORATIONS_READ_FW_STATS_V1 = "esi-corporations.read_fw_stats.v1";
     public static final String ESI_CORPORATIONS_READ_MEDALS_V1 = "esi-corporations.read_medals.v1";
     public static final String ESI_CORPORATIONS_READ_PROJECTS_V1 = "esi-corporations.read_projects.v1";
@@ -50,7 +56,8 @@ public class SsoScopes {
     public static final String ESI_INDUSTRY_READ_CHARACTER_MINING_V1 = "esi-industry.read_character_mining.v1";
     public static final String ESI_INDUSTRY_READ_CORPORATION_JOBS_V1 = "esi-industry.read_corporation_jobs.v1";
     public static final String ESI_INDUSTRY_READ_CORPORATION_MINING_V1 = "esi-industry.read_corporation_mining.v1";
-    public static final String ESI_KILLMAILS_READ_CORPORATION_KILLMAILS_V1 = "esi-killmails.read_corporation_killmails.v1";
+    public static final String ESI_KILLMAILS_READ_CORPORATION_KILLMAILS_V1 =
+            "esi-killmails.read_corporation_killmails.v1";
     public static final String ESI_KILLMAILS_READ_KILLMAILS_V1 = "esi-killmails.read_killmails.v1";
     public static final String ESI_LOCATION_READ_LOCATION_V1 = "esi-location.read_location.v1";
     public static final String ESI_LOCATION_READ_ONLINE_V1 = "esi-location.read_online.v1";
@@ -66,38 +73,48 @@ public class SsoScopes {
     public static final String ESI_SEARCH_SEARCH_STRUCTURES_V1 = "esi-search.search_structures.v1";
     public static final String ESI_SKILLS_READ_SKILLQUEUE_V1 = "esi-skills.read_skillqueue.v1";
     public static final String ESI_SKILLS_READ_SKILLS_V1 = "esi-skills.read_skills.v1";
+    public static final String ESI_STRUCTURES_READ_CHARACTER_V1 = "esi-structures.read_character.v1";
+    public static final String ESI_STRUCTURES_READ_CORPORATION_V1 = "esi-structures.read_corporation.v1";
     public static final String ESI_UI_OPEN_WINDOW_V1 = "esi-ui.open_window.v1";
     public static final String ESI_UI_WRITE_WAYPOINT_V1 = "esi-ui.write_waypoint.v1";
     public static final String ESI_UNIVERSE_READ_STRUCTURES_V1 = "esi-universe.read_structures.v1";
     public static final String ESI_WALLET_READ_CHARACTER_WALLET_V1 = "esi-wallet.read_character_wallet.v1";
     public static final String ESI_WALLET_READ_CORPORATION_WALLETS_V1 = "esi-wallet.read_corporation_wallets.v1";
+    public static final String ESI_ACTIVITY_CHAR_READ = "esi.activity.char:read";
+    public static final String ESI_COSMETIC_CHAR_READ = "esi.cosmetic.char:read";
 
-    private static final String[] ALL_VALUES = { ESI_ALLIANCES_READ_CONTACTS_V1, ESI_ASSETS_READ_ASSETS_V1,
-            ESI_ASSETS_READ_CORPORATION_ASSETS_V1, ESI_CALENDAR_READ_CALENDAR_EVENTS_V1,
-            ESI_CALENDAR_RESPOND_CALENDAR_EVENTS_V1, ESI_CHARACTERS_READ_AGENTS_RESEARCH_V1,
-            ESI_CHARACTERS_READ_BLUEPRINTS_V1, ESI_CHARACTERS_READ_CONTACTS_V1,
-            ESI_CHARACTERS_READ_CORPORATION_ROLES_V1, ESI_CHARACTERS_READ_FATIGUE_V1, ESI_CHARACTERS_READ_FW_STATS_V1,
-            ESI_CHARACTERS_READ_LOYALTY_V1, ESI_CHARACTERS_READ_MEDALS_V1, ESI_CHARACTERS_READ_NOTIFICATIONS_V1,
-            ESI_CHARACTERS_READ_STANDINGS_V1, ESI_CHARACTERS_READ_TITLES_V1, ESI_CHARACTERS_WRITE_CONTACTS_V1,
-            ESI_CLONES_READ_CLONES_V1, ESI_CLONES_READ_IMPLANTS_V1, ESI_CONTRACTS_READ_CHARACTER_CONTRACTS_V1,
-            ESI_CONTRACTS_READ_CORPORATION_CONTRACTS_V1, ESI_CORPORATIONS_READ_BLUEPRINTS_V1,
-            ESI_CORPORATIONS_READ_CONTACTS_V1, ESI_CORPORATIONS_READ_CONTAINER_LOGS_V1,
-            ESI_CORPORATIONS_READ_CORPORATION_MEMBERSHIP_V1, ESI_CORPORATIONS_READ_DIVISIONS_V1,
-            ESI_CORPORATIONS_READ_FACILITIES_V1, ESI_CORPORATIONS_READ_FW_STATS_V1, ESI_CORPORATIONS_READ_MEDALS_V1,
-            ESI_CORPORATIONS_READ_PROJECTS_V1, ESI_CORPORATIONS_READ_STANDINGS_V1, ESI_CORPORATIONS_READ_STARBASES_V1,
-            ESI_CORPORATIONS_READ_STRUCTURES_V1, ESI_CORPORATIONS_READ_TITLES_V1, ESI_CORPORATIONS_TRACK_MEMBERS_V1,
-            ESI_FITTINGS_READ_FITTINGS_V1, ESI_FITTINGS_WRITE_FITTINGS_V1, ESI_FLEETS_READ_FLEET_V1,
-            ESI_FLEETS_WRITE_FLEET_V1, ESI_INDUSTRY_READ_CHARACTER_JOBS_V1, ESI_INDUSTRY_READ_CHARACTER_MINING_V1,
-            ESI_INDUSTRY_READ_CORPORATION_JOBS_V1, ESI_INDUSTRY_READ_CORPORATION_MINING_V1,
-            ESI_KILLMAILS_READ_CORPORATION_KILLMAILS_V1, ESI_KILLMAILS_READ_KILLMAILS_V1,
-            ESI_LOCATION_READ_LOCATION_V1, ESI_LOCATION_READ_ONLINE_V1, ESI_LOCATION_READ_SHIP_TYPE_V1,
-            ESI_MAIL_ORGANIZE_MAIL_V1, ESI_MAIL_READ_MAIL_V1, ESI_MAIL_SEND_MAIL_V1,
-            ESI_MARKETS_READ_CHARACTER_ORDERS_V1, ESI_MARKETS_READ_CORPORATION_ORDERS_V1,
-            ESI_MARKETS_STRUCTURE_MARKETS_V1, ESI_PLANETS_MANAGE_PLANETS_V1, ESI_PLANETS_READ_CUSTOMS_OFFICES_V1,
-            ESI_SEARCH_SEARCH_STRUCTURES_V1, ESI_SKILLS_READ_SKILLQUEUE_V1, ESI_SKILLS_READ_SKILLS_V1,
-            ESI_UI_OPEN_WINDOW_V1, ESI_UI_WRITE_WAYPOINT_V1, ESI_UNIVERSE_READ_STRUCTURES_V1,
-            ESI_WALLET_READ_CHARACTER_WALLET_V1, ESI_WALLET_READ_CORPORATION_WALLETS_V1 };
+    private static final String[] ALL_VALUES =
+            {ESI_ACCESS_READ_LISTS_V1, ESI_ACTIVITIES_READ_CHARACTER_V1, ESI_ALLIANCES_READ_CONTACTS_V1,
+                    ESI_ASSETS_READ_ASSETS_V1, ESI_ASSETS_READ_CORPORATION_ASSETS_V1,
+                    ESI_CALENDAR_READ_CALENDAR_EVENTS_V1, ESI_CALENDAR_RESPOND_CALENDAR_EVENTS_V1,
+                    ESI_CHARACTERS_READ_AGENTS_RESEARCH_V1, ESI_CHARACTERS_READ_BLUEPRINTS_V1,
+                    ESI_CHARACTERS_READ_CONTACTS_V1, ESI_CHARACTERS_READ_CORPORATION_ROLES_V1,
+                    ESI_CHARACTERS_READ_FATIGUE_V1, ESI_CHARACTERS_READ_FREELANCE_JOBS_V1,
+                    ESI_CHARACTERS_READ_FW_STATS_V1, ESI_CHARACTERS_READ_LOYALTY_V1, ESI_CHARACTERS_READ_MEDALS_V1,
+                    ESI_CHARACTERS_READ_NOTIFICATIONS_V1, ESI_CHARACTERS_READ_STANDINGS_V1,
+                    ESI_CHARACTERS_READ_TITLES_V1, ESI_CHARACTERS_WRITE_CONTACTS_V1, ESI_CLONES_READ_CLONES_V1,
+                    ESI_CLONES_READ_IMPLANTS_V1, ESI_CONTRACTS_READ_CHARACTER_CONTRACTS_V1,
+                    ESI_CONTRACTS_READ_CORPORATION_CONTRACTS_V1, ESI_CORPORATIONS_READ_BLUEPRINTS_V1,
+                    ESI_CORPORATIONS_READ_CONTACTS_V1, ESI_CORPORATIONS_READ_CONTAINER_LOGS_V1,
+                    ESI_CORPORATIONS_READ_CORPORATION_MEMBERSHIP_V1, ESI_CORPORATIONS_READ_DIVISIONS_V1,
+                    ESI_CORPORATIONS_READ_FACILITIES_V1, ESI_CORPORATIONS_READ_FREELANCE_JOBS_V1,
+                    ESI_CORPORATIONS_READ_FW_STATS_V1, ESI_CORPORATIONS_READ_MEDALS_V1,
+                    ESI_CORPORATIONS_READ_PROJECTS_V1, ESI_CORPORATIONS_READ_STANDINGS_V1,
+                    ESI_CORPORATIONS_READ_STARBASES_V1, ESI_CORPORATIONS_READ_STRUCTURES_V1,
+                    ESI_CORPORATIONS_READ_TITLES_V1, ESI_CORPORATIONS_TRACK_MEMBERS_V1, ESI_FITTINGS_READ_FITTINGS_V1,
+                    ESI_FITTINGS_WRITE_FITTINGS_V1, ESI_FLEETS_READ_FLEET_V1, ESI_FLEETS_WRITE_FLEET_V1,
+                    ESI_INDUSTRY_READ_CHARACTER_JOBS_V1, ESI_INDUSTRY_READ_CHARACTER_MINING_V1,
+                    ESI_INDUSTRY_READ_CORPORATION_JOBS_V1, ESI_INDUSTRY_READ_CORPORATION_MINING_V1,
+                    ESI_KILLMAILS_READ_CORPORATION_KILLMAILS_V1, ESI_KILLMAILS_READ_KILLMAILS_V1,
+                    ESI_LOCATION_READ_LOCATION_V1, ESI_LOCATION_READ_ONLINE_V1, ESI_LOCATION_READ_SHIP_TYPE_V1,
+                    ESI_MAIL_ORGANIZE_MAIL_V1, ESI_MAIL_READ_MAIL_V1, ESI_MAIL_SEND_MAIL_V1,
+                    ESI_MARKETS_READ_CHARACTER_ORDERS_V1, ESI_MARKETS_READ_CORPORATION_ORDERS_V1,
+                    ESI_MARKETS_STRUCTURE_MARKETS_V1, ESI_PLANETS_MANAGE_PLANETS_V1,
+                    ESI_PLANETS_READ_CUSTOMS_OFFICES_V1, ESI_SEARCH_SEARCH_STRUCTURES_V1, ESI_SKILLS_READ_SKILLQUEUE_V1,
+                    ESI_SKILLS_READ_SKILLS_V1, ESI_STRUCTURES_READ_CHARACTER_V1, ESI_STRUCTURES_READ_CORPORATION_V1,
+                    ESI_UI_OPEN_WINDOW_V1, ESI_UI_WRITE_WAYPOINT_V1, ESI_UNIVERSE_READ_STRUCTURES_V1,
+                    ESI_WALLET_READ_CHARACTER_WALLET_V1, ESI_WALLET_READ_CORPORATION_WALLETS_V1,
+                    ESI_ACTIVITY_CHAR_READ, ESI_COSMETIC_CHAR_READ};
 
-    public static Set<String> ALL = Collections.unmodifiableSet(new HashSet<>(Arrays.asList(ALL_VALUES)));
-
+    public static Set<String> ALL = Collections.unmodifiableSet(new HashSet<>(Arrays.asList(SsoScopes.ALL_VALUES)));
 }
