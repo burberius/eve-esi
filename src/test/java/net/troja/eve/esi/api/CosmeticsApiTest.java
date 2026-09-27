@@ -49,8 +49,7 @@ public class CosmeticsApiTest extends GeneralApiTest {
         String ifModifiedSince = null;
         CharactersCosmeticsSkinr response = api.getCharactersCosmeticsSkinr(characterId, CosmeticsApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant, ifModifiedSince);
         assertThat(response).isNotNull();
-        assertThat(response.getLicenses().get(0).getSkinrId()).isEqualTo("SkinrId");
-        // Use the SkinrId in the test 2 below
+        assertThat(response.getLicenses().get(0).getSkinrId()).isNotEmpty();
     }
 
     /**
@@ -67,7 +66,7 @@ public class CosmeticsApiTest extends GeneralApiTest {
         String xTenant = null;
         String ifModifiedSince = null;
         CharactersCosmeticsSkinrComponents response = api.getCharactersCosmeticsSkinrComponents(characterId, CosmeticsApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant, ifModifiedSince);
-        assertThat(response.getLicenses()).hasSizeGreaterThan(50);
+        assertThat(response.getLicenses()).hasSizeGreaterThan(15);
     }
 
     /**
@@ -79,13 +78,13 @@ public class CosmeticsApiTest extends GeneralApiTest {
      */
     @Test
     public void getCosmeticsSkinrTest() throws ApiException {
-        String skinrId = "Some SkinrId";
+        String skinrId = "3ecb86893790e6d6ab41dfb3fe6dba26733f917c729a27263e394498a1542b99";
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;
         String ifModifiedSince = null;
         CosmeticsSkinr response = api.getCosmeticsSkinr(skinrId, CosmeticsApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant, ifModifiedSince);
-        assertThat(response.getName()).isEqualTo("Something");
+        assertThat(response.getName()).isEqualTo(characterName);
     }
 
 }

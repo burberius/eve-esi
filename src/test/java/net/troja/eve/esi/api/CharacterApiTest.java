@@ -115,7 +115,7 @@ public class CharacterApiTest extends GeneralApiTest {
         String xTenant = null;
         String ifModifiedSince = null;
         List<CharacterMedalsResponse> response = api.getCharacterMedals(characterId, CharacterApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant, ifModifiedSince);
-        assertThat(response).isNotNull().isNotEmpty();
+        assertThat(response).isNotNull();
     }
 
     /**

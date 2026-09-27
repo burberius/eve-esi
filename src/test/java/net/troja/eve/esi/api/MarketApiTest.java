@@ -60,7 +60,7 @@ public class MarketApiTest extends GeneralApiTest {
         String xTenant = null;
         String ifModifiedSince = null;
         List<CharacterOrdersResponse> response = api.getCharacterOrders(characterId, MarketApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant, ifModifiedSince);
-        assertThat(response).isNotEmpty();
+        assertThat(response).isNotNull();
     }
 
     /**

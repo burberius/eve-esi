@@ -86,6 +86,7 @@ public class ParagonHubApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
+    @Disabled("No access")
     public void getParagonHubSkinrAlliancesTest() throws ApiException {
         String after = null;
         String before = null;
@@ -126,6 +127,7 @@ public class ParagonHubApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
+    @Disabled("No access")
     public void getParagonHubSkinrCorporationsTest() throws ApiException {
         String after = null;
         String before = null;

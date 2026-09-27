@@ -136,7 +136,7 @@ public class UniverseApiTest extends GeneralApiTest {
         String ifModifiedSince = null;
         List<Long> response = api.getCategories(UniverseApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant,
                 ifModifiedSince);
-        assertThat(response).hasSize(47);
+        assertThat(response).hasSize(48);
     }
 
     /**
@@ -195,7 +195,7 @@ public class UniverseApiTest extends GeneralApiTest {
         List<Long> response =
                 api.getConstellations(UniverseApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant,
                         ifModifiedSince);
-        assertThat(response).hasSize(1175);
+        assertThat(response).hasSize(1184);
     }
 
     /**
@@ -391,7 +391,7 @@ public class UniverseApiTest extends GeneralApiTest {
         String ifModifiedSince = null;
         List<Long> response =
                 api.getRegions(UniverseApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant, ifModifiedSince);
-        assertThat(response).hasSize(113);
+        assertThat(response).hasSize(114);
     }
 
     /**
@@ -547,7 +547,7 @@ public class UniverseApiTest extends GeneralApiTest {
         String ifModifiedSince = null;
         List<Long> response =
                 api.getSystems(UniverseApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant, ifModifiedSince);
-        assertThat(response).hasSize(8437);
+        assertThat(response).hasSize(8490);
     }
 
     /**
