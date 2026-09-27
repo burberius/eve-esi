@@ -80,6 +80,7 @@ public class KillmailsApiTest extends GeneralApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
+    @Disabled("We don't have any kills to test with")
     public void getKillmailByHashTest() throws ApiException {
         String acceptLanguage = null;
         String ifNoneMatch = null;

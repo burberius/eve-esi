@@ -129,7 +129,7 @@ public class FreelanceJobsApiTest extends GeneralApiTest {
         String ifNoneMatch = null;
         String xTenant = null;
         String ifModifiedSince = null;
-        FreelanceJobsListing jobs = api.getFreelanceJobsListing(FreelanceJobsApi.COMPATIBILITY_DATE, null, null, null, corporationId, acceptLanguage, ifNoneMatch, xTenant, ifModifiedSince);
+        FreelanceJobsListing jobs = api.getFreelanceJobsListing(FreelanceJobsApi.COMPATIBILITY_DATE, null, null, null, null, acceptLanguage, ifNoneMatch, xTenant, ifModifiedSince);
         UUID jobId = jobs.getFreelanceJobs().get(0).getId();
         FreelanceJobsDetail response = api.getFreelanceJobsDetail(jobId, FreelanceJobsApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant, ifModifiedSince);
         assertThat(response).isNotNull();

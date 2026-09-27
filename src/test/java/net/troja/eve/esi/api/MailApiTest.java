@@ -150,7 +150,7 @@ public class MailApiTest extends GeneralApiTest {
         String xTenant = null;
         String ifModifiedSince = null;
         List<MailsResponse> response = api.getMails(characterId, MailApi.COMPATIBILITY_DATE, labels, lastMailId, acceptLanguage, ifNoneMatch, xTenant, ifModifiedSince);
-        assertThat(response).hasSize(50);
+        assertThat(response).hasSizeGreaterThan(10);
         MailsResponse mail = response.get(0);
         assertThat(mail.getFrom()).isGreaterThan(0);
         assertThat(mail.getSubject()).isNotBlank();

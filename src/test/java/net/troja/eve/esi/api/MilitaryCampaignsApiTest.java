@@ -91,7 +91,9 @@ public class MilitaryCampaignsApiTest extends GeneralApiTest {
      */
     @Test
     public void getMilitaryCampaignsDetailTest() throws ApiException {
-        UUID campaignId = null;
+        if (campaignId ==  null) {
+            getMilitaryCampaignsListingTest();
+        }
         String acceptLanguage = null;
         String ifNoneMatch = null;
         String xTenant = null;

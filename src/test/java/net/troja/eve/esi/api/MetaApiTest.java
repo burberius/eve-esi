@@ -83,7 +83,7 @@ public class MetaApiTest extends GeneralApiTest {
         String xTenant = null;
         String ifModifiedSince = null;
         MetaName response = api.getMetaName(MetaApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant, ifModifiedSince);
-        assertThat(response.getCurrent()).isEqualTo("Don't know yet");
+        assertThat(response.getCurrent()).isEqualTo("EVE SKINR Ingenuity (ESI)");
     }
 
     /**

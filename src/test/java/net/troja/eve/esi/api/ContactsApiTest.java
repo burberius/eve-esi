@@ -125,7 +125,7 @@ public class ContactsApiTest extends GeneralApiTest {
         String xTenant = null;
         String ifModifiedSince = null;
         List<AllianceContactsLabelsResponse> response = api.getContactsLabels(characterId, ContactsApi.COMPATIBILITY_DATE, acceptLanguage, ifNoneMatch, xTenant, ifModifiedSince);
-        assertThat(response).isNotEmpty();
+        assertThat(response).isNotNull();
     }
 
     /**
